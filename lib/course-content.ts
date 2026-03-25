@@ -50,6 +50,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "58 min",
     xp: 190
+  },
+  {
+    slug: "mini-projects",
+    title: "Mini proyectos",
+    description: "Une lo que ya aprendiste para crear programas pequeños, útiles y reales que se sienten como un primer logro importante.",
+    order: 6,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "70 min",
+    xp: 240
   }
 ];
 
@@ -1045,6 +1055,213 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "Una función con parámetro que esté bien debería imprimir el saludo usando el valor de la llamada."
     },
     exerciseSlug: "fix-name-greeter-function"
+  },
+  {
+    slug: "mini-project-personal-greeter",
+    module: "Mini proyectos",
+    moduleSlug: "mini-projects",
+    order: 1,
+    title: "Mini proyecto: saludo personal reutilizable",
+    duration: "18 min",
+    difficulty: "Beginner",
+    summary: "Construye un programa pequeño que pida un nombre y use una función para mostrar un saludo más personal.",
+    warmup: "Hasta ahora ya viste piezas sueltas. Este proyecto te muestra cómo esas piezas se juntan para crear algo que ya se siente como un programa real.",
+    goal: "Al final, deberías poder construir un saludo personal que combine `input()`, una variable y una función simple.",
+    keyIdeas: [
+      {
+        title: "Un proyecto pequeño también es un proyecto real",
+        description: "No hace falta construir algo enorme para sentir que terminaste algo útil."
+      },
+      {
+        title: "Las funciones ayudan a ordenar",
+        description: "Una función te permite separar el saludo del resto del programa."
+      },
+      {
+        title: "La interacción hace que el programa se sienta vivo",
+        description: "Pedir un nombre y responderlo crea una experiencia más real que imprimir texto fijo."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué vas a construir",
+        body: "Este proyecto pedirá un nombre y luego usará una función para mostrar un mensaje de bienvenida. Es corto, pero ya combina varias ideas importantes del camino."
+      },
+      {
+        title: "Cómo dividirlo en pasos",
+        body: "Primero pide el nombre con `input()`. Después define una función que reciba ese nombre. Por último, llama a la función con el valor que guardaste."
+      },
+      {
+        title: "Por qué vale la pena usar una función",
+        body: "Podrías escribir el `print()` directamente, pero usar una función hace que el programa quede mejor organizado y te prepara para proyectos un poco más grandes."
+      },
+      {
+        title: "Busca una primera versión simple",
+        body: "Tu objetivo no es hacer un sistema complicado. Tu objetivo es terminar un programa pequeño, claro y funcionando."
+      }
+    ],
+    example: "def saludar(name):\n    print('Hola, ' + name)\n\nname = input('¿Cómo te llamas? ')\nsaludar(name)",
+    practicePrompt: "Prueba cambiar el mensaje del saludo o el nombre de la función. Lo importante es que el programa siga pidiendo un nombre y respondiendo con ese valor.",
+    practiceChecklist: [
+      "Usa `input()` para pedir un nombre.",
+      "Guarda la respuesta en una variable.",
+      "Define una función que use ese nombre.",
+      "Llama a la función después de pedir el dato."
+    ],
+    commonMistakes: [
+      "Pedir el nombre pero no usarlo después.",
+      "Definir la función y olvidar llamarla.",
+      "Poner la llamada a la función dentro de la definición por accidente."
+    ],
+    bugChallenge: {
+      prompt: "Este proyecto debería pedir un nombre y saludar, pero la función no está bien cerrada ni se llama correctamente.",
+      brokenCode: "def saludar(name)\n    print('Hola, ' + name)\n\nname = input('¿Cómo te llamas? ')\nsaludar",
+      expectedLearning: "En proyectos pequeños, casi siempre conviene revisar primero la forma de la función: dos puntos, indentación y llamada."
+    },
+    playground: {
+      title: "Construye el saludo personal",
+      guidance: "Ejecuta el proyecto, responde el nombre y observa cómo una función simple hace que el saludo se sienta más ordenado y reutilizable.",
+      starterCode: "def saludar(name):\n    print('Hola, ' + name)\n\nname = input('¿Cómo te llamas? ')\nsaludar(name)",
+      emptyOutputHint: "Si tu proyecto usa `input()`, primero responde la pregunta del navegador y luego mira la salida."
+    },
+    exerciseSlug: "build-personal-greeter-project"
+  },
+  {
+    slug: "mini-project-score-checker",
+    module: "Mini proyectos",
+    moduleSlug: "mini-projects",
+    order: 2,
+    title: "Mini proyecto: verificador simple de puntajes",
+    duration: "20 min",
+    difficulty: "Beginner",
+    summary: "Crea un pequeño verificador que clasifique un puntaje usando una función y decisiones claras.",
+    warmup: "Un proyecto pequeño se siente más real cuando toma un dato y responde algo útil. Clasificar un puntaje es un buen primer ejemplo.",
+    goal: "Al final, deberías poder construir un programa corto que use una función con un puntaje y responda con una categoría simple.",
+    keyIdeas: [
+      {
+        title: "Las decisiones le dan utilidad al programa",
+        description: "Un programa empieza a sentirse práctico cuando responde distinto según un valor."
+      },
+      {
+        title: "Una función puede contener la lógica",
+        description: "La clasificación puede vivir dentro de una función en lugar de quedar suelta en todo el archivo."
+      },
+      {
+        title: "Empieza con un valor fijo antes de complicarlo",
+        description: "Para un primer proyecto, está bien usar una variable fija y concentrarte en la lógica."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué problema resuelve este mini proyecto",
+        body: "Vas a construir un programa que mire un puntaje y diga algo como `Excelente`, `Buen trabajo` o `Sigue practicando`. No es complejo, pero ya se siente útil."
+      },
+      {
+        title: "Cómo organizar la solución",
+        body: "Primero guarda el puntaje en una variable. Después crea una función que revise ese valor con `if`, `elif` y `else`. Por último, llama a esa función."
+      },
+      {
+        title: "Qué estás practicando de verdad",
+        body: "Aquí estás uniendo variables, condicionales y funciones dentro de una sola pieza. Esa mezcla es justamente la base de muchos programas pequeños."
+      },
+      {
+        title: "Menos ramas, más claridad",
+        body: "No necesitas cinco categorías ni mensajes raros. Con tres caminos claros ya puedes terminar un proyecto que se entienda y funcione."
+      }
+    ],
+    example: "def revisar_puntaje(score):\n    if score >= 90:\n        print('Excelente')\n    elif score >= 70:\n        print('Buen trabajo')\n    else:\n        print('Sigue practicando')\n\nscore = 85\nrevisar_puntaje(score)",
+    practicePrompt: "Cambia el puntaje y vuelve a ejecutar el programa. Fíjate cómo cambia el mensaje sin tener que reescribir toda la lógica.",
+    practiceChecklist: [
+      "Guarda un puntaje en una variable.",
+      "Define una función que reciba ese puntaje.",
+      "Usa `if`, `elif` y `else` para clasificarlo.",
+      "Llama a la función con el puntaje guardado."
+    ],
+    commonMistakes: [
+      "Poner primero una condición más baja y esconder la más alta.",
+      "Olvidar llamar a la función al final.",
+      "Cambiar el nombre de la variable en un lugar y usar otro distinto después."
+    ],
+    bugChallenge: {
+      prompt: "Este proyecto debería clasificar un puntaje alto como `Excelente`, pero el orden de las ramas hace que imprima otra cosa.",
+      brokenCode: "def revisar_puntaje(score):\n    if score >= 70:\n        print('Buen trabajo')\n    elif score >= 90:\n        print('Excelente')\n    else:\n        print('Sigue practicando')\n\nscore = 95\nrevisar_puntaje(score)",
+      expectedLearning: "En un mini proyecto real, el orden de las decisiones importa tanto como la sintaxis."
+    },
+    playground: {
+      title: "Prueba el verificador de puntajes",
+      guidance: "Ejecuta el proyecto con un puntaje fijo y luego cambia el número. Observa cómo una misma función responde distinto según el valor.",
+      starterCode: "def revisar_puntaje(score):\n    if score >= 90:\n        print('Excelente')\n    elif score >= 70:\n        print('Buen trabajo')\n    else:\n        print('Sigue practicando')\n\nscore = 85\nrevisar_puntaje(score)",
+      emptyOutputHint: "Un proyecto correcto debería imprimir una sola categoría según el puntaje."
+    },
+    exerciseSlug: "build-score-checker-project"
+  },
+  {
+    slug: "mini-project-practice-counter",
+    module: "Mini proyectos",
+    moduleSlug: "mini-projects",
+    order: 3,
+    title: "Mini proyecto: contador de práctica",
+    duration: "22 min",
+    difficulty: "Beginner",
+    summary: "Construye una pequeña herramienta que use una función y un bucle para mostrar pasos de progreso.",
+    warmup: "Cuando un programa repite una secuencia clara, ya empieza a sentirse como una pequeña herramienta. Este proyecto busca justamente esa sensación.",
+    goal: "Al final, deberías poder crear un contador corto que use una función, un bucle y una línea final de cierre.",
+    keyIdeas: [
+      {
+        title: "Los bucles muestran progreso",
+        description: "Un conteo repetido hace visible el avance paso a paso."
+      },
+      {
+        title: "Una función puede envolver todo el patrón",
+        description: "Puedes guardar la secuencia repetida dentro de una función y llamarla cuando quieras."
+      },
+      {
+        title: "El cierre final también comunica",
+        description: "Una línea final fuera del bucle hace que el proyecto se sienta más completo."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué vas a construir",
+        body: "Este mini proyecto imprimirá algo como `Paso 1`, `Paso 2`, `Paso 3` y luego una línea final que marque que terminaste. Es simple, pero tiene una estructura muy útil."
+      },
+      {
+        title: "Por qué mezcla bien los fundamentos",
+        body: "Estás usando una función para agrupar, un bucle para repetir y una línea final para cerrar el recorrido. Eso ya se parece bastante a la lógica de herramientas pequeñas reales."
+      },
+      {
+        title: "Qué conviene vigilar",
+        body: "Mira bien la indentación y recuerda que la línea final debe quedar fuera del bucle. También revisa el `range()` para que el conteo llegue hasta donde quieres."
+      },
+      {
+        title: "Qué hace que se sienta terminado",
+        body: "No se trata solo de que el código corra. Se trata de que la salida tenga un principio, un patrón claro y un final entendible."
+      }
+    ],
+    example: "def mostrar_progreso():\n    for step in range(1, 4):\n        print('Paso', step)\n    print('Sesión lista')\n\nmostrar_progreso()",
+    practicePrompt: "Prueba cambiar la cantidad de pasos o el mensaje final. La idea principal es que el patrón siga claro y que el cierre ocurra una sola vez.",
+    practiceChecklist: [
+      "Define una función para el progreso.",
+      "Usa un bucle `for` dentro de la función.",
+      "Imprime el número de paso en cada vuelta.",
+      "Deja la línea final fuera del bucle, pero dentro de la función."
+    ],
+    commonMistakes: [
+      "Poner la línea final dentro del bucle por accidente.",
+      "Usar un `range()` que no llega al último paso esperado.",
+      "Olvidar llamar a la función después de definirla."
+    ],
+    bugChallenge: {
+      prompt: "Este proyecto debería mostrar tres pasos y un cierre final, pero una línea quedó mal indentada y cambia el resultado.",
+      brokenCode: "def mostrar_progreso():\n    for step in range(1, 4):\n        print('Paso', step)\n        print('Sesión lista')\n\nmostrar_progreso()",
+      expectedLearning: "En un proyecto pequeño, una sola indentación puede cambiar por completo la experiencia que ve la persona usuaria."
+    },
+    playground: {
+      title: "Prueba el contador de práctica",
+      guidance: "Ejecuta el proyecto y mira la secuencia completa. Luego cambia la cantidad de pasos o el mensaje final para seguir explorando el patrón.",
+      starterCode: "def mostrar_progreso():\n    for step in range(1, 4):\n        print('Paso', step)\n    print('Sesión lista')\n\nmostrar_progreso()",
+      emptyOutputHint: "La salida debería mostrar varios pasos y una sola línea final al terminar."
+    },
+    exerciseSlug: "build-practice-counter-project"
   }
 ];
 
@@ -2004,6 +2221,250 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["defines-greet-with-parameter", "uses-name-in-print", "calls-greet-with-maya"]
+    }
+  },
+  {
+    slug: "build-personal-greeter-project",
+    title: "Construye el mini proyecto de saludo personal",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "mini-projects",
+    lessonSlug: "mini-project-personal-greeter",
+    order: 1,
+    duration: "10 min",
+    summary: "Termina un programa corto que pida un nombre y lo use dentro de una función de saludo.",
+    prompt:
+      "Escribe un mini proyecto que pida un nombre con `input()`, lo guarde en una variable y luego use una función `saludar(name)` para imprimir `Hola, ` más ese nombre.",
+    responseLabel: "Tu mini proyecto",
+    responsePlaceholder:
+      "def saludar(name):\n    print('Hola, ' + name)\n\nname = input('¿Cómo te llamas? ')\nsaludar(name)",
+    instructions: [
+      "Define una función llamada `saludar` que reciba un nombre.",
+      "Pide el nombre con `input()` y guárdalo en una variable.",
+      "Llama a la función con esa variable al final."
+    ],
+    hints: [
+      "La forma básica es `def saludar(name):`.",
+      "Puedes usar `name = input('¿Cómo te llamas? ')`.",
+      "La llamada debería verse como `saludar(name)`."
+    ],
+    starterCode: "def saludar(name):\n    print('Hola, ' + name)\n\nname = input('¿Cómo te llamas? ')\nsaludar(name)",
+    successCriteria: [
+      "Define la función `saludar(name)`.",
+      "Pide el nombre con `input()`.",
+      "Usa el nombre guardado para imprimir un saludo personal."
+    ],
+    playground: {
+      title: "Ejecuta el mini proyecto de saludo",
+      guidance: "Prueba el proyecto con distintos nombres. La meta es sentir que ya puedes construir un programa pequeño que conversa con la persona usuaria.",
+      starterCode: "def saludar(name):\n    print('Hola, ' + name)\n\nname = input('¿Cómo te llamas? ')\nsaludar(name)",
+      emptyOutputHint: "Responde la pregunta del navegador para ver el saludo final en la salida."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 70,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "defines-saludar",
+          label: "Define `saludar(name)`",
+          pattern: "def\\s+saludar\\s*\\(\\s*name\\s*\\)\\s*:",
+          feedbackWhenMissing: "Empieza definiendo la función como `def saludar(name):`."
+        },
+        {
+          id: "uses-input",
+          label: "Pide el nombre con `input()`",
+          pattern: "name\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Guarda el resultado de `input()` en la variable `name`."
+        },
+        {
+          id: "prints-greeting",
+          label: "Imprime un saludo usando el nombre",
+          pattern: "print\\([^\\n]*'Hola, '\\s*\\+\\s*name[^\\n]*\\)",
+          feedbackWhenMissing: "Dentro de la función, imprime `Hola, ` usando el valor de `name`."
+        },
+        {
+          id: "calls-saludar",
+          label: "Llama a `saludar(name)`",
+          pattern: "saludar\\(\\s*name\\s*\\)",
+          feedbackWhenMissing: "Llama a la función al final usando la variable `name`."
+        }
+      ],
+      orderedPatternIds: ["defines-saludar", "uses-input", "calls-saludar"]
+    }
+  },
+  {
+    slug: "build-score-checker-project",
+    title: "Construye el mini proyecto verificador de puntajes",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "mini-projects",
+    lessonSlug: "mini-project-score-checker",
+    order: 2,
+    duration: "10 min",
+    summary: "Combina variables, condicionales y funciones en un verificador corto de puntajes.",
+    prompt:
+      "Escribe un mini proyecto que guarde `score = 85`, defina una función `revisar_puntaje(score)` y muestre `Excelente`, `Buen trabajo` o `Sigue practicando` según el valor.",
+    responseLabel: "Tu verificador de puntajes",
+    responsePlaceholder:
+      "def revisar_puntaje(score):\n    if score >= 90:\n        print('Excelente')\n    elif score >= 70:\n        print('Buen trabajo')\n    else:\n        print('Sigue practicando')\n\nscore = 85\nrevisar_puntaje(score)",
+    instructions: [
+      "Guarda el puntaje en una variable llamada `score`.",
+      "Define la función `revisar_puntaje(score)`.",
+      "Usa tres ramas claras: `if`, `elif` y `else`."
+    ],
+    hints: [
+      "El valor 85 debería caer en la categoría intermedia.",
+      "La condición de 90 o más debe ir antes que la de 70 o más.",
+      "Llama a la función después de guardar el puntaje."
+    ],
+    starterCode: "def revisar_puntaje(score):\n    if score >= 90:\n        print('Excelente')\n    elif score >= 70:\n        print('Buen trabajo')\n    else:\n        print('Sigue practicando')\n\nscore = 85\nrevisar_puntaje(score)",
+    successCriteria: [
+      "Usa una variable `score`.",
+      "Clasifica el puntaje con una función.",
+      "Con `score = 85`, el programa imprime `Buen trabajo`."
+    ],
+    playground: {
+      title: "Ejecuta el verificador de puntajes",
+      guidance: "Corre el proyecto con 85 y luego prueba otros valores. La idea es ver cómo una sola función ya puede tomar decisiones útiles.",
+      starterCode: "def revisar_puntaje(score):\n    if score >= 90:\n        print('Excelente')\n    elif score >= 70:\n        print('Buen trabajo')\n    else:\n        print('Sigue practicando')\n\nscore = 85\nrevisar_puntaje(score)",
+      emptyOutputHint: "La salida debería mostrar una sola categoría según el puntaje guardado."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Buen trabajo"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 120,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-review-function",
+          label: "Define `revisar_puntaje(score)`",
+          pattern: "def\\s+revisar_puntaje\\s*\\(\\s*score\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define la función como `def revisar_puntaje(score):`."
+        },
+        {
+          id: "has-high-branch",
+          label: "Incluye la rama de 90 o más",
+          pattern: "if\\s+score\\s*>=\\s*90\\s*:",
+          feedbackWhenMissing: "Empieza la decisión con la rama que revisa `score >= 90`."
+        },
+        {
+          id: "has-mid-branch",
+          label: "Incluye la rama de 70 o más",
+          pattern: "elif\\s+score\\s*>=\\s*70\\s*:",
+          feedbackWhenMissing: "Agrega una rama `elif` para `score >= 70`."
+        },
+        {
+          id: "has-else",
+          label: "Incluye la rama final",
+          pattern: "else\\s*:",
+          feedbackWhenMissing: "Mantén una rama `else` para el caso final."
+        },
+        {
+          id: "stores-score",
+          label: "Guarda `score = 85`",
+          pattern: "score\\s*=\\s*85",
+          feedbackWhenMissing: "Guarda el valor `85` en la variable `score`."
+        },
+        {
+          id: "calls-review-function",
+          label: "Llama a la función con `score`",
+          pattern: "revisar_puntaje\\(\\s*score\\s*\\)",
+          feedbackWhenMissing: "Llama a `revisar_puntaje(score)` al final."
+        }
+      ],
+      orderedPatternIds: ["defines-review-function", "has-high-branch", "has-mid-branch", "stores-score", "calls-review-function"]
+    }
+  },
+  {
+    slug: "build-practice-counter-project",
+    title: "Construye el mini proyecto contador de práctica",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "mini-projects",
+    lessonSlug: "mini-project-practice-counter",
+    order: 3,
+    duration: "10 min",
+    summary: "Termina una pequeña herramienta que use una función y un bucle para mostrar progreso paso a paso.",
+    prompt:
+      "Escribe un mini proyecto que defina `mostrar_progreso()`, imprima `Paso 1`, `Paso 2`, `Paso 3` dentro de un bucle y luego muestre `Sesión lista` una sola vez al final.",
+    responseLabel: "Tu contador de práctica",
+    responsePlaceholder:
+      "def mostrar_progreso():\n    for step in range(1, 4):\n        print('Paso', step)\n    print('Sesión lista')\n\nmostrar_progreso()",
+    instructions: [
+      "Define la función antes de llamarla.",
+      "Usa un bucle `for` para imprimir cada paso.",
+      "Deja el mensaje final fuera del bucle, pero dentro de la función."
+    ],
+    hints: [
+      "El `range()` debe llegar hasta el 3.",
+      "La línea `Sesión lista` no debería repetirse tres veces.",
+      "Recuerda llamar a `mostrar_progreso()` al final."
+    ],
+    starterCode: "def mostrar_progreso():\n    for step in range(1, 4):\n        print('Paso', step)\n    print('Sesión lista')\n\nmostrar_progreso()",
+    successCriteria: [
+      "Define una función con un bucle dentro.",
+      "Imprime tres pasos en orden.",
+      "Imprime `Sesión lista` una sola vez al final."
+    ],
+    playground: {
+      title: "Ejecuta el contador de práctica",
+      guidance: "Corre el proyecto y observa el patrón completo. La sensación buscada es que ya puedes construir una herramienta pequeña con inicio, repetición y cierre.",
+      starterCode: "def mostrar_progreso():\n    for step in range(1, 4):\n        print('Paso', step)\n    print('Sesión lista')\n\nmostrar_progreso()",
+      emptyOutputHint: "La salida correcta debería mostrar tres pasos y un único cierre final."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Paso 1\nPaso 2\nPaso 3\nSesión lista"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 90,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "defines-progress-function",
+          label: "Define `mostrar_progreso()`",
+          pattern: "def\\s+mostrar_progreso\\s*\\(\\s*\\)\\s*:",
+          feedbackWhenMissing: "Empieza definiendo la función como `def mostrar_progreso():`."
+        },
+        {
+          id: "uses-step-loop",
+          label: "Usa un bucle para contar pasos",
+          pattern: "for\\s+step\\s+in\\s+range\\(\\s*1\\s*,\\s*4\\s*\\)\\s*:",
+          feedbackWhenMissing: "Usa un bucle `for` con `range(1, 4)` para mostrar los pasos."
+        },
+        {
+          id: "prints-step",
+          label: "Imprime cada paso",
+          pattern: "print\\(\\s*['\"]Paso['\"]\\s*,\\s*step\\s*\\)",
+          feedbackWhenMissing: "Dentro del bucle, imprime `Paso` junto con el valor de `step`."
+        },
+        {
+          id: "prints-session-ready",
+          label: "Imprime el cierre final",
+          pattern: "print\\(\\s*['\"]Sesión lista['\"]\\s*\\)",
+          feedbackWhenMissing: "Agrega una línea final con `print('Sesión lista')`."
+        },
+        {
+          id: "calls-progress-function",
+          label: "Llama a `mostrar_progreso()`",
+          pattern: "mostrar_progreso\\(\\s*\\)",
+          feedbackWhenMissing: "Llama a `mostrar_progreso()` después de definirla."
+        }
+      ],
+      orderedPatternIds: ["defines-progress-function", "uses-step-loop", "prints-step", "prints-session-ready", "calls-progress-function"]
     }
   }
 ];

@@ -30,18 +30,21 @@ const feedbackMeta = {
 export function ExerciseWorkspace({
   exercise,
   status,
+  initialAnswer,
   lessonHref,
   nextLessonHref
 }: {
   exercise: ExerciseData;
   status: ProgressStatus;
+  initialAnswer?: string;
   lessonHref: string;
   nextLessonHref?: string | null;
 }) {
   const [answer, setAnswer] = useState(
-    exercise.responseFormat === "code"
-      ? exercise.starterCode
-      : ""
+    initialAnswer ??
+      (exercise.responseFormat === "code"
+        ? exercise.starterCode
+        : "")
   );
   const [evaluation, setEvaluation] = useState<ExerciseEvaluationResult | null>(null);
   const [checkingAnswer, setCheckingAnswer] = useState(false);
@@ -209,9 +212,12 @@ export function ExerciseWorkspace({
         <PythonPlayground
           config={exercise.playground}
           compact
+          initialCode={initialAnswer}
           code={exercise.responseFormat === "code" ? answer : undefined}
           onCodeChange={exercise.responseFormat === "code" ? handleAnswerChange : undefined}
           onRunComplete={setExecution}
+          draftScope={exercise.responseFormat === "code" ? "exercise" : undefined}
+          draftSlug={exercise.responseFormat === "code" ? exercise.slug : undefined}
         />
       ) : null}
 

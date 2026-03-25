@@ -13,6 +13,11 @@ enum ProgressStatus {
   completed
 }
 
+enum DraftScope {
+  lesson
+  exercise
+}
+
 model User {
   id               String             @id @default(cuid())
   name             String
@@ -26,6 +31,7 @@ model User {
   lessonProgress   LessonProgress[]
   exerciseProgress ExerciseProgress[]
   activityEvents   ActivityEvent[]
+  drafts           Draft[]
 }
 
 model LessonProgress {
@@ -63,4 +69,18 @@ model ActivityEvent {
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, createdAt(sort: Desc)])
+}
+
+model Draft {
+  id        String     @id @default(cuid())
+  userId    String
+  scope     DraftScope
+  slug      String
+  content   String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, scope, slug])
+  @@index([userId, updatedAt(sort: Desc)])
 }

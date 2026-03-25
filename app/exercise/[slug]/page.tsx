@@ -5,6 +5,7 @@ import { ExerciseWorkspace } from "@/components/exercise-workspace";
 import { MentorWidget } from "@/components/mentor-widget";
 import { SignOutButton } from "@/components/sign-out-button";
 import { getExerciseBySlug, getExerciseStatus, getLessonBySlug, getNextLesson } from "@/lib/course";
+import { getDraftForUser } from "@/lib/drafts";
 import { getProgressForUser } from "@/lib/user-progress";
 
 export default async function ExercisePage({
@@ -23,6 +24,14 @@ export default async function ExercisePage({
   const status = getExerciseStatus(progress, exercise.slug);
   const lesson = getLessonBySlug(exercise.lessonSlug);
   const nextLesson = lesson ? getNextLesson(lesson.slug) : null;
+  const draft =
+    exercise.responseFormat === "code"
+      ? await getDraftForUser({
+          userId: user.id,
+          scope: "exercise",
+          slug: exercise.slug
+        })
+      : null;
 
   return (
     <AppShell
@@ -35,6 +44,7 @@ export default async function ExercisePage({
         <ExerciseWorkspace
           exercise={exercise}
           status={status}
+          initialAnswer={draft?.content ?? (exercise.responseFormat === "code" ? exercise.starterCode : "")}
           lessonHref={lesson ? `/lesson/${lesson.slug}` : "/roadmap"}
           nextLessonHref={nextLesson ? `/lesson/${nextLesson.slug}` : null}
         />

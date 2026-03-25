@@ -19,6 +19,7 @@ import {
   getNextLesson,
   getPreviousLesson
 } from "@/lib/course";
+import { getDraftForUser } from "@/lib/drafts";
 import { getProgressForUser } from "@/lib/user-progress";
 
 export default async function LessonPage({
@@ -40,6 +41,13 @@ export default async function LessonPage({
   const previousLesson = getPreviousLesson(lesson.slug);
   const nextLesson = getNextLesson(lesson.slug);
   const exercise = getExerciseByLessonSlug(lesson.slug);
+  const lessonDraft = lesson.playground
+    ? await getDraftForUser({
+        userId: user.id,
+        scope: "lesson",
+        slug: lesson.slug
+      })
+    : null;
 
   return (
     <AppShell
@@ -127,7 +135,14 @@ export default async function LessonPage({
             </div>
           </Card>
 
-          {lesson.playground ? <PythonPlayground config={lesson.playground} /> : null}
+          {lesson.playground ? (
+            <PythonPlayground
+              config={lesson.playground}
+              initialCode={lessonDraft?.content ?? lesson.playground.starterCode}
+              draftScope="lesson"
+              draftSlug={lesson.slug}
+            />
+          ) : null}
 
           <Card className="rounded-[30px]">
             <h2 className="text-xl font-bold text-slate-900">Practice</h2>

@@ -3,24 +3,31 @@
 import { useEffect, useState } from "react";
 import { LoaderCircle, PlayCircle, RotateCcw, TerminalSquare } from "lucide-react";
 import { PythonRunResult, runPythonInBrowser } from "@/lib/pyodide-client";
-import { PythonPlaygroundConfig } from "@/types";
+import { useDraftPersistence } from "@/lib/use-draft-persistence";
+import { DraftScope, PythonPlaygroundConfig } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 export function PythonPlayground({
   config,
   compact = false,
+  initialCode,
   code: controlledCode,
   onCodeChange,
-  onRunComplete
+  onRunComplete,
+  draftScope,
+  draftSlug
 }: {
   config: PythonPlaygroundConfig;
   compact?: boolean;
+  initialCode?: string;
   code?: string;
   onCodeChange?: (code: string) => void;
   onRunComplete?: (result: PythonRunResult) => void;
+  draftScope?: DraftScope;
+  draftSlug?: string;
 }) {
-  const [internalCode, setInternalCode] = useState(config.starterCode);
+  const [internalCode, setInternalCode] = useState(initialCode ?? config.starterCode);
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
   const [runtimeReady, setRuntimeReady] = useState(false);
@@ -28,6 +35,20 @@ export function PythonPlayground({
   const [loadingRuntime, setLoadingRuntime] = useState(true);
   const [running, setRunning] = useState(false);
   const code = controlledCode ?? internalCode;
+  const draftsEnabled = Boolean(draftScope && draftSlug);
+  const { saveState, clearDraft } = useDraftPersistence({
+    enabled: draftsEnabled,
+    scope: draftScope ?? "lesson",
+    slug: draftSlug ?? "",
+    code,
+    onResetToStarter: () => updateCode(config.starterCode)
+  });
+
+  useEffect(() => {
+    if (controlledCode === undefined) {
+      setInternalCode(initialCode ?? config.starterCode);
+    }
+  }, [controlledCode, initialCode, config.starterCode]);
 
   function updateCode(nextCode: string) {
     if (onCodeChange) {
@@ -86,9 +107,9 @@ export function PythonPlayground({
   }
 
   function resetCode() {
-    updateCode(config.starterCode);
     setOutput("");
     setError("");
+    void clearDraft();
   }
 
   return (
@@ -105,6 +126,17 @@ export function PythonPlayground({
           Browser-only runner
         </div>
       </div>
+      {draftsEnabled ? (
+        <p className="mt-3 text-xs font-medium text-slate-500">
+          {saveState === "saving"
+            ? "Saving draft..."
+            : saveState === "saved"
+              ? "Draft saved"
+              : saveState === "error"
+                ? "Draft could not be saved right now"
+                : "Drafts save automatically"}
+        </p>
+      ) : null}
 
       <textarea
         rows={compact ? 10 : 12}

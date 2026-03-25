@@ -1,5 +1,6 @@
 export type ModuleStatus = "locked" | "available" | "completed";
 export type ProgressStatus = "not_started" | "in_progress" | "completed";
+export type DraftScope = "lesson" | "exercise";
 export type ExerciseType = "bug_fix" | "guided_code" | "concept_check" | "output_check";
 export type ExerciseResponseFormat = "code" | "text";
 export type ExerciseEvaluationState = "incomplete" | "partial" | "correct";
@@ -191,6 +192,12 @@ export interface ExerciseEvaluationRequestBody {
   exerciseSlug?: string;
   answer?: string;
   execution?: ExerciseExecutionResult;
+}
+
+export interface DraftRequestBody {
+  scope?: DraftScope;
+  slug?: string;
+  content?: string;
 }
 
 export interface CourseProgress {

@@ -21,6 +21,7 @@ export function Button({
   href,
   onClick,
   type,
+  disabled = false,
   children
 }: {
   className?: string;
@@ -28,9 +29,15 @@ export function Button({
   href?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
   children: React.ReactNode;
 }) {
-  const classes = cn(buttonStyles, variants[variant], className);
+  const classes = cn(
+    buttonStyles,
+    variants[variant],
+    disabled && "cursor-not-allowed opacity-50 hover:bg-inherit",
+    className
+  );
 
   if (href) {
     return (
@@ -41,7 +48,7 @@ export function Button({
   }
 
   return (
-    <button type={type ?? "button"} className={classes} onClick={onClick}>
+    <button type={type ?? "button"} className={classes} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

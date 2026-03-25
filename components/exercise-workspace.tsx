@@ -2,32 +2,26 @@
 
 import { useMemo, useState } from "react";
 import { CheckCircle2, CircleAlert, LoaderCircle, Sparkles } from "lucide-react";
-import { ExerciseData, ProgressStatus } from "@/types";
+import { evaluateExerciseAnswer } from "@/lib/exercise-evaluation";
+import { ExerciseData, ExerciseEvaluationResult, ProgressStatus } from "@/types";
 import { Card } from "@/components/ui/card";
 import { CodePanel } from "@/components/code-panel";
 import { ProgressAction } from "@/components/progress-action";
-
-type FeedbackState = "working" | "needs-improvement" | "great-job";
+import { Button } from "@/components/ui/button";
 
 const feedbackMeta = {
-  working: {
-    title: "You are still working on it",
-    description:
-      "No pressure. Read the key line out loud and change one detail at a time.",
-    tone: "border-amber-200 bg-amber-50 text-amber-800",
+  incomplete: {
+    title: "You are still shaping the answer",
+    tone: "border-amber-200 bg-amber-50 text-amber-900",
     icon: LoaderCircle
   },
-  "needs-improvement": {
-    title: "Nice attempt, but one or two details still need attention",
-    description:
-      "The idea is close. Check the syntax first, then re-read the indentation.",
+  partial: {
+    title: "The main idea is there, but one detail still needs work",
     tone: "border-rose-200 bg-rose-50 text-rose-900",
     icon: CircleAlert
   },
-  "great-job": {
-    title: "Great job, this step is complete",
-    description:
-      "You fixed the problem calmly and kept the code readable. That is real beginner progress.",
+  correct: {
+    title: "This looks ready to count as completed",
     tone: "border-emerald-200 bg-emerald-50 text-emerald-900",
     icon: CheckCircle2
   }
@@ -44,29 +38,42 @@ export function ExerciseWorkspace({
   lessonHref: string;
   nextLessonHref?: string | null;
 }) {
-  const [answer, setAnswer] = useState(`# Rewrite the program here\n${exercise.starterCode}`);
-  const [state, setState] = useState<FeedbackState>(
-    status === "completed" ? "great-job" : "working"
+  const [answer, setAnswer] = useState(
+    exercise.responseFormat === "code"
+      ? exercise.starterCode
+      : ""
+  );
+  const [evaluation, setEvaluation] = useState<ExerciseEvaluationResult | null>(
+    null
   );
 
-  const checklist = useMemo(
-    () =>
-      exercise.successCriteria.map((item) => ({
-        label: item,
-        done:
-          (item.includes("comparison") && answer.includes(">=")) ||
-          (item.includes("colon") && answer.includes(":")) ||
-          (item.includes("prints `Adult`") && answer.includes("Adult")) ||
-          (!item.includes("comparison") &&
-            !item.includes("colon") &&
-            !item.includes("prints `Adult`") &&
-            answer.trim().length > 0)
-      })),
-    [answer, exercise.successCriteria]
+  const latestEvaluation = useMemo(
+    () => evaluation ?? evaluateExerciseAnswer(exercise, answer),
+    [answer, evaluation, exercise]
   );
-
-  const feedback = feedbackMeta[state];
+  const displayEvaluation =
+    status === "completed"
+      ? {
+          ...latestEvaluation,
+          state: "correct" as const,
+          summary: "This exercise is already completed in your roadmap.",
+          coaching: "You can still practice here, review the lesson, or continue to the next step."
+        }
+      : latestEvaluation;
+  const feedbackState = displayEvaluation.state;
+  const feedback = feedbackMeta[feedbackState];
   const Icon = feedback.icon;
+  const hasCheckedAnswer = evaluation !== null;
+  const canComplete = status === "completed" || (hasCheckedAnswer && evaluation.canComplete);
+
+  function checkAnswer() {
+    setEvaluation(evaluateExerciseAnswer(exercise, answer));
+  }
+
+  function handleAnswerChange(value: string) {
+    setAnswer(value);
+    setEvaluation(null);
+  }
 
   return (
     <div className="space-y-5">
@@ -75,12 +82,23 @@ export function ExerciseWorkspace({
           <div>
             <p className="text-sm font-semibold text-slate-500">Exercise</p>
             <h2 className="mt-2 text-2xl font-bold text-slate-900">{exercise.title}</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-700">
-              {exercise.summary}
-            </p>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-700">{exercise.summary}</p>
           </div>
           <div className="rounded-[24px] bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-700">
             {exercise.duration}
+          </div>
+        </div>
+
+        <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_0.9fr]">
+          <div className="rounded-[24px] bg-slate-50 p-5">
+            <p className="text-sm font-semibold text-slate-900">Your task</p>
+            <p className="mt-3 text-sm leading-7 text-slate-700">{exercise.prompt}</p>
+          </div>
+          <div className="rounded-[24px] bg-brand-50 p-5 text-brand-900">
+            <p className="text-sm font-semibold text-brand-700">Completion standard</p>
+            <p className="mt-3 text-sm leading-7">
+              This step only counts as complete when the answer shows the key signals the lesson is teaching.
+            </p>
           </div>
         </div>
       </Card>
@@ -90,7 +108,7 @@ export function ExerciseWorkspace({
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-xl font-bold text-slate-900">Starter code</h2>
             <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-              Debugging step
+              {exercise.exerciseType === "bug_fix" ? "Bug-fix practice" : "Practice step"}
             </span>
           </div>
           <div className="mt-4">
@@ -112,12 +130,12 @@ export function ExerciseWorkspace({
           </div>
 
           <div className="mt-5 rounded-[24px] bg-slate-950 p-4 text-sm text-slate-200">
-            <p className="font-semibold text-white">Completion cues</p>
+            <p className="font-semibold text-white">Helpful hints</p>
             <div className="mt-3 space-y-2">
-              {checklist.map((item) => (
-                <div key={item.label} className="flex items-center gap-3">
-                  <span className={`h-2.5 w-2.5 rounded-full ${item.done ? "bg-emerald-400" : "bg-slate-500"}`} />
-                  <span>{item.label}</span>
+              {exercise.hints.map((hint) => (
+                <div key={hint} className="flex items-start gap-3">
+                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-brand-400" />
+                  <span>{hint}</span>
                 </div>
               ))}
             </div>
@@ -127,26 +145,16 @@ export function ExerciseWorkspace({
 
       <Card className="rounded-[30px]">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="text-xl font-bold text-slate-900">Your answer</h2>
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setState("working")}
-              className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700"
-            >
-              Working
-            </button>
-            <button
-              onClick={() => setState("needs-improvement")}
-              className="rounded-full bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-700"
-            >
-              Needs improvement
-            </button>
-            <button
-              onClick={() => setState("great-job")}
-              className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700"
-            >
-              Great job
-            </button>
+          <div>
+            <h2 className="text-xl font-bold text-slate-900">{exercise.responseLabel}</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              {exercise.responseFormat === "code"
+                ? "Edit the code carefully, then check your answer to get exercise-specific feedback."
+                : "Write a short answer, then check it to see what still needs attention."}
+            </p>
+          </div>
+          <div className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+            {displayEvaluation.matchedRules} of {displayEvaluation.totalRules} learning checks matched
           </div>
         </div>
 
@@ -154,7 +162,8 @@ export function ExerciseWorkspace({
           rows={13}
           className="mt-4 w-full rounded-[24px] border border-slate-200 px-4 py-4 font-mono text-sm leading-7 outline-none focus:border-brand-300"
           value={answer}
-          onChange={(event) => setAnswer(event.target.value)}
+          placeholder={exercise.responsePlaceholder}
+          onChange={(event) => handleAnswerChange(event.target.value)}
         />
 
         <div className="mt-4 flex flex-wrap gap-3">
@@ -163,7 +172,15 @@ export function ExerciseWorkspace({
               Mark exercise in progress
             </ProgressAction>
           ) : null}
-          <ProgressAction entityType="exercise" slug={exercise.slug} status="completed">
+          <Button variant="secondary" className="gap-2" onClick={checkAnswer}>
+            Check my answer
+          </Button>
+          <ProgressAction
+            entityType="exercise"
+            slug={exercise.slug}
+            status="completed"
+            disabled={!canComplete}
+          >
             Mark exercise complete
           </ProgressAction>
           <a
@@ -173,18 +190,50 @@ export function ExerciseWorkspace({
             Review lesson
           </a>
         </div>
+
+        {!canComplete ? (
+          <p className="mt-4 text-sm leading-6 text-slate-500">
+            Complete the check first. The exercise only unlocks completion after a reviewed answer shows the key learning checks.
+          </p>
+        ) : null}
       </Card>
 
       <Card className={`rounded-[30px] border ${feedback.tone}`}>
         <div className="flex items-start gap-4">
           <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/70">
-            <Icon className={`h-5 w-5 ${state === "working" ? "animate-spin" : ""}`} />
+            <Icon className={`h-5 w-5 ${feedbackState === "incomplete" ? "animate-spin" : ""}`} />
           </div>
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] opacity-70">Feedback</p>
             <h3 className="mt-2 text-xl font-bold">{feedback.title}</h3>
-            <p className="mt-3 max-w-2xl text-sm leading-7">{feedback.description}</p>
+            <p className="mt-3 max-w-2xl text-sm leading-7">{displayEvaluation.summary}</p>
+            <p className="mt-2 max-w-2xl text-sm leading-7 opacity-90">{displayEvaluation.coaching}</p>
           </div>
+        </div>
+
+        <div className="mt-5 grid gap-3 md:grid-cols-2">
+          {displayEvaluation.checks.map((check) => (
+            <div
+              key={check.id}
+              className={`rounded-[22px] border px-4 py-4 text-sm ${
+                check.passed
+                  ? "border-emerald-200 bg-white/80 text-slate-800"
+                  : "border-white/40 bg-white/60 text-slate-700"
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  className={`h-2.5 w-2.5 rounded-full ${
+                    check.passed ? "bg-emerald-500" : "bg-slate-400"
+                  }`}
+                />
+                <p className="font-semibold text-slate-900">{check.label}</p>
+              </div>
+              <p className="mt-2 leading-6">
+                {check.passed ? "This part looks good." : check.feedbackWhenMissing}
+              </p>
+            </div>
+          ))}
         </div>
 
         <div className="mt-5 rounded-[24px] bg-white/70 p-4 text-sm text-slate-700">
@@ -194,8 +243,10 @@ export function ExerciseWorkspace({
           </div>
           <p className="mt-2 leading-6">
             {status === "completed"
-              ? "This exercise is marked complete. Use the next lesson link to keep your momentum going."
-              : "When the code feels stable, mark the exercise complete so your roadmap and dashboard can move forward with you."}
+              ? "This exercise is already marked complete. You can revisit the lesson or move on when you are ready."
+              : canComplete
+                ? "Your answer looks strong enough for this step. Mark it complete to update your roadmap."
+                : "Use the missing checks above as your guide, then run the answer check again."}
           </p>
           {nextLessonHref ? (
             <a href={nextLessonHref} className="mt-4 inline-flex text-sm font-semibold text-brand-600">

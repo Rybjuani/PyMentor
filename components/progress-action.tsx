@@ -11,18 +11,24 @@ export function ProgressAction({
   slug,
   status,
   children,
-  variant = "primary"
+  variant = "primary",
+  disabled = false
 }: {
   entityType: "lesson" | "exercise";
   slug: string;
   status: ProgressStatus;
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "subtle";
+  disabled?: boolean;
 }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   async function updateProgress() {
+    if (disabled) {
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -45,7 +51,12 @@ export function ProgressAction({
   }
 
   return (
-    <Button variant={variant} className="gap-2" onClick={() => void updateProgress()}>
+    <Button
+      variant={variant}
+      className="gap-2"
+      onClick={() => void updateProgress()}
+      disabled={disabled || loading}
+    >
       {loading ? (
         <LoaderCircle className="h-4 w-4 animate-spin" />
       ) : status === "completed" ? (

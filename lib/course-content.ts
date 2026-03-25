@@ -373,41 +373,141 @@ export const courseExercises: ExerciseData[] = [
   {
     slug: "welcome-message-fix",
     title: "Fix the welcome message",
+    exerciseType: "bug_fix",
+    responseFormat: "code",
     moduleSlug: "introduction-to-programming",
     lessonSlug: "what-is-programming",
     order: 1,
     duration: "6 min",
     summary: "Repair a tiny print statement bug and get used to reading syntax carefully.",
+    prompt:
+      "The code below should print two friendly welcome lines for a beginner. Fix the broken syntax without changing the meaning of the message.",
+    responseLabel: "Your fixed Python code",
+    responsePlaceholder: "# Fix the code here\nprint('Welcome to PyMentor')\nprint(\"Let's learn Python\")",
     instructions: [
       "Read the printed text and the quotes around it.",
       "Fix only what is necessary.",
       "Keep the output as a friendly welcome message."
+    ],
+    hints: [
+      "The first print line is missing one quote.",
+      "Both lines should still use `print()`.",
+      "If the apostrophe in `Let's` causes trouble, use double quotes on that line."
     ],
     starterCode: "print('Welcome to PyMentor)\nprint('Let\\'s learn Python')",
     successCriteria: [
       "Both lines can run.",
       "The text is still a welcome message.",
       "The quotes are correctly paired."
-    ]
+    ],
+    validation: {
+      minLength: 24,
+      passingScore: 4,
+      rules: [
+        {
+          id: "two-print-lines",
+          label: "Uses two `print()` lines",
+          type: "occurrences_at_least",
+          value: "print(",
+          count: 2,
+          feedbackWhenMissing: "Keep both welcome messages as printed output."
+        },
+        {
+          id: "welcome-text",
+          label: "Keeps the welcome message",
+          type: "includes",
+          value: "Welcome to PyMentor",
+          feedbackWhenMissing: "The first line should still welcome the learner."
+        },
+        {
+          id: "learn-python-text",
+          label: "Keeps the second learning message",
+          type: "includes",
+          value: "learn Python",
+          feedbackWhenMissing: "The second line should still mention learning Python."
+        },
+        {
+          id: "fixed-first-line-quote",
+          label: "No broken opening line remains",
+          type: "excludes",
+          value: "print('Welcome to PyMentor)",
+          feedbackWhenMissing: "The first print line still looks like it has an unmatched quote."
+        }
+      ]
+    }
   },
   {
     slug: "fix-the-conditional",
     title: "Fix the conditional",
+    exerciseType: "bug_fix",
+    responseFormat: "code",
     moduleSlug: "conditionals",
     lessonSlug: "python-conditionals-basics",
     order: 1,
     duration: "8 min",
     summary: "Fix a beginner conditional bug by correcting syntax before worrying about anything else.",
+    prompt:
+      "This program should print `Adult` when `age` is 18 or more and `Minor` otherwise. Correct the syntax so the logic reads clearly.",
+    responseLabel: "Your corrected conditional",
+    responsePlaceholder:
+      "# Correct the comparison and punctuation\nage = 18\n\nif age >= 18:\n    print('Adult')\nelse:\n    print('Minor')",
     instructions: [
       "Look at the comparison operator first.",
       "Check the punctuation at the end of the `if` line.",
       "Keep the indentation readable."
+    ],
+    hints: [
+      "Python uses `>=` for “greater than or equal to”.",
+      "An `if` line needs a colon at the end.",
+      "The `else` branch should stay aligned with the `if`."
     ],
     starterCode: "age = 18\n\nif age => 18\n    print('Adult')\nelse:\n    print('Minor')",
     successCriteria: [
       "The code uses a valid comparison operator.",
       "The `if` line ends with a colon.",
       "The code prints `Adult` when age is 18."
-    ]
+    ],
+    validation: {
+      minLength: 35,
+      passingScore: 5,
+      rules: [
+        {
+          id: "uses-greater-equal",
+          label: "Uses `>=` as the comparison operator",
+          type: "includes",
+          value: ">=",
+          feedbackWhenMissing: "Use `>=` instead of the broken comparison."
+        },
+        {
+          id: "removes-wrong-operator",
+          label: "Removes the invalid `=>` operator",
+          type: "excludes",
+          value: "=>",
+          feedbackWhenMissing: "The invalid `=>` operator is still there."
+        },
+        {
+          id: "if-line-colon",
+          label: "Ends the `if` line with a colon",
+          type: "regex",
+          value: "if\\s+age\\s*>=\\s*18\\s*:",
+          flags: "i",
+          feedbackWhenMissing: "The `if` line should end with a colon after the condition."
+        },
+        {
+          id: "adult-output",
+          label: "Keeps the `Adult` output",
+          type: "includes",
+          value: "Adult",
+          feedbackWhenMissing: "The `Adult` output should still be present."
+        },
+        {
+          id: "minor-output",
+          label: "Keeps the fallback `Minor` output",
+          type: "includes",
+          value: "Minor",
+          feedbackWhenMissing: "The fallback branch should still print `Minor`."
+        }
+      ]
+    }
   }
 ];

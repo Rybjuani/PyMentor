@@ -1,5 +1,8 @@
 export type ModuleStatus = "locked" | "available" | "completed";
 export type ProgressStatus = "not_started" | "in_progress" | "completed";
+export type ExerciseType = "bug_fix" | "guided_code" | "concept_check" | "output_check";
+export type ExerciseResponseFormat = "code" | "text";
+export type ExerciseEvaluationState = "incomplete" | "partial" | "correct";
 
 export interface LessonSection {
   title: string;
@@ -50,14 +53,57 @@ export interface RoadmapModule {
 export interface ExerciseData {
   slug: string;
   title: string;
+  exerciseType: ExerciseType;
+  responseFormat: ExerciseResponseFormat;
   moduleSlug: string;
   lessonSlug: string;
   order: number;
   duration: string;
   summary: string;
+  prompt: string;
+  responseLabel: string;
+  responsePlaceholder: string;
   instructions: string[];
+  hints: string[];
   starterCode: string;
   successCriteria: string[];
+  validation: ExerciseValidationConfig;
+}
+
+export interface ExerciseValidationRule {
+  id: string;
+  label: string;
+  type: "includes" | "excludes" | "regex" | "occurrences_at_least";
+  value: string;
+  count?: number;
+  flags?: string;
+  required?: boolean;
+  caseSensitive?: boolean;
+  feedbackWhenMissing: string;
+}
+
+export interface ExerciseValidationConfig {
+  minLength?: number;
+  passingScore?: number;
+  rules: ExerciseValidationRule[];
+}
+
+export interface ExerciseEvaluationCheck {
+  id: string;
+  label: string;
+  passed: boolean;
+  required: boolean;
+  feedbackWhenMissing: string;
+}
+
+export interface ExerciseEvaluationResult {
+  state: ExerciseEvaluationState;
+  summary: string;
+  coaching: string;
+  matchedRules: number;
+  totalRules: number;
+  canComplete: boolean;
+  checks: ExerciseEvaluationCheck[];
 }
 
 export interface CourseProgress {

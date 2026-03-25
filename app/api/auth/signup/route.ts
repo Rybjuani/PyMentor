@@ -1,5 +1,6 @@
 import { hash } from "bcryptjs";
 import { NextResponse } from "next/server";
+import { recordActivity } from "@/lib/activity";
 import { prisma } from "@/lib/db";
 
 interface SignupRequestBody {
@@ -39,12 +40,18 @@ export async function POST(request: Request) {
 
   const passwordHash = await hash(password, 10);
 
-  await prisma.user.create({
+  const user = await prisma.user.create({
     data: {
       name,
       email,
       passwordHash
     }
+  });
+
+  await recordActivity({
+    userId: user.id,
+    type: "account_created",
+    description: "Created your PyMentor account and opened your Python roadmap."
   });
 
   return NextResponse.json({ ok: true });

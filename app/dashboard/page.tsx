@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { ArrowRight, CalendarCheck2, Flame, Sparkles, Target, Trophy } from "lucide-react";
-import { requireUser } from "@/lib/auth";
+import { getRecentActivityForUser } from "@/lib/activity";
+import { requireAppUser } from "@/lib/auth";
 import { AppShell } from "@/components/app-shell";
 import { AchievementChip } from "@/components/achievement-chip";
 import { SignOutButton } from "@/components/sign-out-button";
 import { Card } from "@/components/ui/card";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import {
-  buildRecentActivity,
   getCurrentLearningFocus,
   getModuleBySlug,
   getModuleProgress,
@@ -17,7 +17,7 @@ import { achievements } from "@/lib/mock-data";
 import { getProgressForUser } from "@/lib/user-progress";
 
 export default async function DashboardPage() {
-  const user = await requireUser();
+  const user = await requireAppUser();
   const progress = await getProgressForUser(user.id);
   const overall = getOverallLessonProgress(progress);
   const currentFocus = getCurrentLearningFocus(progress);
@@ -26,7 +26,8 @@ export default async function DashboardPage() {
   const currentModuleProgress = currentModule
     ? getModuleProgress(progress, currentModule.slug)
     : null;
-  const recentActivity = buildRecentActivity(progress);
+  const recentActivity = await getRecentActivityForUser(user.id);
+  const weeklyCompletedSteps = overall.completed === 0 ? 0 : Math.min(overall.completed, 2);
 
   const continueHref =
     currentFocus?.type === "exercise"
@@ -71,7 +72,9 @@ export default async function DashboardPage() {
                 This week’s goal
               </div>
               <p className="mt-2 text-sm leading-6 text-slate-600">
-                Finish 2 focused learning steps this week
+                {overall.completed === 0
+                  ? "Finish your first lesson and linked exercise this week"
+                  : "Finish 2 focused learning steps this week"}
               </p>
             </div>
             <div className="rounded-[22px] bg-slate-50 px-4 py-4">
@@ -80,7 +83,7 @@ export default async function DashboardPage() {
                 Weekly progress
               </div>
               <p className="mt-2 text-sm leading-6 text-slate-600">
-                {Math.min(overall.completed, 2)} of 2 steps completed
+                {weeklyCompletedSteps} of 2 steps completed
               </p>
             </div>
           </div>
@@ -94,8 +97,14 @@ export default async function DashboardPage() {
               </div>
               <div>
                 <p className="text-sm text-slate-500">Current streak</p>
-                <p className="text-2xl font-extrabold text-slate-900">3 days</p>
-                <p className="mt-1 text-sm text-slate-500">One small step keeps it alive</p>
+                <p className="text-2xl font-extrabold text-slate-900">
+                  {user.currentStreak} {user.currentStreak === 1 ? "day" : "days"}
+                </p>
+                <p className="mt-1 text-sm text-slate-500">
+                  {user.currentStreak > 0
+                    ? "One small learning step keeps it alive"
+                    : "Your first learning action will start your streak"}
+                </p>
               </div>
             </div>
           </Card>
@@ -123,7 +132,9 @@ export default async function DashboardPage() {
               : currentFocus?.lesson.title ?? "Your roadmap is ready"}
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-600">
-            {currentFocus?.type === "exercise"
+            {overall.completed === 0
+              ? "You are at the start of the roadmap. Begin with the first lesson, then use the linked exercise to lock in the idea."
+              : currentFocus?.type === "exercise"
               ? currentFocus.exercise.summary
               : currentFocus?.lesson.summary ??
                 "Open the roadmap to choose your next lesson."}
@@ -153,12 +164,24 @@ export default async function DashboardPage() {
         <Card className="rounded-[30px]">
           <p className="text-sm font-semibold text-slate-500">Recent activity</p>
           <div className="mt-5 space-y-3">
-            {recentActivity.map((item, index) => (
-              <div key={item} className="rounded-[20px] bg-slate-50 px-4 py-4 text-sm text-slate-700">
-                <p className="font-semibold text-slate-900">Update {index + 1}</p>
-                <p className="mt-1">{item}</p>
+            {recentActivity.length > 0 ? (
+              recentActivity.map((item) => (
+                <div
+                  key={item.id}
+                  className="rounded-[20px] bg-slate-50 px-4 py-4 text-sm text-slate-700"
+                >
+                  <p className="font-semibold text-slate-900">{item.description}</p>
+                  <p className="mt-1 text-slate-500">{formatActivityDate(item.createdAt)}</p>
+                </div>
+              ))
+            ) : (
+              <div className="rounded-[20px] bg-slate-50 px-4 py-4 text-sm text-slate-700">
+                <p className="font-semibold text-slate-900">Your activity feed starts here</p>
+                <p className="mt-1">
+                  Finish your onboarding and first lesson to start building visible momentum.
+                </p>
               </div>
-            ))}
+            )}
           </div>
         </Card>
       </section>
@@ -172,10 +195,14 @@ export default async function DashboardPage() {
           <h2 className="mt-4 text-2xl font-bold text-slate-900">
             {currentFocus?.type === "exercise"
               ? "Finish the linked exercise"
-              : "Complete the next lesson in your roadmap"}
+              : overall.completed === 0
+                ? "Take your first calm step into Python"
+                : "Complete the next lesson in your roadmap"}
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-600">
-            Your lesson and exercise completions are now saved to your account, so the continue-learning flow remains consistent.
+            {overall.completed === 0
+              ? "Start with one short lesson, use the mentor when you get stuck, and let your first completion unlock momentum."
+              : "Your lesson and exercise completions are saved to your account, so the continue-learning flow stays consistent."}
           </p>
         </Card>
 
@@ -190,4 +217,11 @@ export default async function DashboardPage() {
       </section>
     </AppShell>
   );
+}
+
+function formatActivityDate(date: Date) {
+  return new Intl.DateTimeFormat("en", {
+    month: "short",
+    day: "numeric"
+  }).format(date);
 }

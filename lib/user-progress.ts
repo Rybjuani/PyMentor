@@ -36,6 +36,15 @@ export async function saveProgress({
   status: ProgressStatus;
 }) {
   if (entityType === "lesson") {
+    const existing = await prisma.lessonProgress.findUnique({
+      where: {
+        userId_lessonSlug: {
+          userId,
+          lessonSlug: slug
+        }
+      }
+    });
+
     await prisma.lessonProgress.upsert({
       where: {
         userId_lessonSlug: {
@@ -53,8 +62,20 @@ export async function saveProgress({
       }
     });
 
-    return;
+    return {
+      previousStatus: existing?.status ?? "not_started",
+      changed: (existing?.status ?? "not_started") !== status
+    };
   }
+
+  const existing = await prisma.exerciseProgress.findUnique({
+    where: {
+      userId_exerciseSlug: {
+        userId,
+        exerciseSlug: slug
+      }
+    }
+  });
 
   await prisma.exerciseProgress.upsert({
     where: {
@@ -72,4 +93,9 @@ export async function saveProgress({
       status
     }
   });
+
+  return {
+    previousStatus: existing?.status ?? "not_started",
+    changed: (existing?.status ?? "not_started") !== status
+  };
 }

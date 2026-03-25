@@ -1,4 +1,4 @@
-import { requireUser } from "@/lib/auth";
+import { requireAppUser } from "@/lib/auth";
 import { AppShell } from "@/components/app-shell";
 import { RoadmapModuleCard } from "@/components/roadmap-module-card";
 import { SignOutButton } from "@/components/sign-out-button";
@@ -8,7 +8,7 @@ import { getAllModules, getLessonsByModuleSlug, getModuleProgress, getOverallLes
 import { getProgressForUser } from "@/lib/user-progress";
 
 export default async function RoadmapPage() {
-  const user = await requireUser();
+  const user = await requireAppUser();
   const progress = await getProgressForUser(user.id);
   const modules = getAllModules();
   const overall = getOverallLessonProgress(progress);

@@ -1,4 +1,5 @@
 import { compare } from "bcryptjs";
+import type { User } from "@prisma/client";
 import type { NextAuthOptions } from "next-auth";
 import { getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -84,4 +85,46 @@ export async function requireUser() {
   }
 
   return session.user;
+}
+
+export async function getAuthenticatedAppUser() {
+  const sessionUser = await requireUser();
+  const user = await prisma.user.findUnique({
+    where: { id: sessionUser.id }
+  });
+
+  if (!user) {
+    redirect("/login");
+  }
+
+  return user;
+}
+
+export async function requireAppUser({
+  allowIncompleteOnboarding = false
+}: {
+  allowIncompleteOnboarding?: boolean;
+} = {}): Promise<User> {
+  const user = await getAuthenticatedAppUser();
+
+  if (!allowIncompleteOnboarding && !user.onboardingCompletedAt) {
+    redirect("/onboarding");
+  }
+
+  return user;
+}
+
+export async function getDefaultAppRedirectPath(userId: string) {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: {
+      onboardingCompletedAt: true
+    }
+  });
+
+  if (!user) {
+    return "/login";
+  }
+
+  return user.onboardingCompletedAt ? "/dashboard" : "/onboarding";
 }

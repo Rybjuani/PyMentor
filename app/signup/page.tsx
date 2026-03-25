@@ -1,12 +1,12 @@
 import { redirect } from "next/navigation";
-import { getServerAuthSession } from "@/lib/auth";
+import { getDefaultAppRedirectPath, getServerAuthSession } from "@/lib/auth";
 import { AuthFormPlaceholder } from "@/components/auth-form-placeholder";
 
 export default async function SignupPage() {
   const session = await getServerAuthSession();
 
   if (session?.user?.id) {
-    redirect("/dashboard");
+    redirect(await getDefaultAppRedirectPath(session.user.id));
   }
 
   return (

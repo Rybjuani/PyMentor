@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen, CheckCircle2, Compass, NotebookPen } from "lucide-react";
 import { notFound } from "next/navigation";
-import { requireUser } from "@/lib/auth";
+import { requireAppUser } from "@/lib/auth";
 import { AppShell } from "@/components/app-shell";
 import { CodePanel } from "@/components/code-panel";
 import { MentorWidget } from "@/components/mentor-widget";
@@ -25,7 +25,7 @@ export default async function LessonPage({
 }: {
   params: { slug: string };
 }) {
-  const user = await requireUser();
+  const user = await requireAppUser();
   const lesson = getLessonBySlug(params.slug);
 
   if (!lesson) {

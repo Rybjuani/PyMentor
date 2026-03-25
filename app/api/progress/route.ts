@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
+import { recordActivity } from "@/lib/activity";
 import { getServerAuthSession } from "@/lib/auth";
+import { getExerciseBySlug, getLessonBySlug } from "@/lib/course";
 import { saveProgress } from "@/lib/user-progress";
 import { ProgressStatus } from "@/types";
 
@@ -28,12 +30,55 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Missing progress fields." }, { status: 400 });
   }
 
-  await saveProgress({
+  const result = await saveProgress({
     userId: session.user.id,
     entityType: body.entityType,
     slug: body.slug,
     status: body.status
   });
 
+  const entity =
+    body.entityType === "lesson" ? getLessonBySlug(body.slug) : getExerciseBySlug(body.slug);
+
+  const progressDescription = getProgressDescription({
+    entityType: body.entityType,
+    status: body.status,
+    title: entity?.title
+  });
+
+  if (result.changed && progressDescription) {
+    await recordActivity({
+      userId: session.user.id,
+      type: `${body.entityType}_${body.status}`,
+      description: progressDescription
+    });
+  }
+
   return NextResponse.json({ ok: true });
+}
+
+function getProgressDescription({
+  entityType,
+  status,
+  title
+}: {
+  entityType: "lesson" | "exercise";
+  status: ProgressStatus;
+  title?: string;
+}) {
+  if (!title) {
+    return null;
+  }
+
+  const label = entityType === "lesson" ? "lesson" : "exercise";
+
+  if (status === "completed") {
+    return `Completed ${label}: ${title}`;
+  }
+
+  if (status === "in_progress") {
+    return `Started ${label}: ${title}`;
+  }
+
+  return `Reset ${label}: ${title}`;
 }

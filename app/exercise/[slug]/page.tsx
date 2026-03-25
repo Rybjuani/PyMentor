@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { requireUser } from "@/lib/auth";
+import { requireAppUser } from "@/lib/auth";
 import { AppShell } from "@/components/app-shell";
 import { ExerciseWorkspace } from "@/components/exercise-workspace";
 import { MentorWidget } from "@/components/mentor-widget";
@@ -12,7 +12,7 @@ export default async function ExercisePage({
 }: {
   params: { slug: string };
 }) {
-  const user = await requireUser();
+  const user = await requireAppUser();
   const exercise = getExerciseBySlug(params.slug);
 
   if (!exercise) {

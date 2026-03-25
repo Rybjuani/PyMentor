@@ -18,10 +18,14 @@ model User {
   name             String
   email            String             @unique
   passwordHash     String
+  onboardingCompletedAt DateTime?
+  lastActiveAt     DateTime?
+  currentStreak    Int                @default(0)
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
   lessonProgress   LessonProgress[]
   exerciseProgress ExerciseProgress[]
+  activityEvents   ActivityEvent[]
 }
 
 model LessonProgress {
@@ -48,4 +52,15 @@ model ExerciseProgress {
 
   @@unique([userId, exerciseSlug])
   @@index([userId])
+}
+
+model ActivityEvent {
+  id          String   @id @default(cuid())
+  userId      String
+  type        String
+  description String
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt(sort: Desc)])
 }

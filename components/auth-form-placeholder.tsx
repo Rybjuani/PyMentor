@@ -118,7 +118,9 @@ export function AuthFormPlaceholder({
         </div>
       ) : (
         <div className="mt-6 rounded-2xl bg-brand-50 p-4 text-sm text-brand-700">
-          Your roadmap progress, lesson completion, and exercise completion will be tied to this account.
+          {mode === "signup"
+            ? "You will start with a quick onboarding and your first Python lesson already lined up."
+            : "Your roadmap progress, lesson completion, and exercise completion stay tied to this account."}
         </div>
       )}
 

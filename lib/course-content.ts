@@ -44,12 +44,12 @@ export const courseModules: RoadmapModule[] = [
   {
     slug: "functions",
     title: "Functions",
-    description: "Group useful steps into reusable blocks and make programs easier to manage.",
+    description: "Turn repeated steps into named actions so your programs stay clearer, calmer, and easier to grow.",
     order: 5,
     status: "locked",
-    lessonCount: 2,
-    estimatedTime: "48 min",
-    xp: 160
+    lessonCount: 3,
+    estimatedTime: "58 min",
+    xp: 190
   }
 ];
 
@@ -841,6 +841,210 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "The output should show repeated step lines followed by one final line after the loop."
     },
     exerciseSlug: "fix-step-loop"
+  },
+  {
+    slug: "why-functions-help",
+    module: "Functions",
+    moduleSlug: "functions",
+    order: 1,
+    title: "Why functions help",
+    duration: "14 min",
+    difficulty: "Beginner",
+    summary: "Learn what a function is in plain language and why named actions help you avoid repeating yourself.",
+    warmup: "If you make tea every morning, you probably think of it as one routine, not ten separate instructions. A function works like giving that routine a name in code.",
+    goal: "By the end, you should understand that a function is a named block of code you can run whenever you need that action again.",
+    keyIdeas: [
+      {
+        title: "A function is a named action",
+        description: "It groups a few steps together and gives them a clear name."
+      },
+      {
+        title: "Functions reduce repetition",
+        description: "You can call the function instead of rewriting the same block again."
+      },
+      {
+        title: "A good name explains the job",
+        description: "Clear function names make code easier to read."
+      }
+    ],
+    explanation: [
+      {
+        title: "Why functions appear after loops",
+        body: "Loops helped you repeat the same action many times. Functions help you package a useful action so you can run it whenever you need it in different parts of a program."
+      },
+      {
+        title: "Think in named routines",
+        body: "A function lets you say, 'Here is one small job my program knows how to do.' That keeps your code from turning into one long wall of instructions."
+      },
+      {
+        title: "Functions make change easier",
+        body: "If the behavior needs to change later, you can often update the function in one place instead of hunting through repeated code."
+      },
+      {
+        title: "Start with tiny functions",
+        body: "Your first function does not need to be clever. Even a short greeting function is enough to learn the pattern."
+      }
+    ],
+    example: "def cheer():\n    print('Keep going!')\n\ncheer()\ncheer()",
+    practicePrompt: "Write a function called `welcome()` that prints one friendly line, then call it two times.",
+    practiceChecklist: [
+      "Start with `def welcome():`.",
+      "Indent the `print()` line inside the function.",
+      "Call the function by name after the definition."
+    ],
+    commonMistakes: [
+      "Forgetting the parentheses when calling a function.",
+      "Leaving the function body unindented.",
+      "Using a vague function name like `thing()` instead of a clear name."
+    ],
+    bugChallenge: {
+      prompt: "This code should define a function and call it, but two tiny syntax issues break the pattern.",
+      brokenCode: "def welcome()\nprint('Hi there')\n\nwelcome",
+      expectedLearning: "A function definition needs a colon, the body must be indented, and calling a function uses parentheses."
+    },
+    playground: {
+      title: "Try your first function",
+      guidance: "Run the code, then rename the function or change the message. Notice how calling the same function twice repeats the behavior without copying the print line.",
+      starterCode: "def cheer():\n    print('Keep going!')\n\ncheer()\ncheer()",
+      emptyOutputHint: "A working function example should print the same message each time you call it."
+    },
+    exerciseSlug: "read-greet-function-output"
+  },
+  {
+    slug: "defining-and-calling-functions",
+    module: "Functions",
+    moduleSlug: "functions",
+    order: 2,
+    title: "Defining and calling a basic function",
+    duration: "15 min",
+    difficulty: "Beginner",
+    summary: "Practice the exact shape of a small function: define it, indent the body, and call it clearly.",
+    warmup: "A function has two parts: first you teach Python the routine, then you tell Python to run it.",
+    goal: "By the end, you should be able to define a simple function and call it confidently without mixing up the two steps.",
+    keyIdeas: [
+      {
+        title: "Define first, call second",
+        description: "Python needs to see the function definition before you call it."
+      },
+      {
+        title: "Indentation marks the function body",
+        description: "Indented lines belong to the function, just like loop and conditional blocks."
+      },
+      {
+        title: "Calling uses the function name with parentheses",
+        description: "The parentheses tell Python to run the function."
+      }
+    ],
+    explanation: [
+      {
+        title: "What `def` does",
+        body: "The word `def` tells Python that you are defining a function. You give the function a name, add parentheses, and end the line with a colon."
+      },
+      {
+        title: "Why the body must be indented",
+        body: "The indented lines below `def` are the steps Python should remember as part of that function. Without indentation, Python cannot see the function body clearly."
+      },
+      {
+        title: "What calling means",
+        body: "After the function is defined, writing `greet()` tells Python to run that saved block of code. The definition explains the action; the call performs it."
+      },
+      {
+        title: "Separate the shape from the meaning",
+        body: "At first, functions feel like new punctuation. That is normal. Focus on the simple pattern: define, indent, call."
+      }
+    ],
+    example: "def greet():\n    print('Hello from a function')\n\ngreet()",
+    practicePrompt: "Create a function called `show_tip()` that prints `Small steps matter`, then call it twice.",
+    practiceChecklist: [
+      "Write `def show_tip():` on its own line.",
+      "Indent the print line under it.",
+      "Call `show_tip()` after the definition."
+    ],
+    commonMistakes: [
+      "Calling the function before it is defined.",
+      "Writing `show_tip` instead of `show_tip()`.",
+      "Indenting the call as if it were still inside the function."
+    ],
+    bugChallenge: {
+      prompt: "This code should define `wave()` and call it, but the call is missing the part that actually runs the function.",
+      brokenCode: "def wave():\n    print('Hello')\n\nwave",
+      expectedLearning: "A function name by itself is not the same as calling the function. Parentheses matter."
+    },
+    playground: {
+      title: "Build and run a basic function",
+      guidance: "Run the code, then change the message or call the function more than once. This is a simple way to see how one function can be reused.",
+      starterCode: "def greet():\n    print('Hello from a function')\n\ngreet()",
+      emptyOutputHint: "If nothing happens, check whether the function is being called with parentheses."
+    },
+    exerciseSlug: "build-cheer-function"
+  },
+  {
+    slug: "simple-parameters-and-function-mistakes",
+    module: "Functions",
+    moduleSlug: "functions",
+    order: 3,
+    title: "Simple parameters and common function mistakes",
+    duration: "16 min",
+    difficulty: "Beginner",
+    summary: "Learn how a function can accept one small piece of information and how to debug beginner function mistakes calmly.",
+    warmup: "A reusable greeting becomes more useful when you can choose who it greets. Parameters let the function receive that detail.",
+    goal: "By the end, you should understand that a parameter is a named input for a function and be able to spot common beginner mistakes with names, parentheses, and indentation.",
+    keyIdeas: [
+      {
+        title: "A parameter is an input",
+        description: "It gives the function a value to use when it runs."
+      },
+      {
+        title: "The call provides the real value",
+        description: "You pass the value in the parentheses when you call the function."
+      },
+      {
+        title: "Function errors are often small shape mistakes",
+        description: "Missing parentheses, missing colons, and indentation issues are common and fixable."
+      }
+    ],
+    explanation: [
+      {
+        title: "Why parameters help",
+        body: "Without parameters, you might need a different function for every person or value. With a parameter, one function can stay general and become more useful."
+      },
+      {
+        title: "Read the definition in plain language",
+        body: "You can read `def greet(name):` like this: 'Define a function called greet that expects one value named name.'"
+      },
+      {
+        title: "Read the call in plain language",
+        body: "You can read `greet('Maya')` like this: 'Run greet using Maya as the value for name.' That simple translation makes function calls much less abstract."
+      },
+      {
+        title: "Stay calm with function errors",
+        body: "If a function is not working, start by checking the shape: the `def` line, the colon, the indentation, the parentheses, and whether the call passes the value you expected."
+      }
+    ],
+    example: "def greet(name):\n    print('Hello, ' + name)\n\ngreet('Maya')",
+    practicePrompt: "Write a function called `cheer(name)` that prints `You can do this, ` plus the given name, then call it with one name.",
+    practiceChecklist: [
+      "Put one parameter name inside the function parentheses.",
+      "Use that parameter inside `print()`.",
+      "Call the function with one value in quotes."
+    ],
+    commonMistakes: [
+      "Defining the parameter but forgetting to use it inside the function.",
+      "Calling the function without passing the needed value.",
+      "Putting the call inside the function body by accident."
+    ],
+    bugChallenge: {
+      prompt: "This code should greet one person by name, but the function line and the call do not match cleanly.",
+      brokenCode: "def greet(name)\n    print('Hello, ' + name)\n\ngreet",
+      expectedLearning: "Function definitions need a colon, and running the function requires parentheses in the call."
+    },
+    playground: {
+      title: "Try a function with a parameter",
+      guidance: "Run the code, then change the name in the function call. This is the first step toward reusable functions that work with different values.",
+      starterCode: "def greet(name):\n    print('Hello, ' + name)\n\ngreet('Maya')",
+      emptyOutputHint: "A working function with a parameter should print the greeting using the value from the call."
+    },
+    exerciseSlug: "fix-name-greeter-function"
   }
 ];
 
@@ -1618,6 +1822,188 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["step-loop", "prints-step", "prints-done"]
+    }
+  },
+  {
+    slug: "read-greet-function-output",
+    title: "Read the function output",
+    exerciseType: "output_check",
+    responseFormat: "text",
+    moduleSlug: "functions",
+    lessonSlug: "why-functions-help",
+    order: 1,
+    duration: "6 min",
+    summary: "Practice reading a small function definition and two function calls without getting lost.",
+    prompt:
+      "Look at the code below. Write the exact output Python will print when the function is called two times.",
+    responseLabel: "Expected output",
+    responsePlaceholder: "Nice work!\nNice work!",
+    instructions: [
+      "Read the function body first.",
+      "Then count how many times the function is called.",
+      "Write only the printed output, one line per line."
+    ],
+    hints: [
+      "The function body prints one line.",
+      "The function is called twice.",
+      "The output should repeat the same message two times."
+    ],
+    starterCode: "def cheer():\n    print('Nice work!')\n\ncheer()\ncheer()",
+    successCriteria: [
+      "The output shows two lines.",
+      "Both lines match the function body output.",
+      "Only the output text is included."
+    ],
+    evaluator: {
+      type: "exact_answer",
+      minLength: 12,
+      normalizeWhitespace: true,
+      ignoreCase: false,
+      acceptableAnswers: ["Nice work!\nNice work!", "Nice work!\r\nNice work!"]
+    }
+  },
+  {
+    slug: "build-cheer-function",
+    title: "Build a small cheer function",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "functions",
+    lessonSlug: "defining-and-calling-functions",
+    order: 2,
+    duration: "8 min",
+    summary: "Define one simple function and call it so the program prints a helpful message twice.",
+    prompt:
+      "Write a function called `cheer()` that prints `Keep practicing!`, then call it two times below the function definition.",
+    responseLabel: "Your function",
+    responsePlaceholder:
+      "def cheer():\n    print('Keep practicing!')\n\ncheer()\ncheer()",
+    instructions: [
+      "Use `def cheer():` to define the function.",
+      "Put the `print()` line inside the function body.",
+      "Call `cheer()` two times after the definition."
+    ],
+    hints: [
+      "The definition line needs parentheses and a colon.",
+      "The function body should be indented.",
+      "The calls should appear after the function is defined."
+    ],
+    starterCode: "def cheer():\n    print('Keep practicing!')\n\ncheer()\ncheer()",
+    successCriteria: [
+      "Defines `cheer()` correctly.",
+      "Prints the expected message.",
+      "Calls the function two times."
+    ],
+    playground: {
+      title: "Run the cheer function",
+      guidance: "Run the function, then change the message or add another call. This helps make reuse feel concrete.",
+      starterCode: "def cheer():\n    print('Keep practicing!')\n\ncheer()\ncheer()",
+      emptyOutputHint: "A correct answer should print the message each time the function is called."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Keep practicing!\nKeep practicing!"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 45,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "defines-cheer",
+          label: "Defines `cheer()`",
+          pattern: "def\\s+cheer\\s*\\(\\s*\\)\\s*:",
+          feedbackWhenMissing: "Start by defining the function as `def cheer():`."
+        },
+        {
+          id: "prints-message",
+          label: "Prints the cheer message",
+          pattern: "print\\(\\s*['\"]Keep practicing!['\"]\\s*\\)",
+          feedbackWhenMissing: "Inside the function, print `Keep practicing!`."
+        },
+        {
+          id: "calls-cheer-twice",
+          label: "Calls `cheer()` two times",
+          pattern: "cheer\\s*\\(\\s*\\)",
+          feedbackWhenMissing: "Remember to call the function after defining it."
+        }
+      ],
+      orderedPatternIds: ["defines-cheer", "prints-message", "calls-cheer-twice"]
+    }
+  },
+  {
+    slug: "fix-name-greeter-function",
+    title: "Fix the name greeter function",
+    exerciseType: "bug_fix",
+    responseFormat: "code",
+    moduleSlug: "functions",
+    lessonSlug: "simple-parameters-and-function-mistakes",
+    order: 3,
+    duration: "9 min",
+    summary: "Repair a beginner function so it accepts one name and prints a personal greeting correctly.",
+    prompt:
+      "This function should greet one person by name. Fix the function definition and the call so the program prints `Hello, Maya`.",
+    responseLabel: "Your corrected function",
+    responsePlaceholder:
+      "def greet(name):\n    print('Hello, ' + name)\n\ngreet('Maya')",
+    instructions: [
+      "Check the `def` line for punctuation.",
+      "Keep the print line inside the function body.",
+      "Call the function with one name in quotes."
+    ],
+    hints: [
+      "The function definition needs a colon.",
+      "Calling the function requires parentheses.",
+      "The call should provide the name the function expects."
+    ],
+    starterCode: "def greet(name)\n    print('Hello, ' + name)\n\ngreet",
+    successCriteria: [
+      "Defines the function with one parameter.",
+      "Prints the greeting using that parameter.",
+      "Calls the function so it prints `Hello, Maya`."
+    ],
+    playground: {
+      title: "Run the repaired greeter",
+      guidance: "Fix the function, then run it. Try changing the name in the call to see how one function can greet different people.",
+      starterCode: "def greet(name):\n    print('Hello, ' + name)\n\ngreet('Maya')",
+      emptyOutputHint: "A correct solution should print one greeting using the name from the function call."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Hello, Maya"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 48,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "defines-greet-with-parameter",
+          label: "Defines `greet(name)`",
+          pattern: "def\\s+greet\\s*\\(\\s*name\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define the function as `def greet(name):`."
+        },
+        {
+          id: "uses-name-in-print",
+          label: "Uses the parameter inside the greeting",
+          pattern: "print\\([^\\n]*name[^\\n]*\\)",
+          feedbackWhenMissing: "Use the `name` parameter inside the `print()` line."
+        },
+        {
+          id: "calls-greet-with-maya",
+          label: "Calls `greet('Maya')`",
+          pattern: "greet\\(\\s*['\"]Maya['\"]\\s*\\)",
+          feedbackWhenMissing: "Call the function with `'Maya'` so the program prints the expected greeting."
+        }
+      ],
+      orderedPatternIds: ["defines-greet-with-parameter", "uses-name-in-print", "calls-greet-with-maya"]
     }
   }
 ];

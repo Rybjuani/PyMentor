@@ -34,12 +34,12 @@ export const courseModules: RoadmapModule[] = [
   {
     slug: "loops",
     title: "Loops",
-    description: "Repeat actions without copying the same code again and again.",
+    description: "Learn how Python repeats actions with calm, readable `for` loops and simple counting patterns.",
     order: 4,
     status: "locked",
-    lessonCount: 2,
-    estimatedTime: "45 min",
-    xp: 150
+    lessonCount: 3,
+    estimatedTime: "55 min",
+    xp: 180
   },
   {
     slug: "functions",
@@ -637,6 +637,210 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "A few `print()` lines are enough to make the comparison results visible."
     },
     exerciseSlug: "comparison-question-check"
+  },
+  {
+    slug: "why-loops-help",
+    module: "Loops",
+    moduleSlug: "loops",
+    order: 1,
+    title: "Why loops help with repetition",
+    duration: "13 min",
+    difficulty: "Beginner",
+    summary: "Learn what repetition is and why loops save you from writing the same line again and again.",
+    warmup: "If you need to clap three times, you do not write three different rules for clapping. A loop works the same way in code.",
+    goal: "By the end, you should understand that a loop repeats a block of code and is useful when the same action needs to happen more than once.",
+    keyIdeas: [
+      {
+        title: "Loops repeat work",
+        description: "A loop lets Python do the same action many times."
+      },
+      {
+        title: "Repetition can stay readable",
+        description: "A short loop is often clearer than copying the same line again and again."
+      },
+      {
+        title: "The loop body is the repeated block",
+        description: "Indented lines under the loop are the steps that repeat."
+      }
+    ],
+    explanation: [
+      {
+        title: "Why repetition shows up quickly",
+        body: "As soon as you start making programs, you find tasks that repeat: printing several lines, counting items, or doing the same check many times."
+      },
+      {
+        title: "What a loop changes",
+        body: "Instead of copying one line three or four times, you tell Python to repeat that line for you. That makes your code shorter and easier to change later."
+      },
+      {
+        title: "A loop is still read top to bottom",
+        body: "Python reaches the loop line, then runs the indented block again and again until the loop finishes. Reading the loop calmly keeps it understandable."
+      },
+      {
+        title: "Start with simple repetition",
+        body: "At first, loops do not need to be fancy. Even repeating one short `print()` line is enough to learn the core idea."
+      }
+    ],
+    example: "for _ in range(3):\n    print('Practice makes progress')",
+    practicePrompt: "Write a loop that prints `Small steps matter` three times.",
+    practiceChecklist: [
+      "Start with `for` and `range(3)`.",
+      "Indent the `print()` line under the loop.",
+      "Run the code and count how many times the message appears."
+    ],
+    commonMistakes: [
+      "Forgetting to indent the repeated line.",
+      "Expecting the loop to run forever instead of a set number of times.",
+      "Writing repeated code manually instead of placing it inside the loop."
+    ],
+    bugChallenge: {
+      prompt: "This code should print the same message three times, but the repeated line is not in the loop body.",
+      brokenCode: "for _ in range(3):\nprint('Keep going')",
+      expectedLearning: "Indented lines belong to the loop. Without indentation, Python cannot see what should repeat."
+    },
+    playground: {
+      title: "See repetition happen",
+      guidance: "Run the loop, then change the message or the number in `range()` and watch how the repetition changes.",
+      starterCode: "for _ in range(3):\n    print('Practice makes progress')",
+      emptyOutputHint: "A loop usually becomes easier to understand once you see the repeated output."
+    },
+    exerciseSlug: "read-cheer-loop-output"
+  },
+  {
+    slug: "for-loops-with-range",
+    module: "Loops",
+    moduleSlug: "loops",
+    order: 2,
+    title: "Counting with `for` loops and `range()`",
+    duration: "14 min",
+    difficulty: "Beginner",
+    summary: "Use `range()` to repeat a loop a specific number of times and build simple counting output.",
+    warmup: "If you want Python to count through a small list of numbers, `range()` gives it those steps.",
+    goal: "By the end, you should be able to use `for` with `range()` to print a simple sequence like 1, 2, 3.",
+    keyIdeas: [
+      {
+        title: "`range()` provides counting steps",
+        description: "It gives the loop the values it moves through."
+      },
+      {
+        title: "The loop variable changes each time",
+        description: "Inside the loop, the variable holds the current step."
+      },
+      {
+        title: "Reading output reveals the pattern",
+        description: "A counting loop should make a visible sequence when you print the loop variable."
+      }
+    ],
+    explanation: [
+      {
+        title: "What `range(3)` means",
+        body: "When you use `range(3)`, Python gives the loop three steps: 0, 1, and 2. That is why the loop repeats three times."
+      },
+      {
+        title: "Printing the loop variable",
+        body: "If you write `for number in range(3): print(number)`, Python prints the current value each time through the loop."
+      },
+      {
+        title: "Starting from 1 instead of 0",
+        body: "You can use `range(1, 4)` when you want 1, 2, 3. The first number is where the count starts, and the last number is not included."
+      },
+      {
+        title: "This pattern appears everywhere",
+        body: "Simple counting loops are the start of progress bars, repeated practice rounds, and many other beginner-friendly programs."
+      }
+    ],
+    example: "for number in range(1, 4):\n    print(number)",
+    practicePrompt: "Write a loop that prints the numbers 1, 2, 3, and 4, one per line.",
+    practiceChecklist: [
+      "Use a loop variable such as `number`.",
+      "Choose a `range()` that starts and stops in the right place.",
+      "Run the code and compare the printed sequence with what you expected."
+    ],
+    commonMistakes: [
+      "Forgetting that the last number in `range()` is not included.",
+      "Indenting the `print()` line incorrectly.",
+      "Printing the wrong variable or a fixed number every time."
+    ],
+    bugChallenge: {
+      prompt: "This code should print 1, 2, and 3, but the stopping point makes the output too short.",
+      brokenCode: "for number in range(1, 3):\n    print(number)",
+      expectedLearning: "The last number in `range()` is not included, so you often need to go one higher than you first think."
+    },
+    playground: {
+      title: "Try counting with range",
+      guidance: "Run the loop, then change the start and stop values to see how the printed sequence changes.",
+      starterCode: "for number in range(1, 4):\n    print(number)",
+      emptyOutputHint: "A counting loop should show one printed number on each line."
+    },
+    exerciseSlug: "build-counting-loop"
+  },
+  {
+    slug: "reading-loop-output-calmly",
+    module: "Loops",
+    moduleSlug: "loops",
+    order: 3,
+    title: "Reading loop output calmly",
+    duration: "14 min",
+    difficulty: "Beginner",
+    summary: "Practice reading repeated output, spotting off-by-one issues, and fixing simple loop structure mistakes.",
+    warmup: "Loops can look intimidating at first because one short block creates many lines of output. The trick is to read one pass at a time.",
+    goal: "By the end, you should be able to trace a simple loop, predict its output, and fix a small loop bug without getting lost.",
+    keyIdeas: [
+      {
+        title: "One pass at a time",
+        description: "Imagine the loop body running once, then again, instead of trying to picture everything at once."
+      },
+      {
+        title: "Off-by-one errors are common",
+        description: "A loop can repeat one too many or one too few times if the range is slightly off."
+      },
+      {
+        title: "Indentation still matters",
+        description: "Loops use indentation the same way conditionals do."
+      }
+    ],
+    explanation: [
+      {
+        title: "Tracing a loop in slow motion",
+        body: "Pick the first value the loop uses, read the body once, then move to the next value. That step-by-step view keeps repetition from feeling chaotic."
+      },
+      {
+        title: "What off-by-one means",
+        body: "An off-by-one mistake happens when the loop repeats one extra time or stops one step too early. This is very common with `range()` and very fixable."
+      },
+      {
+        title: "Use output as a clue",
+        body: "If the output has too many lines or stops too early, that usually means your loop structure is close but your `range()` or indentation needs one adjustment."
+      },
+      {
+        title: "Stay focused on the pattern",
+        body: "The best beginner move is to ask: what should happen on each pass, and how many passes should there be?"
+      }
+    ],
+    example: "for step in range(1, 4):\n    print('Step', step)\nprint('Done!')",
+    practicePrompt: "Write a loop that prints `Step 1`, `Step 2`, and `Step 3`, then prints `Done!` after the loop finishes.",
+    practiceChecklist: [
+      "Keep the `print('Done!')` line outside the loop.",
+      "Use a counting variable inside the loop.",
+      "Read the final output line by line to confirm the pattern."
+    ],
+    commonMistakes: [
+      "Indenting `Done!` inside the loop by accident.",
+      "Using a `range()` that repeats too many or too few times.",
+      "Trying to debug the whole loop at once instead of tracing one pass at a time."
+    ],
+    bugChallenge: {
+      prompt: "This code should print three steps and then `Done!`, but one indentation mistake changes the output pattern.",
+      brokenCode: "for step in range(1, 4):\n    print('Step', step)\n    print('Done!')",
+      expectedLearning: "A line outside the loop should not be indented. Small indentation changes can completely change the repeated output."
+    },
+    playground: {
+      title: "Trace the loop output",
+      guidance: "Run the code, then change the `range()` or the final line placement to see how the pattern changes.",
+      starterCode: "for step in range(1, 4):\n    print('Step', step)\nprint('Done!')",
+      emptyOutputHint: "The output should show repeated step lines followed by one final line after the loop."
+    },
+    exerciseSlug: "fix-step-loop"
   }
 ];
 
@@ -1232,6 +1436,188 @@ export const courseExercises: ExerciseData[] = [
           feedbackWhenMissing: "Add how the `if` statement uses that answer to choose whether to run the branch."
         }
       ]
+    }
+  },
+  {
+    slug: "read-cheer-loop-output",
+    title: "Read the repeated cheer output",
+    exerciseType: "output_check",
+    responseFormat: "text",
+    moduleSlug: "loops",
+    lessonSlug: "why-loops-help",
+    order: 1,
+    duration: "6 min",
+    summary: "Practice reading a simple loop by predicting the exact repeated output.",
+    prompt:
+      "Look at the loop below. Write the output exactly as Python would print it, one line per output line.",
+    responseLabel: "Expected output",
+    responsePlaceholder: "Go!\nGo!\nGo!",
+    instructions: [
+      "Read the loop header first.",
+      "Notice how many times the loop repeats.",
+      "Write only the printed output, not the code itself."
+    ],
+    hints: [
+      "`range(3)` means the loop body runs three times.",
+      "The printed text is the same on each pass.",
+      "Your answer should have three lines."
+    ],
+    starterCode: "for _ in range(3):\n    print('Go!')",
+    successCriteria: [
+      "The answer shows three output lines.",
+      "Each line contains the same printed word.",
+      "Only the output text is included."
+    ],
+    evaluator: {
+      type: "exact_answer",
+      minLength: 8,
+      normalizeWhitespace: true,
+      ignoreCase: false,
+      acceptableAnswers: ["Go!\nGo!\nGo!", "Go!\r\nGo!\r\nGo!"]
+    }
+  },
+  {
+    slug: "build-counting-loop",
+    title: "Build a counting loop",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "loops",
+    lessonSlug: "for-loops-with-range",
+    order: 2,
+    duration: "8 min",
+    summary: "Write a small `for` loop that prints a calm counting pattern from 1 to 3.",
+    prompt:
+      "Write a `for` loop that prints the numbers 1, 2, and 3, one number per line. Keep the code short and readable.",
+    responseLabel: "Your counting loop",
+    responsePlaceholder:
+      "for number in range(1, 4):\n    print(number)",
+    instructions: [
+      "Use a loop variable such as `number`.",
+      "Choose a `range()` that starts at 1 and stops after 3.",
+      "Print the loop variable inside the loop body."
+    ],
+    hints: [
+      "A good starting shape is `for number in range(...):`.",
+      "To include 3, the end of `range()` needs to go one higher.",
+      "The `print()` line should be indented under the loop."
+    ],
+    starterCode: "for number in range(1, 4):\n    print(number)",
+    successCriteria: [
+      "Uses a `for` loop with `range()`.",
+      "Prints 1, 2, and 3 in order.",
+      "Keeps the `print()` line inside the loop."
+    ],
+    playground: {
+      title: "Run the counting loop",
+      guidance: "Run the code and read the printed sequence calmly. Then change the range to see how the output pattern changes.",
+      starterCode: "for number in range(1, 4):\n    print(number)",
+      emptyOutputHint: "A correct answer should print one number on each line."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["1\n2\n3"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 28,
+      passingScore: 4,
+      requiredPatterns: [
+        {
+          id: "uses-for-loop",
+          label: "Uses a `for` loop",
+          pattern: "for\\s+[a-zA-Z_][a-zA-Z0-9_]*\\s+in\\s+range\\(",
+          feedbackWhenMissing: "Start with a `for` loop that uses `range()`."
+        },
+        {
+          id: "counts-one-to-three",
+          label: "Uses a range that reaches 1, 2, and 3",
+          pattern: "range\\(\\s*1\\s*,\\s*4\\s*\\)",
+          feedbackWhenMissing: "Use `range(1, 4)` so the loop prints 1, 2, and 3."
+        },
+        {
+          id: "prints-loop-variable",
+          label: "Prints the loop variable",
+          pattern: "print\\(\\s*[a-zA-Z_][a-zA-Z0-9_]*\\s*\\)",
+          feedbackWhenMissing: "Print the loop variable inside the loop body."
+        }
+      ],
+      orderedPatternIds: ["uses-for-loop", "counts-one-to-three", "prints-loop-variable"]
+    }
+  },
+  {
+    slug: "fix-step-loop",
+    title: "Fix the step loop",
+    exerciseType: "bug_fix",
+    responseFormat: "code",
+    moduleSlug: "loops",
+    lessonSlug: "reading-loop-output-calmly",
+    order: 3,
+    duration: "8 min",
+    summary: "Repair a simple loop so the repeated lines and the final line appear in the right pattern.",
+    prompt:
+      "This program should print `Step 1`, `Step 2`, `Step 3`, and then `Done!` one time after the loop ends. Fix the structure without changing the goal.",
+    responseLabel: "Your corrected loop",
+    responsePlaceholder:
+      "for step in range(1, 4):\n    print('Step', step)\nprint('Done!')",
+    instructions: [
+      "Keep the loop counting from 1 to 3.",
+      "Print the step line inside the loop.",
+      "Move the final `Done!` line so it runs after the loop finishes."
+    ],
+    hints: [
+      "The `Done!` line should not be indented under the loop.",
+      "A small indentation change can fix the whole pattern.",
+      "Run the code and compare the printed lines with the expected sequence."
+    ],
+    starterCode: "for step in range(1, 4):\n    print('Step', step)\n    print('Done!')",
+    successCriteria: [
+      "The loop prints three step lines.",
+      "The final line prints only once after the loop.",
+      "The indentation shows clearly what repeats and what does not."
+    ],
+    playground: {
+      title: "Run the repaired loop",
+      guidance: "Run the code after fixing the indentation. The output should show the repeated step lines first and the final line once at the end.",
+      starterCode: "for step in range(1, 4):\n    print('Step', step)\nprint('Done!')",
+      emptyOutputHint: "The output should end with one `Done!` line after the step lines."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Step 1\nStep 2\nStep 3\nDone!"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 40,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "step-loop",
+          label: "Keeps the counting loop",
+          pattern: "for\\s+step\\s+in\\s+range\\(\\s*1\\s*,\\s*4\\s*\\)\\s*:",
+          feedbackWhenMissing: "Keep the loop that counts `step` from 1 to 3."
+        },
+        {
+          id: "prints-step",
+          label: "Prints each step inside the loop",
+          pattern: "print\\(\\s*['\"]Step['\"]\\s*,\\s*step\\s*\\)",
+          feedbackWhenMissing: "Inside the loop, print the current step number."
+        },
+        {
+          id: "prints-done",
+          label: "Keeps the final `Done!` line",
+          pattern: "print\\(\\s*['\"]Done!['\"]\\s*\\)",
+          feedbackWhenMissing: "Keep the final `Done!` message after the loop."
+        }
+      ],
+      orderedPatternIds: ["step-loop", "prints-step", "prints-done"]
     }
   }
 ];

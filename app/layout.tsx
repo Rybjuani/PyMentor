@@ -16,7 +16,14 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "PyMentor",
   description:
-    "Una plataforma para aprender Python desde cero con un mentor IA integrado y pensado para principiantes."
+    "Una plataforma para aprender Python desde cero con un mentor IA integrado y pensado para principiantes.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" }
+    ],
+    shortcut: ["/icon.svg"],
+    apple: ["/icon.svg"]
+  }
 };
 
 export default function RootLayout({

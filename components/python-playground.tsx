@@ -116,8 +116,8 @@ export function PythonPlayground({
   }
 
   return (
-    <Card className={`rounded-[30px] border-brand-400/10 bg-[radial-gradient(circle_at_top_left,rgba(78,203,255,0.08),transparent_26%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] ${compact ? "p-5" : ""}`}>
-      <div className="flex flex-wrap items-center justify-between gap-3">
+    <Card className={`rounded-[30px] border-brand-400/10 bg-[radial-gradient(circle_at_top_left,rgba(78,203,255,0.08),transparent_26%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] ${compact ? "p-4 sm:p-5" : "p-4 sm:p-6"}`}>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
             <TerminalSquare className="h-4 w-4 text-brand-300" />
@@ -125,7 +125,7 @@ export function PythonPlayground({
           </div>
           <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-400">{config.guidance}</p>
         </div>
-        <div className="rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-1 text-xs font-semibold text-brand-100">
+        <div className="w-fit rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-1 text-xs font-semibold text-brand-100">
           Ejecución en navegador
         </div>
       </div>
@@ -151,18 +151,18 @@ export function PythonPlayground({
       ) : null}
 
       <textarea
-        rows={compact ? 10 : 12}
+        rows={compact ? 9 : 11}
         className="mt-5 w-full rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 font-mono text-sm leading-7 text-slate-100 outline-none focus:border-brand-400"
         value={code}
         onChange={(event) => updateCode(event.target.value)}
       />
 
-      <div className="mt-4 flex flex-wrap gap-3">
-        <Button className="gap-2" onClick={() => void runCode()} disabled={!runtimeReady || running}>
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <Button className="w-full gap-2 sm:w-auto" onClick={() => void runCode()} disabled={!runtimeReady || running}>
           {running ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <PlayCircle className="h-4 w-4" />}
           {running ? "Ejecutando..." : "Ejecutar código"}
         </Button>
-        <Button variant="secondary" className="gap-2" onClick={resetCode}>
+        <Button variant="secondary" className="w-full gap-2 sm:w-auto" onClick={resetCode}>
           <RotateCcw className="h-4 w-4" />
           Reiniciar
         </Button>
@@ -170,7 +170,7 @@ export function PythonPlayground({
 
       <div className="mt-5 rounded-[24px] border border-slate-800 bg-[linear-gradient(180deg,#050b14,#0b1620)] p-5 text-sm text-slate-100">
         <p className="font-semibold text-white">Salida</p>
-        <div className="mt-3 min-h-[120px] whitespace-pre-wrap font-mono leading-7 text-slate-200">
+        <div className="mt-3 min-h-[120px] overflow-x-auto whitespace-pre-wrap break-words font-mono leading-7 text-slate-200">
           {loadingRuntime
             ? "Cargando el entorno de Python para tu navegador..."
             : runtimeError

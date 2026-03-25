@@ -35,7 +35,7 @@ export function OnboardingFlow({
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-300">
           Inicio guiado
         </p>
-        <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-slate-50">
+        <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-50 sm:text-4xl">
           Bienvenido a PyMentor
         </h1>
         <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-400">
@@ -77,7 +77,7 @@ export function OnboardingFlow({
         </div>
 
         <div className="mt-8">
-          <Button className="gap-2" onClick={() => void completeOnboarding()}>
+          <Button className="w-full gap-2 sm:w-auto" onClick={() => void completeOnboarding()}>
             {loading ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
             Empezar mi primera lección
           </Button>

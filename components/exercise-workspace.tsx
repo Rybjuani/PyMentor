@@ -61,7 +61,7 @@ export function ExerciseWorkspace({
     () =>
       evaluation ?? {
         state: "incomplete" as const,
-        summary: "Check your answer to see how close it is to the goal of this exercise.",
+        summary: "Revisa tu respuesta para ver qué tan cerca está del objetivo de este ejercicio.",
         coaching:
           "El panel de feedback te va a mostrar qué partes ya están bien y cuál es el siguiente detalle a corregir.",
         evaluatorType: exercise.evaluator.type,
@@ -86,7 +86,7 @@ export function ExerciseWorkspace({
       ? {
           ...latestEvaluation,
           state: "correct" as const,
-          summary: "This exercise is already completed in your roadmap.",
+          summary: "Este ejercicio ya figura como completado en tu ruta.",
           coaching: "Igual puedes seguir practicando aquí, revisar la lección o continuar con el siguiente paso."
         }
       : latestEvaluation;
@@ -241,28 +241,28 @@ export function ExerciseWorkspace({
               </p>
             ) : null}
           </div>
-          <div className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-slate-300 ring-1 ring-slate-700">
+          <div className="w-full rounded-full bg-slate-900 px-3 py-1 text-center text-xs font-semibold text-slate-300 ring-1 ring-slate-700 sm:w-auto sm:text-left">
             {hasCheckedAnswer
-              ? `${displayEvaluation.matchedRules} of ${displayEvaluation.totalRules} learning checks matched`
+              ? `${displayEvaluation.matchedRules} de ${displayEvaluation.totalRules} comprobaciones superadas`
               : "Revisa tu respuesta para recibir feedback guiado"}
           </div>
         </div>
 
         <textarea
-          rows={13}
+          rows={11}
           className="mt-4 w-full rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 font-mono text-sm leading-7 text-slate-100 outline-none focus:border-brand-400"
           value={answer}
           placeholder={exercise.responsePlaceholder}
           onChange={(event) => handleAnswerChange(event.target.value)}
         />
 
-        <div className="mt-4 flex flex-wrap gap-3">
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           {status === "not_started" ? (
             <ProgressAction entityType="exercise" slug={exercise.slug} status="in_progress" variant="secondary">
               Marcar ejercicio en progreso
             </ProgressAction>
           ) : null}
-          <Button variant="secondary" className="gap-2" onClick={() => void checkAnswer()} disabled={checkingAnswer}>
+          <Button variant="secondary" className="w-full gap-2 sm:w-auto" onClick={() => void checkAnswer()} disabled={checkingAnswer}>
             {checkingAnswer ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
             Revisar mi respuesta
           </Button>
@@ -278,7 +278,7 @@ export function ExerciseWorkspace({
           </ProgressAction>
           <a
             href={lessonHref}
-            className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-100 ring-1 ring-slate-700"
+            className="inline-flex w-full items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-100 ring-1 ring-slate-700 sm:w-auto"
           >
             Revisar lección
           </a>
@@ -304,7 +304,7 @@ export function ExerciseWorkspace({
             <Icon className={`h-5 w-5 ${feedbackState === "incomplete" ? "animate-spin" : ""}`} />
           </div>
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] opacity-70">Feedback</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] opacity-70">Retroalimentación</p>
             <h3 className="mt-2 text-xl font-bold">{feedback.title}</h3>
             <p className="mt-3 max-w-2xl text-sm leading-7">{displayEvaluation.summary}</p>
             <p className="mt-2 max-w-2xl text-sm leading-7 opacity-90">{displayEvaluation.coaching}</p>

@@ -177,21 +177,21 @@ export function buildRecentActivity(progress: CourseProgress) {
       .filter(([, status]) => status === "completed")
       .map(([slug]) => {
         const lesson = getLessonBySlug(slug);
-        return lesson ? `Completed lesson: ${lesson.title}` : null;
+        return lesson ? `Lección completada: ${lesson.title}` : null;
       }),
     ...Object.entries(progress.exercises)
       .filter(([, status]) => status === "completed")
       .map(([slug]) => {
         const exercise = getExerciseBySlug(slug);
-        return exercise ? `Completed exercise: ${exercise.title}` : null;
+        return exercise ? `Ejercicio completado: ${exercise.title}` : null;
       })
   ].filter(Boolean) as string[];
 
   if (items.length === 0) {
     return [
-      "Started your Python roadmap",
-      "Opened the learning workspace",
-      "Your first completed step will appear here"
+      "Empezaste tu ruta de Python",
+      "Abriste tu espacio de aprendizaje",
+      "Tu primer paso completado va a aparecer aquí"
     ];
   }
 

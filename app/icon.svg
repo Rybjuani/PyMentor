@@ -1,0 +1,19 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="64" fill="#07111A"/>
+  <rect x="18" y="18" width="220" height="220" rx="46" fill="url(#panel)" stroke="url(#ring)" stroke-width="4"/>
+  <path d="M78 176V80H122C149.614 80 168 96.9691 168 121C168 145.031 149.614 162 122 162H102V176H78ZM102 140H119.5C133.583 140 143 132.329 143 121C143 109.671 133.583 102 119.5 102H102V140Z" fill="#F8FAFC"/>
+  <path d="M160 84L178 102L160 120" stroke="#4ECBFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M182 154H138" stroke="#0CB971" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="191" cy="68" r="10" fill="#0CB971" fill-opacity="0.85"/>
+  <defs>
+    <linearGradient id="panel" x1="40" y1="30" x2="222" y2="228" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A1722"/>
+      <stop offset="0.52" stop-color="#0F2432"/>
+      <stop offset="1" stop-color="#123447"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="36" y1="30" x2="224" y2="226" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0CB971" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#4ECBFF" stop-opacity="0.75"/>
+    </linearGradient>
+  </defs>
+</svg>

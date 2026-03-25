@@ -75,7 +75,7 @@ export function AuthFormPlaceholder({
   }
 
   return (
-    <Card className="mx-auto w-full max-w-md rounded-[32px] border-brand-400/15 bg-[radial-gradient(circle_at_top,rgba(29,211,139,0.08),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] p-8">
+    <Card className="mx-auto w-full max-w-md rounded-[28px] border-brand-400/15 bg-[radial-gradient(circle_at_top,rgba(29,211,139,0.08),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] p-6 sm:rounded-[32px] sm:p-8">
       <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-300">
         Acceso
       </p>

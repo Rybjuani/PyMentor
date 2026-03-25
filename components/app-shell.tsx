@@ -32,8 +32,8 @@ export function AppShell({
 }) {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(29,211,139,0.12),transparent_18%),radial-gradient(circle_at_80%_0%,rgba(78,203,255,0.12),transparent_20%),linear-gradient(180deg,#03060d_0%,#08111a_36%,#0b1620_100%)] text-slate-100">
-      <div className="mx-auto grid min-h-screen max-w-7xl gap-6 px-4 py-4 lg:grid-cols-[280px_1fr] lg:px-6">
-        <aside className="app-surface panel-glow rounded-[36px] px-5 py-6">
+      <div className="mx-auto grid min-h-screen max-w-7xl gap-6 px-3 py-3 sm:px-4 sm:py-4 lg:grid-cols-[280px_1fr] lg:px-6">
+        <aside className="app-surface panel-glow rounded-[30px] px-4 py-5 sm:rounded-[36px] sm:px-5 sm:py-6">
           <Link href="/" className="mb-10 flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#0CB971,#4ecbff)] text-slate-950 shadow-[0_0_30px_rgba(29,211,139,0.22)]">
               <Sparkles className="h-5 w-5" />
@@ -44,13 +44,13 @@ export function AppShell({
             </div>
           </Link>
 
-          <nav className="space-y-2">
+          <nav className="no-scrollbar flex gap-2 overflow-x-auto pb-1 lg:block lg:space-y-2 lg:overflow-visible lg:pb-0">
             {items.map(({ href, label, icon: Icon }) => (
               <Link
                 key={href}
                 href={href}
                 className={cn(
-                  "flex items-center justify-between rounded-2xl border border-transparent bg-white/[0.02] px-4 py-3 text-sm font-medium text-slate-300 transition hover:border-brand-400/15 hover:bg-brand-500/10 hover:text-brand-100"
+                  "flex min-w-[150px] items-center justify-between rounded-2xl border border-transparent bg-white/[0.02] px-4 py-3 text-sm font-medium text-slate-300 transition hover:border-brand-400/15 hover:bg-brand-500/10 hover:text-brand-100 lg:min-w-0"
                 )}
               >
                 <span className="flex items-center gap-3">
@@ -62,7 +62,7 @@ export function AppShell({
             ))}
           </nav>
 
-          <div className="mt-8 rounded-[28px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.18),transparent_35%),linear-gradient(135deg,#07111a_0%,#0c1d28_45%,#123244_100%)] p-5 text-white">
+          <div className="mt-6 rounded-[28px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.18),transparent_35%),linear-gradient(135deg,#07111a_0%,#0c1d28_45%,#123244_100%)] p-5 text-white">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/8 ring-1 ring-white/10">
                 <Target className="h-4 w-4" />
@@ -99,14 +99,14 @@ export function AppShell({
           </div>
         </aside>
 
-        <main className="space-y-6 rounded-[36px] border border-slate-800/80 bg-[linear-gradient(180deg,rgba(7,13,20,0.76),rgba(7,13,20,0.92))] p-5 shadow-soft ring-1 ring-white/5 lg:p-8">
-          <header className="rounded-[32px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.18),transparent_28%),radial-gradient(circle_at_80%_10%,rgba(78,203,255,0.18),transparent_24%),linear-gradient(135deg,#07111a_0%,#0c1927_48%,#123346_100%)] px-6 py-8 text-white">
+        <main className="space-y-6 rounded-[30px] border border-slate-800/80 bg-[linear-gradient(180deg,rgba(7,13,20,0.76),rgba(7,13,20,0.92))] p-4 shadow-soft ring-1 ring-white/5 sm:rounded-[36px] sm:p-5 lg:p-8">
+          <header className="rounded-[26px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.18),transparent_28%),radial-gradient(circle_at_80%_10%,rgba(78,203,255,0.18),transparent_24%),linear-gradient(135deg,#07111a_0%,#0c1927_48%,#123346_100%)] px-5 py-6 text-white sm:rounded-[32px] sm:px-6 sm:py-8">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-200">
                   {userName ? `Operador ${userName}` : "Sistema de progreso pensado para principiantes"}
                 </p>
-                <h1 className="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight lg:text-4xl">{title}</h1>
+                <h1 className="mt-3 max-w-3xl text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">{title}</h1>
                 <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-300">{description}</p>
               </div>
               {actions ? <div>{actions}</div> : null}

@@ -29,7 +29,7 @@ declare global {
 function loadPyodideScript() {
   return new Promise<void>((resolve, reject) => {
     if (typeof window === "undefined") {
-      reject(new Error("Pyodide can only load in the browser."));
+      reject(new Error("Pyodide solo puede cargarse en el navegador."));
       return;
     }
 
@@ -42,7 +42,7 @@ function loadPyodideScript() {
 
     if (existingScript) {
       existingScript.addEventListener("load", () => resolve(), { once: true });
-      existingScript.addEventListener("error", () => reject(new Error("Could not load Pyodide.")), {
+      existingScript.addEventListener("error", () => reject(new Error("No se pudo cargar Pyodide.")), {
         once: true
       });
       return;
@@ -53,14 +53,14 @@ function loadPyodideScript() {
     script.async = true;
     script.dataset.pyodide = "true";
     script.onload = () => resolve();
-    script.onerror = () => reject(new Error("Could not load Pyodide."));
+    script.onerror = () => reject(new Error("No se pudo cargar Pyodide."));
     document.head.appendChild(script);
   });
 }
 
 export async function getPyodideClient() {
   if (typeof window === "undefined") {
-    throw new Error("Pyodide is only available in the browser.");
+    throw new Error("Pyodide solo está disponible en el navegador.");
   }
 
   if (!window.__pyMentorPyodidePromise) {
@@ -68,7 +68,7 @@ export async function getPyodideClient() {
       await loadPyodideScript();
 
       if (!window.loadPyodide) {
-        throw new Error("Pyodide did not initialize correctly.");
+        throw new Error("Pyodide no se inicializó correctamente.");
       }
 
       const pyodide = await window.loadPyodide({

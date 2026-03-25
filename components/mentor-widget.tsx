@@ -133,7 +133,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
       </div>
 
       <div className="mt-5 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-4">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-300">
             Modo de ayuda actual
           </p>
@@ -172,7 +172,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-slate-100">{item.label}</p>
-                  <p className="mt-1 text-sm text-slate-400">
+                  <p className="mt-1 text-sm leading-6 text-slate-400">
                     {modeMeta[item.mode].description}
                   </p>
                 </div>
@@ -194,12 +194,12 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
           className="mt-3 w-full resize-none rounded-2xl border border-slate-800 bg-slate-950 px-4 py-3 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-brand-400"
           placeholder="Ejemplo: no entiendo por qué esta condición da falso. ¿Me lo puedes guiar despacio?"
         />
-        <div className="mt-3 flex items-center justify-between gap-3">
-          <p className="text-xs text-slate-500">
+        <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs leading-5 text-slate-500">
             Respuestas de Groq en vivo con el contexto local de esta página.
           </p>
           <Button
-            className="gap-2"
+            className="w-full gap-2 sm:w-auto"
             onClick={() => {
               void askMentor(input, activeMode);
             }}
@@ -241,7 +241,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
                 <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                   {message.role === "assistant" ? "Mentor" : "Tú"}
                 </p>
-                <p className="whitespace-pre-wrap">{message.content}</p>
+                <p className="whitespace-pre-wrap break-words">{message.content}</p>
               </div>
             ))
           )}

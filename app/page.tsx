@@ -54,33 +54,33 @@ export default function HomePage() {
       <SiteHeader />
 
       <main className="pb-20">
-        <section className="mx-auto max-w-7xl px-6 pb-20 pt-10 lg:px-10">
+        <section className="mx-auto max-w-7xl px-4 pb-16 pt-6 sm:px-6 sm:pb-20 sm:pt-10 lg:px-10">
           <div className="grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr]">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-brand-400/15 bg-brand-500/10 px-4 py-2 text-sm text-brand-200 ring-1 ring-white/5">
                 <Sparkles className="h-4 w-4" />
                 Progreso en Python para principiantes con mentoría IA integrada
               </div>
-              <h1 className="mt-6 max-w-4xl text-5xl font-extrabold tracking-tight text-white md:text-6xl">
+              <h1 className="mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
                 Aprende Python desde cero en un flujo de progreso enfocado que te invita a seguir avanzando.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
                 PyMentor le da a quien empieza desde cero un entorno premium de aprendizaje: lecciones claras, práctica guiada, desbloqueos visibles y un mentor IA que ayuda sin invadir.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Button href="/signup">Empezar mi ruta de Python</Button>
-                <Button href="/dashboard" variant="ghost">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button href="/signup" className="w-full sm:w-auto">Empezar mi ruta de Python</Button>
+                <Button href="/dashboard" variant="ghost" className="w-full sm:w-auto">
                   Ver la plataforma
                 </Button>
               </div>
 
               <div className="mt-10 grid max-w-3xl gap-3 sm:grid-cols-3">
                 <div className="rounded-[24px] border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
-                  <p className="text-2xl font-extrabold text-white">Python only</p>
+                  <p className="text-2xl font-extrabold text-white">Solo Python</p>
                   <p className="mt-1 text-sm text-slate-300">Un lenguaje. Una sola ruta de progreso.</p>
                 </div>
                 <div className="rounded-[24px] border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
-                  <p className="text-2xl font-extrabold text-white">AI mentor</p>
+                  <p className="text-2xl font-extrabold text-white">Mentor IA</p>
                   <p className="mt-1 text-sm text-slate-300">Pistas, claridad y ayuda para depurar dentro del contexto.</p>
                 </div>
                 <div className="rounded-[24px] border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
@@ -90,10 +90,10 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="cyan-grid rounded-[40px] border border-white/10 bg-white/[0.03] p-4 shadow-soft">
-              <div className="app-surface rounded-[34px] p-5">
+            <div className="cyan-grid overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.03] p-3 shadow-soft sm:p-4">
+              <div className="app-surface rounded-[34px] p-4 sm:p-5">
                 <div className="rounded-[30px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.22),transparent_34%),linear-gradient(135deg,#08111a_0%,#102132_45%,#103445_100%)] p-6 text-white">
-                  <div className="flex items-start justify-between gap-4">
+                  <div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
                     <div>
                       <p className="text-sm uppercase tracking-[0.22em] text-brand-100">Misión de hoy</p>
                       <h2 className="mt-2 text-2xl font-bold">Avanza con condicionales</h2>
@@ -118,7 +118,7 @@ export default function HomePage() {
                   <Card className="rounded-[26px] border-slate-800 bg-slate-950/80 shadow-none">
                     <p className="text-sm text-slate-400">Señal del mentor</p>
                     <p className="mt-3 text-sm leading-7 text-slate-300">
-                      “Let’s slow it down together. What question is your `if` statement asking?”
+                      “Vamos despacio juntos. ¿Qué pregunta está haciendo tu sentencia `if`?”
                     </p>
                   </Card>
                 </div>
@@ -129,21 +129,21 @@ export default function HomePage() {
                       <PlayCircle className="h-4 w-4 text-brand-300" />
                       Empezar simple
                     </div>
-                    <p className="mt-2 leading-6">The first lessons assume zero experience.</p>
+                    <p className="mt-2 leading-6">Las primeras lecciones parten de cero experiencia.</p>
                   </div>
                   <div className="rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 text-sm text-slate-300">
                     <div className="flex items-center gap-2 font-semibold text-slate-100">
                       <HeartHandshake className="h-4 w-4 text-brand-300" />
                       Seguir acompañado
                     </div>
-                    <p className="mt-2 leading-6">The mentor helps inside lessons and exercises.</p>
+                    <p className="mt-2 leading-6">El mentor ayuda dentro de las lecciones y los ejercicios.</p>
                   </div>
                   <div className="rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 text-sm text-slate-300">
                     <div className="flex items-center gap-2 font-semibold text-slate-100">
                       <CheckCircle2 className="h-4 w-4 text-brand-300" />
                       Desbloquear progreso
                     </div>
-                    <p className="mt-2 leading-6">Achievements and milestones make progress visible.</p>
+                    <p className="mt-2 leading-6">Los logros y los hitos hacen visible el progreso.</p>
                   </div>
                 </div>
               </div>
@@ -151,7 +151,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="how-it-works" className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
+        <section id="how-it-works" className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-10">
           <div className="app-surface rounded-[40px] px-6 py-10 shadow-soft lg:px-10">
             <SectionIntro
               eyebrow="Cómo funciona PyMentor"
@@ -170,7 +170,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-10">
           <SectionIntro
             eyebrow="Por qué funciona para principiantes"
             title="El producto está diseñado para bajar el agobio sin perder impulso"
@@ -190,7 +190,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="roadmap-preview" className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
+        <section id="roadmap-preview" className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-10">
           <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
             <div className="app-surface rounded-[36px] p-8 shadow-soft">
               <SectionIntro
@@ -211,7 +211,7 @@ export default function HomePage() {
                 <Card key={module.slug} className="rounded-[30px] border-slate-800 bg-slate-950/80">
                   <div className="flex items-center justify-between gap-3">
                     <span className="rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-1 text-xs font-semibold text-brand-200">
-                      {module.status}
+                      {module.status === "available" ? "Disponible" : module.status === "completed" ? "Completado" : "Bloqueado"}
                     </span>
                     <span className="text-sm text-slate-500">{module.estimatedTime}</span>
                   </div>
@@ -227,7 +227,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="mentor-preview" className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
+        <section id="mentor-preview" className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-10">
           <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr]">
             <div className="app-surface rounded-[36px] p-8 shadow-soft">
               <SectionIntro
@@ -251,7 +251,7 @@ export default function HomePage() {
             <Card className="rounded-[36px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.1),transparent_28%),linear-gradient(180deg,#060d14,#0b1620)] text-white">
               <p className="text-sm uppercase tracking-[0.22em] text-slate-400">Ejemplo de respuesta del mentor</p>
               <p className="mt-5 text-lg leading-8 text-slate-100">
-                “Let’s slow it down together. Your program is asking a question with `if`. First, check whether the comparison is written the way Python expects. Then look for the colon at the end of the line.”
+                “Vamos a bajar la velocidad juntos. Tu programa está haciendo una pregunta con `if`. Primero revisa si la comparación está escrita como Python espera. Después mira si la línea termina con dos puntos.”
               </p>
               <div className="mt-8 rounded-[24px] bg-white/5 p-5 ring-1 ring-white/10">
                 <p className="text-sm text-slate-300">Comunidad futura</p>
@@ -268,19 +268,19 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 pt-10 lg:px-10">
-          <div className="rounded-[40px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.22),transparent_32%),radial-gradient(circle_at_90%_10%,rgba(78,203,255,0.18),transparent_22%),linear-gradient(135deg,#07111a_0%,#0d1d2c_40%,#0f3140_100%)] px-8 py-10 text-white shadow-soft">
-            <h2 className="text-4xl font-extrabold tracking-tight">
+        <section className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-10">
+          <div className="rounded-[40px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.22),transparent_32%),radial-gradient(circle_at_90%_10%,rgba(78,203,255,0.18),transparent_22%),linear-gradient(135deg,#07111a_0%,#0d1d2c_40%,#0f3140_100%)] px-6 py-8 text-white shadow-soft sm:px-8 sm:py-10">
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
               Empieza a aprender Python con un impulso que se siente claro, emocionante y real.
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/90">
               PyMentor les da a los principiantes absolutos una primera experiencia sólida: lecciones claras, práctica guiada, progreso visible y un mentor IA que ayuda sin tomar el control.
             </p>
-            <div className="mt-6 flex flex-wrap gap-4">
-              <Button href="/signup" variant="secondary">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button href="/signup" variant="secondary" className="w-full sm:w-auto">
                 Empezar mi primera lección
               </Button>
-              <Button href="/dashboard" variant="ghost">
+              <Button href="/dashboard" variant="ghost" className="w-full sm:w-auto">
                 Explorar la plataforma
               </Button>
             </div>

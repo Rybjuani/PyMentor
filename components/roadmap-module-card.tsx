@@ -62,7 +62,7 @@ export function RoadmapModuleCard({
         </div>
       </div>
 
-      <div className="mt-6 flex items-end justify-between gap-4">
+      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="text-sm text-slate-400">
           <div>{module.lessonCount} lecciones</div>
           <div>{module.estimatedTime}</div>

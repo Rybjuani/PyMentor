@@ -133,7 +133,7 @@ export default async function DashboardPage() {
           <h2 className="mt-3 text-2xl font-bold text-slate-50">
             {currentFocus?.type === "exercise"
               ? currentFocus.exercise.title
-              : currentFocus?.lesson.title ?? "Your roadmap is ready"}
+              : currentFocus?.lesson.title ?? "Tu ruta ya está lista"}
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-400">
             {overall.completed === 0

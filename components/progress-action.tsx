@@ -12,7 +12,10 @@ export function ProgressAction({
   status,
   children,
   variant = "primary",
-  disabled = false
+  disabled = false,
+  requestBody,
+  onError,
+  onSuccess
 }: {
   entityType: "lesson" | "exercise";
   slug: string;
@@ -20,6 +23,9 @@ export function ProgressAction({
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "subtle";
   disabled?: boolean;
+  requestBody?: Record<string, unknown>;
+  onError?: (message: string) => void;
+  onSuccess?: () => void;
 }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -32,7 +38,7 @@ export function ProgressAction({
     setLoading(true);
 
     try {
-      await fetch("/api/progress", {
+      const response = await fetch("/api/progress", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -40,10 +46,18 @@ export function ProgressAction({
         body: JSON.stringify({
           entityType,
           slug,
-          status
+          status,
+          ...requestBody
         })
       });
 
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+        onError?.(payload?.error ?? "Could not update progress.");
+        return;
+      }
+
+      onSuccess?.();
       router.refresh();
     } finally {
       setLoading(false);

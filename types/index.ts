@@ -3,6 +3,11 @@ export type ProgressStatus = "not_started" | "in_progress" | "completed";
 export type ExerciseType = "bug_fix" | "guided_code" | "concept_check" | "output_check";
 export type ExerciseResponseFormat = "code" | "text";
 export type ExerciseEvaluationState = "incomplete" | "partial" | "correct";
+export type ExerciseEvaluatorType =
+  | "rule_based"
+  | "exact_answer"
+  | "ordered_concepts"
+  | "structure_check";
 
 export interface LessonSection {
   title: string;
@@ -67,7 +72,7 @@ export interface ExerciseData {
   hints: string[];
   starterCode: string;
   successCriteria: string[];
-  validation: ExerciseValidationConfig;
+  evaluator: ExerciseEvaluatorConfig;
 }
 
 export interface ExerciseValidationRule {
@@ -88,6 +93,56 @@ export interface ExerciseValidationConfig {
   rules: ExerciseValidationRule[];
 }
 
+export interface ExactAnswerEvaluatorConfig {
+  type: "exact_answer";
+  minLength?: number;
+  acceptableAnswers: string[];
+  normalizeWhitespace?: boolean;
+  ignoreCase?: boolean;
+}
+
+export interface OrderedConceptEvaluatorConcept {
+  id: string;
+  label: string;
+  keywords: string[];
+  feedbackWhenMissing: string;
+}
+
+export interface OrderedConceptEvaluatorConfig {
+  type: "ordered_concepts";
+  minLength?: number;
+  passingScore?: number;
+  requireOrder?: boolean;
+  concepts: OrderedConceptEvaluatorConcept[];
+}
+
+export interface StructureCheckPattern {
+  id: string;
+  label: string;
+  pattern: string;
+  flags?: string;
+  feedbackWhenMissing: string;
+}
+
+export interface StructureCheckEvaluatorConfig {
+  type: "structure_check";
+  minLength?: number;
+  passingScore?: number;
+  requiredPatterns: StructureCheckPattern[];
+  forbiddenPatterns?: StructureCheckPattern[];
+  orderedPatternIds?: string[];
+}
+
+export interface RuleBasedEvaluatorConfig extends ExerciseValidationConfig {
+  type: "rule_based";
+}
+
+export type ExerciseEvaluatorConfig =
+  | RuleBasedEvaluatorConfig
+  | ExactAnswerEvaluatorConfig
+  | OrderedConceptEvaluatorConfig
+  | StructureCheckEvaluatorConfig;
+
 export interface ExerciseEvaluationCheck {
   id: string;
   label: string;
@@ -100,10 +155,16 @@ export interface ExerciseEvaluationResult {
   state: ExerciseEvaluationState;
   summary: string;
   coaching: string;
+  evaluatorType: ExerciseEvaluatorType;
   matchedRules: number;
   totalRules: number;
   canComplete: boolean;
   checks: ExerciseEvaluationCheck[];
+}
+
+export interface ExerciseEvaluationRequestBody {
+  exerciseSlug?: string;
+  answer?: string;
 }
 
 export interface CourseProgress {

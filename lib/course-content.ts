@@ -158,7 +158,8 @@ export const courseLessons: LessonData[] = [
       prompt: "This code should show the steps in order, but one line is written incorrectly.",
       brokenCode: "print('Wake up')\npritn('Brush teeth')\nprint('Eat breakfast')",
       expectedLearning: "Small spelling errors can stop a program even when the idea is right."
-    }
+    },
+    exerciseSlug: "morning-routine-output"
   },
   {
     slug: "variables-hold-values",
@@ -206,7 +207,8 @@ export const courseLessons: LessonData[] = [
       prompt: "This code should store a favorite food, but it has a syntax issue.",
       brokenCode: "favorite food = 'Pizza'\nprint(favorite food)",
       expectedLearning: "Variable names cannot contain spaces."
-    }
+    },
+    exerciseSlug: "variable-label-check"
   },
   {
     slug: "changing-variable-values",
@@ -400,7 +402,8 @@ export const courseExercises: ExerciseData[] = [
       "The text is still a welcome message.",
       "The quotes are correctly paired."
     ],
-    validation: {
+    evaluator: {
+      type: "rule_based",
       minLength: 24,
       passingScore: 4,
       rules: [
@@ -437,6 +440,105 @@ export const courseExercises: ExerciseData[] = [
     }
   },
   {
+    slug: "morning-routine-output",
+    title: "Read the output in order",
+    exerciseType: "output_check",
+    responseFormat: "text",
+    moduleSlug: "introduction-to-programming",
+    lessonSlug: "running-python-step-by-step",
+    order: 1,
+    duration: "5 min",
+    summary: "Practice reading Python from top to bottom by predicting the exact output.",
+    prompt:
+      "Look at the program below. Write the output exactly as it would appear, one line per output line.",
+    responseLabel: "Expected output",
+    responsePlaceholder: "Wake up\nBrush teeth\nEat breakfast",
+    instructions: [
+      "Read the code from the first line to the last line.",
+      "Write only the printed output, not the `print()` code itself.",
+      "Keep each output on its own line."
+    ],
+    hints: [
+      "Python usually runs the first line before the second.",
+      "The answer should have three output lines.",
+      "Do not add extra punctuation that the code does not print."
+    ],
+    starterCode: "print('Wake up')\nprint('Brush teeth')\nprint('Eat breakfast')",
+    successCriteria: [
+      "The output is written in the correct order.",
+      "Each printed line appears once.",
+      "Only the output text is included."
+    ],
+    evaluator: {
+      type: "exact_answer",
+      minLength: 12,
+      normalizeWhitespace: true,
+      ignoreCase: true,
+      acceptableAnswers: [
+        "Wake up\nBrush teeth\nEat breakfast",
+        "Wake up\r\nBrush teeth\r\nEat breakfast"
+      ]
+    }
+  },
+  {
+    slug: "variable-label-check",
+    title: "Explain what a variable is holding",
+    exerciseType: "concept_check",
+    responseFormat: "text",
+    moduleSlug: "variables",
+    lessonSlug: "variables-hold-values",
+    order: 1,
+    duration: "7 min",
+    summary: "Explain the core idea of a variable in plain beginner language.",
+    prompt:
+      "In 2 or 3 short sentences, explain what a variable does in Python and what `score = 10` means.",
+    responseLabel: "Your explanation",
+    responsePlaceholder:
+      "A variable is a name that stores a value. `score = 10` means the variable called score is holding the number 10.",
+    instructions: [
+      "Use your own words instead of trying to sound technical.",
+      "Mention that a variable has a name and a value.",
+      "Explain what the line `score = 10` means."
+    ],
+    hints: [
+      "Think of a variable as a label on a box.",
+      "The line `score = 10` stores a value in the variable.",
+      "Short, clear sentences are enough."
+    ],
+    starterCode: "score = 10",
+    successCriteria: [
+      "Explains that a variable has a name or label.",
+      "Explains that it stores a value.",
+      "Explains that `score = 10` means score now holds 10."
+    ],
+    evaluator: {
+      type: "ordered_concepts",
+      minLength: 35,
+      passingScore: 4,
+      requireOrder: true,
+      concepts: [
+        {
+          id: "name-or-label",
+          label: "Mentions that a variable is a name or label",
+          keywords: ["name", "label", "called"],
+          feedbackWhenMissing: "Mention that a variable gives a name or label to something."
+        },
+        {
+          id: "stores-value",
+          label: "Explains that the variable stores a value",
+          keywords: ["store", "holds", "remember", "value"],
+          feedbackWhenMissing: "Add the idea that the variable is storing or holding a value."
+        },
+        {
+          id: "score-example",
+          label: "Explains what `score = 10` means",
+          keywords: ["score", "10"],
+          feedbackWhenMissing: "Explain the example directly: what does `score = 10` tell Python to do?"
+        }
+      ]
+    }
+  },
+  {
     slug: "fix-the-conditional",
     title: "Fix the conditional",
     exerciseType: "bug_fix",
@@ -467,47 +569,46 @@ export const courseExercises: ExerciseData[] = [
       "The `if` line ends with a colon.",
       "The code prints `Adult` when age is 18."
     ],
-    validation: {
+    evaluator: {
+      type: "structure_check",
       minLength: 35,
       passingScore: 5,
-      rules: [
+      requiredPatterns: [
         {
           id: "uses-greater-equal",
           label: "Uses `>=` as the comparison operator",
-          type: "includes",
-          value: ">=",
+          pattern: ">=",
           feedbackWhenMissing: "Use `>=` instead of the broken comparison."
-        },
-        {
-          id: "removes-wrong-operator",
-          label: "Removes the invalid `=>` operator",
-          type: "excludes",
-          value: "=>",
-          feedbackWhenMissing: "The invalid `=>` operator is still there."
         },
         {
           id: "if-line-colon",
           label: "Ends the `if` line with a colon",
-          type: "regex",
-          value: "if\\s+age\\s*>=\\s*18\\s*:",
+          pattern: "if\\s+age\\s*>=\\s*18\\s*:",
           flags: "i",
           feedbackWhenMissing: "The `if` line should end with a colon after the condition."
         },
         {
           id: "adult-output",
           label: "Keeps the `Adult` output",
-          type: "includes",
-          value: "Adult",
+          pattern: "Adult",
           feedbackWhenMissing: "The `Adult` output should still be present."
         },
         {
           id: "minor-output",
           label: "Keeps the fallback `Minor` output",
-          type: "includes",
-          value: "Minor",
+          pattern: "Minor",
           feedbackWhenMissing: "The fallback branch should still print `Minor`."
         }
-      ]
+      ],
+      forbiddenPatterns: [
+        {
+          id: "removes-wrong-operator",
+          label: "Removes the invalid `=>` operator",
+          pattern: "=>",
+          feedbackWhenMissing: "The invalid `=>` operator is still there."
+        }
+      ],
+      orderedPatternIds: ["if-line-colon", "adult-output", "minor-output"]
     }
   }
 ];

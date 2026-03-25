@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { recordActivity } from "@/lib/activity";
 import { getServerAuthSession } from "@/lib/auth";
 import { getExerciseBySlug, getLessonBySlug } from "@/lib/course";
+import { evaluateExerciseAnswer } from "@/lib/exercise-evaluation";
 import { saveProgress } from "@/lib/user-progress";
 import { ProgressStatus } from "@/types";
 
@@ -9,6 +10,7 @@ interface ProgressRequestBody {
   entityType?: "lesson" | "exercise";
   slug?: string;
   status?: ProgressStatus;
+  answer?: string;
 }
 
 export async function POST(request: Request) {
@@ -28,6 +30,26 @@ export async function POST(request: Request) {
 
   if (!body.entityType || !body.slug || !body.status) {
     return NextResponse.json({ error: "Missing progress fields." }, { status: 400 });
+  }
+
+  if (body.entityType === "exercise" && body.status === "completed") {
+    const exercise = getExerciseBySlug(body.slug);
+
+    if (!exercise) {
+      return NextResponse.json({ error: "Exercise not found." }, { status: 404 });
+    }
+
+    const evaluation = evaluateExerciseAnswer(exercise, body.answer ?? "");
+
+    if (!evaluation.canComplete) {
+      return NextResponse.json(
+        {
+          error: "This exercise is not ready to be marked complete yet.",
+          evaluation
+        },
+        { status: 422 }
+      );
+    }
   }
 
   const result = await saveProgress({

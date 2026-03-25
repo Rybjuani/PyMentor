@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { CheckCircle2, CircleAlert, LoaderCircle, Sparkles } from "lucide-react";
-import { ExerciseData, ExerciseEvaluationResult, ProgressStatus } from "@/types";
+import { ExerciseData, ExerciseEvaluationResult, ExerciseExecutionResult, ProgressStatus } from "@/types";
 import { Card } from "@/components/ui/card";
 import { CodePanel } from "@/components/code-panel";
 import { PythonPlayground } from "@/components/python-playground";
@@ -46,6 +46,11 @@ export function ExerciseWorkspace({
   const [evaluation, setEvaluation] = useState<ExerciseEvaluationResult | null>(null);
   const [checkingAnswer, setCheckingAnswer] = useState(false);
   const [requestError, setRequestError] = useState<string | null>(null);
+  const [execution, setExecution] = useState<ExerciseExecutionResult>({
+    didRun: false,
+    output: "",
+    error: ""
+  });
 
   const latestEvaluation = useMemo(
     () =>
@@ -98,7 +103,8 @@ export function ExerciseWorkspace({
         },
         body: JSON.stringify({
           exerciseSlug: exercise.slug,
-          answer
+          answer,
+          execution
         })
       });
 
@@ -122,6 +128,13 @@ export function ExerciseWorkspace({
     setAnswer(value);
     setEvaluation(null);
     setRequestError(null);
+    if (exercise.executionValidation) {
+      setExecution({
+        didRun: false,
+        output: "",
+        error: ""
+      });
+    }
   }
 
   return (
@@ -192,7 +205,15 @@ export function ExerciseWorkspace({
         </Card>
       </div>
 
-      {exercise.playground ? <PythonPlayground config={exercise.playground} compact /> : null}
+      {exercise.playground ? (
+        <PythonPlayground
+          config={exercise.playground}
+          compact
+          code={exercise.responseFormat === "code" ? answer : undefined}
+          onCodeChange={exercise.responseFormat === "code" ? handleAnswerChange : undefined}
+          onRunComplete={setExecution}
+        />
+      ) : null}
 
       <Card className="rounded-[30px]">
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -200,7 +221,9 @@ export function ExerciseWorkspace({
             <h2 className="text-xl font-bold text-slate-900">{exercise.responseLabel}</h2>
             <p className="mt-2 text-sm leading-6 text-slate-600">
               {exercise.responseFormat === "code"
-                ? "Edit the code carefully, then check your answer to get exercise-specific feedback."
+                ? exercise.executionValidation?.requireRunBeforeCheck
+                  ? "Edit the code, run it in the playground, then check your answer so PyMentor can review the real output."
+                  : "Edit the code carefully, then check your answer to get exercise-specific feedback."
                 : "Write a short answer, then check it to see what still needs attention."}
             </p>
           </div>
@@ -234,7 +257,7 @@ export function ExerciseWorkspace({
             slug={exercise.slug}
             status="completed"
             disabled={!canComplete}
-            requestBody={{ answer }}
+            requestBody={{ answer, execution }}
             onError={setRequestError}
           >
             Mark exercise complete
@@ -249,7 +272,9 @@ export function ExerciseWorkspace({
 
         {!canComplete ? (
           <p className="mt-4 text-sm leading-6 text-slate-500">
-            Complete the check first. The exercise only unlocks completion after a reviewed answer shows the key learning checks.
+            {exercise.executionValidation?.requireRunBeforeComplete
+              ? "Run the code and complete the check first. This exercise uses the browser output as part of completion."
+              : "Complete the check first. The exercise only unlocks completion after a reviewed answer shows the key learning checks."}
           </p>
         ) : null}
         {requestError ? (

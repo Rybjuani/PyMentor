@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Exercise not found." }, { status: 404 });
   }
 
-  const result = evaluateExerciseAnswer(exercise, body.answer ?? "");
+  const result = evaluateExerciseAnswer(exercise, body.answer ?? "", body.execution);
 
   return NextResponse.json(result);
 }

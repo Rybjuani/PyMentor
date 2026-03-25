@@ -21,6 +21,21 @@ export interface PythonPlaygroundConfig {
   emptyOutputHint?: string;
 }
 
+export interface ExerciseExecutionValidation {
+  requireRunBeforeCheck?: boolean;
+  requireRunBeforeComplete?: boolean;
+  expectedOutput?: string[];
+  normalizeOutputWhitespace?: boolean;
+  ignoreOutputCase?: boolean;
+  requireNoRuntimeError?: boolean;
+}
+
+export interface ExerciseExecutionResult {
+  didRun: boolean;
+  output: string;
+  error: string;
+}
+
 export interface LessonKeyIdea {
   title: string;
   description: string;
@@ -82,6 +97,7 @@ export interface ExerciseData {
   successCriteria: string[];
   evaluator: ExerciseEvaluatorConfig;
   playground?: PythonPlaygroundConfig;
+  executionValidation?: ExerciseExecutionValidation;
 }
 
 export interface ExerciseValidationRule {
@@ -174,6 +190,7 @@ export interface ExerciseEvaluationResult {
 export interface ExerciseEvaluationRequestBody {
   exerciseSlug?: string;
   answer?: string;
+  execution?: ExerciseExecutionResult;
 }
 
 export interface CourseProgress {

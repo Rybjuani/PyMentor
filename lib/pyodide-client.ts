@@ -13,6 +13,7 @@ export interface BrowserPyodide {
 }
 
 export interface PythonRunResult {
+  didRun: boolean;
   output: string;
   error: string;
 }
@@ -126,6 +127,7 @@ except Exception as exc:
   pyodide.globals.delete("__pymentor_code");
 
   return {
+    didRun: true,
     output: parsed.output ?? "",
     error: parsed.error ?? ""
   };

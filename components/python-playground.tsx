@@ -2,25 +2,41 @@
 
 import { useEffect, useState } from "react";
 import { LoaderCircle, PlayCircle, RotateCcw, TerminalSquare } from "lucide-react";
-import { runPythonInBrowser } from "@/lib/pyodide-client";
+import { PythonRunResult, runPythonInBrowser } from "@/lib/pyodide-client";
 import { PythonPlaygroundConfig } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 export function PythonPlayground({
   config,
-  compact = false
+  compact = false,
+  code: controlledCode,
+  onCodeChange,
+  onRunComplete
 }: {
   config: PythonPlaygroundConfig;
   compact?: boolean;
+  code?: string;
+  onCodeChange?: (code: string) => void;
+  onRunComplete?: (result: PythonRunResult) => void;
 }) {
-  const [code, setCode] = useState(config.starterCode);
+  const [internalCode, setInternalCode] = useState(config.starterCode);
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
   const [runtimeReady, setRuntimeReady] = useState(false);
   const [runtimeError, setRuntimeError] = useState<string | null>(null);
   const [loadingRuntime, setLoadingRuntime] = useState(true);
   const [running, setRunning] = useState(false);
+  const code = controlledCode ?? internalCode;
+
+  function updateCode(nextCode: string) {
+    if (onCodeChange) {
+      onCodeChange(nextCode);
+      return;
+    }
+
+    setInternalCode(nextCode);
+  }
 
   useEffect(() => {
     let cancelled = false;
@@ -61,6 +77,7 @@ export function PythonPlayground({
       const result = await runPythonInBrowser(code);
       setOutput(result.output);
       setError(result.error);
+      onRunComplete?.(result);
     } catch {
       setRuntimeError("Python could not run this code right now. Try refreshing and running again.");
     } finally {
@@ -69,7 +86,7 @@ export function PythonPlayground({
   }
 
   function resetCode() {
-    setCode(config.starterCode);
+    updateCode(config.starterCode);
     setOutput("");
     setError("");
   }
@@ -93,7 +110,7 @@ export function PythonPlayground({
         rows={compact ? 10 : 12}
         className="mt-5 w-full rounded-[24px] border border-slate-200 px-4 py-4 font-mono text-sm leading-7 outline-none focus:border-brand-300"
         value={code}
-        onChange={(event) => setCode(event.target.value)}
+        onChange={(event) => updateCode(event.target.value)}
       />
 
       <div className="mt-4 flex flex-wrap gap-3">

@@ -3,6 +3,7 @@ import {
   ExerciseData,
   ExerciseEvaluationCheck,
   ExerciseEvaluationResult,
+  ExerciseExecutionResult,
   ExerciseValidationRule,
   OrderedConceptEvaluatorConfig,
   OrderedConceptEvaluatorConcept,
@@ -349,18 +350,170 @@ function evaluateStructureCheckExercise(
 
 export function evaluateExerciseAnswer(
   exercise: ExerciseData,
-  answer: string
+  answer: string,
+  execution?: ExerciseExecutionResult
 ): ExerciseEvaluationResult {
+  let baseResult: ExerciseEvaluationResult;
+
   switch (exercise.evaluator.type) {
     case "rule_based":
-      return evaluateRuleBasedExercise(exercise, answer);
+      baseResult = evaluateRuleBasedExercise(exercise, answer);
+      break;
     case "exact_answer":
-      return evaluateExactAnswerExercise(exercise, answer);
+      baseResult = evaluateExactAnswerExercise(exercise, answer);
+      break;
     case "ordered_concepts":
-      return evaluateOrderedConceptExercise(exercise, answer);
+      baseResult = evaluateOrderedConceptExercise(exercise, answer);
+      break;
     case "structure_check":
-      return evaluateStructureCheckExercise(exercise, answer);
+      baseResult = evaluateStructureCheckExercise(exercise, answer);
+      break;
     default:
       throw new Error("Unsupported exercise evaluator.");
   }
+
+  return applyExecutionValidation(exercise, baseResult, execution);
+}
+
+function applyExecutionValidation(
+  exercise: ExerciseData,
+  baseResult: ExerciseEvaluationResult,
+  execution?: ExerciseExecutionResult
+): ExerciseEvaluationResult {
+  const config = exercise.executionValidation;
+
+  if (!config) {
+    return baseResult;
+  }
+
+  const didRun = execution?.didRun ?? false;
+  const runtimeError = execution?.error?.trim() ?? "";
+  const rawOutput = execution?.output ?? "";
+  const normalizedOutput = normalizeRuntimeOutput(rawOutput, {
+    normalizeWhitespace: config.normalizeOutputWhitespace ?? true,
+    ignoreCase: config.ignoreOutputCase ?? false
+  });
+  const acceptableOutputs =
+    config.expectedOutput?.map((output) =>
+      normalizeRuntimeOutput(output, {
+        normalizeWhitespace: config.normalizeOutputWhitespace ?? true,
+        ignoreCase: config.ignoreOutputCase ?? false
+      })
+    ) ?? [];
+  const outputMatches =
+    acceptableOutputs.length === 0 || acceptableOutputs.some((output) => output === normalizedOutput);
+
+  const extraChecks: ExerciseEvaluationCheck[] = [];
+
+  if (config.requireRunBeforeCheck || config.requireRunBeforeComplete || acceptableOutputs.length > 0) {
+    extraChecks.push({
+      id: "browser-run",
+      label: "Runs the code in the browser playground",
+      passed: didRun,
+      required: true,
+      feedbackWhenMissing:
+        "Run your code in the playground first so PyMentor can check what it actually prints."
+    });
+  }
+
+  if (config.requireNoRuntimeError) {
+    extraChecks.push({
+      id: "no-runtime-error",
+      label: "Runs without a Python error",
+      passed: didRun && runtimeError.length === 0,
+      required: true,
+      feedbackWhenMissing:
+        runtimeError.length > 0
+          ? `Python still stops with an error: ${runtimeError}`
+          : "Run the code first so PyMentor can confirm it finishes cleanly."
+    });
+  }
+
+  if (acceptableOutputs.length > 0) {
+    extraChecks.push({
+      id: "expected-runtime-output",
+      label: "Prints the expected output",
+      passed: didRun && runtimeError.length === 0 && outputMatches,
+      required: true,
+      feedbackWhenMissing:
+        runtimeError.length > 0
+          ? "Fix the Python error first, then run the code again to compare the output."
+          : "The output still does not match the result this exercise expects."
+    });
+  }
+
+  const checks = [...baseResult.checks, ...extraChecks];
+  const matchedRules = checks.filter((check) => check.passed).length;
+  const totalRules = checks.length;
+  const canComplete =
+    baseResult.canComplete &&
+    extraChecks.every((check) => check.passed) &&
+    (!config.requireRunBeforeComplete || didRun);
+
+  if ((config.requireRunBeforeCheck || config.requireRunBeforeComplete) && !didRun) {
+    return {
+      ...baseResult,
+      state: "incomplete",
+      summary: "Run your code once before PyMentor can check this exercise properly.",
+      coaching:
+        "For this step, the platform uses the browser output as part of the review. Run the code, look at the output, then check again.",
+      matchedRules,
+      totalRules,
+      canComplete: false,
+      checks
+    };
+  }
+
+  if (runtimeError.length > 0 && config.requireNoRuntimeError) {
+    return {
+      ...baseResult,
+      state: "partial",
+      summary: "Your code is close, but Python is still stopping with an error.",
+      coaching:
+        "Use the runtime error as a clue, fix one line at a time, then run the code again before checking completion.",
+      matchedRules,
+      totalRules,
+      canComplete: false,
+      checks
+    };
+  }
+
+  if (!canComplete && extraChecks.some((check) => !check.passed) && baseResult.state === "correct") {
+    return {
+      ...baseResult,
+      state: "partial",
+      summary: "The written answer looks good, but the browser run still needs one more fix.",
+      coaching:
+        "Look at the missing output-related check, adjust the code, and run it again so the result matches what the lesson is teaching.",
+      matchedRules,
+      totalRules,
+      canComplete,
+      checks
+    };
+  }
+
+  return {
+    ...baseResult,
+    matchedRules,
+    totalRules,
+    canComplete,
+    checks
+  };
+}
+
+function normalizeRuntimeOutput(
+  value: string,
+  {
+    normalizeWhitespace,
+    ignoreCase
+  }: {
+    normalizeWhitespace: boolean;
+    ignoreCase: boolean;
+  }
+) {
+  const normalizedWhitespace = normalizeWhitespace
+    ? value.trim().replace(/\r\n/g, "\n").replace(/[ \t]+/g, " ").replace(/\n+/g, "\n")
+    : value.trim();
+
+  return ignoreCase ? normalizedWhitespace.toLowerCase() : normalizedWhitespace;
 }

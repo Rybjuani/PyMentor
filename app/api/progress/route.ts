@@ -4,13 +4,14 @@ import { getServerAuthSession } from "@/lib/auth";
 import { getExerciseBySlug, getLessonBySlug } from "@/lib/course";
 import { evaluateExerciseAnswer } from "@/lib/exercise-evaluation";
 import { saveProgress } from "@/lib/user-progress";
-import { ProgressStatus } from "@/types";
+import { ExerciseExecutionResult, ProgressStatus } from "@/types";
 
 interface ProgressRequestBody {
   entityType?: "lesson" | "exercise";
   slug?: string;
   status?: ProgressStatus;
   answer?: string;
+  execution?: ExerciseExecutionResult;
 }
 
 export async function POST(request: Request) {
@@ -39,7 +40,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Exercise not found." }, { status: 404 });
     }
 
-    const evaluation = evaluateExerciseAnswer(exercise, body.answer ?? "");
+    const evaluation = evaluateExerciseAnswer(exercise, body.answer ?? "", body.execution);
 
     if (!evaluation.canComplete) {
       return NextResponse.json(

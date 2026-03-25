@@ -677,6 +677,14 @@ export const courseExercises: ExerciseData[] = [
       starterCode: "print('Welcome to PyMentor')\nprint(\"Let's learn Python\")",
       emptyOutputHint: "A correct solution should print two friendly lines."
     },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Welcome to PyMentor\nLet's learn Python"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
     evaluator: {
       type: "rule_based",
       minLength: 24,
@@ -916,6 +924,14 @@ export const courseExercises: ExerciseData[] = [
       "Shows the updated value second.",
       "Writes only the output, not the code."
     ],
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["3\n5"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
     evaluator: {
       type: "exact_answer",
       minLength: 3,
@@ -1032,6 +1048,14 @@ export const courseExercises: ExerciseData[] = [
       starterCode: "age = 18\n\nif age >= 18:\n    print('Adult')\nelse:\n    print('Minor')",
       emptyOutputHint: "Try changing `age` to a smaller number and running the code again."
     },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Adult"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
     evaluator: {
       type: "structure_check",
       minLength: 35,
@@ -1105,6 +1129,14 @@ export const courseExercises: ExerciseData[] = [
       "All three outputs remain.",
       "The structure still uses `if`, `elif`, and `else`."
     ],
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["High"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
     evaluator: {
       type: "structure_check",
       minLength: 50,

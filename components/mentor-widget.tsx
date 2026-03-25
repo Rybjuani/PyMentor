@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import {
+  AlertCircle,
   Bot,
   Bug,
   CornerDownLeft,
@@ -11,21 +12,29 @@ import {
   Sparkles
 } from "lucide-react";
 import { mentorPrompts } from "@/lib/mock-data";
+import {
+  MentorContextPayload,
+  MentorConversationMessage,
+  MentorMode,
+  MentorResponseBody
+} from "@/types";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 interface MentorWidgetProps {
-  contextTitle: string;
+  context: MentorContextPayload;
   compact?: boolean;
 }
 
-export function MentorWidget({ contextTitle, compact = false }: MentorWidgetProps) {
+const emptyState =
+  "I’m here when you need help. Pick a help mode or ask your own question, and I’ll keep the explanation calm, clear, and beginner-safe.";
+
+export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
   const [input, setInput] = useState("");
-  const [activeMode, setActiveMode] = useState<string>("explain");
-  const [response, setResponse] = useState(
-    "I’m here to help. Choose a help mode or ask your own question. I’ll keep the explanation calm, clear, and beginner-safe."
-  );
+  const [activeMode, setActiveMode] = useState<MentorMode>("explain");
+  const [messages, setMessages] = useState<MentorConversationMessage[]>([]);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const modeMeta = {
     explain: {
@@ -50,9 +59,18 @@ export function MentorWidget({ contextTitle, compact = false }: MentorWidgetProp
     }
   } as const;
 
-  async function askMentor(message: string) {
+  async function askMentor(message: string, mode: MentorMode) {
+    const trimmed = message.trim();
+
+    if (!trimmed) {
+      return;
+    }
+
+    const nextHistory = [...messages, { role: "user" as const, content: trimmed }];
     setLoading(true);
-    setInput(message);
+    setErrorMessage(null);
+    setMessages(nextHistory);
+    setInput("");
 
     try {
       const res = await fetch("/api/mentor", {
@@ -61,15 +79,40 @@ export function MentorWidget({ contextTitle, compact = false }: MentorWidgetProp
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          message,
-          contextTitle
+          message: trimmed,
+          mode,
+          history: messages,
+          context
         })
       });
 
-      const data = (await res.json()) as { reply?: string };
-      setResponse(data.reply ?? "I could not generate a response yet.");
+      if (!res.ok) {
+        throw new Error("mentor_request_failed");
+      }
+
+      const data = (await res.json()) as MentorResponseBody;
+
+      setMessages([
+        ...nextHistory,
+        {
+          role: "assistant",
+          content: data.reply
+        }
+      ]);
+
+      if (data.provider === "fallback") {
+        setErrorMessage("The mentor answered with a fallback because the live model was unavailable for this request.");
+      }
     } catch {
-      setResponse("The mentor route is scaffolded, but the request failed locally.");
+      setMessages([
+        ...nextHistory,
+        {
+          role: "assistant",
+          content:
+            "I had trouble answering just now. Try again, or switch to a smaller request like asking for one hint."
+        }
+      ]);
+      setErrorMessage("The mentor service could not be reached.");
     } finally {
       setLoading(false);
     }
@@ -84,7 +127,7 @@ export function MentorWidget({ contextTitle, compact = false }: MentorWidgetProp
         <div>
           <h3 className="text-lg font-bold text-slate-900">AI Mentor</h3>
           <p className="mt-1 text-sm text-slate-600">
-            Calm guidance for {contextTitle.toLowerCase()} so the learner never feels alone.
+            Calm guidance for {context.title.toLowerCase()} so the learner never feels alone.
           </p>
         </div>
       </div>
@@ -95,10 +138,12 @@ export function MentorWidget({ contextTitle, compact = false }: MentorWidgetProp
             Current help mode
           </p>
           <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand-700 ring-1 ring-brand-100">
-            {modeMeta[activeMode as keyof typeof modeMeta].title}
+            {modeMeta[activeMode].title}
           </span>
         </div>
-        <p className="mt-3 text-sm leading-7 text-slate-700">{response}</p>
+        <p className="mt-3 text-sm leading-7 text-slate-700">
+          {messages.length === 0 ? emptyState : modeMeta[activeMode].description}
+        </p>
       </div>
 
       <div className="mt-5">
@@ -108,31 +153,33 @@ export function MentorWidget({ contextTitle, compact = false }: MentorWidgetProp
       </div>
 
       <div className="mt-3 grid gap-3">
-        {mentorPrompts.map((item) => (
-          <button
-            key={item.label}
-            onClick={() => {
-              setActiveMode(item.mode);
-              void askMentor(item.prompt);
-            }}
-            className="rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-left transition hover:border-brand-200 hover:bg-brand-50"
-          >
-            <div className="flex items-start gap-3">
-              <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-50 text-slate-700">
-                {item.mode === "explain" && <Sparkles className="h-4 w-4" />}
-                {item.mode === "hint" && <Lightbulb className="h-4 w-4" />}
-                {item.mode === "steps" && <ListOrdered className="h-4 w-4" />}
-                {item.mode === "debug" && <Bug className="h-4 w-4" />}
+        {mentorPrompts.map((item) => {
+          const Icon = modeMeta[item.mode].icon;
+
+          return (
+            <button
+              key={item.label}
+              onClick={() => {
+                setActiveMode(item.mode);
+                void askMentor(item.prompt, item.mode);
+              }}
+              disabled={loading}
+              className="rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-left transition hover:border-brand-200 hover:bg-brand-50 disabled:cursor-not-allowed disabled:opacity-70"
+            >
+              <div className="flex items-start gap-3">
+                <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-50 text-slate-700">
+                  <Icon className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">{item.label}</p>
+                  <p className="mt-1 text-sm text-slate-600">
+                    {modeMeta[item.mode].description}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-900">{item.label}</p>
-                <p className="mt-1 text-sm text-slate-600">
-                  {modeMeta[item.mode].description}
-                </p>
-              </div>
-            </div>
-          </button>
-        ))}
+            </button>
+          );
+        })}
       </div>
 
       <div className="mt-5 rounded-[24px] border border-slate-200 bg-white p-4">
@@ -149,20 +196,63 @@ export function MentorWidget({ contextTitle, compact = false }: MentorWidgetProp
         />
         <div className="mt-3 flex items-center justify-between gap-3">
           <p className="text-xs text-slate-500">
-            Groq-ready now. Real conversation memory and streaming can be added later.
+            Live Groq replies with local page context in this session.
           </p>
           <Button
             className="gap-2"
             onClick={() => {
-              if (input.trim()) {
-                void askMentor(input.trim());
-              }
+              void askMentor(input, activeMode);
             }}
           >
             {loading ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <CornerDownLeft className="h-4 w-4" />}
             Ask mentor
           </Button>
         </div>
+      </div>
+
+      <div className="mt-5 rounded-[24px] border border-slate-200 bg-white p-4">
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+            Conversation
+          </p>
+          {loading ? (
+            <span className="inline-flex items-center gap-2 text-xs font-medium text-brand-700">
+              <LoaderCircle className="h-3.5 w-3.5 animate-spin" />
+              Thinking
+            </span>
+          ) : null}
+        </div>
+
+        <div className="mt-4 space-y-3">
+          {messages.length === 0 ? (
+            <div className="rounded-[20px] bg-slate-50 px-4 py-4 text-sm leading-7 text-slate-600">
+              Start with a quick mode like <span className="font-semibold text-slate-900">Explain simply</span> or ask your own question below.
+            </div>
+          ) : (
+            messages.map((message, index) => (
+              <div
+                key={`${message.role}-${index}`}
+                className={
+                  message.role === "assistant"
+                    ? "rounded-[20px] bg-slate-50 px-4 py-4 text-sm leading-7 text-slate-700"
+                    : "rounded-[20px] bg-brand-50 px-4 py-4 text-sm leading-7 text-brand-900"
+                }
+              >
+                <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                  {message.role === "assistant" ? "Mentor" : "You"}
+                </p>
+                <p className="whitespace-pre-wrap">{message.content}</p>
+              </div>
+            ))
+          )}
+        </div>
+
+        {errorMessage ? (
+          <div className="mt-4 flex items-start gap-3 rounded-[20px] border border-amber-200 bg-amber-50 px-4 py-4 text-sm text-amber-900">
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+            <p>{errorMessage}</p>
+          </div>
+        ) : null}
       </div>
 
       <div className="mt-4 rounded-[24px] bg-slate-950 px-4 py-4 text-sm text-slate-200">

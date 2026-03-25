@@ -11,7 +11,17 @@ export default function ExercisePage() {
       <section className="grid gap-5 xl:grid-cols-[1fr_360px]">
         <ExerciseWorkspace />
         <div>
-          <MentorWidget contextTitle="Conditional debugging exercise" compact />
+          <MentorWidget
+            context={{
+              title: "Conditional debugging exercise",
+              topic: "Conditionals",
+              pageType: "exercise",
+              exerciseTitle: "Fix the conditional",
+              codeSnippet:
+                "age = 18\n\nif age => 18\n    print('Adult')\nelse:\n    print('Minor')"
+            }}
+            compact
+          />
         </div>
       </section>
     </AppShell>

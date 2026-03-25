@@ -54,3 +54,32 @@ export interface MentorPrompt {
   label: string;
   prompt: string;
 }
+
+export type MentorMode = MentorPrompt["mode"];
+
+export interface MentorConversationMessage {
+  role: "user" | "assistant";
+  content: string;
+}
+
+export interface MentorContextPayload {
+  title: string;
+  topic?: string;
+  pageType?: "lesson" | "exercise" | "general";
+  exerciseTitle?: string;
+  codeSnippet?: string;
+}
+
+export interface MentorRequestBody {
+  message?: string;
+  mode?: MentorMode;
+  history?: MentorConversationMessage[];
+  context?: MentorContextPayload;
+}
+
+export interface MentorResponseBody {
+  reply: string;
+  provider: "groq" | "fallback";
+  mode: MentorMode;
+  error?: string;
+}

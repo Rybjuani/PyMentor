@@ -134,7 +134,14 @@ export default function LessonPage({
         </div>
 
         <div>
-          <MentorWidget contextTitle={lesson.title} />
+          <MentorWidget
+            context={{
+              title: lesson.title,
+              topic: lesson.module,
+              pageType: "lesson",
+              codeSnippet: lesson.example
+            }}
+          />
         </div>
       </section>
     </AppShell>

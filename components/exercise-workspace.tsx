@@ -31,12 +31,14 @@ export function ExerciseWorkspace({
   exercise,
   status,
   initialAnswer,
+  restoredDraftUpdatedAt,
   lessonHref,
   nextLessonHref
 }: {
   exercise: ExerciseData;
   status: ProgressStatus;
   initialAnswer?: string;
+  restoredDraftUpdatedAt?: string | Date | null;
   lessonHref: string;
   nextLessonHref?: string | null;
 }) {
@@ -213,6 +215,7 @@ export function ExerciseWorkspace({
           config={exercise.playground}
           compact
           initialCode={initialAnswer}
+          restoredDraftUpdatedAt={restoredDraftUpdatedAt}
           code={exercise.responseFormat === "code" ? answer : undefined}
           onCodeChange={exercise.responseFormat === "code" ? handleAnswerChange : undefined}
           onRunComplete={setExecution}
@@ -230,8 +233,13 @@ export function ExerciseWorkspace({
                 ? exercise.executionValidation?.requireRunBeforeCheck
                   ? "Edit the code, run it in the playground, then check your answer so PyMentor can review the real output."
                   : "Edit the code carefully, then check your answer to get exercise-specific feedback."
-                : "Write a short answer, then check it to see what still needs attention."}
+              : "Write a short answer, then check it to see what still needs attention."}
             </p>
+            {restoredDraftUpdatedAt ? (
+              <p className="mt-2 text-xs font-medium text-brand-700">
+                Restored your saved work so you can keep going from where you left off.
+              </p>
+            ) : null}
           </div>
           <div className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
             {hasCheckedAnswer

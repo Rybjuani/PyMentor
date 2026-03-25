@@ -12,6 +12,7 @@ export function PythonPlayground({
   config,
   compact = false,
   initialCode,
+  restoredDraftUpdatedAt,
   code: controlledCode,
   onCodeChange,
   onRunComplete,
@@ -21,6 +22,7 @@ export function PythonPlayground({
   config: PythonPlaygroundConfig;
   compact?: boolean;
   initialCode?: string;
+  restoredDraftUpdatedAt?: string | Date | null;
   code?: string;
   onCodeChange?: (code: string) => void;
   onRunComplete?: (result: PythonRunResult) => void;
@@ -34,6 +36,7 @@ export function PythonPlayground({
   const [runtimeError, setRuntimeError] = useState<string | null>(null);
   const [loadingRuntime, setLoadingRuntime] = useState(true);
   const [running, setRunning] = useState(false);
+  const restoredDraft = Boolean(restoredDraftUpdatedAt);
   const code = controlledCode ?? internalCode;
   const draftsEnabled = Boolean(draftScope && draftSlug);
   const { saveState, clearDraft } = useDraftPersistence({
@@ -126,6 +129,15 @@ export function PythonPlayground({
           Browser-only runner
         </div>
       </div>
+      {restoredDraft ? (
+        <div className="mt-4 rounded-[20px] border border-brand-100 bg-brand-50/70 px-4 py-3 text-sm text-brand-900">
+          <p className="font-semibold">Restored your previous draft</p>
+          <p className="mt-1 leading-6 text-brand-800">
+            You are continuing the code you last edited {formatDraftTime(restoredDraftUpdatedAt)}.
+            Reset will clear this saved draft and return to the starter code.
+          </p>
+        </div>
+      ) : null}
       {draftsEnabled ? (
         <p className="mt-3 text-xs font-medium text-slate-500">
           {saveState === "saving"
@@ -172,4 +184,35 @@ export function PythonPlayground({
       </div>
     </Card>
   );
+}
+
+function formatDraftTime(value: string | Date | null | undefined) {
+  if (!value) {
+    return "earlier";
+  }
+
+  const date = value instanceof Date ? value : new Date(value);
+  const diffMs = Date.now() - date.getTime();
+  const diffMinutes = Math.round(diffMs / (1000 * 60));
+
+  if (diffMinutes < 1) {
+    return "just now";
+  }
+
+  if (diffMinutes < 60) {
+    return `${diffMinutes} min ago`;
+  }
+
+  const diffHours = Math.round(diffMinutes / 60);
+
+  if (diffHours < 24) {
+    return `${diffHours} hr ago`;
+  }
+
+  return new Intl.DateTimeFormat("en", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit"
+  }).format(date);
 }

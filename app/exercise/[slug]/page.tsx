@@ -45,6 +45,7 @@ export default async function ExercisePage({
           exercise={exercise}
           status={status}
           initialAnswer={draft?.content ?? (exercise.responseFormat === "code" ? exercise.starterCode : "")}
+          restoredDraftUpdatedAt={draft?.updatedAt ?? null}
           lessonHref={lesson ? `/lesson/${lesson.slug}` : "/roadmap"}
           nextLessonHref={nextLesson ? `/lesson/${nextLesson.slug}` : null}
         />

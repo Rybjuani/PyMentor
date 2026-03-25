@@ -139,6 +139,7 @@ export default async function LessonPage({
             <PythonPlayground
               config={lesson.playground}
               initialCode={lessonDraft?.content ?? lesson.playground.starterCode}
+              restoredDraftUpdatedAt={lessonDraft?.updatedAt ?? null}
               draftScope="lesson"
               draftSlug={lesson.slug}
             />

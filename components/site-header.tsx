@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Code2 } from "lucide-react";
+import { getServerAuthSession } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -9,7 +10,9 @@ const navItems = [
   { href: "/dashboard", label: "App preview" }
 ];
 
-export function SiteHeader() {
+export async function SiteHeader() {
+  const session = await getServerAuthSession();
+
   return (
     <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
       <Link href="/" className="flex items-center gap-3 text-white">
@@ -33,10 +36,16 @@ export function SiteHeader() {
       </nav>
 
       <div className="flex items-center gap-3">
-        <Button href="/login" variant="ghost" className="hidden sm:inline-flex">
-          Log in
-        </Button>
-        <Button href="/signup">Start learning</Button>
+        {session?.user?.id ? (
+          <Button href="/dashboard">Open dashboard</Button>
+        ) : (
+          <>
+            <Button href="/login" variant="ghost" className="hidden sm:inline-flex">
+              Log in
+            </Button>
+            <Button href="/signup">Start learning</Button>
+          </>
+        )}
       </div>
     </header>
   );

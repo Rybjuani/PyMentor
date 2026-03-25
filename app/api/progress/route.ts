@@ -1,6 +1,6 @@
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { PROGRESS_COOKIE_NAME, getProgressFromValue, serializeProgress, updateExerciseProgress, updateLessonProgress } from "@/lib/progress";
+import { getServerAuthSession } from "@/lib/auth";
+import { saveProgress } from "@/lib/user-progress";
 import { ProgressStatus } from "@/types";
 
 interface ProgressRequestBody {
@@ -10,6 +10,12 @@ interface ProgressRequestBody {
 }
 
 export async function POST(request: Request) {
+  const session = await getServerAuthSession();
+
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+  }
+
   let body: ProgressRequestBody;
 
   try {
@@ -22,22 +28,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Missing progress fields." }, { status: 400 });
   }
 
-  const cookieStore = cookies();
-  const current = getProgressFromValue(cookieStore.get(PROGRESS_COOKIE_NAME)?.value);
-  const next =
-    body.entityType === "lesson"
-      ? updateLessonProgress(current, body.slug, body.status)
-      : updateExerciseProgress(current, body.slug, body.status);
-
-  const response = NextResponse.json({ ok: true });
-
-  response.cookies.set(PROGRESS_COOKIE_NAME, serializeProgress(next), {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 180
+  await saveProgress({
+    userId: session.user.id,
+    entityType: body.entityType,
+    slug: body.slug,
+    status: body.status
   });
 
-  return response;
+  return NextResponse.json({ ok: true });
 }

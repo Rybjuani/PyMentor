@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen, CheckCircle2, Compass, NotebookPen } from "lucide-react";
 import { notFound } from "next/navigation";
+import { requireUser } from "@/lib/auth";
 import { AppShell } from "@/components/app-shell";
 import { CodePanel } from "@/components/code-panel";
 import { MentorWidget } from "@/components/mentor-widget";
 import { ProgressAction } from "@/components/progress-action";
+import { SignOutButton } from "@/components/sign-out-button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import {
@@ -14,22 +16,23 @@ import {
   getLessonStatus,
   getModuleProgress,
   getNextLesson,
-  getPreviousLesson,
-  getProgressForRequest
+  getPreviousLesson
 } from "@/lib/course";
+import { getProgressForUser } from "@/lib/user-progress";
 
-export default function LessonPage({
+export default async function LessonPage({
   params
 }: {
   params: { slug: string };
 }) {
+  const user = await requireUser();
   const lesson = getLessonBySlug(params.slug);
 
   if (!lesson) {
     notFound();
   }
 
-  const progress = getProgressForRequest();
+  const progress = await getProgressForUser(user.id);
   const lessonStatus = getLessonStatus(progress, lesson.slug);
   const moduleProgress = getModuleProgress(progress, lesson.moduleSlug ?? "");
   const position = getLessonPosition(lesson);
@@ -38,7 +41,12 @@ export default function LessonPage({
   const exercise = getExerciseByLessonSlug(lesson.slug);
 
   return (
-    <AppShell title={lesson.title} description={lesson.summary}>
+    <AppShell
+      title={lesson.title}
+      description={lesson.summary}
+      userName={user.name}
+      actions={<SignOutButton />}
+    >
       <section className="grid gap-5 xl:grid-cols-[1fr_360px]">
         <div className="space-y-5">
           <Card className="rounded-[30px] bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(248,251,255,1))]">
@@ -167,7 +175,7 @@ export default function LessonPage({
           <Card className="rounded-[30px]">
             <h2 className="text-xl font-bold text-slate-900">Completion</h2>
             <p className="mt-3 text-sm leading-7 text-slate-600">
-              Marking a lesson complete updates your roadmap, dashboard, and continue-learning flow.
+              Marking a lesson complete updates your roadmap, dashboard, and continue-learning flow for this account.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               {lessonStatus === "not_started" ? (

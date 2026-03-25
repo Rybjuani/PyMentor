@@ -1,7 +1,5 @@
-import { cookies } from "next/headers";
 import { courseExercises, courseLessons, courseModules } from "@/lib/course-content";
 import { CourseProgress, ExerciseData, LessonData, ModuleProgressSummary, ProgressStatus } from "@/types";
-import { getProgressFromValue } from "@/lib/progress";
 
 export function getAllModules() {
   return [...courseModules].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
@@ -69,11 +67,6 @@ export function getLessonPosition(lesson: LessonData) {
     current: index + 1,
     total: lessons.length
   };
-}
-
-export function getProgressForRequest() {
-  const cookieStore = cookies();
-  return getProgressFromValue(cookieStore.get("pymentor-progress")?.value);
 }
 
 export function getLessonStatus(progress: CourseProgress, lessonSlug: string): ProgressStatus {

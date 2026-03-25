@@ -7,13 +7,16 @@ PyMentor is a production-oriented MVP foundation for a beginner-safe Python lear
 - Next.js App Router
 - TypeScript
 - Tailwind CSS
-- Mock data + reusable components
-- Groq-ready API route scaffold
+- NextAuth credentials auth
+- Prisma + PostgreSQL-ready schema
+- File-based course content + user-backed progress
+- Groq-powered mentor API
 
 ## Run locally
 
 ```bash
 npm install
+npm run prisma:generate
 npm run dev
 ```
 
@@ -23,6 +26,15 @@ Create `.env.local` with:
 
 ```bash
 GROQ_API_KEY=your_key_here
+DATABASE_URL=postgresql://...
+NEXTAUTH_SECRET=your_secret_here
+NEXTAUTH_URL=http://localhost:3000
 ```
 
-The mentor route currently returns placeholder responses until real Groq integration is wired in.
+## Database
+
+Apply the included Prisma migration with:
+
+```bash
+npm run prisma:migrate
+```

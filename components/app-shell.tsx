@@ -20,10 +20,14 @@ const items = [
 export function AppShell({
   title,
   description,
+  userName,
+  actions,
   children
 }: {
   title: string;
   description: string;
+  userName?: string | null;
+  actions?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
@@ -97,9 +101,16 @@ export function AppShell({
 
         <main className="space-y-6 rounded-[36px] bg-white/70 p-5 shadow-soft ring-1 ring-white/70 lg:p-8">
           <header className="rounded-[32px] bg-[radial-gradient(circle_at_top_left,rgba(126,182,255,0.22),transparent_28%),linear-gradient(135deg,#081120_0%,#12213c_55%,#1f5dc7_100%)] px-6 py-8 text-white">
-            <p className="text-sm font-semibold text-brand-100">Beginner-safe learning experience</p>
-            <h1 className="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight lg:text-4xl">{title}</h1>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-200">{description}</p>
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold text-brand-100">
+                  {userName ? `Signed in as ${userName}` : "Beginner-safe learning experience"}
+                </p>
+                <h1 className="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight lg:text-4xl">{title}</h1>
+                <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-200">{description}</p>
+              </div>
+              {actions ? <div>{actions}</div> : null}
+            </div>
           </header>
           {children}
         </main>

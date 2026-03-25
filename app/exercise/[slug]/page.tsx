@@ -1,21 +1,25 @@
 import { notFound } from "next/navigation";
+import { requireUser } from "@/lib/auth";
 import { AppShell } from "@/components/app-shell";
 import { ExerciseWorkspace } from "@/components/exercise-workspace";
 import { MentorWidget } from "@/components/mentor-widget";
-import { getExerciseBySlug, getExerciseStatus, getLessonBySlug, getNextLesson, getProgressForRequest } from "@/lib/course";
+import { SignOutButton } from "@/components/sign-out-button";
+import { getExerciseBySlug, getExerciseStatus, getLessonBySlug, getNextLesson } from "@/lib/course";
+import { getProgressForUser } from "@/lib/user-progress";
 
-export default function ExercisePage({
+export default async function ExercisePage({
   params
 }: {
   params: { slug: string };
 }) {
+  const user = await requireUser();
   const exercise = getExerciseBySlug(params.slug);
 
   if (!exercise) {
     notFound();
   }
 
-  const progress = getProgressForRequest();
+  const progress = await getProgressForUser(user.id);
   const status = getExerciseStatus(progress, exercise.slug);
   const lesson = getLessonBySlug(exercise.lessonSlug);
   const nextLesson = lesson ? getNextLesson(lesson.slug) : null;
@@ -23,7 +27,9 @@ export default function ExercisePage({
   return (
     <AppShell
       title={`Exercise: ${exercise.title}`}
-      description="Exercises are now part of the product progression flow, so completing them supports a more believable learning path."
+      description="Exercises are now part of the product progression flow, and their completion is tied to your account."
+      userName={user.name}
+      actions={<SignOutButton />}
     >
       <section className="grid gap-5 xl:grid-cols-[1fr_360px]">
         <ExerciseWorkspace

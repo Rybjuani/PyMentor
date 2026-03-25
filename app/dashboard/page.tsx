@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { ArrowRight, CalendarCheck2, Flame, Sparkles, Target, Trophy } from "lucide-react";
+import { requireUser } from "@/lib/auth";
 import { AppShell } from "@/components/app-shell";
 import { AchievementChip } from "@/components/achievement-chip";
+import { SignOutButton } from "@/components/sign-out-button";
 import { Card } from "@/components/ui/card";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import {
@@ -9,13 +11,14 @@ import {
   getCurrentLearningFocus,
   getModuleBySlug,
   getModuleProgress,
-  getOverallLessonProgress,
-  getProgressForRequest
+  getOverallLessonProgress
 } from "@/lib/course";
 import { achievements } from "@/lib/mock-data";
+import { getProgressForUser } from "@/lib/user-progress";
 
-export default function DashboardPage() {
-  const progress = getProgressForRequest();
+export default async function DashboardPage() {
+  const user = await requireUser();
+  const progress = await getProgressForUser(user.id);
   const overall = getOverallLessonProgress(progress);
   const currentFocus = getCurrentLearningFocus(progress);
   const currentModule =
@@ -41,8 +44,10 @@ export default function DashboardPage() {
 
   return (
     <AppShell
-      title="Welcome back, Avery"
-      description="Your roadmap now tracks real lesson and exercise progress. Keep moving one clear step at a time."
+      title={`Welcome back, ${user.name ?? "Learner"}`}
+      description="Your roadmap progress now belongs to your account, so your learning path follows you across sessions."
+      userName={user.name}
+      actions={<SignOutButton />}
     >
       <section className="grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
         <Card className="rounded-[30px] bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(248,251,255,1))]">
@@ -102,7 +107,7 @@ export default function DashboardPage() {
               <div>
                 <p className="text-sm text-slate-500">Achievements</p>
                 <p className="text-2xl font-extrabold text-slate-900">{achievements.length}</p>
-                <p className="mt-1 text-sm text-slate-500">Calm rewards for steady progress</p>
+                <p className="mt-1 text-sm text-slate-500">Progress now stays with your account</p>
               </div>
             </div>
           </Card>
@@ -170,7 +175,7 @@ export default function DashboardPage() {
               : "Complete the next lesson in your roadmap"}
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-600">
-            PyMentor now follows a real sequence. Lessons and exercises update your dashboard and roadmap when you mark them complete.
+            Your lesson and exercise completions are now saved to your account, so the continue-learning flow remains consistent.
           </p>
         </Card>
 

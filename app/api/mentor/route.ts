@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     body = (await request.json()) as MentorRequestBody;
   } catch {
     return NextResponse.json(
-      { error: "Invalid request body." },
+      { error: "El cuerpo de la solicitud no es válido." },
       { status: 400 }
     );
   }
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
 
   if (!message) {
     return NextResponse.json(
-      { error: "A message is required." },
+      { error: "Hace falta un mensaje." },
       { status: 400 }
     );
   }
@@ -128,7 +128,7 @@ export async function POST(request: Request) {
   } catch {
     const payload: MentorResponseBody = {
       reply:
-        "I had trouble reaching the mentor service just now. Try again in a moment, or ask for one small hint so we can keep moving.",
+        "Tuve un problema para conectarme con el mentor justo ahora. Intenta de nuevo en un momento o pide una pista pequeña para seguir avanzando.",
       provider: "fallback",
       mode,
       error: "request_failed"

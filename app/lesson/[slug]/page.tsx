@@ -65,29 +65,29 @@ export default async function LessonPage({
               <Badge tone="success">{lesson.difficulty}</Badge>
               <Badge tone={lessonStatus === "completed" ? "success" : lessonStatus === "in_progress" ? "brand" : "neutral"}>
                 {lessonStatus === "completed"
-                  ? "Completed"
+                  ? "Completada"
                   : lessonStatus === "in_progress"
-                    ? "In progress"
-                    : "Not started"}
+                    ? "En progreso"
+                    : "Sin empezar"}
               </Badge>
             </div>
             <div className="mt-6 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
               <div className="rounded-[24px] border border-slate-800 bg-slate-950/70 p-5">
                 <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
                   <Compass className="h-4 w-4 text-brand-300" />
-                  Lesson position
+                  Posición de la lección
                 </div>
                 <p className="mt-3 text-sm leading-7 text-slate-300">
-                  Lesson {position.current} of {position.total} in {lesson.module}
+                  Lección {position.current} de {position.total} en {lesson.module}
                 </p>
                 <p className="mt-2 text-sm leading-7 text-slate-400">
-                  Module progress: {moduleProgress.completedLessons} of {moduleProgress.totalLessons} lessons complete
+                  Progreso del módulo: {moduleProgress.completedLessons} de {moduleProgress.totalLessons} lecciones completas
                 </p>
               </div>
               <div className="rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-5">
                 <div className="flex items-center gap-2 text-sm font-semibold text-brand-200">
                   <CheckCircle2 className="h-4 w-4" />
-                  Your goal today
+                  Tu objetivo de hoy
                 </div>
                 <p className="mt-3 text-sm leading-7 text-brand-100">{lesson.goal}</p>
               </div>
@@ -97,7 +97,7 @@ export default async function LessonPage({
           <Card className="rounded-[30px]">
             <div className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-brand-300" />
-              <h2 className="text-xl font-bold text-slate-50">Key ideas first</h2>
+              <h2 className="text-xl font-bold text-slate-50">Ideas clave primero</h2>
             </div>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {lesson.keyIdeas.map((idea) => (
@@ -112,12 +112,12 @@ export default async function LessonPage({
           <Card className="rounded-[30px]">
             <div className="flex items-center gap-2">
               <NotebookPen className="h-5 w-5 text-brand-300" />
-              <h2 className="text-xl font-bold text-slate-50">Explanation</h2>
+              <h2 className="text-xl font-bold text-slate-50">Explicación</h2>
             </div>
             <div className="mt-6 space-y-6">
               {lesson.explanation.map((section, index) => (
                 <div key={section.title} className="rounded-[24px] border border-slate-800 bg-slate-950/70 p-5">
-                  <p className="text-sm font-semibold text-brand-300">Part {index + 1}</p>
+                  <p className="text-sm font-semibold text-brand-300">Parte {index + 1}</p>
                   <h2 className="mt-2 text-xl font-bold text-slate-50">{section.title}</h2>
                   <p className="mt-3 text-sm leading-7 text-slate-400">{section.body}</p>
                 </div>
@@ -126,9 +126,9 @@ export default async function LessonPage({
           </Card>
 
           <Card className="rounded-[30px]">
-            <h2 className="text-xl font-bold text-slate-50">Python example</h2>
+            <h2 className="text-xl font-bold text-slate-50">Ejemplo en Python</h2>
             <p className="mt-3 text-sm leading-7 text-slate-400">
-              Read the code slowly. Ask yourself what question Python checks first and what output should appear.
+              Lee el código despacio. Pregúntate qué revisa Python primero y qué salida debería aparecer.
             </p>
             <div className="mt-4">
               <CodePanel code={lesson.example} />
@@ -146,10 +146,10 @@ export default async function LessonPage({
           ) : null}
 
           <Card className="rounded-[30px]">
-            <h2 className="text-xl font-bold text-slate-50">Practice</h2>
+            <h2 className="text-xl font-bold text-slate-50">Práctica</h2>
             <p className="mt-3 text-sm leading-7 text-slate-300">{lesson.practicePrompt}</p>
             <div className="mt-5 rounded-[24px] border border-slate-800 bg-slate-950/70 p-5">
-              <p className="text-sm font-semibold text-slate-100">A simple way to approach it</p>
+              <p className="text-sm font-semibold text-slate-100">Una forma simple de encararlo</p>
               <div className="mt-3 space-y-3">
                 {lesson.practiceChecklist.map((item) => (
                   <div key={item} className="flex items-start gap-3 text-sm text-slate-300">
@@ -164,13 +164,13 @@ export default async function LessonPage({
                 href={`/exercise/${exercise.slug}`}
                 className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-300"
               >
-                Open the linked exercise <ArrowRight className="h-4 w-4" />
+                Abrir el ejercicio vinculado <ArrowRight className="h-4 w-4" />
               </Link>
             ) : null}
           </Card>
 
           <Card className="rounded-[30px]">
-            <h2 className="text-xl font-bold text-slate-50">Common mistakes</h2>
+            <h2 className="text-xl font-bold text-slate-50">Errores comunes</h2>
             <div className="mt-4 space-y-3">
               {lesson.commonMistakes.map((mistake) => (
                 <div key={mistake} className="rounded-[20px] border border-slate-800 bg-slate-950/70 px-4 py-4 text-sm text-slate-300">
@@ -181,36 +181,36 @@ export default async function LessonPage({
           </Card>
 
           <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.08),transparent_30%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
-            <h2 className="text-xl font-bold text-slate-50">Fix the bug challenge</h2>
+            <h2 className="text-xl font-bold text-slate-50">Desafío: arregla el bug</h2>
             <p className="mt-3 text-sm leading-7 text-slate-300">{lesson.bugChallenge.prompt}</p>
             <div className="mt-4">
               <CodePanel code={lesson.bugChallenge.brokenCode} />
             </div>
             <p className="mt-4 rounded-[20px] border border-brand-400/15 bg-brand-500/10 px-4 py-4 text-sm text-brand-100">
-              Learning goal: {lesson.bugChallenge.expectedLearning}
+              Objetivo de aprendizaje: {lesson.bugChallenge.expectedLearning}
             </p>
           </Card>
 
           <Card className="rounded-[30px]">
-            <h2 className="text-xl font-bold text-slate-50">Completion</h2>
+            <h2 className="text-xl font-bold text-slate-50">Finalización</h2>
             <p className="mt-3 text-sm leading-7 text-slate-400">
-              Marking a lesson complete updates your roadmap, dashboard, and continue-learning flow for this account.
+              Marcar una lección como completada actualiza tu ruta, tu panel y el flujo para seguir aprendiendo en esta cuenta.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               {lessonStatus === "not_started" ? (
                 <ProgressAction entityType="lesson" slug={lesson.slug} status="in_progress" variant="secondary">
-                  Mark lesson in progress
+                  Marcar lección en progreso
                 </ProgressAction>
               ) : null}
               <ProgressAction entityType="lesson" slug={lesson.slug} status="completed">
-                Mark lesson complete
+                Marcar lección como completada
               </ProgressAction>
               {nextLesson ? (
                 <Link
                   href={`/lesson/${nextLesson.slug}`}
                   className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-100 ring-1 ring-slate-700"
                 >
-                  Next lesson
+                  Siguiente lección
                 </Link>
               ) : null}
             </div>
@@ -219,17 +219,17 @@ export default async function LessonPage({
           <div className="flex flex-wrap items-center justify-between gap-4 rounded-[24px] border border-slate-800 bg-slate-950/70 px-5 py-4 text-sm text-slate-400">
             {previousLesson ? (
               <Link href={`/lesson/${previousLesson.slug}`} className="font-semibold text-brand-300">
-                Previous: {previousLesson.title}
+                Anterior: {previousLesson.title}
               </Link>
             ) : (
-              <span>Start of roadmap</span>
+              <span>Inicio de la ruta</span>
             )}
             {nextLesson ? (
               <Link href={`/lesson/${nextLesson.slug}`} className="font-semibold text-brand-300">
-                Next: {nextLesson.title}
+                Siguiente: {nextLesson.title}
               </Link>
             ) : (
-              <span>Last lesson for now</span>
+              <span>Última lección por ahora</span>
             )}
           </div>
         </div>

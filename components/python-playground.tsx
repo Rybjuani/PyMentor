@@ -77,7 +77,7 @@ export function PythonPlayground({
         }
       } catch {
         if (!cancelled) {
-          setRuntimeError("Python could not load in this browser right now. Try refreshing the page.");
+          setRuntimeError("No se pudo cargar Python en este navegador ahora mismo. Prueba recargando la página.");
         }
       } finally {
         if (!cancelled) {
@@ -103,7 +103,7 @@ export function PythonPlayground({
       setError(result.error);
       onRunComplete?.(result);
     } catch {
-      setRuntimeError("Python could not run this code right now. Try refreshing and running again.");
+      setRuntimeError("No se pudo ejecutar este código en este momento. Prueba recargando la página y vuelve a intentarlo.");
     } finally {
       setRunning(false);
     }
@@ -121,32 +121,32 @@ export function PythonPlayground({
         <div>
           <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
             <TerminalSquare className="h-4 w-4 text-brand-300" />
-            {config.title ?? "Try it in Python"}
+            {config.title ?? "Pruébalo en Python"}
           </div>
           <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-400">{config.guidance}</p>
         </div>
         <div className="rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-1 text-xs font-semibold text-brand-100">
-          Browser-only runner
+          Ejecución en navegador
         </div>
       </div>
       {restoredDraft ? (
         <div className="mt-4 rounded-[20px] border border-brand-400/15 bg-brand-500/10 px-4 py-3 text-sm text-brand-100">
-          <p className="font-semibold">Restored your previous draft</p>
+          <p className="font-semibold">Recuperamos tu borrador anterior</p>
           <p className="mt-1 leading-6 text-brand-200">
-            You are continuing the code you last edited {formatDraftTime(restoredDraftUpdatedAt)}.
-            Reset will clear this saved draft and return to the starter code.
+            Estás retomando el código que editaste por última vez {formatDraftTime(restoredDraftUpdatedAt)}.
+            Reiniciar borrará este borrador guardado y volverá al código inicial.
           </p>
         </div>
       ) : null}
       {draftsEnabled ? (
         <p className="mt-3 text-xs font-medium text-slate-500">
           {saveState === "saving"
-            ? "Saving draft..."
+            ? "Guardando borrador..."
             : saveState === "saved"
-              ? "Draft saved"
+              ? "Borrador guardado"
               : saveState === "error"
-                ? "Draft could not be saved right now"
-                : "Drafts save automatically"}
+                ? "No se pudo guardar el borrador en este momento"
+                : "Los borradores se guardan automáticamente"}
         </p>
       ) : null}
 
@@ -160,26 +160,26 @@ export function PythonPlayground({
       <div className="mt-4 flex flex-wrap gap-3">
         <Button className="gap-2" onClick={() => void runCode()} disabled={!runtimeReady || running}>
           {running ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <PlayCircle className="h-4 w-4" />}
-          {running ? "Running..." : "Run code"}
+          {running ? "Ejecutando..." : "Ejecutar código"}
         </Button>
         <Button variant="secondary" className="gap-2" onClick={resetCode}>
           <RotateCcw className="h-4 w-4" />
-          Reset
+          Reiniciar
         </Button>
       </div>
 
       <div className="mt-5 rounded-[24px] border border-slate-800 bg-[linear-gradient(180deg,#050b14,#0b1620)] p-5 text-sm text-slate-100">
-        <p className="font-semibold text-white">Output</p>
+        <p className="font-semibold text-white">Salida</p>
         <div className="mt-3 min-h-[120px] whitespace-pre-wrap font-mono leading-7 text-slate-200">
           {loadingRuntime
-            ? "Loading the Python runner for your browser..."
+            ? "Cargando el entorno de Python para tu navegador..."
             : runtimeError
               ? runtimeError
               : error
-                ? `Python stopped here:\n${error}`
+                ? `Python se detuvo aquí:\n${error}`
                 : output.trim().length > 0
                   ? output
-                  : config.emptyOutputHint ?? "Your code ran. If nothing appears here yet, add a `print()` line to show a result."}
+                  : config.emptyOutputHint ?? "Tu código se ejecutó. Si todavía no aparece nada aquí, agrega una línea con `print()` para mostrar un resultado."}
         </div>
       </div>
     </Card>
@@ -188,7 +188,7 @@ export function PythonPlayground({
 
 function formatDraftTime(value: string | Date | null | undefined) {
   if (!value) {
-    return "earlier";
+    return "antes";
   }
 
   const date = value instanceof Date ? value : new Date(value);
@@ -196,20 +196,20 @@ function formatDraftTime(value: string | Date | null | undefined) {
   const diffMinutes = Math.round(diffMs / (1000 * 60));
 
   if (diffMinutes < 1) {
-    return "just now";
+    return "justo ahora";
   }
 
   if (diffMinutes < 60) {
-    return `${diffMinutes} min ago`;
+    return `hace ${diffMinutes} min`;
   }
 
   const diffHours = Math.round(diffMinutes / 60);
 
   if (diffHours < 24) {
-    return `${diffHours} hr ago`;
+    return `hace ${diffHours} h`;
   }
 
-  return new Intl.DateTimeFormat("en", {
+  return new Intl.DateTimeFormat("es-AR", {
     month: "short",
     day: "numeric",
     hour: "numeric",

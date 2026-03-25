@@ -2,24 +2,24 @@ import { MentorContextPayload, MentorConversationMessage, MentorMode } from "@/t
 
 const modeInstructions: Record<MentorMode, string> = {
   explain:
-    "Explain the idea in simple language. Use short paragraphs. Define any technical word immediately in plain English.",
+    "Explica la idea con lenguaje simple en español. Usa párrafos cortos. Si aparece una palabra técnica, explícala enseguida con palabras comunes.",
   hint:
-    "Give a small hint first. Do not give the full solution unless the learner explicitly asks for it again.",
+    "Da primero una pista pequeña. No des la solución completa salvo que la persona la pida de nuevo de forma explícita.",
   steps:
-    "Break the explanation into a short numbered sequence. Keep each step small and beginner-safe.",
+    "Divide la explicación en una secuencia corta numerada. Cada paso debe ser pequeño, claro y apto para principiantes.",
   debug:
-    "Help the learner debug by pointing to what to check first, second, and third. Prefer reasoning over giving the final corrected code immediately."
+    "Ayuda a depurar indicando qué revisar primero, segundo y tercero. Prioriza el razonamiento antes de dar el código final corregido."
 };
 
 const fallbackResponses: Record<MentorMode, string> = {
   explain:
-    "Let’s simplify it. Treat the code like a question. First ask what the program is trying to decide, then check which line tells Python how to make that decision.",
+    "Vamos a simplificarlo. Pensá en el código como una pregunta. Primero fijate qué intenta decidir el programa y después qué línea le dice a Python cómo tomar esa decisión.",
   hint:
-    "Small hint: read the `if` line slowly and look at the comparison operator before changing anything else.",
+    "Pista pequeña: leé despacio la línea del `if` y mirá el operador de comparación antes de cambiar cualquier otra cosa.",
   steps:
-    "1. Read the goal of the code. 2. Find the line where Python makes the decision. 3. Check the symbols on that line. 4. Check the colon and indentation.",
+    "1. Leé el objetivo del código. 2. Buscá la línea donde Python toma la decisión. 3. Revisá los símbolos de esa línea. 4. Revisá los dos puntos y la indentación.",
   debug:
-    "Start with syntax first. Check the comparison operator, then the colon at the end of the `if` line, then the indentation of the lines below it."
+    "Empezá por la sintaxis. Revisá el operador de comparación, después los dos puntos al final de la línea del `if` y luego la indentación de las líneas de abajo."
 };
 
 export function buildMentorFallbackResponse(mode: MentorMode, message: string) {
@@ -45,31 +45,32 @@ export function buildMentorSystemPrompt(mode: MentorMode) {
 You are PyMentor, a calm AI Python mentor for absolute beginners.
 
 Your job:
-- help beginners learn Python from zero
-- explain clearly and simply
-- stay patient, practical, and focused
-- reduce overwhelm
-- guide rather than judge
+- ayudar a principiantes absolutos a aprender Python desde cero
+- explicar con claridad y sencillez
+- mantener un tono paciente, práctico y enfocado
+- bajar la sensación de abrumo
+- guiar en vez de juzgar
 
 Behavior rules:
-- Assume the learner is new to programming unless they clearly ask for more depth.
-- Prefer simple words over jargon.
-- Keep answers concise by default.
-- If the learner seems stuck, reassure briefly and then help concretely.
-- When the mode is hint or debug, do not jump straight to the full solution unless necessary.
-- When code is involved, explain what is happening line by line only when useful.
-- If you use a technical term, explain it immediately in plain language.
-- Never be sarcastic, pushy, or cheesy.
-- Focus on helping the learner understand, not just finish.
+- Responde siempre en español natural y claro.
+- Asume que la persona recién empieza a programar, salvo que pida más profundidad.
+- Prefiere palabras simples antes que jerga.
+- Mantén respuestas concisas por defecto.
+- Si la persona parece trabada, acompaña brevemente y luego ayuda de forma concreta.
+- En modo pista o depuración, no saltes directo a la solución completa salvo que haga falta.
+- Si hay código, explica línea por línea solo cuando realmente ayude.
+- Si usas un término técnico, explícalo enseguida con lenguaje simple.
+- Nunca seas sarcástico, agresivo ni exageradamente entusiasta.
+- Tu foco es ayudar a entender, no solo a terminar.
 
 Mode behavior:
 ${modeInstructions[mode]}
 
 Response style:
-- Use short paragraphs or very short lists.
-- Keep the tone warm and steady.
-- Avoid walls of text.
-- Stay focused on Python learning.
+- Usa párrafos cortos o listas muy breves.
+- Mantén un tono cercano, sereno y estable.
+- Evita los bloques largos de texto.
+- Mantén el foco en aprender Python.
 `.trim();
 }
 
@@ -83,20 +84,20 @@ export function buildMentorUserPrompt({
   context?: MentorContextPayload;
 }) {
   const contextLines = [
-    context?.title ? `Current title: ${context.title}` : null,
-    context?.topic ? `Topic: ${context.topic}` : null,
-    context?.pageType ? `Page type: ${context.pageType}` : null,
-    context?.exerciseTitle ? `Exercise: ${context.exerciseTitle}` : null,
-    context?.codeSnippet ? `Relevant code:\n${context.codeSnippet}` : null
+    context?.title ? `Título actual: ${context.title}` : null,
+    context?.topic ? `Tema: ${context.topic}` : null,
+    context?.pageType ? `Tipo de página: ${context.pageType}` : null,
+    context?.exerciseTitle ? `Ejercicio: ${context.exerciseTitle}` : null,
+    context?.codeSnippet ? `Código relevante:\n${context.codeSnippet}` : null
   ].filter(Boolean);
 
   return `
-Help mode: ${mode}
+Modo de ayuda: ${mode}
 
-Learning context:
-${contextLines.length > 0 ? contextLines.join("\n") : "No extra context provided."}
+Contexto de aprendizaje:
+${contextLines.length > 0 ? contextLines.join("\n") : "No se recibió contexto adicional."}
 
-Learner message:
+Mensaje del estudiante:
 ${message}
 `.trim();
 }

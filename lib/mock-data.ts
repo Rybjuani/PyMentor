@@ -3,49 +3,49 @@ import { Achievement, MentorPrompt } from "@/types";
 export const mentorPrompts: MentorPrompt[] = [
   {
     mode: "explain",
-    label: "Explain this more simply",
-    prompt: "Explain this in simpler words for a complete beginner who is seeing it for the first time."
+    label: "Explícamelo más simple",
+    prompt: "Explícame esto con palabras más simples para alguien que recién está empezando y lo ve por primera vez."
   },
   {
     mode: "hint",
-    label: "Give me a hint",
-    prompt: "Give me a small hint without solving the whole exercise for me."
+    label: "Dame una pista",
+    prompt: "Dame una pista pequeña sin resolverme todo el ejercicio."
   },
   {
     mode: "steps",
-    label: "Show step by step",
-    prompt: "Walk me through this slowly, one step at a time, and do not skip beginner details."
+    label: "Muéstrame paso a paso",
+    prompt: "Guíame despacio, paso a paso, sin saltear detalles importantes para principiantes."
   },
   {
     mode: "debug",
-    label: "Help me debug",
-    prompt: "Help me debug this like a beginner: what should I check first, second, and third?"
+    label: "Ayúdame a depurar",
+    prompt: "Ayúdame a depurar esto como si recién empezara: ¿qué debería revisar primero, segundo y tercero?"
   }
 ];
 
 export const achievements: Achievement[] = [
   {
     id: "first-lesson",
-    title: "First lesson complete",
-    description: "Finished one lesson in your roadmap.",
+    title: "Primera lección completada",
+    description: "Terminaste una lección de tu ruta de aprendizaje.",
     state: "earned"
   },
   {
     id: "debugger",
-    title: "Bug fixer",
-    description: "Complete your first debugging exercise.",
+    title: "Arregla bugs",
+    description: "Completa tu primer ejercicio de depuración.",
     state: "next"
   },
   {
     id: "steady-progress",
-    title: "Steady progress",
-    description: "Finish every lesson in a module.",
+    title: "Progreso constante",
+    description: "Termina todas las lecciones de un módulo.",
     state: "locked"
   }
 ];
 
 export const communityPreview = [
-  "Guided study circles for beginners",
-  "Ask-for-help threads that keep lesson context attached",
-  "Celebrate first wins, first projects, and first bugs fixed"
+  "Círculos de estudio guiados para principiantes",
+  "Espacios para pedir ayuda sin perder el contexto de la lección",
+  "Celebrar primeras victorias, primeros proyectos y primeros bugs resueltos"
 ];

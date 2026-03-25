@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   try {
     body = (await request.json()) as SignupRequestBody;
   } catch {
-    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
+    return NextResponse.json({ error: "El cuerpo de la solicitud no es válido." }, { status: 400 });
   }
 
   const name = body.name?.trim();
@@ -23,11 +23,11 @@ export async function POST(request: Request) {
   const password = body.password?.trim();
 
   if (!name || !email || !password) {
-    return NextResponse.json({ error: "Name, email, and password are required." }, { status: 400 });
+    return NextResponse.json({ error: "Hace falta nombre, correo y contraseña." }, { status: 400 });
   }
 
   if (password.length < 8) {
-    return NextResponse.json({ error: "Password must be at least 8 characters." }, { status: 400 });
+    return NextResponse.json({ error: "La contraseña debe tener al menos 8 caracteres." }, { status: 400 });
   }
 
   const existingUser = await prisma.user.findUnique({
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
   });
 
   if (existingUser) {
-    return NextResponse.json({ error: "An account with this email already exists." }, { status: 409 });
+    return NextResponse.json({ error: "Ya existe una cuenta con este correo." }, { status: 409 });
   }
 
   const passwordHash = await hash(password, 10);
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
   await recordActivity({
     userId: user.id,
     type: "account_created",
-    description: "Created your PyMentor account and opened your Python roadmap."
+    description: "Creaste tu cuenta de PyMentor y abriste tu ruta de Python."
   });
 
   return NextResponse.json({ ok: true });

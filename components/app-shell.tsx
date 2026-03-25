@@ -11,10 +11,10 @@ import {
 import { cn } from "@/lib/utils";
 
 const items = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/roadmap", label: "Roadmap", icon: Route },
-  { href: "/lesson/python-conditionals-basics", label: "Lesson", icon: Sparkles },
-  { href: "/exercise/fix-the-conditional", label: "Exercise", icon: Bot }
+  { href: "/dashboard", label: "Panel", icon: LayoutDashboard },
+  { href: "/roadmap", label: "Ruta", icon: Route },
+  { href: "/lesson/python-conditionals-basics", label: "Lección", icon: Sparkles },
+  { href: "/exercise/fix-the-conditional", label: "Ejercicio", icon: Bot }
 ];
 
 export function AppShell({
@@ -40,7 +40,7 @@ export function AppShell({
             </div>
             <div>
               <div className="font-extrabold">PyMentor</div>
-              <div className="text-sm text-slate-400">Mission control for Python beginners</div>
+              <div className="text-sm text-slate-400">Centro de misión para aprender Python</div>
             </div>
           </Link>
 
@@ -68,18 +68,18 @@ export function AppShell({
                 <Target className="h-4 w-4" />
               </div>
               <div>
-                <p className="text-sm font-semibold">Current mission</p>
-                <p className="text-xs text-slate-300">One strong move at a time</p>
+                <p className="text-sm font-semibold">Misión actual</p>
+                <p className="text-xs text-slate-300">Un paso fuerte a la vez</p>
               </div>
             </div>
             <p className="mt-4 text-sm leading-6 text-slate-200">
-              Complete one focused lesson or exercise to keep your chain alive and unlock the next visible step.
+              Completa una lección o un ejercicio enfocado para mantener tu cadena activa y desbloquear el siguiente paso visible.
             </p>
             <Link
               href="/lesson/python-conditionals-basics"
               className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand-200"
             >
-              Resume mission <ArrowRight className="h-4 w-4" />
+              Retomar misión <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
@@ -89,12 +89,12 @@ export function AppShell({
                 <Flame className="h-4 w-4" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-slate-100">Momentum chain</p>
-                <p className="text-xs text-slate-400">Protect your rhythm</p>
+                <p className="text-sm font-semibold text-slate-100">Cadena de impulso</p>
+                <p className="text-xs text-slate-400">Cuida tu ritmo</p>
               </div>
             </div>
             <p className="mt-3 text-sm leading-6 text-slate-400">
-              Even ten focused minutes counts. This workspace rewards steady movement, not grinding.
+              Incluso diez minutos enfocados cuentan. Este espacio premia el avance constante, no el desgaste.
             </p>
           </div>
         </aside>
@@ -104,7 +104,7 @@ export function AppShell({
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-200">
-                  {userName ? `Operator ${userName}` : "Beginner-safe progression system"}
+                  {userName ? `Operador ${userName}` : "Sistema de progreso pensado para principiantes"}
                 </p>
                 <h1 className="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight lg:text-4xl">{title}</h1>
                 <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-300">{description}</p>

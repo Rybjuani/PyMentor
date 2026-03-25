@@ -35,8 +35,8 @@ export default async function ExercisePage({
 
   return (
     <AppShell
-      title={`Exercise: ${exercise.title}`}
-      description="Exercises are now part of the product progression flow, and their completion is tied to your account."
+      title={`Ejercicio: ${exercise.title}`}
+      description="Los ejercicios ya forman parte del flujo real de progreso del producto y su finalización queda vinculada a tu cuenta."
       userName={user.name}
       actions={<SignOutButton />}
     >

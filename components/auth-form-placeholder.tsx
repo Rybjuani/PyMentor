@@ -50,7 +50,7 @@ export function AuthFormPlaceholder({
         const signupData = (await signupResponse.json()) as { error?: string };
 
         if (!signupResponse.ok) {
-          setError(signupData.error ?? "Could not create your account.");
+          setError(signupData.error ?? "No se pudo crear tu cuenta.");
           return;
         }
       }
@@ -63,7 +63,7 @@ export function AuthFormPlaceholder({
       });
 
       if (result?.error) {
-        setError("That email or password did not match. Please try again.");
+        setError("Ese correo o contraseña no coincide. Inténtalo de nuevo.");
         return;
       }
 
@@ -77,7 +77,7 @@ export function AuthFormPlaceholder({
   return (
     <Card className="mx-auto w-full max-w-md rounded-[32px] border-brand-400/15 bg-[radial-gradient(circle_at_top,rgba(29,211,139,0.08),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] p-8">
       <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-300">
-        Access node
+        Acceso
       </p>
       <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-50">{title}</h1>
       <p className="mt-3 text-sm leading-7 text-slate-400">{subtitle}</p>
@@ -88,7 +88,7 @@ export function AuthFormPlaceholder({
             value={name}
             onChange={(event) => setName(event.target.value)}
             className="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-sm text-slate-100 outline-none focus:border-brand-400"
-            placeholder="Your name"
+            placeholder="Tu nombre"
             required
           />
         ) : null}
@@ -97,7 +97,7 @@ export function AuthFormPlaceholder({
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           className="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-sm text-slate-100 outline-none focus:border-brand-400"
-          placeholder="Email address"
+          placeholder="Correo electrónico"
           required
         />
         <input
@@ -105,13 +105,13 @@ export function AuthFormPlaceholder({
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           className="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-sm text-slate-100 outline-none focus:border-brand-400"
-          placeholder="Password"
+          placeholder="Contraseña"
           minLength={8}
           required
         />
         <Button className="w-full justify-center gap-2" type="submit">
           {loading ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
-          {mode === "signup" ? "Create account" : "Log in"}
+          {mode === "signup" ? "Crear cuenta" : "Entrar"}
         </Button>
       </form>
 
@@ -122,8 +122,8 @@ export function AuthFormPlaceholder({
       ) : (
         <div className="mt-6 rounded-2xl border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
           {mode === "signup"
-            ? "You will start with a quick onboarding and your first Python lesson already lined up."
-            : "Your roadmap progress, lesson completion, and exercise completion stay tied to this account."}
+            ? "Vas a empezar con una bienvenida breve y tu primera lección de Python ya preparada."
+            : "Tu progreso de la ruta, tus lecciones y tus ejercicios quedan vinculados a esta cuenta."}
         </div>
       )}
 

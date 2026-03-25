@@ -18,7 +18,7 @@ export async function POST(request: Request) {
   const session = await getServerAuthSession();
 
   if (!session?.user?.id) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 401 });
   }
 
   let body: ProgressRequestBody;
@@ -26,18 +26,18 @@ export async function POST(request: Request) {
   try {
     body = (await request.json()) as ProgressRequestBody;
   } catch {
-    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
+    return NextResponse.json({ error: "El cuerpo de la solicitud no es válido." }, { status: 400 });
   }
 
   if (!body.entityType || !body.slug || !body.status) {
-    return NextResponse.json({ error: "Missing progress fields." }, { status: 400 });
+    return NextResponse.json({ error: "Faltan campos de progreso." }, { status: 400 });
   }
 
   if (body.entityType === "exercise" && body.status === "completed") {
     const exercise = getExerciseBySlug(body.slug);
 
     if (!exercise) {
-      return NextResponse.json({ error: "Exercise not found." }, { status: 404 });
+      return NextResponse.json({ error: "No se encontró el ejercicio." }, { status: 404 });
     }
 
     const evaluation = evaluateExerciseAnswer(exercise, body.answer ?? "", body.execution);
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     if (!evaluation.canComplete) {
       return NextResponse.json(
         {
-          error: "This exercise is not ready to be marked complete yet.",
+          error: "Este ejercicio todavía no está listo para marcarse como completado.",
           evaluation
         },
         { status: 422 }
@@ -93,15 +93,15 @@ function getProgressDescription({
     return null;
   }
 
-  const label = entityType === "lesson" ? "lesson" : "exercise";
+  const label = entityType === "lesson" ? "lección" : "ejercicio";
 
   if (status === "completed") {
-    return `Completed ${label}: ${title}`;
+    return `Completaste ${label}: ${title}`;
   }
 
   if (status === "in_progress") {
-    return `Started ${label}: ${title}`;
+    return `Comenzaste ${label}: ${title}`;
   }
 
-  return `Reset ${label}: ${title}`;
+  return `Reiniciaste ${label}: ${title}`;
 }

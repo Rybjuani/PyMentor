@@ -143,15 +143,15 @@ function evaluateRuleBasedExercise(exercise: ExerciseData, answer: string): Exer
     hasEnoughContent:
       trimmedAnswer.length >= (evaluator.minLength ?? Math.min(8, exercise.starterCode.length)),
     passingScore: evaluator.passingScore ?? checks.length,
-    successSummary: "This answer looks solid for this learning step.",
+    successSummary: "Esta respuesta se ve sólida para este paso de aprendizaje.",
     successCoaching:
-      "You fixed the key issue without changing the goal of the exercise. That is the habit we want to build.",
-    partialSummary: "You are close. One or two important details still need attention.",
+      "Corregiste lo importante sin cambiar el objetivo del ejercicio. Ese es el hábito que queremos construir.",
+    partialSummary: "Vas bien. Todavía falta ajustar uno o dos detalles importantes.",
     partialCoaching:
-      "Keep the idea, then scan the lines slowly for syntax, punctuation, and the exact output the exercise expects.",
-    incompleteSummary: "The answer is still missing the main signals this exercise is looking for.",
+      "Mantén la idea principal y revisa las líneas despacio: sintaxis, puntuación y la salida exacta que espera el ejercicio.",
+    incompleteSummary: "Tu respuesta todavía no muestra las señales principales que busca este ejercicio.",
     incompleteCoaching:
-      "Start with the first instruction, make the smallest possible fix, then check again to see what changed."
+      "Empieza por la primera instrucción, haz el cambio más pequeño posible y vuelve a revisar qué cambió."
   });
 }
 
@@ -171,11 +171,11 @@ function evaluateExactAnswerExercise(exercise: ExerciseData, answer: string): Ex
   const checks: ExerciseEvaluationCheck[] = [
     {
       id: "expected-output",
-      label: "Matches the expected output in the right order",
+      label: "Coincide con la salida esperada en el orden correcto",
       passed: matches,
       required: true,
       feedbackWhenMissing:
-        "Read the program from top to bottom and write the printed lines in that same order."
+        "Lee el programa de arriba hacia abajo y escribe las líneas impresas en ese mismo orden."
     }
   ];
 
@@ -184,15 +184,15 @@ function evaluateExactAnswerExercise(exercise: ExerciseData, answer: string): Ex
     checks,
     hasEnoughContent: trimmedAnswer.length >= (evaluator.minLength ?? 3),
     passingScore: 1,
-    successSummary: "You captured the expected output correctly.",
+    successSummary: "Captaste correctamente la salida esperada.",
     successCoaching:
-      "This shows you are reading the program in sequence, which is one of the most important early Python habits.",
-    partialSummary: "Your answer has some useful content, but the final output still does not fully match.",
+      "Eso muestra que estás leyendo el programa en secuencia, que es uno de los hábitos más importantes al empezar con Python.",
+    partialSummary: "Tu respuesta tiene algo útil, pero la salida final todavía no coincide del todo.",
     partialCoaching:
-      "Compare each output line with the program again. A small order change is often the whole issue here.",
-    incompleteSummary: "Add the output you expect before checking this step.",
+      "Vuelve a comparar cada línea de salida con el programa. A veces el problema es solo un cambio pequeño de orden.",
+    incompleteSummary: "Agrega la salida que esperas antes de revisar este paso.",
     incompleteCoaching:
-      "Write one output line per line. That makes it easier to compare your thinking with what the program would show."
+      "Escribe una línea de salida por renglón. Eso facilita comparar tu idea con lo que mostraría el programa."
   });
 }
 
@@ -246,11 +246,11 @@ function evaluateOrderedConceptExercise(
 
     checks.push({
       id: "concept-order",
-      label: "Explains the ideas in a sensible order",
+      label: "Explica las ideas en un orden claro",
       passed: ordered,
       required: true,
       feedbackWhenMissing:
-        "Try explaining the steps in sequence instead of listing them in a mixed order."
+        "Intenta explicar los pasos en secuencia en vez de mezclarlos."
     });
   }
 
@@ -259,15 +259,15 @@ function evaluateOrderedConceptExercise(
     checks,
     hasEnoughContent: trimmedAnswer.length >= (evaluator.minLength ?? 18),
     passingScore: evaluator.passingScore ?? checks.length,
-    successSummary: "Your explanation covers the main idea clearly.",
+    successSummary: "Tu explicación cubre la idea principal con claridad.",
     successCoaching:
-      "You named the key concepts in a way a beginner can follow. That is strong reasoning practice, not just memorizing syntax.",
-    partialSummary: "Your explanation has the right direction, but it is still missing one idea the lesson is aiming at.",
+      "Nombraste los conceptos clave de una forma que un principiante puede seguir. Eso es buen razonamiento, no solo memoria de sintaxis.",
+    partialSummary: "Tu explicación va en la dirección correcta, pero todavía le falta una idea que esta lección quiere reforzar.",
     partialCoaching:
-      "Use the missing check as a guide and add one short sentence for that idea instead of rewriting everything.",
-    incompleteSummary: "Add a short explanation before checking this step.",
+      "Usa la comprobación faltante como guía y agrega una oración corta sobre esa idea en vez de reescribir todo.",
+    incompleteSummary: "Agrega una explicación breve antes de revisar este paso.",
     incompleteCoaching:
-      "Keep it simple. A few clear lines that mention the key ideas are enough for this exercise."
+      "Mantenlo simple. Unas pocas líneas claras que nombren las ideas clave alcanzan para este ejercicio."
   });
 }
 
@@ -327,7 +327,7 @@ function evaluateStructureCheckExercise(
       passed: isOrdered,
       required: true,
       feedbackWhenMissing:
-        "Keep the `if` branch first, then the `else` branch after it so the code reads like one clear decision."
+        "Mantén primero la rama `if` y después la rama `else` para que el código se lea como una sola decisión clara."
     });
   }
 
@@ -336,15 +336,15 @@ function evaluateStructureCheckExercise(
     checks,
     hasEnoughContent: trimmedAnswer.length >= (evaluator.minLength ?? 18),
     passingScore: evaluator.passingScore ?? checks.length,
-    successSummary: "The structure of this answer looks correct for the lesson goal.",
+    successSummary: "La estructura de esta respuesta se ve correcta para el objetivo de la lección.",
     successCoaching:
-      "You repaired both the syntax and the shape of the conditional, which is exactly what this exercise is teaching.",
-    partialSummary: "The structure is improving, but one important piece is still out of place.",
+      "Corregiste tanto la sintaxis como la forma del código, que es exactamente lo que este ejercicio quiere enseñar.",
+    partialSummary: "La estructura está mejorando, pero una parte importante todavía está fuera de lugar.",
     partialCoaching:
-      "Focus on the missing structure check instead of rewriting the whole answer. One careful fix is usually enough here.",
-    incompleteSummary: "The answer is still too incomplete to confirm the structure.",
+      "Concéntrate en la comprobación estructural que falta en vez de reescribir toda la respuesta. Un ajuste cuidadoso suele alcanzar.",
+    incompleteSummary: "La respuesta todavía está demasiado incompleta para confirmar la estructura.",
     incompleteCoaching:
-      "Start by fixing the condition line, then make sure each branch is still present and readable."
+      "Empieza por corregir la línea de la condición y luego asegúrate de que cada bloque siga presente y legible."
   });
 }
 
@@ -369,7 +369,7 @@ export function evaluateExerciseAnswer(
       baseResult = evaluateStructureCheckExercise(exercise, answer);
       break;
     default:
-      throw new Error("Unsupported exercise evaluator.");
+      throw new Error("Tipo de evaluador no compatible.");
   }
 
   return applyExecutionValidation(exercise, baseResult, execution);
@@ -408,37 +408,37 @@ function applyExecutionValidation(
   if (config.requireRunBeforeCheck || config.requireRunBeforeComplete || acceptableOutputs.length > 0) {
     extraChecks.push({
       id: "browser-run",
-      label: "Runs the code in the browser playground",
+      label: "Ejecuta el código en el playground del navegador",
       passed: didRun,
       required: true,
       feedbackWhenMissing:
-        "Run your code in the playground first so PyMentor can check what it actually prints."
+        "Ejecuta primero tu código en el playground para que PyMentor pueda revisar lo que realmente imprime."
     });
   }
 
   if (config.requireNoRuntimeError) {
     extraChecks.push({
       id: "no-runtime-error",
-      label: "Runs without a Python error",
+      label: "Se ejecuta sin un error de Python",
       passed: didRun && runtimeError.length === 0,
       required: true,
       feedbackWhenMissing:
         runtimeError.length > 0
-          ? `Python still stops with an error: ${runtimeError}`
-          : "Run the code first so PyMentor can confirm it finishes cleanly."
+          ? `Python todavía se detiene con un error: ${runtimeError}`
+          : "Ejecuta primero el código para que PyMentor pueda confirmar que termina sin problemas."
     });
   }
 
   if (acceptableOutputs.length > 0) {
     extraChecks.push({
       id: "expected-runtime-output",
-      label: "Prints the expected output",
+      label: "Imprime la salida esperada",
       passed: didRun && runtimeError.length === 0 && outputMatches,
       required: true,
       feedbackWhenMissing:
         runtimeError.length > 0
-          ? "Fix the Python error first, then run the code again to compare the output."
-          : "The output still does not match the result this exercise expects."
+          ? "Corrige primero el error de Python y luego vuelve a ejecutar el código para comparar la salida."
+          : "La salida todavía no coincide con el resultado que espera este ejercicio."
     });
   }
 
@@ -454,9 +454,9 @@ function applyExecutionValidation(
     return {
       ...baseResult,
       state: "incomplete",
-      summary: "Run your code once before PyMentor can check this exercise properly.",
+      summary: "Ejecuta tu código una vez antes de que PyMentor pueda revisar bien este ejercicio.",
       coaching:
-        "For this step, the platform uses the browser output as part of the review. Run the code, look at the output, then check again.",
+        "En este paso, la plataforma usa la salida del navegador como parte de la revisión. Ejecuta el código, mira la salida y luego vuelve a revisar.",
       matchedRules,
       totalRules,
       canComplete: false,
@@ -468,9 +468,9 @@ function applyExecutionValidation(
     return {
       ...baseResult,
       state: "partial",
-      summary: "Your code is close, but Python is still stopping with an error.",
+      summary: "Tu código está cerca, pero Python todavía se detiene con un error.",
       coaching:
-        "Use the runtime error as a clue, fix one line at a time, then run the code again before checking completion.",
+        "Usa el error como una pista, corrige una línea por vez y luego vuelve a ejecutar el código antes de revisar la finalización.",
       matchedRules,
       totalRules,
       canComplete: false,
@@ -482,9 +482,9 @@ function applyExecutionValidation(
     return {
       ...baseResult,
       state: "partial",
-      summary: "The written answer looks good, but the browser run still needs one more fix.",
+      summary: "La respuesta escrita se ve bien, pero la ejecución en el navegador todavía necesita un ajuste más.",
       coaching:
-        "Look at the missing output-related check, adjust the code, and run it again so the result matches what the lesson is teaching.",
+        "Mira la comprobación de salida que falta, ajusta el código y vuelve a ejecutarlo para que el resultado coincida con lo que enseña la lección.",
       matchedRules,
       totalRules,
       canComplete,

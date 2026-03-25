@@ -11,17 +11,17 @@ import { Button } from "@/components/ui/button";
 
 const feedbackMeta = {
   incomplete: {
-    title: "You are still shaping the answer",
+    title: "Todavía estás armando la respuesta",
     tone: "border-amber-400/20 bg-amber-500/10 text-amber-100",
     icon: LoaderCircle
   },
   partial: {
-    title: "The main idea is there, but one detail still needs work",
+    title: "La idea principal está, pero todavía hay un detalle por ajustar",
     tone: "border-rose-400/20 bg-rose-500/10 text-rose-100",
     icon: CircleAlert
   },
   correct: {
-    title: "This looks ready to count as completed",
+    title: "Esto ya parece listo para contar como completado",
     tone: "border-emerald-400/20 bg-emerald-500/10 text-emerald-100",
     icon: CheckCircle2
   }
@@ -63,7 +63,7 @@ export function ExerciseWorkspace({
         state: "incomplete" as const,
         summary: "Check your answer to see how close it is to the goal of this exercise.",
         coaching:
-          "The feedback panel will point out the parts that already look strong and the next detail to fix.",
+          "El panel de feedback te va a mostrar qué partes ya están bien y cuál es el siguiente detalle a corregir.",
         evaluatorType: exercise.evaluator.type,
         matchedRules: 0,
         totalRules:
@@ -87,7 +87,7 @@ export function ExerciseWorkspace({
           ...latestEvaluation,
           state: "correct" as const,
           summary: "This exercise is already completed in your roadmap.",
-          coaching: "You can still practice here, review the lesson, or continue to the next step."
+          coaching: "Igual puedes seguir practicando aquí, revisar la lección o continuar con el siguiente paso."
         }
       : latestEvaluation;
   const feedbackState = displayEvaluation.state;
@@ -119,7 +119,7 @@ export function ExerciseWorkspace({
         | null;
 
       if (!response.ok) {
-        setRequestError(payload && "error" in payload ? payload.error ?? "Could not evaluate this answer." : "Could not evaluate this answer.");
+        setRequestError(payload && "error" in payload ? payload.error ?? "No se pudo evaluar esta respuesta." : "No se pudo evaluar esta respuesta.");
         return;
       }
 
@@ -147,7 +147,7 @@ export function ExerciseWorkspace({
       <Card className="rounded-[30px]">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Exercise</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Ejercicio</p>
             <h2 className="mt-2 text-2xl font-bold text-slate-50">{exercise.title}</h2>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-400">{exercise.summary}</p>
           </div>
@@ -158,13 +158,13 @@ export function ExerciseWorkspace({
 
         <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_0.9fr]">
           <div className="rounded-[24px] border border-slate-800 bg-slate-950/70 p-5">
-            <p className="text-sm font-semibold text-slate-100">Your task</p>
+            <p className="text-sm font-semibold text-slate-100">Tu tarea</p>
             <p className="mt-3 text-sm leading-7 text-slate-400">{exercise.prompt}</p>
           </div>
           <div className="rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-5 text-brand-100">
-            <p className="text-sm font-semibold text-brand-200">Completion standard</p>
+            <p className="text-sm font-semibold text-brand-200">Criterio de finalización</p>
             <p className="mt-3 text-sm leading-7">
-              This step only counts as complete when the answer shows the key signals the lesson is teaching.
+              Este paso solo cuenta como completado cuando la respuesta muestra las señales clave que enseña la lección.
             </p>
           </div>
         </div>
@@ -173,9 +173,9 @@ export function ExerciseWorkspace({
       <div className="grid gap-5 xl:grid-cols-[1fr_0.9fr]">
         <Card className="rounded-[30px]">
           <div className="flex items-center justify-between gap-3">
-            <h2 className="text-xl font-bold text-slate-50">Starter code</h2>
+            <h2 className="text-xl font-bold text-slate-50">Código inicial</h2>
             <span className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-slate-300 ring-1 ring-slate-700">
-              {exercise.exerciseType === "bug_fix" ? "Bug-fix practice" : "Practice step"}
+              {exercise.exerciseType === "bug_fix" ? "Práctica de depuración" : "Paso de práctica"}
             </span>
           </div>
           <div className="mt-4">
@@ -184,7 +184,7 @@ export function ExerciseWorkspace({
         </Card>
 
         <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.08),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">How to approach it</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Cómo encararlo</p>
           <div className="mt-4 space-y-3">
             {exercise.instructions.map((item) => (
               <div
@@ -197,7 +197,7 @@ export function ExerciseWorkspace({
           </div>
 
           <div className="mt-5 rounded-[24px] border border-slate-800 bg-slate-950 p-4 text-sm text-slate-200">
-            <p className="font-semibold text-white">Helpful hints</p>
+            <p className="font-semibold text-white">Pistas útiles</p>
             <div className="mt-3 space-y-2">
               {exercise.hints.map((hint) => (
                 <div key={hint} className="flex items-start gap-3">
@@ -231,20 +231,20 @@ export function ExerciseWorkspace({
             <p className="mt-2 text-sm leading-6 text-slate-400">
               {exercise.responseFormat === "code"
                 ? exercise.executionValidation?.requireRunBeforeCheck
-                  ? "Edit the code, run it in the playground, then check your answer so PyMentor can review the real output."
-                  : "Edit the code carefully, then check your answer to get exercise-specific feedback."
-              : "Write a short answer, then check it to see what still needs attention."}
+                  ? "Edita el código, ejecútalo en el playground y luego revisa tu respuesta para que PyMentor vea la salida real."
+                  : "Edita el código con cuidado y luego revisa tu respuesta para recibir feedback específico del ejercicio."
+              : "Escribe una respuesta corta y luego revísala para ver qué todavía necesita atención."}
             </p>
             {restoredDraftUpdatedAt ? (
               <p className="mt-2 text-xs font-medium text-brand-300">
-                Restored your saved work so you can keep going from where you left off.
+                Recuperamos tu trabajo guardado para que puedas seguir desde donde lo dejaste.
               </p>
             ) : null}
           </div>
           <div className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-slate-300 ring-1 ring-slate-700">
             {hasCheckedAnswer
               ? `${displayEvaluation.matchedRules} of ${displayEvaluation.totalRules} learning checks matched`
-              : "Check your answer for guided feedback"}
+              : "Revisa tu respuesta para recibir feedback guiado"}
           </div>
         </div>
 
@@ -259,12 +259,12 @@ export function ExerciseWorkspace({
         <div className="mt-4 flex flex-wrap gap-3">
           {status === "not_started" ? (
             <ProgressAction entityType="exercise" slug={exercise.slug} status="in_progress" variant="secondary">
-              Mark exercise in progress
+              Marcar ejercicio en progreso
             </ProgressAction>
           ) : null}
           <Button variant="secondary" className="gap-2" onClick={() => void checkAnswer()} disabled={checkingAnswer}>
             {checkingAnswer ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
-            Check my answer
+            Revisar mi respuesta
           </Button>
           <ProgressAction
             entityType="exercise"
@@ -274,21 +274,21 @@ export function ExerciseWorkspace({
             requestBody={{ answer, execution }}
             onError={setRequestError}
           >
-            Mark exercise complete
+            Marcar ejercicio como completado
           </ProgressAction>
           <a
             href={lessonHref}
             className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-100 ring-1 ring-slate-700"
           >
-            Review lesson
+            Revisar lección
           </a>
         </div>
 
         {!canComplete ? (
           <p className="mt-4 text-sm leading-6 text-slate-500">
             {exercise.executionValidation?.requireRunBeforeComplete
-              ? "Run the code and complete the check first. This exercise uses the browser output as part of completion."
-              : "Complete the check first. The exercise only unlocks completion after a reviewed answer shows the key learning checks."}
+              ? "Ejecuta el código y completa la revisión primero. Este ejercicio usa la salida del navegador como parte de la finalización."
+              : "Completa la revisión primero. El ejercicio solo se puede completar cuando una respuesta revisada muestra las comprobaciones clave de aprendizaje."}
           </p>
         ) : null}
         {requestError ? (
@@ -331,32 +331,32 @@ export function ExerciseWorkspace({
                   <p className="font-semibold text-slate-50">{check.label}</p>
                 </div>
                 <p className="mt-2 leading-6">
-                  {check.passed ? "This part looks good." : check.feedbackWhenMissing}
+                  {check.passed ? "Esta parte se ve bien." : check.feedbackWhenMissing}
                 </p>
               </div>
             ))}
           </div>
         ) : (
           <div className="mt-5 rounded-[22px] bg-black/10 px-4 py-4 text-sm text-slate-300">
-            Run the answer check to see exercise-specific feedback from the server.
+            Ejecuta la revisión de la respuesta para ver feedback específico desde el servidor.
           </div>
         )}
 
         <div className="mt-5 rounded-[24px] border border-white/10 bg-black/10 p-4 text-sm text-slate-300">
           <div className="flex items-center gap-2 font-semibold text-slate-50">
             <Sparkles className="h-4 w-4 text-brand-300" />
-            Next move
+            Siguiente movimiento
           </div>
           <p className="mt-2 leading-6">
             {status === "completed"
-              ? "This exercise is already marked complete. You can revisit the lesson or move on when you are ready."
+              ? "Este ejercicio ya está marcado como completado. Puedes volver a la lección o seguir cuando quieras."
               : canComplete
-                ? "Your answer looks strong enough for this step. Mark it complete to update your roadmap."
-                : "Use the missing checks above as your guide, then run the answer check again."}
+                ? "Tu respuesta ya se ve suficientemente sólida para este paso. Márcala como completada para actualizar tu ruta."
+                : "Usa las comprobaciones que faltan como guía y luego vuelve a revisar la respuesta."}
           </p>
           {nextLessonHref ? (
             <a href={nextLessonHref} className="mt-4 inline-flex text-sm font-semibold text-brand-300">
-              Continue to the next lesson
+              Continuar a la siguiente lección
             </a>
           ) : null}
         </div>

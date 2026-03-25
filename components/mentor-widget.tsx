@@ -27,7 +27,7 @@ interface MentorWidgetProps {
 }
 
 const emptyState =
-  "I’m here when you need help. Pick a help mode or ask your own question, and I’ll keep the explanation calm, clear, and beginner-safe.";
+  "Estoy aquí cuando necesites ayuda. Elige un modo de apoyo o haz tu propia pregunta y te lo voy a explicar con calma, claridad y pensando en alguien que recién empieza.";
 
 export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
   const [input, setInput] = useState("");
@@ -39,23 +39,23 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
   const modeMeta = {
     explain: {
       icon: Sparkles,
-      title: "Explain simply",
-      description: "Turn a concept into plain language."
+      title: "Explicar simple",
+      description: "Convertir una idea en palabras fáciles."
     },
     hint: {
       icon: Lightbulb,
-      title: "Give me a hint",
-      description: "Nudge you forward without taking over."
+      title: "Dame una pista",
+      description: "Empujarte un poco sin quitarte el control."
     },
     steps: {
       icon: ListOrdered,
-      title: "Show step by step",
-      description: "Break the work into small, visible steps."
+      title: "Paso a paso",
+      description: "Dividir el trabajo en pasos pequeños y visibles."
     },
     debug: {
       icon: Bug,
-      title: "Help me debug",
-      description: "Check what to inspect first when code goes wrong."
+      title: "Ayúdame a depurar",
+      description: "Revisar qué mirar primero cuando el código falla."
     }
   } as const;
 
@@ -101,7 +101,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
       ]);
 
       if (data.provider === "fallback") {
-        setErrorMessage("The mentor answered with a fallback because the live model was unavailable for this request.");
+        setErrorMessage("El mentor respondió con una versión de respaldo porque el modelo en vivo no estuvo disponible para esta consulta.");
       }
     } catch {
       setMessages([
@@ -109,10 +109,10 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
         {
           role: "assistant",
           content:
-            "I had trouble answering just now. Try again, or switch to a smaller request like asking for one hint."
+            "Tuve un problema para responder justo ahora. Inténtalo otra vez o cambia a una consulta más pequeña, como pedir una sola pista."
         }
       ]);
-      setErrorMessage("The mentor service could not be reached.");
+      setErrorMessage("No se pudo conectar con el servicio del mentor.");
     } finally {
       setLoading(false);
     }
@@ -125,9 +125,9 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
           <Bot className="h-5 w-5" />
         </div>
         <div>
-          <h3 className="text-lg font-bold text-slate-50">AI Mentor</h3>
+          <h3 className="text-lg font-bold text-slate-50">Mentor IA</h3>
           <p className="mt-1 text-sm text-slate-400">
-            Calm guidance for {context.title.toLowerCase()} so the learner never feels alone.
+            Guía tranquila para {context.title.toLowerCase()} para que la persona nunca sienta que está sola.
           </p>
         </div>
       </div>
@@ -135,7 +135,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
       <div className="mt-5 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-4">
         <div className="flex items-center justify-between gap-3">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-300">
-            Current help mode
+            Modo de ayuda actual
           </p>
           <span className="rounded-full bg-slate-950 px-3 py-1 text-xs font-semibold text-brand-200 ring-1 ring-brand-400/15">
             {modeMeta[activeMode].title}
@@ -148,7 +148,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
 
       <div className="mt-5">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-          Quick help modes
+          Modos rápidos
         </p>
       </div>
 
@@ -184,7 +184,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
 
       <div className="mt-5 rounded-[24px] border border-slate-800 bg-slate-950/75 p-4">
         <label htmlFor="mentor-input" className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-          Ask your own question
+          Haz tu propia pregunta
         </label>
         <textarea
           id="mentor-input"
@@ -192,11 +192,11 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
           onChange={(event) => setInput(event.target.value)}
           rows={compact ? 3 : 4}
           className="mt-3 w-full resize-none rounded-2xl border border-slate-800 bg-slate-950 px-4 py-3 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-brand-400"
-          placeholder="Example: I do not understand why this condition is false yet. Can you guide me slowly?"
+          placeholder="Ejemplo: no entiendo por qué esta condición da falso. ¿Me lo puedes guiar despacio?"
         />
         <div className="mt-3 flex items-center justify-between gap-3">
           <p className="text-xs text-slate-500">
-            Live Groq replies with local page context in this session.
+            Respuestas de Groq en vivo con el contexto local de esta página.
           </p>
           <Button
             className="gap-2"
@@ -205,7 +205,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
             }}
           >
             {loading ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <CornerDownLeft className="h-4 w-4" />}
-            Ask mentor
+            Preguntar al mentor
           </Button>
         </div>
       </div>
@@ -213,12 +213,12 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
       <div className="mt-5 rounded-[24px] border border-slate-800 bg-slate-950/75 p-4">
         <div className="flex items-center justify-between gap-3">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-            Conversation
+            Conversación
           </p>
           {loading ? (
             <span className="inline-flex items-center gap-2 text-xs font-medium text-brand-300">
               <LoaderCircle className="h-3.5 w-3.5 animate-spin" />
-              Thinking
+              Pensando
             </span>
           ) : null}
         </div>
@@ -226,7 +226,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
         <div className="mt-4 space-y-3">
           {messages.length === 0 ? (
             <div className="rounded-[20px] border border-slate-800 bg-slate-900/80 px-4 py-4 text-sm leading-7 text-slate-300">
-              Start with a quick mode like <span className="font-semibold text-slate-100">Explain simply</span> or ask your own question below.
+              Empieza con un modo rápido como <span className="font-semibold text-slate-100">Explicar simple</span> o haz tu propia pregunta abajo.
             </div>
           ) : (
             messages.map((message, index) => (
@@ -239,7 +239,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
                 }
               >
                 <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                  {message.role === "assistant" ? "Mentor" : "You"}
+                  {message.role === "assistant" ? "Mentor" : "Tú"}
                 </p>
                 <p className="whitespace-pre-wrap">{message.content}</p>
               </div>
@@ -256,9 +256,9 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
       </div>
 
       <div className="mt-4 rounded-[24px] border border-slate-800 bg-slate-950 px-4 py-4 text-sm text-slate-200">
-        <p className="font-semibold text-white">Mentor promise</p>
+        <p className="font-semibold text-white">Promesa del mentor</p>
         <p className="mt-2 leading-6 text-slate-300">
-          Hints before solutions. Simpler language before jargon. Step-by-step help when confidence drops.
+          Pistas antes que soluciones. Lenguaje simple antes que jerga. Ayuda paso a paso cuando baja la confianza.
         </p>
       </div>
     </Card>

@@ -24,12 +24,12 @@ export function RoadmapModuleCard({
 }) {
   const statusLabel =
     progress.status === "completed"
-      ? "Completed"
+      ? "Completado"
       : progress.status === "in_progress"
-        ? "In progress"
+        ? "En progreso"
         : isLocked
-          ? "Locked"
-          : "Ready to start";
+          ? "Bloqueado"
+          : "Listo para empezar";
 
   return (
     <Card className="flex h-full flex-col justify-between rounded-[30px] border-slate-800 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.08),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
@@ -46,7 +46,7 @@ export function RoadmapModuleCard({
         </div>
         <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
           <Zap className="h-3.5 w-3.5 text-brand-300" />
-          Stage {module.order}
+          Etapa {module.order}
         </div>
         <h3 className="mt-3 text-xl font-bold text-slate-50">{module.title}</h3>
         <p className="mt-3 text-sm leading-7 text-slate-400">{module.description}</p>
@@ -54,7 +54,7 @@ export function RoadmapModuleCard({
         <div className="mt-5 rounded-[22px] border border-slate-800 bg-slate-950/70 p-4">
           <div className="flex items-center justify-between gap-3 text-sm">
             <span className="font-semibold text-slate-100">
-              {progress.completedLessons} of {progress.totalLessons} lessons complete
+              {progress.completedLessons} de {progress.totalLessons} lecciones completas
             </span>
             <span className="text-brand-200">{progress.percent}%</span>
           </div>
@@ -64,15 +64,15 @@ export function RoadmapModuleCard({
 
       <div className="mt-6 flex items-end justify-between gap-4">
         <div className="text-sm text-slate-400">
-          <div>{module.lessonCount} lessons</div>
+          <div>{module.lessonCount} lecciones</div>
           <div>{module.estimatedTime}</div>
           <div>{module.xp} XP</div>
         </div>
         {isLocked ? (
-          <span className="text-sm font-semibold text-slate-500">Finish the previous module first</span>
+          <span className="text-sm font-semibold text-slate-500">Termina primero el módulo anterior</span>
         ) : (
           <Link href={href} className="text-sm font-semibold text-brand-300">
-            Open module
+            Abrir módulo
           </Link>
         )}
       </div>

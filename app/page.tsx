@@ -21,31 +21,31 @@ import { communityPreview, mentorPrompts } from "@/lib/mock-data";
 const benefits = [
   {
     icon: Compass,
-    title: "Never feel lost",
-    description: "Every screen explains where you are, what matters now, and what to do next."
+    title: "Nunca sentirte perdido",
+    description: "Cada pantalla te explica dónde estás, qué importa ahora y cuál es el siguiente paso."
   },
   {
     icon: Bot,
-    title: "A mentor inside the flow",
-    description: "Simple explanations, careful hints, and debugging guidance live beside the lesson."
+    title: "Un mentor dentro del flujo",
+    description: "Explicaciones simples, pistas cuidadas y guía para depurar viven al lado de la lección."
   },
   {
     icon: Bug,
-    title: "Practice with real mistakes",
-    description: "Fix-the-bug challenges turn common beginner errors into calm learning moments."
+    title: "Practicar con errores reales",
+    description: "Los desafíos de arreglar bugs convierten errores comunes de principiante en momentos de aprendizaje tranquilos."
   },
   {
     icon: ChartNoAxesCombined,
-    title: "Visible progress",
-    description: "Roadmaps, streaks, and achievements create momentum without noisy gamification."
+    title: "Progreso visible",
+    description: "Ruta, racha y logros crean impulso sin una gamificación ruidosa."
   }
 ];
 
 const howItWorks = [
-  "Start with one clear Python roadmap designed for absolute beginners.",
-  "Learn through short lessons with examples, practice, and realistic bug-fix tasks.",
-  "Use the mentor for simpler explanations, step-by-step help, and debugging support.",
-  "Build confidence through visible progress, small wins, and gentle accountability."
+  "Empieza con una sola ruta clara de Python pensada para principiantes absolutos.",
+  "Aprende con lecciones cortas, ejemplos, práctica y tareas realistas de arreglo de bugs.",
+  "Usa el mentor para pedir explicaciones más simples, ayuda paso a paso y apoyo para depurar.",
+  "Construye confianza con progreso visible, pequeñas victorias y un acompañamiento suave."
 ];
 
 export default function HomePage() {
@@ -59,34 +59,33 @@ export default function HomePage() {
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-brand-400/15 bg-brand-500/10 px-4 py-2 text-sm text-brand-200 ring-1 ring-white/5">
                 <Sparkles className="h-4 w-4" />
-                Beginner-first Python progression with integrated AI guidance
+                Progreso en Python para principiantes con mentoría IA integrada
               </div>
               <h1 className="mt-6 max-w-4xl text-5xl font-extrabold tracking-tight text-white md:text-6xl">
-                Learn Python from zero in a dark, focused progression flow that keeps you moving.
+                Aprende Python desde cero en un flujo de progreso enfocado que te invita a seguir avanzando.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-                PyMentor gives absolute beginners a premium learning environment: clear lessons,
-                guided practice, visible unlocks, and an AI mentor that helps without taking over.
+                PyMentor le da a quien empieza desde cero un entorno premium de aprendizaje: lecciones claras, práctica guiada, desbloqueos visibles y un mentor IA que ayuda sin invadir.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Button href="/signup">Start your Python path</Button>
+                <Button href="/signup">Empezar mi ruta de Python</Button>
                 <Button href="/dashboard" variant="ghost">
-                  Preview the mission hub
+                  Ver la plataforma
                 </Button>
               </div>
 
               <div className="mt-10 grid max-w-3xl gap-3 sm:grid-cols-3">
                 <div className="rounded-[24px] border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
                   <p className="text-2xl font-extrabold text-white">Python only</p>
-                  <p className="mt-1 text-sm text-slate-300">One language. One progression path.</p>
+                  <p className="mt-1 text-sm text-slate-300">Un lenguaje. Una sola ruta de progreso.</p>
                 </div>
                 <div className="rounded-[24px] border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
                   <p className="text-2xl font-extrabold text-white">AI mentor</p>
-                  <p className="mt-1 text-sm text-slate-300">Hints, clarity, and debugging support in context.</p>
+                  <p className="mt-1 text-sm text-slate-300">Pistas, claridad y ayuda para depurar dentro del contexto.</p>
                 </div>
                 <div className="rounded-[24px] border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
-                  <p className="text-2xl font-extrabold text-white">Visible unlocks</p>
-                  <p className="mt-1 text-sm text-slate-300">Each lesson pushes the map forward.</p>
+                  <p className="text-2xl font-extrabold text-white">Desbloqueos visibles</p>
+                  <p className="mt-1 text-sm text-slate-300">Cada lección empuja la ruta hacia adelante.</p>
                 </div>
               </div>
             </div>
@@ -96,28 +95,28 @@ export default function HomePage() {
                 <div className="rounded-[30px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.22),transparent_34%),linear-gradient(135deg,#08111a_0%,#102132_45%,#103445_100%)] p-6 text-white">
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <p className="text-sm uppercase tracking-[0.22em] text-brand-100">Today’s mission</p>
-                      <h2 className="mt-2 text-2xl font-bold">Push through conditionals</h2>
+                      <p className="text-sm uppercase tracking-[0.22em] text-brand-100">Misión de hoy</p>
+                      <h2 className="mt-2 text-2xl font-bold">Avanza con condicionales</h2>
                     </div>
                     <div className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/10">
-                      12 min lesson
+                      Lección de 12 min
                     </div>
                   </div>
                   <p className="mt-3 text-sm leading-7 text-brand-50">
-                    Learn how Python makes choices, then clear one bug-fix checkpoint with mentor backup at your side.
+                    Aprende cómo Python toma decisiones y supera un checkpoint de depuración con el mentor a tu lado.
                   </p>
                 </div>
 
                 <div className="mt-4 grid gap-4 md:grid-cols-2">
                   <Card className="rounded-[26px] border-slate-800 bg-slate-950/80 shadow-none">
-                    <p className="text-sm text-slate-400">Roadmap progress</p>
+                    <p className="text-sm text-slate-400">Progreso de la ruta</p>
                     <p className="mt-3 text-3xl font-extrabold text-slate-50">28%</p>
                     <div className="mt-4 h-2 rounded-full bg-slate-800">
                       <div className="h-full w-[28%] rounded-full bg-[linear-gradient(90deg,#0CB971,#4ecbff)]" />
                     </div>
                   </Card>
                   <Card className="rounded-[26px] border-slate-800 bg-slate-950/80 shadow-none">
-                    <p className="text-sm text-slate-400">Mentor signal</p>
+                    <p className="text-sm text-slate-400">Señal del mentor</p>
                     <p className="mt-3 text-sm leading-7 text-slate-300">
                       “Let’s slow it down together. What question is your `if` statement asking?”
                     </p>
@@ -128,21 +127,21 @@ export default function HomePage() {
                   <div className="rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 text-sm text-slate-300">
                     <div className="flex items-center gap-2 font-semibold text-slate-100">
                       <PlayCircle className="h-4 w-4 text-brand-300" />
-                      Start small
+                      Empezar simple
                     </div>
                     <p className="mt-2 leading-6">The first lessons assume zero experience.</p>
                   </div>
                   <div className="rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 text-sm text-slate-300">
                     <div className="flex items-center gap-2 font-semibold text-slate-100">
                       <HeartHandshake className="h-4 w-4 text-brand-300" />
-                      Stay supported
+                      Seguir acompañado
                     </div>
                     <p className="mt-2 leading-6">The mentor helps inside lessons and exercises.</p>
                   </div>
                   <div className="rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 text-sm text-slate-300">
                     <div className="flex items-center gap-2 font-semibold text-slate-100">
                       <CheckCircle2 className="h-4 w-4 text-brand-300" />
-                      Unlock progress
+                      Desbloquear progreso
                     </div>
                     <p className="mt-2 leading-6">Achievements and milestones make progress visible.</p>
                   </div>
@@ -155,15 +154,15 @@ export default function HomePage() {
         <section id="how-it-works" className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
           <div className="app-surface rounded-[40px] px-6 py-10 shadow-soft lg:px-10">
             <SectionIntro
-              eyebrow="How PyMentor works"
-              title="A dark, focused path built for people starting from zero"
-              description="PyMentor is not a giant course library. It is one deliberate progression track where every next step is visible, achievable, and worth taking."
+              eyebrow="Cómo funciona PyMentor"
+              title="Un camino enfocado y claro para empezar desde cero"
+              description="PyMentor no es una biblioteca gigante de cursos. Es una sola ruta de progreso deliberada donde el siguiente paso siempre es visible, alcanzable y vale la pena."
             />
 
             <div className="mt-10 grid gap-4 md:grid-cols-2">
               {howItWorks.map((item, index) => (
                 <Card key={item} className="rounded-[30px] border-slate-800 bg-slate-950/70">
-                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Step {index + 1}</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Paso {index + 1}</p>
                   <p className="mt-4 text-lg font-semibold text-slate-50">{item}</p>
                 </Card>
               ))}
@@ -173,9 +172,9 @@ export default function HomePage() {
 
         <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10">
           <SectionIntro
-            eyebrow="Why beginners stay"
-            title="The product is designed to reduce overwhelm without losing momentum"
-            description="Every product decision aims to make the learner feel safe to continue while still making progression feel real, visible, and satisfying."
+            eyebrow="Por qué funciona para principiantes"
+            title="El producto está diseñado para bajar el agobio sin perder impulso"
+            description="Cada decisión de producto busca que la persona se sienta segura para continuar y, al mismo tiempo, que el progreso se vea real, visible y satisfactorio."
             className="mb-8"
           />
           <div className="grid gap-5 lg:grid-cols-4">
@@ -195,15 +194,15 @@ export default function HomePage() {
           <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
             <div className="app-surface rounded-[36px] p-8 shadow-soft">
               <SectionIntro
-                eyebrow="Roadmap preview"
-                title="One Python path with visible unlocks"
-                description="Instead of overwhelming beginners with endless choices, PyMentor gives them one thoughtful roadmap with locked stages, visible milestones, and momentum that compounds."
+                eyebrow="Vista previa de la ruta"
+                title="Un solo camino de Python con desbloqueos visibles"
+                description="En vez de abrumar con elecciones infinitas, PyMentor ofrece una ruta pensada con etapas bloqueadas, hitos visibles e impulso que se acumula."
               />
               <Link
                 href="/roadmap"
                 className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-300"
               >
-                View roadmap <ArrowRight className="h-4 w-4" />
+                Ver ruta <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
@@ -218,7 +217,7 @@ export default function HomePage() {
                   </div>
                   <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
                     <Zap className="h-3.5 w-3.5 text-brand-300" />
-                    Stage {module.order}
+                    Etapa {module.order}
                   </div>
                   <h3 className="mt-3 text-xl font-bold text-slate-50">{module.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-slate-400">{module.description}</p>
@@ -232,9 +231,9 @@ export default function HomePage() {
           <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr]">
             <div className="app-surface rounded-[36px] p-8 shadow-soft">
               <SectionIntro
-                eyebrow="Mentor preview"
-                title="Guidance inside the progression loop"
-                description="The mentor is not a noisy chatbot living far away from the lesson. It sits inside the mission flow, ready to simplify, hint, or debug when confidence drops."
+                eyebrow="Vista previa del mentor"
+                title="Guía dentro del flujo de aprendizaje"
+                description="El mentor no es un chatbot ruidoso lejos de la lección. Está dentro del flujo de trabajo, listo para simplificar, dar pistas o ayudar a depurar cuando baja la confianza."
               />
 
               <div className="mt-8 grid gap-3">
@@ -250,12 +249,12 @@ export default function HomePage() {
             </div>
 
             <Card className="rounded-[36px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.1),transparent_28%),linear-gradient(180deg,#060d14,#0b1620)] text-white">
-              <p className="text-sm uppercase tracking-[0.22em] text-slate-400">Example mentor reply</p>
+              <p className="text-sm uppercase tracking-[0.22em] text-slate-400">Ejemplo de respuesta del mentor</p>
               <p className="mt-5 text-lg leading-8 text-slate-100">
                 “Let’s slow it down together. Your program is asking a question with `if`. First, check whether the comparison is written the way Python expects. Then look for the colon at the end of the line.”
               </p>
               <div className="mt-8 rounded-[24px] bg-white/5 p-5 ring-1 ring-white/10">
-                <p className="text-sm text-slate-300">Future community layer</p>
+                <p className="text-sm text-slate-300">Comunidad futura</p>
                 <div className="mt-4 space-y-3">
                   {communityPreview.map((item) => (
                     <div key={item} className="flex items-center gap-3 text-sm text-slate-100">
@@ -272,17 +271,17 @@ export default function HomePage() {
         <section className="mx-auto max-w-7xl px-6 pt-10 lg:px-10">
           <div className="rounded-[40px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.22),transparent_32%),radial-gradient(circle_at_90%_10%,rgba(78,203,255,0.18),transparent_22%),linear-gradient(135deg,#07111a_0%,#0d1d2c_40%,#0f3140_100%)] px-8 py-10 text-white shadow-soft">
             <h2 className="text-4xl font-extrabold tracking-tight">
-              Start learning Python with momentum that feels calm, sharp, and real.
+              Empieza a aprender Python con un impulso que se siente claro, emocionante y real.
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/90">
-              PyMentor gives absolute beginners a strong first experience: clear lessons, guided practice, visible progression, and an AI mentor that helps without taking over.
+              PyMentor les da a los principiantes absolutos una primera experiencia sólida: lecciones claras, práctica guiada, progreso visible y un mentor IA que ayuda sin tomar el control.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <Button href="/signup" variant="secondary">
-                Start your first lesson
+                Empezar mi primera lección
               </Button>
               <Button href="/dashboard" variant="ghost">
-                Explore the mission hub
+                Explorar la plataforma
               </Button>
             </div>
           </div>

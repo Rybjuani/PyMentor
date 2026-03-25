@@ -4,10 +4,10 @@ import { getServerAuthSession } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { href: "/#how-it-works", label: "How it works" },
-  { href: "/#roadmap-preview", label: "Roadmap" },
-  { href: "/#mentor-preview", label: "AI mentor" },
-  { href: "/dashboard", label: "App preview" }
+  { href: "/#how-it-works", label: "Cómo funciona" },
+  { href: "/#roadmap-preview", label: "Ruta" },
+  { href: "/#mentor-preview", label: "Mentor IA" },
+  { href: "/dashboard", label: "Vista previa" }
 ];
 
 export async function SiteHeader() {
@@ -22,7 +22,7 @@ export async function SiteHeader() {
         <span>
           <span className="block text-lg font-extrabold tracking-tight">PyMentor</span>
           <span className="block text-xs text-slate-300">
-            Python progression for beginners
+            Progreso en Python para principiantes
           </span>
         </span>
       </Link>
@@ -41,9 +41,9 @@ export async function SiteHeader() {
         ) : (
           <>
             <Button href="/login" variant="ghost" className="hidden sm:inline-flex">
-              Log in
+              Iniciar sesión
             </Button>
-            <Button href="/signup">Start learning</Button>
+            <Button href="/signup">Empezar</Button>
           </>
         )}
       </div>

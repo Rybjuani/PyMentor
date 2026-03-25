@@ -16,7 +16,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "PyMentor",
   description:
-    "A beginner-safe Python learning platform with a calm, integrated AI mentor."
+    "Una plataforma para aprender Python desde cero con un mentor IA integrado y pensado para principiantes."
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${ibmPlexMono.variable}`}>
+    <html lang="es" className={`${manrope.variable} ${ibmPlexMono.variable}`}>
       <body className="font-sans">{children}</body>
     </html>
   );

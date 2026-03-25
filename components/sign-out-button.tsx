@@ -12,7 +12,7 @@ export function SignOutButton() {
       onClick={() => void signOut({ callbackUrl: "/" })}
     >
       <LogOut className="h-4 w-4" />
-      Sign out
+      Cerrar sesión
     </Button>
   );
 }

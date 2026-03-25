@@ -7,7 +7,7 @@ export async function POST() {
   const session = await getServerAuthSession();
 
   if (!session?.user?.id) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 401 });
   }
 
   const user = await prisma.user.findUnique({
@@ -18,7 +18,7 @@ export async function POST() {
   });
 
   if (!user) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 401 });
   }
 
   if (user.onboardingCompletedAt) {
@@ -35,7 +35,7 @@ export async function POST() {
   await recordActivity({
     userId: session.user.id,
     type: "onboarding_completed",
-    description: "Finished the quick start and unlocked the first lesson."
+    description: "Terminaste el inicio guiado y desbloqueaste la primera lección."
   });
 
   return NextResponse.json({ ok: true });

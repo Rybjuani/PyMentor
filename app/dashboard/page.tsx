@@ -38,28 +38,28 @@ export default async function DashboardPage() {
 
   const continueLabel =
     currentFocus?.type === "exercise"
-      ? "Continue exercise"
+      ? "Continuar ejercicio"
       : currentFocus?.lesson
-        ? "Continue lesson"
-        : "View roadmap";
+        ? "Continuar lección"
+        : "Ver ruta";
 
   return (
     <AppShell
-      title={`Welcome back, ${user.name ?? "Learner"}`}
-      description="Your account now tracks a real progression path. Keep your streak alive, clear one more checkpoint, and let the roadmap pull you forward."
+      title={`Qué bueno verte, ${user.name ?? "estudiante"}`}
+      description="Tu cuenta ya sigue un camino real de progreso. Mantén tu racha viva, supera un checkpoint más y deja que la ruta te empuje hacia adelante."
       userName={user.name}
       actions={<SignOutButton />}
     >
       <section className="grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
         <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.14),transparent_30%),radial-gradient(circle_at_82%_18%,rgba(78,203,255,0.12),transparent_22%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-300">
-            Progress signal
+            Señal de progreso
           </p>
           <div className="mt-4 flex items-end justify-between gap-4">
             <div>
               <div className="text-4xl font-extrabold text-slate-50">{overall.percent}%</div>
               <div className="mt-2 text-sm text-slate-400">
-                {overall.completed} of {overall.total} lessons completed
+                {overall.completed} de {overall.total} lecciones completadas
               </div>
             </div>
             <div className="rounded-[24px] border border-brand-400/15 bg-brand-500/10 px-4 py-3 text-sm font-semibold text-brand-100">
@@ -71,21 +71,21 @@ export default async function DashboardPage() {
             <div className="rounded-[22px] border border-slate-800 bg-slate-950/70 px-4 py-4">
               <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
                 <Target className="h-4 w-4 text-brand-300" />
-                This week’s goal
+                Objetivo de esta semana
               </div>
               <p className="mt-2 text-sm leading-6 text-slate-400">
                 {overall.completed === 0
-                  ? "Finish your first lesson and linked exercise this week"
-                  : "Finish 2 focused learning steps this week"}
+                  ? "Completa tu primera lección y su ejercicio vinculado esta semana"
+                  : "Completa 2 pasos de aprendizaje enfocados esta semana"}
               </p>
             </div>
             <div className="rounded-[22px] border border-slate-800 bg-slate-950/70 px-4 py-4">
               <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
                 <CalendarCheck2 className="h-4 w-4 text-brand-300" />
-                Weekly progress
+                Progreso semanal
               </div>
               <p className="mt-2 text-sm leading-6 text-slate-400">
-                {weeklyCompletedSteps} of 2 steps completed
+                {weeklyCompletedSteps} de 2 pasos completados
               </p>
             </div>
           </div>
@@ -98,14 +98,14 @@ export default async function DashboardPage() {
                 <Flame className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-sm text-slate-400">Momentum chain</p>
+                <p className="text-sm text-slate-400">Racha actual</p>
                 <p className="text-2xl font-extrabold text-slate-50">
-                  {user.currentStreak} {user.currentStreak === 1 ? "day" : "days"}
+                  {user.currentStreak} {user.currentStreak === 1 ? "día" : "días"}
                 </p>
                 <p className="mt-1 text-sm text-slate-400">
                   {user.currentStreak > 0
-                    ? "One small learning step keeps it alive"
-                    : "Your first learning action will start your streak"}
+                    ? "Un pequeño paso de aprendizaje la mantiene viva"
+                    : "Tu primera acción de aprendizaje va a iniciar tu racha"}
                 </p>
               </div>
             </div>
@@ -116,9 +116,9 @@ export default async function DashboardPage() {
                 <Trophy className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-sm text-slate-400">Unlocked badges</p>
+                <p className="text-sm text-slate-400">Logros desbloqueados</p>
                 <p className="text-2xl font-extrabold text-slate-50">{achievements.length}</p>
-                <p className="mt-1 text-sm text-slate-400">Progress now stays with your account</p>
+                <p className="mt-1 text-sm text-slate-400">Tu progreso ahora queda guardado en tu cuenta</p>
               </div>
             </div>
           </Card>
@@ -128,7 +128,7 @@ export default async function DashboardPage() {
       <section className="grid gap-5 xl:grid-cols-[1fr_0.9fr]">
         <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(78,203,255,0.08),transparent_24%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">
-            Continue learning
+            Seguir aprendiendo
           </p>
           <h2 className="mt-3 text-2xl font-bold text-slate-50">
             {currentFocus?.type === "exercise"
@@ -137,16 +137,16 @@ export default async function DashboardPage() {
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-400">
             {overall.completed === 0
-              ? "You are at the start of the roadmap. Begin with the first lesson, then use the linked exercise to lock in the idea."
-              : currentFocus?.type === "exercise"
+                ? "Estás al comienzo de la ruta. Empieza con la primera lección y luego usa el ejercicio vinculado para afianzar la idea."
+                : currentFocus?.type === "exercise"
                 ? currentFocus.exercise.summary
                 : currentFocus?.lesson.summary ??
-                  "Open the roadmap to choose your next lesson."}
+                  "Abre la ruta para elegir tu próxima lección."}
           </p>
           {currentModule && currentModuleProgress ? (
             <div className="mt-5 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
-              Current module: {currentModule.title} · {currentModuleProgress.completedLessons} of{" "}
-              {currentModuleProgress.totalLessons} lessons complete
+              Módulo actual: {currentModule.title} · {currentModuleProgress.completedLessons} de{" "}
+              {currentModuleProgress.totalLessons} lecciones completas
             </div>
           ) : null}
           <div className="mt-6 flex flex-wrap gap-3">
@@ -160,14 +160,14 @@ export default async function DashboardPage() {
               href="/roadmap"
               className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-100 ring-1 ring-slate-700"
             >
-              Open roadmap
+              Abrir ruta
             </Link>
           </div>
         </Card>
 
         <Card className="rounded-[30px]">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">
-            Recent activity
+            Actividad reciente
           </p>
           <div className="mt-5 space-y-3">
             {recentActivity.length > 0 ? (
@@ -182,9 +182,9 @@ export default async function DashboardPage() {
               ))
             ) : (
               <div className="rounded-[20px] border border-slate-800 bg-slate-950/70 px-4 py-4 text-sm text-slate-300">
-                <p className="font-semibold text-slate-100">Your activity feed starts here</p>
+                <p className="font-semibold text-slate-100">Tu actividad empieza aquí</p>
                 <p className="mt-1">
-                  Finish your onboarding and first lesson to start building visible momentum.
+                  Termina tu bienvenida y tu primera lección para empezar a construir impulso visible.
                 </p>
               </div>
             )}
@@ -197,34 +197,34 @@ export default async function DashboardPage() {
           <div className="flex items-center gap-3">
             <Sparkles className="h-5 w-5 text-brand-300" />
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">
-              Suggested next step
+              Próximo paso sugerido
             </p>
           </div>
           <h2 className="mt-4 text-2xl font-bold text-slate-50">
             {currentFocus?.type === "exercise"
-              ? "Finish the linked exercise"
+              ? "Termina el ejercicio vinculado"
               : overall.completed === 0
-                ? "Take your first calm step into Python"
-                : "Complete the next lesson in your roadmap"}
+                ? "Da tu primer paso tranquilo en Python"
+                : "Completa la siguiente lección de tu ruta"}
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-400">
             {overall.completed === 0
-              ? "Start with one short lesson, use the mentor when you get stuck, and let your first completion unlock momentum."
-              : "Each completion updates your account, your roadmap, and the next checkpoint waiting in front of you."}
+              ? "Empieza con una lección corta, usa el mentor cuando te trabes y deja que tu primera finalización desbloquee impulso."
+              : "Cada finalización actualiza tu cuenta, tu ruta y el siguiente checkpoint que te está esperando."}
           </p>
           <div className="mt-5 rounded-[24px] border border-slate-800 bg-slate-950/70 p-4 text-sm text-slate-300">
             <div className="flex items-center gap-2 font-semibold text-slate-100">
               <Zap className="h-4 w-4 text-brand-300" />
-              One more step energy
+              Energía para un paso más
             </div>
             <p className="mt-2 leading-6">
-              PyMentor is built so the next move is always clear, small enough to start, and satisfying to finish.
+              PyMentor está diseñado para que el siguiente movimiento siempre sea claro, lo bastante pequeño como para empezar y satisfactorio al terminar.
             </p>
           </div>
         </Card>
 
         <Card className="rounded-[30px]">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Achievements</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Logros</p>
           <div className="mt-5 grid gap-3">
             {achievements.map((achievement) => (
               <AchievementChip key={achievement.id} achievement={achievement} />
@@ -237,7 +237,7 @@ export default async function DashboardPage() {
 }
 
 function formatActivityDate(date: Date) {
-  return new Intl.DateTimeFormat("en", {
+  return new Intl.DateTimeFormat("es-AR", {
     month: "short",
     day: "numeric"
   }).format(date);

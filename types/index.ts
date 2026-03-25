@@ -1,4 +1,5 @@
 export type ModuleStatus = "locked" | "available" | "completed";
+export type ProgressStatus = "not_started" | "in_progress" | "completed";
 
 export interface LessonSection {
   title: string;
@@ -14,6 +15,8 @@ export interface LessonData {
   slug: string;
   title: string;
   module: string;
+  moduleSlug?: string;
+  order?: number;
   duration: string;
   difficulty: "Beginner" | "Starter";
   summary: string;
@@ -30,16 +33,43 @@ export interface LessonData {
     brokenCode: string;
     expectedLearning: string;
   };
+  exerciseSlug?: string;
 }
 
 export interface RoadmapModule {
   slug: string;
   title: string;
   description: string;
+  order?: number;
   status: ModuleStatus;
   lessonCount: number;
   estimatedTime: string;
   xp: number;
+}
+
+export interface ExerciseData {
+  slug: string;
+  title: string;
+  moduleSlug: string;
+  lessonSlug: string;
+  order: number;
+  duration: string;
+  summary: string;
+  instructions: string[];
+  starterCode: string;
+  successCriteria: string[];
+}
+
+export interface CourseProgress {
+  lessons: Record<string, ProgressStatus>;
+  exercises: Record<string, ProgressStatus>;
+}
+
+export interface ModuleProgressSummary {
+  completedLessons: number;
+  totalLessons: number;
+  percent: number;
+  status: ProgressStatus;
 }
 
 export interface Achievement {

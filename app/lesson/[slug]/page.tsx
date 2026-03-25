@@ -4,9 +4,19 @@ import { notFound } from "next/navigation";
 import { AppShell } from "@/components/app-shell";
 import { CodePanel } from "@/components/code-panel";
 import { MentorWidget } from "@/components/mentor-widget";
+import { ProgressAction } from "@/components/progress-action";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { getLessonBySlug } from "@/lib/mock-data";
+import {
+  getExerciseByLessonSlug,
+  getLessonBySlug,
+  getLessonPosition,
+  getLessonStatus,
+  getModuleProgress,
+  getNextLesson,
+  getPreviousLesson,
+  getProgressForRequest
+} from "@/lib/course";
 
 export default function LessonPage({
   params
@@ -19,6 +29,14 @@ export default function LessonPage({
     notFound();
   }
 
+  const progress = getProgressForRequest();
+  const lessonStatus = getLessonStatus(progress, lesson.slug);
+  const moduleProgress = getModuleProgress(progress, lesson.moduleSlug ?? "");
+  const position = getLessonPosition(lesson);
+  const previousLesson = getPreviousLesson(lesson.slug);
+  const nextLesson = getNextLesson(lesson.slug);
+  const exercise = getExerciseByLessonSlug(lesson.slug);
+
   return (
     <AppShell title={lesson.title} description={lesson.summary}>
       <section className="grid gap-5 xl:grid-cols-[1fr_360px]">
@@ -28,14 +46,26 @@ export default function LessonPage({
               <Badge tone="brand">{lesson.module}</Badge>
               <Badge tone="neutral">{lesson.duration}</Badge>
               <Badge tone="success">{lesson.difficulty}</Badge>
+              <Badge tone={lessonStatus === "completed" ? "success" : lessonStatus === "in_progress" ? "brand" : "neutral"}>
+                {lessonStatus === "completed"
+                  ? "Completed"
+                  : lessonStatus === "in_progress"
+                    ? "In progress"
+                    : "Not started"}
+              </Badge>
             </div>
             <div className="mt-6 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
               <div className="rounded-[24px] bg-slate-50 p-5">
                 <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
                   <Compass className="h-4 w-4 text-brand-600" />
-                  Warm-up idea
+                  Lesson position
                 </div>
-                <p className="mt-3 text-sm leading-7 text-slate-700">{lesson.warmup}</p>
+                <p className="mt-3 text-sm leading-7 text-slate-700">
+                  Lesson {position.current} of {position.total} in {lesson.module}
+                </p>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
+                  Module progress: {moduleProgress.completedLessons} of {moduleProgress.totalLessons} lessons complete
+                </p>
               </div>
               <div className="rounded-[24px] bg-brand-50 p-5">
                 <div className="flex items-center gap-2 text-sm font-semibold text-brand-700">
@@ -81,7 +111,7 @@ export default function LessonPage({
           <Card className="rounded-[30px]">
             <h2 className="text-xl font-bold text-slate-900">Python example</h2>
             <p className="mt-3 text-sm leading-7 text-slate-600">
-              Read the code slowly. Ask yourself: what question does Python check first, and which message should appear for a score of 82?
+              Read the code slowly. Ask yourself what question Python checks first and what output should appear.
             </p>
             <div className="mt-4">
               <CodePanel code={lesson.example} />
@@ -102,12 +132,14 @@ export default function LessonPage({
                 ))}
               </div>
             </div>
-            <Link
-              href="/exercise/fix-the-conditional"
-              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600"
-            >
-              Try the related exercise <ArrowRight className="h-4 w-4" />
-            </Link>
+            {exercise ? (
+              <Link
+                href={`/exercise/${exercise.slug}`}
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600"
+              >
+                Open the linked exercise <ArrowRight className="h-4 w-4" />
+              </Link>
+            ) : null}
           </Card>
 
           <Card className="rounded-[30px]">
@@ -131,6 +163,48 @@ export default function LessonPage({
               Learning goal: {lesson.bugChallenge.expectedLearning}
             </p>
           </Card>
+
+          <Card className="rounded-[30px]">
+            <h2 className="text-xl font-bold text-slate-900">Completion</h2>
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              Marking a lesson complete updates your roadmap, dashboard, and continue-learning flow.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {lessonStatus === "not_started" ? (
+                <ProgressAction entityType="lesson" slug={lesson.slug} status="in_progress" variant="secondary">
+                  Mark lesson in progress
+                </ProgressAction>
+              ) : null}
+              <ProgressAction entityType="lesson" slug={lesson.slug} status="completed">
+                Mark lesson complete
+              </ProgressAction>
+              {nextLesson ? (
+                <Link
+                  href={`/lesson/${nextLesson.slug}`}
+                  className="inline-flex items-center justify-center rounded-full bg-slate-100 px-5 py-3 text-sm font-semibold text-slate-800"
+                >
+                  Next lesson
+                </Link>
+              ) : null}
+            </div>
+          </Card>
+
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-[24px] border border-slate-200 bg-white px-5 py-4 text-sm text-slate-600">
+            {previousLesson ? (
+              <Link href={`/lesson/${previousLesson.slug}`} className="font-semibold text-brand-600">
+                Previous: {previousLesson.title}
+              </Link>
+            ) : (
+              <span>Start of roadmap</span>
+            )}
+            {nextLesson ? (
+              <Link href={`/lesson/${nextLesson.slug}`} className="font-semibold text-brand-600">
+                Next: {nextLesson.title}
+              </Link>
+            ) : (
+              <span>Last lesson for now</span>
+            )}
+          </div>
         </div>
 
         <div>

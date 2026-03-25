@@ -2,9 +2,10 @@
 
 import { useMemo, useState } from "react";
 import { CheckCircle2, CircleAlert, LoaderCircle, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ExerciseData, ProgressStatus } from "@/types";
 import { Card } from "@/components/ui/card";
 import { CodePanel } from "@/components/code-panel";
+import { ProgressAction } from "@/components/progress-action";
 
 type FeedbackState = "working" | "needs-improvement" | "great-job";
 
@@ -12,48 +13,56 @@ const feedbackMeta = {
   working: {
     title: "You are still working on it",
     description:
-      "No pressure. Read your condition out loud and make sure the `if` line ends with a colon.",
+      "No pressure. Read the key line out loud and change one detail at a time.",
     tone: "border-amber-200 bg-amber-50 text-amber-800",
     icon: LoaderCircle
   },
   "needs-improvement": {
-    title: "Nice attempt, but two details still need attention",
+    title: "Nice attempt, but one or two details still need attention",
     description:
-      "The logic is close. Check the comparison operator and make sure the block under `if` is indented consistently.",
+      "The idea is close. Check the syntax first, then re-read the indentation.",
     tone: "border-rose-200 bg-rose-50 text-rose-900",
     icon: CircleAlert
   },
   "great-job": {
-    title: "Great job, this version is ready",
+    title: "Great job, this step is complete",
     description:
-      "You fixed the syntax and kept the logic easy to read. That is exactly the kind of small win that builds confidence.",
+      "You fixed the problem calmly and kept the code readable. That is real beginner progress.",
     tone: "border-emerald-200 bg-emerald-50 text-emerald-900",
     icon: CheckCircle2
   }
 } as const;
 
-export function ExerciseWorkspace() {
-  const [answer, setAnswer] = useState(
-    "# Rewrite the program here\nage = 18\n\nif age >= 18:\n    print('Adult')\nelse:\n    print('Minor')"
+export function ExerciseWorkspace({
+  exercise,
+  status,
+  lessonHref,
+  nextLessonHref
+}: {
+  exercise: ExerciseData;
+  status: ProgressStatus;
+  lessonHref: string;
+  nextLessonHref?: string | null;
+}) {
+  const [answer, setAnswer] = useState(`# Rewrite the program here\n${exercise.starterCode}`);
+  const [state, setState] = useState<FeedbackState>(
+    status === "completed" ? "great-job" : "working"
   );
-  const [state, setState] = useState<FeedbackState>("working");
 
   const checklist = useMemo(
-    () => [
-      {
-        label: "Uses a valid comparison such as `>=`",
-        done: answer.includes(">=")
-      },
-      {
-        label: "Ends the `if` line with a colon",
-        done: answer.includes(":")
-      },
-      {
-        label: "Keeps the print statements indented",
-        done: answer.includes("\n    print")
-      }
-    ],
-    [answer]
+    () =>
+      exercise.successCriteria.map((item) => ({
+        label: item,
+        done:
+          (item.includes("comparison") && answer.includes(">=")) ||
+          (item.includes("colon") && answer.includes(":")) ||
+          (item.includes("prints `Adult`") && answer.includes("Adult")) ||
+          (!item.includes("comparison") &&
+            !item.includes("colon") &&
+            !item.includes("prints `Adult`") &&
+            answer.trim().length > 0)
+      })),
+    [answer, exercise.successCriteria]
   );
 
   const feedback = feedbackMeta[state];
@@ -64,16 +73,14 @@ export function ExerciseWorkspace() {
       <Card className="rounded-[30px]">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold text-slate-500">Challenge brief</p>
-            <h2 className="mt-2 text-2xl font-bold text-slate-900">
-              Fix the conditional so the program can run
-            </h2>
+            <p className="text-sm font-semibold text-slate-500">Exercise</p>
+            <h2 className="mt-2 text-2xl font-bold text-slate-900">{exercise.title}</h2>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-700">
-              The goal is not just to get the right answer. The goal is to notice the syntax details beginners often miss and learn how to spot them calmly.
+              {exercise.summary}
             </p>
           </div>
           <div className="rounded-[24px] bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-700">
-            Estimated time: 8 minutes
+            {exercise.duration}
           </div>
         </div>
       </Card>
@@ -81,38 +88,39 @@ export function ExerciseWorkspace() {
       <div className="grid gap-5 xl:grid-cols-[1fr_0.9fr]">
         <Card className="rounded-[30px]">
           <div className="flex items-center justify-between gap-3">
-            <h2 className="text-xl font-bold text-slate-900">Broken code</h2>
+            <h2 className="text-xl font-bold text-slate-900">Starter code</h2>
             <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-              Syntax bug
+              Debugging step
             </span>
           </div>
           <div className="mt-4">
-            <CodePanel
-              code={"age = 18\n\nif age => 18\n    print('Adult')\nelse:\n    print('Minor')"}
-            />
+            <CodePanel code={exercise.starterCode} />
           </div>
         </Card>
 
         <Card className="rounded-[30px] bg-[linear-gradient(180deg,rgba(243,248,255,0.8),rgba(255,255,255,1))]">
-          <p className="text-sm font-semibold text-slate-500">Before you submit</p>
+          <p className="text-sm font-semibold text-slate-500">How to approach it</p>
           <div className="mt-4 space-y-3">
-            {checklist.map((item) => (
+            {exercise.instructions.map((item) => (
               <div
-                key={item.label}
-                className="flex items-center gap-3 rounded-[20px] border border-slate-200 bg-white px-4 py-3"
+                key={item}
+                className="rounded-[20px] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
               >
-                <span
-                  className={`h-2.5 w-2.5 rounded-full ${item.done ? "bg-emerald-500" : "bg-slate-300"}`}
-                />
-                <span className="text-sm text-slate-700">{item.label}</span>
+                {item}
               </div>
             ))}
           </div>
+
           <div className="mt-5 rounded-[24px] bg-slate-950 p-4 text-sm text-slate-200">
-            <p className="font-semibold text-white">Beginner reminder</p>
-            <p className="mt-2 leading-6 text-slate-300">
-              If your code does not run yet, focus on syntax first. Make Python happy before you worry about style.
-            </p>
+            <p className="font-semibold text-white">Completion cues</p>
+            <div className="mt-3 space-y-2">
+              {checklist.map((item) => (
+                <div key={item.label} className="flex items-center gap-3">
+                  <span className={`h-2.5 w-2.5 rounded-full ${item.done ? "bg-emerald-400" : "bg-slate-500"}`} />
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </Card>
       </div>
@@ -150,14 +158,21 @@ export function ExerciseWorkspace() {
         />
 
         <div className="mt-4 flex flex-wrap gap-3">
-          <Button>Check answer</Button>
-          <Button variant="subtle">Save draft</Button>
-          <Button variant="secondary">Ask mentor for a hint</Button>
+          {status === "not_started" ? (
+            <ProgressAction entityType="exercise" slug={exercise.slug} status="in_progress" variant="secondary">
+              Mark exercise in progress
+            </ProgressAction>
+          ) : null}
+          <ProgressAction entityType="exercise" slug={exercise.slug} status="completed">
+            Mark exercise complete
+          </ProgressAction>
+          <a
+            href={lessonHref}
+            className="inline-flex items-center justify-center rounded-full bg-slate-100 px-5 py-3 text-sm font-semibold text-slate-800"
+          >
+            Review lesson
+          </a>
         </div>
-
-        <p className="mt-4 text-xs text-slate-500">
-          Placeholder logic only for now. This UI is ready for a future Python execution and rubric pipeline.
-        </p>
       </Card>
 
       <Card className={`rounded-[30px] border ${feedback.tone}`}>
@@ -166,37 +181,27 @@ export function ExerciseWorkspace() {
             <Icon className={`h-5 w-5 ${state === "working" ? "animate-spin" : ""}`} />
           </div>
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] opacity-70">
-              Feedback
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] opacity-70">Feedback</p>
             <h3 className="mt-2 text-xl font-bold">{feedback.title}</h3>
             <p className="mt-3 max-w-2xl text-sm leading-7">{feedback.description}</p>
-          </div>
-        </div>
-
-        <div className="mt-5 grid gap-3 md:grid-cols-3">
-          <div className="rounded-[20px] bg-white/70 px-4 py-4 text-sm">
-            <p className="font-semibold">What went well</p>
-            <p className="mt-2 leading-6">You focused on one small bug instead of rewriting everything.</p>
-          </div>
-          <div className="rounded-[20px] bg-white/70 px-4 py-4 text-sm">
-            <p className="font-semibold">What to check next</p>
-            <p className="mt-2 leading-6">Read the `if` line character by character. Tiny syntax details matter here.</p>
-          </div>
-          <div className="rounded-[20px] bg-white/70 px-4 py-4 text-sm">
-            <p className="font-semibold">Why this matters</p>
-            <p className="mt-2 leading-6">Learning to debug syntax early reduces frustration in every later lesson.</p>
           </div>
         </div>
 
         <div className="mt-5 rounded-[24px] bg-white/70 p-4 text-sm text-slate-700">
           <div className="flex items-center gap-2 font-semibold text-slate-900">
             <Sparkles className="h-4 w-4 text-brand-600" />
-            Suggested correction flow
+            Next move
           </div>
           <p className="mt-2 leading-6">
-            1. Fix the comparison operator. 2. Add the missing colon. 3. Check the indentation under `if` and `else`. 4. Run it again.
+            {status === "completed"
+              ? "This exercise is marked complete. Use the next lesson link to keep your momentum going."
+              : "When the code feels stable, mark the exercise complete so your roadmap and dashboard can move forward with you."}
           </p>
+          {nextLessonHref ? (
+            <a href={nextLessonHref} className="mt-4 inline-flex text-sm font-semibold text-brand-600">
+              Continue to the next lesson
+            </a>
+          ) : null}
         </div>
       </Card>
     </div>

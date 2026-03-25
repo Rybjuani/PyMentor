@@ -1,0 +1,413 @@
+import { ExerciseData, LessonData, RoadmapModule } from "@/types";
+
+export const courseModules: RoadmapModule[] = [
+  {
+    slug: "introduction-to-programming",
+    title: "Introduction to programming",
+    description: "Learn what code is, how Python runs instructions, and how to think in small steps.",
+    order: 1,
+    status: "available",
+    lessonCount: 2,
+    estimatedTime: "30 min",
+    xp: 80
+  },
+  {
+    slug: "variables",
+    title: "Variables",
+    description: "Store values so your programs can remember names, scores, and answers.",
+    order: 2,
+    status: "available",
+    lessonCount: 2,
+    estimatedTime: "36 min",
+    xp: 110
+  },
+  {
+    slug: "conditionals",
+    title: "Conditionals",
+    description: "Teach Python how to make choices using `if`, `elif`, and `else`.",
+    order: 3,
+    status: "available",
+    lessonCount: 2,
+    estimatedTime: "40 min",
+    xp: 140
+  },
+  {
+    slug: "loops",
+    title: "Loops",
+    description: "Repeat actions without copying the same code again and again.",
+    order: 4,
+    status: "locked",
+    lessonCount: 2,
+    estimatedTime: "45 min",
+    xp: 150
+  },
+  {
+    slug: "functions",
+    title: "Functions",
+    description: "Group useful steps into reusable blocks and make programs easier to manage.",
+    order: 5,
+    status: "locked",
+    lessonCount: 2,
+    estimatedTime: "48 min",
+    xp: 160
+  }
+];
+
+export const courseLessons: LessonData[] = [
+  {
+    slug: "what-is-programming",
+    module: "Introduction to programming",
+    moduleSlug: "introduction-to-programming",
+    order: 1,
+    title: "What programming really is",
+    duration: "10 min",
+    difficulty: "Beginner",
+    summary: "Understand programming as giving clear instructions to a computer, one step at a time.",
+    warmup: "A recipe works because the steps are clear. Code works the same way.",
+    goal: "By the end of this lesson, you should understand what a program is and why computers need very clear instructions.",
+    keyIdeas: [
+      {
+        title: "Programs are instructions",
+        description: "A program is a list of steps that tells the computer what to do."
+      },
+      {
+        title: "Computers are literal",
+        description: "They do exactly what you write, not what you meant."
+      },
+      {
+        title: "Small steps win",
+        description: "Beginners learn faster when they break a big idea into tiny actions."
+      }
+    ],
+    explanation: [
+      {
+        title: "A computer needs precise instructions",
+        body: "Computers are fast, but they are not mind readers. They follow the exact instructions you write, in the order you write them."
+      },
+      {
+        title: "Programming is problem solving in steps",
+        body: "When you write code, you are turning a problem into small instructions. This is why simple, clear thinking matters more than fancy syntax at the start."
+      },
+      {
+        title: "Python is a beginner-friendly language",
+        body: "Python is popular for beginners because the code reads more like plain English than many other languages."
+      }
+    ],
+    example: "print('Hello, beginner!')\nprint('You just ran your first Python instructions.')",
+    practicePrompt: "Write two `print()` lines. In the first one, say your name. In the second one, say one reason you want to learn Python.",
+    practiceChecklist: [
+      "Use `print()` twice.",
+      "Put your text inside quotes.",
+      "Run the code and confirm both lines appear."
+    ],
+    commonMistakes: [
+      "Forgetting the quotes around text.",
+      "Misspelling `print`.",
+      "Using curly quotes copied from another app instead of plain quotes."
+    ],
+    bugChallenge: {
+      prompt: "This code should print a welcome message, but one small syntax issue breaks it.",
+      brokenCode: "print('Welcome to PyMentor)\nprint('Let\\'s learn Python')",
+      expectedLearning: "Strings need matching quotes on both sides."
+    },
+    exerciseSlug: "welcome-message-fix"
+  },
+  {
+    slug: "running-python-step-by-step",
+    module: "Introduction to programming",
+    moduleSlug: "introduction-to-programming",
+    order: 2,
+    title: "Running Python step by step",
+    duration: "12 min",
+    difficulty: "Beginner",
+    summary: "See how Python reads code from top to bottom and why order matters.",
+    warmup: "If you brush your teeth before picking up the toothbrush, the steps do not make sense. Code order matters too.",
+    goal: "By the end, you should be able to explain that Python follows instructions from top to bottom.",
+    keyIdeas: [
+      { title: "Order matters", description: "Python usually runs the first line before the second line, and so on." },
+      { title: "One line at a time", description: "Reading code slowly makes bugs easier to notice." },
+      { title: "Outputs show results", description: "What you see printed is the result of the steps you wrote." }
+    ],
+    explanation: [
+      {
+        title: "Top to bottom execution",
+        body: "When Python runs a file, it usually starts at the top and moves downward. That makes code order a big part of understanding behavior."
+      },
+      {
+        title: "Reading code like a story",
+        body: "Beginners often improve quickly when they read code line by line and ask, 'What happens right now?'"
+      },
+      {
+        title: "Why this helps later",
+        body: "Understanding execution order makes variables, conditionals, and loops much easier to learn."
+      }
+    ],
+    example: "print('Step 1')\nprint('Step 2')\nprint('Step 3')",
+    practicePrompt: "Write three `print()` lines that show a simple morning routine in the correct order.",
+    practiceChecklist: [
+      "Use three lines.",
+      "Make the order realistic.",
+      "Read the output from top to bottom."
+    ],
+    commonMistakes: [
+      "Expecting the last line to run first.",
+      "Mixing up the order of steps.",
+      "Changing multiple things at once and losing track of what happened."
+    ],
+    bugChallenge: {
+      prompt: "This code should show the steps in order, but one line is written incorrectly.",
+      brokenCode: "print('Wake up')\npritn('Brush teeth')\nprint('Eat breakfast')",
+      expectedLearning: "Small spelling errors can stop a program even when the idea is right."
+    }
+  },
+  {
+    slug: "variables-hold-values",
+    module: "Variables",
+    moduleSlug: "variables",
+    order: 1,
+    title: "Variables hold values",
+    duration: "14 min",
+    difficulty: "Beginner",
+    summary: "Learn how variables let Python remember information like names, scores, and ages.",
+    warmup: "A labeled box helps you keep track of what is inside. A variable works like a label for a value.",
+    goal: "By the end, you should be able to create a variable and explain what value it is holding.",
+    keyIdeas: [
+      { title: "A variable is a label", description: "It gives a name to a value so you can use it later." },
+      { title: "Values can be text or numbers", description: "Python can store different kinds of information." },
+      { title: "Names should be clear", description: "Simple variable names make code easier to read." }
+    ],
+    explanation: [
+      {
+        title: "Why variables matter",
+        body: "Without variables, you would need to repeat raw values over and over. Variables make code easier to read and update."
+      },
+      {
+        title: "Reading a variable assignment",
+        body: "You can read `name = 'Avery'` like this: 'Store the text Avery inside the variable called name.'"
+      },
+      {
+        title: "Good beginner habit",
+        body: "Use names that describe the value. `score` is easier to understand than `x`."
+      }
+    ],
+    example: "name = 'Avery'\nscore = 10\n\nprint(name)\nprint(score)",
+    practicePrompt: "Create a variable called `favorite_color` and another called `age`. Print both values.",
+    practiceChecklist: [
+      "Use meaningful variable names.",
+      "Put text inside quotes.",
+      "Print each variable after creating it."
+    ],
+    commonMistakes: [
+      "Forgetting quotes around text values.",
+      "Adding spaces inside a variable name.",
+      "Using a value before creating the variable."
+    ],
+    bugChallenge: {
+      prompt: "This code should store a favorite food, but it has a syntax issue.",
+      brokenCode: "favorite food = 'Pizza'\nprint(favorite food)",
+      expectedLearning: "Variable names cannot contain spaces."
+    }
+  },
+  {
+    slug: "changing-variable-values",
+    module: "Variables",
+    moduleSlug: "variables",
+    order: 2,
+    title: "Changing variable values",
+    duration: "12 min",
+    difficulty: "Beginner",
+    summary: "See how Python can update stored information when a variable gets a new value.",
+    warmup: "A score changes during a game. Variables can change too.",
+    goal: "By the end, you should understand that a variable can be updated and will keep the newest value.",
+    keyIdeas: [
+      { title: "Variables can change", description: "A later assignment replaces the old value." },
+      { title: "Newest value wins", description: "Python keeps the most recent value stored in that variable." },
+      { title: "Print to check", description: "Printing after a change helps you confirm what happened." }
+    ],
+    explanation: [
+      {
+        title: "Updating a variable",
+        body: "When you write a new assignment, Python replaces the old value. The variable still has the same name, but the stored value changes."
+      },
+      {
+        title: "Why this is useful",
+        body: "Many programs need changing data, such as scores, counters, or user choices."
+      },
+      {
+        title: "A simple debugging habit",
+        body: "If you are not sure what value a variable holds, print it after the update."
+      }
+    ],
+    example: "score = 5\nprint(score)\n\nscore = 8\nprint(score)",
+    practicePrompt: "Create a variable called `coins`, set it to 3, then change it to 5 and print it after each step.",
+    practiceChecklist: [
+      "Assign the first value.",
+      "Print the variable.",
+      "Assign a new value and print again."
+    ],
+    commonMistakes: [
+      "Thinking the old value stays active after reassignment.",
+      "Printing the text `coins` instead of the variable `coins`.",
+      "Changing the variable name by accident."
+    ],
+    bugChallenge: {
+      prompt: "This code should update the score, but the second line has the wrong symbol.",
+      brokenCode: "score = 5\nscore == 8\nprint(score)",
+      expectedLearning: "Use `=` to assign a value. `==` compares values."
+    }
+  },
+  {
+    slug: "python-conditionals-basics",
+    module: "Conditionals",
+    moduleSlug: "conditionals",
+    order: 1,
+    title: "Conditionals: helping Python choose",
+    duration: "12 min",
+    difficulty: "Beginner",
+    summary: "Learn how Python makes choices so your program can respond differently based on what is true.",
+    warmup: "If a friend asks whether they need an umbrella, your answer depends on the weather. Programs make decisions in a similar way.",
+    goal: "By the end of this lesson, you should be able to read and write a simple `if` statement and spot two very common beginner mistakes.",
+    keyIdeas: [
+      {
+        title: "A condition is a question",
+        description: "Python checks whether something is true or false before deciding what to do next."
+      },
+      {
+        title: "Blocks belong together",
+        description: "Indented lines are part of the decision. Python uses spacing to understand structure."
+      },
+      {
+        title: "You can test more than one path",
+        description: "Use `elif` for another option and `else` for the fallback when nothing above matches."
+      }
+    ],
+    explanation: [
+      {
+        title: "What a conditional does",
+        body: "A conditional is a decision point. Your program checks a condition, such as whether a score is above 70, and then chooses the matching path."
+      },
+      {
+        title: "Read it like a question",
+        body: "You can read `if age >= 18` like this: 'If age is at least 18, run this block of code.' Reading it in plain language first makes the logic less scary."
+      },
+      {
+        title: "Indentation matters",
+        body: "In Python, the indented lines under `if` belong to that decision. If your spacing is inconsistent, Python may show an error even when your idea is correct."
+      },
+      {
+        title: "Only one branch runs",
+        body: "Python checks the branches from top to bottom. As soon as one condition is true, Python runs that block and skips the rest."
+      }
+    ],
+    example: "score = 82\n\nif score >= 90:\n    print('Excellent work')\nelif score >= 70:\n    print('Nice job')\nelse:\n    print('Keep practicing')\n\n# Output: Nice job",
+    practicePrompt: "Create a program that checks a temperature value. Print `Cold` if it is below 15, `Warm` if it is from 15 to 25, and `Hot` if it is above 25.",
+    practiceChecklist: [
+      "Start with one variable called `temperature`.",
+      "Write one `if`, one `elif`, and one `else` branch.",
+      "Read your condition out loud before running it.",
+      "Check whether your indentation is consistent."
+    ],
+    commonMistakes: [
+      "Using `=` instead of `==` when comparing values. `=` assigns a value, while `==` compares two values.",
+      "Forgetting the colon `:` at the end of an `if` line. Python uses the colon to start a block.",
+      "Mixing tabs and spaces or changing indentation width inside one block."
+    ],
+    bugChallenge: {
+      prompt: "This program should print `Adult` when age is 18 or more. It currently has syntax mistakes that stop Python before the logic can even run.",
+      brokenCode: "age = 18\n\nif age => 18\n    print('Adult')\nelse:\n    print('Minor')",
+      expectedLearning: "Notice that beginners often need to fix syntax first: use the correct comparison operator and end the `if` line with a colon."
+    },
+    exerciseSlug: "fix-the-conditional"
+  },
+  {
+    slug: "elif-and-else-paths",
+    module: "Conditionals",
+    moduleSlug: "conditionals",
+    order: 2,
+    title: "Using `elif` and `else` for more paths",
+    duration: "13 min",
+    difficulty: "Beginner",
+    summary: "Extend simple decisions by giving Python more than one possible path.",
+    warmup: "If a traffic light can be red, yellow, or green, one simple `if` is not enough. You need more paths.",
+    goal: "By the end, you should know when to use `elif` and when `else` makes sense as a fallback.",
+    keyIdeas: [
+      { title: "Use `elif` for another check", description: "It gives Python another condition to test." },
+      { title: "Use `else` for the fallback", description: "It runs when no earlier condition matched." },
+      { title: "Top to bottom still matters", description: "Python checks each branch in order until one matches." }
+    ],
+    explanation: [
+      {
+        title: "When one `if` is not enough",
+        body: "Sometimes a program needs more than two outcomes. `elif` lets you test another condition after the first one."
+      },
+      {
+        title: "What `else` means",
+        body: "`else` is the final fallback. It does not ask a new question. It simply runs if the earlier conditions were false."
+      },
+      {
+        title: "Keep branches readable",
+        body: "When each branch is short and clear, it is easier to understand what the program will do."
+      }
+    ],
+    example: "age = 16\n\nif age >= 18:\n    print('Adult')\nelif age >= 13:\n    print('Teen')\nelse:\n    print('Child')",
+    practicePrompt: "Write a program that prints `High` for a score of 90 or more, `Medium` for 60 or more, and `Low` otherwise.",
+    practiceChecklist: [
+      "Use `if`, `elif`, and `else` in that order.",
+      "Place the highest check first.",
+      "Read each branch and ask when it will run."
+    ],
+    commonMistakes: [
+      "Putting a lower threshold first so the higher one never runs.",
+      "Adding a condition after `else`.",
+      "Indenting one branch differently from the others."
+    ],
+    bugChallenge: {
+      prompt: "This program should classify a score, but the order of the checks is wrong.",
+      brokenCode: "score = 95\n\nif score >= 60:\n    print('Medium')\nelif score >= 90:\n    print('High')\nelse:\n    print('Low')",
+      expectedLearning: "Place the more specific or higher condition first when order changes the result."
+    }
+  }
+];
+
+export const courseExercises: ExerciseData[] = [
+  {
+    slug: "welcome-message-fix",
+    title: "Fix the welcome message",
+    moduleSlug: "introduction-to-programming",
+    lessonSlug: "what-is-programming",
+    order: 1,
+    duration: "6 min",
+    summary: "Repair a tiny print statement bug and get used to reading syntax carefully.",
+    instructions: [
+      "Read the printed text and the quotes around it.",
+      "Fix only what is necessary.",
+      "Keep the output as a friendly welcome message."
+    ],
+    starterCode: "print('Welcome to PyMentor)\nprint('Let\\'s learn Python')",
+    successCriteria: [
+      "Both lines can run.",
+      "The text is still a welcome message.",
+      "The quotes are correctly paired."
+    ]
+  },
+  {
+    slug: "fix-the-conditional",
+    title: "Fix the conditional",
+    moduleSlug: "conditionals",
+    lessonSlug: "python-conditionals-basics",
+    order: 1,
+    duration: "8 min",
+    summary: "Fix a beginner conditional bug by correcting syntax before worrying about anything else.",
+    instructions: [
+      "Look at the comparison operator first.",
+      "Check the punctuation at the end of the `if` line.",
+      "Keep the indentation readable."
+    ],
+    starterCode: "age = 18\n\nif age => 18\n    print('Adult')\nelse:\n    print('Minor')",
+    successCriteria: [
+      "The code uses a valid comparison operator.",
+      "The `if` line ends with a colon.",
+      "The code prints `Adult` when age is 18."
+    ]
+  }
+];

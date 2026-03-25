@@ -14,7 +14,8 @@ import { SectionIntro } from "@/components/section-intro";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { communityPreview, mentorPrompts, roadmapModules } from "@/lib/mock-data";
+import { courseModules } from "@/lib/course-content";
+import { communityPreview, mentorPrompts } from "@/lib/mock-data";
 
 const benefits = [
   {
@@ -205,7 +206,7 @@ export default function HomePage() {
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
-              {roadmapModules.slice(0, 4).map((module) => (
+              {courseModules.slice(0, 4).map((module) => (
                 <Card key={module.slug} className="rounded-[30px]">
                   <div className="flex items-center justify-between gap-3">
                     <span className="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">

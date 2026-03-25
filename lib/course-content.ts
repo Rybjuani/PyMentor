@@ -62,63 +62,63 @@ export const courseLessons: LessonData[] = [
     title: "Qué es programar de verdad",
     duration: "10 min",
     difficulty: "Beginner",
-    summary: "Understand programming as giving clear instructions to a computer, one small step at a time.",
-    warmup: "A recipe works because the steps are clear. Code works the same way.",
-    goal: "By the end of this lesson, you should understand what a program is and why computers need very clear instructions.",
+    summary: "Entiende programar como darle instrucciones claras a una computadora, un paso pequeño a la vez.",
+    warmup: "Una receta funciona porque sus pasos son claros. Con el código pasa lo mismo.",
+    goal: "Al final de esta lección, deberías entender qué es un programa y por qué las computadoras necesitan instrucciones muy claras.",
     keyIdeas: [
       {
-        title: "Programs are instructions",
-        description: "A program is a list of steps that tells the computer what to do."
+        title: "Los programas son instrucciones",
+        description: "Un programa es una lista de pasos que le dice a la computadora qué hacer."
       },
       {
-        title: "Computers are literal",
-        description: "They do exactly what you write, not what you meant."
+        title: "Las computadoras entienden todo de forma literal",
+        description: "Hacen exactamente lo que escribes, no lo que quisiste decir."
       },
       {
-        title: "Small steps win",
-        description: "Beginners learn faster when they break a big idea into tiny actions."
+        title: "Los pasos pequeños ayudan",
+        description: "Quien empieza aprende más rápido cuando divide una idea grande en acciones pequeñas."
       }
     ],
     explanation: [
       {
-        title: "A computer needs precise instructions",
-        body: "Computers are fast, but they are not mind readers. They follow the exact instructions you write, in the order you write them."
+        title: "Una computadora necesita instrucciones precisas",
+        body: "Las computadoras son rápidas, pero no adivinan lo que pensabas. Siguen exactamente las instrucciones que escribes, en el orden en que las escribes."
       },
       {
-        title: "Programming is problem solving in steps",
-        body: "When you write code, you are turning a problem into small instructions. This is why simple, clear thinking matters more than fancy syntax at the start."
+        title: "Programar es resolver problemas por pasos",
+        body: "Cuando escribes código, conviertes un problema en instrucciones pequeñas. Por eso al principio importa más pensar con claridad que conocer sintaxis complicada."
       },
       {
-        title: "Python is a beginner-friendly language",
-        body: "Python is popular for beginners because the code reads more like plain English than many other languages."
+        title: "Python es un lenguaje amigable para empezar",
+        body: "Python es popular para principiantes porque su código suele leerse de forma más cercana al lenguaje natural que muchos otros lenguajes."
       },
       {
-        title: "Early progress should feel simple",
-        body: "Your first wins do not need to be impressive. They need to be understandable. Running two clear lines of code is a real first step."
+        title: "El progreso inicial debe sentirse simple",
+        body: "Tus primeras victorias no tienen que ser impresionantes. Tienen que ser entendibles. Ejecutar dos líneas claras de código ya es un primer paso real."
       }
     ],
-    example: "print('Hello, beginner!')\nprint('You just ran your first Python instructions.')",
-    practicePrompt: "Write two `print()` lines. In the first one, say your name. In the second one, say one reason you want to learn Python.",
+    example: "print('Hola, principiante')\nprint('Acabas de ejecutar tus primeras instrucciones en Python.')",
+    practicePrompt: "Escribe dos líneas con `print()`. En la primera, di tu nombre. En la segunda, di una razón por la que quieres aprender Python.",
     practiceChecklist: [
-      "Use `print()` twice.",
-      "Put your text inside quotes.",
-      "Run the code and confirm both lines appear."
+      "Usa `print()` dos veces.",
+      "Pon tu texto entre comillas.",
+      "Ejecuta el código y confirma que aparezcan las dos líneas."
     ],
     commonMistakes: [
-      "Forgetting the quotes around text.",
-      "Misspelling `print`.",
-      "Using curly quotes copied from another app instead of plain quotes."
+      "Olvidar las comillas alrededor del texto.",
+      "Escribir mal `print`.",
+      "Usar comillas curvas copiadas de otra app en lugar de comillas simples o dobles normales."
     ],
     bugChallenge: {
-      prompt: "This code should print a welcome message, but one small syntax issue breaks it.",
-      brokenCode: "print('Welcome to PyMentor)\nprint('Let\\'s learn Python')",
-      expectedLearning: "Strings need matching quotes on both sides."
+      prompt: "Este código debería mostrar un mensaje de bienvenida, pero un detalle de sintaxis lo rompe.",
+      brokenCode: "print('Bienvenido a PyMentor)\nprint('Vamos a aprender Python')",
+      expectedLearning: "Los textos necesitan comillas que se abran y se cierren correctamente."
     },
     playground: {
-      title: "First Python playground",
-      guidance: "Edit the two `print()` lines and run them. This is your safe place to experiment with tiny Python changes.",
-      starterCode: "print('Hello, beginner!')\nprint('I am learning Python step by step.')",
-      emptyOutputHint: "Try adding or changing a `print()` line, then run the code again."
+      title: "Tu primer espacio para probar Python",
+      guidance: "Edita las dos líneas con `print()` y ejecútalas. Este es tu espacio seguro para probar cambios pequeños en Python.",
+      starterCode: "print('Hola, principiante')\nprint('Estoy aprendiendo Python paso a paso.')",
+      emptyOutputHint: "Prueba agregar o cambiar una línea con `print()` y vuelve a ejecutar el código."
     },
     exerciseSlug: "welcome-message-fix"
   },
@@ -130,57 +130,57 @@ export const courseLessons: LessonData[] = [
     title: "Ejecutar Python paso a paso",
     duration: "12 min",
     difficulty: "Beginner",
-    summary: "See how Python reads code from top to bottom and why order matters.",
-    warmup: "If you brush your teeth before picking up the toothbrush, the steps do not make sense. Code order matters too.",
-    goal: "By the end, you should be able to explain that Python follows instructions from top to bottom.",
+    summary: "Mira cómo Python lee el código de arriba hacia abajo y por qué el orden importa.",
+    warmup: "Si te cepillas los dientes antes de agarrar el cepillo, los pasos no tienen sentido. En el código, el orden también importa.",
+    goal: "Al final, deberías poder explicar que Python sigue instrucciones de arriba hacia abajo.",
     keyIdeas: [
       {
-        title: "Order matters",
-        description: "Python usually runs the first line before the second line, and so on."
+        title: "El orden importa",
+        description: "Python normalmente ejecuta la primera línea antes que la segunda, y así sucesivamente."
       },
       {
-        title: "One line at a time",
-        description: "Reading code slowly makes bugs easier to notice."
+        title: "Una línea a la vez",
+        description: "Leer el código despacio hace más fácil notar errores."
       },
       {
-        title: "Outputs show results",
-        description: "What you see printed is the result of the steps you wrote."
+        title: "La salida muestra el resultado",
+        description: "Lo que ves en pantalla es el resultado de los pasos que escribiste."
       }
     ],
     explanation: [
       {
-        title: "Top to bottom execution",
-        body: "When Python runs a file, it usually starts at the top and moves downward. That makes code order a big part of understanding behavior."
+        title: "Ejecución de arriba hacia abajo",
+        body: "Cuando Python ejecuta un archivo, normalmente empieza arriba y avanza hacia abajo. Por eso el orden del código es una parte importante para entender qué hace."
       },
       {
-        title: "Reading code like a story",
-        body: "Beginners often improve quickly when they read code line by line and ask, 'What happens right now?'"
+        title: "Leer el código como una historia",
+        body: "Quien empieza suele avanzar más rápido cuando lee el código línea por línea y se pregunta: '¿Qué pasa ahora mismo?'"
       },
       {
-        title: "Outputs help you check your thinking",
-        body: "If the output surprises you, that is useful information. It means one of your assumptions about the order was wrong."
+        title: "La salida te ayuda a revisar tu idea",
+        body: "Si la salida te sorprende, eso es información útil. Significa que alguna de tus suposiciones sobre el orden estaba equivocada."
       },
       {
-        title: "This idea keeps helping later",
-        body: "Understanding execution order makes variables, conditionals, and loops much easier to learn."
+        title: "Esta idea te sigue ayudando después",
+        body: "Entender el orden de ejecución hace mucho más fácil aprender variables, condicionales y bucles."
       }
     ],
-    example: "print('Step 1')\nprint('Step 2')\nprint('Step 3')",
-    practicePrompt: "Write three `print()` lines that show a simple morning routine in the correct order.",
+    example: "print('Paso 1')\nprint('Paso 2')\nprint('Paso 3')",
+    practicePrompt: "Escribe tres líneas con `print()` que muestren una rutina simple de la mañana en el orden correcto.",
     practiceChecklist: [
-      "Use three lines.",
-      "Make the order realistic.",
-      "Read the output from top to bottom."
+      "Usa tres líneas.",
+      "Haz que el orden sea realista.",
+      "Lee la salida de arriba hacia abajo."
     ],
     commonMistakes: [
-      "Expecting the last line to run first.",
-      "Mixing up the order of steps.",
-      "Changing multiple things at once and losing track of what happened."
+      "Esperar que la última línea se ejecute primero.",
+      "Confundir el orden de los pasos.",
+      "Cambiar muchas cosas a la vez y perder de vista qué pasó."
     ],
     bugChallenge: {
-      prompt: "This code should show the steps in order, but one line is written incorrectly.",
-      brokenCode: "print('Wake up')\npritn('Brush teeth')\nprint('Eat breakfast')",
-      expectedLearning: "Small spelling errors can stop a program even when the idea is right."
+      prompt: "Este código debería mostrar los pasos en orden, pero una línea está mal escrita.",
+      brokenCode: "print('Despertar')\npritn('Lavarse los dientes')\nprint('Desayunar')",
+      expectedLearning: "Un error pequeño de escritura puede detener el programa aunque la idea general sea correcta."
     },
     exerciseSlug: "morning-routine-output"
   },
@@ -192,57 +192,57 @@ export const courseLessons: LessonData[] = [
     title: "Leer pequeños errores de Python con calma",
     duration: "12 min",
     difficulty: "Beginner",
-    summary: "Learn how to read a simple Python error message without panic and fix one small problem at a time.",
-    warmup: "When a recipe goes wrong, you do not throw away cooking forever. You look for the first step that broke. Errors in code work the same way.",
-    goal: "By the end, you should be able to treat a beginner error message as a clue instead of as proof that you are bad at coding.",
+    summary: "Aprende a leer un mensaje de error simple de Python sin entrar en pánico y a arreglar un problema pequeño a la vez.",
+    warmup: "Cuando una receta sale mal, no dejas de cocinar para siempre. Buscas el primer paso que falló. Con los errores de código pasa lo mismo.",
+    goal: "Al final, deberías poder tratar un error de principiante como una pista y no como una prueba de que no sirves para programar.",
     keyIdeas: [
       {
-        title: "Errors are clues",
-        description: "An error message is Python telling you where it got confused."
+        title: "Los errores son pistas",
+        description: "Un mensaje de error es Python diciéndote dónde se confundió."
       },
       {
-        title: "Fix the first problem first",
-        description: "One syntax error can cause several confusing effects later in the file."
+        title: "Arregla primero el primer problema",
+        description: "Un error de sintaxis puede provocar varios efectos confusos más adelante en el archivo."
       },
       {
-        title: "Tiny mistakes are normal",
-        description: "Missing quotes, colons, or letters happen to everyone."
+        title: "Los errores pequeños son normales",
+        description: "Olvidar comillas, dos puntos o letras le pasa a todo el mundo."
       }
     ],
     explanation: [
       {
-        title: "An error message is not a judgment",
-        body: "When Python stops and shows an error, it is not saying you failed. It is showing you the place where the program stopped making sense."
+        title: "Un mensaje de error no es un juicio",
+        body: "Cuando Python se detiene y muestra un error, no te está diciendo que fracasaste. Te está mostrando el punto donde el programa dejó de tener sentido."
       },
       {
-        title: "Start with the first line Python points to",
-        body: "Do not scan the whole file looking for everything at once. Start where Python got stuck, fix that, and then run the code again."
+        title: "Empieza por la primera línea que Python señala",
+        body: "No revises todo el archivo intentando arreglarlo todo al mismo tiempo. Empieza donde Python se detuvo, corrige eso y vuelve a ejecutar."
       },
       {
-        title: "Look for punctuation and spelling first",
-        body: "For beginners, many early errors come from missing quotes, missing colons, spelling mistakes, or inconsistent indentation."
+        title: "Primero revisa puntuación y escritura",
+        body: "Para quienes empiezan, muchos errores iniciales vienen de comillas faltantes, dos puntos faltantes, errores de escritura o una indentación inconsistente."
       },
       {
-        title: "You can stay calm and methodical",
-        body: "A good debugging habit is simple: read the line, say what it should do, and change one thing at a time."
+        title: "Puedes mantener la calma y avanzar con método",
+        body: "Un buen hábito para depurar es simple: lee la línea, di qué debería hacer y cambia una sola cosa a la vez."
       }
     ],
-    example: "name = 'Maya'\nprint(name)\nprint('Ready to learn!')",
-    practicePrompt: "Take a small broken program and look for one issue first. Explain in plain words what Python might be confused about.",
+    example: "name = 'Maya'\nprint(name)\nprint('Lista para aprender')",
+    practicePrompt: "Toma un programa pequeño roto y busca primero un solo problema. Explica con palabras simples qué podría estar confundiendo a Python.",
     practiceChecklist: [
-      "Read the line Python points to.",
-      "Check spelling and punctuation before changing the logic.",
-      "Fix one issue, then run again."
+      "Lee la línea que Python señala.",
+      "Revisa escritura y puntuación antes de cambiar la lógica.",
+      "Arregla un problema y luego ejecuta de nuevo."
     ],
     commonMistakes: [
-      "Trying to fix everything at once.",
-      "Ignoring the line number or line Python points to.",
-      "Changing the code so much that you lose track of the original goal."
+      "Intentar arreglar todo al mismo tiempo.",
+      "Ignorar el número o la línea que Python señala.",
+      "Cambiar tanto el código que pierdes de vista el objetivo original."
     ],
     bugChallenge: {
-      prompt: "This code should print a stored name, but one typing mistake breaks it.",
+      prompt: "Este código debería imprimir un nombre guardado, pero un error de escritura lo rompe.",
       brokenCode: "name = 'Maya'\nprnit(name)",
-      expectedLearning: "The overall idea can be correct even when one small spelling mistake stops the program."
+      expectedLearning: "La idea general puede estar bien aunque un error pequeño de escritura detenga el programa."
     },
     exerciseSlug: "fix-the-name-print"
   },
@@ -254,57 +254,57 @@ export const courseLessons: LessonData[] = [
     title: "Las variables guardan valores",
     duration: "14 min",
     difficulty: "Beginner",
-    summary: "Learn how variables let Python remember information like names, scores, and ages.",
-    warmup: "A labeled box helps you keep track of what is inside. A variable works like a label for a value.",
-    goal: "By the end, you should be able to create a variable and explain what value it is holding.",
+    summary: "Aprende cómo las variables permiten que Python recuerde información como nombres, puntajes y edades.",
+    warmup: "Una caja con etiqueta te ayuda a recordar qué hay dentro. Una variable funciona como una etiqueta para un valor.",
+    goal: "Al final, deberías poder crear una variable y explicar qué valor está guardando.",
     keyIdeas: [
       {
-        title: "A variable is a label",
-        description: "It gives a name to a value so you can use it later."
+        title: "Una variable es una etiqueta",
+        description: "Le pone un nombre a un valor para que puedas usarlo más tarde."
       },
       {
-        title: "Values can be text or numbers",
-        description: "Python can store different kinds of information."
+        title: "Los valores pueden ser texto o números",
+        description: "Python puede guardar distintos tipos de información."
       },
       {
-        title: "Names should be clear",
-        description: "Simple variable names make code easier to read."
+        title: "Los nombres deben ser claros",
+        description: "Los nombres simples de variables hacen que el código sea más fácil de leer."
       }
     ],
     explanation: [
       {
-        title: "Why variables matter",
-        body: "Without variables, you would need to repeat raw values over and over. Variables make code easier to read and update."
+        title: "Por qué importan las variables",
+        body: "Sin variables, tendrías que repetir valores sueltos una y otra vez. Las variables hacen que el código sea más fácil de leer y actualizar."
       },
       {
-        title: "Reading a variable assignment",
-        body: "You can read `name = 'Avery'` like this: 'Store the text Avery inside the variable called name.'"
+        title: "Cómo leer una asignación de variable",
+        body: "Puedes leer `name = 'Avery'` así: 'Guarda el texto Avery dentro de la variable llamada name'."
       },
       {
-        title: "Variables make meaning visible",
-        body: "A good variable name helps you see what the program is trying to remember. `favorite_color` says more than `x`."
+        title: "Las variables muestran mejor el significado",
+        body: "Un buen nombre de variable te ayuda a ver qué intenta recordar el programa. `favorite_color` dice mucho más que `x`."
       },
       {
-        title: "This is the start of real programs",
-        body: "As soon as a program can remember information, it becomes more useful and more personal."
+        title: "Aquí empiezan los programas de verdad",
+        body: "En cuanto un programa puede recordar información, se vuelve más útil y más personal."
       }
     ],
     example: "name = 'Avery'\nscore = 10\n\nprint(name)\nprint(score)",
-    practicePrompt: "Create a variable called `favorite_color` and another called `age`. Print both values.",
+    practicePrompt: "Crea una variable llamada `favorite_color` y otra llamada `age`. Imprime ambos valores.",
     practiceChecklist: [
-      "Use meaningful variable names.",
-      "Put text inside quotes.",
-      "Print each variable after creating it."
+      "Usa nombres de variables con sentido.",
+      "Pon el texto entre comillas.",
+      "Imprime cada variable después de crearla."
     ],
     commonMistakes: [
-      "Forgetting quotes around text values.",
-      "Adding spaces inside a variable name.",
-      "Using a value before creating the variable."
+      "Olvidar las comillas alrededor de valores de texto.",
+      "Agregar espacios dentro del nombre de una variable.",
+      "Usar un valor antes de crear la variable."
     ],
     bugChallenge: {
-      prompt: "This code should store a favorite food, but it has a syntax issue.",
+      prompt: "Este código debería guardar una comida favorita, pero tiene un problema de sintaxis.",
       brokenCode: "favorite food = 'Pizza'\nprint(favorite food)",
-      expectedLearning: "Variable names cannot contain spaces."
+      expectedLearning: "Los nombres de variables no pueden tener espacios."
     },
     exerciseSlug: "variable-label-check"
   },
@@ -316,63 +316,63 @@ export const courseLessons: LessonData[] = [
     title: "Cambiar el valor de una variable",
     duration: "12 min",
     difficulty: "Beginner",
-    summary: "See how Python can update stored information when a variable gets a new value.",
-    warmup: "A score changes during a game. Variables can change too.",
-    goal: "By the end, you should understand that a variable can be updated and will keep the newest value.",
+    summary: "Mira cómo Python puede actualizar información guardada cuando una variable recibe un valor nuevo.",
+    warmup: "Un puntaje cambia durante un juego. Las variables también pueden cambiar.",
+    goal: "Al final, deberías entender que una variable puede actualizarse y quedarse con el valor más reciente.",
     keyIdeas: [
       {
-        title: "Variables can change",
-        description: "A later assignment replaces the old value."
+        title: "Las variables pueden cambiar",
+        description: "Una asignación posterior reemplaza el valor anterior."
       },
       {
-        title: "Newest value wins",
-        description: "Python keeps the most recent value stored in that variable."
+        title: "El valor más nuevo es el que cuenta",
+        description: "Python conserva el valor más reciente guardado en esa variable."
       },
       {
-        title: "Print to check",
-        description: "Printing after a change helps you confirm what happened."
+        title: "Imprimir ayuda a comprobar",
+        description: "Imprimir después de un cambio te ayuda a confirmar qué pasó."
       }
     ],
     explanation: [
       {
-        title: "Updating a variable",
-        body: "When you write a new assignment, Python replaces the old value. The variable still has the same name, but the stored value changes."
+        title: "Actualizar una variable",
+        body: "Cuando escribes una nueva asignación, Python reemplaza el valor anterior. La variable sigue teniendo el mismo nombre, pero cambia el valor guardado."
       },
       {
-        title: "Why this is useful",
-        body: "Many programs need changing data, such as scores, counters, or user choices."
+        title: "Por qué esto es útil",
+        body: "Muchos programas necesitan datos que cambian, como puntajes, contadores o elecciones de una persona."
       },
       {
-        title: "Read each assignment in time order",
-        body: "If a variable changes more than once, read the file from top to bottom and ask what value it holds at each moment."
+        title: "Lee cada asignación en orden",
+        body: "Si una variable cambia más de una vez, lee el archivo de arriba hacia abajo y pregúntate qué valor tiene en cada momento."
       },
       {
-        title: "Printing reduces confusion",
-        body: "If you are not sure what value a variable holds, print it right after the update. That gives you immediate feedback."
+        title: "Imprimir reduce la confusión",
+        body: "Si no estás seguro de qué valor guarda una variable, imprímela justo después de actualizarla. Eso te da una respuesta inmediata."
       }
     ],
     example: "score = 5\nprint(score)\n\nscore = 8\nprint(score)",
-    practicePrompt: "Create a variable called `coins`, set it to 3, then change it to 5 and print it after each step.",
+    practicePrompt: "Crea una variable llamada `coins`, asígnale 3, luego cámbiala a 5 e imprímela después de cada paso.",
     practiceChecklist: [
-      "Assign the first value.",
-      "Print the variable.",
-      "Assign a new value and print again."
+      "Asigna el primer valor.",
+      "Imprime la variable.",
+      "Asigna un valor nuevo y vuelve a imprimir."
     ],
     commonMistakes: [
-      "Thinking the old value stays active after reassignment.",
-      "Printing the text `coins` instead of the variable `coins`.",
-      "Changing the variable name by accident."
+      "Pensar que el valor viejo sigue activo después de reasignar.",
+      "Imprimir el texto `coins` en lugar de la variable `coins`.",
+      "Cambiar el nombre de la variable sin querer."
     ],
     bugChallenge: {
-      prompt: "This code should update the score, but the second line has the wrong symbol.",
+      prompt: "Este código debería actualizar el puntaje, pero la segunda línea usa el símbolo equivocado.",
       brokenCode: "score = 5\nscore == 8\nprint(score)",
-      expectedLearning: "Use `=` to assign a value. `==` compares values."
+      expectedLearning: "Usa `=` para asignar un valor. `==` sirve para comparar valores."
     },
     playground: {
-      title: "See a variable change live",
-      guidance: "Run the code, then change the numbers and run it again. Watch how Python keeps the newest value of the variable.",
+      title: "Mira cómo cambia una variable",
+      guidance: "Ejecuta el código, luego cambia los números y vuelve a ejecutarlo. Observa cómo Python conserva el valor más nuevo de la variable.",
       starterCode: "coins = 3\nprint(coins)\n\ncoins = 5\nprint(coins)",
-      emptyOutputHint: "This runner shows whatever your `print()` lines send to the screen."
+      emptyOutputHint: "Este espacio muestra todo lo que tus líneas con `print()` envían a la pantalla."
     },
     exerciseSlug: "coins-after-update"
   },
@@ -384,63 +384,63 @@ export const courseLessons: LessonData[] = [
     title: "Usar input para guardar texto",
     duration: "14 min",
     difficulty: "Beginner",
-    summary: "Collect a simple answer from the user and store it in a variable.",
-    warmup: "A program becomes more interesting when it can respond to a real person instead of only printing fixed text.",
-    goal: "By the end, you should be able to use `input()` to collect text, store it in a variable, and print a simple reply.",
+    summary: "Recoge una respuesta simple de la persona usuaria y guárdala en una variable.",
+    warmup: "Un programa se vuelve más interesante cuando puede responder a una persona real en lugar de solo imprimir texto fijo.",
+    goal: "Al final, deberías poder usar `input()` para recibir texto, guardarlo en una variable e imprimir una respuesta simple.",
     keyIdeas: [
       {
-        title: "`input()` waits for a reply",
-        description: "It lets the user type something into the program."
+        title: "`input()` espera una respuesta",
+        description: "Permite que la persona escriba algo dentro del programa."
       },
       {
-        title: "The reply can be stored",
-        description: "You can save the result of `input()` inside a variable."
+        title: "La respuesta se puede guardar",
+        description: "Puedes guardar el resultado de `input()` dentro de una variable."
       },
       {
-        title: "Then you can use it later",
-        description: "Printing the stored value makes the program feel interactive."
+        title: "Después puedes usarla",
+        description: "Imprimir el valor guardado hace que el programa se sienta interactivo."
       }
     ],
     explanation: [
       {
-        title: "What `input()` does",
-        body: "When Python reaches `input()`, it pauses and waits for the user to type something. Whatever the user types comes back as text."
+        title: "Qué hace `input()`",
+        body: "Cuando Python llega a `input()`, se detiene y espera a que alguien escriba algo. Lo que esa persona escriba vuelve como texto."
       },
       {
-        title: "Store the answer in a variable",
-        body: "A common beginner pattern is `name = input('What is your name? ')`. You are asking a question and saving the answer."
+        title: "Guarda la respuesta en una variable",
+        body: "Un patrón común al empezar es `name = input('¿Cómo te llamas? ')`. Estás haciendo una pregunta y guardando la respuesta."
       },
       {
-        title: "Use the variable in a reply",
-        body: "After storing the answer, you can print it back to the user. That is a simple but real interaction."
+        title: "Usa la variable en una respuesta",
+        body: "Después de guardar la respuesta, puedes imprimirla de vuelta. Es una interacción simple, pero real."
       },
       {
-        title: "Keep the first version small",
-        body: "For now, one question and one reply are enough. Clear and simple is better than complicated and confusing."
+        title: "Mantén la primera versión pequeña",
+        body: "Por ahora, una pregunta y una respuesta son suficientes. Claro y simple es mejor que complicado y confuso."
       }
     ],
-    example: "name = input('What is your name? ')\nprint('Hello, ' + name)",
-    practicePrompt: "Ask the user for their favorite snack, store the answer in `snack`, and print a friendly reply using that variable.",
+    example: "name = input('¿Cómo te llamas? ')\nprint('Hola, ' + name)",
+    practicePrompt: "Pide a la persona su snack favorito, guarda la respuesta en `snack` e imprime una respuesta amable usando esa variable.",
     practiceChecklist: [
-      "Use `input()` once.",
-      "Store the answer in a variable with a clear name.",
-      "Print a short reply that includes the stored answer."
+      "Usa `input()` una vez.",
+      "Guarda la respuesta en una variable con un nombre claro.",
+      "Imprime una respuesta corta que incluya lo que se guardó."
     ],
     commonMistakes: [
-      "Forgetting to store the result of `input()` in a variable.",
-      "Trying to use a variable name that was never created.",
-      "Making the program too long before the simple version works."
+      "Olvidar guardar el resultado de `input()` en una variable.",
+      "Intentar usar una variable que nunca fue creada.",
+      "Hacer el programa demasiado largo antes de que funcione la versión simple."
     ],
     bugChallenge: {
-      prompt: "This program should ask for a name and greet the user, but one small syntax issue breaks the first line.",
-      brokenCode: "name = input('What is your name? '\nprint('Hello, ' + name)",
-      expectedLearning: "Function calls need matching parentheses as well as quotes."
+      prompt: "Este programa debería pedir un nombre y saludar, pero un detalle de sintaxis rompe la primera línea.",
+      brokenCode: "name = input('¿Cómo te llamas? '\nprint('Hola, ' + name)",
+      expectedLearning: "Las llamadas a funciones necesitan paréntesis que se abran y se cierren correctamente, además de comillas."
     },
     playground: {
-      title: "Try input in the browser",
-      guidance: "Run the code and answer the browser prompt. PyMentor will pass your reply into Python so you can see the greeting come back.",
-      starterCode: "name = input('What is your name? ')\nprint('Hello, ' + name)",
-      emptyOutputHint: "If your code uses `input()`, the browser will ask you for the value before Python continues."
+      title: "Prueba `input()` en el navegador",
+      guidance: "Ejecuta el código y responde la ventana del navegador. PyMentor pasará tu respuesta a Python para que veas volver el saludo.",
+      starterCode: "name = input('¿Cómo te llamas? ')\nprint('Hola, ' + name)",
+      emptyOutputHint: "Si tu código usa `input()`, el navegador te pedirá ese valor antes de que Python continúe."
     },
     exerciseSlug: "friendly-intro-input"
   },
@@ -452,58 +452,58 @@ export const courseLessons: LessonData[] = [
     title: "Condicionales: ayudar a Python a elegir",
     duration: "12 min",
     difficulty: "Beginner",
-    summary: "Learn how Python makes choices so your program can respond differently based on what is true.",
-    warmup: "If a friend asks whether they need an umbrella, your answer depends on the weather. Programs make decisions in a similar way.",
-    goal: "By the end of this lesson, you should be able to read and write a simple `if` statement and spot two very common beginner mistakes.",
+    summary: "Aprende cómo Python toma decisiones para que tu programa pueda responder distinto según lo que sea verdadero.",
+    warmup: "Si una amistad te pregunta si necesita paraguas, tu respuesta depende del clima. Los programas toman decisiones de una forma parecida.",
+    goal: "Al final de esta lección, deberías poder leer y escribir un `if` simple y detectar dos errores muy comunes al empezar.",
     keyIdeas: [
       {
-        title: "A condition is a question",
-        description: "Python checks whether something is true or false before deciding what to do next."
+        title: "Una condición es una pregunta",
+        description: "Python comprueba si algo es verdadero o falso antes de decidir qué hacer."
       },
       {
-        title: "Blocks belong together",
-        description: "Indented lines are part of the decision. Python uses spacing to understand structure."
+        title: "Los bloques van juntos",
+        description: "Las líneas indentadas forman parte de la decisión. Python usa el espaciado para entender la estructura."
       },
       {
-        title: "You can test more than one path",
-        description: "Use `elif` for another option and `else` for the fallback when nothing above matches."
+        title: "Puedes probar más de un camino",
+        description: "Usa `elif` para otra opción y `else` como salida final cuando nada de lo anterior coincide."
       }
     ],
     explanation: [
       {
-        title: "What a conditional does",
-        body: "A conditional is a decision point. Your program checks a condition, such as whether a score is above 70, and then chooses the matching path."
+        title: "Qué hace un condicional",
+        body: "Un condicional es un punto de decisión. Tu programa revisa una condición, por ejemplo si un puntaje está por encima de 70, y luego elige el camino que corresponde."
       },
       {
-        title: "Read it like a question",
-        body: "You can read `if age >= 18` like this: 'If age is at least 18, run this block of code.' Reading it in plain language first makes the logic less scary."
+        title: "Léelo como una pregunta",
+        body: "Puedes leer `if age >= 18` así: 'Si age es al menos 18, ejecuta este bloque de código'. Leerlo primero en lenguaje normal hace que la lógica asuste menos."
       },
       {
-        title: "Indentation matters",
-        body: "In Python, the indented lines under `if` belong to that decision. If your spacing is inconsistent, Python may show an error even when your idea is correct."
+        title: "La indentación importa",
+        body: "En Python, las líneas indentadas debajo de `if` pertenecen a esa decisión. Si el espaciado es inconsistente, Python puede mostrar un error aunque la idea esté bien."
       },
       {
-        title: "Only one branch runs",
-        body: "Python checks the branches from top to bottom. As soon as one condition is true, Python runs that block and skips the rest."
+        title: "Solo se ejecuta una rama",
+        body: "Python revisa las ramas de arriba hacia abajo. En cuanto una condición es verdadera, ejecuta ese bloque y salta el resto."
       }
     ],
-    example: "score = 82\n\nif score >= 90:\n    print('Excellent work')\nelif score >= 70:\n    print('Nice job')\nelse:\n    print('Keep practicing')\n\n# Output: Nice job",
-    practicePrompt: "Create a program that checks a temperature value. Print `Cold` if it is below 15, `Warm` if it is from 15 to 25, and `Hot` if it is above 25.",
+    example: "score = 82\n\nif score >= 90:\n    print('Excelente trabajo')\nelif score >= 70:\n    print('Vas muy bien')\nelse:\n    print('Sigue practicando')\n\n# Salida: Vas muy bien",
+    practicePrompt: "Crea un programa que revise un valor de temperatura. Imprime `Frío` si es menor a 15, `Templado` si va de 15 a 25 y `Calor` si es mayor a 25.",
     practiceChecklist: [
-      "Start with one variable called `temperature`.",
-      "Write one `if`, one `elif`, and one `else` branch.",
-      "Read your condition out loud before running it.",
-      "Check whether your indentation is consistent."
+      "Empieza con una variable llamada `temperature`.",
+      "Escribe una rama `if`, una `elif` y una `else`.",
+      "Lee tu condición en voz alta antes de ejecutarla.",
+      "Comprueba que la indentación sea consistente."
     ],
     commonMistakes: [
-      "Using `=` instead of `==` when comparing values. `=` assigns a value, while `==` compares two values.",
-      "Forgetting the colon `:` at the end of an `if` line. Python uses the colon to start a block.",
-      "Mixing tabs and spaces or changing indentation width inside one block."
+      "Usar `=` en lugar de `==` al comparar valores. `=` asigna un valor, mientras que `==` compara dos valores.",
+      "Olvidar los dos puntos `:` al final de la línea con `if`. Python usa ese signo para empezar un bloque.",
+      "Mezclar tabulaciones y espacios o cambiar el ancho de la indentación dentro del mismo bloque."
     ],
     bugChallenge: {
-      prompt: "This program should print `Adult` when age is 18 or more. It currently has syntax mistakes that stop Python before the logic can even run.",
-      brokenCode: "age = 18\n\nif age => 18\n    print('Adult')\nelse:\n    print('Minor')",
-      expectedLearning: "Notice that beginners often need to fix syntax first: use the correct comparison operator and end the `if` line with a colon."
+      prompt: "Este programa debería imprimir `Adulto` cuando age es 18 o más. Ahora tiene errores de sintaxis que frenan a Python antes de que la lógica pueda correr.",
+      brokenCode: "age = 18\n\nif age => 18\n    print('Adulto')\nelse:\n    print('Menor')",
+      expectedLearning: "Fíjate que al empezar muchas veces primero hay que arreglar la sintaxis: usar el operador correcto y terminar la línea de `if` con dos puntos."
     },
     exerciseSlug: "fix-the-conditional"
   },
@@ -515,57 +515,57 @@ export const courseLessons: LessonData[] = [
     title: "Usar `elif` y `else` para más caminos",
     duration: "13 min",
     difficulty: "Beginner",
-    summary: "Extend simple decisions by giving Python more than one possible path.",
-    warmup: "If a traffic light can be red, yellow, or green, one simple `if` is not enough. You need more paths.",
-    goal: "By the end, you should know when to use `elif` and when `else` makes sense as a fallback.",
+    summary: "Amplía decisiones simples dándole a Python más de un camino posible.",
+    warmup: "Si un semáforo puede estar en rojo, amarillo o verde, un solo `if` no alcanza. Necesitas más caminos.",
+    goal: "Al final, deberías saber cuándo usar `elif` y cuándo `else` tiene sentido como camino final.",
     keyIdeas: [
       {
-        title: "Use `elif` for another check",
-        description: "It gives Python another condition to test."
+        title: "Usa `elif` para otra comprobación",
+        description: "Le da a Python otra condición para revisar."
       },
       {
-        title: "Use `else` for the fallback",
-        description: "It runs when no earlier condition matched."
+        title: "Usa `else` como salida final",
+        description: "Se ejecuta cuando ninguna condición anterior coincide."
       },
       {
-        title: "Top to bottom still matters",
-        description: "Python checks each branch in order until one matches."
+        title: "De arriba hacia abajo sigue importando",
+        description: "Python revisa cada rama en orden hasta que una coincide."
       }
     ],
     explanation: [
       {
-        title: "When one `if` is not enough",
-        body: "Sometimes a program needs more than two outcomes. `elif` lets you test another condition after the first one."
+        title: "Cuando un `if` no alcanza",
+        body: "A veces un programa necesita más de dos resultados posibles. `elif` te deja probar otra condición después de la primera."
       },
       {
-        title: "What `else` means",
-        body: "`else` is the final fallback. It does not ask a new question. It simply runs if the earlier conditions were false."
+        title: "Qué significa `else`",
+        body: "`else` es la salida final. No hace una nueva pregunta. Simplemente se ejecuta si las condiciones anteriores dieron falso."
       },
       {
-        title: "Order changes the result",
-        body: "If a lower threshold comes first, Python may stop there before it reaches the more specific branch you wanted."
+        title: "El orden cambia el resultado",
+        body: "Si un umbral más bajo aparece primero, Python puede detenerse ahí antes de llegar a la rama más específica que querías."
       },
       {
-        title: "Readable branches make debugging easier",
-        body: "Short, clear branches help you predict which path should run and notice when the order is wrong."
+        title: "Las ramas claras facilitan depurar",
+        body: "Las ramas cortas y claras te ayudan a anticipar qué camino debería ejecutarse y a notar cuando el orden está mal."
       }
     ],
-    example: "age = 16\n\nif age >= 18:\n    print('Adult')\nelif age >= 13:\n    print('Teen')\nelse:\n    print('Child')",
-    practicePrompt: "Write a program that prints `High` for a score of 90 or more, `Medium` for 60 or more, and `Low` otherwise.",
+    example: "age = 16\n\nif age >= 18:\n    print('Adulto')\nelif age >= 13:\n    print('Adolescente')\nelse:\n    print('Niñez')",
+    practicePrompt: "Escribe un programa que imprima `Alto` para un puntaje de 90 o más, `Medio` para 60 o más, y `Bajo` en cualquier otro caso.",
     practiceChecklist: [
-      "Use `if`, `elif`, and `else` in that order.",
-      "Place the highest check first.",
-      "Read each branch and ask when it will run."
+      "Usa `if`, `elif` y `else` en ese orden.",
+      "Coloca primero la comprobación más alta.",
+      "Lee cada rama y pregúntate cuándo se ejecutará."
     ],
     commonMistakes: [
-      "Putting a lower threshold first so the higher one never runs.",
-      "Adding a condition after `else`.",
-      "Indenting one branch differently from the others."
+      "Poner primero un umbral bajo y hacer que el alto nunca se ejecute.",
+      "Agregar una condición después de `else`.",
+      "Indentar una rama distinto de las demás."
     ],
     bugChallenge: {
-      prompt: "This program should classify a score, but the order of the checks is wrong.",
-      brokenCode: "score = 95\n\nif score >= 60:\n    print('Medium')\nelif score >= 90:\n    print('High')\nelse:\n    print('Low')",
-      expectedLearning: "Place the more specific or higher condition first when order changes the result."
+      prompt: "Este programa debería clasificar un puntaje, pero el orden de las comprobaciones está mal.",
+      brokenCode: "score = 95\n\nif score >= 60:\n    print('Medio')\nelif score >= 90:\n    print('Alto')\nelse:\n    print('Bajo')",
+      expectedLearning: "Cuando el orden cambia el resultado, conviene poner primero la condición más específica o más alta."
     },
     exerciseSlug: "score-band-order"
   },
@@ -577,64 +577,64 @@ export const courseLessons: LessonData[] = [
     title: "Preguntas de comparación en Python",
     duration: "14 min",
     difficulty: "Beginner",
-    summary: "Understand what comparisons like `==`, `>`, and `>=` are asking before Python makes a choice.",
-    warmup: "Before a program can decide what to do, it needs a clear yes-or-no question to check.",
-    goal: "By the end, you should be able to explain what a comparison asks and why its answer becomes `True` or `False`.",
+    summary: "Entiende qué preguntan comparaciones como `==`, `>` y `>=` antes de que Python tome una decisión.",
+    warmup: "Antes de decidir qué hacer, un programa necesita revisar una pregunta clara de sí o no.",
+    goal: "Al final, deberías poder explicar qué pregunta hace una comparación y por qué su respuesta se vuelve `True` o `False`.",
     keyIdeas: [
       {
-        title: "Comparisons ask yes-or-no questions",
-        description: "They produce a result that is either true or false."
+        title: "Las comparaciones hacen preguntas de sí o no",
+        description: "Producen un resultado que es verdadero o falso."
       },
       {
-        title: "Different operators ask different questions",
-        description: "`==` checks equality, `>` checks greater than, and `>=` checks greater than or equal to."
+        title: "Cada operador hace una pregunta distinta",
+        description: "`==` revisa igualdad, `>` pregunta si es mayor y `>=` pregunta si es mayor o igual."
       },
       {
-        title: "Conditionals depend on these answers",
-        description: "An `if` branch runs when its comparison becomes true."
+        title: "Los condicionales dependen de esas respuestas",
+        description: "Una rama `if` se ejecuta cuando su comparación da verdadero."
       }
     ],
     explanation: [
       {
-        title: "What `==` means",
-        body: "The operator `==` asks whether two values are equal. It does not store a value. It checks a relationship between two values."
+        title: "Qué significa `==`",
+        body: "El operador `==` pregunta si dos valores son iguales. No guarda nada. Revisa la relación entre dos valores."
       },
       {
-        title: "What `>` and `>=` mean",
-        body: "`>` asks whether the value on the left is bigger. `>=` asks whether it is bigger or exactly the same."
+        title: "Qué significan `>` y `>=`",
+        body: "`>` pregunta si el valor de la izquierda es mayor. `>=` pregunta si es mayor o exactamente igual."
       },
       {
-        title: "Why the answer matters",
-        body: "The result of a comparison becomes `True` or `False`. That answer is what your conditional uses to decide which branch to run."
+        title: "Por qué importa la respuesta",
+        body: "El resultado de una comparación se vuelve `True` o `False`. Esa respuesta es la que usa tu condicional para decidir qué rama ejecutar."
       },
       {
-        title: "Read the question in plain language first",
-        body: "If you can say the comparison out loud in normal words, the code usually becomes easier to reason about."
+        title: "Primero lee la pregunta con palabras normales",
+        body: "Si puedes decir la comparación en voz alta con palabras comunes, casi siempre el código se vuelve más fácil de razonar."
       }
     ],
-    example: "score = 70\n\nprint(score == 70)\nprint(score > 70)\nprint(score >= 70)\n\n# Output:\n# True\n# False\n# True",
-    practicePrompt: "Choose a number for `coins` and write three comparisons: one that becomes `True`, one that becomes `False`, and one that checks equality.",
+    example: "score = 70\n\nprint(score == 70)\nprint(score > 70)\nprint(score >= 70)\n\n# Salida:\n# True\n# False\n# True",
+    practicePrompt: "Elige un número para `coins` y escribe tres comparaciones: una que dé `True`, una que dé `False` y una que revise igualdad.",
     practiceChecklist: [
-      "Use at least two different comparison operators.",
-      "Say each comparison out loud in plain language.",
-      "Check whether your predicted `True` or `False` result makes sense."
+      "Usa al menos dos operadores de comparación distintos.",
+      "Di cada comparación en voz alta con palabras simples.",
+      "Comprueba si el resultado `True` o `False` que esperabas tiene sentido."
     ],
     commonMistakes: [
-      "Using `=` when you meant `==`.",
-      "Forgetting that `>=` includes the equal case.",
-      "Reading the symbols too quickly without translating them into words."
+      "Usar `=` cuando querías poner `==`.",
+      "Olvidar que `>=` incluye el caso de igualdad.",
+      "Leer los símbolos demasiado rápido sin traducirlos a palabras."
     ],
     bugChallenge: {
-      prompt: "This code should check whether a score is at least 10, but the operator changes the question.",
-      brokenCode: "score = 10\n\nif score > 10:\n    print('Enough points')",
-      expectedLearning: "Changing `>` to `>=` changes the meaning of the condition in an important way."
+      prompt: "Este código debería revisar si un puntaje es al menos 10, pero el operador cambia la pregunta.",
+      brokenCode: "score = 10\n\nif score > 10:\n    print('Puntos suficientes')",
+      expectedLearning: "Cambiar `>` por `>=` cambia de forma importante el sentido de la condición."
     },
     playground: {
-      title: "Try comparison questions",
-      guidance: "Change the number and the comparison operator, then run the code to see how the result changes.",
+      title: "Prueba preguntas de comparación",
+      guidance: "Cambia el número y el operador de comparación, luego ejecuta el código para ver cómo cambia el resultado.",
       starterCode:
         "score = 70\n\nprint(score == 70)\nprint(score > 70)\nprint(score >= 70)",
-      emptyOutputHint: "A few `print()` lines are enough to make the comparison results visible."
+      emptyOutputHint: "Unas pocas líneas con `print()` alcanzan para hacer visibles los resultados de la comparación."
     },
     exerciseSlug: "comparison-question-check"
   },
@@ -646,63 +646,63 @@ export const courseLessons: LessonData[] = [
     title: "Por qué los bucles ayudan con la repetición",
     duration: "13 min",
     difficulty: "Beginner",
-    summary: "Learn what repetition is and why loops save you from writing the same line again and again.",
-    warmup: "If you need to clap three times, you do not write three different rules for clapping. A loop works the same way in code.",
-    goal: "By the end, you should understand that a loop repeats a block of code and is useful when the same action needs to happen more than once.",
+    summary: "Aprende qué es la repetición y por qué los bucles te ahorran escribir la misma línea una y otra vez.",
+    warmup: "Si necesitas aplaudir tres veces, no escribes tres reglas distintas para aplaudir. Un bucle funciona igual en el código.",
+    goal: "Al final, deberías entender que un bucle repite un bloque de código y que es útil cuando una misma acción debe ocurrir más de una vez.",
     keyIdeas: [
       {
-        title: "Loops repeat work",
-        description: "A loop lets Python do the same action many times."
+        title: "Los bucles repiten trabajo",
+        description: "Un bucle le permite a Python hacer la misma acción muchas veces."
       },
       {
-        title: "Repetition can stay readable",
-        description: "A short loop is often clearer than copying the same line again and again."
+        title: "La repetición puede seguir siendo legible",
+        description: "Un bucle corto suele ser más claro que copiar la misma línea una y otra vez."
       },
       {
-        title: "The loop body is the repeated block",
-        description: "Indented lines under the loop are the steps that repeat."
+        title: "El cuerpo del bucle es el bloque que se repite",
+        description: "Las líneas indentadas debajo del bucle son los pasos que se repiten."
       }
     ],
     explanation: [
       {
-        title: "Why repetition shows up quickly",
-        body: "As soon as you start making programs, you find tasks that repeat: printing several lines, counting items, or doing the same check many times."
+        title: "Por qué la repetición aparece tan pronto",
+        body: "Apenas empiezas a crear programas, aparecen tareas que se repiten: imprimir varias líneas, contar elementos o hacer la misma comprobación muchas veces."
       },
       {
-        title: "What a loop changes",
-        body: "Instead of copying one line three or four times, you tell Python to repeat that line for you. That makes your code shorter and easier to change later."
+        title: "Qué cambia un bucle",
+        body: "En lugar de copiar una línea tres o cuatro veces, le dices a Python que la repita por ti. Eso hace que tu código sea más corto y más fácil de cambiar después."
       },
       {
-        title: "A loop is still read top to bottom",
-        body: "Python reaches the loop line, then runs the indented block again and again until the loop finishes. Reading the loop calmly keeps it understandable."
+        title: "Un bucle igual se lee de arriba hacia abajo",
+        body: "Python llega a la línea del bucle y luego ejecuta el bloque indentado una y otra vez hasta que el bucle termina. Leerlo con calma ayuda a entenderlo."
       },
       {
-        title: "Start with simple repetition",
-        body: "At first, loops do not need to be fancy. Even repeating one short `print()` line is enough to learn the core idea."
+        title: "Empieza con una repetición simple",
+        body: "Al principio los bucles no tienen que ser sofisticados. Repetir una sola línea corta con `print()` ya alcanza para aprender la idea principal."
       }
     ],
-    example: "for _ in range(3):\n    print('Practice makes progress')",
-    practicePrompt: "Write a loop that prints `Small steps matter` three times.",
+    example: "for _ in range(3):\n    print('Practicar también es avanzar')",
+    practicePrompt: "Escribe un bucle que imprima `Los pasos pequeños importan` tres veces.",
     practiceChecklist: [
-      "Start with `for` and `range(3)`.",
-      "Indent the `print()` line under the loop.",
-      "Run the code and count how many times the message appears."
+      "Empieza con `for` y `range(3)`.",
+      "Indenta la línea con `print()` debajo del bucle.",
+      "Ejecuta el código y cuenta cuántas veces aparece el mensaje."
     ],
     commonMistakes: [
-      "Forgetting to indent the repeated line.",
-      "Expecting the loop to run forever instead of a set number of times.",
-      "Writing repeated code manually instead of placing it inside the loop."
+      "Olvidar indentar la línea que se repite.",
+      "Esperar que el bucle se ejecute para siempre en vez de una cantidad fija de veces.",
+      "Escribir el código repetido a mano en lugar de ponerlo dentro del bucle."
     ],
     bugChallenge: {
-      prompt: "This code should print the same message three times, but the repeated line is not in the loop body.",
-      brokenCode: "for _ in range(3):\nprint('Keep going')",
-      expectedLearning: "Indented lines belong to the loop. Without indentation, Python cannot see what should repeat."
+      prompt: "Este código debería imprimir el mismo mensaje tres veces, pero la línea repetida no está dentro del cuerpo del bucle.",
+      brokenCode: "for _ in range(3):\nprint('Sigue avanzando')",
+      expectedLearning: "Las líneas indentadas pertenecen al bucle. Sin indentación, Python no puede ver qué debe repetirse."
     },
     playground: {
-      title: "See repetition happen",
-      guidance: "Run the loop, then change the message or the number in `range()` and watch how the repetition changes.",
-      starterCode: "for _ in range(3):\n    print('Practice makes progress')",
-      emptyOutputHint: "A loop usually becomes easier to understand once you see the repeated output."
+      title: "Mira la repetición en acción",
+      guidance: "Ejecuta el bucle, luego cambia el mensaje o el número en `range()` y observa cómo cambia la repetición.",
+      starterCode: "for _ in range(3):\n    print('Practicar también es avanzar')",
+      emptyOutputHint: "Un bucle suele entenderse mejor cuando ves la salida repetida."
     },
     exerciseSlug: "read-cheer-loop-output"
   },
@@ -714,63 +714,63 @@ export const courseLessons: LessonData[] = [
     title: "Contar con bucles `for` y `range()`",
     duration: "14 min",
     difficulty: "Beginner",
-    summary: "Use `range()` to repeat a loop a specific number of times and build simple counting output.",
-    warmup: "If you want Python to count through a small list of numbers, `range()` gives it those steps.",
-    goal: "By the end, you should be able to use `for` with `range()` to print a simple sequence like 1, 2, 3.",
+    summary: "Usa `range()` para repetir un bucle una cantidad específica de veces y construir una salida simple de conteo.",
+    warmup: "Si quieres que Python recorra una pequeña secuencia de números, `range()` le da esos pasos.",
+    goal: "Al final, deberías poder usar `for` con `range()` para imprimir una secuencia simple como 1, 2, 3.",
     keyIdeas: [
       {
-        title: "`range()` provides counting steps",
-        description: "It gives the loop the values it moves through."
+        title: "`range()` da los pasos del conteo",
+        description: "Le entrega al bucle los valores por los que va pasando."
       },
       {
-        title: "The loop variable changes each time",
-        description: "Inside the loop, the variable holds the current step."
+        title: "La variable del bucle cambia en cada vuelta",
+        description: "Dentro del bucle, la variable guarda el paso actual."
       },
       {
-        title: "Reading output reveals the pattern",
-        description: "A counting loop should make a visible sequence when you print the loop variable."
+        title: "Leer la salida revela el patrón",
+        description: "Un bucle de conteo debería mostrar una secuencia visible cuando imprimes la variable del bucle."
       }
     ],
     explanation: [
       {
-        title: "What `range(3)` means",
-        body: "When you use `range(3)`, Python gives the loop three steps: 0, 1, and 2. That is why the loop repeats three times."
+        title: "Qué significa `range(3)`",
+        body: "Cuando usas `range(3)`, Python le da al bucle tres pasos: 0, 1 y 2. Por eso el bucle se repite tres veces."
       },
       {
-        title: "Printing the loop variable",
-        body: "If you write `for number in range(3): print(number)`, Python prints the current value each time through the loop."
+        title: "Imprimir la variable del bucle",
+        body: "Si escribes `for number in range(3): print(number)`, Python imprime el valor actual en cada vuelta del bucle."
       },
       {
-        title: "Starting from 1 instead of 0",
-        body: "You can use `range(1, 4)` when you want 1, 2, 3. The first number is where the count starts, and the last number is not included."
+        title: "Empezar en 1 en vez de 0",
+        body: "Puedes usar `range(1, 4)` cuando quieres 1, 2, 3. El primer número indica dónde empieza el conteo y el último no se incluye."
       },
       {
-        title: "This pattern appears everywhere",
-        body: "Simple counting loops are the start of progress bars, repeated practice rounds, and many other beginner-friendly programs."
+        title: "Este patrón aparece en muchos lados",
+        body: "Los bucles simples de conteo son el comienzo de barras de progreso, rondas repetidas de práctica y muchos otros programas amigables para principiantes."
       }
     ],
     example: "for number in range(1, 4):\n    print(number)",
-    practicePrompt: "Write a loop that prints the numbers 1, 2, 3, and 4, one per line.",
+    practicePrompt: "Escribe un bucle que imprima los números 1, 2, 3 y 4, uno por línea.",
     practiceChecklist: [
-      "Use a loop variable such as `number`.",
-      "Choose a `range()` that starts and stops in the right place.",
-      "Run the code and compare the printed sequence with what you expected."
+      "Usa una variable de bucle como `number`.",
+      "Elige un `range()` que empiece y termine en el lugar correcto.",
+      "Ejecuta el código y compara la secuencia impresa con lo que esperabas."
     ],
     commonMistakes: [
-      "Forgetting that the last number in `range()` is not included.",
-      "Indenting the `print()` line incorrectly.",
-      "Printing the wrong variable or a fixed number every time."
+      "Olvidar que el último número de `range()` no se incluye.",
+      "Indentar mal la línea con `print()`.",
+      "Imprimir la variable equivocada o un número fijo en cada vuelta."
     ],
     bugChallenge: {
-      prompt: "This code should print 1, 2, and 3, but the stopping point makes the output too short.",
+      prompt: "Este código debería imprimir 1, 2 y 3, pero el punto de corte hace que la salida sea demasiado corta.",
       brokenCode: "for number in range(1, 3):\n    print(number)",
-      expectedLearning: "The last number in `range()` is not included, so you often need to go one higher than you first think."
+      expectedLearning: "El último número de `range()` no se incluye, así que muchas veces necesitas llegar uno más arriba de lo que piensas al principio."
     },
     playground: {
-      title: "Try counting with range",
-      guidance: "Run the loop, then change the start and stop values to see how the printed sequence changes.",
+      title: "Prueba a contar con range",
+      guidance: "Ejecuta el bucle y luego cambia los valores de inicio y fin para ver cómo cambia la secuencia impresa.",
       starterCode: "for number in range(1, 4):\n    print(number)",
-      emptyOutputHint: "A counting loop should show one printed number on each line."
+      emptyOutputHint: "Un bucle de conteo debería mostrar un número impreso en cada línea."
     },
     exerciseSlug: "build-counting-loop"
   },
@@ -782,63 +782,63 @@ export const courseLessons: LessonData[] = [
     title: "Leer la salida de un bucle con calma",
     duration: "14 min",
     difficulty: "Beginner",
-    summary: "Practice reading repeated output, spotting off-by-one issues, and fixing simple loop structure mistakes.",
-    warmup: "Loops can look intimidating at first because one short block creates many lines of output. The trick is to read one pass at a time.",
-    goal: "By the end, you should be able to trace a simple loop, predict its output, and fix a small loop bug without getting lost.",
+    summary: "Practica leer una salida repetida, detectar errores de una vuelta de más o de menos y corregir fallos simples en la estructura de un bucle.",
+    warmup: "Los bucles pueden parecer intimidantes al principio porque un bloque corto produce muchas líneas de salida. El truco es leer una vuelta a la vez.",
+    goal: "Al final, deberías poder seguir un bucle simple, predecir su salida y corregir un bug pequeño sin perderte.",
     keyIdeas: [
       {
-        title: "One pass at a time",
-        description: "Imagine the loop body running once, then again, instead of trying to picture everything at once."
+        title: "Una vuelta a la vez",
+        description: "Imagina el cuerpo del bucle ejecutándose una vez y luego otra, en lugar de intentar ver todo a la vez."
       },
       {
-        title: "Off-by-one errors are common",
-        description: "A loop can repeat one too many or one too few times if the range is slightly off."
+        title: "Los errores de una vuelta de más o de menos son comunes",
+        description: "Un bucle puede repetirse una vez de más o una vez de menos si el `range()` está apenas corrido."
       },
       {
-        title: "Indentation still matters",
-        description: "Loops use indentation the same way conditionals do."
+        title: "La indentación sigue importando",
+        description: "Los bucles usan la indentación del mismo modo que los condicionales."
       }
     ],
     explanation: [
       {
-        title: "Tracing a loop in slow motion",
-        body: "Pick the first value the loop uses, read the body once, then move to the next value. That step-by-step view keeps repetition from feeling chaotic."
+        title: "Seguir un bucle en cámara lenta",
+        body: "Toma el primer valor que usa el bucle, lee el cuerpo una vez y después pasa al siguiente valor. Esa mirada paso a paso evita que la repetición se sienta caótica."
       },
       {
-        title: "What off-by-one means",
-        body: "An off-by-one mistake happens when the loop repeats one extra time or stops one step too early. This is very common with `range()` and very fixable."
+        title: "Qué significa un error de una vuelta de más o de menos",
+        body: "Ese error aparece cuando el bucle se repite una vez extra o se detiene un paso antes. Es muy común con `range()` y suele ser fácil de corregir."
       },
       {
-        title: "Use output as a clue",
-        body: "If the output has too many lines or stops too early, that usually means your loop structure is close but your `range()` or indentation needs one adjustment."
+        title: "Usa la salida como pista",
+        body: "Si la salida tiene demasiadas líneas o termina demasiado pronto, normalmente significa que la estructura del bucle está cerca de estar bien, pero tu `range()` o tu indentación necesitan un ajuste."
       },
       {
-        title: "Stay focused on the pattern",
-        body: "The best beginner move is to ask: what should happen on each pass, and how many passes should there be?"
+        title: "Mantén el foco en el patrón",
+        body: "Una buena pregunta al empezar es: ¿qué debería pasar en cada vuelta y cuántas vueltas debería haber?"
       }
     ],
-    example: "for step in range(1, 4):\n    print('Step', step)\nprint('Done!')",
-    practicePrompt: "Write a loop that prints `Step 1`, `Step 2`, and `Step 3`, then prints `Done!` after the loop finishes.",
+    example: "for step in range(1, 4):\n    print('Paso', step)\nprint('Listo')",
+    practicePrompt: "Escribe un bucle que imprima `Paso 1`, `Paso 2` y `Paso 3`, y luego imprima `Listo` cuando el bucle termine.",
     practiceChecklist: [
-      "Keep the `print('Done!')` line outside the loop.",
-      "Use a counting variable inside the loop.",
-      "Read the final output line by line to confirm the pattern."
+      "Deja la línea `print('Listo')` fuera del bucle.",
+      "Usa una variable de conteo dentro del bucle.",
+      "Lee la salida final línea por línea para confirmar el patrón."
     ],
     commonMistakes: [
-      "Indenting `Done!` inside the loop by accident.",
-      "Using a `range()` that repeats too many or too few times.",
-      "Trying to debug the whole loop at once instead of tracing one pass at a time."
+      "Indentar `Listo` dentro del bucle por accidente.",
+      "Usar un `range()` que repite demasiadas o muy pocas veces.",
+      "Intentar depurar todo el bucle de golpe en lugar de seguir una vuelta a la vez."
     ],
     bugChallenge: {
-      prompt: "This code should print three steps and then `Done!`, but one indentation mistake changes the output pattern.",
-      brokenCode: "for step in range(1, 4):\n    print('Step', step)\n    print('Done!')",
-      expectedLearning: "A line outside the loop should not be indented. Small indentation changes can completely change the repeated output."
+      prompt: "Este código debería imprimir tres pasos y luego `Listo`, pero un error de indentación cambia el patrón de salida.",
+      brokenCode: "for step in range(1, 4):\n    print('Paso', step)\n    print('Listo')",
+      expectedLearning: "Una línea que va fuera del bucle no debe estar indentada. Un cambio pequeño de indentación puede cambiar por completo la salida repetida."
     },
     playground: {
-      title: "Trace the loop output",
-      guidance: "Run the code, then change the `range()` or the final line placement to see how the pattern changes.",
-      starterCode: "for step in range(1, 4):\n    print('Step', step)\nprint('Done!')",
-      emptyOutputHint: "The output should show repeated step lines followed by one final line after the loop."
+      title: "Sigue la salida del bucle",
+      guidance: "Ejecuta el código, luego cambia el `range()` o la posición de la línea final para ver cómo cambia el patrón.",
+      starterCode: "for step in range(1, 4):\n    print('Paso', step)\nprint('Listo')",
+      emptyOutputHint: "La salida debería mostrar varias líneas de pasos y luego una sola línea final fuera del bucle."
     },
     exerciseSlug: "fix-step-loop"
   },
@@ -850,63 +850,63 @@ export const courseLessons: LessonData[] = [
     title: "Por qué las funciones ayudan",
     duration: "14 min",
     difficulty: "Beginner",
-    summary: "Learn what a function is in plain language and why named actions help you avoid repeating yourself.",
-    warmup: "If you make tea every morning, you probably think of it as one routine, not ten separate instructions. A function works like giving that routine a name in code.",
-    goal: "By the end, you should understand that a function is a named block of code you can run whenever you need that action again.",
+    summary: "Aprende qué es una función con palabras simples y por qué las acciones con nombre te ayudan a no repetirte.",
+    warmup: "Si preparas té cada mañana, probablemente piensas en eso como una rutina, no como diez instrucciones separadas. Una función es como ponerle nombre a esa rutina dentro del código.",
+    goal: "Al final, deberías entender que una función es un bloque de código con nombre que puedes ejecutar cada vez que necesites esa acción.",
     keyIdeas: [
       {
-        title: "A function is a named action",
-        description: "It groups a few steps together and gives them a clear name."
+        title: "Una función es una acción con nombre",
+        description: "Agrupa algunos pasos y les da un nombre claro."
       },
       {
-        title: "Functions reduce repetition",
-        description: "You can call the function instead of rewriting the same block again."
+        title: "Las funciones reducen repetición",
+        description: "Puedes llamar a la función en lugar de reescribir el mismo bloque."
       },
       {
-        title: "A good name explains the job",
-        description: "Clear function names make code easier to read."
+        title: "Un buen nombre explica el trabajo",
+        description: "Los nombres claros de funciones hacen que el código sea más fácil de leer."
       }
     ],
     explanation: [
       {
-        title: "Why functions appear after loops",
-        body: "Loops helped you repeat the same action many times. Functions help you package a useful action so you can run it whenever you need it in different parts of a program."
+        title: "Por qué las funciones aparecen después de los bucles",
+        body: "Los bucles te ayudaron a repetir la misma acción muchas veces. Las funciones te ayudan a empaquetar una acción útil para ejecutarla cuando la necesites en distintas partes del programa."
       },
       {
-        title: "Think in named routines",
-        body: "A function lets you say, 'Here is one small job my program knows how to do.' That keeps your code from turning into one long wall of instructions."
+        title: "Piensa en rutinas con nombre",
+        body: "Una función te permite decir: 'Aquí hay una tarea pequeña que mi programa sabe hacer'. Eso evita que tu código se convierta en una pared larguísima de instrucciones."
       },
       {
-        title: "Functions make change easier",
-        body: "If the behavior needs to change later, you can often update the function in one place instead of hunting through repeated code."
+        title: "Las funciones facilitan los cambios",
+        body: "Si ese comportamiento tiene que cambiar después, muchas veces puedes actualizar la función en un solo lugar en vez de buscar código repetido por todos lados."
       },
       {
-        title: "Start with tiny functions",
-        body: "Your first function does not need to be clever. Even a short greeting function is enough to learn the pattern."
+        title: "Empieza con funciones pequeñas",
+        body: "Tu primera función no tiene que ser ingeniosa. Incluso una función corta de saludo alcanza para aprender el patrón."
       }
     ],
-    example: "def cheer():\n    print('Keep going!')\n\ncheer()\ncheer()",
-    practicePrompt: "Write a function called `welcome()` that prints one friendly line, then call it two times.",
+    example: "def cheer():\n    print('Sigue adelante')\n\ncheer()\ncheer()",
+    practicePrompt: "Escribe una función llamada `welcome()` que imprima una línea amable y luego llámala dos veces.",
     practiceChecklist: [
-      "Start with `def welcome():`.",
-      "Indent the `print()` line inside the function.",
-      "Call the function by name after the definition."
+      "Empieza con `def welcome():`.",
+      "Indenta la línea con `print()` dentro de la función.",
+      "Llama a la función por su nombre después de definirla."
     ],
     commonMistakes: [
-      "Forgetting the parentheses when calling a function.",
-      "Leaving the function body unindented.",
-      "Using a vague function name like `thing()` instead of a clear name."
+      "Olvidar los paréntesis al llamar a una función.",
+      "Dejar el cuerpo de la función sin indentación.",
+      "Usar un nombre poco claro como `thing()` en vez de uno que diga qué hace."
     ],
     bugChallenge: {
-      prompt: "This code should define a function and call it, but two tiny syntax issues break the pattern.",
-      brokenCode: "def welcome()\nprint('Hi there')\n\nwelcome",
-      expectedLearning: "A function definition needs a colon, the body must be indented, and calling a function uses parentheses."
+      prompt: "Este código debería definir una función y llamarla, pero dos detalles de sintaxis rompen el patrón.",
+      brokenCode: "def welcome()\nprint('Hola')\n\nwelcome",
+      expectedLearning: "Una definición de función necesita dos puntos, el cuerpo debe estar indentado y llamar a una función requiere paréntesis."
     },
     playground: {
-      title: "Try your first function",
-      guidance: "Run the code, then rename the function or change the message. Notice how calling the same function twice repeats the behavior without copying the print line.",
-      starterCode: "def cheer():\n    print('Keep going!')\n\ncheer()\ncheer()",
-      emptyOutputHint: "A working function example should print the same message each time you call it."
+      title: "Prueba tu primera función",
+      guidance: "Ejecuta el código, luego cambia el nombre de la función o el mensaje. Observa cómo llamar dos veces a la misma función repite el comportamiento sin copiar la línea de `print()`.",
+      starterCode: "def cheer():\n    print('Sigue adelante')\n\ncheer()\ncheer()",
+      emptyOutputHint: "Un ejemplo correcto de función debería imprimir el mismo mensaje cada vez que la llames."
     },
     exerciseSlug: "read-greet-function-output"
   },
@@ -918,63 +918,63 @@ export const courseLessons: LessonData[] = [
     title: "Definir y llamar una función básica",
     duration: "15 min",
     difficulty: "Beginner",
-    summary: "Practice the exact shape of a small function: define it, indent the body, and call it clearly.",
-    warmup: "A function has two parts: first you teach Python the routine, then you tell Python to run it.",
-    goal: "By the end, you should be able to define a simple function and call it confidently without mixing up the two steps.",
+    summary: "Practica la forma exacta de una función pequeña: definirla, indentar el cuerpo y llamarla con claridad.",
+    warmup: "Una función tiene dos partes: primero le enseñas la rutina a Python y luego le dices que la ejecute.",
+    goal: "Al final, deberías poder definir una función simple y llamarla con seguridad sin confundir esos dos pasos.",
     keyIdeas: [
       {
-        title: "Define first, call second",
-        description: "Python needs to see the function definition before you call it."
+        title: "Primero se define, después se llama",
+        description: "Python necesita ver la definición de la función antes de que la llames."
       },
       {
-        title: "Indentation marks the function body",
-        description: "Indented lines belong to the function, just like loop and conditional blocks."
+        title: "La indentación marca el cuerpo de la función",
+        description: "Las líneas indentadas pertenecen a la función, igual que en los bucles y condicionales."
       },
       {
-        title: "Calling uses the function name with parentheses",
-        description: "The parentheses tell Python to run the function."
+        title: "Llamar usa el nombre de la función con paréntesis",
+        description: "Los paréntesis le indican a Python que debe ejecutar la función."
       }
     ],
     explanation: [
       {
-        title: "What `def` does",
-        body: "The word `def` tells Python that you are defining a function. You give the function a name, add parentheses, and end the line with a colon."
+        title: "Qué hace `def`",
+        body: "La palabra `def` le avisa a Python que estás definiendo una función. Le pones un nombre, agregas paréntesis y terminas la línea con dos puntos."
       },
       {
-        title: "Why the body must be indented",
-        body: "The indented lines below `def` are the steps Python should remember as part of that function. Without indentation, Python cannot see the function body clearly."
+        title: "Por qué el cuerpo debe ir indentado",
+        body: "Las líneas indentadas debajo de `def` son los pasos que Python debe recordar como parte de esa función. Sin indentación, Python no puede ver claramente el cuerpo de la función."
       },
       {
-        title: "What calling means",
-        body: "After the function is defined, writing `greet()` tells Python to run that saved block of code. The definition explains the action; the call performs it."
+        title: "Qué significa llamar una función",
+        body: "Después de definir la función, escribir `greet()` le dice a Python que ejecute ese bloque de código guardado. La definición explica la acción; la llamada la pone en marcha."
       },
       {
-        title: "Separate the shape from the meaning",
-        body: "At first, functions feel like new punctuation. That is normal. Focus on the simple pattern: define, indent, call."
+        title: "Separa la forma del significado",
+        body: "Al principio las funciones pueden sentirse como un conjunto nuevo de signos. Es normal. Concéntrate en el patrón simple: definir, indentar, llamar."
       }
     ],
-    example: "def greet():\n    print('Hello from a function')\n\ngreet()",
-    practicePrompt: "Create a function called `show_tip()` that prints `Small steps matter`, then call it twice.",
+    example: "def greet():\n    print('Hola desde una función')\n\ngreet()",
+    practicePrompt: "Crea una función llamada `show_tip()` que imprima `Los pasos pequeños importan` y luego llámala dos veces.",
     practiceChecklist: [
-      "Write `def show_tip():` on its own line.",
-      "Indent the print line under it.",
-      "Call `show_tip()` after the definition."
+      "Escribe `def show_tip():` en su propia línea.",
+      "Indenta la línea con `print()` debajo.",
+      "Llama a `show_tip()` después de la definición."
     ],
     commonMistakes: [
-      "Calling the function before it is defined.",
-      "Writing `show_tip` instead of `show_tip()`.",
-      "Indenting the call as if it were still inside the function."
+      "Llamar la función antes de definirla.",
+      "Escribir `show_tip` en lugar de `show_tip()`.",
+      "Indentar la llamada como si todavía estuviera dentro de la función."
     ],
     bugChallenge: {
-      prompt: "This code should define `wave()` and call it, but the call is missing the part that actually runs the function.",
-      brokenCode: "def wave():\n    print('Hello')\n\nwave",
-      expectedLearning: "A function name by itself is not the same as calling the function. Parentheses matter."
+      prompt: "Este código debería definir `wave()` y llamarla, pero a la llamada le falta la parte que realmente ejecuta la función.",
+      brokenCode: "def wave():\n    print('Hola')\n\nwave",
+      expectedLearning: "El nombre de una función por sí solo no es lo mismo que llamarla. Los paréntesis importan."
     },
     playground: {
-      title: "Build and run a basic function",
-      guidance: "Run the code, then change the message or call the function more than once. This is a simple way to see how one function can be reused.",
-      starterCode: "def greet():\n    print('Hello from a function')\n\ngreet()",
-      emptyOutputHint: "If nothing happens, check whether the function is being called with parentheses."
+      title: "Construye y ejecuta una función básica",
+      guidance: "Ejecuta el código, luego cambia el mensaje o llama a la función más de una vez. Es una forma simple de ver cómo una función se puede reutilizar.",
+      starterCode: "def greet():\n    print('Hola desde una función')\n\ngreet()",
+      emptyOutputHint: "Si no pasa nada, revisa si la función está siendo llamada con paréntesis."
     },
     exerciseSlug: "build-cheer-function"
   },
@@ -986,63 +986,63 @@ export const courseLessons: LessonData[] = [
     title: "Parámetros simples y errores comunes con funciones",
     duration: "16 min",
     difficulty: "Beginner",
-    summary: "Learn how a function can accept one small piece of information and how to debug beginner function mistakes calmly.",
-    warmup: "A reusable greeting becomes more useful when you can choose who it greets. Parameters let the function receive that detail.",
-    goal: "By the end, you should understand that a parameter is a named input for a function and be able to spot common beginner mistakes with names, parentheses, and indentation.",
+    summary: "Aprende cómo una función puede recibir un dato pequeño y cómo depurar con calma errores comunes de funciones al empezar.",
+    warmup: "Un saludo reutilizable se vuelve más útil cuando puedes elegir a quién saluda. Los parámetros permiten que la función reciba ese detalle.",
+    goal: "Al final, deberías entender que un parámetro es una entrada con nombre para una función y poder detectar errores comunes de nombres, paréntesis e indentación.",
     keyIdeas: [
       {
-        title: "A parameter is an input",
-        description: "It gives the function a value to use when it runs."
+        title: "Un parámetro es una entrada",
+        description: "Le da a la función un valor para usar cuando se ejecuta."
       },
       {
-        title: "The call provides the real value",
-        description: "You pass the value in the parentheses when you call the function."
+        title: "La llamada entrega el valor real",
+        description: "Pasas el valor dentro de los paréntesis cuando llamas a la función."
       },
       {
-        title: "Function errors are often small shape mistakes",
-        description: "Missing parentheses, missing colons, and indentation issues are common and fixable."
+        title: "Los errores de funciones suelen ser fallos pequeños de forma",
+        description: "Paréntesis faltantes, dos puntos ausentes y problemas de indentación son comunes y se pueden corregir."
       }
     ],
     explanation: [
       {
-        title: "Why parameters help",
-        body: "Without parameters, you might need a different function for every person or value. With a parameter, one function can stay general and become more useful."
+        title: "Por qué ayudan los parámetros",
+        body: "Sin parámetros, podrías necesitar una función distinta para cada persona o cada valor. Con un parámetro, una sola función puede ser general y más útil."
       },
       {
-        title: "Read the definition in plain language",
-        body: "You can read `def greet(name):` like this: 'Define a function called greet that expects one value named name.'"
+        title: "Lee la definición con palabras simples",
+        body: "Puedes leer `def greet(name):` así: 'Define una función llamada greet que espera un valor llamado name'."
       },
       {
-        title: "Read the call in plain language",
-        body: "You can read `greet('Maya')` like this: 'Run greet using Maya as the value for name.' That simple translation makes function calls much less abstract."
+        title: "Lee la llamada con palabras simples",
+        body: "Puedes leer `greet('Maya')` así: 'Ejecuta greet usando Maya como valor para name'. Esa traducción simple hace que las llamadas de función se sientan mucho menos abstractas."
       },
       {
-        title: "Stay calm with function errors",
-        body: "If a function is not working, start by checking the shape: the `def` line, the colon, the indentation, the parentheses, and whether the call passes the value you expected."
+        title: "Mantén la calma con los errores de funciones",
+        body: "Si una función no está funcionando, empieza revisando la forma: la línea con `def`, los dos puntos, la indentación, los paréntesis y si la llamada pasa el valor que esperabas."
       }
     ],
-    example: "def greet(name):\n    print('Hello, ' + name)\n\ngreet('Maya')",
-    practicePrompt: "Write a function called `cheer(name)` that prints `You can do this, ` plus the given name, then call it with one name.",
+    example: "def greet(name):\n    print('Hola, ' + name)\n\ngreet('Maya')",
+    practicePrompt: "Escribe una función llamada `cheer(name)` que imprima `Tú puedes, ` más el nombre dado, y luego llámala con un nombre.",
     practiceChecklist: [
-      "Put one parameter name inside the function parentheses.",
-      "Use that parameter inside `print()`.",
-      "Call the function with one value in quotes."
+      "Pon un nombre de parámetro dentro de los paréntesis de la función.",
+      "Usa ese parámetro dentro de `print()`.",
+      "Llama a la función con un valor entre comillas."
     ],
     commonMistakes: [
-      "Defining the parameter but forgetting to use it inside the function.",
-      "Calling the function without passing the needed value.",
-      "Putting the call inside the function body by accident."
+      "Definir el parámetro pero olvidar usarlo dentro de la función.",
+      "Llamar a la función sin pasar el valor que necesita.",
+      "Poner la llamada dentro del cuerpo de la función por accidente."
     ],
     bugChallenge: {
-      prompt: "This code should greet one person by name, but the function line and the call do not match cleanly.",
-      brokenCode: "def greet(name)\n    print('Hello, ' + name)\n\ngreet",
-      expectedLearning: "Function definitions need a colon, and running the function requires parentheses in the call."
+      prompt: "Este código debería saludar a una persona por nombre, pero la línea de la función y la llamada no están bien formadas.",
+      brokenCode: "def greet(name)\n    print('Hola, ' + name)\n\ngreet",
+      expectedLearning: "Las definiciones de funciones necesitan dos puntos, y para ejecutarlas hacen falta paréntesis en la llamada."
     },
     playground: {
-      title: "Try a function with a parameter",
-      guidance: "Run the code, then change the name in the function call. This is the first step toward reusable functions that work with different values.",
-      starterCode: "def greet(name):\n    print('Hello, ' + name)\n\ngreet('Maya')",
-      emptyOutputHint: "A working function with a parameter should print the greeting using the value from the call."
+      title: "Prueba una función con parámetro",
+      guidance: "Ejecuta el código y luego cambia el nombre en la llamada. Este es el primer paso hacia funciones reutilizables que sirven con valores distintos.",
+      starterCode: "def greet(name):\n    print('Hola, ' + name)\n\ngreet('Maya')",
+      emptyOutputHint: "Una función con parámetro que esté bien debería imprimir el saludo usando el valor de la llamada."
     },
     exerciseSlug: "fix-name-greeter-function"
   }
@@ -1058,37 +1058,37 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "what-is-programming",
     order: 1,
     duration: "6 min",
-    summary: "Repair a tiny print statement bug and get used to reading syntax carefully.",
+    summary: "Arregla un bug pequeño en `print()` y acostúmbrate a leer la sintaxis con cuidado.",
     prompt:
-      "The code below should print two friendly welcome lines for a beginner. Fix the broken syntax without changing the meaning of the message.",
-    responseLabel: "Your fixed Python code",
-    responsePlaceholder: "# Fix the code here\nprint('Welcome to PyMentor')\nprint(\"Let's learn Python\")",
+      "El código de abajo debería imprimir dos líneas de bienvenida para alguien que recién empieza. Corrige la sintaxis rota sin cambiar el sentido del mensaje.",
+    responseLabel: "Tu código corregido",
+    responsePlaceholder: "# Corrige el código aquí\nprint('Bienvenido a PyMentor')\nprint('Vamos a aprender Python')",
     instructions: [
-      "Read the printed text and the quotes around it.",
-      "Fix only what is necessary.",
-      "Keep the output as a friendly welcome message."
+      "Lee el texto que debería imprimirse y revisa las comillas.",
+      "Corrige solo lo necesario.",
+      "Mantén la salida como un mensaje de bienvenida amable."
     ],
     hints: [
-      "The first print line is missing one quote.",
-      "Both lines should still use `print()`.",
-      "If the apostrophe in `Let's` causes trouble, use double quotes on that line."
+      "A la primera línea con `print()` le falta una comilla.",
+      "Las dos líneas deben seguir usando `print()`.",
+      "Puedes evitar complicaciones usando un texto simple en español."
     ],
-    starterCode: "print('Welcome to PyMentor)\nprint('Let\\'s learn Python')",
+    starterCode: "print('Bienvenido a PyMentor)\nprint('Vamos a aprender Python')",
     successCriteria: [
-      "Both lines can run.",
-      "The text is still a welcome message.",
-      "The quotes are correctly paired."
+      "Las dos líneas se pueden ejecutar.",
+      "El texto sigue siendo un mensaje de bienvenida.",
+      "Las comillas están correctamente emparejadas."
     ],
     playground: {
-      title: "Test the fix",
-      guidance: "After editing the code in the answer box, you can also try the same idea here and run it directly in the browser.",
-      starterCode: "print('Welcome to PyMentor')\nprint(\"Let's learn Python\")",
-      emptyOutputHint: "A correct solution should print two friendly lines."
+      title: "Prueba la corrección",
+      guidance: "Después de editar el código en tu respuesta, también puedes probar la misma idea aquí y ejecutarla directo en el navegador.",
+      starterCode: "print('Bienvenido a PyMentor')\nprint('Vamos a aprender Python')",
+      emptyOutputHint: "Una solución correcta debería imprimir dos líneas amables."
     },
     executionValidation: {
       requireRunBeforeCheck: true,
       requireRunBeforeComplete: true,
-      expectedOutput: ["Welcome to PyMentor\nLet's learn Python"],
+      expectedOutput: ["Bienvenido a PyMentor\nVamos a aprender Python"],
       normalizeOutputWhitespace: true,
       ignoreOutputCase: false,
       requireNoRuntimeError: true
@@ -1100,32 +1100,32 @@ export const courseExercises: ExerciseData[] = [
       rules: [
         {
           id: "two-print-lines",
-          label: "Uses two `print()` lines",
+          label: "Usa dos líneas con `print()`",
           type: "occurrences_at_least",
           value: "print(",
           count: 2,
-          feedbackWhenMissing: "Keep both welcome messages as printed output."
+          feedbackWhenMissing: "Mantén los dos mensajes de bienvenida como salida impresa."
         },
         {
           id: "welcome-text",
-          label: "Keeps the welcome message",
+          label: "Mantiene el mensaje de bienvenida",
           type: "includes",
-          value: "Welcome to PyMentor",
-          feedbackWhenMissing: "The first line should still welcome the learner."
+          value: "Bienvenido a PyMentor",
+          feedbackWhenMissing: "La primera línea debería seguir dando la bienvenida."
         },
         {
           id: "learn-python-text",
-          label: "Keeps the second learning message",
+          label: "Mantiene el segundo mensaje de aprendizaje",
           type: "includes",
-          value: "learn Python",
-          feedbackWhenMissing: "The second line should still mention learning Python."
+          value: "aprender Python",
+          feedbackWhenMissing: "La segunda línea debería seguir mencionando aprender Python."
         },
         {
           id: "fixed-first-line-quote",
-          label: "No broken opening line remains",
+          label: "No queda la primera línea rota",
           type: "excludes",
-          value: "print('Welcome to PyMentor)",
-          feedbackWhenMissing: "The first print line still looks like it has an unmatched quote."
+          value: "print('Bienvenido a PyMentor)",
+          feedbackWhenMissing: "La primera línea con `print()` todavía parece tener una comilla sin cerrar."
         }
       ]
     }
@@ -1139,26 +1139,26 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "running-python-step-by-step",
     order: 2,
     duration: "5 min",
-    summary: "Practice reading Python from top to bottom by predicting the exact output.",
+    summary: "Practica leer Python de arriba hacia abajo prediciendo la salida exacta.",
     prompt:
-      "Look at the program below. Write the output exactly as it would appear, one line per output line.",
-    responseLabel: "Expected output",
-    responsePlaceholder: "Wake up\nBrush teeth\nEat breakfast",
+      "Mira el programa de abajo. Escribe la salida exactamente como aparecería, una línea por cada línea de salida.",
+    responseLabel: "Salida esperada",
+    responsePlaceholder: "Despertar\nLavarse los dientes\nDesayunar",
     instructions: [
-      "Read the code from the first line to the last line.",
-      "Write only the printed output, not the `print()` code itself.",
-      "Keep each output on its own line."
+      "Lee el código desde la primera línea hasta la última.",
+      "Escribe solo la salida impresa, no el código con `print()`.",
+      "Deja cada resultado en su propia línea."
     ],
     hints: [
-      "Python usually runs the first line before the second.",
-      "The answer should have three output lines.",
-      "Do not add extra punctuation that the code does not print."
+      "Python suele ejecutar la primera línea antes que la segunda.",
+      "La respuesta debería tener tres líneas de salida.",
+      "No agregues signos que el código no imprime."
     ],
-    starterCode: "print('Wake up')\nprint('Brush teeth')\nprint('Eat breakfast')",
+    starterCode: "print('Despertar')\nprint('Lavarse los dientes')\nprint('Desayunar')",
     successCriteria: [
-      "The output is written in the correct order.",
-      "Each printed line appears once.",
-      "Only the output text is included."
+      "La salida está escrita en el orden correcto.",
+      "Cada línea impresa aparece una vez.",
+      "Solo está incluido el texto de salida."
     ],
     evaluator: {
       type: "exact_answer",
@@ -1166,8 +1166,8 @@ export const courseExercises: ExerciseData[] = [
       normalizeWhitespace: true,
       ignoreCase: true,
       acceptableAnswers: [
-        "Wake up\nBrush teeth\nEat breakfast",
-        "Wake up\r\nBrush teeth\r\nEat breakfast"
+        "Despertar\nLavarse los dientes\nDesayunar",
+        "Despertar\r\nLavarse los dientes\r\nDesayunar"
       ]
     }
   },
@@ -1180,32 +1180,32 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "reading-python-errors-calmly",
     order: 3,
     duration: "6 min",
-    summary: "Practice fixing one tiny error by focusing on the first broken line.",
+    summary: "Practica arreglar un error pequeño concentrándote en la primera línea rota.",
     prompt:
-      "This code should store a name and print it. Repair the mistake without changing the overall idea of the program.",
-    responseLabel: "Your corrected code",
+      "Este código debería guardar un nombre e imprimirlo. Corrige el error sin cambiar la idea general del programa.",
+    responseLabel: "Tu código corregido",
     responsePlaceholder: "name = 'Maya'\nprint(name)",
     instructions: [
-      "Read the first broken line carefully.",
-      "Keep the stored name exactly as it is.",
-      "Fix the spelling mistake and nothing extra."
+      "Lee con atención la línea que está mal.",
+      "Mantén el nombre guardado exactamente como está.",
+      "Corrige el error de escritura y nada más."
     ],
     hints: [
-      "The variable line is already fine.",
-      "The print function name is misspelled.",
-      "One small typo can stop the whole file."
+      "La línea de la variable ya está bien.",
+      "El nombre de la función `print` está mal escrito.",
+      "Un error mínimo de escritura puede frenar todo el archivo."
     ],
     starterCode: "name = 'Maya'\nprnit(name)",
     successCriteria: [
-      "The code keeps the variable `name`.",
-      "The print function is spelled correctly.",
-      "The program prints the stored name."
+      "El código mantiene la variable `name`.",
+      "La función `print` está bien escrita.",
+      "El programa imprime el nombre guardado."
     ],
     playground: {
-      title: "Run the corrected program",
-      guidance: "Fix the typo and run the code. This is a good way to see how one tiny spelling change can unblock the whole program.",
+      title: "Ejecuta el programa corregido",
+      guidance: "Corrige el error de escritura y ejecuta el código. Es una buena forma de ver cómo un cambio mínimo puede destrabar todo el programa.",
       starterCode: "name = 'Maya'\nprint(name)",
-      emptyOutputHint: "A working solution should print the stored name."
+      emptyOutputHint: "Una solución correcta debería imprimir el nombre guardado."
     },
     evaluator: {
       type: "rule_based",
@@ -1214,32 +1214,32 @@ export const courseExercises: ExerciseData[] = [
       rules: [
         {
           id: "keeps-name-variable",
-          label: "Keeps the `name` variable",
+          label: "Mantiene la variable `name`",
           type: "includes",
           value: "name = 'Maya'",
-          feedbackWhenMissing: "Keep the original variable assignment so the program still stores the name."
+          feedbackWhenMissing: "Mantén la asignación original para que el programa siga guardando el nombre."
         },
         {
           id: "uses-print",
-          label: "Uses `print()` correctly",
+          label: "Usa `print()` correctamente",
           type: "includes",
           value: "print(name)",
-          feedbackWhenMissing: "The second line should use `print(name)`."
+          feedbackWhenMissing: "La segunda línea debería usar `print(name)`."
         },
         {
           id: "removes-prnit",
-          label: "Removes the misspelled function name",
+          label: "Quita el nombre de función mal escrito",
           type: "excludes",
           value: "prnit",
-          feedbackWhenMissing: "The misspelled function name is still present."
+          feedbackWhenMissing: "El nombre de función mal escrito sigue presente."
         },
         {
           id: "two-lines-remain",
-          label: "Keeps the program short and focused",
+          label: "Mantiene el programa corto y enfocado",
           type: "occurrences_at_least",
           value: "\n",
           count: 1,
-          feedbackWhenMissing: "Keep the answer as the same small two-line program."
+          feedbackWhenMissing: "Mantén la respuesta como el mismo programa corto de dos líneas."
         }
       ]
     }
@@ -1253,27 +1253,27 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "variables-hold-values",
     order: 1,
     duration: "7 min",
-    summary: "Explain the core idea of a variable in plain beginner language.",
+    summary: "Explica la idea principal de una variable con lenguaje simple de principiante.",
     prompt:
-      "In 2 or 3 short sentences, explain what a variable does in Python and what `score = 10` means.",
-    responseLabel: "Your explanation",
+      "En 2 o 3 frases cortas, explica qué hace una variable en Python y qué significa `score = 10`.",
+    responseLabel: "Tu explicación",
     responsePlaceholder:
-      "A variable is a name that stores a value. `score = 10` means the variable called score is holding the number 10.",
+      "Una variable es un nombre que guarda un valor. `score = 10` significa que la variable llamada score está guardando el número 10.",
     instructions: [
-      "Use your own words instead of trying to sound technical.",
-      "Mention that a variable has a name and a value.",
-      "Explain what the line `score = 10` means."
+      "Usa tus propias palabras en lugar de intentar sonar técnico.",
+      "Menciona que una variable tiene un nombre y un valor.",
+      "Explica qué significa la línea `score = 10`."
     ],
     hints: [
-      "Think of a variable as a label on a box.",
-      "The line `score = 10` stores a value in the variable.",
-      "Short, clear sentences are enough."
+      "Piensa en una variable como la etiqueta de una caja.",
+      "La línea `score = 10` guarda un valor en la variable.",
+      "Alcanza con frases cortas y claras."
     ],
     starterCode: "score = 10",
     successCriteria: [
-      "Explains that a variable has a name or label.",
-      "Explains that it stores a value.",
-      "Explains that `score = 10` means score now holds 10."
+      "Explica que una variable tiene un nombre o una etiqueta.",
+      "Explica que guarda un valor.",
+      "Explica que `score = 10` significa que score ahora vale 10."
     ],
     evaluator: {
       type: "ordered_concepts",
@@ -1283,21 +1283,21 @@ export const courseExercises: ExerciseData[] = [
       concepts: [
         {
           id: "name-or-label",
-          label: "Mentions that a variable is a name or label",
-          keywords: ["name", "label", "called"],
-          feedbackWhenMissing: "Mention that a variable gives a name or label to something."
+          label: "Menciona que una variable es un nombre o una etiqueta",
+          keywords: ["nombre", "etiqueta", "llamada", "llamado"],
+          feedbackWhenMissing: "Menciona que una variable le da un nombre o una etiqueta a algo."
         },
         {
           id: "stores-value",
-          label: "Explains that the variable stores a value",
-          keywords: ["store", "holds", "remember", "value"],
-          feedbackWhenMissing: "Add the idea that the variable is storing or holding a value."
+          label: "Explica que la variable guarda un valor",
+          keywords: ["guarda", "guardar", "valor", "recuerda", "almacena"],
+          feedbackWhenMissing: "Agrega la idea de que la variable está guardando o sosteniendo un valor."
         },
         {
           id: "score-example",
-          label: "Explains what `score = 10` means",
+          label: "Explica qué significa `score = 10`",
           keywords: ["score", "10"],
-          feedbackWhenMissing: "Explain the example directly: what does `score = 10` tell Python to do?"
+          feedbackWhenMissing: "Explica el ejemplo de forma directa: ¿qué le dice `score = 10` a Python que haga?"
         }
       ]
     }
@@ -1311,26 +1311,26 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "changing-variable-values",
     order: 2,
     duration: "6 min",
-    summary: "Practice following a variable as it changes value from one line to the next.",
+    summary: "Practica seguir una variable mientras cambia de valor de una línea a la siguiente.",
     prompt:
-      "Read the program below. What exact output will it print after the variable changes? Write one output line per line.",
-    responseLabel: "Expected output",
+      "Lee el programa de abajo. ¿Qué salida exacta imprimirá después de que la variable cambie? Escribe una línea de salida por renglón.",
+    responseLabel: "Salida esperada",
     responsePlaceholder: "3\n5",
     instructions: [
-      "Read the first assignment and print first.",
-      "Then read the update before the second print.",
-      "Write only the output values."
+      "Primero lee la asignación inicial y la primera impresión.",
+      "Luego lee la actualización antes del segundo `print()`.",
+      "Escribe solo los valores de salida."
     ],
     hints: [
-      "The first print happens before the variable changes.",
-      "The second print uses the newest value.",
-      "You should end up with two output lines."
+      "El primer `print()` ocurre antes de que cambie la variable.",
+      "El segundo `print()` usa el valor más nuevo.",
+      "Deberías terminar con dos líneas de salida."
     ],
     starterCode: "coins = 3\nprint(coins)\ncoins = 5\nprint(coins)",
     successCriteria: [
-      "Shows the old value first.",
-      "Shows the updated value second.",
-      "Writes only the output, not the code."
+      "Muestra primero el valor anterior.",
+      "Muestra después el valor actualizado.",
+      "Escribe solo la salida, no el código."
     ],
     executionValidation: {
       requireRunBeforeCheck: true,
@@ -1357,33 +1357,33 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "using-input-to-store-text",
     order: 3,
     duration: "8 min",
-    summary: "Put input, variables, and output together in one tiny interactive program.",
+    summary: "Une `input`, variables y salida en un programa interactivo pequeño.",
     prompt:
-      "Write a short program that asks for a name, stores the answer in a variable, and prints a friendly hello message using that variable.",
-    responseLabel: "Your input program",
+      "Escribe un programa corto que pida un nombre, guarde la respuesta en una variable e imprima un saludo amable usando esa variable.",
+    responseLabel: "Tu programa con input",
     responsePlaceholder:
-      "name = input('What is your name? ')\nprint('Hello, ' + name)",
+      "name = input('¿Cómo te llamas? ')\nprint('Hola, ' + name)",
     instructions: [
-      "Ask one simple question with `input()`.",
-      "Store the answer in a variable such as `name`.",
-      "Print a reply that includes the stored variable."
+      "Haz una pregunta simple con `input()`.",
+      "Guarda la respuesta en una variable como `name`.",
+      "Imprime una respuesta que incluya la variable guardada."
     ],
     hints: [
-      "Start with `name = input(...)`.",
-      "Use `print()` on the next line.",
-      "Keep the program to two short lines."
+      "Empieza con `name = input(...)`.",
+      "Usa `print()` en la línea siguiente.",
+      "Mantén el programa en dos líneas cortas."
     ],
-    starterCode: "name = input('What is your name? ')\nprint('Hello, ' + name)",
+    starterCode: "name = input('¿Cómo te llamas? ')\nprint('Hola, ' + name)",
     successCriteria: [
-      "Uses `input()` to ask for a name.",
-      "Stores the answer in a variable.",
-      "Prints a greeting that uses that variable."
+      "Usa `input()` para pedir un nombre.",
+      "Guarda la respuesta en una variable.",
+      "Imprime un saludo que use esa variable."
     ],
     playground: {
-      title: "Try the interactive version",
-      guidance: "Run this code and answer the browser prompt. Keep the program short so the interaction stays clear.",
-      starterCode: "name = input('What is your name? ')\nprint('Hello, ' + name)",
-      emptyOutputHint: "If you do not see output yet, answer the input prompt and make sure the code prints a greeting."
+      title: "Prueba la versión interactiva",
+      guidance: "Ejecuta este código y responde la ventana del navegador. Mantén el programa corto para que la interacción siga siendo clara.",
+      starterCode: "name = input('¿Cómo te llamas? ')\nprint('Hola, ' + name)",
+      emptyOutputHint: "Si todavía no ves salida, responde la pregunta y asegúrate de que el código imprima un saludo."
     },
     evaluator: {
       type: "structure_check",
@@ -1392,28 +1392,28 @@ export const courseExercises: ExerciseData[] = [
       requiredPatterns: [
         {
           id: "stores-input",
-          label: "Stores `input()` in a variable",
+          label: "Guarda `input()` en una variable",
           pattern: "[a-zA-Z_][a-zA-Z0-9_]*\\s*=\\s*input\\(",
-          feedbackWhenMissing: "Store the result of `input()` in a variable on the first line."
+          feedbackWhenMissing: "Guarda el resultado de `input()` en una variable en la primera línea."
         },
         {
           id: "uses-print",
-          label: "Prints a reply",
+          label: "Imprime una respuesta",
           pattern: "print\\(",
-          feedbackWhenMissing: "Add a `print()` line for the greeting."
+          feedbackWhenMissing: "Agrega una línea con `print()` para el saludo."
         },
         {
           id: "uses-name-variable",
-          label: "Uses the stored variable in the greeting",
+          label: "Usa la variable guardada en el saludo",
           pattern: "print\\([^\\n]*name",
           flags: "i",
-          feedbackWhenMissing: "The print line should use the stored variable instead of fixed text only."
+          feedbackWhenMissing: "La línea con `print()` debería usar la variable guardada, no solo texto fijo."
         },
         {
           id: "asks-question",
-          label: "Includes a simple question in `input()`",
+          label: "Incluye una pregunta simple en `input()`",
           pattern: "input\\(['\"].+[?].*['\"]\\)",
-          feedbackWhenMissing: "Let the `input()` call ask one clear question."
+          feedbackWhenMissing: "Haz que la llamada a `input()` haga una pregunta clara."
         }
       ],
       orderedPatternIds: ["stores-input", "uses-print"]
@@ -1428,38 +1428,38 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "python-conditionals-basics",
     order: 1,
     duration: "8 min",
-    summary: "Fix a beginner conditional bug by correcting syntax before worrying about anything else.",
+    summary: "Arregla un bug de condicional típico de principiante corrigiendo la sintaxis antes de preocuparte por cualquier otra cosa.",
     prompt:
-      "This program should print `Adult` when `age` is 18 or more and `Minor` otherwise. Correct the syntax so the logic reads clearly.",
-    responseLabel: "Your corrected conditional",
+      "Este programa debería imprimir `Adulto` cuando `age` es 18 o más y `Menor` en cualquier otro caso. Corrige la sintaxis para que la lógica se lea con claridad.",
+    responseLabel: "Tu condicional corregido",
     responsePlaceholder:
-      "# Correct the comparison and punctuation\nage = 18\n\nif age >= 18:\n    print('Adult')\nelse:\n    print('Minor')",
+      "# Corrige la comparación y la puntuación\nage = 18\n\nif age >= 18:\n    print('Adulto')\nelse:\n    print('Menor')",
     instructions: [
-      "Look at the comparison operator first.",
-      "Check the punctuation at the end of the `if` line.",
-      "Keep the indentation readable."
+      "Primero mira el operador de comparación.",
+      "Revisa la puntuación al final de la línea con `if`.",
+      "Mantén la indentación clara."
     ],
     hints: [
-      "Python uses `>=` for “greater than or equal to”.",
-      "An `if` line needs a colon at the end.",
-      "The `else` branch should stay aligned with the `if`."
+      "Python usa `>=` para 'mayor o igual que'.",
+      "Una línea con `if` necesita dos puntos al final.",
+      "La rama `else` debe quedar alineada con `if`."
     ],
-    starterCode: "age = 18\n\nif age => 18\n    print('Adult')\nelse:\n    print('Minor')",
+    starterCode: "age = 18\n\nif age => 18\n    print('Adulto')\nelse:\n    print('Menor')",
     successCriteria: [
-      "The code uses a valid comparison operator.",
-      "The `if` line ends with a colon.",
-      "The code prints `Adult` when age is 18."
+      "El código usa un operador de comparación válido.",
+      "La línea con `if` termina con dos puntos.",
+      "El código imprime `Adulto` cuando age es 18."
     ],
     playground: {
-      title: "Run the repaired conditional",
-      guidance: "After fixing the conditional, run it here and change `age` to see which branch prints.",
-      starterCode: "age = 18\n\nif age >= 18:\n    print('Adult')\nelse:\n    print('Minor')",
-      emptyOutputHint: "Try changing `age` to a smaller number and running the code again."
+      title: "Ejecuta el condicional corregido",
+      guidance: "Después de corregir el condicional, ejecútalo aquí y cambia `age` para ver qué rama se imprime.",
+      starterCode: "age = 18\n\nif age >= 18:\n    print('Adulto')\nelse:\n    print('Menor')",
+      emptyOutputHint: "Prueba cambiar `age` por un número más pequeño y vuelve a ejecutar."
     },
     executionValidation: {
       requireRunBeforeCheck: true,
       requireRunBeforeComplete: true,
-      expectedOutput: ["Adult"],
+      expectedOutput: ["Adulto"],
       normalizeOutputWhitespace: true,
       ignoreOutputCase: false,
       requireNoRuntimeError: true
@@ -1471,36 +1471,36 @@ export const courseExercises: ExerciseData[] = [
       requiredPatterns: [
         {
           id: "uses-greater-equal",
-          label: "Uses `>=` as the comparison operator",
+          label: "Usa `>=` como operador de comparación",
           pattern: ">=",
-          feedbackWhenMissing: "Use `>=` instead of the broken comparison."
+          feedbackWhenMissing: "Usa `>=` en lugar de la comparación rota."
         },
         {
           id: "if-line-colon",
-          label: "Ends the `if` line with a colon",
+          label: "Termina la línea de `if` con dos puntos",
           pattern: "if\\s+age\\s*>=\\s*18\\s*:",
           flags: "i",
-          feedbackWhenMissing: "The `if` line should end with a colon after the condition."
+          feedbackWhenMissing: "La línea con `if` debería terminar con dos puntos después de la condición."
         },
         {
           id: "adult-output",
-          label: "Keeps the `Adult` output",
-          pattern: "Adult",
-          feedbackWhenMissing: "The `Adult` output should still be present."
+          label: "Mantiene la salida `Adulto`",
+          pattern: "Adulto",
+          feedbackWhenMissing: "La salida `Adulto` debería seguir presente."
         },
         {
           id: "minor-output",
-          label: "Keeps the fallback `Minor` output",
-          pattern: "Minor",
-          feedbackWhenMissing: "The fallback branch should still print `Minor`."
+          label: "Mantiene la salida final `Menor`",
+          pattern: "Menor",
+          feedbackWhenMissing: "La rama final debería seguir imprimiendo `Menor`."
         }
       ],
       forbiddenPatterns: [
         {
           id: "removes-wrong-operator",
-          label: "Removes the invalid `=>` operator",
+          label: "Quita el operador inválido `=>`",
           pattern: "=>",
-          feedbackWhenMissing: "The invalid `=>` operator is still there."
+          feedbackWhenMissing: "El operador inválido `=>` sigue ahí."
         }
       ],
       orderedPatternIds: ["if-line-colon", "adult-output", "minor-output"]
@@ -1515,32 +1515,32 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "elif-and-else-paths",
     order: 2,
     duration: "8 min",
-    summary: "Repair a branching program by putting the most specific check first.",
+    summary: "Arregla un programa con ramas colocando primero la comprobación más específica.",
     prompt:
-      "This score program should print `High` for 90 or more and `Medium` for 60 or more. Reorder the conditional so Python checks the branches in a sensible way.",
-    responseLabel: "Your reordered conditional",
+      "Este programa de puntajes debería imprimir `Alto` para 90 o más y `Medio` para 60 o más. Reordena el condicional para que Python revise las ramas de una forma lógica.",
+    responseLabel: "Tu condicional reordenado",
     responsePlaceholder:
-      "score = 95\n\nif score >= 90:\n    print('High')\nelif score >= 60:\n    print('Medium')\nelse:\n    print('Low')",
+      "score = 95\n\nif score >= 90:\n    print('Alto')\nelif score >= 60:\n    print('Medio')\nelse:\n    print('Bajo')",
     instructions: [
-      "Keep the same three outputs: `High`, `Medium`, and `Low`.",
-      "Place the highest threshold first.",
-      "Keep the branch structure readable."
+      "Mantén las mismas tres salidas: `Alto`, `Medio` y `Bajo`.",
+      "Coloca primero el umbral más alto.",
+      "Haz que la estructura de ramas siga siendo fácil de leer."
     ],
     hints: [
-      "If Python matches the first true branch, it stops there.",
-      "A lower threshold first can hide a higher one.",
-      "The order should be `if`, then `elif`, then `else`."
+      "Si Python encuentra primero una rama verdadera, se detiene ahí.",
+      "Un umbral bajo primero puede tapar a uno más alto.",
+      "El orden debería ser `if`, luego `elif` y después `else`."
     ],
-    starterCode: "score = 95\n\nif score >= 60:\n    print('Medium')\nelif score >= 90:\n    print('High')\nelse:\n    print('Low')",
+    starterCode: "score = 95\n\nif score >= 60:\n    print('Medio')\nelif score >= 90:\n    print('Alto')\nelse:\n    print('Bajo')",
     successCriteria: [
-      "The `>= 90` branch comes before the `>= 60` branch.",
-      "All three outputs remain.",
-      "The structure still uses `if`, `elif`, and `else`."
+      "La rama `>= 90` aparece antes que la rama `>= 60`.",
+      "Se mantienen las tres salidas.",
+      "La estructura sigue usando `if`, `elif` y `else`."
     ],
     executionValidation: {
       requireRunBeforeCheck: true,
       requireRunBeforeComplete: true,
-      expectedOutput: ["High"],
+      expectedOutput: ["Alto"],
       normalizeOutputWhitespace: true,
       ignoreOutputCase: false,
       requireNoRuntimeError: true
@@ -1552,33 +1552,33 @@ export const courseExercises: ExerciseData[] = [
       requiredPatterns: [
         {
           id: "high-check",
-          label: "Checks `score >= 90`",
+          label: "Comprueba `score >= 90`",
           pattern: "score\\s*>=\\s*90",
-          feedbackWhenMissing: "The solution should still check whether the score is at least 90."
+          feedbackWhenMissing: "La solución debería seguir comprobando si el puntaje es al menos 90."
         },
         {
           id: "medium-check",
-          label: "Checks `score >= 60`",
+          label: "Comprueba `score >= 60`",
           pattern: "score\\s*>=\\s*60",
-          feedbackWhenMissing: "Keep the medium branch that checks whether the score is at least 60."
+          feedbackWhenMissing: "Mantén la rama media que comprueba si el puntaje es al menos 60."
         },
         {
           id: "uses-elif",
-          label: "Uses `elif` for the second branch",
+          label: "Usa `elif` para la segunda rama",
           pattern: "elif\\s+score\\s*>=\\s*60",
-          feedbackWhenMissing: "The second branch should be an `elif`, not a separate `if`."
+          feedbackWhenMissing: "La segunda rama debería ser `elif`, no un `if` separado."
         },
         {
           id: "high-output",
-          label: "Keeps the `High` output",
-          pattern: "High",
-          feedbackWhenMissing: "The `High` output should still be present."
+          label: "Mantiene la salida `Alto`",
+          pattern: "Alto",
+          feedbackWhenMissing: "La salida `Alto` debería seguir presente."
         },
         {
           id: "low-output",
-          label: "Keeps the `Low` fallback",
-          pattern: "Low",
-          feedbackWhenMissing: "Keep the fallback `Low` branch."
+          label: "Mantiene la salida final `Bajo`",
+          pattern: "Bajo",
+          feedbackWhenMissing: "Mantén la rama final `Bajo`."
         }
       ],
       orderedPatternIds: ["high-check", "medium-check", "low-output"]
@@ -1593,27 +1593,27 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "comparison-questions-in-python",
     order: 3,
     duration: "7 min",
-    summary: "Turn comparison symbols into plain words so the logic becomes easier to understand.",
+    summary: "Convierte símbolos de comparación en palabras simples para que la lógica sea más fácil de entender.",
     prompt:
-      "In 2 or 3 short sentences, explain what `score >= 70` asks and why that matters inside an `if` statement.",
-    responseLabel: "Your explanation",
+      "En 2 o 3 frases cortas, explica qué pregunta hace `score >= 70` y por qué eso importa dentro de un `if`.",
+    responseLabel: "Tu explicación",
     responsePlaceholder:
-      "`score >= 70` asks whether score is at least 70. The answer becomes true or false, and the `if` statement uses that answer to decide whether to run the branch.",
+      "`score >= 70` pregunta si score es al menos 70. La respuesta se vuelve true o false, y el `if` usa esa respuesta para decidir si ejecuta la rama.",
     instructions: [
-      "Say what question the comparison asks.",
-      "Mention `True` or `False` in simple language.",
-      "Connect that answer to what the `if` statement does next."
+      "Di qué pregunta hace la comparación.",
+      "Menciona `True` o `False` con palabras simples.",
+      "Conecta esa respuesta con lo que hace después el `if`."
     ],
     hints: [
-      "Read `>=` as 'greater than or equal to'.",
-      "A comparison produces a yes-or-no style answer.",
-      "The `if` statement uses that answer to choose a branch."
+      "Lee `>=` como 'mayor o igual que'.",
+      "Una comparación produce una respuesta tipo sí o no.",
+      "El `if` usa esa respuesta para elegir una rama."
     ],
-    starterCode: "if score >= 70:\n    print('Pass')",
+    starterCode: "if score >= 70:\n    print('Aprueba')",
     successCriteria: [
-      "Explains the meaning of `>= 70`.",
-      "Mentions that the comparison becomes `True` or `False`.",
-      "Connects that result to the `if` branch running or not running."
+      "Explica el significado de `>= 70`.",
+      "Menciona que la comparación se vuelve `True` o `False`.",
+      "Conecta ese resultado con que la rama del `if` se ejecute o no."
     ],
     evaluator: {
       type: "ordered_concepts",
@@ -1623,21 +1623,21 @@ export const courseExercises: ExerciseData[] = [
       concepts: [
         {
           id: "comparison-question",
-          label: "Explains the question the comparison asks",
-          keywords: ["at least", "greater than or equal", "70"],
-          feedbackWhenMissing: "Explain the comparison in plain words, such as 'at least 70'."
+          label: "Explica la pregunta que hace la comparación",
+          keywords: ["al menos", "mayor o igual", "70"],
+          feedbackWhenMissing: "Explica la comparación con palabras simples, como 'al menos 70'."
         },
         {
           id: "true-or-false",
-          label: "Mentions `True` or `False`",
-          keywords: ["true", "false"],
-          feedbackWhenMissing: "Mention that the comparison becomes `True` or `False`."
+          label: "Menciona `True` o `False`",
+          keywords: ["true", "false", "verdadero", "falso"],
+          feedbackWhenMissing: "Menciona que la comparación se vuelve `True` o `False`."
         },
         {
           id: "if-branch",
-          label: "Connects the answer to the `if` decision",
-          keywords: ["if", "branch", "run", "decide"],
-          feedbackWhenMissing: "Add how the `if` statement uses that answer to choose whether to run the branch."
+          label: "Conecta la respuesta con la decisión del `if`",
+          keywords: ["if", "rama", "ejecuta", "decide", "decidir"],
+          feedbackWhenMissing: "Agrega cómo el `if` usa esa respuesta para elegir si ejecuta la rama."
         }
       ]
     }
@@ -1651,33 +1651,33 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "why-loops-help",
     order: 1,
     duration: "6 min",
-    summary: "Practice reading a simple loop by predicting the exact repeated output.",
+    summary: "Practica leer un bucle simple prediciendo la salida repetida exacta.",
     prompt:
-      "Look at the loop below. Write the output exactly as Python would print it, one line per output line.",
-    responseLabel: "Expected output",
-    responsePlaceholder: "Go!\nGo!\nGo!",
+      "Mira el bucle de abajo. Escribe la salida exactamente como la imprimiría Python, una línea por cada línea de salida.",
+    responseLabel: "Salida esperada",
+    responsePlaceholder: "¡Vamos!\n¡Vamos!\n¡Vamos!",
     instructions: [
-      "Read the loop header first.",
-      "Notice how many times the loop repeats.",
-      "Write only the printed output, not the code itself."
+      "Lee primero la cabecera del bucle.",
+      "Fíjate cuántas veces se repite.",
+      "Escribe solo la salida impresa, no el código."
     ],
     hints: [
-      "`range(3)` means the loop body runs three times.",
-      "The printed text is the same on each pass.",
-      "Your answer should have three lines."
+      "`range(3)` significa que el cuerpo del bucle se ejecuta tres veces.",
+      "El texto impreso es el mismo en cada vuelta.",
+      "Tu respuesta debería tener tres líneas."
     ],
-    starterCode: "for _ in range(3):\n    print('Go!')",
+    starterCode: "for _ in range(3):\n    print('¡Vamos!')",
     successCriteria: [
-      "The answer shows three output lines.",
-      "Each line contains the same printed word.",
-      "Only the output text is included."
+      "La respuesta muestra tres líneas de salida.",
+      "Cada línea contiene la misma palabra.",
+      "Solo está incluido el texto de salida."
     ],
     evaluator: {
       type: "exact_answer",
       minLength: 8,
       normalizeWhitespace: true,
       ignoreCase: false,
-      acceptableAnswers: ["Go!\nGo!\nGo!", "Go!\r\nGo!\r\nGo!"]
+      acceptableAnswers: ["¡Vamos!\n¡Vamos!\n¡Vamos!", "¡Vamos!\r\n¡Vamos!\r\n¡Vamos!"]
     }
   },
   {
@@ -1689,33 +1689,33 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "for-loops-with-range",
     order: 2,
     duration: "8 min",
-    summary: "Write a small `for` loop that prints a calm counting pattern from 1 to 3.",
+    summary: "Escribe un bucle `for` pequeño que imprima un conteo claro del 1 al 3.",
     prompt:
-      "Write a `for` loop that prints the numbers 1, 2, and 3, one number per line. Keep the code short and readable.",
-    responseLabel: "Your counting loop",
+      "Escribe un bucle `for` que imprima los números 1, 2 y 3, uno por línea. Mantén el código corto y legible.",
+    responseLabel: "Tu bucle de conteo",
     responsePlaceholder:
       "for number in range(1, 4):\n    print(number)",
     instructions: [
-      "Use a loop variable such as `number`.",
-      "Choose a `range()` that starts at 1 and stops after 3.",
-      "Print the loop variable inside the loop body."
+      "Usa una variable de bucle como `number`.",
+      "Elige un `range()` que empiece en 1 y termine después de 3.",
+      "Imprime la variable del bucle dentro del cuerpo."
     ],
     hints: [
-      "A good starting shape is `for number in range(...):`.",
-      "To include 3, the end of `range()` needs to go one higher.",
-      "The `print()` line should be indented under the loop."
+      "Una buena forma de empezar es `for number in range(...):`.",
+      "Para incluir el 3, el final de `range()` necesita ir un número más arriba.",
+      "La línea con `print()` debería ir indentada debajo del bucle."
     ],
     starterCode: "for number in range(1, 4):\n    print(number)",
     successCriteria: [
-      "Uses a `for` loop with `range()`.",
-      "Prints 1, 2, and 3 in order.",
-      "Keeps the `print()` line inside the loop."
+      "Usa un bucle `for` con `range()`.",
+      "Imprime 1, 2 y 3 en orden.",
+      "Mantiene la línea con `print()` dentro del bucle."
     ],
     playground: {
-      title: "Run the counting loop",
-      guidance: "Run the code and read the printed sequence calmly. Then change the range to see how the output pattern changes.",
+      title: "Ejecuta el bucle de conteo",
+      guidance: "Ejecuta el código y lee la secuencia impresa con calma. Luego cambia el `range()` para ver cómo cambia el patrón.",
       starterCode: "for number in range(1, 4):\n    print(number)",
-      emptyOutputHint: "A correct answer should print one number on each line."
+      emptyOutputHint: "Una respuesta correcta debería imprimir un número en cada línea."
     },
     executionValidation: {
       requireRunBeforeCheck: true,
@@ -1732,21 +1732,21 @@ export const courseExercises: ExerciseData[] = [
       requiredPatterns: [
         {
           id: "uses-for-loop",
-          label: "Uses a `for` loop",
+          label: "Usa un bucle `for`",
           pattern: "for\\s+[a-zA-Z_][a-zA-Z0-9_]*\\s+in\\s+range\\(",
-          feedbackWhenMissing: "Start with a `for` loop that uses `range()`."
+          feedbackWhenMissing: "Empieza con un bucle `for` que use `range()`."
         },
         {
           id: "counts-one-to-three",
-          label: "Uses a range that reaches 1, 2, and 3",
+          label: "Usa un `range()` que alcanza 1, 2 y 3",
           pattern: "range\\(\\s*1\\s*,\\s*4\\s*\\)",
-          feedbackWhenMissing: "Use `range(1, 4)` so the loop prints 1, 2, and 3."
+          feedbackWhenMissing: "Usa `range(1, 4)` para que el bucle imprima 1, 2 y 3."
         },
         {
           id: "prints-loop-variable",
-          label: "Prints the loop variable",
+          label: "Imprime la variable del bucle",
           pattern: "print\\(\\s*[a-zA-Z_][a-zA-Z0-9_]*\\s*\\)",
-          feedbackWhenMissing: "Print the loop variable inside the loop body."
+          feedbackWhenMissing: "Imprime la variable del bucle dentro del cuerpo."
         }
       ],
       orderedPatternIds: ["uses-for-loop", "counts-one-to-three", "prints-loop-variable"]
@@ -1761,38 +1761,38 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "reading-loop-output-calmly",
     order: 3,
     duration: "8 min",
-    summary: "Repair a simple loop so the repeated lines and the final line appear in the right pattern.",
+    summary: "Arregla un bucle simple para que las líneas repetidas y la línea final aparezcan con el patrón correcto.",
     prompt:
-      "This program should print `Step 1`, `Step 2`, `Step 3`, and then `Done!` one time after the loop ends. Fix the structure without changing the goal.",
-    responseLabel: "Your corrected loop",
+      "Este programa debería imprimir `Paso 1`, `Paso 2`, `Paso 3` y luego `Listo` una sola vez cuando el bucle termine. Corrige la estructura sin cambiar el objetivo.",
+    responseLabel: "Tu bucle corregido",
     responsePlaceholder:
-      "for step in range(1, 4):\n    print('Step', step)\nprint('Done!')",
+      "for step in range(1, 4):\n    print('Paso', step)\nprint('Listo')",
     instructions: [
-      "Keep the loop counting from 1 to 3.",
-      "Print the step line inside the loop.",
-      "Move the final `Done!` line so it runs after the loop finishes."
+      "Mantén el bucle contando del 1 al 3.",
+      "Imprime la línea del paso dentro del bucle.",
+      "Mueve la línea final `Listo` para que se ejecute después de que termine el bucle."
     ],
     hints: [
-      "The `Done!` line should not be indented under the loop.",
-      "A small indentation change can fix the whole pattern.",
-      "Run the code and compare the printed lines with the expected sequence."
+      "La línea `Listo` no debería estar indentada dentro del bucle.",
+      "Un cambio pequeño de indentación puede arreglar todo el patrón.",
+      "Ejecuta el código y compara las líneas impresas con la secuencia esperada."
     ],
-    starterCode: "for step in range(1, 4):\n    print('Step', step)\n    print('Done!')",
+    starterCode: "for step in range(1, 4):\n    print('Paso', step)\n    print('Listo')",
     successCriteria: [
-      "The loop prints three step lines.",
-      "The final line prints only once after the loop.",
-      "The indentation shows clearly what repeats and what does not."
+      "El bucle imprime tres líneas de pasos.",
+      "La línea final se imprime una sola vez después del bucle.",
+      "La indentación muestra con claridad qué se repite y qué no."
     ],
     playground: {
-      title: "Run the repaired loop",
-      guidance: "Run the code after fixing the indentation. The output should show the repeated step lines first and the final line once at the end.",
-      starterCode: "for step in range(1, 4):\n    print('Step', step)\nprint('Done!')",
-      emptyOutputHint: "The output should end with one `Done!` line after the step lines."
+      title: "Ejecuta el bucle corregido",
+      guidance: "Ejecuta el código después de corregir la indentación. La salida debería mostrar primero las líneas repetidas de pasos y al final una sola línea final.",
+      starterCode: "for step in range(1, 4):\n    print('Paso', step)\nprint('Listo')",
+      emptyOutputHint: "La salida debería terminar con una sola línea `Listo` después de los pasos."
     },
     executionValidation: {
       requireRunBeforeCheck: true,
       requireRunBeforeComplete: true,
-      expectedOutput: ["Step 1\nStep 2\nStep 3\nDone!"],
+      expectedOutput: ["Paso 1\nPaso 2\nPaso 3\nListo"],
       normalizeOutputWhitespace: true,
       ignoreOutputCase: false,
       requireNoRuntimeError: true
@@ -1804,21 +1804,21 @@ export const courseExercises: ExerciseData[] = [
       requiredPatterns: [
         {
           id: "step-loop",
-          label: "Keeps the counting loop",
+          label: "Mantiene el bucle de conteo",
           pattern: "for\\s+step\\s+in\\s+range\\(\\s*1\\s*,\\s*4\\s*\\)\\s*:",
-          feedbackWhenMissing: "Keep the loop that counts `step` from 1 to 3."
+          feedbackWhenMissing: "Mantén el bucle que cuenta `step` del 1 al 3."
         },
         {
           id: "prints-step",
-          label: "Prints each step inside the loop",
-          pattern: "print\\(\\s*['\"]Step['\"]\\s*,\\s*step\\s*\\)",
-          feedbackWhenMissing: "Inside the loop, print the current step number."
+          label: "Imprime cada paso dentro del bucle",
+          pattern: "print\\(\\s*['\"]Paso['\"]\\s*,\\s*step\\s*\\)",
+          feedbackWhenMissing: "Dentro del bucle, imprime el número de paso actual."
         },
         {
           id: "prints-done",
-          label: "Keeps the final `Done!` line",
-          pattern: "print\\(\\s*['\"]Done!['\"]\\s*\\)",
-          feedbackWhenMissing: "Keep the final `Done!` message after the loop."
+          label: "Mantiene la línea final `Listo`",
+          pattern: "print\\(\\s*['\"]Listo['\"]\\s*\\)",
+          feedbackWhenMissing: "Mantén el mensaje final `Listo` después del bucle."
         }
       ],
       orderedPatternIds: ["step-loop", "prints-step", "prints-done"]
@@ -1833,33 +1833,33 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "why-functions-help",
     order: 1,
     duration: "6 min",
-    summary: "Practice reading a small function definition and two function calls without getting lost.",
+    summary: "Practica leer una definición de función pequeña y dos llamadas sin perderte.",
     prompt:
-      "Look at the code below. Write the exact output Python will print when the function is called two times.",
-    responseLabel: "Expected output",
-    responsePlaceholder: "Nice work!\nNice work!",
+      "Mira el código de abajo. Escribe la salida exacta que imprimirá Python cuando la función se llame dos veces.",
+    responseLabel: "Salida esperada",
+    responsePlaceholder: "¡Buen trabajo!\n¡Buen trabajo!",
     instructions: [
-      "Read the function body first.",
-      "Then count how many times the function is called.",
-      "Write only the printed output, one line per line."
+      "Lee primero el cuerpo de la función.",
+      "Luego cuenta cuántas veces se llama.",
+      "Escribe solo la salida impresa, una línea por renglón."
     ],
     hints: [
-      "The function body prints one line.",
-      "The function is called twice.",
-      "The output should repeat the same message two times."
+      "El cuerpo de la función imprime una línea.",
+      "La función se llama dos veces.",
+      "La salida debería repetir el mismo mensaje dos veces."
     ],
-    starterCode: "def cheer():\n    print('Nice work!')\n\ncheer()\ncheer()",
+    starterCode: "def cheer():\n    print('¡Buen trabajo!')\n\ncheer()\ncheer()",
     successCriteria: [
-      "The output shows two lines.",
-      "Both lines match the function body output.",
-      "Only the output text is included."
+      "La salida muestra dos líneas.",
+      "Las dos líneas coinciden con la salida del cuerpo de la función.",
+      "Solo está incluido el texto de salida."
     ],
     evaluator: {
       type: "exact_answer",
       minLength: 12,
       normalizeWhitespace: true,
       ignoreCase: false,
-      acceptableAnswers: ["Nice work!\nNice work!", "Nice work!\r\nNice work!"]
+      acceptableAnswers: ["¡Buen trabajo!\n¡Buen trabajo!", "¡Buen trabajo!\r\n¡Buen trabajo!"]
     }
   },
   {
@@ -1871,38 +1871,38 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "defining-and-calling-functions",
     order: 2,
     duration: "8 min",
-    summary: "Define one simple function and call it so the program prints a helpful message twice.",
+    summary: "Define una función simple y llámala para que el programa imprima un mensaje útil dos veces.",
     prompt:
-      "Write a function called `cheer()` that prints `Keep practicing!`, then call it two times below the function definition.",
-    responseLabel: "Your function",
+      "Escribe una función llamada `cheer()` que imprima `Sigue practicando`, y luego llámala dos veces debajo de la definición.",
+    responseLabel: "Tu función",
     responsePlaceholder:
-      "def cheer():\n    print('Keep practicing!')\n\ncheer()\ncheer()",
+      "def cheer():\n    print('Sigue practicando')\n\ncheer()\ncheer()",
     instructions: [
-      "Use `def cheer():` to define the function.",
-      "Put the `print()` line inside the function body.",
-      "Call `cheer()` two times after the definition."
+      "Usa `def cheer():` para definir la función.",
+      "Pon la línea con `print()` dentro del cuerpo de la función.",
+      "Llama a `cheer()` dos veces después de la definición."
     ],
     hints: [
-      "The definition line needs parentheses and a colon.",
-      "The function body should be indented.",
-      "The calls should appear after the function is defined."
+      "La línea de definición necesita paréntesis y dos puntos.",
+      "El cuerpo de la función debe ir indentado.",
+      "Las llamadas deberían aparecer después de definir la función."
     ],
-    starterCode: "def cheer():\n    print('Keep practicing!')\n\ncheer()\ncheer()",
+    starterCode: "def cheer():\n    print('Sigue practicando')\n\ncheer()\ncheer()",
     successCriteria: [
-      "Defines `cheer()` correctly.",
-      "Prints the expected message.",
-      "Calls the function two times."
+      "Define `cheer()` correctamente.",
+      "Imprime el mensaje esperado.",
+      "Llama a la función dos veces."
     ],
     playground: {
-      title: "Run the cheer function",
-      guidance: "Run the function, then change the message or add another call. This helps make reuse feel concrete.",
-      starterCode: "def cheer():\n    print('Keep practicing!')\n\ncheer()\ncheer()",
-      emptyOutputHint: "A correct answer should print the message each time the function is called."
+      title: "Ejecuta la función de ánimo",
+      guidance: "Ejecuta la función y luego cambia el mensaje o agrega otra llamada. Esto ayuda a que la idea de reutilizar se sienta concreta.",
+      starterCode: "def cheer():\n    print('Sigue practicando')\n\ncheer()\ncheer()",
+      emptyOutputHint: "Una respuesta correcta debería imprimir el mensaje cada vez que se llama a la función."
     },
     executionValidation: {
       requireRunBeforeCheck: true,
       requireRunBeforeComplete: true,
-      expectedOutput: ["Keep practicing!\nKeep practicing!"],
+      expectedOutput: ["Sigue practicando\nSigue practicando"],
       normalizeOutputWhitespace: true,
       ignoreOutputCase: false,
       requireNoRuntimeError: true
@@ -1914,21 +1914,21 @@ export const courseExercises: ExerciseData[] = [
       requiredPatterns: [
         {
           id: "defines-cheer",
-          label: "Defines `cheer()`",
+          label: "Define `cheer()`",
           pattern: "def\\s+cheer\\s*\\(\\s*\\)\\s*:",
-          feedbackWhenMissing: "Start by defining the function as `def cheer():`."
+          feedbackWhenMissing: "Empieza definiendo la función como `def cheer():`."
         },
         {
           id: "prints-message",
-          label: "Prints the cheer message",
-          pattern: "print\\(\\s*['\"]Keep practicing!['\"]\\s*\\)",
-          feedbackWhenMissing: "Inside the function, print `Keep practicing!`."
+          label: "Imprime el mensaje de ánimo",
+          pattern: "print\\(\\s*['\"]Sigue practicando['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro de la función, imprime `Sigue practicando`."
         },
         {
           id: "calls-cheer-twice",
-          label: "Calls `cheer()` two times",
+          label: "Llama a `cheer()` dos veces",
           pattern: "cheer\\s*\\(\\s*\\)",
-          feedbackWhenMissing: "Remember to call the function after defining it."
+          feedbackWhenMissing: "Recuerda llamar a la función después de definirla."
         }
       ],
       orderedPatternIds: ["defines-cheer", "prints-message", "calls-cheer-twice"]
@@ -1943,38 +1943,38 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "simple-parameters-and-function-mistakes",
     order: 3,
     duration: "9 min",
-    summary: "Repair a beginner function so it accepts one name and prints a personal greeting correctly.",
+    summary: "Arregla una función de principiante para que reciba un nombre e imprima bien un saludo personal.",
     prompt:
-      "This function should greet one person by name. Fix the function definition and the call so the program prints `Hello, Maya`.",
-    responseLabel: "Your corrected function",
+      "Esta función debería saludar a una persona por nombre. Corrige la definición y la llamada para que el programa imprima `Hola, Maya`.",
+    responseLabel: "Tu función corregida",
     responsePlaceholder:
-      "def greet(name):\n    print('Hello, ' + name)\n\ngreet('Maya')",
+      "def greet(name):\n    print('Hola, ' + name)\n\ngreet('Maya')",
     instructions: [
-      "Check the `def` line for punctuation.",
-      "Keep the print line inside the function body.",
-      "Call the function with one name in quotes."
+      "Revisa la puntuación de la línea con `def`.",
+      "Mantén la línea con `print()` dentro del cuerpo de la función.",
+      "Llama a la función con un nombre entre comillas."
     ],
     hints: [
-      "The function definition needs a colon.",
-      "Calling the function requires parentheses.",
-      "The call should provide the name the function expects."
+      "La definición de la función necesita dos puntos.",
+      "Llamar a la función requiere paréntesis.",
+      "La llamada debería darle el nombre que la función espera."
     ],
-    starterCode: "def greet(name)\n    print('Hello, ' + name)\n\ngreet",
+    starterCode: "def greet(name)\n    print('Hola, ' + name)\n\ngreet",
     successCriteria: [
-      "Defines the function with one parameter.",
-      "Prints the greeting using that parameter.",
-      "Calls the function so it prints `Hello, Maya`."
+      "Define la función con un parámetro.",
+      "Imprime el saludo usando ese parámetro.",
+      "Llama a la función para que imprima `Hola, Maya`."
     ],
     playground: {
-      title: "Run the repaired greeter",
-      guidance: "Fix the function, then run it. Try changing the name in the call to see how one function can greet different people.",
-      starterCode: "def greet(name):\n    print('Hello, ' + name)\n\ngreet('Maya')",
-      emptyOutputHint: "A correct solution should print one greeting using the name from the function call."
+      title: "Ejecuta el saludo corregido",
+      guidance: "Corrige la función y luego ejecútala. Prueba cambiar el nombre en la llamada para ver cómo una misma función puede saludar a personas distintas.",
+      starterCode: "def greet(name):\n    print('Hola, ' + name)\n\ngreet('Maya')",
+      emptyOutputHint: "Una solución correcta debería imprimir un saludo usando el nombre que viene de la llamada."
     },
     executionValidation: {
       requireRunBeforeCheck: true,
       requireRunBeforeComplete: true,
-      expectedOutput: ["Hello, Maya"],
+      expectedOutput: ["Hola, Maya"],
       normalizeOutputWhitespace: true,
       ignoreOutputCase: false,
       requireNoRuntimeError: true
@@ -1986,21 +1986,21 @@ export const courseExercises: ExerciseData[] = [
       requiredPatterns: [
         {
           id: "defines-greet-with-parameter",
-          label: "Defines `greet(name)`",
+          label: "Define `greet(name)`",
           pattern: "def\\s+greet\\s*\\(\\s*name\\s*\\)\\s*:",
-          feedbackWhenMissing: "Define the function as `def greet(name):`."
+          feedbackWhenMissing: "Define la función como `def greet(name):`."
         },
         {
           id: "uses-name-in-print",
-          label: "Uses the parameter inside the greeting",
+          label: "Usa el parámetro dentro del saludo",
           pattern: "print\\([^\\n]*name[^\\n]*\\)",
-          feedbackWhenMissing: "Use the `name` parameter inside the `print()` line."
+          feedbackWhenMissing: "Usa el parámetro `name` dentro de la línea con `print()`."
         },
         {
           id: "calls-greet-with-maya",
-          label: "Calls `greet('Maya')`",
+          label: "Llama a `greet('Maya')`",
           pattern: "greet\\(\\s*['\"]Maya['\"]\\s*\\)",
-          feedbackWhenMissing: "Call the function with `'Maya'` so the program prints the expected greeting."
+          feedbackWhenMissing: "Llama a la función con `'Maya'` para que el programa imprima el saludo esperado."
         }
       ],
       orderedPatternIds: ["defines-greet-with-parameter", "uses-name-in-print", "calls-greet-with-maya"]

@@ -62,7 +62,7 @@ export default async function LessonPage({
             <div className="flex flex-wrap items-center gap-3">
               <Badge tone="brand">{lesson.module}</Badge>
               <Badge tone="neutral">{lesson.duration}</Badge>
-              <Badge tone="success">{lesson.difficulty}</Badge>
+              <Badge tone="success">{lesson.difficulty === "Beginner" ? "Principiante" : "Inicial"}</Badge>
               <Badge tone={lessonStatus === "completed" ? "success" : lessonStatus === "in_progress" ? "brand" : "neutral"}>
                 {lessonStatus === "completed"
                   ? "Completada"

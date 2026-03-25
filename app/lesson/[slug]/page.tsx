@@ -5,6 +5,7 @@ import { requireAppUser } from "@/lib/auth";
 import { AppShell } from "@/components/app-shell";
 import { CodePanel } from "@/components/code-panel";
 import { MentorWidget } from "@/components/mentor-widget";
+import { PythonPlayground } from "@/components/python-playground";
 import { ProgressAction } from "@/components/progress-action";
 import { SignOutButton } from "@/components/sign-out-button";
 import { Badge } from "@/components/ui/badge";
@@ -125,6 +126,8 @@ export default async function LessonPage({
               <CodePanel code={lesson.example} />
             </div>
           </Card>
+
+          {lesson.playground ? <PythonPlayground config={lesson.playground} /> : null}
 
           <Card className="rounded-[30px]">
             <h2 className="text-xl font-bold text-slate-900">Practice</h2>

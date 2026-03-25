@@ -14,6 +14,13 @@ export interface LessonSection {
   body: string;
 }
 
+export interface PythonPlaygroundConfig {
+  title?: string;
+  guidance: string;
+  starterCode: string;
+  emptyOutputHint?: string;
+}
+
 export interface LessonKeyIdea {
   title: string;
   description: string;
@@ -41,6 +48,7 @@ export interface LessonData {
     brokenCode: string;
     expectedLearning: string;
   };
+  playground?: PythonPlaygroundConfig;
   exerciseSlug?: string;
 }
 
@@ -73,6 +81,7 @@ export interface ExerciseData {
   starterCode: string;
   successCriteria: string[];
   evaluator: ExerciseEvaluatorConfig;
+  playground?: PythonPlaygroundConfig;
 }
 
 export interface ExerciseValidationRule {

@@ -114,6 +114,12 @@ export const courseLessons: LessonData[] = [
       brokenCode: "print('Welcome to PyMentor)\nprint('Let\\'s learn Python')",
       expectedLearning: "Strings need matching quotes on both sides."
     },
+    playground: {
+      title: "First Python playground",
+      guidance: "Edit the two `print()` lines and run them. This is your safe place to experiment with tiny Python changes.",
+      starterCode: "print('Hello, beginner!')\nprint('I am learning Python step by step.')",
+      emptyOutputHint: "Try adding or changing a `print()` line, then run the code again."
+    },
     exerciseSlug: "welcome-message-fix"
   },
   {
@@ -362,6 +368,12 @@ export const courseLessons: LessonData[] = [
       brokenCode: "score = 5\nscore == 8\nprint(score)",
       expectedLearning: "Use `=` to assign a value. `==` compares values."
     },
+    playground: {
+      title: "See a variable change live",
+      guidance: "Run the code, then change the numbers and run it again. Watch how Python keeps the newest value of the variable.",
+      starterCode: "coins = 3\nprint(coins)\n\ncoins = 5\nprint(coins)",
+      emptyOutputHint: "This runner shows whatever your `print()` lines send to the screen."
+    },
     exerciseSlug: "coins-after-update"
   },
   {
@@ -423,6 +435,12 @@ export const courseLessons: LessonData[] = [
       prompt: "This program should ask for a name and greet the user, but one small syntax issue breaks the first line.",
       brokenCode: "name = input('What is your name? '\nprint('Hello, ' + name)",
       expectedLearning: "Function calls need matching parentheses as well as quotes."
+    },
+    playground: {
+      title: "Try input in the browser",
+      guidance: "Run the code and answer the browser prompt. PyMentor will pass your reply into Python so you can see the greeting come back.",
+      starterCode: "name = input('What is your name? ')\nprint('Hello, ' + name)",
+      emptyOutputHint: "If your code uses `input()`, the browser will ask you for the value before Python continues."
     },
     exerciseSlug: "friendly-intro-input"
   },
@@ -611,6 +629,13 @@ export const courseLessons: LessonData[] = [
       brokenCode: "score = 10\n\nif score > 10:\n    print('Enough points')",
       expectedLearning: "Changing `>` to `>=` changes the meaning of the condition in an important way."
     },
+    playground: {
+      title: "Try comparison questions",
+      guidance: "Change the number and the comparison operator, then run the code to see how the result changes.",
+      starterCode:
+        "score = 70\n\nprint(score == 70)\nprint(score > 70)\nprint(score >= 70)",
+      emptyOutputHint: "A few `print()` lines are enough to make the comparison results visible."
+    },
     exerciseSlug: "comparison-question-check"
   }
 ];
@@ -646,6 +671,12 @@ export const courseExercises: ExerciseData[] = [
       "The text is still a welcome message.",
       "The quotes are correctly paired."
     ],
+    playground: {
+      title: "Test the fix",
+      guidance: "After editing the code in the answer box, you can also try the same idea here and run it directly in the browser.",
+      starterCode: "print('Welcome to PyMentor')\nprint(\"Let's learn Python\")",
+      emptyOutputHint: "A correct solution should print two friendly lines."
+    },
     evaluator: {
       type: "rule_based",
       minLength: 24,
@@ -754,6 +785,12 @@ export const courseExercises: ExerciseData[] = [
       "The print function is spelled correctly.",
       "The program prints the stored name."
     ],
+    playground: {
+      title: "Run the corrected program",
+      guidance: "Fix the typo and run the code. This is a good way to see how one tiny spelling change can unblock the whole program.",
+      starterCode: "name = 'Maya'\nprint(name)",
+      emptyOutputHint: "A working solution should print the stored name."
+    },
     evaluator: {
       type: "rule_based",
       minLength: 18,
@@ -918,6 +955,12 @@ export const courseExercises: ExerciseData[] = [
       "Stores the answer in a variable.",
       "Prints a greeting that uses that variable."
     ],
+    playground: {
+      title: "Try the interactive version",
+      guidance: "Run this code and answer the browser prompt. Keep the program short so the interaction stays clear.",
+      starterCode: "name = input('What is your name? ')\nprint('Hello, ' + name)",
+      emptyOutputHint: "If you do not see output yet, answer the input prompt and make sure the code prints a greeting."
+    },
     evaluator: {
       type: "structure_check",
       minLength: 30,
@@ -983,6 +1026,12 @@ export const courseExercises: ExerciseData[] = [
       "The `if` line ends with a colon.",
       "The code prints `Adult` when age is 18."
     ],
+    playground: {
+      title: "Run the repaired conditional",
+      guidance: "After fixing the conditional, run it here and change `age` to see which branch prints.",
+      starterCode: "age = 18\n\nif age >= 18:\n    print('Adult')\nelse:\n    print('Minor')",
+      emptyOutputHint: "Try changing `age` to a smaller number and running the code again."
+    },
     evaluator: {
       type: "structure_check",
       minLength: 35,

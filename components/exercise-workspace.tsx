@@ -5,6 +5,7 @@ import { CheckCircle2, CircleAlert, LoaderCircle, Sparkles } from "lucide-react"
 import { ExerciseData, ExerciseEvaluationResult, ProgressStatus } from "@/types";
 import { Card } from "@/components/ui/card";
 import { CodePanel } from "@/components/code-panel";
+import { PythonPlayground } from "@/components/python-playground";
 import { ProgressAction } from "@/components/progress-action";
 import { Button } from "@/components/ui/button";
 
@@ -190,6 +191,8 @@ export function ExerciseWorkspace({
           </div>
         </Card>
       </div>
+
+      {exercise.playground ? <PythonPlayground config={exercise.playground} compact /> : null}
 
       <Card className="rounded-[30px]">
         <div className="flex flex-wrap items-center justify-between gap-3">

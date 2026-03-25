@@ -12,17 +12,17 @@ import { Button } from "@/components/ui/button";
 const feedbackMeta = {
   incomplete: {
     title: "You are still shaping the answer",
-    tone: "border-amber-200 bg-amber-50 text-amber-900",
+    tone: "border-amber-400/20 bg-amber-500/10 text-amber-100",
     icon: LoaderCircle
   },
   partial: {
     title: "The main idea is there, but one detail still needs work",
-    tone: "border-rose-200 bg-rose-50 text-rose-900",
+    tone: "border-rose-400/20 bg-rose-500/10 text-rose-100",
     icon: CircleAlert
   },
   correct: {
     title: "This looks ready to count as completed",
-    tone: "border-emerald-200 bg-emerald-50 text-emerald-900",
+    tone: "border-emerald-400/20 bg-emerald-500/10 text-emerald-100",
     icon: CheckCircle2
   }
 } as const;
@@ -147,22 +147,22 @@ export function ExerciseWorkspace({
       <Card className="rounded-[30px]">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold text-slate-500">Exercise</p>
-            <h2 className="mt-2 text-2xl font-bold text-slate-900">{exercise.title}</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-700">{exercise.summary}</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Exercise</p>
+            <h2 className="mt-2 text-2xl font-bold text-slate-50">{exercise.title}</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-400">{exercise.summary}</p>
           </div>
-          <div className="rounded-[24px] bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-700">
+          <div className="rounded-[24px] border border-brand-400/15 bg-brand-500/10 px-4 py-3 text-sm font-semibold text-brand-100">
             {exercise.duration}
           </div>
         </div>
 
         <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_0.9fr]">
-          <div className="rounded-[24px] bg-slate-50 p-5">
-            <p className="text-sm font-semibold text-slate-900">Your task</p>
-            <p className="mt-3 text-sm leading-7 text-slate-700">{exercise.prompt}</p>
+          <div className="rounded-[24px] border border-slate-800 bg-slate-950/70 p-5">
+            <p className="text-sm font-semibold text-slate-100">Your task</p>
+            <p className="mt-3 text-sm leading-7 text-slate-400">{exercise.prompt}</p>
           </div>
-          <div className="rounded-[24px] bg-brand-50 p-5 text-brand-900">
-            <p className="text-sm font-semibold text-brand-700">Completion standard</p>
+          <div className="rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-5 text-brand-100">
+            <p className="text-sm font-semibold text-brand-200">Completion standard</p>
             <p className="mt-3 text-sm leading-7">
               This step only counts as complete when the answer shows the key signals the lesson is teaching.
             </p>
@@ -173,8 +173,8 @@ export function ExerciseWorkspace({
       <div className="grid gap-5 xl:grid-cols-[1fr_0.9fr]">
         <Card className="rounded-[30px]">
           <div className="flex items-center justify-between gap-3">
-            <h2 className="text-xl font-bold text-slate-900">Starter code</h2>
-            <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+            <h2 className="text-xl font-bold text-slate-50">Starter code</h2>
+            <span className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-slate-300 ring-1 ring-slate-700">
               {exercise.exerciseType === "bug_fix" ? "Bug-fix practice" : "Practice step"}
             </span>
           </div>
@@ -183,20 +183,20 @@ export function ExerciseWorkspace({
           </div>
         </Card>
 
-        <Card className="rounded-[30px] bg-[linear-gradient(180deg,rgba(243,248,255,0.8),rgba(255,255,255,1))]">
-          <p className="text-sm font-semibold text-slate-500">How to approach it</p>
+        <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.08),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">How to approach it</p>
           <div className="mt-4 space-y-3">
             {exercise.instructions.map((item) => (
               <div
                 key={item}
-                className="rounded-[20px] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
+                className="rounded-[20px] border border-slate-800 bg-slate-950/70 px-4 py-3 text-sm text-slate-300"
               >
                 {item}
               </div>
             ))}
           </div>
 
-          <div className="mt-5 rounded-[24px] bg-slate-950 p-4 text-sm text-slate-200">
+          <div className="mt-5 rounded-[24px] border border-slate-800 bg-slate-950 p-4 text-sm text-slate-200">
             <p className="font-semibold text-white">Helpful hints</p>
             <div className="mt-3 space-y-2">
               {exercise.hints.map((hint) => (
@@ -227,8 +227,8 @@ export function ExerciseWorkspace({
       <Card className="rounded-[30px]">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h2 className="text-xl font-bold text-slate-900">{exercise.responseLabel}</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
+            <h2 className="text-xl font-bold text-slate-50">{exercise.responseLabel}</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-400">
               {exercise.responseFormat === "code"
                 ? exercise.executionValidation?.requireRunBeforeCheck
                   ? "Edit the code, run it in the playground, then check your answer so PyMentor can review the real output."
@@ -236,12 +236,12 @@ export function ExerciseWorkspace({
               : "Write a short answer, then check it to see what still needs attention."}
             </p>
             {restoredDraftUpdatedAt ? (
-              <p className="mt-2 text-xs font-medium text-brand-700">
+              <p className="mt-2 text-xs font-medium text-brand-300">
                 Restored your saved work so you can keep going from where you left off.
               </p>
             ) : null}
           </div>
-          <div className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+          <div className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-slate-300 ring-1 ring-slate-700">
             {hasCheckedAnswer
               ? `${displayEvaluation.matchedRules} of ${displayEvaluation.totalRules} learning checks matched`
               : "Check your answer for guided feedback"}
@@ -250,7 +250,7 @@ export function ExerciseWorkspace({
 
         <textarea
           rows={13}
-          className="mt-4 w-full rounded-[24px] border border-slate-200 px-4 py-4 font-mono text-sm leading-7 outline-none focus:border-brand-300"
+          className="mt-4 w-full rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 font-mono text-sm leading-7 text-slate-100 outline-none focus:border-brand-400"
           value={answer}
           placeholder={exercise.responsePlaceholder}
           onChange={(event) => handleAnswerChange(event.target.value)}
@@ -278,7 +278,7 @@ export function ExerciseWorkspace({
           </ProgressAction>
           <a
             href={lessonHref}
-            className="inline-flex items-center justify-center rounded-full bg-slate-100 px-5 py-3 text-sm font-semibold text-slate-800"
+            className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-100 ring-1 ring-slate-700"
           >
             Review lesson
           </a>
@@ -292,7 +292,7 @@ export function ExerciseWorkspace({
           </p>
         ) : null}
         {requestError ? (
-          <div className="mt-4 rounded-[20px] border border-rose-200 bg-rose-50 px-4 py-4 text-sm text-rose-800">
+          <div className="mt-4 rounded-[20px] border border-rose-400/20 bg-rose-500/10 px-4 py-4 text-sm text-rose-100">
             {requestError}
           </div>
         ) : null}
@@ -300,7 +300,7 @@ export function ExerciseWorkspace({
 
       <Card className={`rounded-[30px] border ${feedback.tone}`}>
         <div className="flex items-start gap-4">
-          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/70">
+          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-black/15 ring-1 ring-white/10">
             <Icon className={`h-5 w-5 ${feedbackState === "incomplete" ? "animate-spin" : ""}`} />
           </div>
           <div>
@@ -318,8 +318,8 @@ export function ExerciseWorkspace({
                 key={check.id}
                 className={`rounded-[22px] border px-4 py-4 text-sm ${
                   check.passed
-                    ? "border-emerald-200 bg-white/80 text-slate-800"
-                    : "border-white/40 bg-white/60 text-slate-700"
+                    ? "border-emerald-400/20 bg-black/15 text-slate-200"
+                    : "border-white/10 bg-black/10 text-slate-300"
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -328,7 +328,7 @@ export function ExerciseWorkspace({
                       check.passed ? "bg-emerald-500" : "bg-slate-400"
                     }`}
                   />
-                  <p className="font-semibold text-slate-900">{check.label}</p>
+                  <p className="font-semibold text-slate-50">{check.label}</p>
                 </div>
                 <p className="mt-2 leading-6">
                   {check.passed ? "This part looks good." : check.feedbackWhenMissing}
@@ -337,14 +337,14 @@ export function ExerciseWorkspace({
             ))}
           </div>
         ) : (
-          <div className="mt-5 rounded-[22px] bg-white/70 px-4 py-4 text-sm text-slate-700">
+          <div className="mt-5 rounded-[22px] bg-black/10 px-4 py-4 text-sm text-slate-300">
             Run the answer check to see exercise-specific feedback from the server.
           </div>
         )}
 
-        <div className="mt-5 rounded-[24px] bg-white/70 p-4 text-sm text-slate-700">
-          <div className="flex items-center gap-2 font-semibold text-slate-900">
-            <Sparkles className="h-4 w-4 text-brand-600" />
+        <div className="mt-5 rounded-[24px] border border-white/10 bg-black/10 p-4 text-sm text-slate-300">
+          <div className="flex items-center gap-2 font-semibold text-slate-50">
+            <Sparkles className="h-4 w-4 text-brand-300" />
             Next move
           </div>
           <p className="mt-2 leading-6">
@@ -355,7 +355,7 @@ export function ExerciseWorkspace({
                 : "Use the missing checks above as your guide, then run the answer check again."}
           </p>
           {nextLessonHref ? (
-            <a href={nextLessonHref} className="mt-4 inline-flex text-sm font-semibold text-brand-600">
+            <a href={nextLessonHref} className="mt-4 inline-flex text-sm font-semibold text-brand-300">
               Continue to the next lesson
             </a>
           ) : null}

@@ -75,16 +75,19 @@ export function AuthFormPlaceholder({
   }
 
   return (
-    <Card className="mx-auto w-full max-w-md rounded-[32px] p-8">
-      <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">{title}</h1>
-      <p className="mt-3 text-sm leading-7 text-slate-600">{subtitle}</p>
+    <Card className="mx-auto w-full max-w-md rounded-[32px] border-brand-400/15 bg-[radial-gradient(circle_at_top,rgba(29,211,139,0.08),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] p-8">
+      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-300">
+        Access node
+      </p>
+      <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-50">{title}</h1>
+      <p className="mt-3 text-sm leading-7 text-slate-400">{subtitle}</p>
 
       <form className="mt-8 grid gap-4" onSubmit={handleSubmit}>
         {mode === "signup" ? (
           <input
             value={name}
             onChange={(event) => setName(event.target.value)}
-            className="rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none focus:border-brand-300"
+            className="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-sm text-slate-100 outline-none focus:border-brand-400"
             placeholder="Your name"
             required
           />
@@ -93,7 +96,7 @@ export function AuthFormPlaceholder({
           type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          className="rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none focus:border-brand-300"
+          className="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-sm text-slate-100 outline-none focus:border-brand-400"
           placeholder="Email address"
           required
         />
@@ -101,7 +104,7 @@ export function AuthFormPlaceholder({
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-          className="rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none focus:border-brand-300"
+          className="rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-sm text-slate-100 outline-none focus:border-brand-400"
           placeholder="Password"
           minLength={8}
           required
@@ -113,19 +116,19 @@ export function AuthFormPlaceholder({
       </form>
 
       {error ? (
-        <div className="mt-6 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800">
+        <div className="mt-6 rounded-2xl border border-rose-400/20 bg-rose-500/10 p-4 text-sm text-rose-200">
           {error}
         </div>
       ) : (
-        <div className="mt-6 rounded-2xl bg-brand-50 p-4 text-sm text-brand-700">
+        <div className="mt-6 rounded-2xl border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
           {mode === "signup"
             ? "You will start with a quick onboarding and your first Python lesson already lined up."
             : "Your roadmap progress, lesson completion, and exercise completion stay tied to this account."}
         </div>
       )}
 
-      <p className="mt-6 text-sm text-slate-600">
-        <Link href={alternateHref} className="font-semibold text-brand-600">
+      <p className="mt-6 text-sm text-slate-400">
+        <Link href={alternateHref} className="font-semibold text-brand-300">
           {alternateLabel}
         </Link>
       </p>

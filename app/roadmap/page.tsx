@@ -16,20 +16,20 @@ export default async function RoadmapPage() {
   return (
     <AppShell
       title="Python learning roadmap"
-      description="A clear beginner path with real lesson order, protected account-backed progress, and completion states that carry across the product."
+      description="Your progression map: visible unlocks, account-backed completion, and one clear Python path that keeps pulling you forward."
       userName={user.name}
       actions={<SignOutButton />}
     >
-      <Card className="rounded-[30px] bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(248,251,255,1))]">
+      <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.12),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold text-slate-500">Overall roadmap progress</p>
-            <h2 className="mt-2 text-3xl font-extrabold text-slate-900">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-300">Overall roadmap progress</p>
+            <h2 className="mt-2 text-3xl font-extrabold text-slate-50">
               {overall.completed} of {overall.total} lessons completed
             </h2>
           </div>
-          <div className="rounded-[24px] bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-700">
-            Saved to your account
+          <div className="rounded-[24px] border border-brand-400/15 bg-brand-500/10 px-4 py-3 text-sm font-semibold text-brand-100">
+            Progress sync online
           </div>
         </div>
         <ProgressBar value={overall.percent} className="mt-5" />

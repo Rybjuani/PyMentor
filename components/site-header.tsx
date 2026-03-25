@@ -16,20 +16,20 @@ export async function SiteHeader() {
   return (
     <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
       <Link href="/" className="flex items-center gap-3 text-white">
-        <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15">
+        <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(12,185,113,0.24),rgba(78,203,255,0.16))] ring-1 ring-brand-400/20 shadow-[0_0_32px_rgba(29,211,139,0.18)]">
           <Code2 className="h-5 w-5" />
         </span>
         <span>
           <span className="block text-lg font-extrabold tracking-tight">PyMentor</span>
           <span className="block text-xs text-slate-300">
-            Python learning with guided momentum
+            Python progression for beginners
           </span>
         </span>
       </Link>
 
-      <nav className="hidden items-center gap-8 text-sm text-slate-200 lg:flex">
+      <nav className="hidden items-center gap-4 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-slate-300 backdrop-blur lg:flex">
         {navItems.map((item) => (
-          <Link key={item.href} href={item.href} className="transition hover:text-white">
+          <Link key={item.href} href={item.href} className="transition hover:text-brand-200">
             {item.label}
           </Link>
         ))}

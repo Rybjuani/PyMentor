@@ -116,23 +116,23 @@ export function PythonPlayground({
   }
 
   return (
-    <Card className={`rounded-[30px] ${compact ? "p-5" : ""}`}>
+    <Card className={`rounded-[30px] border-brand-400/10 bg-[radial-gradient(circle_at_top_left,rgba(78,203,255,0.08),transparent_26%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] ${compact ? "p-5" : ""}`}>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
-            <TerminalSquare className="h-4 w-4 text-brand-600" />
+          <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
+            <TerminalSquare className="h-4 w-4 text-brand-300" />
             {config.title ?? "Try it in Python"}
           </div>
-          <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">{config.guidance}</p>
+          <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-400">{config.guidance}</p>
         </div>
-        <div className="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
+        <div className="rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-1 text-xs font-semibold text-brand-100">
           Browser-only runner
         </div>
       </div>
       {restoredDraft ? (
-        <div className="mt-4 rounded-[20px] border border-brand-100 bg-brand-50/70 px-4 py-3 text-sm text-brand-900">
+        <div className="mt-4 rounded-[20px] border border-brand-400/15 bg-brand-500/10 px-4 py-3 text-sm text-brand-100">
           <p className="font-semibold">Restored your previous draft</p>
-          <p className="mt-1 leading-6 text-brand-800">
+          <p className="mt-1 leading-6 text-brand-200">
             You are continuing the code you last edited {formatDraftTime(restoredDraftUpdatedAt)}.
             Reset will clear this saved draft and return to the starter code.
           </p>
@@ -152,7 +152,7 @@ export function PythonPlayground({
 
       <textarea
         rows={compact ? 10 : 12}
-        className="mt-5 w-full rounded-[24px] border border-slate-200 px-4 py-4 font-mono text-sm leading-7 outline-none focus:border-brand-300"
+        className="mt-5 w-full rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 font-mono text-sm leading-7 text-slate-100 outline-none focus:border-brand-400"
         value={code}
         onChange={(event) => updateCode(event.target.value)}
       />
@@ -168,7 +168,7 @@ export function PythonPlayground({
         </Button>
       </div>
 
-      <div className="mt-5 rounded-[24px] bg-[linear-gradient(180deg,#07111f,#0e1a31)] p-5 text-sm text-slate-100">
+      <div className="mt-5 rounded-[24px] border border-slate-800 bg-[linear-gradient(180deg,#050b14,#0b1620)] p-5 text-sm text-slate-100">
         <p className="font-semibold text-white">Output</p>
         <div className="mt-3 min-h-[120px] whitespace-pre-wrap font-mono leading-7 text-slate-200">
           {loadingRuntime

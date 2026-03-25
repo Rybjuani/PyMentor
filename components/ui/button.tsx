@@ -2,17 +2,17 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const buttonStyles =
-  "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400";
+  "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300";
 
 const variants = {
   primary:
-    "bg-brand-500 text-white shadow-soft hover:bg-brand-600",
+    "bg-[linear-gradient(135deg,#0CB971,#2de6a4)] text-slate-950 shadow-glow hover:brightness-110",
   secondary:
-    "bg-white text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50",
+    "bg-slate-900/90 text-slate-100 ring-1 ring-slate-700 hover:bg-slate-800",
   ghost:
-    "bg-white/10 text-white ring-1 ring-white/15 hover:bg-white/15",
+    "bg-white/5 text-slate-100 ring-1 ring-white/10 hover:bg-white/10",
   subtle:
-    "bg-brand-50 text-brand-700 hover:bg-brand-100"
+    "bg-brand-500/12 text-brand-200 ring-1 ring-brand-400/20 hover:bg-brand-500/18"
 };
 
 export function Button({

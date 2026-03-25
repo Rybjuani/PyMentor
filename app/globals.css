@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100 antialiased;
+  background-image:
+    radial-gradient(circle at top, rgba(77, 146, 255, 0.18), transparent 24%),
+    radial-gradient(circle at top right, rgba(221, 238, 231, 0.18), transparent 20%),
+    linear-gradient(180deg, #07111f 0%, #0b1627 20%, #edf4fb 20%, #edf4fb 100%);
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(77, 146, 255, 0.35);
+}
+
+.app-surface {
+  @apply bg-white/90 text-slate-900 backdrop-blur;
+}
+
+.soft-panel {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 250, 252, 0.95));
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

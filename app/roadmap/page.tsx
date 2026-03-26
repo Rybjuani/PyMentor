@@ -12,6 +12,7 @@ import {
   getOverallLessonProgress,
   getSecondTrackModules,
   hasCompletedFoundationsTrack,
+  hasCompletedSecondTrack,
   isModuleUnlocked
 } from "@/lib/course";
 import { getProgressForUser } from "@/lib/user-progress";
@@ -27,13 +28,16 @@ export default async function RoadmapPage() {
     (module) => getModuleProgress(progress, module.slug).status === "completed"
   ).length;
   const foundationsCompleted = hasCompletedFoundationsTrack(progress);
+  const secondTrackCompleted = hasCompletedSecondTrack(progress);
 
   return (
     <AppShell
       title="Ruta de aprendizaje de Python"
       description={
-        foundationsCompleted
-          ? "Cerraste la primera gran ruta de PyMentor. Aquí queda visible todo el camino completado y el punto exacto donde terminaste esta etapa."
+        secondTrackCompleted
+          ? "Aquí quedan visibles las dos rutas actuales de PyMentor ya cerradas. El producto ya muestra una progresión completa de dos etapas y deja preparado el terreno para lo que venga después."
+          : foundationsCompleted
+          ? "Cerraste la primera gran ruta de PyMentor y abriste una segunda etapa práctica. Aquí queda visible todo el camino completado y el punto exacto donde cambió el tipo de aprendizaje."
           : "Tu mapa de progreso: desbloqueos visibles, finalización vinculada a tu cuenta y un camino claro de Python que te sigue empujando hacia adelante."
       }
       userName={user.name}
@@ -56,18 +60,22 @@ export default async function RoadmapPage() {
           <div className="rounded-[22px] border border-slate-800 bg-slate-950/70 p-4 text-sm text-slate-300">
             <p className="font-semibold text-slate-100">{completedModules} de {modules.length} módulos completos</p>
             <p className="mt-2 leading-6 text-slate-400">
-              {foundationsCompleted
-                ? "Toda la primera ruta quedó cerrada. Ya tienes una base real y visible dentro de PyMentor."
+              {secondTrackCompleted
+                ? "Las dos rutas actuales quedaron cerradas. Ya tienes una progresión visible que va desde fundamentos hasta herramientas prácticas más completas."
+                : foundationsCompleted
+                ? "Toda la primera ruta quedó cerrada y la segunda ya aparece como una etapa práctica distinta dentro de PyMentor."
                 : "Cada módulo cerrado fortalece la sensación de avance y desbloquea el siguiente tramo de la ruta."}
             </p>
           </div>
           <div className="rounded-[22px] border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
             <p className="font-semibold text-brand-200">
-              {foundationsCompleted ? "Etapa completada" : "Siguiente checkpoint"}
+              {secondTrackCompleted ? "Próxima etapa en preparación" : foundationsCompleted ? "Cambio de etapa" : "Siguiente checkpoint"}
             </p>
             <p className="mt-2 leading-6">
-              {foundationsCompleted
-                ? "Tu cierre de fundamentos ya forma parte de la ruta. Puedes volver a cualquier módulo para repasar o reforzar confianza."
+              {secondTrackCompleted
+                ? "PyMentor ya muestra dos cierres formales. El siguiente tramo todavía no está abierto, pero el recorrido actual ya se lee como una progresión completa."
+                : foundationsCompleted
+                ? "Tu cierre de fundamentos ya forma parte de la ruta y la segunda etapa aparece como continuación intencional, no como una lista suelta de módulos."
                 : "El siguiente módulo abierto marca el punto más útil para continuar sin perder el hilo del recorrido."}
             </p>
           </div>
@@ -85,8 +93,12 @@ export default async function RoadmapPage() {
           </div>
           <div className="rounded-[22px] border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Estado de cuenta</p>
-            <p className="mt-2 text-lg font-bold text-slate-50">{foundationsCompleted ? "Segundo nivel abierto" : "Primer nivel en curso"}</p>
-            <p className="mt-2 leading-6 text-slate-400">Tu mapa ya muestra con claridad en qué tramo estás entrando.</p>
+            <p className="mt-2 text-lg font-bold text-slate-50">{secondTrackCompleted ? "Dos niveles cerrados" : foundationsCompleted ? "Segundo nivel abierto" : "Primer nivel en curso"}</p>
+            <p className="mt-2 leading-6 text-slate-400">
+              {secondTrackCompleted
+                ? "Tu mapa ya muestra una trayectoria de dos etapas completas y deja visible que una siguiente fase puede abrirse más adelante."
+                : "Tu mapa ya muestra con claridad en qué tramo estás entrando."}
+            </p>
           </div>
         </div>
       </Card>
@@ -99,6 +111,11 @@ export default async function RoadmapPage() {
             <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">
               Aquí vive la primera gran etapa de PyMentor: desde empezar completamente desde cero hasta cerrar fundamentos con proyectos y capstone.
             </p>
+            {foundationsCompleted ? (
+              <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-100">
+                Ruta 1 cerrada
+              </div>
+            ) : null}
           </div>
           <div className="grid gap-5 md:grid-cols-2 2xl:grid-cols-3">
             {foundationsModules.map((module) => {
@@ -123,12 +140,14 @@ export default async function RoadmapPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Ruta 2</p>
             <h2 className="mt-2 text-2xl font-bold text-slate-50">Python práctico 2</h2>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">
-              {foundationsCompleted
+              {secondTrackCompleted
+                ? "Esta segunda etapa ya quedó cerrada como un tramo práctico completo: archivos, organización, utilidades, consulta, actualización y proyectos de cierre propios."
+                : foundationsCompleted
                 ? "Esta nueva etapa arranca sobre una base ya cerrada. El foco ahora pasa a programas más útiles, mejor organizados y con contacto más claro con tareas del mundo real."
                 : "Esta segunda gran etapa se desbloquea cuando cierres la primera ruta completa. Va a abrir una versión más práctica y un poco más autónoma del aprendizaje."}
             </p>
             <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-100">
-              Ruta de utilidad real
+              {secondTrackCompleted ? "Ruta 2 cerrada" : "Ruta de utilidad real"}
             </div>
           </div>
           <div className="grid gap-5 md:grid-cols-2 2xl:grid-cols-3">
@@ -148,6 +167,24 @@ export default async function RoadmapPage() {
             })}
           </div>
         </div>
+
+        <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.08),transparent_26%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Panorama general</p>
+          <h2 className="mt-3 text-2xl font-bold text-slate-50">
+            {secondTrackCompleted
+              ? "Dos etapas completas, siguiente fase todavía no abierta"
+              : foundationsCompleted
+                ? "Primera etapa cerrada, segunda etapa activa"
+                : "Primera etapa en construcción"}
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">
+            {secondTrackCompleted
+              ? "PyMentor ya se siente como un producto de dos rutas completas: una base fuerte y una etapa práctica bien separada. La próxima fase todavía no está construida, pero el mapa ya deja claro que este cierre no es abrupto."
+              : foundationsCompleted
+                ? "El mapa ya no se lee como una acumulación de módulos. Se entiende una primera etapa cerrada y una segunda etapa práctica que toma el relevo con otra intención."
+                : "La primera etapa sigue empujando el recorrido. Cada cierre mueve la cuenta y desbloquea el siguiente tramo de forma visible."}
+          </p>
+        </Card>
       </section>
     </AppShell>
   );

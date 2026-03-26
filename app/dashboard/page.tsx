@@ -17,6 +17,7 @@ import {
   ,
   getSecondTrackModules,
   hasCompletedFoundationsTrack,
+  hasCompletedSecondTrack,
   isModuleInSecondTrack
 } from "@/lib/course";
 import { achievements } from "@/lib/mock-data";
@@ -39,6 +40,7 @@ export default async function DashboardPage() {
   const weeklyCompletedSteps = overall.completed === 0 ? 0 : Math.min(overall.completed, 2);
   const earnedAchievements = achievements.filter((achievement) => achievement.state === "earned").length;
   const foundationsCompleted = hasCompletedFoundationsTrack(progress);
+  const secondTrackCompleted = hasCompletedSecondTrack(progress);
   const completedModules = modules.filter(
     (module) => getModuleProgress(progress, module.slug).status === "completed"
   ).length;
@@ -47,14 +49,18 @@ export default async function DashboardPage() {
   const secondTrackFirstModule = secondTrackModules[0] ?? null;
 
   const continueHref =
-    currentFocus?.type === "exercise"
+    secondTrackCompleted
+      ? "/roadmap"
+      : currentFocus?.type === "exercise"
       ? `/exercise/${currentFocus.exercise.slug}`
       : currentFocus?.lesson
         ? `/lesson/${currentFocus.lesson.slug}`
         : "/roadmap";
 
   const continueLabel =
-    foundationsCompleted && secondTrackFocus
+    secondTrackCompleted
+      ? "Ver recorrido completo"
+      : foundationsCompleted && secondTrackFocus
       ? "Entrar a la nueva etapa"
       : currentFocus?.type === "exercise"
       ? "Continuar ejercicio"
@@ -66,7 +72,9 @@ export default async function DashboardPage() {
     <AppShell
       title={`Qué bueno verte, ${user.name ?? "estudiante"}`}
       description={
-        foundationsCompleted && secondTrackFocus
+        secondTrackCompleted
+          ? "Ya cerraste Fundamentos de Python y Python práctico 2. Tu cuenta ahora refleja dos etapas completas y una base mucho más sólida para abrir la siguiente fase cuando esté lista."
+          : foundationsCompleted && secondTrackFocus
           ? "Terminaste la primera gran etapa y ya tienes desbloqueada la siguiente: una ruta más práctica, todavía guiada y pensada para programas un poco más útiles."
           : foundationsCompleted
             ? "Terminaste la primera gran etapa de PyMentor. Tu cuenta ya guarda una base real de Python y el recorrido completo quedó visible para volver a repasarlo cuando quieras."
@@ -101,19 +109,19 @@ export default async function DashboardPage() {
             <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Ruta activa</p>
               <p className="mt-2 text-lg font-bold text-slate-50">
-                {secondTrackFocus ? "Python práctico 2" : foundationsCompleted ? "Ruta 1 cerrada" : "Fundamentos de Python"}
+                {secondTrackCompleted ? "Dos rutas cerradas" : secondTrackFocus ? "Python práctico 2" : foundationsCompleted ? "Ruta 1 cerrada" : "Fundamentos de Python"}
               </p>
             </div>
             <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Checkpoint actual</p>
               <p className="mt-2 text-lg font-bold text-slate-50">
-                {currentModule?.title ?? (foundationsCompleted ? "Ruta completada" : "Inicio")}
+                {secondTrackCompleted ? "Preparado para la próxima etapa" : currentModule?.title ?? (foundationsCompleted ? "Ruta completada" : "Inicio")}
               </p>
             </div>
             <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Estado</p>
               <p className="mt-2 text-lg font-bold text-slate-50">
-                {overall.completed === 0 ? "Despegue" : foundationsCompleted && secondTrackFocus ? "Nuevo nivel" : "En avance"}
+                {secondTrackCompleted ? "Ruta 2 cerrada" : overall.completed === 0 ? "Despegue" : foundationsCompleted && secondTrackFocus ? "Nuevo nivel" : "En avance"}
               </p>
             </div>
           </div>
@@ -169,7 +177,9 @@ export default async function DashboardPage() {
                 <p className="text-sm text-slate-400">Logros desbloqueados</p>
                 <p className="text-2xl font-extrabold text-slate-50">{earnedAchievements}</p>
                 <p className="mt-1 text-sm text-slate-400">
-                  {foundationsCompleted && secondTrackFocus
+                  {secondTrackCompleted
+                    ? "Tu cuenta ya refleja dos cierres importantes dentro del recorrido"
+                    : foundationsCompleted && secondTrackFocus
                     ? "Tu base quedó cerrada y ya abriste una nueva etapa dentro de tu cuenta"
                     : foundationsCompleted
                     ? "Ya cerraste una primera gran etapa y quedó guardada en tu cuenta"
@@ -193,7 +203,9 @@ export default async function DashboardPage() {
             </div>
           </div>
           <h2 className="mt-3 text-2xl font-bold text-slate-50">
-            {foundationsCompleted && secondTrackFocus
+            {secondTrackCompleted
+              ? "Cerraste Python práctico 2"
+              : foundationsCompleted && secondTrackFocus
               ? `Nueva etapa desbloqueada: ${secondTrackFirstModule?.title ?? "Python práctico 2"}`
               : foundationsCompleted
               ? "Terminaste tu primera gran ruta de Python"
@@ -202,7 +214,9 @@ export default async function DashboardPage() {
               : currentFocus?.lesson.title ?? "Tu ruta ya está lista"}
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-400">
-            {foundationsCompleted && secondTrackFocus
+            {secondTrackCompleted
+                ? "Ya completaste las dos etapas actuales de PyMentor. Este no es un final vacío: es un cierre claro de lo construido hasta ahora, con espacio para repasar, consolidar y prepararte para una siguiente ruta cuando se abra."
+              : foundationsCompleted && secondTrackFocus
                 ? "Ahora el foco cambia: ya no estás cerrando bases, sino aprendiendo a construir programas un poco más prácticos y útiles, empezando por guardar información fuera del programa."
               : foundationsCompleted
                 ? "Ya completaste todas las lecciones de este primer recorrido. Este es un buen momento para repasar el capstone, revisar tus proyectos y notar cuánto terreno ya cubriste."
@@ -213,10 +227,14 @@ export default async function DashboardPage() {
                 : currentFocus?.lesson.summary ??
                   "Abre la ruta para elegir tu próxima lección."}
           </p>
-          {currentModule && currentModuleProgress ? (
+          {currentModule && currentModuleProgress && !secondTrackCompleted ? (
             <div className="mt-5 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
               Módulo actual: {currentModule.title} · {currentModuleProgress.completedLessons} de{" "}
               {currentModuleProgress.totalLessons} lecciones completas
+            </div>
+          ) : secondTrackCompleted ? (
+            <div className="mt-5 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
+              Recorrido actual: 2 rutas completas, {completedModules} de {modules.length} módulos cerrados y una base ya lista para la siguiente gran etapa.
             </div>
           ) : foundationsCompleted ? (
             <div className="mt-5 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
@@ -277,7 +295,9 @@ export default async function DashboardPage() {
             </p>
           </div>
           <h2 className="mt-4 text-2xl font-bold text-slate-50">
-            {foundationsCompleted && secondTrackFocus
+            {secondTrackCompleted
+              ? "Dos etapas cerradas, próximo salto a la vista"
+              : foundationsCompleted && secondTrackFocus
               ? "Dar el primer paso del nivel siguiente"
               : foundationsCompleted
               ? "Cierre de fundamentos conseguido"
@@ -288,7 +308,9 @@ export default async function DashboardPage() {
                 : "Completa la siguiente lección de tu ruta"}
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-400">
-            {foundationsCompleted && secondTrackFocus
+            {secondTrackCompleted
+              ? "La etapa siguiente todavía no está abierta como ruta formal, pero el producto ya deja claro que no estás en un punto muerto: estás en un cierre importante, con espacio para repasar y reconocer todo lo que ya sabes construir."
+              : foundationsCompleted && secondTrackFocus
               ? "Ya cuentas con la base. El objetivo ahora es usarla en programas que guardan información, se organizan mejor y se sienten más cercanos a algo útil."
               : foundationsCompleted
               ? "Tu siguiente movimiento ya no es desbloquear fundamentos, sino decidir qué quieres repasar, reforzar o convertir en proyecto propio."
@@ -301,8 +323,10 @@ export default async function DashboardPage() {
               <Zap className="h-4 w-4 text-brand-300" />
               Energía para un paso más
             </div>
-            <p className="mt-2 leading-6">
-              {foundationsCompleted && secondTrackFocus
+              <p className="mt-2 leading-6">
+              {secondTrackCompleted
+                ? "PyMentor ya te deja en una posición distinta a la del comienzo: ahora puedes repasar con intención, volver a tus capstones y prepararte para una etapa siguiente con más criterio."
+                : foundationsCompleted && secondTrackFocus
                 ? "La nueva etapa no empieza desde cero: empieza sobre una base que ya terminaste. Eso te permite avanzar con más criterio y algo más de autonomía."
                 : foundationsCompleted
                 ? "Lo importante ahora es reconocer el cierre: ya no estás empezando desde cero. Tienes una primera base terminada y visible."
@@ -316,7 +340,7 @@ export default async function DashboardPage() {
                 Sensación de avance
               </div>
               <p className="mt-2 text-sm leading-6 text-slate-400">
-                {foundationsCompleted ? "La primera etapa ya quedó cerrada y visible en tu cuenta." : "Cada cierre de lección mueve la ruta de forma real y visible."}
+                {secondTrackCompleted ? "Ya cerraste dos etapas completas y eso cambia el punto desde donde sigues creciendo." : foundationsCompleted ? "La primera etapa ya quedó cerrada y visible en tu cuenta." : "Cada cierre de lección mueve la ruta de forma real y visible."}
               </p>
             </div>
             <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
@@ -325,7 +349,7 @@ export default async function DashboardPage() {
                 Momento actual
               </div>
               <p className="mt-2 text-sm leading-6 text-slate-400">
-                {secondTrackFocus ? "Estás entrando a una fase más práctica y más útil de Python." : "Tu enfoque sigue siendo avanzar sin perder claridad ni ritmo."}
+                {secondTrackCompleted ? "Tu siguiente fase todavía no está abierta, pero tu posición ya es la de alguien que terminó dos recorridos completos." : secondTrackFocus ? "Estás entrando a una fase más práctica y más útil de Python." : "Tu enfoque sigue siendo avanzar sin perder claridad ni ritmo."}
               </p>
             </div>
           </div>

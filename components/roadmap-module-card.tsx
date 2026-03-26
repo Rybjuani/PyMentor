@@ -33,9 +33,13 @@ export function RoadmapModuleCard({
 
   const stageLabel =
     module.slug === "foundations-capstone"
-      ? "Hito final"
+      ? "Ruta 1 · Cierre"
       : module.slug === "basic-files"
         ? "Ruta 2 · Apertura"
+        : module.slug === "route2-practical-projects"
+          ? "Ruta 2 · Proyectos"
+          : module.slug === "route2-capstone"
+            ? "Ruta 2 · Cierre"
         : module.slug === "small-organized-utilities"
           ? "Ruta 2 · Utilidad real"
           : `Etapa ${module.order}`;
@@ -100,6 +104,8 @@ export function RoadmapModuleCard({
           <Link href={href} className="inline-flex items-center gap-2 text-sm font-semibold text-brand-300">
             {module.slug === "foundations-capstone"
               ? "Abrir cierre de fundamentos"
+              : module.slug === "route2-capstone"
+                ? "Abrir cierre de Ruta 2"
               : progress.status === "completed"
                 ? "Revisar módulo"
                 : "Abrir módulo"}

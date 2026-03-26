@@ -1,13 +1,13 @@
 # PyMentor
 
-PyMentor es una plataforma de aprendizaje de Python pensada para principiantes absolutos. El producto combina una ruta única de progreso, práctica guiada, ejercicios con feedback, proyectos graduales, un mentor IA en español y un playground de Python en el navegador con Pyodide.
+PyMentor es una plataforma de aprendizaje de Python pensada para principiantes absolutos. El producto combina una progresión por etapas, práctica guiada, ejercicios con feedback, proyectos graduales, un mentor IA en español y un playground de Python en el navegador con Pyodide.
 
-El estado actual del proyecto cubre una primera gran etapa de fundamentos de Python, desde la introducción hasta un cierre de fundamentos con proyectos capstone, y además ya abre una segunda etapa con foco más práctico.
+El estado actual del proyecto cubre dos etapas completas y claramente diferenciadas: una ruta de fundamentos y una ruta más práctica centrada en utilidades pequeñas pero útiles.
 
 ## Qué incluye hoy
 
-- Ruta completa de fundamentos y apertura de una segunda etapa más práctica.
-- Lecciones, ejercicios, proyectos guiados, proyectos con más autonomía, capstone final y primer módulo de nivel siguiente.
+- Dos rutas completas con cierre formal: fundamentos y Python práctico 2.
+- Lecciones, ejercicios, proyectos guiados, proyectos con más autonomía, capstones de Ruta 1 y capstones de Ruta 2.
 - Progreso persistido por usuario con autenticación real.
 - Mentor IA con Groq integrado server-side.
 - Playground de Python en el navegador con Pyodide.
@@ -27,7 +27,7 @@ El estado actual del proyecto cubre una primera gran etapa de fundamentos de Pyt
 
 ## Estado del producto
 
-La primera gran ruta de PyMentor ya está construida y localizada en español, y la segunda ya quedó abierta:
+PyMentor ya tiene dos rutas completas y localizadas en español:
 
 1. Introducción
 2. Variables
@@ -62,6 +62,12 @@ Lleva a la persona desde cero absoluto hasta un cierre de fundamentos con capsto
 
 Empieza justo después del cierre de fundamentos.
 Sus primeras aperturas son `Archivos básicos`, `Funciones y organización simple`, `Utilidades pequeñas y útiles`, `Utilidades organizadas con flujo completo`, `Consulta y actualización simple de datos`, `Herramientas con entradas y cambios simples`, `Proyectos prácticos de Ruta 2` y `Cierre de Ruta 2`, donde el foco pasa a programas que guardan información, la consultan, la ajustan, piden decisiones con `input()` y ya se sienten como herramientas pequeñas más completas e interactivas, hasta cerrar una segunda etapa práctica con capstones propios.
+
+## Estado de progresión actual
+
+- Ruta 1 se lee como una etapa completa de fundamentos, con cierre formal en `Cierre de fundamentos`.
+- Ruta 2 se lee como una etapa práctica distinta, con cierre formal en `Cierre de Ruta 2`.
+- El producto ya muestra dos etapas cerradas y deja espacio claro para una futura Ruta 3, sin presentarla todavía como construida.
 
 ## Requisitos
 
@@ -203,7 +209,7 @@ npm run start:railway
 - No hay streaming en el mentor todavía.
 - No hay ejecución server-side de Python.
 - No hay code runner completo ni evaluación semántica profunda.
-- La segunda gran ruta recién está abierta y por ahora todavía tiene poco volumen.
+- La tercera gran etapa todavía no está abierta.
 - Los logros siguen siendo una capa de producto liviana, no un sistema completo de gamificación persistida.
 
 ## Documentación adicional
@@ -213,4 +219,4 @@ npm run start:railway
 
 ## Próximo paso lógico del producto
 
-El siguiente paso natural es ampliar la segunda ruta `Python práctico 2` con módulos como organización de programas un poco más amplios, reutilización más clara de funciones y proyectos prácticos de mayor utilidad, todavía sin saltar a complejidad intermedia dura.
+El siguiente paso natural es abrir una tercera etapa claramente presentada dentro del producto, manteniendo la misma lógica de progresión por rutas y subiendo el nivel de autonomía sin saltar todavía a complejidad intermedia dura.

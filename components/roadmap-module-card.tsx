@@ -46,7 +46,7 @@ export function RoadmapModuleCard({
         </div>
         <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
           <Zap className="h-3.5 w-3.5 text-brand-300" />
-          Etapa {module.order}
+          {module.slug === "foundations-capstone" ? "Hito final" : `Etapa ${module.order}`}
         </div>
         <h3 className="mt-3 text-xl font-bold text-slate-50">{module.title}</h3>
         <p className="mt-3 text-sm leading-7 text-slate-400">{module.description}</p>
@@ -72,7 +72,11 @@ export function RoadmapModuleCard({
           <span className="text-sm font-semibold text-slate-500">Termina primero el módulo anterior</span>
         ) : (
           <Link href={href} className="text-sm font-semibold text-brand-300">
-            Abrir módulo
+            {module.slug === "foundations-capstone"
+              ? "Abrir cierre de fundamentos"
+              : progress.status === "completed"
+                ? "Revisar módulo"
+                : "Abrir módulo"}
           </Link>
         )}
       </div>

@@ -27,19 +27,19 @@ export const achievements: Achievement[] = [
   {
     id: "first-lesson",
     title: "Primera lección completada",
-    description: "Terminaste una lección de tu ruta de aprendizaje.",
+    description: "Abriste el recorrido con una primera victoria real.",
     state: "earned"
   },
   {
     id: "debugger",
     title: "Arregla bugs",
-    description: "Completa tu primer ejercicio de depuración.",
+    description: "Resuelve tu primer ejercicio donde corregir forma parte del aprendizaje.",
     state: "next"
   },
   {
-    id: "steady-progress",
-    title: "Progreso constante",
-    description: "Termina todas las lecciones de un módulo.",
+    id: "foundations-finish",
+    title: "Cierre de fundamentos",
+    description: "Completa el capstone final y cierra tu primera gran etapa en Python.",
     state: "locked"
   }
 ];

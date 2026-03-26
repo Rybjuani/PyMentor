@@ -95,6 +95,7 @@ export function ExerciseWorkspace({
   const Icon = feedback.icon;
   const hasCheckedAnswer = evaluation !== null;
   const canComplete = status === "completed" || (hasCheckedAnswer && evaluation.canComplete);
+  const isFoundationsCapstone = exercise.moduleSlug === "foundations-capstone";
 
   async function checkAnswer() {
     setCheckingAnswer(true);
@@ -347,16 +348,26 @@ export function ExerciseWorkspace({
             <Sparkles className="h-4 w-4 text-brand-300" />
             Siguiente movimiento
           </div>
-          <p className="mt-2 leading-6">
-            {status === "completed"
-              ? "Este ejercicio ya está marcado como completado. Puedes volver a la lección o seguir cuando quieras."
+            <p className="mt-2 leading-6">
+              {status === "completed"
+              ? isFoundationsCapstone
+                ? "Este paso final ya quedó marcado. Si quieres, vuelve al panel para ver el cierre completo de esta primera gran etapa."
+                : "Este ejercicio ya está marcado como completado. Puedes volver a la lección o seguir cuando quieras."
               : canComplete
-                ? "Tu respuesta ya se ve suficientemente sólida para este paso. Márcala como completada para actualizar tu ruta."
-                : "Usa las comprobaciones que faltan como guía y luego vuelve a revisar la respuesta."}
-          </p>
+                ? isFoundationsCapstone
+                  ? "Tu respuesta ya sostiene este cierre de fundamentos. Márcala como completada para dejar visible el final de la etapa en tu ruta."
+                  : "Tu respuesta ya se ve suficientemente sólida para este paso. Márcala como completada para actualizar tu ruta."
+                : isFoundationsCapstone
+                  ? "Usa las comprobaciones que faltan como guía. Este capstone busca que cierres la etapa con una solución clara, no perfecta."
+                  : "Usa las comprobaciones que faltan como guía y luego vuelve a revisar la respuesta."}
+            </p>
           {nextLessonHref ? (
             <a href={nextLessonHref} className="mt-4 inline-flex text-sm font-semibold text-brand-300">
               Continuar a la siguiente lección
+            </a>
+          ) : isFoundationsCapstone ? (
+            <a href="/dashboard" className="mt-4 inline-flex text-sm font-semibold text-brand-300">
+              Volver al panel de cierre
             </a>
           ) : null}
         </div>

@@ -73,7 +73,7 @@ export function OnboardingFlow({
         </div>
 
         <div className="mt-8 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-5 text-sm text-brand-100">
-          Tu primer paso es simple: abre la primera lección, entiende qué es programar y consigue una primera victoria rápida.
+          Tu primer paso es simple: abre la primera lección, consigue una primera victoria rápida y deja que esa inercia te lleve hasta un cierre real de fundamentos.
         </div>
 
         <div className="mt-8">
@@ -103,6 +103,12 @@ export function OnboardingFlow({
             <p className="font-semibold">3. Mantener visible el avance</p>
             <p className="mt-2 text-sm leading-6 text-slate-300">
               Tu ruta, tu actividad y tu racha se actualizan a medida que avanzas.
+            </p>
+          </div>
+          <div className="rounded-[22px] border border-white/8 bg-white/5 p-4">
+            <p className="font-semibold">4. Cerrar una primera etapa real</p>
+            <p className="mt-2 text-sm leading-6 text-slate-300">
+              El recorrido termina en un cierre de fundamentos para que sepas, con claridad, que ya construiste una base real en Python.
             </p>
           </div>
         </div>

@@ -41,6 +41,7 @@ export default async function LessonPage({
   const previousLesson = getPreviousLesson(lesson.slug);
   const nextLesson = getNextLesson(lesson.slug);
   const exercise = getExerciseByLessonSlug(lesson.slug);
+  const isJourneyFinale = lesson.moduleSlug === "foundations-capstone" && !nextLesson;
   const lessonDraft = lesson.playground
     ? await getDraftForUser({
         userId: user.id,
@@ -194,7 +195,9 @@ export default async function LessonPage({
           <Card className="rounded-[30px]">
             <h2 className="text-xl font-bold text-slate-50">Finalización</h2>
             <p className="mt-3 text-sm leading-7 text-slate-400">
-              Marcar una lección como completada actualiza tu ruta, tu panel y el flujo para seguir aprendiendo en esta cuenta.
+              {isJourneyFinale
+                ? "Completar esta lección deja visible que cerraste la primera gran etapa de PyMentor. Tu panel, tu ruta y el cierre de fundamentos van a reflejarlo."
+                : "Marcar una lección como completada actualiza tu ruta, tu panel y el flujo para seguir aprendiendo en esta cuenta."}
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               {lessonStatus === "not_started" ? (
@@ -212,6 +215,13 @@ export default async function LessonPage({
                 >
                   Siguiente lección
                 </Link>
+              ) : isJourneyFinale ? (
+                <Link
+                  href="/dashboard"
+                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-100 ring-1 ring-slate-700"
+                >
+                  Volver al panel de cierre
+                </Link>
               ) : null}
             </div>
           </Card>
@@ -228,6 +238,8 @@ export default async function LessonPage({
               <Link href={`/lesson/${nextLesson.slug}`} className="font-semibold text-brand-300">
                 Siguiente: {nextLesson.title}
               </Link>
+            ) : isJourneyFinale ? (
+              <span>Fin de la primera gran ruta de Python</span>
             ) : (
               <span>Última lección por ahora</span>
             )}

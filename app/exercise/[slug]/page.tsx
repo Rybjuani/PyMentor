@@ -24,6 +24,7 @@ export default async function ExercisePage({
   const status = getExerciseStatus(progress, exercise.slug);
   const lesson = getLessonBySlug(exercise.lessonSlug);
   const nextLesson = lesson ? getNextLesson(lesson.slug) : null;
+  const isFoundationsCapstone = exercise.moduleSlug === "foundations-capstone";
   const draft =
     exercise.responseFormat === "code"
       ? await getDraftForUser({
@@ -36,7 +37,11 @@ export default async function ExercisePage({
   return (
     <AppShell
       title={`Ejercicio: ${exercise.title}`}
-      description="Los ejercicios ya forman parte del flujo real de progreso del producto y su finalización queda vinculada a tu cuenta."
+      description={
+        isFoundationsCapstone
+          ? "Este ejercicio forma parte del cierre de fundamentos. Cuando lo completas, la etapa final de tu primera gran ruta de Python queda visible en tu cuenta."
+          : "Los ejercicios ya forman parte del flujo real de progreso del producto y su finalización queda vinculada a tu cuenta."
+      }
       userName={user.name}
       actions={<SignOutButton />}
     >

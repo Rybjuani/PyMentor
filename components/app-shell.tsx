@@ -13,8 +13,8 @@ import { cn } from "@/lib/utils";
 const items = [
   { href: "/dashboard", label: "Panel", icon: LayoutDashboard },
   { href: "/roadmap", label: "Ruta", icon: Route },
-  { href: "/lesson/python-conditionals-basics", label: "Lección", icon: Sparkles },
-  { href: "/exercise/fix-the-conditional", label: "Ejercicio", icon: Bot }
+  { href: "/lesson/what-is-programming", label: "Lección", icon: Sparkles },
+  { href: "/exercise/welcome-message-fix", label: "Ejercicio", icon: Bot }
 ];
 
 export function AppShell({
@@ -73,13 +73,13 @@ export function AppShell({
               </div>
             </div>
             <p className="mt-4 text-sm leading-6 text-slate-200">
-              Completa una lección o un ejercicio enfocado para mantener tu cadena activa y desbloquear el siguiente paso visible.
+              Avanza con un paso claro cada vez. Cuando cierres una etapa, PyMentor te lo va a hacer sentir de forma visible.
             </p>
             <Link
-              href="/lesson/python-conditionals-basics"
+              href="/lesson/what-is-programming"
               className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand-200"
             >
-              Retomar misión <ArrowRight className="h-4 w-4" />
+              Ir al inicio de la ruta <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 

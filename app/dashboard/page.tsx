@@ -8,6 +8,7 @@ import { SignOutButton } from "@/components/sign-out-button";
 import { Card } from "@/components/ui/card";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import {
+  getAllModules,
   getCurrentLearningFocus,
   getModuleBySlug,
   getModuleProgress,
@@ -20,6 +21,7 @@ export default async function DashboardPage() {
   const user = await requireAppUser();
   const progress = await getProgressForUser(user.id);
   const overall = getOverallLessonProgress(progress);
+  const modules = getAllModules();
   const currentFocus = getCurrentLearningFocus(progress);
   const currentModule =
     currentFocus?.lesson.moduleSlug ? getModuleBySlug(currentFocus.lesson.moduleSlug) : null;
@@ -28,16 +30,25 @@ export default async function DashboardPage() {
     : null;
   const recentActivity = await getRecentActivityForUser(user.id);
   const weeklyCompletedSteps = overall.completed === 0 ? 0 : Math.min(overall.completed, 2);
+  const earnedAchievements = achievements.filter((achievement) => achievement.state === "earned").length;
+  const foundationsCompleted = overall.total > 0 && overall.completed === overall.total;
+  const completedModules = modules.filter(
+    (module) => getModuleProgress(progress, module.slug).status === "completed"
+  ).length;
 
   const continueHref =
-    currentFocus?.type === "exercise"
+    foundationsCompleted
+      ? "/roadmap"
+      : currentFocus?.type === "exercise"
       ? `/exercise/${currentFocus.exercise.slug}`
       : currentFocus?.lesson
         ? `/lesson/${currentFocus.lesson.slug}`
         : "/roadmap";
 
   const continueLabel =
-    currentFocus?.type === "exercise"
+    foundationsCompleted
+      ? "Revisar ruta completada"
+      : currentFocus?.type === "exercise"
       ? "Continuar ejercicio"
       : currentFocus?.lesson
         ? "Continuar lección"
@@ -46,7 +57,11 @@ export default async function DashboardPage() {
   return (
     <AppShell
       title={`Qué bueno verte, ${user.name ?? "estudiante"}`}
-      description="Tu cuenta ya sigue un camino real de progreso. Mantén tu racha viva, supera un checkpoint más y deja que la ruta te empuje hacia adelante."
+      description={
+        foundationsCompleted
+          ? "Terminaste la primera gran etapa de PyMentor. Tu cuenta ya guarda una base real de Python y el recorrido completo quedó visible para volver a repasarlo cuando quieras."
+          : "Tu cuenta ya sigue un camino real de progreso. Mantén tu racha viva, supera un checkpoint más y deja que la ruta te empuje hacia adelante."
+      }
       userName={user.name}
       actions={<SignOutButton />}
     >
@@ -117,8 +132,12 @@ export default async function DashboardPage() {
               </div>
               <div>
                 <p className="text-sm text-slate-400">Logros desbloqueados</p>
-                <p className="text-2xl font-extrabold text-slate-50">{achievements.length}</p>
-                <p className="mt-1 text-sm text-slate-400">Tu progreso ahora queda guardado en tu cuenta</p>
+                <p className="text-2xl font-extrabold text-slate-50">{earnedAchievements}</p>
+                <p className="mt-1 text-sm text-slate-400">
+                  {foundationsCompleted
+                    ? "Ya cerraste una primera gran etapa y quedó guardada en tu cuenta"
+                    : "Tu progreso y tus hitos ya quedan vinculados a tu cuenta"}
+                </p>
               </div>
             </div>
           </Card>
@@ -131,12 +150,16 @@ export default async function DashboardPage() {
             Seguir aprendiendo
           </p>
           <h2 className="mt-3 text-2xl font-bold text-slate-50">
-            {currentFocus?.type === "exercise"
+            {foundationsCompleted
+              ? "Terminaste tu primera gran ruta de Python"
+              : currentFocus?.type === "exercise"
               ? currentFocus.exercise.title
               : currentFocus?.lesson.title ?? "Tu ruta ya está lista"}
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-400">
-            {overall.completed === 0
+            {foundationsCompleted
+                ? "Ya completaste todas las lecciones de este primer recorrido. Este es un buen momento para repasar el capstone, revisar tus proyectos y notar cuánto terreno ya cubriste."
+              : overall.completed === 0
                 ? "Estás al comienzo de la ruta. Empieza con la primera lección y luego usa el ejercicio vinculado para afianzar la idea."
                 : currentFocus?.type === "exercise"
                 ? currentFocus.exercise.summary
@@ -147,6 +170,10 @@ export default async function DashboardPage() {
             <div className="mt-5 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
               Módulo actual: {currentModule.title} · {currentModuleProgress.completedLessons} de{" "}
               {currentModuleProgress.totalLessons} lecciones completas
+            </div>
+          ) : foundationsCompleted ? (
+            <div className="mt-5 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
+              Ruta cerrada: {completedModules} de {modules.length} módulos completados en esta primera gran etapa.
             </div>
           ) : null}
           <div className="mt-6 flex flex-wrap gap-3">
@@ -201,14 +228,18 @@ export default async function DashboardPage() {
             </p>
           </div>
           <h2 className="mt-4 text-2xl font-bold text-slate-50">
-            {currentFocus?.type === "exercise"
+            {foundationsCompleted
+              ? "Cierre de fundamentos conseguido"
+              : currentFocus?.type === "exercise"
               ? "Termina el ejercicio vinculado"
               : overall.completed === 0
                 ? "Da tu primer paso tranquilo en Python"
                 : "Completa la siguiente lección de tu ruta"}
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-400">
-            {overall.completed === 0
+            {foundationsCompleted
+              ? "Tu siguiente movimiento ya no es desbloquear fundamentos, sino decidir qué quieres repasar, reforzar o convertir en proyecto propio."
+              : overall.completed === 0
               ? "Empieza con una lección corta, usa el mentor cuando te trabes y deja que tu primera finalización desbloquee impulso."
               : "Cada finalización actualiza tu cuenta, tu ruta y el siguiente checkpoint que te está esperando."}
           </p>
@@ -218,7 +249,9 @@ export default async function DashboardPage() {
               Energía para un paso más
             </div>
             <p className="mt-2 leading-6">
-              PyMentor está diseñado para que el siguiente movimiento siempre sea claro, lo bastante pequeño como para empezar y satisfactorio al terminar.
+              {foundationsCompleted
+                ? "Lo importante ahora es reconocer el cierre: ya no estás empezando desde cero. Tienes una primera base terminada y visible."
+                : "PyMentor está diseñado para que el siguiente movimiento siempre sea claro, lo bastante pequeño como para empezar y satisfactorio al terminar."}
             </p>
           </div>
         </Card>

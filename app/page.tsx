@@ -65,7 +65,7 @@ export default function HomePage() {
                 Aprende Python desde cero en un flujo de progreso enfocado que te invita a seguir avanzando.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-                PyMentor le da a quien empieza desde cero un entorno premium de aprendizaje: lecciones claras, práctica guiada, desbloqueos visibles y un mentor IA que ayuda sin invadir.
+                PyMentor le da a quien empieza desde cero un entorno premium de aprendizaje: lecciones claras, práctica guiada, desbloqueos visibles, proyectos cada vez más autónomos y un mentor IA que ayuda sin invadir.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button href="/signup" className="w-full sm:w-auto">Empezar mi ruta de Python</Button>
@@ -274,7 +274,7 @@ export default function HomePage() {
               Empieza a aprender Python con un impulso que se siente claro, emocionante y real.
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/90">
-              PyMentor les da a los principiantes absolutos una primera experiencia sólida: lecciones claras, práctica guiada, progreso visible y un mentor IA que ayuda sin tomar el control.
+              PyMentor les da a los principiantes absolutos una primera experiencia sólida: lecciones claras, práctica guiada, progreso visible, proyectos cada vez más reales y un cierre de fundamentos que marca una primera etapa completada.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button href="/signup" variant="secondary" className="w-full sm:w-auto">

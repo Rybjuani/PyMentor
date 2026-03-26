@@ -12,7 +12,7 @@ export async function GET(request: Request) {
   const session = await getServerAuthSession();
 
   if (!session?.user?.id) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 401 });
   }
 
   const { searchParams } = new URL(request.url);
@@ -20,7 +20,7 @@ export async function GET(request: Request) {
   const slug = searchParams.get("slug") ?? undefined;
 
   if (!scope || !slug) {
-    return NextResponse.json({ error: "Missing draft fields." }, { status: 400 });
+    return NextResponse.json({ error: "Faltan datos del borrador." }, { status: 400 });
   }
 
   const draft = await getDraftForUser({
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
   const session = await getServerAuthSession();
 
   if (!session?.user?.id) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 401 });
   }
 
   let body: DraftRequestBody;
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
   try {
     body = (await request.json()) as DraftRequestBody;
   } catch {
-    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
+    return NextResponse.json({ error: "El cuerpo de la solicitud no es válido." }, { status: 400 });
   }
 
   const scope = parseScope(body.scope);
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
   const content = body.content ?? "";
 
   if (!scope || !slug) {
-    return NextResponse.json({ error: "Missing draft fields." }, { status: 400 });
+    return NextResponse.json({ error: "Faltan datos del borrador." }, { status: 400 });
   }
 
   const draft = await saveDraftForUser({
@@ -75,7 +75,7 @@ export async function DELETE(request: Request) {
   const session = await getServerAuthSession();
 
   if (!session?.user?.id) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 401 });
   }
 
   let body: DraftRequestBody;
@@ -83,14 +83,14 @@ export async function DELETE(request: Request) {
   try {
     body = (await request.json()) as DraftRequestBody;
   } catch {
-    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
+    return NextResponse.json({ error: "El cuerpo de la solicitud no es válido." }, { status: 400 });
   }
 
   const scope = parseScope(body.scope);
   const slug = body.slug?.trim();
 
   if (!scope || !slug) {
-    return NextResponse.json({ error: "Missing draft fields." }, { status: 400 });
+    return NextResponse.json({ error: "Faltan datos del borrador." }, { status: 400 });
   }
 
   await deleteDraftForUser({

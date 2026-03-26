@@ -190,6 +190,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "96 min",
     xp: 380
+  },
+  {
+    slug: "input-driven-data-tools",
+    title: "Herramientas con entradas y cambios simples",
+    description: "Usa `input()` de forma más activa para decidir acciones, consultar, actualizar y reorganizar datos guardados dentro de herramientas pequeñas más útiles.",
+    order: 20,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "98 min",
+    xp: 390
   }
 ];
 
@@ -4068,6 +4078,221 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar la consulta final del registro después del flujo elegido."
     },
     exerciseSlug: "build-a-consult-and-update-tool"
+  },
+  {
+    slug: "using-input-to-choose-a-useful-action",
+    module: "Herramientas con entradas y cambios simples",
+    moduleSlug: "input-driven-data-tools",
+    order: 1,
+    title: "Usar input() para elegir una acción útil",
+    duration: "16 min",
+    difficulty: "Beginner",
+    summary: "Aprende a usar `input()` para que una herramienta pequeña decida qué hacer según una elección simple de la persona usuaria.",
+    warmup: "Una herramienta se siente más real cuando no sigue siempre el mismo camino. Preguntar qué hacer es una forma simple y útil de volverla más interactiva.",
+    goal: "Al final, deberías poder usar `input()` para elegir una acción clara dentro de una utilidad pequeña y mantener el flujo ordenado.",
+    keyIdeas: [
+      {
+        title: "La entrada puede decidir el recorrido",
+        description: "Un `input()` simple puede ayudarte a consultar, actualizar o mostrar datos según lo que la persona elija."
+      },
+      {
+        title: "Las opciones visibles reducen la confusión",
+        description: "Si el programa muestra qué puede hacer, es mucho más fácil leer y usar el flujo."
+      },
+      {
+        title: "La lógica sigue necesitando claridad",
+        description: "Aunque aparezca una elección del usuario, conviene separar bien preguntar, decidir y mostrar el resultado."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué cambia cuando `input()` decide una acción",
+        body: "Hasta ahora ya consultaste y actualizaste datos guardados, pero muchas veces la decisión estaba escrita dentro del programa. En esta lección, la herramienta empieza a preguntarle a la persona qué camino quiere usar."
+      },
+      {
+        title: "Por qué eso hace que la herramienta se sienta más real",
+        body: "Porque ya no es solo un programa que hace siempre lo mismo. Ahora recibe una elección, reacciona a ella y muestra un resultado más conectado con lo que la persona pidió."
+      },
+      {
+        title: "Cómo mantenerlo beginner-safe",
+        body: "Empieza con dos opciones claras, como `consultar` o `actualizar`. Después, conecta esa respuesta con un `if` sencillo. No hace falta hacer un menú complejo para que la experiencia ya se sienta más útil."
+      },
+      {
+        title: "Qué hábito importa aquí",
+        body: "Mostrar las opciones primero y leer la respuesta después. Esa pequeña secuencia hace que el flujo se entienda mejor y que depurar sea mucho más fácil si algo no sale como esperabas."
+      }
+    ],
+    example:
+      "print('1. Consultar')\nprint('2. Actualizar')\nopcion = input('Elige una acción: ')\n\nif opcion == '1':\n    print('Mostrando consulta...')\nelse:\n    print('Preparando actualización...')",
+    practicePrompt: "Prueba cambiar los mensajes o la condición, pero mantén visible que `input()` decide qué camino sigue la herramienta.",
+    practiceChecklist: [
+      "Muestra opciones antes de pedir la respuesta.",
+      "Usa `input()` para guardar una elección.",
+      "Conecta esa elección con un `if` o `else` claro."
+    ],
+    commonMistakes: [
+      "Pedir la opción sin mostrar antes qué significa cada respuesta.",
+      "Comparar con un valor distinto al que realmente podría escribir la persona.",
+      "Mezclar demasiadas decisiones antes de que funcione la primera versión."
+    ],
+    bugChallenge: {
+      prompt: "Este programa debería pedir una opción y decidir qué hacer, pero una comparación mal escrita y una salida poco clara rompen el flujo.",
+      brokenCode:
+        "print('1. Consultar')\nprint('2. Actualizar')\nopcion = input('Elige una acción: ')\n\nif opcion = '1':\n    print('Mostrando consulta...')\nelse:\n    print('Preparando actualización...')",
+      expectedLearning: "Cuando `input()` entra en juego, conviene revisar primero qué se guarda, con qué se compara y qué mensaje final se muestra."
+    },
+    playground: {
+      title: "Haz que la herramienta pregunte qué hacer",
+      guidance: "Ejecuta el código, elige una opción y luego cambia los mensajes o las rutas. La meta es sentir que el programa ya responde a una elección real.",
+      starterCode:
+        "print('1. Consultar')\nprint('2. Actualizar')\nopcion = input('Elige una acción: ')\n\nif opcion == '1':\n    print('Mostrando consulta...')\nelse:\n    print('Preparando actualización...')",
+      emptyOutputHint: "La salida debería cambiar según la opción elegida en `input()`."
+    },
+    exerciseSlug: "explain-why-input-makes-a-tool-more-useful"
+  },
+  {
+    slug: "asking-for-data-to-update-a-record",
+    module: "Herramientas con entradas y cambios simples",
+    moduleSlug: "input-driven-data-tools",
+    order: 2,
+    title: "Pedir datos para actualizar un registro",
+    duration: "18 min",
+    difficulty: "Beginner",
+    summary: "Construye una utilidad que pregunta qué dato modificar y luego reescribe la información guardada con un valor nuevo.",
+    warmup: "Una herramienta mejora mucho cuando no actualiza siempre lo mismo, sino que puede pedir un dato concreto y actuar con esa respuesta.",
+    goal: "Al final, deberías poder pedir un valor con `input()`, usarlo dentro de una función de actualización y mostrar el resultado final con claridad.",
+    keyIdeas: [
+      {
+        title: "La entrada puede definir qué cambia",
+        description: "El programa puede pedir un nombre, estado o categoría para decidir qué parte modificar."
+      },
+      {
+        title: "Actualizar sigue siendo un flujo por pasos",
+        description: "Primero pides un dato, luego buscas, después reescribes y al final confirmas."
+      },
+      {
+        title: "Separar funciones sigue ayudando",
+        description: "Una función puede guardar datos, otra actualizar y otra mostrar el resultado."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué hace esta utilidad",
+        body: "Este tipo de herramienta pide un dato corto, como el nombre de un registro o un nuevo estado, y lo usa para modificar información guardada. Eso ya la acerca mucho más a una utilidad real."
+      },
+      {
+        title: "Por qué conviene dividir el trabajo",
+        body: "Si una función guarda el archivo, otra actualiza y otra muestra el resultado, te resulta más fácil revisar el programa sin perderte en una sola pared de código."
+      },
+      {
+        title: "Qué mantiene la experiencia simple",
+        body: "Trabajar con uno o dos registros y con valores cortos. No necesitas hacer un sistema completo: solo un flujo claro donde la entrada cambia algo útil."
+      },
+      {
+        title: "Qué revisar si se rompe",
+        body: "Comprueba si el dato pedido con `input()` coincide con la línea que buscas, si reescribes el archivo completo y si luego imprimes el resultado actualizado."
+      }
+    ],
+    example:
+      "def guardar_estados():\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('Python: pendiente\\nLectura: pendiente')\n\n\ndef actualizar_estado(nombre, nuevo_estado):\n    with open('estados.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_estados()\nactualizar_estado('Python', 'hecho')",
+    practicePrompt: "Piensa qué dato te conviene pedir con `input()`: el nombre que se va a cambiar, el nuevo estado o ambos. Lo importante es que el flujo siga siendo claro.",
+    practiceChecklist: [
+      "Pide al menos un dato con `input()`.",
+      "Usa ese dato dentro de la actualización.",
+      "Reescribe el archivo con el nuevo contenido.",
+      "Muestra el resultado actualizado al final."
+    ],
+    commonMistakes: [
+      "Pedir un dato con `input()` y después no usarlo en ninguna parte del flujo.",
+      "Actualizar una línea fija en lugar de la que la persona eligió.",
+      "Reescribir el archivo, pero olvidar mostrar el resultado final."
+    ],
+    bugChallenge: {
+      prompt: "Esta herramienta debería pedir un nombre y usarlo para actualizar un estado, pero un detalle de comparación y una escritura final dejan el flujo incompleto.",
+      brokenCode:
+        "def actualizar_estado(nombre, nuevo_estado):\n    with open('estados.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith('nombre' + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)",
+      expectedLearning: "Cuando `input()` define qué debe cambiar, conviene revisar si el programa usa la variable real y si el flujo termina reescribiendo el archivo."
+    },
+    playground: {
+      title: "Prueba una actualización guiada por input()",
+      guidance: "Ejecuta el código y responde la ventana del navegador. Luego cambia el nombre o el nuevo estado para ver cómo el programa actualiza otra línea.",
+      starterCode:
+        "def guardar_estados():\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('Python: pendiente\\nLectura: pendiente')\n\n\ndef actualizar_estado(nombre, nuevo_estado):\n    with open('estados.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_estados():\n    with open('estados.txt', 'r') as archivo:\n        print(archivo.read())\n\n\nguardar_estados()\nnombre = input('¿Qué registro quieres actualizar? ')\nnuevo_estado = input('¿Cuál será el nuevo estado? ')\nactualizar_estado(nombre, nuevo_estado)\nmostrar_estados()",
+      emptyOutputHint: "La salida debería mostrar el archivo ya actualizado con los datos que ingresaste."
+    },
+    exerciseSlug: "build-an-input-driven-update-tool"
+  },
+  {
+    slug: "coordinating-input-search-update-and-display",
+    module: "Herramientas con entradas y cambios simples",
+    moduleSlug: "input-driven-data-tools",
+    order: 3,
+    title: "Coordinar input, búsqueda, cambio y resultado",
+    duration: "18 min",
+    difficulty: "Beginner",
+    summary: "Une elección del usuario, consulta, actualización y salida final dentro de una herramienta pequeña más interactiva y ordenada.",
+    warmup: "Cuando una herramienta pregunta, busca, cambia y vuelve a mostrar, empieza a sentirse mucho más cercana a una utilidad real de todos los días.",
+    goal: "Al final, deberías poder coordinar un flujo pequeño donde `input()` define una búsqueda o un cambio, y el programa muestra un resultado final claro.",
+    keyIdeas: [
+      {
+        title: "La coordinación importa más que la cantidad de código",
+        description: "Lo importante es que cada parte ocurra en el orden correcto: pedir, decidir, buscar o cambiar, y mostrar."
+      },
+      {
+        title: "Una herramienta pequeña puede tener varias responsabilidades claras",
+        description: "Puedes usar funciones separadas para buscar, actualizar y presentar el resultado final."
+      },
+      {
+        title: "El flujo se vuelve más útil cuando responde a elecciones reales",
+        description: "La persona usuaria deja de ver una demo fija y empieza a sentir que la herramienta actúa según lo que escribió."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué construyes en esta lección",
+        body: "Una herramienta pequeña que pide una acción, consulta o actualiza un dato guardado y luego muestra el resultado. Es una versión más conectada de lo que venías trabajando en Ruta 2."
+      },
+      {
+        title: "Qué vuelve más interesante este paso",
+        body: "Que ya no trabajas solo con un camino fijo. Ahora una respuesta de la persona cambia el recorrido del programa, pero el código sigue siendo entendible porque cada parte tiene una tarea concreta."
+      },
+      {
+        title: "Cómo no perder el control",
+        body: "Empieza por guardar los datos base, después pide la acción y el dato necesario, y por último llama la función correcta. Ese orden hace que la herramienta se mantenga tranquila y legible."
+      },
+      {
+        title: "Qué demuestra este bloque",
+        body: "Demuestra que ya puedes construir herramientas pequeñas que no solo guardan o cambian datos, sino que también reaccionan a una persona y reorganizan el flujo en función de lo que pide."
+      }
+    ],
+    example:
+      "def guardar_registros():\n    with open('registros.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente')\n\n\ndef consultar(nombre):\n    with open('registros.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Consulta:', linea)\n\n\ndef actualizar(nombre, nuevo_estado):\n    with open('registros.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('registros.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_registros()\naction = 'actualizar'\nif action == 'consultar':\n    consultar('Luis')\nelse:\n    actualizar('Luis', 'activo')\n    consultar('Luis')",
+    practicePrompt: "Cambia la acción, el nombre del registro o el estado final. Lo importante es conservar un flujo completo y ordenado: pedir, decidir, cambiar y mostrar.",
+    practiceChecklist: [
+      "Guarda los datos base en un archivo.",
+      "Pide o define una acción clara.",
+      "Coordina consulta o actualización según esa acción.",
+      "Muestra un resultado final útil."
+    ],
+    commonMistakes: [
+      "Pedir demasiados datos a la vez y volver confuso el recorrido.",
+      "Actualizar el archivo pero no consultar de nuevo para confirmar el resultado.",
+      "Mezclar la lógica principal dentro de una sola función y perder claridad."
+    ],
+    bugChallenge: {
+      prompt: "Esta herramienta debería pedir una acción y coordinar consulta o actualización, pero una variable y un llamado final no mantienen el flujo completo.",
+      brokenCode:
+        "guardar_registros()\naction = input('Elige una acción: ')\nif opcion == 'consultar':\n    consultar('Luis')\nelse:\n    actualizar('Luis', 'activo')",
+      expectedLearning: "Cuando el flujo depende de `input()`, revisa si la variable correcta decide el camino y si el programa confirma el resultado al final."
+    },
+    playground: {
+      title: "Coordina una herramienta más interactiva",
+      guidance: "Ejecuta el programa, responde la opción y mira cómo la herramienta consulta o actualiza antes de mostrar el resultado final.",
+      starterCode:
+        "def guardar_registros():\n    with open('registros.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente')\n\n\ndef consultar(nombre):\n    with open('registros.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Consulta:', linea)\n\n\ndef actualizar(nombre, nuevo_estado):\n    with open('registros.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('registros.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_registros()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar('Luis')\nelse:\n    actualizar('Luis', 'activo')\n    consultar('Luis')",
+      emptyOutputHint: "La salida debería mostrar una consulta o una actualización seguida de un resultado final visible."
+    },
+    exerciseSlug: "build-an-input-driven-search-and-update-tool"
   }
 ];
 
@@ -8284,6 +8509,247 @@ export const courseExercises: ExerciseData[] = [
         "queries-with-startswith",
         "updates-luis-active",
         "uses-option-branch",
+        "consults-after-update"
+      ]
+    }
+  },
+  {
+    slug: "explain-why-input-makes-a-tool-more-useful",
+    title: "Explica por qué input() vuelve más útil una herramienta",
+    exerciseType: "concept_check",
+    responseFormat: "text",
+    moduleSlug: "input-driven-data-tools",
+    lessonSlug: "using-input-to-choose-a-useful-action",
+    order: 1,
+    duration: "8 min",
+    summary: "Explica por qué una herramienta pequeña mejora cuando usa `input()` para decidir una acción útil.",
+    prompt:
+      "En 2 o 3 frases cortas, explica por qué una herramienta mejora cuando usa `input()` para dejar que la persona elija si quiere consultar o actualizar algo.",
+    responseLabel: "Tu explicación sobre input() y decisiones útiles",
+    responsePlaceholder:
+      "Una herramienta mejora cuando usa input() porque ya no sigue siempre el mismo camino. Así puede responder a lo que la persona quiere hacer y el programa se siente más útil.",
+    instructions: [
+      "Menciona que `input()` permite elegir una acción.",
+      "Conecta esa idea con una herramienta más útil o interactiva.",
+      "Explica la idea con palabras simples."
+    ],
+    hints: [
+      "Piensa en la diferencia entre un programa fijo y uno que pregunta qué hacer.",
+      "No hace falta usar lenguaje técnico.",
+      "La idea central es que el flujo responde a una elección."
+    ],
+    starterCode:
+      "print('1. Consultar')\nprint('2. Actualizar')\nopcion = input('Elige una acción: ')\n\nif opcion == '1':\n    print('Consulta lista')\nelse:\n    print('Actualización lista')",
+    successCriteria: [
+      "Habla de elección o decisión.",
+      "Habla de utilidad o interacción.",
+      "Conecta la idea con consultar o actualizar."
+    ],
+    evaluator: {
+      type: "ordered_concepts",
+      minLength: 50,
+      passingScore: 4,
+      requireOrder: false,
+      concepts: [
+        {
+          id: "user-choice",
+          label: "Menciona una elección de la persona",
+          keywords: ["elegir", "decidir", "opción", "acción", "respuesta"],
+          feedbackWhenMissing: "Agrega que `input()` permite elegir o decidir una acción dentro de la herramienta."
+        },
+        {
+          id: "more-useful",
+          label: "Conecta con una herramienta más útil o interactiva",
+          keywords: ["útil", "interactiva", "interacción", "responder", "real"],
+          feedbackWhenMissing: "Explica que eso vuelve la herramienta más útil, interactiva o cercana a un caso real."
+        },
+        {
+          id: "query-or-update",
+          label: "Relaciona la idea con consultar o actualizar",
+          keywords: ["consultar", "actualizar", "buscar", "cambiar", "mostrar"],
+          feedbackWhenMissing: "Conecta la idea con una acción concreta como consultar o actualizar información."
+        }
+      ]
+    }
+  },
+  {
+    slug: "build-an-input-driven-update-tool",
+    title: "Construye una herramienta guiada por input() para actualizar",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "input-driven-data-tools",
+    lessonSlug: "asking-for-data-to-update-a-record",
+    order: 2,
+    duration: "14 min",
+    summary: "Construye una utilidad que pide un registro y un estado nuevo con `input()`, actualiza el archivo y luego muestra el resultado final.",
+    prompt:
+      "Escribe un programa que defina `guardar_estados()` para guardar `Python: pendiente\\nLectura: pendiente` en `estados.txt`, `actualizar_estado(nombre, nuevo_estado)` para cambiar la línea elegida, y `mostrar_estados()` para imprimir el archivo final. Luego pide `nombre` y `nuevo_estado` con `input()`, llama `actualizar_estado(nombre, nuevo_estado)` y muestra el resultado final.",
+    responseLabel: "Tu herramienta guiada por input()",
+    responsePlaceholder:
+      "def guardar_estados():\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('Python: pendiente\\nLectura: pendiente')\n\n\ndef actualizar_estado(nombre, nuevo_estado):\n    with open('estados.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_estados():\n    with open('estados.txt', 'r') as archivo:\n        print(archivo.read())\n\n\nguardar_estados()\nnombre = input('¿Qué registro quieres actualizar? ')\nnuevo_estado = input('¿Cuál será el nuevo estado? ')\nactualizar_estado(nombre, nuevo_estado)\nmostrar_estados()",
+    instructions: [
+      "Guarda los datos base en un archivo.",
+      "Pide el nombre del registro y el nuevo estado con `input()`.",
+      "Actualiza el archivo y muestra el resultado final."
+    ],
+    hints: [
+      "Puedes usar `startswith(nombre + ':')` para encontrar la línea correcta.",
+      "La reescritura puede usar una lista `nuevas_lineas`.",
+      "Después de actualizar, vuelve a leer el archivo para mostrar el resultado."
+    ],
+    starterCode:
+      "def guardar_estados():\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('Python: pendiente\\nLectura: pendiente')\n\n\ndef actualizar_estado(nombre, nuevo_estado):\n    with open('estados.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_estados():\n    with open('estados.txt', 'r') as archivo:\n        print(archivo.read())\n\n\nguardar_estados()\nnombre = input('¿Qué registro quieres actualizar? ')\nnuevo_estado = input('¿Cuál será el nuevo estado? ')\nactualizar_estado(nombre, nuevo_estado)\nmostrar_estados()",
+    successCriteria: [
+      "Usa `input()` para decidir qué dato cambiar.",
+      "Actualiza el archivo de forma ordenada.",
+      "Muestra el contenido final actualizado."
+    ],
+    playground: {
+      title: "Ejecuta una actualización con entrada real",
+      guidance: "Corre el programa y responde la ventana del navegador. Prueba distintos nombres o estados para ver cómo la herramienta cambia el archivo final.",
+      starterCode:
+        "def guardar_estados():\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('Python: pendiente\\nLectura: pendiente')\n\n\ndef actualizar_estado(nombre, nuevo_estado):\n    with open('estados.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_estados():\n    with open('estados.txt', 'r') as archivo:\n        print(archivo.read())\n\n\nguardar_estados()\nnombre = input('¿Qué registro quieres actualizar? ')\nnuevo_estado = input('¿Cuál será el nuevo estado? ')\nactualizar_estado(nombre, nuevo_estado)\nmostrar_estados()",
+      emptyOutputHint: "La salida debería mostrar el archivo actualizado según los valores ingresados."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 360,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-save-statuses",
+          label: "Define `guardar_estados()`",
+          pattern: "def\\s+guardar_estados\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `guardar_estados()`."
+        },
+        {
+          id: "defines-update-status",
+          label: "Define `actualizar_estado(nombre, nuevo_estado)`",
+          pattern: "def\\s+actualizar_estado\\(\\s*nombre\\s*,\\s*nuevo_estado\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `actualizar_estado(nombre, nuevo_estado)`."
+        },
+        {
+          id: "asks-for-name-with-input",
+          label: "Pide `nombre` con `input()`",
+          pattern: "nombre\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Pide el `nombre` que se quiere actualizar con `input()`."
+        },
+        {
+          id: "asks-for-new-status-with-input",
+          label: "Pide `nuevo_estado` con `input()`",
+          pattern: "nuevo_estado\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Pide el `nuevo_estado` con `input()`."
+        },
+        {
+          id: "updates-by-name",
+          label: "Busca la línea usando `nombre + ':'`",
+          pattern: "linea\\.startswith\\(\\s*nombre\\s*\\+\\s*['\"]:['\"]\\s*\\)",
+          feedbackWhenMissing: "Usa `startswith(nombre + ':')` para encontrar la línea que debe cambiar."
+        },
+        {
+          id: "shows-final-file",
+          label: "Muestra el archivo final",
+          pattern: "def\\s+mostrar_estados\\(\\)\\s*:[\\s\\S]*print\\(\\s*archivo\\.read\\(\\s*\\)\\s*\\)",
+          feedbackWhenMissing: "Define `mostrar_estados()` para leer e imprimir el archivo final."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-save-statuses",
+        "defines-update-status",
+        "asks-for-name-with-input",
+        "asks-for-new-status-with-input",
+        "updates-by-name",
+        "shows-final-file"
+      ]
+    }
+  },
+  {
+    slug: "build-an-input-driven-search-and-update-tool",
+    title: "Construye una herramienta con input() para consultar y actualizar",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "input-driven-data-tools",
+    lessonSlug: "coordinating-input-search-update-and-display",
+    order: 3,
+    duration: "15 min",
+    summary: "Construye una utilidad que usa `input()` para elegir entre consultar o actualizar, y luego muestra un resultado final claro.",
+    prompt:
+      "Escribe un programa que defina `guardar_registros()` para guardar `Ana: activo\\nLuis: pendiente` en `registros.txt`, `consultar(nombre)` para imprimir `Consulta: ...`, y `actualizar(nombre, nuevo_estado)` para cambiar el registro elegido. Luego pide `action` con `input('Escribe consultar o actualizar: ')`. Si la acción es `consultar`, consulta `Luis`. En cualquier otro caso, actualiza `Luis` a `activo` y luego vuelve a consultarlo.",
+    responseLabel: "Tu herramienta con consulta y actualización guiadas por input()",
+    responsePlaceholder:
+      "def guardar_registros():\n    with open('registros.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente')\n\n\ndef consultar(nombre):\n    with open('registros.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Consulta:', linea)\n\n\ndef actualizar(nombre, nuevo_estado):\n    with open('registros.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('registros.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_registros()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar('Luis')\nelse:\n    actualizar('Luis', 'activo')\n    consultar('Luis')",
+    instructions: [
+      "Guarda datos base en un archivo.",
+      "Usa `input()` para decidir si consultas o actualizas.",
+      "Muestra un resultado final después del flujo elegido."
+    ],
+    hints: [
+      "La consulta puede usar `startswith(nombre + ':')`.",
+      "La actualización puede rearmar las líneas en `nuevas_lineas`.",
+      "Después de actualizar, vuelve a consultar para confirmar el cambio."
+    ],
+    starterCode:
+      "def guardar_registros():\n    with open('registros.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente')\n\n\ndef consultar(nombre):\n    with open('registros.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Consulta:', linea)\n\n\ndef actualizar(nombre, nuevo_estado):\n    with open('registros.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('registros.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_registros()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar('Luis')\nelse:\n    actualizar('Luis', 'activo')\n    consultar('Luis')",
+    successCriteria: [
+      "Usa `input()` para decidir el flujo.",
+      "Coordina consulta y actualización con funciones separadas.",
+      "Muestra un resultado final claro."
+    ],
+    playground: {
+      title: "Prueba una herramienta guiada por elección",
+      guidance: "Ejecuta el programa, escribe `consultar` o `actualizar` y observa cómo cambia el resultado. Luego prueba ajustar el nombre o el estado final.",
+      starterCode:
+        "def guardar_registros():\n    with open('registros.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente')\n\n\ndef consultar(nombre):\n    with open('registros.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Consulta:', linea)\n\n\ndef actualizar(nombre, nuevo_estado):\n    with open('registros.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('registros.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_registros()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar('Luis')\nelse:\n    actualizar('Luis', 'activo')\n    consultar('Luis')",
+      emptyOutputHint: "La salida debería mostrar la consulta pedida o la actualización seguida de una consulta final."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 360,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-query-function",
+          label: "Define `consultar(nombre)`",
+          pattern: "def\\s+consultar\\(\\s*nombre\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `consultar(nombre)`."
+        },
+        {
+          id: "defines-update-function",
+          label: "Define `actualizar(nombre, nuevo_estado)`",
+          pattern: "def\\s+actualizar\\(\\s*nombre\\s*,\\s*nuevo_estado\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `actualizar(nombre, nuevo_estado)`."
+        },
+        {
+          id: "asks-for-action-with-input",
+          label: "Pide `action` con `input()`",
+          pattern: "action\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Pide la acción con `input()`."
+        },
+        {
+          id: "uses-action-branch",
+          label: "Usa `if action == 'consultar'`",
+          pattern: "if\\s+action\\s*==\\s*['\"]consultar['\"]\\s*:",
+          feedbackWhenMissing: "Usa un `if` para comprobar si `action` es `consultar`."
+        },
+        {
+          id: "updates-luis-active",
+          label: "Actualiza a Luis con `activo`",
+          pattern: "actualizar\\(\\s*['\"]Luis['\"]\\s*,\\s*['\"]activo['\"]\\s*\\)",
+          feedbackWhenMissing: "En el otro camino, actualiza a `Luis` con `activo`."
+        },
+        {
+          id: "consults-after-update",
+          label: "Consulta a Luis después de actualizar",
+          pattern: "else\\s*:\\s*[\\s\\S]*actualizar\\([\\s\\S]*consultar\\(\\s*['\"]Luis['\"]\\s*\\)",
+          feedbackWhenMissing: "Después de actualizar, vuelve a consultar `Luis` para mostrar el resultado."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-query-function",
+        "defines-update-function",
+        "asks-for-action-with-input",
+        "uses-action-branch",
+        "updates-luis-active",
         "consults-after-update"
       ]
     }

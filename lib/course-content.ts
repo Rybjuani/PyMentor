@@ -80,6 +80,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "72 min",
     xp: 240
+  },
+  {
+    slug: "strings",
+    title: "Strings",
+    description: "Aprende a trabajar mejor con texto: unirlo, compararlo y transformarlo de forma útil para programas reales con input y salida.",
+    order: 9,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "70 min",
+    xp: 235
   }
 ];
 
@@ -1690,6 +1700,210 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar un par de clave y valor por línea."
     },
     exerciseSlug: "loop-through-dictionary-items"
+  },
+  {
+    slug: "working-with-text-comfortably",
+    module: "Strings",
+    moduleSlug: "strings",
+    order: 1,
+    title: "Qué es un string y por qué aparece en todos lados",
+    duration: "14 min",
+    difficulty: "Beginner",
+    summary: "Aprende a pensar un string como texto dentro de Python y entiende por qué `input()` y la salida trabajan tanto con strings.",
+    warmup: "Cuando escribes tu nombre, una ciudad o un mensaje de saludo, estás trabajando con texto. En Python, ese texto vive dentro de strings.",
+    goal: "Al final, deberías poder explicar qué es un string y por qué aparece tanto en `input()`, `print()` y programas que hablan con personas.",
+    keyIdeas: [
+      {
+        title: "Un string es texto",
+        description: "Sirve para guardar palabras, frases, nombres y mensajes."
+      },
+      {
+        title: "Las comillas marcan el texto",
+        description: "Python necesita comillas para entender que estás escribiendo texto y no otra cosa."
+      },
+      {
+        title: "Muchos programas hablan con texto",
+        description: "Los saludos, preguntas y respuestas al usuario suelen estar hechos con strings."
+      }
+    ],
+    explanation: [
+      {
+        title: "Cómo pensar un string en lenguaje simple",
+        body: "Un string es texto que Python guarda como dato. Puede ser una palabra, una frase corta o un mensaje más largo, siempre que esté entre comillas."
+      },
+      {
+        title: "Por qué `input()` y strings van juntos",
+        body: "Cuando alguien escribe algo en `input()`, Python lo recibe como texto. Por eso trabajar con strings te ayuda a entender mejor programas que piden datos o muestran mensajes."
+      },
+      {
+        title: "Por qué esto es práctico",
+        body: "Muchos programas reales muestran instrucciones, saludos, avisos o preguntas. Saber manejar strings hace que esos programas sean más claros y más útiles."
+      },
+      {
+        title: "Empieza por casos cotidianos",
+        body: "No hace falta pensar en teoría rara. Nombres, ciudades, mensajes y respuestas simples ya alcanzan para aprender lo importante."
+      }
+    ],
+    example: "mensaje = 'Hola, PyMentor'\nprint(mensaje)\nname = input('¿Cómo te llamas? ')\nprint('Mucho gusto, ' + name)",
+    practicePrompt: "Guarda un mensaje en una variable `mensaje`, imprímelo y luego usa `input()` para pedir un nombre y responder con otro string.",
+    practiceChecklist: [
+      "Usa comillas correctamente.",
+      "Guarda un texto en una variable.",
+      "Combina `input()` con una salida simple."
+    ],
+    commonMistakes: [
+      "Olvidar cerrar las comillas.",
+      "Confundir texto con nombres de variables.",
+      "Pensar que `input()` devuelve números por defecto en vez de texto."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería pedir un nombre y responder con un saludo, pero un detalle de comillas lo rompe.",
+      brokenCode: "name = input('¿Cómo te llamas? )\nprint('Hola, ' + name)",
+      expectedLearning: "Los strings necesitan comillas bien cerradas, especialmente cuando un programa usa texto para hablar con la persona usuaria."
+    },
+    playground: {
+      title: "Prueba strings con input y salida",
+      guidance: "Ejecuta el ejemplo, responde la pregunta y mira cómo el texto aparece otra vez en la salida. Esa ida y vuelta es una parte muy común de programar.",
+      starterCode: "mensaje = 'Hola, PyMentor'\nprint(mensaje)\nname = input('¿Cómo te llamas? ')\nprint('Mucho gusto, ' + name)",
+      emptyOutputHint: "Responde la pregunta del navegador y luego observa cómo el string vuelve a aparecer en la salida."
+    },
+    exerciseSlug: "explain-what-a-string-is"
+  },
+  {
+    slug: "joining-and-comparing-text",
+    module: "Strings",
+    moduleSlug: "strings",
+    order: 2,
+    title: "Unir y comparar texto con calma",
+    duration: "16 min",
+    difficulty: "Beginner",
+    summary: "Aprende a unir piezas de texto y a compararlas de forma clara para tomar decisiones simples.",
+    warmup: "Muchos programas necesitan armar un mensaje y también comparar lo que una persona escribió. Unir texto y compararlo son dos movimientos muy comunes.",
+    goal: "Al final, deberías poder unir texto con `+` y comparar strings con `==` dentro de un programa simple.",
+    keyIdeas: [
+      {
+        title: "Se puede unir texto",
+        description: "El operador `+` también sirve para juntar strings."
+      },
+      {
+        title: "Los strings también se comparan",
+        description: "Puedes usar `==` para revisar si un texto coincide con otro."
+      },
+      {
+        title: "Los espacios y las mayúsculas importan",
+        description: "Un string que parece parecido puede no coincidir si cambia una letra o un espacio."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué significa unir texto",
+        body: "Si escribes `'Hola, ' + name`, Python pega ambos textos y arma un solo mensaje. Eso sirve mucho para saludos, respuestas y mensajes personalizados."
+      },
+      {
+        title: "Qué significa comparar texto",
+        body: "Si escribes `respuesta == 'si'`, Python revisa si ambos textos son exactamente iguales. Esa comparación puede usarse dentro de un `if` para decidir qué hacer."
+      },
+      {
+        title: "Por qué conviene leerlo despacio",
+        body: "Con strings, un espacio extra o una letra distinta cambia el resultado. Por eso al principio conviene leer la comparación con calma y mirar los detalles."
+      },
+      {
+        title: "Esto conecta muchas piezas del camino",
+        body: "Aquí se juntan strings, `input()`, condicionales y salida personalizada. Es una combinación muy común en programas reales para principiantes."
+      }
+    ],
+    example: "name = 'Ana'\nprint('Hola, ' + name)\nrespuesta = 'si'\nif respuesta == 'si':\n    print('Seguimos adelante')",
+    practicePrompt: "Crea una variable `respuesta`, compárala con un string y muestra un mensaje distinto según el resultado. También arma un saludo uniendo texto con una variable.",
+    practiceChecklist: [
+      "Usa `+` para unir texto.",
+      "Usa `==` para comparar strings.",
+      "Lee la comparación con calma antes de ejecutar."
+    ],
+    commonMistakes: [
+      "Olvidar un espacio dentro del string cuando el mensaje lo necesita.",
+      "Usar `=` en lugar de `==`.",
+      "Pensar que `si` y `Si` son el mismo texto."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería comparar una respuesta y mostrar un mensaje, pero un detalle cambia por completo el resultado.",
+      brokenCode: "respuesta = 'si'\nif respuesta = 'si':\n    print('Seguimos adelante')",
+      expectedLearning: "Los strings se comparan con `==`, no con `=`. Ese detalle es clave cuando un programa decide qué hacer."
+    },
+    playground: {
+      title: "Une y compara texto",
+      guidance: "Ejecuta el código, cambia la respuesta y observa cómo cambia la salida. Así se ve con claridad cómo el texto puede participar en una decisión.",
+      starterCode: "name = 'Ana'\nprint('Hola, ' + name)\nrespuesta = 'si'\nif respuesta == 'si':\n    print('Seguimos adelante')",
+      emptyOutputHint: "Prueba cambiar el texto de `respuesta` para ver cuándo se cumple la comparación."
+    },
+    exerciseSlug: "build-a-text-checker"
+  },
+  {
+    slug: "simple-string-transformations",
+    module: "Strings",
+    moduleSlug: "strings",
+    order: 3,
+    title: "Transformaciones simples de texto que sí ayudan",
+    duration: "17 min",
+    difficulty: "Beginner",
+    summary: "Aprende a usar `lower()`, `upper()` y `strip()` como herramientas concretas para limpiar o preparar texto.",
+    warmup: "A veces una comparación falla no porque la idea esté mal, sino porque el texto llegó con espacios o con mayúsculas distintas. Unas pocas transformaciones simples ayudan mucho.",
+    goal: "Al final, deberías poder usar `lower()`, `upper()` o `strip()` en situaciones pequeñas donde hacen el programa más claro o más resistente.",
+    keyIdeas: [
+      {
+        title: "`lower()` baja el texto",
+        description: "Sirve para comparar palabras sin depender tanto de las mayúsculas."
+      },
+      {
+        title: "`upper()` convierte a mayúsculas",
+        description: "Puede ayudar cuando quieres mostrar un texto con más énfasis visual."
+      },
+      {
+        title: "`strip()` quita espacios extra en los bordes",
+        description: "Es útil cuando una entrada llega con espacios delante o detrás."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué problema resuelven estas transformaciones",
+        body: "Si una persona escribe ` Si ` con espacios o con una mayúscula distinta, una comparación simple puede fallar. Estas transformaciones ayudan a preparar mejor el texto antes de usarlo."
+      },
+      {
+        title: "Cómo leerlas sin asustarte",
+        body: "Puedes pensar `respuesta.strip().lower()` como una cadena de pasos pequeños: primero quita espacios de los bordes y luego convierte el texto a minúsculas."
+      },
+      {
+        title: "Qué conviene usar primero",
+        body: "Para principiantes, `strip()` y `lower()` suelen ser las más útiles. `upper()` sirve más para mostrar texto transformado en la salida."
+      },
+      {
+        title: "Mantén el uso simple y con propósito",
+        body: "No hace falta usar muchas transformaciones a la vez. Lo importante es ver cómo ayudan a resolver problemas pequeños de texto en programas reales."
+      }
+    ],
+    example: "respuesta = ' Si '\nlimpia = respuesta.strip().lower()\nprint(limpia)\nprint('python'.upper())",
+    practicePrompt: "Toma un string con espacios y mayúsculas mezcladas, límpialo con `strip()` y `lower()`, y luego muestra otro string usando `upper()`.",
+    practiceChecklist: [
+      "Usa `strip()` para quitar espacios del borde.",
+      "Usa `lower()` para comparar texto con menos fricción.",
+      "Usa `upper()` en un caso simple de salida."
+    ],
+    commonMistakes: [
+      "Olvidar los paréntesis al usar `lower()`, `upper()` o `strip()`.",
+      "Esperar que la transformación ocurra sin volver a usar el resultado.",
+      "Aplicar muchas transformaciones sin tener claro para qué sirven."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería limpiar una respuesta y compararla con `si`, pero un detalle en la llamada de método rompe la idea.",
+      brokenCode: "respuesta = ' Si '\nif respuesta.strip.lower() == 'si':\n    print('Respuesta válida')",
+      expectedLearning: "Los métodos como `strip()` y `lower()` necesitan paréntesis para ejecutarse."
+    },
+    playground: {
+      title: "Prueba transformaciones simples",
+      guidance: "Ejecuta el código y cambia el texto original. La idea es ver cómo unas transformaciones pequeñas vuelven más práctico trabajar con texto real.",
+      starterCode: "respuesta = ' Si '\nlimpia = respuesta.strip().lower()\nprint(limpia)\nprint('python'.upper())",
+      emptyOutputHint: "La salida debería mostrar el texto limpio en minúsculas y otro string convertido a mayúsculas."
+    },
+    exerciseSlug: "clean-and-compare-text"
   }
 ];
 
@@ -3269,6 +3483,232 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["creates-dict", "uses-items-loop", "prints-key-value"]
+    }
+  },
+  {
+    slug: "explain-what-a-string-is",
+    title: "Explica qué es un string",
+    exerciseType: "concept_check",
+    responseFormat: "text",
+    moduleSlug: "strings",
+    lessonSlug: "working-with-text-comfortably",
+    order: 1,
+    duration: "7 min",
+    summary: "Explica con palabras simples qué es un string y por qué aparece tanto en `input()` y `print()`.",
+    prompt:
+      "En 2 o 3 frases cortas, explica qué es un string en Python y por qué se usa tanto cuando un programa muestra mensajes o recibe texto con `input()`.",
+    responseLabel: "Tu explicación",
+    responsePlaceholder:
+      "Un string es texto guardado en Python. Sirve para mostrar mensajes y también para guardar lo que una persona escribe en `input()`.",
+    instructions: [
+      "Explica que un string es texto.",
+      "Menciona que suele ir entre comillas.",
+      "Conecta la idea con `input()` o con mensajes en pantalla."
+    ],
+    hints: [
+      "Piensa en nombres, saludos y preguntas como ejemplos de strings.",
+      "Un string no es un número: es texto.",
+      "No hace falta sonar técnico para responder bien."
+    ],
+    starterCode: "mensaje = 'Hola'\nname = input('¿Cómo te llamas? ')",
+    successCriteria: [
+      "Explica que un string es texto.",
+      "Menciona su relación con comillas o texto visible.",
+      "Conecta la idea con `input()` o `print()`."
+    ],
+    evaluator: {
+      type: "ordered_concepts",
+      minLength: 45,
+      passingScore: 4,
+      requireOrder: false,
+      concepts: [
+        {
+          id: "text-idea",
+          label: "Menciona que un string es texto",
+          keywords: ["texto", "palabra", "frase", "mensaje"],
+          feedbackWhenMissing: "Explica primero que un string es una forma de guardar texto."
+        },
+        {
+          id: "quotes-or-display",
+          label: "Lo relaciona con comillas o mensajes visibles",
+          keywords: ["comillas", "mostrar", "mensaje", "pantalla", "print"],
+          feedbackWhenMissing: "Agrega que los strings se escriben entre comillas o se usan para mostrar mensajes."
+        },
+        {
+          id: "input-link",
+          label: "Lo conecta con `input()` o texto que escribe la persona",
+          keywords: ["input", "escribe", "respuesta", "usuario", "persona"],
+          feedbackWhenMissing: "Conecta la idea con `input()` o con el texto que una persona escribe."
+        }
+      ]
+    }
+  },
+  {
+    slug: "build-a-text-checker",
+    title: "Construye un pequeño verificador de texto",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "strings",
+    lessonSlug: "joining-and-comparing-text",
+    order: 2,
+    duration: "9 min",
+    summary: "Combina unión de texto y comparación para crear un programa corto que responde según una palabra.",
+    prompt:
+      "Escribe un programa que guarde `name = 'Ana'`, imprima `Hola, ` más ese nombre, y luego use `respuesta = 'si'` para mostrar `Seguimos adelante` solo si el texto coincide.",
+    responseLabel: "Tu programa con strings",
+    responsePlaceholder:
+      "name = 'Ana'\nprint('Hola, ' + name)\nrespuesta = 'si'\nif respuesta == 'si':\n    print('Seguimos adelante')",
+    instructions: [
+      "Guarda un nombre en una variable.",
+      "Usa `+` para unir texto en el saludo.",
+      "Compara la respuesta con `==` dentro de un `if`."
+    ],
+    hints: [
+      "El saludo puede verse como `print('Hola, ' + name)`.",
+      "La comparación correcta es `respuesta == 'si'`.",
+      "El programa debería imprimir dos líneas cuando la respuesta coincide."
+    ],
+    starterCode: "name = 'Ana'\nprint('Hola, ' + name)\nrespuesta = 'si'\nif respuesta == 'si':\n    print('Seguimos adelante')",
+    successCriteria: [
+      "Une texto con una variable.",
+      "Compara un string con `==`.",
+      "Imprime el mensaje final cuando la respuesta es `si`."
+    ],
+    playground: {
+      title: "Ejecuta el verificador de texto",
+      guidance: "Corre el programa y luego cambia la respuesta. Así puedes ver cómo el texto no solo se muestra, también participa en decisiones simples.",
+      starterCode: "name = 'Ana'\nprint('Hola, ' + name)\nrespuesta = 'si'\nif respuesta == 'si':\n    print('Seguimos adelante')",
+      emptyOutputHint: "Con la respuesta `si`, la salida debería mostrar el saludo y el mensaje final."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Hola, Ana\nSeguimos adelante"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 85,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "stores-name",
+          label: "Guarda `name = 'Ana'`",
+          pattern: "name\\s*=\\s*['\"]Ana['\"]",
+          feedbackWhenMissing: "Guarda el nombre `Ana` en la variable `name`."
+        },
+        {
+          id: "joins-text",
+          label: "Une el saludo con `+`",
+          pattern: "print\\(\\s*['\"]Hola, ['\"]\\s*\\+\\s*name\\s*\\)",
+          feedbackWhenMissing: "Usa `+` para unir `Hola, ` con la variable `name`."
+        },
+        {
+          id: "stores-response",
+          label: "Guarda `respuesta = 'si'`",
+          pattern: "respuesta\\s*=\\s*['\"]si['\"]",
+          feedbackWhenMissing: "Guarda la respuesta `si` en una variable llamada `respuesta`."
+        },
+        {
+          id: "compares-response",
+          label: "Compara con `==` dentro de un `if`",
+          pattern: "if\\s+respuesta\\s*==\\s*['\"]si['\"]\\s*:",
+          feedbackWhenMissing: "Compara la respuesta con `==` en una línea `if`."
+        },
+        {
+          id: "prints-next-message",
+          label: "Imprime el mensaje final",
+          pattern: "print\\(\\s*['\"]Seguimos adelante['\"]\\s*\\)",
+          feedbackWhenMissing: "Imprime `Seguimos adelante` dentro del bloque del `if`."
+        }
+      ],
+      orderedPatternIds: ["stores-name", "joins-text", "stores-response", "compares-response", "prints-next-message"]
+    }
+  },
+  {
+    slug: "clean-and-compare-text",
+    title: "Limpia y compara texto",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "strings",
+    lessonSlug: "simple-string-transformations",
+    order: 3,
+    duration: "9 min",
+    summary: "Usa `strip()` y `lower()` para preparar texto antes de compararlo de forma más confiable.",
+    prompt:
+      "Escribe un programa que guarde `respuesta = ' Si '`, cree una variable `limpia` usando `strip()` y `lower()`, imprima `limpia` y luego compare si ese texto es igual a `si`.",
+    responseLabel: "Tu programa de limpieza de texto",
+    responsePlaceholder:
+      "respuesta = ' Si '\nlimpia = respuesta.strip().lower()\nprint(limpia)\nif limpia == 'si':\n    print('Respuesta válida')",
+    instructions: [
+      "Guarda el texto original en `respuesta`.",
+      "Usa `strip().lower()` para crear `limpia`.",
+      "Compara `limpia` con `si` y muestra un mensaje si coincide."
+    ],
+    hints: [
+      "Primero quita espacios con `strip()`.",
+      "Después convierte a minúsculas con `lower()`.",
+      "La salida debería mostrar `si` y luego `Respuesta válida`."
+    ],
+    starterCode: "respuesta = ' Si '\nlimpia = respuesta.strip().lower()\nprint(limpia)\nif limpia == 'si':\n    print('Respuesta válida')",
+    successCriteria: [
+      "Usa `strip()` y `lower()` correctamente.",
+      "Guarda el resultado en una nueva variable.",
+      "Compara el texto limpio con `si`."
+    ],
+    playground: {
+      title: "Ejecuta la limpieza del texto",
+      guidance: "Corre el programa y luego cambia el texto original. La meta es ver cómo una transformación pequeña vuelve la comparación más estable.",
+      starterCode: "respuesta = ' Si '\nlimpia = respuesta.strip().lower()\nprint(limpia)\nif limpia == 'si':\n    print('Respuesta válida')",
+      emptyOutputHint: "Una solución correcta debería imprimir el texto limpio y luego confirmar que la respuesta es válida."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["si\nRespuesta válida"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 90,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "stores-raw-response",
+          label: "Guarda `respuesta = ' Si '`",
+          pattern: "respuesta\\s*=\\s*['\"]\\s*Si\\s*['\"]",
+          feedbackWhenMissing: "Guarda el texto original en la variable `respuesta`."
+        },
+        {
+          id: "creates-clean-text",
+          label: "Crea `limpia` con `strip().lower()`",
+          pattern: "limpia\\s*=\\s*respuesta\\.strip\\(\\)\\.lower\\(\\)",
+          feedbackWhenMissing: "Crea la variable `limpia` usando `respuesta.strip().lower()`."
+        },
+        {
+          id: "prints-clean-text",
+          label: "Imprime el texto limpio",
+          pattern: "print\\(\\s*limpia\\s*\\)",
+          feedbackWhenMissing: "Imprime la variable `limpia` para ver el resultado."
+        },
+        {
+          id: "compares-clean-text",
+          label: "Compara `limpia` con `si`",
+          pattern: "if\\s+limpia\\s*==\\s*['\"]si['\"]\\s*:",
+          feedbackWhenMissing: "Compara la variable `limpia` con el string `si`."
+        },
+        {
+          id: "prints-valid-message",
+          label: "Muestra `Respuesta válida`",
+          pattern: "print\\(\\s*['\"]Respuesta válida['\"]\\s*\\)",
+          feedbackWhenMissing: "Muestra el mensaje `Respuesta válida` dentro del `if`."
+        }
+      ],
+      orderedPatternIds: ["stores-raw-response", "creates-clean-text", "prints-clean-text", "compares-clean-text", "prints-valid-message"]
     }
   }
 ];

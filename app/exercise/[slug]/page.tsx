@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { Flag, Trophy } from "lucide-react";
 import { requireAppUser } from "@/lib/auth";
 import { AppShell } from "@/components/app-shell";
 import { ExerciseWorkspace } from "@/components/exercise-workspace";
@@ -46,15 +47,49 @@ export default async function ExercisePage({
       actions={<SignOutButton />}
     >
       <section className="grid gap-5 xl:grid-cols-[1fr_360px]">
-        <ExerciseWorkspace
-          exercise={exercise}
-          status={status}
-          initialAnswer={draft?.content ?? (exercise.responseFormat === "code" ? exercise.starterCode : "")}
-          restoredDraftUpdatedAt={draft?.updatedAt ?? null}
-          lessonHref={lesson ? `/lesson/${lesson.slug}` : "/roadmap"}
-          nextLessonHref={nextLesson ? `/lesson/${nextLesson.slug}` : null}
-        />
-        <div>
+        <div className="space-y-5">
+          <div className="mission-grid rounded-[30px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.1),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] p-5 text-slate-100 shadow-soft">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Espacio de desafío</p>
+                <h2 className="mt-2 text-2xl font-bold text-slate-50">{exercise.title}</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-400">
+                  {lesson
+                    ? `Estás aplicando lo aprendido en ${lesson.title}. Aquí importa construir, revisar y cerrar el checkpoint con una respuesta que se sostenga.`
+                    : "Aquí importa construir, revisar y cerrar el checkpoint con una respuesta que se sostenga."}
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-3 text-sm">
+                  <div className="flex items-center gap-2 font-semibold text-slate-100">
+                    <Flag className="h-4 w-4 text-brand-300" />
+                    Estado
+                  </div>
+                  <p className="mt-2 text-slate-400">
+                    {status === "completed" ? "Completado" : status === "in_progress" ? "En progreso" : "Listo para empezar"}
+                  </p>
+                </div>
+                <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-3 text-sm">
+                  <div className="flex items-center gap-2 font-semibold text-slate-100">
+                    <Trophy className="h-4 w-4 text-brand-300" />
+                    Recompensa
+                  </div>
+                  <p className="mt-2 text-slate-400">Este paso empuja tu ruta y deja avance visible.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ExerciseWorkspace
+            exercise={exercise}
+            status={status}
+            initialAnswer={draft?.content ?? (exercise.responseFormat === "code" ? exercise.starterCode : "")}
+            restoredDraftUpdatedAt={draft?.updatedAt ?? null}
+            lessonHref={lesson ? `/lesson/${lesson.slug}` : "/roadmap"}
+            nextLessonHref={nextLesson ? `/lesson/${nextLesson.slug}` : null}
+          />
+        </div>
+        <div className="xl:sticky xl:top-4 xl:self-start">
           <MentorWidget
             context={{
               title: exercise.title,

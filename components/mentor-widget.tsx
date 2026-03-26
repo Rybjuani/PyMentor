@@ -119,20 +119,25 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
   }
 
   return (
-    <Card className="h-full rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.1),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] p-5">
+    <Card className="mission-grid h-full rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.1),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] p-5">
       <div className="flex items-start gap-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#0CB971,#4ecbff)] text-slate-950 shadow-[0_0_30px_rgba(29,211,139,0.2)]">
+        <div className="status-orb flex h-12 w-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#0CB971,#4ecbff)] text-slate-950 shadow-[0_0_30px_rgba(29,211,139,0.2)]">
           <Bot className="h-5 w-5" />
         </div>
         <div>
-          <h3 className="text-lg font-bold text-slate-50">Mentor IA</h3>
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="text-lg font-bold text-slate-50">Mentor IA</h3>
+            <span className="rounded-full border border-brand-400/15 bg-brand-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-100">
+              Compañero de misión
+            </span>
+          </div>
           <p className="mt-1 text-sm text-slate-400">
             Guía tranquila para {context.title.toLowerCase()} para que la persona nunca sienta que está sola.
           </p>
         </div>
       </div>
 
-      <div className="mt-5 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-4">
+      <div className="mt-5 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-4 shadow-[0_0_22px_rgba(29,211,139,0.08)]">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-300">
             Modo de ayuda actual
@@ -164,10 +169,10 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
                 void askMentor(item.prompt, item.mode);
               }}
               disabled={loading}
-              className="rounded-[22px] border border-slate-800 bg-slate-950/75 px-4 py-4 text-left transition hover:border-brand-400/15 hover:bg-brand-500/10 disabled:cursor-not-allowed disabled:opacity-70"
+              className="rounded-[22px] border border-slate-800 bg-slate-950/75 px-4 py-4 text-left transition hover:-translate-y-0.5 hover:border-brand-400/15 hover:bg-brand-500/10 disabled:cursor-not-allowed disabled:opacity-70"
             >
               <div className="flex items-start gap-3">
-                <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-slate-200">
+                <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-slate-200 ring-1 ring-white/5">
                   <Icon className="h-4 w-4" />
                 </div>
                 <div>
@@ -234,8 +239,8 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
                 key={`${message.role}-${index}`}
                 className={
                   message.role === "assistant"
-                    ? "rounded-[20px] border border-slate-800 bg-slate-900/80 px-4 py-4 text-sm leading-7 text-slate-300"
-                    : "rounded-[20px] border border-brand-400/15 bg-brand-500/10 px-4 py-4 text-sm leading-7 text-brand-100"
+                    ? "rounded-[20px] border border-slate-800 bg-slate-900/80 px-4 py-4 text-sm leading-7 text-slate-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
+                    : "rounded-[20px] border border-brand-400/15 bg-brand-500/10 px-4 py-4 text-sm leading-7 text-brand-100 shadow-[0_0_18px_rgba(29,211,139,0.06)]"
                 }
               >
                 <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">

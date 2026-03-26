@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CheckCircle2, CircleAlert, LoaderCircle, Sparkles } from "lucide-react";
+import { CheckCircle2, CircleAlert, Crosshair, LoaderCircle, ShieldCheck, Sparkles, Swords } from "lucide-react";
 import { ExerciseData, ExerciseEvaluationResult, ExerciseExecutionResult, ProgressStatus } from "@/types";
 import { Card } from "@/components/ui/card";
 import { CodePanel } from "@/components/code-panel";
@@ -145,7 +145,7 @@ export function ExerciseWorkspace({
 
   return (
     <div className="space-y-5">
-      <Card className="rounded-[30px]">
+      <Card className="mission-grid rounded-[30px]">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Ejercicio</p>
@@ -159,14 +159,38 @@ export function ExerciseWorkspace({
 
         <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_0.9fr]">
           <div className="rounded-[24px] border border-slate-800 bg-slate-950/70 p-5">
-            <p className="text-sm font-semibold text-slate-100">Tu tarea</p>
+            <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
+              <Crosshair className="h-4 w-4 text-brand-300" />
+              Tu tarea
+            </div>
             <p className="mt-3 text-sm leading-7 text-slate-400">{exercise.prompt}</p>
           </div>
-          <div className="rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-5 text-brand-100">
-            <p className="text-sm font-semibold text-brand-200">Criterio de finalización</p>
+          <div className="rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-5 text-brand-100 shadow-[0_0_22px_rgba(29,211,139,0.08)]">
+            <div className="flex items-center gap-2 text-sm font-semibold text-brand-200">
+              <ShieldCheck className="h-4 w-4" />
+              Criterio de finalización
+            </div>
             <p className="mt-3 text-sm leading-7">
               Este paso solo cuenta como completado cuando la respuesta muestra las señales clave que enseña la lección.
             </p>
+          </div>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Formato</p>
+            <p className="mt-2 text-sm font-semibold text-slate-100">
+              {exercise.responseFormat === "code" ? "Código" : "Texto"}
+            </p>
+          </div>
+          <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Estado</p>
+            <p className="mt-2 text-sm font-semibold text-slate-100">
+              {status === "completed" ? "Checkpoint cerrado" : status === "in_progress" ? "Checkpoint activo" : "Listo para empezar"}
+            </p>
+          </div>
+          <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Meta</p>
+            <p className="mt-2 text-sm font-semibold text-slate-100">Resolver con claridad, no con prisa</p>
           </div>
         </div>
       </Card>
@@ -184,7 +208,7 @@ export function ExerciseWorkspace({
           </div>
         </Card>
 
-        <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.08),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
+        <Card className="mission-grid rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.08),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Cómo encararlo</p>
           <div className="mt-4 space-y-3">
             {exercise.instructions.map((item) => (
@@ -299,7 +323,7 @@ export function ExerciseWorkspace({
         ) : null}
       </Card>
 
-      <Card className={`rounded-[30px] border ${feedback.tone}`}>
+      <Card className={`mission-grid rounded-[30px] border ${feedback.tone}`}>
         <div className="flex items-start gap-4">
           <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-black/15 ring-1 ring-white/10">
             <Icon className={`h-5 w-5 ${feedbackState === "incomplete" ? "animate-spin" : ""}`} />
@@ -359,8 +383,28 @@ export function ExerciseWorkspace({
                   : "Tu respuesta ya se ve suficientemente sólida para este paso. Márcala como completada para actualizar tu ruta."
                 : isFoundationsCapstone
                   ? "Usa las comprobaciones que faltan como guía. Este capstone busca que cierres la etapa con una solución clara, no perfecta."
-                  : "Usa las comprobaciones que faltan como guía y luego vuelve a revisar la respuesta."}
+              : "Usa las comprobaciones que faltan como guía y luego vuelve a revisar la respuesta."}
             </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-[18px] border border-white/10 bg-white/[0.03] px-4 py-3">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
+                <Swords className="h-4 w-4 text-brand-300" />
+                Recompensa
+              </div>
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                Cuando este ejercicio se cierre, tu ruta mostrará un avance visible y más sólido.
+              </p>
+            </div>
+            <div className="rounded-[18px] border border-white/10 bg-white/[0.03] px-4 py-3">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
+                <ShieldCheck className="h-4 w-4 text-brand-300" />
+                Enfoque
+              </div>
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                Aquí importa sostener la idea principal y el resultado, no buscar una perfección rígida.
+              </p>
+            </div>
+          </div>
           {nextLessonHref ? (
             <a href={nextLessonHref} className="mt-4 inline-flex text-sm font-semibold text-brand-300">
               Continuar a la siguiente lección

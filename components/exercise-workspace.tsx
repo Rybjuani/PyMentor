@@ -1,9 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CheckCircle2, CircleAlert, LoaderCircle, ShieldCheck } from "lucide-react";
+import { CheckCircle2, CircleAlert, LoaderCircle } from "lucide-react";
 import { ExerciseData, ExerciseEvaluationResult, ExerciseExecutionResult, ProgressStatus } from "@/types";
-import { Card } from "@/components/ui/card";
 import { CodePanel } from "@/components/code-panel";
 import { PythonPlayground } from "@/components/python-playground";
 import { ProgressAction } from "@/components/progress-action";
@@ -47,10 +46,7 @@ export function ExerciseWorkspace({
   isRoute3Capstone?: boolean;
 }) {
   const [answer, setAnswer] = useState(
-    initialAnswer ??
-      (exercise.responseFormat === "code"
-        ? exercise.starterCode
-        : "")
+    initialAnswer ?? (exercise.responseFormat === "code" ? exercise.starterCode : "")
   );
   const [evaluation, setEvaluation] = useState<ExerciseEvaluationResult | null>(null);
   const [checkingAnswer, setCheckingAnswer] = useState(false);
@@ -148,110 +144,117 @@ export function ExerciseWorkspace({
   }
 
   return (
-    <div className="space-y-6">
-      <Card className="rounded-[26px] p-5">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_280px]">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">Desafío</p>
-            <h2 className="mt-2 text-2xl font-bold text-slate-50">{exercise.title}</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-300">{exercise.prompt}</p>
+    <article className="rounded-[22px] border border-slate-800 bg-[linear-gradient(180deg,rgba(11,20,31,0.96),rgba(8,15,24,0.98))] p-5">
+      <section>
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Qué tienes que hacer</p>
+        <h2 className="mt-2 text-lg font-bold text-slate-50">{exercise.prompt}</h2>
+        <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_280px]">
+          <div className="min-w-0">
+            <CodePanel code={exercise.starterCode} />
           </div>
-          <div className="rounded-[20px] border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
-            <div className="flex items-center gap-2 font-semibold text-brand-50">
-              <ShieldCheck className="h-4 w-4" />
-              Para darlo por bueno
+          <div className="min-w-0">
+            <div className="space-y-3 text-sm leading-6 text-slate-300">
+              {exercise.instructions.map((item) => (
+                <div key={item}>{item}</div>
+              ))}
             </div>
-            <p className="mt-3 leading-6">
-              La respuesta tiene que mostrar la idea principal y pasar las comprobaciones clave del ejercicio.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
-          <div className="rounded-[20px] border border-slate-800 bg-slate-950/70 p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Código base</p>
-            <div className="mt-3">
-              <CodePanel code={exercise.starterCode} />
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div className="rounded-[20px] border border-slate-800 bg-slate-950/70 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Cómo encararlo</p>
-              <div className="mt-3 space-y-3">
-                {exercise.instructions.map((item) => (
-                  <div key={item} className="flex items-start gap-3 text-sm text-slate-300">
-                    <span className="mt-2 h-2 w-2 rounded-full bg-brand-300" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="rounded-[20px] border border-slate-800 bg-slate-950/70 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Pistas</p>
-              <div className="mt-3 space-y-3">
+            <details className="mt-4 rounded-[16px] border border-slate-800 bg-slate-950/60 px-4 py-3">
+              <summary className="cursor-pointer text-sm font-semibold text-slate-200">
+                Ver pistas
+              </summary>
+              <div className="mt-3 space-y-3 text-sm leading-6 text-slate-400">
                 {exercise.hints.map((hint) => (
-                  <div key={hint} className="text-sm leading-6 text-slate-300">
-                    {hint}
-                  </div>
+                  <div key={hint}>{hint}</div>
                 ))}
               </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-6 border-t border-slate-800 pt-6">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Práctica principal</p>
+        <div className="mt-4">
+          {exercise.playground ? (
+            <PythonPlayground
+              config={exercise.playground}
+              compact
+              initialCode={initialAnswer}
+              restoredDraftUpdatedAt={restoredDraftUpdatedAt}
+              code={exercise.responseFormat === "code" ? answer : undefined}
+              onCodeChange={exercise.responseFormat === "code" ? handleAnswerChange : undefined}
+              onRunComplete={setExecution}
+              draftScope={exercise.responseFormat === "code" ? "exercise" : undefined}
+              draftSlug={exercise.responseFormat === "code" ? exercise.slug : undefined}
+            />
+          ) : null}
+        </div>
+
+        <div className="mt-4">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h3 className="text-base font-semibold text-slate-50">{exercise.responseLabel}</h3>
+              <p className="mt-1 text-sm leading-6 text-slate-400">
+                {exercise.responseFormat === "code"
+                  ? "Edita la solución, ejecuta si hace falta y luego revísala."
+                  : "Escribe una respuesta breve y revísala contra el objetivo."}
+              </p>
+            </div>
+            <div className="rounded-full border border-slate-800 bg-slate-950/70 px-3 py-1 text-xs font-semibold text-slate-300">
+              {hasCheckedAnswer
+                ? `${displayEvaluation.matchedRules} de ${displayEvaluation.totalRules} comprobaciones`
+                : "Sin revisar"}
+            </div>
+          </div>
+
+          <textarea
+            rows={exercise.responseFormat === "code" ? 10 : 7}
+            className="mt-4 w-full rounded-[18px] border border-slate-800 bg-slate-950/90 px-4 py-4 font-mono text-sm leading-7 text-slate-100 outline-none focus:border-brand-400"
+            value={answer}
+            placeholder={exercise.responsePlaceholder}
+            onChange={(event) => handleAnswerChange(event.target.value)}
+          />
+
+          {restoredDraftUpdatedAt ? (
+            <p className="mt-3 text-xs font-medium text-brand-300">
+              Recuperamos tu trabajo guardado.
+            </p>
+          ) : null}
+        </div>
+      </section>
+
+      <section className="mt-6 border-t border-slate-800 pt-6">
+        <div className={`rounded-[18px] border px-4 py-4 text-sm ${feedback.tone}`}>
+          <div className="flex items-start gap-3">
+            <Icon className={`mt-0.5 h-4 w-4 shrink-0 ${feedbackState === "incomplete" ? "animate-spin" : ""}`} />
+            <div>
+              <p className="font-semibold">{feedback.title}</p>
+              <p className="mt-1 leading-6">{displayEvaluation.summary}</p>
+              <p className="mt-1 leading-6 opacity-90">{displayEvaluation.coaching}</p>
             </div>
           </div>
         </div>
-      </Card>
 
-      {exercise.playground ? (
-        <PythonPlayground
-          config={exercise.playground}
-          compact
-          initialCode={initialAnswer}
-          restoredDraftUpdatedAt={restoredDraftUpdatedAt}
-          code={exercise.responseFormat === "code" ? answer : undefined}
-          onCodeChange={exercise.responseFormat === "code" ? handleAnswerChange : undefined}
-          onRunComplete={setExecution}
-          draftScope={exercise.responseFormat === "code" ? "exercise" : undefined}
-          draftSlug={exercise.responseFormat === "code" ? exercise.slug : undefined}
-        />
-      ) : null}
-
-      <Card className="rounded-[26px] p-5">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <h2 className="text-xl font-bold text-slate-50">{exercise.responseLabel}</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-400">
-              {exercise.responseFormat === "code"
-                ? exercise.executionValidation?.requireRunBeforeCheck
-                  ? "Edita, ejecuta y luego revisa. Este ejercicio también mira la salida real."
-                  : "Edita la solución y luego revisa la respuesta."
-                : "Escribe una respuesta corta y revísala contra los criterios del ejercicio."}
-            </p>
-          </div>
-          <div className="rounded-full border border-slate-800 bg-slate-950/70 px-3 py-1 text-xs font-semibold text-slate-300">
-            {hasCheckedAnswer
-              ? `${displayEvaluation.matchedRules} de ${displayEvaluation.totalRules} comprobaciones`
-              : "Sin revisar todavía"}
-          </div>
-        </div>
-
-        <textarea
-          rows={11}
-          className="mt-4 w-full rounded-[22px] border border-slate-800 bg-slate-950/90 px-4 py-4 font-mono text-sm leading-7 text-slate-100 outline-none focus:border-brand-400"
-          value={answer}
-          placeholder={exercise.responsePlaceholder}
-          onChange={(event) => handleAnswerChange(event.target.value)}
-        />
-
-        {restoredDraftUpdatedAt ? (
-          <p className="mt-3 text-xs font-medium text-brand-300">
-            Recuperamos tu trabajo guardado para que sigas desde donde lo dejaste.
-          </p>
+        {displayEvaluation.checks.length > 0 ? (
+          <details className="mt-4 rounded-[16px] border border-slate-800 bg-slate-950/60 px-4 py-3">
+            <summary className="cursor-pointer text-sm font-semibold text-slate-200">
+              Ver comprobaciones
+            </summary>
+            <div className="mt-3 space-y-3">
+              {displayEvaluation.checks.map((check) => (
+                <div key={check.id} className="text-sm leading-6 text-slate-400">
+                  <span className="font-semibold text-slate-100">{check.label}:</span>{" "}
+                  {check.passed ? "bien" : check.feedbackWhenMissing}
+                </div>
+              ))}
+            </div>
+          </details>
         ) : null}
 
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           {status === "not_started" ? (
             <ProgressAction entityType="exercise" slug={exercise.slug} status="in_progress" variant="secondary">
-              Marcar en progreso
+              En progreso
             </ProgressAction>
           ) : null}
           <Button variant="secondary" className="w-full gap-2 sm:w-auto" onClick={() => void checkAnswer()} disabled={checkingAnswer}>
@@ -266,7 +269,7 @@ export function ExerciseWorkspace({
             requestBody={{ answer, execution }}
             onError={setRequestError}
           >
-            Marcar como completado
+            Completar ejercicio
           </ProgressAction>
           <a
             href={lessonHref}
@@ -279,7 +282,7 @@ export function ExerciseWorkspace({
         {!canComplete ? (
           <p className="mt-4 text-sm leading-6 text-slate-500">
             {exercise.executionValidation?.requireRunBeforeComplete
-              ? "Ejecuta el código y revisa la respuesta antes de marcarla."
+              ? "Ejecuta y revisa la respuesta antes de marcarla."
               : "Revisa la respuesta antes de marcarla como completada."}
           </p>
         ) : null}
@@ -289,62 +292,23 @@ export function ExerciseWorkspace({
             {requestError}
           </div>
         ) : null}
-      </Card>
 
-      <Card className={`rounded-[26px] border ${feedback.tone} p-5`}>
-        <div className="flex items-start gap-4">
-          <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-black/15 ring-1 ring-white/10">
-            <Icon className={`h-5 w-5 ${feedbackState === "incomplete" ? "animate-spin" : ""}`} />
-          </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] opacity-70">Retroalimentación</p>
-            <h3 className="mt-2 text-xl font-bold">{feedback.title}</h3>
-            <p className="mt-3 max-w-2xl text-sm leading-7">{displayEvaluation.summary}</p>
-            <p className="mt-2 max-w-2xl text-sm leading-7 opacity-90">{displayEvaluation.coaching}</p>
-          </div>
-        </div>
-
-        {displayEvaluation.checks.length > 0 ? (
-          <div className="mt-5 grid gap-3 md:grid-cols-2">
-            {displayEvaluation.checks.map((check) => (
-              <div
-                key={check.id}
-                className={`rounded-[18px] border px-4 py-4 text-sm ${
-                  check.passed
-                    ? "border-emerald-400/20 bg-black/15 text-slate-200"
-                    : "border-white/10 bg-black/10 text-slate-300"
-                }`}
-              >
-                <p className="font-semibold text-slate-50">{check.label}</p>
-                <p className="mt-2 leading-6">
-                  {check.passed ? "Esta parte está bien." : check.feedbackWhenMissing}
-                </p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="mt-5 rounded-[18px] bg-black/10 px-4 py-4 text-sm text-slate-300">
-            Ejecuta la revisión para ver comprobaciones concretas.
-          </div>
-        )}
-
-        <div className="mt-5 rounded-[20px] border border-white/10 bg-black/10 p-4 text-sm text-slate-300">
-          <p className="font-semibold text-slate-50">Siguiente paso</p>
-          <p className="mt-2 leading-6">
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-4 border-t border-slate-800 pt-4 text-sm">
+          <div className="text-slate-400">
             {status === "completed"
               ? isRoute3Capstone
-                ? "Este cierre ya quedó marcado. Puedes volver al panel y revisar la base completa."
+                ? "Este cierre ya cuenta dentro de la base actual."
                 : isFoundationsCapstone
-                  ? "Este cierre ya quedó marcado. Puedes volver al panel o abrir la ruta siguiente."
-                  : "Este ejercicio ya quedó resuelto. Puedes seguir con la siguiente lección."
+                  ? "Este cierre ya cuenta para abrir la siguiente ruta."
+                  : "Ejercicio resuelto."
               : canComplete
-                ? "La respuesta ya se sostiene. Márcala como completada para mover tu ruta."
-                : "Usa las comprobaciones que faltan como guía y vuelve a revisar."}
-          </p>
-          <div className="mt-4 flex flex-wrap gap-4">
+                ? "La respuesta ya se sostiene. Puedes cerrarla."
+                : "Ajusta lo que falta y vuelve a revisar."}
+          </div>
+          <div className="flex flex-wrap gap-4">
             {nextLessonHref ? (
               <a href={nextLessonHref} className="font-semibold text-brand-300">
-                Ir a la siguiente lección
+                Siguiente lección
               </a>
             ) : null}
             {(isFoundationsCapstone || isRoute3Capstone) && !nextLessonHref ? (
@@ -354,7 +318,7 @@ export function ExerciseWorkspace({
             ) : null}
           </div>
         </div>
-      </Card>
-    </div>
+      </section>
+    </article>
   );
 }

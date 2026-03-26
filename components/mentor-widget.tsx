@@ -9,7 +9,8 @@ import {
   Lightbulb,
   ListOrdered,
   LoaderCircle,
-  Sparkles
+  Sparkles,
+  X
 } from "lucide-react";
 import { mentorPrompts } from "@/lib/mock-data";
 import {
@@ -19,7 +20,6 @@ import {
   MentorResponseBody
 } from "@/types";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 
 interface MentorWidgetProps {
   context: MentorContextPayload;
@@ -29,27 +29,24 @@ interface MentorWidgetProps {
 const modeMeta = {
   explain: {
     icon: Sparkles,
-    title: "Explícame esto",
-    helper: "Aclara una idea sin rodeos."
+    title: "Explícame esto"
   },
   hint: {
     icon: Lightbulb,
-    title: "Dame una pista",
-    helper: "Te destraba sin resolverte todo."
+    title: "Dame una pista"
   },
   steps: {
     icon: ListOrdered,
-    title: "Ordénamelo",
-    helper: "Divide el problema en pasos."
+    title: "Ordénamelo"
   },
   debug: {
     icon: Bug,
-    title: "Ayúdame a depurar",
-    helper: "Señala qué revisar primero."
+    title: "Depurar"
   }
 } as const;
 
 export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
+  const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [activeMode, setActiveMode] = useState<MentorMode>("hint");
   const [messages, setMessages] = useState<MentorConversationMessage[]>([]);
@@ -68,6 +65,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
     setErrorMessage(null);
     setMessages(nextHistory);
     setInput("");
+    setOpen(true);
 
     try {
       const res = await fetch("/api/mentor", {
@@ -98,14 +96,14 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
       ]);
 
       if (data.provider === "fallback") {
-        setErrorMessage("El mentor respondió con una versión de respaldo. Puedes volver a intentarlo con una pregunta más concreta.");
+        setErrorMessage("El mentor respondió con una versión de respaldo. Intenta una pregunta más concreta si hace falta.");
       }
     } catch {
       setMessages([
         ...nextHistory,
         {
           role: "assistant",
-          content: "No pude responder ahora. Prueba con una pregunta más corta o vuelve a intentar en unos segundos."
+          content: "No pude responder ahora. Vuelve a intentar con una pregunta más corta."
         }
       ]);
       setErrorMessage("No se pudo conectar con el mentor.");
@@ -115,145 +113,138 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
   }
 
   return (
-    <Card className="rounded-[26px] border-brand-400/15 bg-[linear-gradient(180deg,rgba(13,24,35,0.98),rgba(9,18,28,0.98))] p-4 sm:p-5">
-      <div className="flex items-start gap-3">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-brand-500/15 text-brand-200">
-          <Bot className="h-5 w-5" />
-        </div>
-        <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-2">
-            <h3 className="text-lg font-bold text-slate-50">Mentor</h3>
-            <span className="rounded-full border border-brand-400/15 bg-brand-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-100">
-              A mano
-            </span>
-          </div>
-          <p className="mt-1 text-sm leading-6 text-slate-400">
-            Úsalo cuando te trabes en {context.pageType === "exercise" ? "este ejercicio" : "esta lección"}.
-            Primero pista, después explicación, recién al final solución parcial.
-          </p>
-        </div>
-      </div>
+    <>
+      <button
+        onClick={() => setOpen((value) => !value)}
+        className="fixed bottom-4 right-4 z-40 inline-flex items-center gap-2 rounded-full border border-brand-400/20 bg-[linear-gradient(135deg,#0CB971,#2de6a4)] px-4 py-3 text-sm font-semibold text-slate-950 shadow-[0_18px_40px_rgba(12,185,113,0.28)] transition hover:brightness-110"
+      >
+        <Bot className="h-4 w-4" />
+        Ayuda
+      </button>
 
-      <div className="mt-4 grid gap-2 sm:grid-cols-2">
-        {mentorPrompts.map((item) => {
-          const Icon = modeMeta[item.mode].icon;
-          const isActive = activeMode === item.mode;
-
-          return (
-            <button
-              key={item.label}
-              onClick={() => {
-                setActiveMode(item.mode);
-                void askMentor(item.prompt, item.mode);
-              }}
-              disabled={loading}
-              className={`rounded-2xl border px-3 py-3 text-left transition ${
-                isActive
-                  ? "border-brand-400/20 bg-brand-500/10"
-                  : "border-slate-800 bg-slate-950/70 hover:border-slate-700"
-              } disabled:cursor-not-allowed disabled:opacity-70`}
-            >
-              <div className="flex items-start gap-3">
-                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-slate-200">
-                  <Icon className="h-4 w-4" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-slate-100">{modeMeta[item.mode].title}</p>
-                  <p className="mt-1 text-xs leading-5 text-slate-400">{modeMeta[item.mode].helper}</p>
-                </div>
-              </div>
-            </button>
-          );
-        })}
-      </div>
-
-      <div className="mt-4 rounded-[22px] border border-slate-800 bg-slate-950/75 p-4">
-        <label htmlFor="mentor-input" className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-          Pregunta directa
-        </label>
-        <textarea
-          id="mentor-input"
-          value={input}
-          onChange={(event) => setInput(event.target.value)}
-          rows={compact ? 3 : 4}
-          className="mt-3 w-full resize-none rounded-2xl border border-slate-800 bg-slate-950 px-4 py-3 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-brand-400"
-          placeholder="Ejemplo: ¿qué parte de esta condición está fallando?"
-        />
-        <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs leading-5 text-slate-500">
-            Contexto activo: {context.topic}
-          </p>
-          <Button
-            className="w-full gap-2 sm:w-auto"
-            onClick={() => {
-              void askMentor(input, activeMode);
-            }}
+      {open ? (
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-[2px]" onClick={() => setOpen(false)}>
+          <aside
+            className={`absolute bottom-0 right-0 top-auto flex max-h-[88vh] w-full flex-col rounded-t-[24px] border border-slate-800 bg-[linear-gradient(180deg,rgba(10,18,29,0.98),rgba(7,13,20,0.98))] p-4 shadow-[0_-24px_60px_rgba(0,0,0,0.42)] sm:top-4 sm:bottom-4 sm:right-4 sm:w-[420px] sm:rounded-[24px] ${compact ? "sm:w-[380px]" : ""}`}
+            onClick={(event) => event.stopPropagation()}
           >
-            {loading ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <CornerDownLeft className="h-4 w-4" />}
-            Preguntar
-          </Button>
-        </div>
-      </div>
-
-      <div className="mt-4 rounded-[22px] border border-slate-800 bg-slate-950/75 p-4">
-        <div className="flex items-center justify-between gap-3">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Respuestas</p>
-          {loading ? (
-            <span className="inline-flex items-center gap-2 text-xs font-medium text-brand-300">
-              <LoaderCircle className="h-3.5 w-3.5 animate-spin" />
-              Pensando
-            </span>
-          ) : null}
-        </div>
-
-        <div className={`mt-4 space-y-3 overflow-y-auto pr-1 ${compact ? "max-h-[280px]" : "max-h-[420px]"}`}>
-          {messages.length === 0 ? (
-            <div className="rounded-[18px] border border-slate-800 bg-slate-900/70 px-4 py-4 text-sm leading-6 text-slate-300">
-              Empieza por una pista o formula la duda exacta. Cuanto más concreta sea tu pregunta, más útil será la respuesta.
-            </div>
-          ) : (
-            messages.map((message, index) => (
-              <div
-                key={`${message.role}-${index}`}
-                className={
-                  message.role === "assistant"
-                    ? "rounded-[18px] border border-slate-800 bg-slate-900/80 px-4 py-4 text-sm text-slate-300"
-                    : "rounded-[18px] border border-brand-400/15 bg-brand-500/10 px-4 py-4 text-sm text-brand-100"
-                }
-              >
-                <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
-                  {message.role === "assistant" ? "Mentor" : "Tú"}
-                </p>
-                <div className="space-y-3">
-                  {formatMentorMessage(message.content).map((block, blockIndex) =>
-                    block.type === "bullet" ? (
-                      <div key={`${message.role}-${index}-bullet-${blockIndex}`} className="flex items-start gap-3">
-                        <span className="mt-2 h-2 w-2 rounded-full bg-brand-300" />
-                        <p className="whitespace-pre-wrap break-words leading-6">{block.text}</p>
-                      </div>
-                    ) : (
-                      <p
-                        key={`${message.role}-${index}-paragraph-${blockIndex}`}
-                        className="whitespace-pre-wrap break-words leading-6"
-                      >
-                        {block.text}
-                      </p>
-                    )
-                  )}
+            <div className="flex items-start justify-between gap-3 border-b border-slate-800 pb-4">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <Bot className="h-4 w-4 text-brand-300" />
+                  <h3 className="text-base font-bold text-slate-50">Mentor</h3>
                 </div>
+                <p className="mt-1 text-sm leading-6 text-slate-400">
+                  Ayuda para {context.pageType === "exercise" ? "este ejercicio" : "esta lección"} sin salir del flujo.
+                </p>
               </div>
-            ))
-          )}
-        </div>
+              <button
+                onClick={() => setOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 bg-slate-950/80 text-slate-400"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
 
-        {errorMessage ? (
-          <div className="mt-4 flex items-start gap-3 rounded-[18px] border border-amber-400/20 bg-amber-500/10 px-4 py-4 text-sm text-amber-100">
-            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-            <p>{errorMessage}</p>
-          </div>
-        ) : null}
-      </div>
-    </Card>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {mentorPrompts.map((item) => {
+                const Icon = modeMeta[item.mode].icon;
+                const isActive = activeMode === item.mode;
+
+                return (
+                  <button
+                    key={item.label}
+                    onClick={() => {
+                      setActiveMode(item.mode);
+                      void askMentor(item.prompt, item.mode);
+                    }}
+                    disabled={loading}
+                    className={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-semibold transition ${
+                      isActive
+                        ? "border-brand-400/20 bg-brand-500/10 text-brand-100"
+                        : "border-slate-800 bg-slate-950/70 text-slate-300"
+                    }`}
+                  >
+                    <Icon className="h-3.5 w-3.5" />
+                    {modeMeta[item.mode].title}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-4 flex-1 overflow-y-auto">
+              {messages.length === 0 ? (
+                <div className="rounded-[18px] border border-slate-800 bg-slate-950/70 px-4 py-4 text-sm leading-6 text-slate-300">
+                  Pregunta algo puntual o usa uno de los accesos rápidos. Lo importante es destrabarte sin perder foco.
+                </div>
+              ) : (
+                <div className="space-y-3 pr-1">
+                  {messages.map((message, index) => (
+                    <div
+                      key={`${message.role}-${index}`}
+                      className={
+                        message.role === "assistant"
+                          ? "rounded-[18px] border border-slate-800 bg-slate-900/80 px-4 py-4 text-sm text-slate-300"
+                          : "rounded-[18px] border border-brand-400/15 bg-brand-500/10 px-4 py-4 text-sm text-brand-100"
+                      }
+                    >
+                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                        {message.role === "assistant" ? "Mentor" : "Tú"}
+                      </p>
+                      <div className="space-y-3">
+                        {formatMentorMessage(message.content).map((block, blockIndex) =>
+                          block.type === "bullet" ? (
+                            <div key={`${message.role}-${index}-bullet-${blockIndex}`} className="flex items-start gap-3">
+                              <span className="mt-2 h-2 w-2 rounded-full bg-brand-300" />
+                              <p className="whitespace-pre-wrap break-words leading-6">{block.text}</p>
+                            </div>
+                          ) : (
+                            <p
+                              key={`${message.role}-${index}-paragraph-${blockIndex}`}
+                              className="whitespace-pre-wrap break-words leading-6"
+                            >
+                              {block.text}
+                            </p>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="mt-4 border-t border-slate-800 pt-4">
+              <textarea
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+                rows={compact ? 3 : 4}
+                className="w-full resize-none rounded-2xl border border-slate-800 bg-slate-950 px-4 py-3 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-brand-400"
+                placeholder="¿Dónde está el error o qué parte no entiendes?"
+              />
+              <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-xs leading-5 text-slate-500">Contexto: {context.topic}</p>
+                <Button
+                  className="w-full gap-2 sm:w-auto"
+                  onClick={() => {
+                    void askMentor(input, activeMode);
+                  }}
+                >
+                  {loading ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <CornerDownLeft className="h-4 w-4" />}
+                  Preguntar
+                </Button>
+              </div>
+              {errorMessage ? (
+                <div className="mt-3 flex items-start gap-3 rounded-[18px] border border-amber-400/20 bg-amber-500/10 px-4 py-4 text-sm text-amber-100">
+                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                  <p>{errorMessage}</p>
+                </div>
+              ) : null}
+            </div>
+          </aside>
+        </div>
+      ) : null}
+    </>
   );
 }
 

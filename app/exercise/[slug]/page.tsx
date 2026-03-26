@@ -4,7 +4,13 @@ import { AppShell } from "@/components/app-shell";
 import { ExerciseWorkspace } from "@/components/exercise-workspace";
 import { MentorWidget } from "@/components/mentor-widget";
 import { SignOutButton } from "@/components/sign-out-button";
-import { getExerciseBySlug, getExerciseStatus, getLessonBySlug, getNextLesson } from "@/lib/course";
+import {
+  getExerciseBySlug,
+  getExerciseStatus,
+  getLessonBySlug,
+  getLessonPosition,
+  getNextLesson
+} from "@/lib/course";
 import { getDraftForUser } from "@/lib/drafts";
 import { getProgressForUser } from "@/lib/user-progress";
 
@@ -24,8 +30,9 @@ export default async function ExercisePage({
   const status = getExerciseStatus(progress, exercise.slug);
   const lesson = getLessonBySlug(exercise.lessonSlug);
   const nextLesson = lesson ? getNextLesson(lesson.slug) : null;
-  const isFoundationsCapstone = exercise.moduleSlug === "foundations-capstone";
-  const isRoute3Capstone = exercise.moduleSlug === "route3-capstone";
+  const lessonPosition = lesson ? getLessonPosition(lesson) : null;
+  const isModuleCapstone = lessonPosition ? lessonPosition.current === lessonPosition.total : false;
+  const isFinalModuleCapstone = isModuleCapstone && !nextLesson;
   const draft =
     exercise.responseFormat === "code"
       ? await getDraftForUser({
@@ -54,8 +61,8 @@ export default async function ExercisePage({
           restoredDraftUpdatedAt={draft?.updatedAt ?? null}
           lessonHref={lesson ? `/lesson/${lesson.slug}` : "/roadmap"}
           nextLessonHref={nextLesson ? `/lesson/${nextLesson.slug}` : null}
-          isFoundationsCapstone={isFoundationsCapstone}
-          isRoute3Capstone={isRoute3Capstone}
+          isModuleCapstone={isModuleCapstone}
+          isFinalModuleCapstone={isFinalModuleCapstone}
         />
       </section>
 

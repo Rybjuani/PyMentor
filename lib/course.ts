@@ -1,11 +1,11 @@
 import { courseExercises, courseLessons, courseModules } from "@/lib/course-content";
 import { CourseProgress, ExerciseData, LessonData, ModuleProgressSummary, ProgressStatus } from "@/types";
 
-export const FOUNDATIONS_CAPSTONE_MODULE_SLUG = "foundations-capstone";
-export const SECOND_TRACK_START_MODULE_SLUG = "basic-files";
-export const SECOND_TRACK_CAPSTONE_MODULE_SLUG = "route2-capstone";
-export const THIRD_TRACK_START_MODULE_SLUG = "simple-multi-file-programs";
-export const THIRD_TRACK_CAPSTONE_MODULE_SLUG = "route3-capstone";
+export const FOUNDATIONS_CAPSTONE_MODULE_SLUG = "python-inicial";
+export const SECOND_TRACK_START_MODULE_SLUG = "python-practico";
+export const SECOND_TRACK_CAPSTONE_MODULE_SLUG = "python-practico";
+export const THIRD_TRACK_START_MODULE_SLUG = "python-estructurado";
+export const THIRD_TRACK_CAPSTONE_MODULE_SLUG = "python-estructurado";
 
 export function getAllModules() {
   return [...courseModules].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
@@ -246,7 +246,7 @@ export function buildRecentActivity(progress: CourseProgress) {
 
   if (items.length === 0) {
     return [
-      "Empezaste tu ruta de Python",
+      "Empezaste tu base de Python",
       "Abriste tu espacio de aprendizaje",
       "Tu primer paso completado va a aparecer aquí"
     ];

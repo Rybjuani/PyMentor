@@ -16,7 +16,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "PyMentor",
   description:
-    "Aprende Python con una base real: tres rutas, práctica útil, proyectos y mentor integrado.",
+    "Aprende Python con una base real: tres módulos, práctica útil, proyectos y mentor integrado.",
   themeColor: "#08131B",
   icons: {
     icon: [

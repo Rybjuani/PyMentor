@@ -5,7 +5,7 @@ import { BrandMark } from "@/components/brand-mark";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { href: "/#rutas", label: "Rutas" },
+  { href: "/#rutas", label: "Módulos" },
   { href: "/#mentor", label: "Mentor" },
   { href: "/#practica", label: "Práctica" }
 ];

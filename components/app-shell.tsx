@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 const items = [
   { href: "/dashboard", label: "Panel", icon: LayoutDashboard },
-  { href: "/roadmap", label: "Ruta", icon: Route },
+  { href: "/roadmap", label: "Módulos", icon: Route },
   { href: "/lesson/what-is-programming", label: "Lección", icon: Sparkles },
   { href: "/exercise/welcome-message-fix", label: "Ejercicio", icon: Bot }
 ];

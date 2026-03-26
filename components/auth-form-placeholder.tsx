@@ -123,7 +123,7 @@ export function AuthFormPlaceholder({
         <div className="mt-6 rounded-2xl border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
           {mode === "signup"
             ? "Vas a empezar con una bienvenida breve y tu primera lección de Python ya preparada."
-            : "Tu progreso de la ruta, tus lecciones y tus ejercicios quedan vinculados a esta cuenta."}
+            : "Tu progreso, tus lecciones y tus ejercicios quedan vinculados a esta cuenta."}
         </div>
       )}
 

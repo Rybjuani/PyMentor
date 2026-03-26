@@ -33,8 +33,8 @@ export function ExerciseWorkspace({
   restoredDraftUpdatedAt,
   lessonHref,
   nextLessonHref,
-  isFoundationsCapstone = false,
-  isRoute3Capstone = false
+  isModuleCapstone = false,
+  isFinalModuleCapstone = false
 }: {
   exercise: ExerciseData;
   status: ProgressStatus;
@@ -42,8 +42,8 @@ export function ExerciseWorkspace({
   restoredDraftUpdatedAt?: string | Date | null;
   lessonHref: string;
   nextLessonHref?: string | null;
-  isFoundationsCapstone?: boolean;
-  isRoute3Capstone?: boolean;
+  isModuleCapstone?: boolean;
+  isFinalModuleCapstone?: boolean;
 }) {
   const [answer, setAnswer] = useState(
     initialAnswer ?? (exercise.responseFormat === "code" ? exercise.starterCode : "")
@@ -86,7 +86,7 @@ export function ExerciseWorkspace({
       ? {
           ...latestEvaluation,
           state: "correct" as const,
-          summary: "Este ejercicio ya figura como completado en tu ruta.",
+          summary: "Este ejercicio ya figura como completado en tu progreso.",
           coaching: "Puedes seguir probando variantes, volver a la lección o pasar al siguiente paso."
         }
       : latestEvaluation;
@@ -300,10 +300,10 @@ export function ExerciseWorkspace({
         <div className="mt-5 flex flex-wrap items-center justify-between gap-4 border-t border-slate-800 pt-4 text-sm">
           <div className="text-slate-400">
             {status === "completed"
-              ? isRoute3Capstone
+              ? isFinalModuleCapstone
                 ? "Este cierre ya cuenta dentro de la base actual."
-                : isFoundationsCapstone
-                  ? "Este cierre ya cuenta para abrir la siguiente ruta."
+                : isModuleCapstone
+                  ? "Este cierre ya cuenta para abrir el siguiente módulo."
                   : "Ejercicio resuelto."
               : canComplete
                 ? "La respuesta ya se sostiene. Puedes cerrarla."
@@ -312,10 +312,10 @@ export function ExerciseWorkspace({
           <div className="flex flex-wrap gap-4">
             {nextLessonHref ? (
               <a href={nextLessonHref} className="font-semibold text-brand-300">
-                Siguiente lección
+                {isModuleCapstone ? "Abrir siguiente módulo" : "Siguiente lección"}
               </a>
             ) : null}
-            {(isFoundationsCapstone || isRoute3Capstone) && !nextLessonHref ? (
+            {isFinalModuleCapstone ? (
               <a href="/dashboard" className="font-semibold text-brand-300">
                 Volver al panel
               </a>

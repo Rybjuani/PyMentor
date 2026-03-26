@@ -102,13 +102,13 @@ export function OnboardingFlow({
           <div className="rounded-[22px] border border-white/8 bg-white/5 p-4">
             <p className="font-semibold">3. Mantener visible el avance</p>
             <p className="mt-2 text-sm leading-6 text-slate-300">
-              Tu ruta, tu actividad y tu racha se actualizan a medida que avanzas.
+              Tu progreso, tu actividad y tu racha se actualizan a medida que avanzas.
             </p>
           </div>
           <div className="rounded-[22px] border border-white/8 bg-white/5 p-4">
             <p className="font-semibold">4. Cerrar una primera etapa real</p>
             <p className="mt-2 text-sm leading-6 text-slate-300">
-              El recorrido sigue creciendo por rutas, pero siempre con cierres visibles para que sepas, con claridad, lo que ya dominaste.
+              El recorrido sigue creciendo por módulos, pero siempre con cierres visibles para que sepas, con claridad, lo que ya dominaste.
             </p>
           </div>
         </div>

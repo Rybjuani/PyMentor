@@ -14,7 +14,7 @@ export default async function LoginPage() {
       <AuthFormPlaceholder
         mode="login"
         title="Qué bueno verte de nuevo"
-        subtitle="Inicia sesión para seguir con tu ruta de Python y retomar donde la dejaste."
+        subtitle="Inicia sesión para seguir con tu base de Python y retomar donde la dejaste."
         alternateHref="/signup"
         alternateLabel="¿Necesitas una cuenta? Regístrate"
       />

@@ -39,8 +39,8 @@ export default async function LessonPage({
   const previousLesson = getPreviousLesson(lesson.slug);
   const nextLesson = getNextLesson(lesson.slug);
   const exercise = getExerciseByLessonSlug(lesson.slug);
-  const isFoundationsCapstone = lesson.moduleSlug === "foundations-capstone";
-  const isRoute3Capstone = lesson.moduleSlug === "route3-capstone";
+  const isModuleCapstone = position.current === position.total;
+  const isFinalModuleCapstone = isModuleCapstone && !nextLesson;
   const lessonDraft = lesson.playground
     ? await getDraftForUser({
         userId: user.id,
@@ -191,10 +191,10 @@ export default async function LessonPage({
 
             <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-800/70 pt-4">
               <div className="text-sm text-slate-400">
-                {isRoute3Capstone
-                  ? "Al completar esta lección cierras Ruta 3 y la base actual."
-                  : isFoundationsCapstone
-                    ? "Al completar esta lección cierras fundamentos y abres la siguiente ruta."
+                {isFinalModuleCapstone
+                  ? "Al completar esta lección cierras el módulo 3 y la base actual."
+                  : isModuleCapstone
+                    ? "Al completar esta lección cierras este módulo y abres el siguiente."
                     : "Completarla mueve tu progreso y habilita el siguiente paso."}
               </div>
               <div className="flex flex-wrap gap-3">
@@ -205,7 +205,7 @@ export default async function LessonPage({
                 ) : null}
                 {nextLesson ? (
                   <Link href={`/lesson/${nextLesson.slug}`} className="font-semibold text-brand-300">
-                    {isFoundationsCapstone ? `Abrir nueva etapa` : "Siguiente lección"}
+                    {isModuleCapstone ? "Abrir siguiente módulo" : "Siguiente lección"}
                   </Link>
                 ) : null}
               </div>
@@ -219,10 +219,10 @@ export default async function LessonPage({
               Anterior: {previousLesson.title}
             </Link>
           ) : (
-            <span>Inicio de la ruta</span>
+            <span>Inicio del módulo</span>
           )}
 
-          {(isFoundationsCapstone || isRoute3Capstone) && !nextLesson ? (
+          {isFinalModuleCapstone ? (
             <Link href="/dashboard" className="font-semibold text-brand-300">
               Volver al panel
             </Link>

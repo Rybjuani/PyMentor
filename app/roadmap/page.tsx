@@ -32,8 +32,8 @@ export default async function RoadmapPage() {
 
   return (
     <AppShell
-      title="Ruta de aprendizaje"
-      description="Una base de Python ordenada en tres rutas encadenadas: fundamentos, práctica útil y herramientas estructuradas."
+      title="Módulos de aprendizaje"
+      description="Una base de Python ordenada en tres módulos encadenados: fundamentos útiles, datos y utilidades, y herramientas estructuradas."
       userName={user.name}
       actions={<SignOutButton />}
     >
@@ -52,45 +52,45 @@ export default async function RoadmapPage() {
         <ProgressBar value={overall.percent} className="mt-5" />
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/60 p-3.5 text-sm text-slate-300">
-            <p className="font-semibold text-slate-100">Ruta 1</p>
-            <p className="mt-2 text-slate-400">{foundationsModules.length} módulos de fundamentos y primer cierre formal.</p>
+            <p className="font-semibold text-slate-100">Módulo 1</p>
+            <p className="mt-2 text-slate-400">{foundationsModules.length} etapa inicial para salir de la sintaxis aislada y entrar a scripts útiles.</p>
           </div>
           <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/60 p-3.5 text-sm text-slate-300">
-            <p className="font-semibold text-slate-100">Ruta 2</p>
-            <p className="mt-2 text-slate-400">{secondTrackModules.length} módulos de utilidades, archivos e input.</p>
+            <p className="font-semibold text-slate-100">Módulo 2</p>
+            <p className="mt-2 text-slate-400">{secondTrackModules.length} etapa intermedia con estructuras de datos, strings, archivos y utilidades reales.</p>
           </div>
           <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/60 p-3.5 text-sm text-slate-300">
-            <p className="font-semibold text-slate-100">Ruta 3</p>
-            <p className="mt-2 text-slate-400">{thirdTrackModules.length} módulos de organización multiarchivo y cierre actual.</p>
+            <p className="font-semibold text-slate-100">Módulo 3</p>
+            <p className="mt-2 text-slate-400">{thirdTrackModules.length} etapa avanzada base con diseño más limpio, JSON, parsing y proyecto final.</p>
           </div>
         </div>
         {baseJourneyCompleted ? (
           <div className="mt-4 rounded-[16px] border border-brand-400/14 bg-brand-500/10 p-3.5 text-sm text-brand-100">
-            La base actual ya quedó cerrada. La ruta ahora funciona como historial útil para repasar y revisar proyectos.
+            La base actual ya quedó cerrada. Los módulos ahora funcionan como historial útil para repasar y revisar proyectos.
           </div>
         ) : null}
       </Card>
 
       <RouteSection
-        title="Ruta 1"
-        subtitle="Fundamentos de Python"
-        description="Variables, decisiones, bucles, funciones, estructuras de datos y primeros proyectos."
+        title="Módulo 1"
+        subtitle="Fundamentos útiles"
+        description="Leer código, producir salidas, usar input, validar datos, repetir tareas, ordenar con funciones y cerrar con una mini app."
         modules={foundationsModules}
         progress={progress}
       />
 
       <RouteSection
-        title="Ruta 2"
-        subtitle="Python práctico 2"
-        description="Archivos, organización simple, utilidades pequeñas y flujo de datos más útil."
+        title="Módulo 2"
+        subtitle="Datos y utilidades"
+        description="Listas, diccionarios, strings, archivos, módulos estándar y una utilidad que ya transforma datos con intención."
         modules={secondTrackModules}
         progress={progress}
       />
 
       <RouteSection
-        title="Ruta 3"
+        title="Módulo 3"
         subtitle="Herramientas estructuradas"
-        description="Programas multiarchivo, reparto claro de responsabilidades y cierre de la base actual."
+        description="Scripts más limpios, clases cuando aportan, JSON, parsing, arquitectura multiarchivo y un cierre final defendible."
         modules={thirdTrackModules}
         progress={progress}
       />

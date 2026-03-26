@@ -14,7 +14,7 @@ export default async function SignupPage() {
       <AuthFormPlaceholder
         mode="signup"
         title="Crea tu cuenta"
-        subtitle="Empieza con una ruta de Python clara, práctica guiada y un mentor IA cuando necesites ayuda."
+        subtitle="Empieza con una base de Python clara, práctica guiada y un mentor IA cuando necesites ayuda."
         alternateHref="/login"
         alternateLabel="¿Ya tienes una cuenta? Inicia sesión"
       />

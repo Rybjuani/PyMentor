@@ -7,8 +7,8 @@ import { courseModules } from "@/lib/course-content";
 
 const valuePoints = [
   {
-    title: "Tres rutas completas",
-    description: "Fundamentos, práctica útil y programas multiarchivo. No es una ruta mínima."
+    title: "Tres módulos con salto real",
+    description: "Fundamentos, utilidades con datos y herramientas más estructuradas. No es un recorrido mínimo."
   },
   {
     title: "Mentor dentro del flujo",
@@ -33,7 +33,7 @@ export default function HomePage() {
                 Base completa de Python
               </div>
               <h1 className="mt-5 max-w-4xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Aprende Python con una ruta seria, práctica y cerrable.
+                Aprende Python con una base seria, práctica y defendible.
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
                 PyMentor está diseñado para salir con una base defendible: fundamentos sólidos, utilidades pequeñas,
@@ -43,7 +43,7 @@ export default function HomePage() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button href="/signup" className="w-full sm:w-auto">Empezar</Button>
                 <Button href="/roadmap" variant="ghost" className="w-full sm:w-auto">
-                  Ver la ruta
+                  Ver los módulos
                 </Button>
               </div>
 
@@ -61,7 +61,7 @@ export default function HomePage() {
               <div className="flex items-center gap-3">
                 <BrandMark className="h-12 w-12 rounded-[1rem]" compact />
                 <div>
-                  <p className="text-sm font-semibold text-slate-50">Lo que sostienen las 3 rutas</p>
+                  <p className="text-sm font-semibold text-slate-50">Lo que sostienen los 3 módulos</p>
                   <p className="text-sm text-slate-400">Una base útil, no decorativa</p>
                 </div>
               </div>
@@ -69,28 +69,28 @@ export default function HomePage() {
                 <div className="rounded-[20px] border border-slate-800 bg-slate-950/70 p-4">
                   <div className="flex items-center gap-2 font-semibold text-slate-100">
                     <TerminalSquare className="h-4 w-4 text-brand-300" />
-                    Ruta 1
+                    Módulo 1
                   </div>
                   <p className="mt-2 text-sm leading-6 text-slate-400">
-                    Variables, condicionales, bucles, funciones, estructuras de datos y primeros proyectos.
+                    Variables, `input()`, decisiones, bucles, funciones y un primer capstone útil.
                   </p>
                 </div>
                 <div className="rounded-[20px] border border-slate-800 bg-slate-950/70 p-4">
                   <div className="flex items-center gap-2 font-semibold text-slate-100">
                     <FolderGit2 className="h-4 w-4 text-brand-300" />
-                    Ruta 2
+                    Módulo 2
                   </div>
                   <p className="mt-2 text-sm leading-6 text-slate-400">
-                    Archivos, input, consulta, actualización y utilidades más cercanas a algo que sí usarías.
+                    Listas, diccionarios, strings, archivos y utilidades que ya trabajan con datos reales.
                   </p>
                 </div>
                 <div className="rounded-[20px] border border-slate-800 bg-slate-950/70 p-4">
                   <div className="flex items-center gap-2 font-semibold text-slate-100">
                     <Bot className="h-4 w-4 text-brand-300" />
-                    Ruta 3
+                    Módulo 3
                   </div>
                   <p className="mt-2 text-sm leading-6 text-slate-400">
-                    Programas multiarchivo simples, mejor reparto de responsabilidades y cierres más fuertes.
+                    Scripts más limpios, JSON, parsing, arquitectura multiarchivo y un proyecto final más serio.
                   </p>
                 </div>
               </div>
@@ -152,7 +152,7 @@ export default function HomePage() {
                 Empezar ahora
               </Button>
               <Link href="/roadmap" className="inline-flex items-center gap-2 text-sm font-semibold text-white">
-                Revisar las 3 rutas <ArrowRight className="h-4 w-4" />
+                Revisar los 3 módulos <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>

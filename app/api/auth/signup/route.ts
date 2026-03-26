@@ -51,7 +51,7 @@ export async function POST(request: Request) {
   await recordActivity({
     userId: user.id,
     type: "account_created",
-    description: "Creaste tu cuenta de PyMentor y abriste tu ruta de Python."
+    description: "Creaste tu cuenta de PyMentor y abriste tu base de Python."
   });
 
   return NextResponse.json({ ok: true });

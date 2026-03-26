@@ -10,7 +10,6 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import {
   getAllModules,
   getCurrentLearningFocus,
-  getFoundationsModules,
   getModuleBySlug,
   getModuleProgress,
   getOverallLessonProgress,
@@ -38,7 +37,6 @@ export default async function DashboardPage() {
   const completedModules = modules.filter(
     (module) => getModuleProgress(progress, module.slug).status === "completed"
   ).length;
-  const foundationsModules = getFoundationsModules();
   const secondTrackFocus = Boolean(currentFocus?.lesson?.moduleSlug && isModuleInSecondTrack(currentFocus.lesson.moduleSlug));
   const thirdTrackFocus = Boolean(currentFocus?.lesson?.moduleSlug && isModuleInThirdTrack(currentFocus.lesson.moduleSlug));
 
@@ -53,36 +51,36 @@ export default async function DashboardPage() {
 
   const continueLabel =
     baseJourneyCompleted
-      ? "Revisar la ruta"
+      ? "Revisar módulos"
       : currentFocus?.type === "exercise"
         ? "Seguir ejercicio"
         : currentFocus?.lesson
           ? "Seguir lección"
-          : "Abrir ruta";
+          : "Abrir módulos";
 
   const achievementPreview = [
     {
       id: "first-lesson",
       title: "Primera lección completada",
-      description: "Abriste la ruta con una primera victoria real.",
+      description: "Abriste la base con una primera victoria real.",
       state: overall.completed > 0 ? "earned" : "next"
     },
     {
       id: "foundations-finish",
-      title: "Ruta 1 cerrada",
-      description: "Terminaste la base de fundamentos.",
+      title: "Módulo 1 cerrado",
+      description: "Terminaste la base inicial de fundamentos útiles.",
       state: foundationsCompleted ? "earned" : overall.completed > 0 ? "next" : "locked"
     },
     {
       id: "route2-finish",
-      title: "Ruta 2 cerrada",
-      description: "Convertiste la base en utilidades más útiles.",
+      title: "Módulo 2 cerrado",
+      description: "Convertiste la base en utilidades que ya trabajan con datos.",
       state: secondTrackCompleted ? "earned" : foundationsCompleted ? "next" : "locked"
     },
     {
       id: "base-finish",
       title: "Base actual completada",
-      description: "Cerraste las tres rutas actuales.",
+      description: "Cerraste los tres módulos actuales.",
       state: baseJourneyCompleted ? "earned" : secondTrackCompleted ? "next" : "locked"
     }
   ] as const;
@@ -118,12 +116,12 @@ export default async function DashboardPage() {
                 {baseJourneyCompleted
                   ? "Base actual cerrada"
                   : thirdTrackFocus
-                    ? "Ruta 3 activa"
+                    ? "Módulo 3 activo"
                     : secondTrackFocus
-                      ? "Ruta 2 activa"
+                      ? "Módulo 2 activo"
                       : foundationsCompleted
-                        ? "Fundamentos cerrados"
-                        : "Ruta 1 activa"}
+                        ? "Módulo 1 cerrado"
+                        : "Módulo 1 activo"}
               </p>
             </div>
             <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/60 p-3.5">
@@ -135,7 +133,7 @@ export default async function DashboardPage() {
             <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/60 p-3.5">
               <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">Siguiente acción</p>
               <p className="mt-2 text-sm font-semibold text-slate-100">
-                {currentFocus?.type === "exercise" ? "Resolver ejercicio" : currentFocus?.lesson ? "Continuar lección" : "Abrir ruta"}
+                {currentFocus?.type === "exercise" ? "Resolver ejercicio" : currentFocus?.lesson ? "Continuar lección" : "Abrir módulos"}
               </p>
             </div>
           </div>
@@ -151,7 +149,7 @@ export default async function DashboardPage() {
               href="/roadmap"
               className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-100 ring-1 ring-slate-700"
             >
-              Ver ruta completa
+              Ver módulos
             </Link>
           </div>
         </Card>
@@ -199,10 +197,10 @@ export default async function DashboardPage() {
           </h2>
           <p className="mt-2 text-sm leading-6 text-slate-400">
             {baseJourneyCompleted
-              ? "Ya cerraste fundamentos, práctica útil y herramientas estructuradas. Este punto ya sirve para repasar capstones y revisar proyectos con más criterio."
+              ? "Ya cerraste fundamentos útiles, datos con intención y herramientas estructuradas. Este punto ya sirve para repasar capstones y revisar proyectos con más criterio."
               : currentFocus?.type === "exercise"
                 ? currentFocus.exercise.summary
-                : currentFocus?.lesson?.summary ?? "Abre la ruta y empieza el primer paso."}
+                : currentFocus?.lesson?.summary ?? "Abre los módulos y empieza el primer paso."}
           </p>
           {currentModule && currentModuleProgress ? (
             <div className="mt-3 rounded-[16px] border border-brand-400/14 bg-brand-500/10 p-3.5 text-sm text-brand-100">
@@ -212,16 +210,16 @@ export default async function DashboardPage() {
         </Card>
 
         <Card className="rounded-[20px] p-4">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">Rutas cerradas</p>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">Estado por módulo</p>
           <div className="mt-3 space-y-2.5">
             <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-300">
-              Ruta 1: {foundationsCompleted ? "cerrada" : `${foundationsModules.length} módulos en progreso`}
+              Módulo 1: {foundationsCompleted ? "cerrado" : "en progreso"}
             </div>
             <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-300">
-              Ruta 2: {secondTrackCompleted ? "cerrada" : "pendiente o en progreso"}
+              Módulo 2: {secondTrackCompleted ? "cerrado" : secondTrackFocus ? "en progreso" : "pendiente"}
             </div>
             <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-300">
-              Ruta 3: {baseJourneyCompleted ? "cerrada" : thirdTrackFocus ? "en progreso" : "pendiente"}
+              Módulo 3: {baseJourneyCompleted ? "cerrado" : thirdTrackFocus ? "en progreso" : "pendiente"}
             </div>
           </div>
         </Card>

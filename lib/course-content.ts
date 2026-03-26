@@ -250,6 +250,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "108 min",
     xp: 460
+  },
+  {
+    slug: "route3-practical-projects",
+    title: "Proyectos multiarchivo más completos",
+    description: "Convierte la estructura de Ruta 3 en herramientas pequeñas más completas, donde `principal.py` coordina el flujo y los archivos de apoyo sostienen guardado, consulta, actualización y cierres más reales.",
+    order: 26,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "118 min",
+    xp: 490
   }
 ];
 
@@ -5342,6 +5352,219 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería terminar con un pequeño reporte final."
     },
     exerciseSlug: "build-a-clean-main-for-a-coordinated-tool"
+  },
+  {
+    slug: "route3-project-multi-file-agenda",
+    module: "Proyectos multiarchivo más completos",
+    moduleSlug: "route3-practical-projects",
+    order: 1,
+    title: "Proyecto multiarchivo: agenda simple con consulta y actualización",
+    duration: "24 min",
+    difficulty: "Beginner",
+    summary: "Construye una agenda pequeña donde `principal.py` coordina la acción y `utilidades.py` guarda, consulta, actualiza y cierra con un resumen claro.",
+    warmup: "Este proyecto ya no se siente como un ejercicio suelto. Aquí la estructura multiarchivo empieza a parecer una herramienta pequeña más real.",
+    goal: "Al final, deberías poder construir una agenda multiarchivo simple con menú corto, consulta o actualización y un cierre final que haga visible el estado de la herramienta.",
+    keyIdeas: [
+      {
+        title: "principal.py coordina el recorrido completo",
+        description: "Muestra opciones, pide una acción y llama las piezas adecuadas en el orden correcto."
+      },
+      {
+        title: "utilidades.py sostiene el trabajo real",
+        description: "Guardar, consultar, actualizar y resumir viven en funciones separadas para que la agenda siga siendo legible."
+      },
+      {
+        title: "La herramienta ya se siente más completa",
+        description: "Hay varias rutas posibles, un pequeño cierre y una separación clara entre coordinación y trabajo de apoyo."
+      }
+    ],
+    explanation: [
+      {
+        title: "Brief del proyecto",
+        body: "Vas a construir una agenda pequeña con dos caminos útiles: consultar un contacto o actualizar uno existente. `principal.py` se encarga del menú y la decisión. `utilidades.py` se encarga de guardar, consultar, actualizar y mostrar un resumen corto."
+      },
+      {
+        title: "Requisitos mínimos",
+        body: "Necesitas una representación clara de `principal.py` y `utilidades.py`, un menú o decisión visible, funciones separadas para la agenda y un cierre que muestre que la herramienta terminó con orden."
+      },
+      {
+        title: "Qué consolida este proyecto",
+        body: "Consolida la base de Ruta 3: separación entre archivos, coordinación desde el principal y apoyos con responsabilidades más claras."
+      },
+      {
+        title: "Cómo mantenerlo beginner-safe",
+        body: "Trabaja con uno o dos contactos, pocas opciones y un cierre simple. La meta es la estructura clara, no una agenda grande."
+      }
+    ],
+    example:
+      "# utilidades.py\ndef consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n\ndef actualizar_contacto(nombre, nuevo_estado):\n    print('Actualizando', nombre, 'a', nuevo_estado)\n\n\ndef mostrar_resumen():\n    print('=== RESUMEN AGENDA ===')\n    print('Herramienta cerrada con orden')\n\n# principal.py\nfrom utilidades import consultar_contacto, actualizar_contacto, mostrar_resumen\n\nprint('1. Consultar')\nprint('2. Actualizar')\naction = input('Elige una opción: ')\nif action == '1':\n    consultar_contacto('Ana')\nelse:\n    actualizar_contacto('Ana', 'activo')\nmostrar_resumen()",
+    practicePrompt: "Piensa qué parte del proyecto debería verse primero al abrir `principal.py` y qué funciones deberían quedarse en `utilidades.py` para que la agenda siga siendo fácil de leer.",
+    practiceChecklist: [
+      "Muestra un menú o decisión visible en el principal.",
+      "Usa funciones separadas para consultar, actualizar y cerrar.",
+      "Haz que la agenda termine con un resumen claro."
+    ],
+    commonMistakes: [
+      "Meter la consulta y la actualización dentro del principal.",
+      "Usar varias acciones sin un cierre final visible.",
+      "Hacer el proyecto demasiado grande para esta etapa."
+    ],
+    bugChallenge: {
+      prompt: "Esta agenda ya tiene varias acciones, pero el principal absorbió demasiado trabajo y dejó de leerse como un mapa claro.",
+      brokenCode:
+        "print('1. Consultar')\nprint('2. Actualizar')\naction = input('Elige una opción: ')\nif action == '1':\n    print('Consulta: Ana')\nelse:\n    print('Actualizando Ana a activo')\nprint('=== RESUMEN AGENDA ===')",
+      expectedLearning: "En un proyecto multiarchivo más completo, el principal debería coordinar y los apoyos deberían resolver cada tarea útil."
+    },
+    playground: {
+      title: "Prueba una agenda multiarchivo simple",
+      guidance: "Ejecuta la versión simplificada en el playground y luego asegúrate de que tu respuesta represente claramente `principal.py` y `utilidades.py`.",
+      starterCode:
+        "def consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n\ndef actualizar_contacto(nombre, nuevo_estado):\n    print('Actualizando', nombre, 'a', nuevo_estado)\n\n\ndef mostrar_resumen():\n    print('=== RESUMEN AGENDA ===')\n    print('Herramienta cerrada con orden')\n\n\nprint('1. Consultar')\nprint('2. Actualizar')\naction = input('Elige una opción: ')\nif action == '1':\n    consultar_contacto('Ana')\nelse:\n    actualizar_contacto('Ana', 'activo')\nmostrar_resumen()",
+      emptyOutputHint: "La salida debería mostrar una acción útil y un cierre claro de agenda."
+    },
+    exerciseSlug: "build-route3-multi-file-agenda-project"
+  },
+  {
+    slug: "route3-project-notebook-with-menu-and-summary",
+    module: "Proyectos multiarchivo más completos",
+    moduleSlug: "route3-practical-projects",
+    order: 2,
+    title: "Proyecto multiarchivo: libreta con menú y resumen",
+    duration: "25 min",
+    difficulty: "Beginner",
+    summary: "Construye una libreta pequeña donde `principal.py` coordina el menú y `utilidades.py` separa guardado, consulta y resumen final.",
+    warmup: "Aquí la estructura multiarchivo ya no es solo orden: empieza a sostener una utilidad chica con varias partes que se leen como un conjunto coherente.",
+    goal: "Al final, deberías poder construir una libreta multiarchivo con menú simple, al menos dos acciones útiles y un resumen final que cierre la experiencia.",
+    keyIdeas: [
+      {
+        title: "El menú muestra que la herramienta ya tiene varias rutas",
+        description: "Eso hace más valioso que el principal coordine y no cargue con todos los detalles."
+      },
+      {
+        title: "Las funciones de apoyo sostienen claridad",
+        description: "Guardar, consultar y resumir separados ayudan a que cada parte siga siendo legible."
+      },
+      {
+        title: "El cierre le da sensación de herramienta completa",
+        description: "Un resumen final ordenado hace que el proyecto se sienta terminado y no a medio armar."
+      }
+    ],
+    explanation: [
+      {
+        title: "Brief del proyecto",
+        body: "Vas a crear una libreta multiarchivo con un menú corto. `principal.py` mostrará opciones y decidirá el camino. `utilidades.py` guardará, consultará y cerrará con un resumen breve."
+      },
+      {
+        title: "Requisitos mínimos",
+        body: "Debe haber dos archivos representados con claridad, un menú visible, varias funciones de apoyo y un resumen final que muestre el cierre del flujo."
+      },
+      {
+        title: "Qué hace fuerte a este proyecto",
+        body: "Ya no practicas piezas aisladas. Practicas una estructura donde varias partes cooperan dentro de una herramienta pequeña pero más completa."
+      },
+      {
+        title: "Qué no hace falta todavía",
+        body: "No hace falta una libreta enorme ni un sistema complejo. Con dos acciones útiles y un cierre claro ya tienes un proyecto sólido para esta fase."
+      }
+    ],
+    example:
+      "# utilidades.py\ndef guardar_nota():\n    print('Nota guardada')\n\n\ndef consultar_nota():\n    print('Consulta de nota lista')\n\n\ndef mostrar_resumen():\n    print('=== RESUMEN LIBRETA ===')\n    print('Cierre final listo')\n\n# principal.py\nfrom utilidades import guardar_nota, consultar_nota, mostrar_resumen\n\nprint('1. Guardar nota')\nprint('2. Consultar nota')\naction = input('Elige una opción: ')\nif action == '1':\n    guardar_nota()\nelse:\n    consultar_nota()\nmostrar_resumen()",
+    practicePrompt: "Piensa cómo harías que el menú y el resumen se sientan parte de la misma herramienta sin que `principal.py` pierda claridad.",
+    practiceChecklist: [
+      "Muestra un menú simple en el principal.",
+      "Usa funciones de apoyo para guardar y consultar.",
+      "Cierra con un resumen final visible."
+    ],
+    commonMistakes: [
+      "Usar el menú solo como decoración y no como parte real del flujo.",
+      "Olvidar separar el resumen final del principal.",
+      "Meter demasiadas opciones para este nivel."
+    ],
+    bugChallenge: {
+      prompt: "Esta libreta quiere cerrar con un resumen claro, pero el principal está demasiado cargado y la estructura multiarchivo casi no se nota.",
+      brokenCode:
+        "print('1. Guardar nota')\nprint('2. Consultar nota')\naction = input('Elige una opción: ')\nif action == '1':\n    print('Nota guardada')\nelse:\n    print('Consulta de nota lista')\nprint('=== RESUMEN LIBRETA ===')\nprint('Cierre final listo')",
+      expectedLearning: "Un proyecto multiarchivo más completo se sostiene mejor cuando menú, acciones y cierre están repartidos con intención."
+    },
+    playground: {
+      title: "Prueba una libreta con menú y cierre",
+      guidance: "Ejecuta la versión simple y luego revisa que tu respuesta represente bien la separación entre principal, apoyos y resumen.",
+      starterCode:
+        "def guardar_nota():\n    print('Nota guardada')\n\n\ndef consultar_nota():\n    print('Consulta de nota lista')\n\n\ndef mostrar_resumen():\n    print('=== RESUMEN LIBRETA ===')\n    print('Cierre final listo')\n\n\nprint('1. Guardar nota')\nprint('2. Consultar nota')\naction = input('Elige una opción: ')\nif action == '1':\n    guardar_nota()\nelse:\n    consultar_nota()\nmostrar_resumen()",
+      emptyOutputHint: "La salida debería cerrar con un resumen breve y claro."
+    },
+    exerciseSlug: "build-route3-multi-file-notebook-project"
+  },
+  {
+    slug: "route3-project-reporting-tool",
+    module: "Proyectos multiarchivo más completos",
+    moduleSlug: "route3-practical-projects",
+    order: 3,
+    title: "Proyecto multiarchivo: herramienta de registro y reporte",
+    duration: "26 min",
+    difficulty: "Beginner",
+    summary: "Construye una herramienta pequeña donde `principal.py` coordina varias acciones y `utilidades.py` cierra con un reporte final más claro y útil.",
+    warmup: "Este proyecto ya se acerca a un pequeño cierre práctico de Ruta 3: varias acciones coordinadas, responsabilidades separadas y un reporte final que ordena el resultado.",
+    goal: "Al final, deberías poder construir una herramienta multiarchivo pequeña con menú, acciones útiles y un reporte final claro que haga sentir el programa como una utilidad terminada.",
+    keyIdeas: [
+      {
+        title: "El principal coordina sin saturarse",
+        description: "Muestra el menú, pide la acción y llama apoyos con un orden claro."
+      },
+      {
+        title: "Los apoyos cargan el trabajo útil",
+        description: "Guardar, consultar, actualizar o reportar viven como funciones separadas con nombres claros."
+      },
+      {
+        title: "El reporte final marca el salto de calidad",
+        description: "Cuando el programa cierra con un reporte ordenado, la herramienta se siente más seria y más completa."
+      }
+    ],
+    explanation: [
+      {
+        title: "Brief del proyecto",
+        body: "Vas a crear una herramienta multiarchivo de registro y reporte. `principal.py` coordinará varias rutas pequeñas. `utilidades.py` manejará las tareas útiles y cerrará con un reporte final ordenado."
+      },
+      {
+        title: "Requisitos mínimos",
+        body: "Debe haber representación clara de los archivos, varias funciones de apoyo, una decisión visible en el principal y un reporte final que muestre que la herramienta terminó con sentido."
+      },
+      {
+        title: "Qué consolida este proyecto",
+        body: "Consolida todo lo trabajado en Ruta 3 hasta ahora: separación entre archivos, coordinación más rica y sensación de herramienta pequeña más real."
+      },
+      {
+        title: "Cómo mantenerlo accesible",
+        body: "Quédate con dos caminos útiles, un reporte corto y funciones fáciles de seguir. Lo importante es la coordinación clara, no el tamaño del código."
+      }
+    ],
+    example:
+      "# utilidades.py\ndef guardar_registro():\n    print('Registro guardado')\n\n\ndef consultar_registro():\n    print('Consulta lista')\n\n\ndef mostrar_reporte():\n    print('=== REPORTE FINAL ===')\n    print('Herramienta de registro cerrada con orden')\n\n# principal.py\nfrom utilidades import guardar_registro, consultar_registro, mostrar_reporte\n\n\ndef main():\n    print('1. Guardar')\n    print('2. Consultar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        guardar_registro()\n    else:\n        consultar_registro()\n    mostrar_reporte()\n\n\nmain()",
+    practicePrompt: "Piensa cómo harías que el reporte final no se vea como un agregado aislado, sino como el cierre natural de una herramienta pequeña bien organizada.",
+    practiceChecklist: [
+      "Haz que el principal coordine menú, decisión y cierre.",
+      "Usa apoyos claros para guardar, consultar o reportar.",
+      "Termina con un reporte final ordenado."
+    ],
+    commonMistakes: [
+      "Dejar el reporte final pegado en el principal.",
+      "Hacer varias acciones sin que el recorrido principal se entienda rápido.",
+      "Olvidar que el proyecto sigue siendo beginner-safe y debe mantenerse corto."
+    ],
+    bugChallenge: {
+      prompt: "Esta herramienta de registro quiere cerrar con un reporte final, pero el principal está cargado y la coordinación entre archivos quedó débil.",
+      brokenCode:
+        "print('1. Guardar')\nprint('2. Consultar')\naction = input('Elige una opción: ')\nif action == '1':\n    print('Registro guardado')\nelse:\n    print('Consulta lista')\nprint('=== REPORTE FINAL ===')\nprint('Herramienta de registro cerrada con orden')",
+      expectedLearning: "Cuando una herramienta multiarchivo cierra con un reporte, el principal debería seguir coordinando y dejar el detalle del cierre en funciones de apoyo."
+    },
+    playground: {
+      title: "Prueba una herramienta de registro y reporte",
+      guidance: "Ejecuta la versión simple y observa cómo el reporte final mejora la sensación de herramienta más completa.",
+      starterCode:
+        "def guardar_registro():\n    print('Registro guardado')\n\n\ndef consultar_registro():\n    print('Consulta lista')\n\n\ndef mostrar_reporte():\n    print('=== REPORTE FINAL ===')\n    print('Herramienta de registro cerrada con orden')\n\n\ndef main():\n    print('1. Guardar')\n    print('2. Consultar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        guardar_registro()\n    else:\n        consultar_registro()\n    mostrar_reporte()\n\n\nmain()",
+      emptyOutputHint: "La salida debería terminar con un reporte final claro."
+    },
+    exerciseSlug: "build-route3-multi-file-report-project"
   }
 ];
 
@@ -11330,6 +11553,468 @@ export const courseExercises: ExerciseData[] = [
         "prints-option-two",
         "asks-action",
         "if-action-one",
+        "calls-save-record",
+        "calls-query-record",
+        "calls-report",
+        "runs-main"
+      ]
+    }
+  },
+  {
+    slug: "build-route3-multi-file-agenda-project",
+    title: "Construye una agenda multiarchivo con consulta y actualización",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "route3-practical-projects",
+    lessonSlug: "route3-project-multi-file-agenda",
+    order: 1,
+    duration: "18 min",
+    summary: "Representa una agenda multiarchivo donde `principal.py` coordina un menú corto y `utilidades.py` consulta, actualiza y resume.",
+    prompt:
+      "Escribe un ejemplo dividido en dos partes usando comentarios para representar archivos. En `# utilidades.py`, define `consultar_contacto(nombre)`, `actualizar_contacto(nombre, nuevo_estado)` y `mostrar_resumen()`. Esta última debe imprimir `=== RESUMEN AGENDA ===` y luego `Herramienta cerrada con orden`. En `# principal.py`, importa las tres funciones, imprime `1. Consultar` y `2. Actualizar`, pide `action` con `input('Elige una opción: ')`, si la acción es `1` llama `consultar_contacto('Ana')`, en cualquier otro caso llama `actualizar_contacto('Ana', 'activo')`, y finalmente llama `mostrar_resumen()`.",
+    responseLabel: "Tu proyecto multiarchivo de agenda",
+    responsePlaceholder:
+      "# utilidades.py\n\ndef consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n\ndef actualizar_contacto(nombre, nuevo_estado):\n    print('Actualizando', nombre, 'a', nuevo_estado)\n\n\ndef mostrar_resumen():\n    print('=== RESUMEN AGENDA ===')\n    print('Herramienta cerrada con orden')\n\n# principal.py\nfrom utilidades import consultar_contacto, actualizar_contacto, mostrar_resumen\n\nprint('1. Consultar')\nprint('2. Actualizar')\naction = input('Elige una opción: ')\nif action == '1':\n    consultar_contacto('Ana')\nelse:\n    actualizar_contacto('Ana', 'activo')\nmostrar_resumen()",
+    instructions: [
+      "Representa ambos archivos con comentarios.",
+      "Haz visible el menú en el principal.",
+      "Deja consulta, actualización y resumen en el archivo de apoyo."
+    ],
+    hints: [
+      "Usa un `if` corto para decidir entre consultar o actualizar.",
+      "El cierre debería aparecer siempre.",
+      "La agenda puede ser pequeña: lo importante es la estructura."
+    ],
+    starterCode:
+      "# utilidades.py\n\ndef consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n\ndef actualizar_contacto(nombre, nuevo_estado):\n    print('Actualizando', nombre, 'a', nuevo_estado)\n\n\ndef mostrar_resumen():\n    print('=== RESUMEN AGENDA ===')\n    print('Herramienta cerrada con orden')\n\n# principal.py\nfrom utilidades import consultar_contacto, actualizar_contacto, mostrar_resumen\n\nprint('1. Consultar')\nprint('2. Actualizar')\naction = input('Elige una opción: ')\nif action == '1':\n    consultar_contacto('Ana')\nelse:\n    actualizar_contacto('Ana', 'activo')\nmostrar_resumen()",
+    successCriteria: [
+      "La agenda reparte bien coordinación y apoyos.",
+      "El principal se mantiene legible.",
+      "El cierre final se siente ordenado."
+    ],
+    playground: {
+      title: "Prueba una agenda multiarchivo pequeña",
+      guidance: "Ejecuta la versión simple y luego confirma que tu respuesta refleje bien la separación entre coordinación, acciones y cierre.",
+      starterCode:
+        "def consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n\ndef actualizar_contacto(nombre, nuevo_estado):\n    print('Actualizando', nombre, 'a', nuevo_estado)\n\n\ndef mostrar_resumen():\n    print('=== RESUMEN AGENDA ===')\n    print('Herramienta cerrada con orden')\n\n\nprint('1. Consultar')\nprint('2. Actualizar')\naction = input('Elige una opción: ')\nif action == '1':\n    consultar_contacto('Ana')\nelse:\n    actualizar_contacto('Ana', 'activo')\nmostrar_resumen()",
+      emptyOutputHint: "La salida debería terminar con un resumen de agenda claro."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 420,
+      passingScore: 11,
+      requiredPatterns: [
+        {
+          id: "utilidades-comment",
+          label: "Representa `# utilidades.py`",
+          pattern: "#\\s*utilidades\\.py",
+          feedbackWhenMissing: "Empieza mostrando `# utilidades.py`."
+        },
+        {
+          id: "principal-comment",
+          label: "Representa `# principal.py`",
+          pattern: "#\\s*principal\\.py",
+          feedbackWhenMissing: "Muestra también `# principal.py`."
+        },
+        {
+          id: "defines-query-contact",
+          label: "Define `consultar_contacto(nombre)`",
+          pattern: "def\\s+consultar_contacto\\(\\s*nombre\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define `consultar_contacto(nombre)` en el archivo de apoyo."
+        },
+        {
+          id: "defines-update-contact",
+          label: "Define `actualizar_contacto(nombre, nuevo_estado)`",
+          pattern: "def\\s+actualizar_contacto\\(\\s*nombre\\s*,\\s*nuevo_estado\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define `actualizar_contacto(nombre, nuevo_estado)` en el archivo de apoyo."
+        },
+        {
+          id: "defines-summary",
+          label: "Define `mostrar_resumen()`",
+          pattern: "def\\s+mostrar_resumen\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `mostrar_resumen()` en el archivo de apoyo."
+        },
+        {
+          id: "prints-summary-header",
+          label: "Imprime `=== RESUMEN AGENDA ===`",
+          pattern: "print\\(\\s*['\"]=== RESUMEN AGENDA ===['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro del resumen, imprime `=== RESUMEN AGENDA ===`."
+        },
+        {
+          id: "imports-three",
+          label: "Importa las tres funciones",
+          pattern: "from\\s+utilidades\\s+import\\s+consultar_contacto\\s*,\\s*actualizar_contacto\\s*,\\s*mostrar_resumen",
+          feedbackWhenMissing: "En `principal.py`, importa `consultar_contacto`, `actualizar_contacto` y `mostrar_resumen`."
+        },
+        {
+          id: "prints-option-one",
+          label: "Imprime `1. Consultar`",
+          pattern: "print\\(\\s*['\"]1\\. Consultar['\"]\\s*\\)",
+          feedbackWhenMissing: "En el principal, imprime `1. Consultar`."
+        },
+        {
+          id: "prints-option-two",
+          label: "Imprime `2. Actualizar`",
+          pattern: "print\\(\\s*['\"]2\\. Actualizar['\"]\\s*\\)",
+          feedbackWhenMissing: "En el principal, imprime `2. Actualizar`."
+        },
+        {
+          id: "asks-action",
+          label: "Pide `action` con `input()`",
+          pattern: "action\\s*=\\s*input\\(",
+          feedbackWhenMissing: "En el principal, pide `action` con `input()`."
+        },
+        {
+          id: "if-option-one",
+          label: "Usa `if action == '1'`",
+          pattern: "if\\s+action\\s*==\\s*['\"]1['\"]\\s*:",
+          feedbackWhenMissing: "Usa un `if` para decidir la opción `1`."
+        },
+        {
+          id: "calls-query-contact",
+          label: "Llama `consultar_contacto('Ana')`",
+          pattern: "consultar_contacto\\(\\s*['\"]Ana['\"]\\s*\\)",
+          feedbackWhenMissing: "En el primer camino, llama `consultar_contacto('Ana')`."
+        },
+        {
+          id: "calls-update-contact",
+          label: "Llama `actualizar_contacto('Ana', 'activo')`",
+          pattern: "actualizar_contacto\\(\\s*['\"]Ana['\"]\\s*,\\s*['\"]activo['\"]\\s*\\)",
+          feedbackWhenMissing: "En el camino alternativo, llama `actualizar_contacto('Ana', 'activo')`."
+        },
+        {
+          id: "calls-summary",
+          label: "Llama `mostrar_resumen()` al final",
+          pattern: "mostrar_resumen\\(\\s*\\)",
+          feedbackWhenMissing: "Cierra el proyecto llamando `mostrar_resumen()`."
+        }
+      ],
+      orderedPatternIds: [
+        "utilidades-comment",
+        "defines-query-contact",
+        "defines-update-contact",
+        "defines-summary",
+        "prints-summary-header",
+        "principal-comment",
+        "imports-three",
+        "prints-option-one",
+        "prints-option-two",
+        "asks-action",
+        "if-option-one",
+        "calls-query-contact",
+        "calls-update-contact",
+        "calls-summary"
+      ]
+    }
+  },
+  {
+    slug: "build-route3-multi-file-notebook-project",
+    title: "Construye una libreta multiarchivo con menú y resumen",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "route3-practical-projects",
+    lessonSlug: "route3-project-notebook-with-menu-and-summary",
+    order: 2,
+    duration: "19 min",
+    summary: "Representa una libreta multiarchivo donde el principal coordina el menú y las funciones de apoyo guardan, consultan y cierran con un resumen final.",
+    prompt:
+      "Escribe un ejemplo dividido en dos partes usando comentarios para representar archivos. En `# utilidades.py`, define `guardar_nota()`, `consultar_nota()` y `mostrar_resumen()`. Esta última debe imprimir `=== RESUMEN LIBRETA ===` y luego `Cierre final listo`. En `# principal.py`, importa las tres funciones, imprime `1. Guardar nota` y `2. Consultar nota`, pide `action` con `input('Elige una opción: ')`, si la acción es `1` llama `guardar_nota()`, en cualquier otro caso llama `consultar_nota()`, y al final llama `mostrar_resumen()`.",
+    responseLabel: "Tu proyecto multiarchivo de libreta",
+    responsePlaceholder:
+      "# utilidades.py\n\ndef guardar_nota():\n    print('Nota guardada')\n\n\ndef consultar_nota():\n    print('Consulta de nota lista')\n\n\ndef mostrar_resumen():\n    print('=== RESUMEN LIBRETA ===')\n    print('Cierre final listo')\n\n# principal.py\nfrom utilidades import guardar_nota, consultar_nota, mostrar_resumen\n\nprint('1. Guardar nota')\nprint('2. Consultar nota')\naction = input('Elige una opción: ')\nif action == '1':\n    guardar_nota()\nelse:\n    consultar_nota()\nmostrar_resumen()",
+    instructions: [
+      "Representa ambos archivos con comentarios.",
+      "Deja menú y decisión en el principal.",
+      "Deja guardar, consultar y resumir en funciones de apoyo."
+    ],
+    hints: [
+      "La libreta puede ser pequeña; la clave es la estructura.",
+      "El resumen debería imprimirse siempre al final.",
+      "Con dos opciones basta para este proyecto."
+    ],
+    starterCode:
+      "# utilidades.py\n\ndef guardar_nota():\n    print('Nota guardada')\n\n\ndef consultar_nota():\n    print('Consulta de nota lista')\n\n\ndef mostrar_resumen():\n    print('=== RESUMEN LIBRETA ===')\n    print('Cierre final listo')\n\n# principal.py\nfrom utilidades import guardar_nota, consultar_nota, mostrar_resumen\n\nprint('1. Guardar nota')\nprint('2. Consultar nota')\naction = input('Elige una opción: ')\nif action == '1':\n    guardar_nota()\nelse:\n    consultar_nota()\nmostrar_resumen()",
+    successCriteria: [
+      "La libreta se lee como una herramienta pequeña y ordenada.",
+      "El principal no carga con el trabajo de apoyo.",
+      "El resumen final hace sentir completo el proyecto."
+    ],
+    playground: {
+      title: "Prueba una libreta multiarchivo pequeña",
+      guidance: "Ejecuta la versión simple y luego confirma que tu respuesta refleje bien el menú, los apoyos y el cierre final.",
+      starterCode:
+        "def guardar_nota():\n    print('Nota guardada')\n\n\ndef consultar_nota():\n    print('Consulta de nota lista')\n\n\ndef mostrar_resumen():\n    print('=== RESUMEN LIBRETA ===')\n    print('Cierre final listo')\n\n\nprint('1. Guardar nota')\nprint('2. Consultar nota')\naction = input('Elige una opción: ')\nif action == '1':\n    guardar_nota()\nelse:\n    consultar_nota()\nmostrar_resumen()",
+      emptyOutputHint: "La salida debería terminar con un resumen breve y claro."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 400,
+      passingScore: 10,
+      requiredPatterns: [
+        {
+          id: "utilidades-comment",
+          label: "Representa `# utilidades.py`",
+          pattern: "#\\s*utilidades\\.py",
+          feedbackWhenMissing: "Empieza mostrando `# utilidades.py`."
+        },
+        {
+          id: "principal-comment",
+          label: "Representa `# principal.py`",
+          pattern: "#\\s*principal\\.py",
+          feedbackWhenMissing: "Muestra también `# principal.py`."
+        },
+        {
+          id: "defines-save-note",
+          label: "Define `guardar_nota()`",
+          pattern: "def\\s+guardar_nota\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `guardar_nota()` en el archivo de apoyo."
+        },
+        {
+          id: "defines-query-note",
+          label: "Define `consultar_nota()`",
+          pattern: "def\\s+consultar_nota\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `consultar_nota()` en el archivo de apoyo."
+        },
+        {
+          id: "defines-summary",
+          label: "Define `mostrar_resumen()`",
+          pattern: "def\\s+mostrar_resumen\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `mostrar_resumen()` en el archivo de apoyo."
+        },
+        {
+          id: "prints-summary-header",
+          label: "Imprime `=== RESUMEN LIBRETA ===`",
+          pattern: "print\\(\\s*['\"]=== RESUMEN LIBRETA ===['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro del resumen, imprime `=== RESUMEN LIBRETA ===`."
+        },
+        {
+          id: "imports-three",
+          label: "Importa las tres funciones",
+          pattern: "from\\s+utilidades\\s+import\\s+guardar_nota\\s*,\\s*consultar_nota\\s*,\\s*mostrar_resumen",
+          feedbackWhenMissing: "En `principal.py`, importa `guardar_nota`, `consultar_nota` y `mostrar_resumen`."
+        },
+        {
+          id: "prints-option-one",
+          label: "Imprime `1. Guardar nota`",
+          pattern: "print\\(\\s*['\"]1\\. Guardar nota['\"]\\s*\\)",
+          feedbackWhenMissing: "En el principal, imprime `1. Guardar nota`."
+        },
+        {
+          id: "prints-option-two",
+          label: "Imprime `2. Consultar nota`",
+          pattern: "print\\(\\s*['\"]2\\. Consultar nota['\"]\\s*\\)",
+          feedbackWhenMissing: "En el principal, imprime `2. Consultar nota`."
+        },
+        {
+          id: "asks-action",
+          label: "Pide `action` con `input()`",
+          pattern: "action\\s*=\\s*input\\(",
+          feedbackWhenMissing: "En el principal, pide `action` con `input()`."
+        },
+        {
+          id: "if-option-one",
+          label: "Usa `if action == '1'`",
+          pattern: "if\\s+action\\s*==\\s*['\"]1['\"]\\s*:",
+          feedbackWhenMissing: "Usa un `if` para decidir la opción `1`."
+        },
+        {
+          id: "calls-save-note",
+          label: "Llama `guardar_nota()`",
+          pattern: "guardar_nota\\(\\s*\\)",
+          feedbackWhenMissing: "En el primer camino, llama `guardar_nota()`."
+        },
+        {
+          id: "calls-query-note",
+          label: "Llama `consultar_nota()`",
+          pattern: "consultar_nota\\(\\s*\\)",
+          feedbackWhenMissing: "En el camino alternativo, llama `consultar_nota()`."
+        },
+        {
+          id: "calls-summary",
+          label: "Llama `mostrar_resumen()`",
+          pattern: "mostrar_resumen\\(\\s*\\)",
+          feedbackWhenMissing: "Cierra el proyecto llamando `mostrar_resumen()`."
+        }
+      ],
+      orderedPatternIds: [
+        "utilidades-comment",
+        "defines-save-note",
+        "defines-query-note",
+        "defines-summary",
+        "prints-summary-header",
+        "principal-comment",
+        "imports-three",
+        "prints-option-one",
+        "prints-option-two",
+        "asks-action",
+        "if-option-one",
+        "calls-save-note",
+        "calls-query-note",
+        "calls-summary"
+      ]
+    }
+  },
+  {
+    slug: "build-route3-multi-file-report-project",
+    title: "Construye una herramienta multiarchivo de registro y reporte",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "route3-practical-projects",
+    lessonSlug: "route3-project-reporting-tool",
+    order: 3,
+    duration: "20 min",
+    summary: "Representa una herramienta multiarchivo donde el principal coordina menú y acciones, y el archivo de apoyo cierra con un reporte final ordenado.",
+    prompt:
+      "Escribe un ejemplo dividido en dos partes usando comentarios para representar archivos. En `# utilidades.py`, define `guardar_registro()`, `consultar_registro()` y `mostrar_reporte()`. Esta última debe imprimir `=== REPORTE FINAL ===` y luego `Herramienta de registro cerrada con orden`. En `# principal.py`, importa las tres funciones, define `main()`, imprime `1. Guardar` y `2. Consultar`, pide `action` con `input('Elige una opción: ')`, si la acción es `1` llama `guardar_registro()`, en cualquier otro caso llama `consultar_registro()`, luego llama `mostrar_reporte()` y finalmente ejecuta `main()`.",
+    responseLabel: "Tu proyecto multiarchivo de registro y reporte",
+    responsePlaceholder:
+      "# utilidades.py\n\ndef guardar_registro():\n    print('Registro guardado')\n\n\ndef consultar_registro():\n    print('Consulta lista')\n\n\ndef mostrar_reporte():\n    print('=== REPORTE FINAL ===')\n    print('Herramienta de registro cerrada con orden')\n\n# principal.py\nfrom utilidades import guardar_registro, consultar_registro, mostrar_reporte\n\n\ndef main():\n    print('1. Guardar')\n    print('2. Consultar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        guardar_registro()\n    else:\n        consultar_registro()\n    mostrar_reporte()\n\n\nmain()",
+    instructions: [
+      "Representa ambos archivos con comentarios.",
+      "Mantén el flujo principal dentro de `main()`.",
+      "Deja el reporte final como función de apoyo."
+    ],
+    hints: [
+      "El reporte final debería aparecer siempre.",
+      "Piensa el principal como un mapa corto del proyecto.",
+      "Con dos caminos útiles alcanza para este nivel."
+    ],
+    starterCode:
+      "# utilidades.py\n\ndef guardar_registro():\n    print('Registro guardado')\n\n\ndef consultar_registro():\n    print('Consulta lista')\n\n\ndef mostrar_reporte():\n    print('=== REPORTE FINAL ===')\n    print('Herramienta de registro cerrada con orden')\n\n# principal.py\nfrom utilidades import guardar_registro, consultar_registro, mostrar_reporte\n\n\ndef main():\n    print('1. Guardar')\n    print('2. Consultar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        guardar_registro()\n    else:\n        consultar_registro()\n    mostrar_reporte()\n\n\nmain()",
+    successCriteria: [
+      "El principal coordina un flujo más completo.",
+      "Las funciones de apoyo sostienen el trabajo útil.",
+      "El reporte final hace sentir el proyecto como una herramienta terminada."
+    ],
+    playground: {
+      title: "Prueba una herramienta de registro con reporte final",
+      guidance: "Ejecuta la versión simple y luego verifica que tu respuesta mantenga clara la separación entre coordinación, acciones y reporte.",
+      starterCode:
+        "def guardar_registro():\n    print('Registro guardado')\n\n\ndef consultar_registro():\n    print('Consulta lista')\n\n\ndef mostrar_reporte():\n    print('=== REPORTE FINAL ===')\n    print('Herramienta de registro cerrada con orden')\n\n\ndef main():\n    print('1. Guardar')\n    print('2. Consultar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        guardar_registro()\n    else:\n        consultar_registro()\n    mostrar_reporte()\n\n\nmain()",
+      emptyOutputHint: "La salida debería terminar con un reporte final claro."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 440,
+      passingScore: 12,
+      requiredPatterns: [
+        {
+          id: "utilidades-comment",
+          label: "Representa `# utilidades.py`",
+          pattern: "#\\s*utilidades\\.py",
+          feedbackWhenMissing: "Empieza mostrando `# utilidades.py`."
+        },
+        {
+          id: "principal-comment",
+          label: "Representa `# principal.py`",
+          pattern: "#\\s*principal\\.py",
+          feedbackWhenMissing: "Muestra también `# principal.py`."
+        },
+        {
+          id: "defines-save-record",
+          label: "Define `guardar_registro()`",
+          pattern: "def\\s+guardar_registro\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `guardar_registro()` en el archivo de apoyo."
+        },
+        {
+          id: "defines-query-record",
+          label: "Define `consultar_registro()`",
+          pattern: "def\\s+consultar_registro\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `consultar_registro()` en el archivo de apoyo."
+        },
+        {
+          id: "defines-report",
+          label: "Define `mostrar_reporte()`",
+          pattern: "def\\s+mostrar_reporte\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `mostrar_reporte()` en el archivo de apoyo."
+        },
+        {
+          id: "prints-report-header",
+          label: "Imprime `=== REPORTE FINAL ===`",
+          pattern: "print\\(\\s*['\"]=== REPORTE FINAL ===['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro del reporte, imprime `=== REPORTE FINAL ===`."
+        },
+        {
+          id: "prints-report-body",
+          label: "Imprime `Herramienta de registro cerrada con orden`",
+          pattern: "print\\(\\s*['\"]Herramienta de registro cerrada con orden['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro del reporte, imprime `Herramienta de registro cerrada con orden`."
+        },
+        {
+          id: "imports-three",
+          label: "Importa las tres funciones",
+          pattern: "from\\s+utilidades\\s+import\\s+guardar_registro\\s*,\\s*consultar_registro\\s*,\\s*mostrar_reporte",
+          feedbackWhenMissing: "En `principal.py`, importa `guardar_registro`, `consultar_registro` y `mostrar_reporte`."
+        },
+        {
+          id: "defines-main",
+          label: "Define `main()`",
+          pattern: "def\\s+main\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `main()` en el principal."
+        },
+        {
+          id: "prints-option-one",
+          label: "Imprime `1. Guardar`",
+          pattern: "print\\(\\s*['\"]1\\. Guardar['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro de `main()`, imprime `1. Guardar`."
+        },
+        {
+          id: "prints-option-two",
+          label: "Imprime `2. Consultar`",
+          pattern: "print\\(\\s*['\"]2\\. Consultar['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro de `main()`, imprime `2. Consultar`."
+        },
+        {
+          id: "asks-action",
+          label: "Pide `action` con `input()`",
+          pattern: "action\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Dentro de `main()`, pide `action` con `input()`."
+        },
+        {
+          id: "if-option-one",
+          label: "Usa `if action == '1'`",
+          pattern: "if\\s+action\\s*==\\s*['\"]1['\"]\\s*:",
+          feedbackWhenMissing: "Usa un `if` para la opción `1`."
+        },
+        {
+          id: "calls-save-record",
+          label: "Llama `guardar_registro()`",
+          pattern: "guardar_registro\\(\\s*\\)",
+          feedbackWhenMissing: "En el primer camino, llama `guardar_registro()`."
+        },
+        {
+          id: "calls-query-record",
+          label: "Llama `consultar_registro()`",
+          pattern: "consultar_registro\\(\\s*\\)",
+          feedbackWhenMissing: "En el camino alternativo, llama `consultar_registro()`."
+        },
+        {
+          id: "calls-report",
+          label: "Llama `mostrar_reporte()`",
+          pattern: "mostrar_reporte\\(\\s*\\)",
+          feedbackWhenMissing: "Cierra el proyecto llamando `mostrar_reporte()`."
+        },
+        {
+          id: "runs-main",
+          label: "Ejecuta `main()` al final",
+          pattern: "main\\(\\s*\\)",
+          feedbackWhenMissing: "Al final del ejemplo, ejecuta `main()`."
+        }
+      ],
+      orderedPatternIds: [
+        "utilidades-comment",
+        "defines-save-record",
+        "defines-query-record",
+        "defines-report",
+        "prints-report-header",
+        "prints-report-body",
+        "principal-comment",
+        "imports-three",
+        "defines-main",
+        "prints-option-one",
+        "prints-option-two",
+        "asks-action",
+        "if-option-one",
         "calls-save-record",
         "calls-query-record",
         "calls-report",

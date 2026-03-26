@@ -55,6 +55,7 @@ PyMentor ya tiene dos rutas completas y una tercera etapa recién abierta, todo 
 23. Programas multiarchivo simples
 24. Utilidades multiarchivo con flujo claro
 25. Utilidades multiarchivo con más coordinación
+26. Proyectos multiarchivo más completos
 
 ## Etapas del producto
 
@@ -70,7 +71,7 @@ Sus primeras aperturas son `Archivos básicos`, `Funciones y organización simpl
 ### Ruta 3 · Herramientas estructuradas
 
 Empieza justo después del cierre de Ruta 2.
-Sus primeros bloques son `Programas multiarchivo simples`, `Utilidades multiarchivo con flujo claro` y `Utilidades multiarchivo con más coordinación`, donde el foco ya no está solo en construir utilidades prácticas, sino en repartir mejor un programa entre un archivo principal y archivos de apoyo para que siga siendo legible, ordenado y más cercano a una herramienta real.
+Sus primeros bloques son `Programas multiarchivo simples`, `Utilidades multiarchivo con flujo claro`, `Utilidades multiarchivo con más coordinación` y `Proyectos multiarchivo más completos`, donde el foco ya no está solo en construir utilidades prácticas, sino en repartir mejor un programa entre un archivo principal y archivos de apoyo para que siga siendo legible, ordenado y más cercano a una herramienta real.
 
 ## Estado de progresión actual
 

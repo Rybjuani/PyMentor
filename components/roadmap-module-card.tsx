@@ -42,6 +42,8 @@ export function RoadmapModuleCard({
           ? "Ruta 3 · Utilidad real"
         : module.slug === "coordinated-multi-file-tools"
           ? "Ruta 3 · Coordinación"
+        : module.slug === "route3-practical-projects"
+          ? "Ruta 3 · Proyectos"
         : module.slug === "route2-practical-projects"
           ? "Ruta 2 · Proyectos"
           : module.slug === "route2-capstone"
@@ -118,6 +120,8 @@ export function RoadmapModuleCard({
                   ? "Abrir módulo práctico"
                 : module.slug === "coordinated-multi-file-tools"
                   ? "Abrir módulo coordinado"
+                : module.slug === "route3-practical-projects"
+                  ? "Abrir proyectos"
                 : progress.status === "completed"
                   ? "Revisar módulo"
                   : "Abrir módulo"}

@@ -80,7 +80,7 @@ export default async function LessonPage({
                     : "Sin empezar"}
               </Badge>
             </div>
-            <div className="mt-5 grid gap-3 md:grid-cols-3">
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
               <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Misión</p>
                 <p className="mt-2 text-lg font-bold text-slate-50">Checkpoint activo</p>
@@ -99,7 +99,7 @@ export default async function LessonPage({
                 <p className="mt-2 text-sm leading-6 text-slate-400">Progreso actual dentro del módulo.</p>
               </div>
             </div>
-            <div className="mt-6 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+            <div className="mt-6 grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
               <div id="objetivo" className="rounded-[24px] border border-slate-800 bg-slate-950/70 p-5 scroll-mt-24">
                 <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
                   <Compass className="h-4 w-4 text-brand-300" />
@@ -146,7 +146,7 @@ export default async function LessonPage({
                 Lectura rápida
               </span>
             </div>
-            <div className="mt-5 grid gap-3 md:grid-cols-3">
+            <div className="mt-5 grid gap-3 lg:grid-cols-3">
               {lesson.keyIdeas.map((idea) => (
                 <div key={idea.title} className="rounded-[22px] border border-slate-800 bg-slate-950/70 p-4">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-300">Clave</p>

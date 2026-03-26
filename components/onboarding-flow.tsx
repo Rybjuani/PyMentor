@@ -42,7 +42,7 @@ export function OnboardingFlow({
           No necesitas saber nada todavía. PyMentor te va a guiar por una sola ruta de Python, paso a paso y con claridad.
         </p>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           <div className="rounded-[24px] border border-slate-800 bg-slate-900/70 p-5">
             <div className="flex items-center gap-2 font-semibold text-slate-100">
               <Compass className="h-4 w-4 text-brand-300" />

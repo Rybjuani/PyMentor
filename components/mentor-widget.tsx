@@ -157,7 +157,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
         </p>
       </div>
 
-      <div className="mt-3 grid gap-3">
+      <div className="mt-3 grid gap-3 xl:grid-cols-2">
         {mentorPrompts.map((item) => {
           const Icon = modeMeta[item.mode].icon;
 
@@ -228,7 +228,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
           ) : null}
         </div>
 
-        <div className="mt-4 max-h-[540px] space-y-3 overflow-y-auto pr-1">
+        <div className="mt-4 max-h-[420px] space-y-3 overflow-y-auto pr-1 sm:max-h-[540px]">
           {messages.length === 0 ? (
             <div className="rounded-[20px] border border-slate-800 bg-slate-900/80 px-4 py-4 text-sm leading-7 text-slate-300">
               Empieza con un modo rápido como <span className="font-semibold text-slate-100">Explicar simple</span> o haz tu propia pregunta abajo.

@@ -162,7 +162,7 @@ export function PythonPlayground({
                 : "Los borradores se guardan automáticamente"}
         </div>
       ) : null}
-      <div className="mt-4 grid gap-3 sm:grid-cols-3">
+      <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         <div className="rounded-[20px] border border-white/10 bg-white/[0.03] px-4 py-3">
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Estado del código</p>
           <p className="mt-2 text-sm font-semibold text-slate-100">
@@ -189,8 +189,8 @@ export function PythonPlayground({
         </div>
       </div>
 
-      <div className="mt-5 grid gap-5 xl:grid-cols-[1.08fr_0.92fr]">
-        <div className="rounded-[26px] border border-slate-800 bg-slate-950/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+      <div className="mt-5 grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
+        <div className="min-w-0 rounded-[26px] border border-slate-800 bg-slate-950/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
           <div className="flex items-center justify-between gap-3">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Editor</p>
@@ -202,7 +202,7 @@ export function PythonPlayground({
           </div>
           <textarea
             rows={compact ? 9 : 11}
-            className="mt-4 w-full rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 font-mono text-sm leading-7 text-slate-100 outline-none focus:border-brand-400"
+            className="mt-4 w-full rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 font-mono text-[13px] leading-7 text-slate-100 outline-none focus:border-brand-400 sm:text-sm"
             value={code}
             onChange={(event) => updateCode(event.target.value)}
           />
@@ -219,7 +219,7 @@ export function PythonPlayground({
           </div>
         </div>
 
-        <div className="rounded-[26px] border border-slate-800 bg-[linear-gradient(180deg,#050b14,#0b1620)] p-5 text-sm text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+        <div className="min-w-0 rounded-[26px] border border-slate-800 bg-[linear-gradient(180deg,#050b14,#0b1620)] p-5 text-sm text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
           <div className="flex items-center justify-between gap-3">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Consola</p>
@@ -229,7 +229,7 @@ export function PythonPlayground({
               {error ? "Error detectado" : output.trim().length > 0 ? "Salida lista" : "Esperando ejecución"}
             </div>
           </div>
-          <div className="mt-4 min-h-[180px] overflow-x-auto whitespace-pre-wrap break-words rounded-[22px] border border-slate-800 bg-slate-950/70 px-4 py-4 font-mono leading-7 text-slate-200">
+          <div className="mt-4 min-h-[180px] overflow-x-auto whitespace-pre-wrap break-words rounded-[22px] border border-slate-800 bg-slate-950/70 px-4 py-4 font-mono text-[13px] leading-7 text-slate-200 sm:text-sm">
             {loadingRuntime
               ? "Cargando el entorno de Python para tu navegador..."
               : runtimeError

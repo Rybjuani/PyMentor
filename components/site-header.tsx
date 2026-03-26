@@ -26,15 +26,15 @@ export async function SiteHeader() {
         </span>
       </Link>
 
-      <nav className="mission-grid no-scrollbar flex w-full items-center gap-3 overflow-x-auto rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-300 backdrop-blur lg:w-auto lg:px-5">
+      <nav className="mission-grid no-scrollbar flex w-full items-center gap-2 overflow-x-auto rounded-full border border-white/10 bg-white/5 px-3 py-3 text-sm text-slate-300 backdrop-blur sm:gap-3 sm:px-4 lg:w-auto lg:px-5">
         {navItems.map((item) => (
-          <Link key={item.href} href={item.href} className="whitespace-nowrap rounded-full px-3 py-1.5 transition hover:bg-white/5 hover:text-brand-200">
+          <Link key={item.href} href={item.href} className="whitespace-nowrap rounded-full px-2.5 py-1.5 transition hover:bg-white/5 hover:text-brand-200 sm:px-3">
             {item.label}
           </Link>
         ))}
       </nav>
 
-      <div className="flex w-full items-center gap-3 sm:w-auto">
+      <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
         <div className="hidden items-center gap-2 rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-100 xl:inline-flex">
           <ShieldCheck className="h-3.5 w-3.5" />
           Ruta guiada

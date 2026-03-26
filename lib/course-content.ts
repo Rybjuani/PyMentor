@@ -150,6 +150,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "78 min",
     xp: 320
+  },
+  {
+    slug: "simple-program-organization",
+    title: "Funciones y organización simple",
+    description: "Aprende a dividir programas un poco más grandes en funciones claras y a dar los primeros pasos hacia una organización más legible entre archivos simples.",
+    order: 16,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "82 min",
+    xp: 330
   }
 ];
 
@@ -3183,6 +3193,212 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar un encabezado y luego el texto leído desde el archivo."
     },
     exerciseSlug: "read-a-file-and-show-summary"
+  },
+  {
+    slug: "why-program-organization-matters",
+    module: "Funciones y organización simple",
+    moduleSlug: "simple-program-organization",
+    order: 1,
+    title: "Por qué conviene organizar mejor un programa cuando crece",
+    duration: "15 min",
+    difficulty: "Beginner",
+    summary: "Aprende a reconocer cuándo un script ya pide una estructura más clara y por qué dividir lógica en funciones ayuda a seguir pensando con calma.",
+    warmup: "Un programa pequeño puede vivir en pocas líneas. Cuando empieza a hacer más cosas, una buena organización deja de ser un lujo y se vuelve una ayuda real.",
+    goal: "Al final, deberías poder explicar por qué una función clara hace que un programa un poco más grande sea más fácil de leer, revisar y reutilizar.",
+    keyIdeas: [
+      {
+        title: "Más líneas no deberían significar más confusión",
+        description: "Cuando una parte del programa tiene una intención clara, conviene darle un lugar reconocible."
+      },
+      {
+        title: "Las funciones agrupan trabajo con sentido",
+        description: "Sirven para nombrar acciones y evitar que todo quede mezclado en un solo bloque."
+      },
+      {
+        title: "Organizar no es complicar",
+        description: "A este nivel, organizar mejor significa hacer el código más amable, no más técnico."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué cambia cuando el programa crece",
+        body: "En la primera ruta pudiste resolver muchos problemas con un solo archivo y pocas secciones. En esta nueva etapa, los programas empiezan a hacer más cosas y se vuelve útil separar mejor cada parte."
+      },
+      {
+        title: "Qué aporta una función en este contexto",
+        body: "Una función te deja decir: 'Esta parte muestra el menú', 'esta otra guarda una nota' o 'esta revisa un estado'. Ese nombre ordena el pensamiento y también hace más fácil volver al código después."
+      },
+      {
+        title: "Qué problema evita",
+        body: "Evita el efecto de 'pared de código', donde todo parece pegado y cuesta entender qué hace cada sección. Una buena organización no resuelve todo, pero baja bastante esa sensación."
+      },
+      {
+        title: "Qué sigue sin hacer falta",
+        body: "No necesitas pensar todavía en sistemas complejos, patrones raros o arquitectura avanzada. Aquí basta con separar tareas claras y mantener nombres simples."
+      }
+    ],
+    example:
+      "def mostrar_titulo():\n    print('=== TU PLAN ===')\n\ndef mostrar_pasos():\n    print('- Leer')\n    print('- Practicar Python')\n\nmostrar_titulo()\nmostrar_pasos()",
+    practicePrompt: "Lee el ejemplo y piensa qué parte del programa quedaría más difícil de entender si todo estuviera escrito sin funciones separadas.",
+    practiceChecklist: [
+      "Identifica una función que presenta información.",
+      "Identifica otra que resuelve otra parte del programa.",
+      "Observa cómo los nombres ayudan a leer el flujo."
+    ],
+    commonMistakes: [
+      "Pensar que organizar solo importa en proyectos enormes.",
+      "Crear funciones con nombres poco claros que no ayudan a leer mejor.",
+      "Separar en funciones sin una intención visible."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería mostrar un título y luego un plan, pero una llamada y un nombre de función hacen más difícil seguir el flujo.",
+      brokenCode:
+        "def mostrar_titulo():\n    print('=== TU PLAN ===')\n\ndef hacer_cosas():\n    print('- Leer')\n    print('- Practicar Python')\n\nmostrar_titulo\nhacer_cosas()",
+      expectedLearning: "Cuando un programa empieza a crecer, conviene revisar nombres claros y llamadas correctas antes de tocar algo más complejo."
+    },
+    playground: {
+      title: "Prueba una organización más clara",
+      guidance: "Ejecuta el código, cambia los nombres o los mensajes y observa cómo cambia la lectura del flujo. La meta es sentir que las funciones ordenan el programa.",
+      starterCode:
+        "def mostrar_titulo():\n    print('=== TU PLAN ===')\n\ndef mostrar_pasos():\n    print('- Leer')\n    print('- Practicar Python')\n\nmostrar_titulo()\nmostrar_pasos()",
+      emptyOutputHint: "La salida debería mostrar una estructura simple pero más ordenada gracias a las funciones."
+    },
+    exerciseSlug: "explain-why-functions-help-organization"
+  },
+  {
+    slug: "reusing-functions-with-clear-intent",
+    module: "Funciones y organización simple",
+    moduleSlug: "simple-program-organization",
+    order: 2,
+    title: "Reutilizar funciones con una intención más clara",
+    duration: "16 min",
+    difficulty: "Beginner",
+    summary: "Practica cómo una función bien pensada puede usarse varias veces sin repetir bloques largos y sin volver el programa más confuso.",
+    warmup: "Reutilizar no es solo ahorrar líneas. También te ayuda a sostener programas más amplios sin copiar lo mismo muchas veces.",
+    goal: "Al final, deberías poder construir un programa pequeño donde una función se use con intención clara en más de una parte del flujo.",
+    keyIdeas: [
+      {
+        title: "Reutilizar también organiza",
+        description: "Si una acción se repite, muchas veces conviene ponerla en una función con nombre."
+      },
+      {
+        title: "La intención debe verse",
+        description: "No basta con ahorrar líneas; la función tiene que dejar más claro qué está haciendo el programa."
+      },
+      {
+        title: "Los parámetros siguen siendo una herramienta práctica",
+        description: "Permiten que una misma función sirva para varios casos pequeños."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué significa reutilizar mejor",
+        body: "No se trata solo de llamar dos veces una función. Se trata de usarla para expresar una idea clara del programa: saludar, mostrar una nota, registrar algo o presentar un bloque de salida."
+      },
+      {
+        title: "Cómo se nota una buena reutilización",
+        body: "Se nota cuando el flujo del programa queda más limpio y los nombres ayudan a seguir lo que ocurre. Si la función no aclara nada, quizá todavía no está separada en el lugar correcto."
+      },
+      {
+        title: "Qué problema resuelve en esta etapa",
+        body: "Resuelve el crecimiento desordenado del script. Repetir bloques largos aumenta la confusión; reutilizar una función corta la reduce."
+      },
+      {
+        title: "Qué conviene mantener simple",
+        body: "Una o dos funciones reutilizadas con parámetros pequeños ya alcanzan para practicar esta idea de forma real y accesible."
+      }
+    ],
+    example:
+      "def mostrar_linea(nombre, estado):\n    print(nombre + ': ' + estado)\n\nmostrar_linea('Lectura', 'bien')\nmostrar_linea('Python', 'pendiente')",
+    practicePrompt: "Prueba cambiar los valores o reutilizar la función con una tercera línea. La idea es ver cómo el patrón evita repetir el mismo `print()` completo.",
+    practiceChecklist: [
+      "Define una función con parámetros simples.",
+      "Usa esa función más de una vez.",
+      "Mantén la salida clara y consistente."
+    ],
+    commonMistakes: [
+      "Volver a copiar `print()` largos en lugar de reutilizar la función.",
+      "Poner parámetros que no se usan dentro de la función.",
+      "Elegir nombres genéricos que no explican qué hace la función."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería reutilizar una función para mostrar dos estados, pero una llamada y un parámetro no coinciden del todo.",
+      brokenCode:
+        "def mostrar_linea(nombre, estado):\n    print(nombre + ': ' + estdo)\n\nmostrar_linea('Lectura', 'bien')",
+      expectedLearning: "En programas un poco más grandes, reutilizar bien también exige revisar nombres consistentes dentro y fuera de la función."
+    },
+    playground: {
+      title: "Reutiliza una función con intención",
+      guidance: "Ejecuta el ejemplo y luego añade otra llamada. La meta es sentir que una pequeña función puede ordenar mejor una parte repetida del programa.",
+      starterCode:
+        "def mostrar_linea(nombre, estado):\n    print(nombre + ': ' + estado)\n\nmostrar_linea('Lectura', 'bien')\nmostrar_linea('Python', 'pendiente')",
+      emptyOutputHint: "La salida debería mostrar varias líneas construidas por la misma función."
+    },
+    exerciseSlug: "reuse-a-function-for-multiple-lines"
+  },
+  {
+    slug: "first-simple-module-idea",
+    module: "Funciones y organización simple",
+    moduleSlug: "simple-program-organization",
+    order: 3,
+    title: "Primera idea de separar partes del programa en otro archivo",
+    duration: "17 min",
+    difficulty: "Beginner",
+    summary: "Da tu primer paso para entender que, cuando un programa crece, algunas funciones pueden vivir en otro archivo simple para mantener el código más limpio.",
+    warmup: "Hasta ahora casi todo vivió en un solo archivo. La siguiente idea natural es entender que algunas partes pueden ir a otro archivo para que el programa respire mejor.",
+    goal: "Al final, deberías poder entender una separación muy simple entre archivo principal y archivo de apoyo, sin sentirla como algo abstracto ni avanzado.",
+    keyIdeas: [
+      {
+        title: "Separar no significa complicar",
+        description: "A este nivel, solo significa que no todo tiene que vivir en el mismo lugar."
+      },
+      {
+        title: "Un archivo puede guardar funciones de apoyo",
+        description: "Eso ayuda a que el archivo principal muestre el flujo general con más claridad."
+      },
+      {
+        title: "La idea importa más que la complejidad técnica",
+        description: "Aquí alcanza con un ejemplo simple de `import` y un módulo pequeño."
+      }
+    ],
+    explanation: [
+      {
+        title: "Por qué aparece esta idea ahora",
+        body: "Después de archivos básicos y funciones más intencionales, el siguiente paso natural es entender que ciertas partes del programa pueden vivir en un archivo aparte para que el principal quede más ordenado."
+      },
+      {
+        title: "Cómo pensar un módulo simple",
+        body: "Por ahora, piensa en un módulo como otro archivo con funciones útiles. El archivo principal se encarga del flujo y el archivo auxiliar guarda acciones pequeñas reutilizables."
+      },
+      {
+        title: "Qué no hace falta todavía",
+        body: "No necesitas aprender sistemas complejos de carpetas, paquetes o imports avanzados. Un solo ejemplo claro ya alcanza para entender el beneficio."
+      },
+      {
+        title: "Qué gana el programa",
+        body: "Gana aire. El archivo principal deja de cargar con todo y se vuelve más fácil de leer de arriba hacia abajo."
+      }
+    ],
+    example:
+      "from mensajes import mostrar_bienvenida\n\nmostrar_bienvenida()\nprint('Programa listo')",
+    practicePrompt: "Lee el ejemplo y piensa qué parte del programa quedaría mejor guardada en otro archivo: la bienvenida, el menú o un bloque de ayuda repetido.",
+    practiceChecklist: [
+      "Reconoce que una función puede vivir en otro archivo.",
+      "Observa que el archivo principal puede quedar más corto.",
+      "Piensa en una parte repetida que convendría mover."
+    ],
+    commonMistakes: [
+      "Pensar que usar otro archivo ya es algo demasiado avanzado para principiantes.",
+      "Querer aprender imports complejos antes de entender la idea básica.",
+      "Mover cosas a otro archivo sin una razón clara."
+    ],
+    bugChallenge: {
+      prompt: "Este ejemplo debería importar una función simple, pero un nombre hace que el archivo principal no pueda usarla como espera.",
+      brokenCode:
+        "from mensajes import mostrar_bienvenida\n\nmostrar_bienvenidas()",
+      expectedLearning: "En una separación simple entre archivos, revisar nombres exactos sigue siendo lo más importante."
+    },
+    exerciseSlug: "organize-a-small-program-with-helper-function"
   }
 ];
 
@@ -6433,6 +6649,224 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["writes-file-first", "writes-two-lines", "reads-file", "stores-content", "prints-summary"]
+    }
+  },
+  {
+    slug: "explain-why-functions-help-organization",
+    title: "Explica por qué las funciones ayudan a organizar",
+    exerciseType: "concept_check",
+    responseFormat: "text",
+    moduleSlug: "simple-program-organization",
+    lessonSlug: "why-program-organization-matters",
+    order: 1,
+    duration: "8 min",
+    summary: "Explica con palabras simples por qué un programa con más partes puede leerse mejor cuando divide tareas en funciones.",
+    prompt:
+      "En 2 o 3 frases cortas, explica por qué dividir un programa en funciones claras ayuda cuando el código empieza a crecer.",
+    responseLabel: "Tu explicación sobre organización",
+    responsePlaceholder:
+      "Dividir un programa en funciones ayuda a leer mejor cada parte. También evita que todo quede mezclado en un solo bloque largo.",
+    instructions: [
+      "Explica que las funciones separan partes del programa.",
+      "Menciona que eso ayuda a leer o revisar mejor.",
+      "Conecta la idea con programas un poco más grandes."
+    ],
+    hints: [
+      "Piensa en una función como una parte con nombre y objetivo.",
+      "No hace falta hablar de arquitectura avanzada.",
+      "La claridad es la idea central."
+    ],
+    starterCode: "def mostrar_titulo():\n    print('=== TU PLAN ===')",
+    successCriteria: [
+      "Menciona separación de tareas.",
+      "Menciona claridad o lectura.",
+      "Conecta la idea con crecimiento del programa."
+    ],
+    evaluator: {
+      type: "ordered_concepts",
+      minLength: 45,
+      passingScore: 4,
+      requireOrder: false,
+      concepts: [
+        {
+          id: "separates-work",
+          label: "Habla de separar partes del programa",
+          keywords: ["separar", "dividir", "partes", "tareas", "funciones"],
+          feedbackWhenMissing: "Explica que las funciones sirven para separar partes o tareas del programa."
+        },
+        {
+          id: "improves-readability",
+          label: "Conecta con claridad o lectura",
+          keywords: ["leer", "claro", "claridad", "orden", "entender", "revisar"],
+          feedbackWhenMissing: "Agrega que eso ayuda a leer, revisar o entender mejor el código."
+        },
+        {
+          id: "helps-when-growing",
+          label: "Lo relaciona con programas más grandes",
+          keywords: ["crece", "grande", "más largo", "más partes", "programa"],
+          feedbackWhenMissing: "Conecta la idea con programas que empiezan a crecer o tener más partes."
+        }
+      ]
+    }
+  },
+  {
+    slug: "reuse-a-function-for-multiple-lines",
+    title: "Reutiliza una función para varias líneas",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "simple-program-organization",
+    lessonSlug: "reusing-functions-with-clear-intent",
+    order: 2,
+    duration: "10 min",
+    summary: "Usa una función con parámetros para mostrar varias líneas de salida sin repetir el mismo bloque completo.",
+    prompt:
+      "Escribe un programa que defina `mostrar_linea(nombre, estado)`, imprima `nombre + ': ' + estado` dentro de la función y luego la reutilice para mostrar dos líneas: `Lectura: bien` y `Python: pendiente`.",
+    responseLabel: "Tu programa con función reutilizable",
+    responsePlaceholder:
+      "def mostrar_linea(nombre, estado):\n    print(nombre + ': ' + estado)\n\nmostrar_linea('Lectura', 'bien')\nmostrar_linea('Python', 'pendiente')",
+    instructions: [
+      "Define una función con dos parámetros.",
+      "Construye la salida dentro de la función.",
+      "Llama a la función dos veces con valores distintos."
+    ],
+    hints: [
+      "La forma básica es `def mostrar_linea(nombre, estado):`.",
+      "Dentro puedes usar `print(nombre + ': ' + estado)`.",
+      "La salida debería mostrar dos líneas distintas creadas por la misma función."
+    ],
+    starterCode:
+      "def mostrar_linea(nombre, estado):\n    print(nombre + ': ' + estado)\n\nmostrar_linea('Lectura', 'bien')\nmostrar_linea('Python', 'pendiente')",
+    successCriteria: [
+      "Usa una sola función para más de una línea.",
+      "Pasa valores distintos en cada llamada.",
+      "Mantiene la salida clara y consistente."
+    ],
+    playground: {
+      title: "Ejecuta la función reutilizable",
+      guidance: "Corre el ejemplo y luego agrega una tercera llamada o cambia los valores. La meta es ver que una función bien pensada evita repetir el mismo bloque completo.",
+      starterCode:
+        "def mostrar_linea(nombre, estado):\n    print(nombre + ': ' + estado)\n\nmostrar_linea('Lectura', 'bien')\nmostrar_linea('Python', 'pendiente')",
+      emptyOutputHint: "La salida debería mostrar varias líneas construidas por la misma función."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Lectura: bien\nPython: pendiente"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 120,
+      passingScore: 4,
+      requiredPatterns: [
+        {
+          id: "defines-line-function",
+          label: "Define `mostrar_linea(nombre, estado)`",
+          pattern: "def\\s+mostrar_linea\\(\\s*nombre\\s*,\\s*estado\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define la función `mostrar_linea(nombre, estado)`."
+        },
+        {
+          id: "prints-line",
+          label: "Imprime `nombre + ': ' + estado`",
+          pattern: "print\\(\\s*nombre\\s*\\+\\s*['\"]: ['\"]\\s*\\+\\s*estado\\s*\\)",
+          feedbackWhenMissing: "Dentro de la función, imprime `nombre + ': ' + estado`."
+        },
+        {
+          id: "calls-first-line",
+          label: "Llama la función con `Lectura` y `bien`",
+          pattern: "mostrar_linea\\(\\s*['\"]Lectura['\"]\\s*,\\s*['\"]bien['\"]\\s*\\)",
+          feedbackWhenMissing: "Haz una llamada con `Lectura` y `bien`."
+        },
+        {
+          id: "calls-second-line",
+          label: "Llama la función con `Python` y `pendiente`",
+          pattern: "mostrar_linea\\(\\s*['\"]Python['\"]\\s*,\\s*['\"]pendiente['\"]\\s*\\)",
+          feedbackWhenMissing: "Haz otra llamada con `Python` y `pendiente`."
+        }
+      ],
+      orderedPatternIds: ["defines-line-function", "prints-line", "calls-first-line", "calls-second-line"]
+    }
+  },
+  {
+    slug: "organize-a-small-program-with-helper-function",
+    title: "Organiza un programa pequeño con una función de apoyo",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "simple-program-organization",
+    lessonSlug: "first-simple-module-idea",
+    order: 3,
+    duration: "10 min",
+    summary: "Construye un programa corto donde una función de apoyo deja el flujo principal más claro y visible.",
+    prompt:
+      "Escribe un programa que defina una función `mostrar_bienvenida()` que imprima `Bienvenido a tu plan`, luego imprima `Programa listo` en el flujo principal. La idea es que una parte del programa quede separada y el archivo principal se lea con más claridad.",
+    responseLabel: "Tu programa mejor organizado",
+    responsePlaceholder:
+      "def mostrar_bienvenida():\n    print('Bienvenido a tu plan')\n\nmostrar_bienvenida()\nprint('Programa listo')",
+    instructions: [
+      "Define una función de apoyo simple.",
+      "Llama a esa función desde el flujo principal.",
+      "Deja una línea final clara fuera de la función."
+    ],
+    hints: [
+      "No hace falta usar un segundo archivo real para resolver el ejercicio.",
+      "La meta es practicar la idea de separar una parte del programa con una función clara.",
+      "La salida final debería mostrar primero la bienvenida y luego la línea principal."
+    ],
+    starterCode:
+      "def mostrar_bienvenida():\n    print('Bienvenido a tu plan')\n\nmostrar_bienvenida()\nprint('Programa listo')",
+    successCriteria: [
+      "Separa una parte del programa en una función.",
+      "Mantiene el flujo principal legible.",
+      "Muestra una salida corta y ordenada."
+    ],
+    playground: {
+      title: "Ejecuta el programa organizado",
+      guidance: "Corre el programa y luego cambia el mensaje de bienvenida o la línea final. Lo importante es que la separación siga dejando el flujo principal más claro.",
+      starterCode:
+        "def mostrar_bienvenida():\n    print('Bienvenido a tu plan')\n\nmostrar_bienvenida()\nprint('Programa listo')",
+      emptyOutputHint: "La salida debería mostrar primero la bienvenida y luego la confirmación principal."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Bienvenido a tu plan\nPrograma listo"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 90,
+      passingScore: 4,
+      requiredPatterns: [
+        {
+          id: "defines-helper-function",
+          label: "Define `mostrar_bienvenida()`",
+          pattern: "def\\s+mostrar_bienvenida\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `mostrar_bienvenida()`."
+        },
+        {
+          id: "prints-welcome",
+          label: "Imprime la bienvenida dentro de la función",
+          pattern: "print\\(\\s*['\"]Bienvenido a tu plan['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro de la función, imprime `Bienvenido a tu plan`."
+        },
+        {
+          id: "calls-helper-function",
+          label: "Llama la función desde el flujo principal",
+          pattern: "mostrar_bienvenida\\(\\)",
+          feedbackWhenMissing: "Llama a la función desde el flujo principal."
+        },
+        {
+          id: "prints-main-line",
+          label: "Imprime `Programa listo` fuera de la función",
+          pattern: "print\\(\\s*['\"]Programa listo['\"]\\s*\\)",
+          feedbackWhenMissing: "Deja una línea final con `Programa listo` fuera de la función."
+        }
+      ],
+      orderedPatternIds: ["defines-helper-function", "prints-welcome", "calls-helper-function", "prints-main-line"]
     }
   }
 ];

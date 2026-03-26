@@ -44,6 +44,7 @@ La primera gran ruta de PyMentor ya está construida y localizada en español, y
 13. Proyectos iniciales más libres
 14. Cierre de fundamentos
 15. Archivos básicos
+16. Funciones y organización simple
 
 ## Etapas del producto
 
@@ -54,7 +55,7 @@ Lleva a la persona desde cero absoluto hasta un cierre de fundamentos con capsto
 ### Ruta 2 · Python práctico 2
 
 Empieza justo después del cierre de fundamentos.
-Su primera apertura es `Archivos básicos`, donde el foco pasa a programas que guardan información y se sienten menos efímeros.
+Sus primeras aperturas son `Archivos básicos` y `Funciones y organización simple`, donde el foco pasa a programas que guardan información, reutilizan mejor la lógica y se sienten menos efímeros y mejor organizados.
 
 ## Requisitos
 
@@ -196,7 +197,7 @@ npm run start:railway
 - No hay streaming en el mentor todavía.
 - No hay ejecución server-side de Python.
 - No hay code runner completo ni evaluación semántica profunda.
-- La segunda gran ruta recién está abierta y por ahora solo tiene su primer módulo.
+- La segunda gran ruta recién está abierta y por ahora todavía tiene poco volumen.
 - Los logros siguen siendo una capa de producto liviana, no un sistema completo de gamificación persistida.
 
 ## Documentación adicional

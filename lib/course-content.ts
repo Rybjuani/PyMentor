@@ -180,6 +180,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "92 min",
     xp: 360
+  },
+  {
+    slug: "simple-data-consultation-and-updates",
+    title: "Consulta y actualización simple de datos",
+    description: "Aprende a consultar, modificar y volver a mostrar información guardada para que tus herramientas pequeñas se sientan más interactivas y útiles.",
+    order: 19,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "96 min",
+    xp: 380
   }
 ];
 
@@ -3845,6 +3855,219 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar o la lista de hábitos o un resumen, según la opción elegida."
     },
     exerciseSlug: "build-a-menu-summary-tool"
+  },
+  {
+    slug: "consulting-saved-data-with-clear-functions",
+    module: "Consulta y actualización simple de datos",
+    moduleSlug: "simple-data-consultation-and-updates",
+    order: 1,
+    title: "Consultar datos guardados con funciones claras",
+    duration: "16 min",
+    difficulty: "Beginner",
+    summary: "Da el siguiente paso práctico: aprende a buscar y mostrar un dato guardado sin volver el programa confuso.",
+    warmup: "Una herramienta se siente más útil cuando puede responder una pregunta simple sobre la información que ya guardaste.",
+    goal: "Al final, deberías poder entender cómo una función puede consultar datos guardados y otra mostrar el resultado con claridad.",
+    keyIdeas: [
+      {
+        title: "Consultar es distinto de guardar",
+        description: "Cuando una utilidad busca o revisa datos, el flujo del programa gana una intención más clara."
+      },
+      {
+        title: "Las funciones ayudan a separar búsqueda y presentación",
+        description: "Una puede leer y preparar los datos; otra puede mostrar el resultado."
+      },
+      {
+        title: "La utilidad empieza a sentirse interactiva",
+        description: "Aunque siga siendo simple, ya no solo guarda y muestra siempre lo mismo."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué cambia en esta etapa",
+        body: "Hasta aquí tus utilidades guardaban información, la leían y la mostraban. Ahora aparece algo nuevo: consultar un dato concreto dentro de lo que ya está guardado."
+      },
+      {
+        title: "Qué significa consultar con claridad",
+        body: "Significa que el programa puede revisar una lista simple de datos, encontrar algo útil y enseñarlo sin mezclar toda la lógica en un solo bloque."
+      },
+      {
+        title: "Por qué sigue siendo principiante",
+        body: "Porque seguimos trabajando con texto plano, listas simples y funciones cortas. La novedad está en el flujo del programa, no en usar técnicas avanzadas."
+      },
+      {
+        title: "Qué sensación debería dejar",
+        body: "Debería dejar la sensación de que la herramienta ya responde a una necesidad concreta: revisar información guardada y devolver algo útil."
+      }
+    ],
+    example:
+      "def guardar_estados():\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente\\nMora: activo')\n\n\ndef consultar_estado(nombre):\n    with open('estados.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Estado encontrado:', linea)\n\n\nguardar_estados()\nconsultar_estado('Luis')",
+    practicePrompt: "Corre el ejemplo y luego cambia el nombre consultado. Lo importante es ver cómo la utilidad ya puede responder algo concreto a partir de datos guardados.",
+    practiceChecklist: [
+      "Guarda varias líneas en un archivo.",
+      "Lee el archivo como lista de líneas.",
+      "Usa una función para consultar un dato específico."
+    ],
+    commonMistakes: [
+      "Leer los datos, pero no separar consulta y presentación.",
+      "Buscar sin revisar bien el formato del texto guardado.",
+      "Intentar hacer toda la lógica dentro del flujo principal."
+    ],
+    bugChallenge: {
+      prompt: "Este programa quiere consultar un estado guardado, pero el nombre de la lista y la llamada no coinciden del todo.",
+      brokenCode:
+        "def guardar_estados():\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente\\nMora: activo')\n\n\ndef consultar_estado(nombre):\n    with open('estados.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in estados:\n        if linea.startswith(nombre + ':'):\n            print('Estado encontrado:', linea)\n\nguardar_estado()\nconsultar_estado('Luis')",
+      expectedLearning: "Cuando una utilidad consulta datos, revisar con cuidado nombres de variables y llamadas sigue siendo parte clave del trabajo."
+    },
+    playground: {
+      title: "Prueba una consulta simple",
+      guidance: "Ejecuta el programa y luego cambia el nombre consultado o los estados guardados. La meta es sentir que la utilidad ya puede responder una pregunta concreta.",
+      starterCode:
+        "def guardar_estados():\n    with open('estados.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente\\nMora: activo')\n\n\ndef consultar_estado(nombre):\n    with open('estados.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Estado encontrado:', linea)\n\n\nguardar_estados()\nconsultar_estado('Luis')",
+      emptyOutputHint: "La salida debería mostrar el estado encontrado para el nombre consultado."
+    },
+    exerciseSlug: "explain-why-consulting-data-needs-clear-flow"
+  },
+  {
+    slug: "updating-a-saved-value-calmly",
+    module: "Consulta y actualización simple de datos",
+    moduleSlug: "simple-data-consultation-and-updates",
+    order: 2,
+    title: "Actualizar un dato guardado con calma",
+    duration: "18 min",
+    difficulty: "Beginner",
+    summary: "Aprende a cambiar un valor ya guardado y volver a mostrarlo con una utilidad pequeña y legible.",
+    warmup: "Una herramienta se vuelve más útil cuando no solo consulta información, sino que también puede cambiarla.",
+    goal: "Al final, deberías poder construir un programa que lea datos guardados, actualice uno de ellos y vuelva a escribir el resultado de forma clara.",
+    keyIdeas: [
+      {
+        title: "Actualizar es reescribir con intención",
+        description: "Muchas veces la forma simple de cambiar un dato es leer, ajustar y volver a guardar."
+      },
+      {
+        title: "La organización evita perder el hilo",
+        description: "Una función puede preparar el cambio y otra mostrar el resultado final."
+      },
+      {
+        title: "La utilidad ya empieza a sentirse más viva",
+        description: "No solo revisa datos: ahora los modifica de una manera visible."
+      }
+    ],
+    explanation: [
+      {
+        title: "Cómo pensar una actualización simple",
+        body: "En este nivel no hace falta buscar técnicas complejas. Puedes leer el archivo como una lista de líneas, cambiar la línea que te importa y volver a escribir todo de forma ordenada."
+      },
+      {
+        title: "Por qué esto es útil",
+        body: "Porque muchas herramientas pequeñas reales hacen exactamente eso: toman un registro simple, cambian un estado o un valor y luego muestran el resultado actualizado."
+      },
+      {
+        title: "Qué conviene cuidar",
+        body: "Conviene cuidar el formato del texto y mantener funciones cortas. Si el programa se entiende, también se vuelve más fácil detectar en qué parte se hace el cambio."
+      },
+      {
+        title: "Qué sigue sin hacer falta",
+        body: "Todavía no necesitas bases de datos ni estructuras avanzadas. Un archivo de texto, una lista de líneas y funciones claras alcanzan bien para este paso."
+      }
+    ],
+    example:
+      "def guardar_tareas():\n    with open('tareas.txt', 'w') as archivo:\n        archivo.write('Leer: pendiente\\nPython: pendiente')\n\n\ndef actualizar_estado():\n    with open('tareas.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith('Python:'):\n            nuevas_lineas.append('Python: hecho')\n        else:\n            nuevas_lineas.append(linea)\n    with open('tareas.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_tareas():\n    with open('tareas.txt', 'r') as archivo:\n        print(archivo.read())\n\n\nguardar_tareas()\nactualizar_estado()\nmostrar_tareas()",
+    practicePrompt: "Ejecuta el programa y luego cambia qué tarea se actualiza o qué valor final se escribe. La idea es ver el ciclo completo: leer, cambiar y volver a mostrar.",
+    practiceChecklist: [
+      "Lee las líneas guardadas.",
+      "Cambia una línea específica.",
+      "Vuelve a escribir el archivo y muestra el resultado."
+    ],
+    commonMistakes: [
+      "Cambiar el valor en memoria pero olvidar volver a escribir el archivo.",
+      "Perder líneas anteriores al rehacer el contenido.",
+      "Mezclar lectura, cambio y salida en una sola parte difícil de seguir."
+    ],
+    bugChallenge: {
+      prompt: "Este programa quiere cambiar un estado guardado, pero el nombre de la lista final y la reescritura del archivo no coinciden.",
+      brokenCode:
+        "def guardar_tareas():\n    with open('tareas.txt', 'w') as archivo:\n        archivo.write('Leer: pendiente\\nPython: pendiente')\n\n\ndef actualizar_estado():\n    with open('tareas.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith('Python:'):\n            nuevas_lineas.append('Python: hecho')\n        else:\n            nuevas_lineas.append(linea)\n    with open('tareas.txt', 'w') as archivo:\n        archivo.write('\\n'.join(actualizadas))",
+      expectedLearning: "Actualizar datos simples exige revisar con cuidado qué lista realmente vas a volver a guardar."
+    },
+    playground: {
+      title: "Actualiza un valor guardado",
+      guidance: "Ejecuta el programa y luego cambia la tarea o el estado final. La meta es practicar una actualización simple y visible dentro de una utilidad ordenada.",
+      starterCode:
+        "def guardar_tareas():\n    with open('tareas.txt', 'w') as archivo:\n        archivo.write('Leer: pendiente\\nPython: pendiente')\n\n\ndef actualizar_estado():\n    with open('tareas.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith('Python:'):\n            nuevas_lineas.append('Python: hecho')\n        else:\n            nuevas_lineas.append(linea)\n    with open('tareas.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_tareas():\n    with open('tareas.txt', 'r') as archivo:\n        print(archivo.read())\n\n\nguardar_tareas()\nactualizar_estado()\nmostrar_tareas()",
+      emptyOutputHint: "La salida debería mostrar el contenido actualizado del archivo."
+    },
+    exerciseSlug: "build-a-simple-update-tool"
+  },
+  {
+    slug: "coordinating-consultation-update-and-display",
+    module: "Consulta y actualización simple de datos",
+    moduleSlug: "simple-data-consultation-and-updates",
+    order: 3,
+    title: "Coordinar consulta, actualización y salida final",
+    duration: "19 min",
+    difficulty: "Beginner",
+    summary: "Junta consulta, cambio y resultado final dentro de una herramienta pequeña con flujo más útil y mejor coordinado.",
+    warmup: "Una herramienta ya empieza a sentirse de verdad cuando puede revisar información, cambiarla y luego mostrar el estado nuevo.",
+    goal: "Al final, deberías poder entender un flujo simple donde una opción decide consultar o actualizar datos guardados y mostrar el resultado final.",
+    keyIdeas: [
+      {
+        title: "Consultar y actualizar pueden convivir en la misma utilidad",
+        description: "Con una coordinación simple, el programa gana utilidad sin volverse complejo."
+      },
+      {
+        title: "El flujo principal debería seguir siendo legible",
+        description: "Aunque haga más cosas, el programa todavía debe leerse con calma."
+      },
+      {
+        title: "La salida final confirma el cambio",
+        description: "Mostrar el resultado actualizado da una sensación más completa de herramienta útil."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué estás practicando ahora",
+        body: "Ahora el programa ya no solo guarda o resume. Puede decidir entre consultar un dato o actualizarlo y luego mostrar el resultado final."
+      },
+      {
+        title: "Cómo mantener esto principiante",
+        body: "Lo mantenemos simple con una opción corta, funciones bien separadas y texto plano. La idea es coordinar mejor, no añadir complejidad técnica."
+      },
+      {
+        title: "Qué aporta esta coordinación",
+        body: "Aporta una sensación más real de herramienta. La utilidad ya tiene un flujo pequeño: prepara datos, decide qué hacer y entrega una salida que confirma el estado actual."
+      },
+      {
+        title: "Qué hábito fortalece",
+        body: "Fortalece el hábito de pensar funciones por responsabilidad: una consulta, una actualización y una presentación final."
+      }
+    ],
+    example:
+      "def guardar_registro():\n    with open('registro.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente')\n\n\ndef consultar_registro(nombre):\n    with open('registro.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('registro.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('registro.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_registro()\nopcion = 'actualizar'\nif opcion == 'consultar':\n    consultar_registro('Luis')\nelse:\n    actualizar_registro('Luis', 'activo')\n    consultar_registro('Luis')",
+    practicePrompt: "Ejecuta el ejemplo y cambia la opción entre `consultar` y `actualizar`. Observa cómo el programa ya puede responder y también cambiar información guardada.",
+    practiceChecklist: [
+      "Guarda datos simples en un archivo.",
+      "Usa una opción para decidir el flujo.",
+      "Consulta o actualiza y luego muestra el resultado."
+    ],
+    commonMistakes: [
+      "Actualizar un dato pero no volver a consultarlo para confirmar el cambio.",
+      "Escribir el nuevo valor sin mantener el mismo formato del texto.",
+      "Mezclar consulta y actualización dentro de una sola función."
+    ],
+    bugChallenge: {
+      prompt: "Este programa quiere decidir entre consultar y actualizar un registro, pero una opción y un valor final no terminan de coincidir.",
+      brokenCode:
+        "def guardar_registro():\n    with open('registro.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente')\n\n\ndef consultar_registro(nombre):\n    with open('registro.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('registro.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estdo)\n        else:\n            nuevas_lineas.append(linea)\n    with open('registro.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\nguardar_registro()\nopcion = 'consultar'\nif opcion == 'actualizar':\n    consultar_registro('Luis')\nelse:\n    actualizar_registro('Luis', 'activo')",
+      expectedLearning: "Cuando una utilidad decide entre consultar y actualizar, revisar con cuidado la lógica del flujo importa tanto como revisar los nombres."
+    },
+    playground: {
+      title: "Prueba una utilidad que consulta y actualiza",
+      guidance: "Ejecuta el programa, cambia la opción y luego cambia el estado final. La meta es sentir que la herramienta ya responde y modifica información de forma muy concreta.",
+      starterCode:
+        "def guardar_registro():\n    with open('registro.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente')\n\n\ndef consultar_registro(nombre):\n    with open('registro.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('registro.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('registro.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_registro()\nopcion = 'actualizar'\nif opcion == 'consultar':\n    consultar_registro('Luis')\nelse:\n    actualizar_registro('Luis', 'activo')\n    consultar_registro('Luis')",
+      emptyOutputHint: "La salida debería mostrar la consulta final del registro después del flujo elegido."
+    },
+    exerciseSlug: "build-a-consult-and-update-tool"
   }
 ];
 
@@ -7805,6 +8028,263 @@ export const courseExercises: ExerciseData[] = [
         "writes-habits-file",
         "uses-option-if",
         "calls-summary-else"
+      ]
+    }
+  },
+  {
+    slug: "explain-why-consulting-data-needs-clear-flow",
+    title: "Explica por qué consultar datos necesita un flujo claro",
+    exerciseType: "concept_check",
+    responseFormat: "text",
+    moduleSlug: "simple-data-consultation-and-updates",
+    lessonSlug: "consulting-saved-data-with-clear-functions",
+    order: 1,
+    duration: "8 min",
+    summary: "Explica por qué una utilidad que consulta datos guardados mejora cuando separa búsqueda y presentación.",
+    prompt:
+      "En 2 o 3 frases cortas, explica por qué una utilidad que consulta datos guardados mejora cuando una parte busca la información y otra la muestra con claridad.",
+    responseLabel: "Tu explicación sobre consulta de datos",
+    responsePlaceholder:
+      "Una utilidad que consulta datos mejora cuando separa la búsqueda de la parte que muestra el resultado. Así el flujo se entiende mejor y es más fácil revisar qué hace cada función.",
+    instructions: [
+      "Menciona que la consulta es una tarea específica.",
+      "Relaciona la idea con claridad del flujo.",
+      "Conecta la idea con buscar y mostrar información."
+    ],
+    hints: [
+      "Piensa en una función que busca y otra que presenta.",
+      "No hace falta usar palabras técnicas.",
+      "La claridad del recorrido importa mucho aquí."
+    ],
+    starterCode:
+      "def consultar_estado(nombre):\n    pass\n\n\ndef mostrar_resultado():\n    pass",
+    successCriteria: [
+      "Habla de búsqueda o consulta.",
+      "Habla de claridad o lectura.",
+      "Conecta la idea con mostrar el resultado."
+    ],
+    evaluator: {
+      type: "ordered_concepts",
+      minLength: 50,
+      passingScore: 4,
+      requireOrder: false,
+      concepts: [
+        {
+          id: "query-task",
+          label: "Habla de consulta o búsqueda",
+          keywords: ["consulta", "buscar", "revisar", "dato", "información"],
+          feedbackWhenMissing: "Explica que la utilidad hace una tarea de consulta o búsqueda de información."
+        },
+        {
+          id: "clear-flow",
+          label: "Conecta con claridad del flujo",
+          keywords: ["flujo", "claro", "claridad", "orden", "leer", "entender"],
+          feedbackWhenMissing: "Agrega que esa separación vuelve el flujo más claro o más fácil de leer."
+        },
+        {
+          id: "show-result",
+          label: "Menciona mostrar el resultado",
+          keywords: ["mostrar", "resultado", "presentar", "salida"],
+          feedbackWhenMissing: "Conecta la idea con una parte que muestra o presenta el resultado encontrado."
+        }
+      ]
+    }
+  },
+  {
+    slug: "build-a-simple-update-tool",
+    title: "Construye una herramienta simple de actualización",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "simple-data-consultation-and-updates",
+    lessonSlug: "updating-a-saved-value-calmly",
+    order: 2,
+    duration: "13 min",
+    summary: "Construye una utilidad que cambia un valor guardado y luego muestra el archivo actualizado.",
+    prompt:
+      "Escribe un programa que defina `guardar_tareas()` para guardar `Leer: pendiente\\nPython: pendiente` en `tareas.txt`, `actualizar_estado()` para cambiar `Python: pendiente` por `Python: hecho`, y `mostrar_tareas()` para leer el archivo y mostrarlo completo. Después llama las tres funciones en ese orden.",
+    responseLabel: "Tu herramienta de actualización",
+    responsePlaceholder:
+      "def guardar_tareas():\n    with open('tareas.txt', 'w') as archivo:\n        archivo.write('Leer: pendiente\\nPython: pendiente')\n\n\ndef actualizar_estado():\n    with open('tareas.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith('Python:'):\n            nuevas_lineas.append('Python: hecho')\n        else:\n            nuevas_lineas.append(linea)\n    with open('tareas.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_tareas():\n    with open('tareas.txt', 'r') as archivo:\n        print(archivo.read())\n\n\nguardar_tareas()\nactualizar_estado()\nmostrar_tareas()",
+    instructions: [
+      "Guarda dos tareas en un archivo.",
+      "Lee el archivo, cambia una de las líneas y vuelve a escribirlo.",
+      "Muestra el contenido final actualizado."
+    ],
+    hints: [
+      "Puedes usar una lista `nuevas_lineas` para preparar el contenido nuevo.",
+      "La actualización debería cambiar solo la línea de `Python`.",
+      "Después vuelve a abrir el archivo para mostrar el resultado."
+    ],
+    starterCode:
+      "def guardar_tareas():\n    with open('tareas.txt', 'w') as archivo:\n        archivo.write('Leer: pendiente\\nPython: pendiente')\n\n\ndef actualizar_estado():\n    with open('tareas.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith('Python:'):\n            nuevas_lineas.append('Python: hecho')\n        else:\n            nuevas_lineas.append(linea)\n    with open('tareas.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_tareas():\n    with open('tareas.txt', 'r') as archivo:\n        print(archivo.read())\n\n\nguardar_tareas()\nactualizar_estado()\nmostrar_tareas()",
+    successCriteria: [
+      "Lee y reescribe el archivo de forma ordenada.",
+      "Cambia solo el valor pedido.",
+      "Muestra el resultado actualizado."
+    ],
+    playground: {
+      title: "Ejecuta la actualización simple",
+      guidance: "Corre el programa y luego cambia qué tarea se actualiza o el estado final. La meta es practicar el ciclo completo de consulta, cambio y confirmación.",
+      starterCode:
+        "def guardar_tareas():\n    with open('tareas.txt', 'w') as archivo:\n        archivo.write('Leer: pendiente\\nPython: pendiente')\n\n\ndef actualizar_estado():\n    with open('tareas.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith('Python:'):\n            nuevas_lineas.append('Python: hecho')\n        else:\n            nuevas_lineas.append(linea)\n    with open('tareas.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_tareas():\n    with open('tareas.txt', 'r') as archivo:\n        print(archivo.read())\n\n\nguardar_tareas()\nactualizar_estado()\nmostrar_tareas()",
+      emptyOutputHint: "La salida debería mostrar el archivo con el estado actualizado."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Leer: pendiente\nPython: hecho"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 280,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-save-tasks",
+          label: "Define `guardar_tareas()`",
+          pattern: "def\\s+guardar_tareas\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `guardar_tareas()`."
+        },
+        {
+          id: "defines-update-status",
+          label: "Define `actualizar_estado()`",
+          pattern: "def\\s+actualizar_estado\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `actualizar_estado()`."
+        },
+        {
+          id: "uses-new-lines-list",
+          label: "Usa `nuevas_lineas` para preparar el nuevo contenido",
+          pattern: "nuevas_lineas\\s*=\\s*\\[\\s*\\]",
+          feedbackWhenMissing: "Prepara el contenido nuevo con una lista `nuevas_lineas`."
+        },
+        {
+          id: "updates-python-line",
+          label: "Cambia `Python` a `hecho`",
+          pattern: "nuevas_lineas\\.append\\(\\s*['\"]Python: hecho['\"]\\s*\\)",
+          feedbackWhenMissing: "Actualiza la línea de Python a `Python: hecho`."
+        },
+        {
+          id: "rewrites-file",
+          label: "Vuelve a escribir el archivo con `join()`",
+          pattern: "archivo\\.write\\(\\s*['\"]\\\\n['\"]\\.join\\(\\s*nuevas_lineas\\s*\\)\\s*\\)",
+          feedbackWhenMissing: "Vuelve a escribir el archivo usando `\\n`.join(nuevas_lineas)`."
+        },
+        {
+          id: "shows-updated-file",
+          label: "Muestra el contenido final actualizado",
+          pattern: "def\\s+mostrar_tareas\\(\\)\\s*:[\\s\\S]*print\\(\\s*archivo\\.read\\(\\s*\\)\\s*\\)",
+          feedbackWhenMissing: "Define `mostrar_tareas()` para leer el archivo e imprimir el contenido actualizado."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-save-tasks",
+        "defines-update-status",
+        "uses-new-lines-list",
+        "updates-python-line",
+        "rewrites-file",
+        "shows-updated-file"
+      ]
+    }
+  },
+  {
+    slug: "build-a-consult-and-update-tool",
+    title: "Construye una herramienta de consulta y actualización",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "simple-data-consultation-and-updates",
+    lessonSlug: "coordinating-consultation-update-and-display",
+    order: 3,
+    duration: "14 min",
+    summary: "Construye una utilidad que decide entre consultar o actualizar un dato guardado y luego muestra el resultado final.",
+    prompt:
+      "Escribe un programa que defina `guardar_registro()` para guardar `Ana: activo\\nLuis: pendiente` en `registro.txt`, `consultar_registro(nombre)` para buscar e imprimir `Consulta: ...`, y `actualizar_registro(nombre, nuevo_estado)` para cambiar el estado guardado. Luego define `opcion = 'actualizar'` y usa un `if` para consultar si la opción es `consultar`; en cualquier otro caso, actualiza a `Luis` con `activo` y luego vuelve a consultar `Luis`.",
+    responseLabel: "Tu herramienta de consulta y actualización",
+    responsePlaceholder:
+      "def guardar_registro():\n    with open('registro.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente')\n\n\ndef consultar_registro(nombre):\n    with open('registro.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('registro.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('registro.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_registro()\nopcion = 'actualizar'\nif opcion == 'consultar':\n    consultar_registro('Luis')\nelse:\n    actualizar_registro('Luis', 'activo')\n    consultar_registro('Luis')",
+    instructions: [
+      "Guarda los datos base en un archivo.",
+      "Crea una función para consultar y otra para actualizar.",
+      "Usa una opción simple para decidir el flujo."
+    ],
+    hints: [
+      "La consulta puede revisar si una línea empieza con `nombre + ':'`.",
+      "La actualización puede rearmar las líneas con `nuevas_lineas`.",
+      "Después de actualizar, consulta otra vez para confirmar el cambio."
+    ],
+    starterCode:
+      "def guardar_registro():\n    with open('registro.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente')\n\n\ndef consultar_registro(nombre):\n    with open('registro.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('registro.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('registro.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_registro()\nopcion = 'actualizar'\nif opcion == 'consultar':\n    consultar_registro('Luis')\nelse:\n    actualizar_registro('Luis', 'activo')\n    consultar_registro('Luis')",
+    successCriteria: [
+      "Coordina consulta y actualización dentro de la misma utilidad.",
+      "Mantiene funciones separadas por responsabilidad.",
+      "Confirma el cambio con una salida final clara."
+    ],
+    playground: {
+      title: "Ejecuta la herramienta de consulta y actualización",
+      guidance: "Corre el programa, cambia la opción y luego cambia el nombre o el estado final. La meta es practicar una utilidad pequeña que ya consulta y modifica datos guardados.",
+      starterCode:
+        "def guardar_registro():\n    with open('registro.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente')\n\n\ndef consultar_registro(nombre):\n    with open('registro.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('registro.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('registro.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_registro()\nopcion = 'actualizar'\nif opcion == 'consultar':\n    consultar_registro('Luis')\nelse:\n    actualizar_registro('Luis', 'activo')\n    consultar_registro('Luis')",
+      emptyOutputHint: "La salida debería mostrar la consulta final del registro según el flujo elegido."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Consulta: Luis: activo"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 340,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-query-function",
+          label: "Define `consultar_registro(nombre)`",
+          pattern: "def\\s+consultar_registro\\(\\s*nombre\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `consultar_registro(nombre)`."
+        },
+        {
+          id: "defines-update-function",
+          label: "Define `actualizar_registro(nombre, nuevo_estado)`",
+          pattern: "def\\s+actualizar_registro\\(\\s*nombre\\s*,\\s*nuevo_estado\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `actualizar_registro(nombre, nuevo_estado)`."
+        },
+        {
+          id: "queries-with-startswith",
+          label: "Consulta usando `startswith`",
+          pattern: "linea\\.startswith\\(\\s*nombre\\s*\\+\\s*['\"]:['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro de la consulta, revisa cada línea con `startswith(nombre + ':')`."
+        },
+        {
+          id: "updates-luis-active",
+          label: "Actualiza a Luis con `activo`",
+          pattern: "actualizar_registro\\(\\s*['\"]Luis['\"]\\s*,\\s*['\"]activo['\"]\\s*\\)",
+          feedbackWhenMissing: "En el flujo principal, actualiza a `Luis` con el estado `activo`."
+        },
+        {
+          id: "uses-option-branch",
+          label: "Usa `opcion = 'actualizar'` con un `if`",
+          pattern: "opcion\\s*=\\s*['\"]actualizar['\"][\\s\\S]*if\\s+opcion\\s*==\\s*['\"]consultar['\"]\\s*:",
+          feedbackWhenMissing: "Define `opcion = 'actualizar'` y usa un `if` para decidir entre consultar o actualizar."
+        },
+        {
+          id: "consults-after-update",
+          label: "Consulta a Luis después de actualizar",
+          pattern: "else\\s*:\\s*[\\s\\S]*actualizar_registro\\([\\s\\S]*consultar_registro\\(\\s*['\"]Luis['\"]\\s*\\)",
+          feedbackWhenMissing: "Después de actualizar, vuelve a llamar `consultar_registro('Luis')` para mostrar el resultado final."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-query-function",
+        "defines-update-function",
+        "queries-with-startswith",
+        "updates-luis-active",
+        "uses-option-branch",
+        "consults-after-update"
       ]
     }
   }

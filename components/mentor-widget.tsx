@@ -228,7 +228,7 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
           ) : null}
         </div>
 
-        <div className="mt-4 space-y-3">
+        <div className="mt-4 max-h-[540px] space-y-3 overflow-y-auto pr-1">
           {messages.length === 0 ? (
             <div className="rounded-[20px] border border-slate-800 bg-slate-900/80 px-4 py-4 text-sm leading-7 text-slate-300">
               Empieza con un modo rápido como <span className="font-semibold text-slate-100">Explicar simple</span> o haz tu propia pregunta abajo.
@@ -246,7 +246,23 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
                 <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                   {message.role === "assistant" ? "Mentor" : "Tú"}
                 </p>
-                <p className="whitespace-pre-wrap break-words">{message.content}</p>
+                <div className="space-y-3">
+                  {formatMentorMessage(message.content).map((block, blockIndex) =>
+                    block.type === "bullet" ? (
+                      <div key={`${message.role}-${index}-bullet-${blockIndex}`} className="flex items-start gap-3">
+                        <span className="mt-2 h-2 w-2 rounded-full bg-brand-300" />
+                        <p className="whitespace-pre-wrap break-words leading-7">{block.text}</p>
+                      </div>
+                    ) : (
+                      <p
+                        key={`${message.role}-${index}-paragraph-${blockIndex}`}
+                        className="whitespace-pre-wrap break-words leading-7"
+                      >
+                        {block.text}
+                      </p>
+                    )
+                  )}
+                </div>
               </div>
             ))
           )}
@@ -268,4 +284,33 @@ export function MentorWidget({ context, compact = false }: MentorWidgetProps) {
       </div>
     </Card>
   );
+}
+
+function formatMentorMessage(content: string) {
+  type MentorFormattedBlock =
+    | { type: "bullet"; text: string }
+    | { type: "paragraph"; text: string };
+
+  return content
+    .split(/\n{2,}/)
+    .flatMap<MentorFormattedBlock>((paragraph) => {
+      const trimmedParagraph = paragraph.trim();
+
+      if (!trimmedParagraph) {
+        return [];
+      }
+
+      if (/^[-*]\s+/.test(trimmedParagraph) || /^\d+\.\s+/.test(trimmedParagraph)) {
+        return trimmedParagraph
+          .split("\n")
+          .map((line) => line.trim())
+          .filter(Boolean)
+          .map((line) => ({
+            type: "bullet" as const,
+            text: line.replace(/^[-*]\s+/, "").replace(/^\d+\.\s+/, "")
+          }));
+      }
+
+      return [{ type: "paragraph" as const, text: trimmedParagraph }];
+    });
 }

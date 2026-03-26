@@ -42,6 +42,14 @@ export default async function LessonPage({
   const nextLesson = getNextLesson(lesson.slug);
   const exercise = getExerciseByLessonSlug(lesson.slug);
   const isFoundationsCapstone = lesson.moduleSlug === "foundations-capstone";
+  const lessonSections = [
+    { href: "#objetivo", label: "Objetivo" },
+    { href: "#ideas-clave", label: "Ideas clave" },
+    { href: "#practica", label: "Práctica" },
+    { href: "#bug-fix", label: "Bug-fix" },
+    { href: "#mentor", label: "Mentor" },
+    { href: "#cierre", label: "Cierre" }
+  ];
   const lessonDraft = lesson.playground
     ? await getDraftForUser({
         userId: user.id,
@@ -92,7 +100,7 @@ export default async function LessonPage({
               </div>
             </div>
             <div className="mt-6 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-              <div className="rounded-[24px] border border-slate-800 bg-slate-950/70 p-5">
+              <div id="objetivo" className="rounded-[24px] border border-slate-800 bg-slate-950/70 p-5 scroll-mt-24">
                 <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
                   <Compass className="h-4 w-4 text-brand-300" />
                   Posición de la lección
@@ -112,9 +120,23 @@ export default async function LessonPage({
                 <p className="mt-3 text-sm leading-7 text-brand-100">{lesson.goal}</p>
               </div>
             </div>
+            <div className="mt-5 rounded-[24px] border border-white/10 bg-white/[0.03] px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">Ruta dentro de la lección</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {lessonSections.map((section) => (
+                  <a
+                    key={section.href}
+                    href={section.href}
+                    className="rounded-full border border-slate-700/80 bg-slate-950/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-slate-300 transition hover:border-brand-400/15 hover:text-brand-200"
+                  >
+                    {section.label}
+                  </a>
+                ))}
+              </div>
+            </div>
           </Card>
 
-          <Card className="rounded-[30px]">
+          <Card id="ideas-clave" className="rounded-[30px] scroll-mt-24">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2">
                 <BookOpen className="h-5 w-5 text-brand-300" />
@@ -181,7 +203,7 @@ export default async function LessonPage({
             />
           ) : null}
 
-          <Card className="mission-grid rounded-[30px]">
+          <Card id="practica" className="mission-grid rounded-[30px] scroll-mt-24">
             <div className="flex items-center justify-between gap-3">
               <h2 className="text-xl font-bold text-slate-50">Práctica</h2>
               <span className="rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-100">
@@ -229,7 +251,7 @@ export default async function LessonPage({
             </div>
           </Card>
 
-          <Card className="mission-grid rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.08),transparent_30%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
+          <Card id="bug-fix" className="mission-grid rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.08),transparent_30%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] scroll-mt-24">
             <div className="flex items-center justify-between gap-3">
               <h2 className="text-xl font-bold text-slate-50">Desafío: arregla el bug</h2>
               <span className="rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-100">
@@ -245,7 +267,7 @@ export default async function LessonPage({
             </p>
           </Card>
 
-          <Card className="mission-grid rounded-[30px]">
+          <Card id="cierre" className="mission-grid rounded-[30px] scroll-mt-24">
             <div className="flex items-center justify-between gap-3">
               <h2 className="text-xl font-bold text-slate-50">Finalización</h2>
               <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
@@ -328,7 +350,7 @@ export default async function LessonPage({
           </div>
         </div>
 
-        <div className="xl:sticky xl:top-4 xl:self-start">
+        <div id="mentor" className="xl:sticky xl:top-4 xl:self-start scroll-mt-24">
           <MentorWidget
             context={{
               title: lesson.title,

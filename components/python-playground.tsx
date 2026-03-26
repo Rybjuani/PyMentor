@@ -36,8 +36,12 @@ export function PythonPlayground({
   const [runtimeError, setRuntimeError] = useState<string | null>(null);
   const [loadingRuntime, setLoadingRuntime] = useState(true);
   const [running, setRunning] = useState(false);
+  const [lastRunAt, setLastRunAt] = useState<Date | null>(null);
   const restoredDraft = Boolean(restoredDraftUpdatedAt);
   const code = controlledCode ?? internalCode;
+  const baselineCode = initialCode ?? config.starterCode;
+  const hasChangedCode = code !== baselineCode;
+  const hasResult = Boolean(output.trim() || error.trim() || runtimeError);
   const draftsEnabled = Boolean(draftScope && draftSlug);
   const { saveState, clearDraft } = useDraftPersistence({
     enabled: draftsEnabled,
@@ -101,9 +105,11 @@ export function PythonPlayground({
       const result = await runPythonInBrowser(code);
       setOutput(result.output);
       setError(result.error);
+      setLastRunAt(new Date());
       onRunComplete?.(result);
     } catch {
       setRuntimeError("No se pudo ejecutar este código en este momento. Prueba recargando la página y vuelve a intentarlo.");
+      setLastRunAt(new Date());
     } finally {
       setRunning(false);
     }
@@ -112,6 +118,7 @@ export function PythonPlayground({
   function resetCode() {
     setOutput("");
     setError("");
+    setLastRunAt(null);
     void clearDraft();
   }
 
@@ -155,6 +162,32 @@ export function PythonPlayground({
                 : "Los borradores se guardan automáticamente"}
         </div>
       ) : null}
+      <div className="mt-4 grid gap-3 sm:grid-cols-3">
+        <div className="rounded-[20px] border border-white/10 bg-white/[0.03] px-4 py-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Estado del código</p>
+          <p className="mt-2 text-sm font-semibold text-slate-100">
+            {hasChangedCode ? "Borrador en curso" : "Código base listo"}
+          </p>
+        </div>
+        <div className="rounded-[20px] border border-white/10 bg-white/[0.03] px-4 py-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Ejecución</p>
+          <p className="mt-2 text-sm font-semibold text-slate-100">
+            {running
+              ? "Corriendo ahora"
+              : runtimeReady
+                ? hasResult
+                  ? "Resultado disponible"
+                  : "Listo para ejecutar"
+                : "Preparando estación"}
+          </p>
+        </div>
+        <div className="rounded-[20px] border border-white/10 bg-white/[0.03] px-4 py-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Último movimiento</p>
+          <p className="mt-2 text-sm font-semibold text-slate-100">
+            {lastRunAt ? formatDraftTime(lastRunAt) : restoredDraft ? `Retomado ${formatDraftTime(restoredDraftUpdatedAt)}` : "Sin ejecución todavía"}
+          </p>
+        </div>
+      </div>
 
       <div className="mt-5 grid gap-5 xl:grid-cols-[1.08fr_0.92fr]">
         <div className="rounded-[26px] border border-slate-800 bg-slate-950/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">

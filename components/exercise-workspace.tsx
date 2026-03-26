@@ -145,7 +145,7 @@ export function ExerciseWorkspace({
 
   return (
     <div className="space-y-5">
-      <Card className="mission-grid rounded-[30px]">
+      <Card id="desafio" className="mission-grid rounded-[30px] scroll-mt-24">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Ejercicio</p>
@@ -195,7 +195,7 @@ export function ExerciseWorkspace({
         </div>
       </Card>
 
-      <div className="grid gap-5 xl:grid-cols-[1fr_0.9fr]">
+      <div id="workspace" className="grid gap-5 xl:grid-cols-[1fr_0.9fr] scroll-mt-24">
         <Card className="rounded-[30px]">
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-xl font-bold text-slate-50">Código inicial</h2>
@@ -323,7 +323,7 @@ export function ExerciseWorkspace({
         ) : null}
       </Card>
 
-      <Card className={`mission-grid rounded-[30px] border ${feedback.tone}`}>
+      <Card id="feedback" className={`mission-grid rounded-[30px] border ${feedback.tone} scroll-mt-24`}>
         <div className="flex items-start gap-4">
           <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-black/15 ring-1 ring-white/10">
             <Icon className={`h-5 w-5 ${feedbackState === "incomplete" ? "animate-spin" : ""}`} />
@@ -367,7 +367,7 @@ export function ExerciseWorkspace({
           </div>
         )}
 
-        <div className="mt-5 rounded-[24px] border border-white/10 bg-black/10 p-4 text-sm text-slate-300">
+        <div id="siguiente-paso" className="mt-5 rounded-[24px] border border-white/10 bg-black/10 p-4 text-sm text-slate-300 scroll-mt-24">
           <div className="flex items-center gap-2 font-semibold text-slate-50">
             <Sparkles className="h-4 w-4 text-brand-300" />
             Siguiente movimiento

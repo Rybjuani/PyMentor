@@ -26,6 +26,13 @@ export default async function ExercisePage({
   const lesson = getLessonBySlug(exercise.lessonSlug);
   const nextLesson = lesson ? getNextLesson(lesson.slug) : null;
   const isFoundationsCapstone = exercise.moduleSlug === "foundations-capstone";
+  const exerciseSections = [
+    { href: "#desafio", label: "Desafío" },
+    { href: "#workspace", label: "Workspace" },
+    { href: "#feedback", label: "Feedback" },
+    { href: "#mentor", label: "Mentor" },
+    { href: "#siguiente-paso", label: "Siguiente paso" }
+  ];
   const draft =
     exercise.responseFormat === "code"
       ? await getDraftForUser({
@@ -78,6 +85,20 @@ export default async function ExercisePage({
                 </div>
               </div>
             </div>
+            <div className="mt-5 rounded-[24px] border border-white/10 bg-white/[0.03] px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">Ruta dentro del ejercicio</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {exerciseSections.map((section) => (
+                  <a
+                    key={section.href}
+                    href={section.href}
+                    className="rounded-full border border-slate-700/80 bg-slate-950/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-slate-300 transition hover:border-brand-400/15 hover:text-brand-200"
+                  >
+                    {section.label}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
           <ExerciseWorkspace
@@ -89,7 +110,7 @@ export default async function ExercisePage({
             nextLessonHref={nextLesson ? `/lesson/${nextLesson.slug}` : null}
           />
         </div>
-        <div className="xl:sticky xl:top-4 xl:self-start">
+        <div id="mentor" className="xl:sticky xl:top-4 xl:self-start scroll-mt-24">
           <MentorWidget
             context={{
               title: exercise.title,

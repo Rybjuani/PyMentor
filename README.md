@@ -2,11 +2,12 @@
 
 PyMentor es una plataforma de aprendizaje de Python pensada para principiantes absolutos. El producto combina una progresión por etapas, práctica guiada, ejercicios con feedback, proyectos graduales, un mentor IA en español y un playground de Python en el navegador con Pyodide.
 
-El estado actual del proyecto cubre dos etapas completas y claramente diferenciadas: una ruta de fundamentos y una ruta más práctica centrada en utilidades pequeñas pero útiles.
+El estado actual del proyecto cubre dos etapas completas y claramente diferenciadas, y además ya abrió una tercera etapa práctica inicial centrada en herramientas más estructuradas.
 
 ## Qué incluye hoy
 
 - Dos rutas completas con cierre formal: fundamentos y Python práctico 2.
+- Una Ruta 3 ya abierta para empezar a trabajar con programas multiarchivo simples.
 - Lecciones, ejercicios, proyectos guiados, proyectos con más autonomía, capstones de Ruta 1 y capstones de Ruta 2.
 - Progreso persistido por usuario con autenticación real.
 - Mentor IA con Groq integrado server-side.
@@ -27,7 +28,7 @@ El estado actual del proyecto cubre dos etapas completas y claramente diferencia
 
 ## Estado del producto
 
-PyMentor ya tiene dos rutas completas y localizadas en español:
+PyMentor ya tiene dos rutas completas y una tercera etapa recién abierta, todo localizado en español:
 
 1. Introducción
 2. Variables
@@ -51,6 +52,7 @@ PyMentor ya tiene dos rutas completas y localizadas en español:
 20. Herramientas con entradas y cambios simples
 21. Proyectos prácticos de Ruta 2
 22. Cierre de Ruta 2
+23. Programas multiarchivo simples
 
 ## Etapas del producto
 
@@ -63,11 +65,16 @@ Lleva a la persona desde cero absoluto hasta un cierre de fundamentos con capsto
 Empieza justo después del cierre de fundamentos.
 Sus primeras aperturas son `Archivos básicos`, `Funciones y organización simple`, `Utilidades pequeñas y útiles`, `Utilidades organizadas con flujo completo`, `Consulta y actualización simple de datos`, `Herramientas con entradas y cambios simples`, `Proyectos prácticos de Ruta 2` y `Cierre de Ruta 2`, donde el foco pasa a programas que guardan información, la consultan, la ajustan, piden decisiones con `input()` y ya se sienten como herramientas pequeñas más completas e interactivas, hasta cerrar una segunda etapa práctica con capstones propios.
 
+### Ruta 3 · Herramientas estructuradas
+
+Empieza justo después del cierre de Ruta 2.
+Su primer bloque es `Programas multiarchivo simples`, donde el foco ya no está solo en construir utilidades prácticas, sino en repartir mejor un programa entre un archivo principal y archivos de apoyo para que siga siendo legible, ordenado y más cercano a una herramienta real.
+
 ## Estado de progresión actual
 
 - Ruta 1 se lee como una etapa completa de fundamentos, con cierre formal en `Cierre de fundamentos`.
 - Ruta 2 se lee como una etapa práctica distinta, con cierre formal en `Cierre de Ruta 2`.
-- El producto ya muestra dos etapas cerradas y deja espacio claro para una futura Ruta 3, sin presentarla todavía como construida.
+- Ruta 3 ya aparece como la siguiente gran etapa del producto, abierta con su primer módulo y presentada como un cambio real de nivel dentro del recorrido.
 
 ## Requisitos
 
@@ -209,7 +216,7 @@ npm run start:railway
 - No hay streaming en el mentor todavía.
 - No hay ejecución server-side de Python.
 - No hay code runner completo ni evaluación semántica profunda.
-- La tercera gran etapa todavía no está abierta.
+- Ruta 3 recién empieza y todavía tiene poco volumen de contenido frente a las dos primeras rutas.
 - Los logros siguen siendo una capa de producto liviana, no un sistema completo de gamificación persistida.
 
 ## Documentación adicional
@@ -219,4 +226,4 @@ npm run start:railway
 
 ## Próximo paso lógico del producto
 
-El siguiente paso natural es abrir una tercera etapa claramente presentada dentro del producto, manteniendo la misma lógica de progresión por rutas y subiendo el nivel de autonomía sin saltar todavía a complejidad intermedia dura.
+El siguiente paso natural es expandir Ruta 3 con más módulos centrados en herramientas algo más amplias y programas mejor repartidos, sin salir todavía del nivel temprano-práctico.

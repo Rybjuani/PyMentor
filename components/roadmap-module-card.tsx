@@ -36,6 +36,8 @@ export function RoadmapModuleCard({
       ? "Ruta 1 · Cierre"
       : module.slug === "basic-files"
         ? "Ruta 2 · Apertura"
+        : module.slug === "simple-multi-file-programs"
+          ? "Ruta 3 · Apertura"
         : module.slug === "route2-practical-projects"
           ? "Ruta 2 · Proyectos"
           : module.slug === "route2-capstone"
@@ -106,9 +108,11 @@ export function RoadmapModuleCard({
               ? "Abrir cierre de fundamentos"
               : module.slug === "route2-capstone"
                 ? "Abrir cierre de Ruta 2"
-              : progress.status === "completed"
-                ? "Revisar módulo"
-                : "Abrir módulo"}
+                : module.slug === "simple-multi-file-programs"
+                  ? "Abrir Ruta 3"
+                : progress.status === "completed"
+                  ? "Revisar módulo"
+                  : "Abrir módulo"}
             <ArrowUpRight className="h-4 w-4" />
           </Link>
         )}

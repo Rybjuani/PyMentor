@@ -4,6 +4,7 @@ import { CourseProgress, ExerciseData, LessonData, ModuleProgressSummary, Progre
 export const FOUNDATIONS_CAPSTONE_MODULE_SLUG = "foundations-capstone";
 export const SECOND_TRACK_START_MODULE_SLUG = "basic-files";
 export const SECOND_TRACK_CAPSTONE_MODULE_SLUG = "route2-capstone";
+export const THIRD_TRACK_START_MODULE_SLUG = "simple-multi-file-programs";
 
 export function getAllModules() {
   return [...courseModules].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
@@ -15,8 +16,16 @@ export function getFoundationsModules() {
 }
 
 export function getSecondTrackModules() {
-  const capstoneOrder = getModuleBySlug(FOUNDATIONS_CAPSTONE_MODULE_SLUG)?.order ?? Number.MAX_SAFE_INTEGER;
-  return getAllModules().filter((module) => (module.order ?? 0) > capstoneOrder);
+  const foundationsCapstoneOrder = getModuleBySlug(FOUNDATIONS_CAPSTONE_MODULE_SLUG)?.order ?? Number.MAX_SAFE_INTEGER;
+  const secondTrackCapstoneOrder = getModuleBySlug(SECOND_TRACK_CAPSTONE_MODULE_SLUG)?.order ?? Number.MAX_SAFE_INTEGER;
+  return getAllModules().filter(
+    (module) => (module.order ?? 0) > foundationsCapstoneOrder && (module.order ?? 0) <= secondTrackCapstoneOrder
+  );
+}
+
+export function getThirdTrackModules() {
+  const secondTrackCapstoneOrder = getModuleBySlug(SECOND_TRACK_CAPSTONE_MODULE_SLUG)?.order ?? Number.MAX_SAFE_INTEGER;
+  return getAllModules().filter((module) => (module.order ?? 0) > secondTrackCapstoneOrder);
 }
 
 export function getAllLessons() {
@@ -37,8 +46,19 @@ export function getModuleBySlug(slug: string) {
 
 export function isModuleInSecondTrack(moduleSlug: string) {
   const module = getModuleBySlug(moduleSlug);
-  const capstoneOrder = getModuleBySlug(FOUNDATIONS_CAPSTONE_MODULE_SLUG)?.order ?? Number.MAX_SAFE_INTEGER;
-  return Boolean(module && (module.order ?? 0) > capstoneOrder);
+  const foundationsCapstoneOrder = getModuleBySlug(FOUNDATIONS_CAPSTONE_MODULE_SLUG)?.order ?? Number.MAX_SAFE_INTEGER;
+  const secondTrackCapstoneOrder = getModuleBySlug(SECOND_TRACK_CAPSTONE_MODULE_SLUG)?.order ?? Number.MAX_SAFE_INTEGER;
+  return Boolean(
+    module &&
+      (module.order ?? 0) > foundationsCapstoneOrder &&
+      (module.order ?? 0) <= secondTrackCapstoneOrder
+  );
+}
+
+export function isModuleInThirdTrack(moduleSlug: string) {
+  const module = getModuleBySlug(moduleSlug);
+  const secondTrackCapstoneOrder = getModuleBySlug(SECOND_TRACK_CAPSTONE_MODULE_SLUG)?.order ?? Number.MAX_SAFE_INTEGER;
+  return Boolean(module && (module.order ?? 0) > secondTrackCapstoneOrder);
 }
 
 export function getLessonsByModuleSlug(moduleSlug: string) {

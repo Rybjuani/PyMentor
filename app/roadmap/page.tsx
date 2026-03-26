@@ -11,6 +11,7 @@ import {
   getModuleProgress,
   getOverallLessonProgress,
   getSecondTrackModules,
+  getThirdTrackModules,
   hasCompletedFoundationsTrack,
   hasCompletedSecondTrack,
   isModuleUnlocked
@@ -23,6 +24,7 @@ export default async function RoadmapPage() {
   const modules = getAllModules();
   const foundationsModules = getFoundationsModules();
   const secondTrackModules = getSecondTrackModules();
+  const thirdTrackModules = getThirdTrackModules();
   const overall = getOverallLessonProgress(progress);
   const completedModules = modules.filter(
     (module) => getModuleProgress(progress, module.slug).status === "completed"
@@ -34,9 +36,9 @@ export default async function RoadmapPage() {
     <AppShell
       title="Ruta de aprendizaje de Python"
       description={
-        secondTrackCompleted
-          ? "Aquí quedan visibles las dos rutas actuales de PyMentor ya cerradas. El producto ya muestra una progresión completa de dos etapas y deja preparado el terreno para lo que venga después."
-          : foundationsCompleted
+        thirdTrackModules.length > 0
+          ? "Aquí ya se leen tres etapas con intención clara: Fundamentos, Python práctico 2 y una nueva Ruta 3 que abre el siguiente nivel sin romper el cierre de las rutas anteriores."
+        : foundationsCompleted
           ? "Cerraste la primera gran ruta de PyMentor y abriste una segunda etapa práctica. Aquí queda visible todo el camino completado y el punto exacto donde cambió el tipo de aprendizaje."
           : "Tu mapa de progreso: desbloqueos visibles, finalización vinculada a tu cuenta y un camino claro de Python que te sigue empujando hacia adelante."
       }
@@ -60,8 +62,8 @@ export default async function RoadmapPage() {
           <div className="rounded-[22px] border border-slate-800 bg-slate-950/70 p-4 text-sm text-slate-300">
             <p className="font-semibold text-slate-100">{completedModules} de {modules.length} módulos completos</p>
             <p className="mt-2 leading-6 text-slate-400">
-              {secondTrackCompleted
-                ? "Las dos rutas actuales quedaron cerradas. Ya tienes una progresión visible que va desde fundamentos hasta herramientas prácticas más completas."
+              {thirdTrackModules.length > 0
+                ? "Las dos primeras rutas ya quedaron cerradas y la tercera ya aparece como una nueva fase visible, con un foco más estructurado y más cercano a herramientas reales."
                 : foundationsCompleted
                 ? "Toda la primera ruta quedó cerrada y la segunda ya aparece como una etapa práctica distinta dentro de PyMentor."
                 : "Cada módulo cerrado fortalece la sensación de avance y desbloquea el siguiente tramo de la ruta."}
@@ -69,11 +71,11 @@ export default async function RoadmapPage() {
           </div>
           <div className="rounded-[22px] border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
             <p className="font-semibold text-brand-200">
-              {secondTrackCompleted ? "Próxima etapa en preparación" : foundationsCompleted ? "Cambio de etapa" : "Siguiente checkpoint"}
+              {thirdTrackModules.length > 0 ? "Ruta 3 abierta" : foundationsCompleted ? "Cambio de etapa" : "Siguiente checkpoint"}
             </p>
             <p className="mt-2 leading-6">
-              {secondTrackCompleted
-                ? "PyMentor ya muestra dos cierres formales. El siguiente tramo todavía no está abierto, pero el recorrido actual ya se lee como una progresión completa."
+              {thirdTrackModules.length > 0
+                ? "La siguiente gran etapa ya no es una promesa vacía: Ruta 3 aparece como apertura real y deja claro que el recorrido sigue creciendo por fases, no por módulos sueltos."
                 : foundationsCompleted
                 ? "Tu cierre de fundamentos ya forma parte de la ruta y la segunda etapa aparece como continuación intencional, no como una lista suelta de módulos."
                 : "El siguiente módulo abierto marca el punto más útil para continuar sin perder el hilo del recorrido."}
@@ -92,12 +94,10 @@ export default async function RoadmapPage() {
             <p className="mt-2 leading-6 text-slate-400">Tramo práctico para programas más útiles y más ordenados.</p>
           </div>
           <div className="rounded-[22px] border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Estado de cuenta</p>
-            <p className="mt-2 text-lg font-bold text-slate-50">{secondTrackCompleted ? "Dos niveles cerrados" : foundationsCompleted ? "Segundo nivel abierto" : "Primer nivel en curso"}</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Ruta 3</p>
+            <p className="mt-2 text-lg font-bold text-slate-50">{thirdTrackModules.length} módulo abierto</p>
             <p className="mt-2 leading-6 text-slate-400">
-              {secondTrackCompleted
-                ? "Tu mapa ya muestra una trayectoria de dos etapas completas y deja visible que una siguiente fase puede abrirse más adelante."
-                : "Tu mapa ya muestra con claridad en qué tramo estás entrando."}
+              Herramientas más estructuradas, con programas repartidos en varios archivos simples y un archivo principal más claro.
             </p>
           </div>
         </div>
@@ -168,18 +168,47 @@ export default async function RoadmapPage() {
           </div>
         </div>
 
+        <div>
+          <div className="mission-grid mb-5 rounded-[26px] border border-cyan-400/15 bg-[radial-gradient(circle_at_top_left,rgba(78,203,255,0.12),transparent_28%),linear-gradient(180deg,rgba(12,20,34,0.98),rgba(7,14,26,0.98))] p-5">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-200">Ruta 3</p>
+            <h2 className="mt-2 text-2xl font-bold text-slate-50">Herramientas estructuradas</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">
+              Esta tercera etapa arranca justo después del cierre práctico de Ruta 2. El foco ya no es solo construir utilidades útiles, sino repartirlas mejor para que se lean como programas más reales, más claros y más fáciles de hacer crecer.
+            </p>
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/15 bg-cyan-500/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-100">
+              Ruta 3 abierta
+            </div>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 2xl:grid-cols-3">
+            {thirdTrackModules.map((module) => {
+              const moduleProgress = getModuleProgress(progress, module.slug);
+              const firstLesson = getLessonsByModuleSlug(module.slug)[0];
+
+              return (
+                <RoadmapModuleCard
+                  key={module.slug}
+                  module={module}
+                  progress={moduleProgress}
+                  isLocked={!isModuleUnlocked(progress, module.slug)}
+                  href={firstLesson ? `/lesson/${firstLesson.slug}` : "/roadmap"}
+                />
+              );
+            })}
+          </div>
+        </div>
+
         <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.08),transparent_26%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Panorama general</p>
           <h2 className="mt-3 text-2xl font-bold text-slate-50">
-            {secondTrackCompleted
-              ? "Dos etapas completas, siguiente fase todavía no abierta"
+            {thirdTrackModules.length > 0
+              ? "Dos etapas cerradas, tercera etapa ya abierta"
               : foundationsCompleted
                 ? "Primera etapa cerrada, segunda etapa activa"
                 : "Primera etapa en construcción"}
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">
-            {secondTrackCompleted
-              ? "PyMentor ya se siente como un producto de dos rutas completas: una base fuerte y una etapa práctica bien separada. La próxima fase todavía no está construida, pero el mapa ya deja claro que este cierre no es abrupto."
+            {thirdTrackModules.length > 0
+              ? "PyMentor ya se siente como un producto de etapas encadenadas: una base fuerte, una ruta práctica cerrada y una tercera apertura que eleva la organización del código sin saltar todavía a complejidad dura."
               : foundationsCompleted
                 ? "El mapa ya no se lee como una acumulación de módulos. Se entiende una primera etapa cerrada y una segunda etapa práctica que toma el relevo con otra intención."
                 : "La primera etapa sigue empujando el recorrido. Cada cierre mueve la cuenta y desbloquea el siguiente tramo de forma visible."}

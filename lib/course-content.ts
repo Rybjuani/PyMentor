@@ -220,6 +220,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 2,
     estimatedTime: "120 min",
     xp: 470
+  },
+  {
+    slug: "simple-multi-file-programs",
+    title: "Programas multiarchivo simples",
+    description: "Abre Ruta 3 aprendiendo a separar un programa en archivos claros para que herramientas más reales sigan siendo fáciles de leer, cambiar y crecer.",
+    order: 23,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "96 min",
+    xp: 420
   }
 ];
 
@@ -4673,6 +4683,219 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería terminar con un reporte final que se sienta como cierre de una herramienta completa."
     },
     exerciseSlug: "build-route2-capstone-menu-report-tool"
+  },
+  {
+    slug: "why-simple-multi-file-programs-help",
+    module: "Programas multiarchivo simples",
+    moduleSlug: "simple-multi-file-programs",
+    order: 1,
+    title: "Por qué un programa en varios archivos puede ayudarte",
+    duration: "16 min",
+    difficulty: "Beginner",
+    summary: "Entiende la idea de separar partes de un programa en archivos simples para que el flujo principal siga claro cuando la herramienta crece.",
+    warmup: "Cuando un programa empieza a tener muchas responsabilidades, leer todo en un solo bloque se vuelve cansador. Separar no es complicar: muchas veces es aclarar.",
+    goal: "Al final de esta lección, deberías poder explicar por qué dividir un programa simple en más de un archivo puede volverlo más legible y más fácil de mantener.",
+    keyIdeas: [
+      {
+        title: "El archivo principal no tiene que cargar con todo",
+        description: "Cuando una herramienta crece, conviene dejar el flujo principal visible y mover apoyos a otro lugar."
+      },
+      {
+        title: "Separar ayuda a leer con calma",
+        description: "Si una función de apoyo vive en otro archivo, el archivo principal puede contar mejor la historia del programa."
+      },
+      {
+        title: "No se trata de hacer ingeniería pesada",
+        description: "Aquí la meta no es complejidad técnica, sino organización práctica para herramientas pequeñas más reales."
+      }
+    ],
+    explanation: [
+      {
+        title: "Piensa en responsabilidades, no en cantidad de líneas",
+        body: "Un programa no necesita varios archivos porque sí. Empieza a necesitarlos cuando una parte hace una tarea distinta y conviene verla aparte."
+      },
+      {
+        title: "El archivo principal debería mostrar el recorrido",
+        body: "Si alguien abre tu programa principal, debería entender rápido qué hace la herramienta: pedir algo, llamar apoyos, mostrar un resultado."
+      },
+      {
+        title: "Los archivos de apoyo guardan piezas reutilizables",
+        body: "Funciones para formatear, guardar, consultar o resumir pueden vivir en un archivo auxiliar y dejar más limpio el flujo principal."
+      },
+      {
+        title: "Ruta 3 cambia el tipo de organización",
+        body: "En Ruta 2 ya organizaste mejor dentro de un archivo. Ahora vas a dar el siguiente paso: separar partes del programa sin perder claridad."
+      }
+    ],
+    example:
+      "# principal.py\nfrom utilidades import mostrar_resumen\n\n\ndef main():\n    print('Herramienta lista')\n    mostrar_resumen()\n\n\nmain()\n\n# utilidades.py\ndef mostrar_resumen():\n    print('Resumen guardado y mostrado con claridad')",
+    practicePrompt: "Imagina una herramienta que guarda notas y luego muestra un resumen. ¿Qué parte dejarías en el archivo principal y qué parte moverías a otro archivo?",
+    practiceChecklist: [
+      "Explica qué debería quedar visible en el archivo principal.",
+      "Nombra al menos una función de apoyo que podrías mover.",
+      "Piensa la separación como ayuda práctica, no como dificultad."
+    ],
+    commonMistakes: [
+      "Mover cosas a otro archivo sin una razón clara.",
+      "Dejar el archivo principal tan cargado como antes.",
+      "Pensar que multiarchivo solo sirve para programas avanzados."
+    ],
+    bugChallenge: {
+      prompt: "Este ejemplo quiere mostrar un archivo principal claro y una función de apoyo aparte, pero todo quedó mezclado y el flujo principal perdió forma.",
+      brokenCode:
+        "# principal.py\ndef mostrar_resumen():\n    print('Resumen listo')\n\nprint('Herramienta lista')\nmostrar_resumen()",
+      expectedLearning: "Separar archivos debería ayudarte a leer mejor el programa principal, no solo cambiar funciones de lugar sin intención."
+    },
+    playground: {
+      title: "Observa una separación simple entre principal y apoyo",
+      guidance: "Este playground sigue corriendo en un solo editor, pero usa comentarios para mostrar cómo se vería una versión separada en varios archivos.",
+      starterCode:
+        "# principal.py\nprint('Abriendo herramienta...')\nprint('Luego podrías llamar funciones de apoyo')\n\n# utilidades.py\ndef mostrar_resumen():\n    print('Resumen listo')\n",
+      emptyOutputHint: "La salida puede ser simple. Lo importante aquí es entender cómo se reparte mejor el programa."
+    },
+    exerciseSlug: "explain-why-simple-multi-file-programs-help"
+  },
+  {
+    slug: "moving-support-functions-to-another-file",
+    module: "Programas multiarchivo simples",
+    moduleSlug: "simple-multi-file-programs",
+    order: 2,
+    title: "Mover funciones de apoyo a otro archivo",
+    duration: "18 min",
+    difficulty: "Beginner",
+    summary: "Practica la idea de dejar las funciones auxiliares en un archivo de apoyo mientras el archivo principal se concentra en el recorrido de la herramienta.",
+    warmup: "Si ya sabes crear funciones, el siguiente paso natural es decidir dónde viven para que el programa se lea mejor.",
+    goal: "Al final, deberías poder separar funciones de apoyo en un archivo sencillo y dejar un archivo principal más fácil de seguir.",
+    keyIdeas: [
+      {
+        title: "Las funciones de apoyo merecen un lugar propio",
+        description: "Guardar, consultar o formatear pueden vivir juntas si apoyan al mismo programa."
+      },
+      {
+        title: "El archivo principal coordina",
+        description: "Pide datos, decide el recorrido y llama funciones con intención clara."
+      },
+      {
+        title: "Separar no borra la relación entre partes",
+        description: "Los archivos siguen trabajando juntos, solo que cada uno muestra mejor su responsabilidad."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué conviene mover primero",
+        body: "Empieza por funciones de apoyo que no necesitan ocupar el centro del recorrido: por ejemplo, una función que imprime un resumen o guarda datos."
+      },
+      {
+        title: "Qué conviene dejar en principal.py",
+        body: "Conviene dejar el arranque del programa, las decisiones simples y las llamadas a las funciones que hacen el trabajo real."
+      },
+      {
+        title: "Una separación pequeña ya cambia la lectura",
+        body: "No hace falta crear muchos archivos. A veces un archivo principal y uno de utilidades ya alcanzan para que todo se vea más ordenado."
+      },
+      {
+        title: "Piensa como alguien que vuelve a leer tu código",
+        body: "Si mañana abres el archivo principal, deberías poder recordar rápido qué hace la herramienta sin navegar un muro de detalles."
+      }
+    ],
+    example:
+      "# utilidades.py\ndef guardar_nota(texto):\n    print('Guardando:', texto)\n\n\ndef mostrar_reporte():\n    print('Reporte listo')\n\n# principal.py\nfrom utilidades import guardar_nota, mostrar_reporte\n\nnota = 'Recordar práctica'\nguardar_nota(nota)\nmostrar_reporte()",
+    practicePrompt: "Piensa en una herramienta de notas simple. ¿Qué funciones de apoyo pondrías en `utilidades.py` y qué pasos dejarías en `principal.py`?",
+    practiceChecklist: [
+      "Crea al menos una función de apoyo en un archivo auxiliar.",
+      "Usa un archivo principal para coordinar llamadas.",
+      "Mantén nombres claros y fáciles de seguir."
+    ],
+    commonMistakes: [
+      "Dejar lógica importante mezclada con funciones auxiliares.",
+      "Mover una función, pero no aclarar desde dónde se usa.",
+      "Separar tanto que el ejemplo deje de ser fácil de seguir."
+    ],
+    bugChallenge: {
+      prompt: "Este ejemplo quiere usar un archivo de apoyo, pero el archivo principal terminó haciendo demasiado y la separación quedó confusa.",
+      brokenCode:
+        "# principal.py\ndef guardar_nota(texto):\n    print('Guardando:', texto)\n\ndef mostrar_reporte():\n    print('Reporte listo')\n\nnota = 'Repasar'\nguardar_nota(nota)\nmostrar_reporte()",
+      expectedLearning: "La meta no es solo crear más archivos, sino reservar uno para apoyos y otro para el recorrido principal."
+    },
+    playground: {
+      title: "Ensaya una organización con archivo principal y utilidades",
+      guidance: "Usa los comentarios como si ya tuvieras `principal.py` y `utilidades.py`. La idea es practicar la separación con calma.",
+      starterCode:
+        "# utilidades.py\ndef guardar_nota(texto):\n    print('Guardando:', texto)\n\n\ndef mostrar_reporte():\n    print('Reporte listo')\n\n# principal.py\nnota = input('Escribe una nota: ')\nguardar_nota(nota)\nmostrar_reporte()",
+      emptyOutputHint: "La salida debería mostrar que el archivo principal coordina y las utilidades hacen su parte."
+    },
+    exerciseSlug: "split-support-functions-into-another-file"
+  },
+  {
+    slug: "keeping-a-clear-main-file",
+    module: "Programas multiarchivo simples",
+    moduleSlug: "simple-multi-file-programs",
+    order: 3,
+    title: "Mantener claro el archivo principal",
+    duration: "19 min",
+    difficulty: "Beginner",
+    summary: "Aprende a dejar un `main` claro que pida datos, llame ayudas y cierre con un resultado útil sin perderte entre detalles.",
+    warmup: "Cuando una herramienta tiene varias partes, el archivo principal se vuelve una especie de mapa. Si ese mapa está claro, todo lo demás se entiende mejor.",
+    goal: "Al final, deberías poder escribir un archivo principal simple y legible que coordine funciones de apoyo y muestre el recorrido completo del programa.",
+    keyIdeas: [
+      {
+        title: "El principal debería contar la historia del programa",
+        description: "Entrada, decisión, llamada a apoyos y cierre visible."
+      },
+      {
+        title: "Los detalles repetidos pueden vivir fuera",
+        description: "El archivo principal no necesita mostrar toda la implementación de cada tarea."
+      },
+      {
+        title: "Ruta 3 busca herramientas más reales, no más caóticas",
+        description: "Separar bien hace que el programa pueda crecer sin perder claridad."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué debería verse primero",
+        body: "Cuando abras el archivo principal, lo ideal es ver nombres de funciones que expliquen el recorrido del programa, no todos los detalles de cada paso."
+      },
+      {
+        title: "Cómo se siente un principal claro",
+        body: "Pide un dato, decide una acción, llama funciones de apoyo y muestra un cierre. Todo eso debería poder leerse casi como una receta corta."
+      },
+      {
+        title: "Un principal claro también ayuda a depurar",
+        body: "Si algo falla, entiendes más rápido en qué parte del recorrido estás. Eso vuelve los errores menos confusos."
+      },
+      {
+        title: "Piensa en la próxima utilidad de Ruta 3",
+        body: "Más adelante vas a querer herramientas un poco más amplias. Un archivo principal claro será la base para que eso siga siendo manejable."
+      }
+    ],
+    example:
+      "# principal.py\nfrom utilidades import guardar_contacto, mostrar_resumen\n\n\ndef main():\n    nombre = input('Escribe un nombre: ')\n    guardar_contacto(nombre)\n    mostrar_resumen()\n\n\nmain()",
+    practicePrompt: "Imagina un programa pequeño que guarda un contacto y luego muestra un resumen. Escribe primero cómo se vería `main()` antes de pensar los detalles internos.",
+    practiceChecklist: [
+      "Deja el recorrido principal visible.",
+      "Usa funciones de apoyo con nombres claros.",
+      "Termina con una salida o resumen fácil de leer."
+    ],
+    commonMistakes: [
+      "Llenar el archivo principal con detalles internos otra vez.",
+      "Usar nombres genéricos que no muestran la intención del flujo.",
+      "Olvidar un cierre claro después de pedir datos o cambiar algo."
+    ],
+    bugChallenge: {
+      prompt: "Este principal quiere coordinar una utilidad, pero mezcla demasiados detalles internos y pierde la historia del programa.",
+      brokenCode:
+        "nombre = input('Escribe un nombre: ')\nwith open('contactos.txt', 'w') as archivo:\n    archivo.write(nombre)\nwith open('contactos.txt', 'r') as archivo:\n    print(archivo.read())",
+      expectedLearning: "El archivo principal debería coordinar. Si contiene todos los detalles internos, deja de leerse como un recorrido claro."
+    },
+    playground: {
+      title: "Prueba un main corto y más claro",
+      guidance: "Usa este ejemplo para notar cómo un `main()` pequeño muestra mejor el recorrido completo de la herramienta.",
+      starterCode:
+        "def guardar_contacto(nombre):\n    print('Guardando:', nombre)\n\n\ndef mostrar_resumen():\n    print('Resumen listo')\n\n\ndef main():\n    nombre = input('Escribe un nombre: ')\n    guardar_contacto(nombre)\n    mostrar_resumen()\n\n\nmain()",
+      emptyOutputHint: "La salida debería dejar claro que el programa pide un dato, hace algo útil y cierra con un pequeño resumen."
+    },
+    exerciseSlug: "build-a-clear-main-file"
   }
 ];
 
@@ -9594,6 +9817,286 @@ export const courseExercises: ExerciseData[] = [
         "prints-final-header",
         "prints-total",
         "calls-report"
+      ]
+    }
+  },
+  {
+    slug: "explain-why-simple-multi-file-programs-help",
+    title: "Explica por qué dividir un programa en varios archivos puede ayudar",
+    exerciseType: "concept_check",
+    responseFormat: "text",
+    moduleSlug: "simple-multi-file-programs",
+    lessonSlug: "why-simple-multi-file-programs-help",
+    order: 1,
+    duration: "8 min",
+    summary: "Explica en palabras simples por qué un programa más amplio puede beneficiarse de un archivo principal y un archivo de apoyo.",
+    prompt:
+      "Escribe una respuesta corta donde expliques por qué un programa pequeño pero creciente puede volverse más claro si deja el flujo principal en un archivo y mueve funciones de apoyo a otro.",
+    responseLabel: "Tu explicación",
+    responsePlaceholder:
+      "Un programa puede quedar más claro si...",
+    instructions: [
+      "Menciona la idea de flujo principal visible.",
+      "Menciona la idea de mover apoyos o detalles a otro archivo.",
+      "Escribe de forma simple, como si se lo contaras a otra persona principiante."
+    ],
+    hints: [
+      "Piensa en qué archivo debería contar la historia principal del programa.",
+      "Puedes hablar de legibilidad, orden o facilidad para volver a leer.",
+      "No hace falta usar palabras técnicas complejas."
+    ],
+    starterCode: "",
+    successCriteria: [
+      "Explica que separar ayuda a leer mejor el programa.",
+      "Reconoce que el archivo principal debería quedar más claro.",
+      "Menciona funciones o apoyos en otro archivo."
+    ],
+    evaluator: {
+      type: "ordered_concepts",
+      passingScore: 3,
+      concepts: [
+        {
+          id: "main-flow",
+          label: "Menciona el flujo principal visible",
+          keywords: ["flujo principal", "archivo principal", "parte principal", "recorrido principal"],
+          feedbackWhenMissing: "Menciona que el archivo principal debería mostrar el flujo o recorrido del programa."
+        },
+        {
+          id: "support-file",
+          label: "Menciona apoyos o funciones en otro archivo",
+          keywords: ["funciones de apoyo", "otro archivo", "archivo de utilidades", "funciones auxiliares"],
+          feedbackWhenMissing: "Menciona que algunas funciones de apoyo pueden vivir en otro archivo."
+        },
+        {
+          id: "clarity-benefit",
+          label: "Menciona una mejora de claridad",
+          keywords: ["más claro", "más ordenado", "más fácil de leer", "más legible"],
+          feedbackWhenMissing: "Explica por qué esa separación ayuda a leer o entender mejor el programa."
+        }
+      ]
+    }
+  },
+  {
+    slug: "split-support-functions-into-another-file",
+    title: "Separa funciones de apoyo en otro archivo",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "simple-multi-file-programs",
+    lessonSlug: "moving-support-functions-to-another-file",
+    order: 2,
+    duration: "16 min",
+    summary: "Escribe una respuesta guiada donde representes un archivo `utilidades.py` y un archivo `principal.py` con una separación simple y clara.",
+    prompt:
+      "Escribe un ejemplo dividido en dos partes usando comentarios para representar archivos. Primero crea `# utilidades.py` con `guardar_nota(texto)` y `mostrar_reporte()`; luego crea `# principal.py`, importa ambas funciones con `from utilidades import guardar_nota, mostrar_reporte`, pide una nota con `input('Escribe una nota: ')`, llama `guardar_nota(nota)` y termina con `mostrar_reporte()`.",
+    responseLabel: "Tu programa multiarchivo simple",
+    responsePlaceholder:
+      "# utilidades.py\n\ndef guardar_nota(texto):\n    print('Guardando:', texto)\n\n\ndef mostrar_reporte():\n    print('Reporte listo')\n\n# principal.py\nfrom utilidades import guardar_nota, mostrar_reporte\n\nnota = input('Escribe una nota: ')\nguardar_nota(nota)\nmostrar_reporte()",
+    instructions: [
+      "Usa comentarios para mostrar cada archivo.",
+      "Deja las funciones de apoyo en `utilidades.py`.",
+      "Haz que `principal.py` se lea como el recorrido principal."
+    ],
+    hints: [
+      "Puedes empezar con `# utilidades.py` y luego `# principal.py`.",
+      "La separación importa más que una lógica complicada.",
+      "En el principal, intenta que se vea primero el pedido del dato y luego las llamadas."
+    ],
+    starterCode:
+      "# utilidades.py\n\ndef guardar_nota(texto):\n    print('Guardando:', texto)\n\n\ndef mostrar_reporte():\n    print('Reporte listo')\n\n# principal.py\nfrom utilidades import guardar_nota, mostrar_reporte\n\nnota = input('Escribe una nota: ')\nguardar_nota(nota)\nmostrar_reporte()",
+    successCriteria: [
+      "Representa dos archivos con claridad.",
+      "Deja funciones de apoyo fuera del principal.",
+      "Hace que el principal se lea como un flujo corto y claro."
+    ],
+    playground: {
+      title: "Ensaya la separación entre utilidades y principal",
+      guidance: "Corre el ejemplo dentro de un solo editor, pero mantén la representación clara de ambos archivos usando comentarios.",
+      starterCode:
+        "# utilidades.py\n\ndef guardar_nota(texto):\n    print('Guardando:', texto)\n\n\ndef mostrar_reporte():\n    print('Reporte listo')\n\n# principal.py\nfrom utilidades import guardar_nota, mostrar_reporte\n\nnota = input('Escribe una nota: ')\nguardar_nota(nota)\nmostrar_reporte()",
+      emptyOutputHint: "La salida puede ser simple. Lo importante es que la separación entre archivos quede legible."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 220,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "utilidades-comment",
+          label: "Representa `# utilidades.py`",
+          pattern: "#\\s*utilidades\\.py",
+          feedbackWhenMissing: "Empieza mostrando el archivo `# utilidades.py`."
+        },
+        {
+          id: "principal-comment",
+          label: "Representa `# principal.py`",
+          pattern: "#\\s*principal\\.py",
+          feedbackWhenMissing: "Muestra también el archivo `# principal.py`."
+        },
+        {
+          id: "defines-save-note",
+          label: "Define `guardar_nota(texto)`",
+          pattern: "def\\s+guardar_nota\\(\\s*texto\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define una función `guardar_nota(texto)` en el archivo de utilidades."
+        },
+        {
+          id: "defines-report",
+          label: "Define `mostrar_reporte()`",
+          pattern: "def\\s+mostrar_reporte\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función `mostrar_reporte()` en el archivo de utilidades."
+        },
+        {
+          id: "imports-support",
+          label: "Importa las funciones desde utilidades",
+          pattern: "from\\s+utilidades\\s+import\\s+guardar_nota\\s*,\\s*mostrar_reporte",
+          feedbackWhenMissing: "En `principal.py`, importa las funciones desde `utilidades`."
+        },
+        {
+          id: "asks-note",
+          label: "Pide una nota con `input()`",
+          pattern: "nota\\s*=\\s*input\\(",
+          feedbackWhenMissing: "En el archivo principal, pide la nota con `input()`."
+        },
+        {
+          id: "calls-save",
+          label: "Llama `guardar_nota(nota)`",
+          pattern: "guardar_nota\\(\\s*nota\\s*\\)",
+          feedbackWhenMissing: "Después del input, llama `guardar_nota(nota)`."
+        },
+        {
+          id: "calls-report",
+          label: "Llama `mostrar_reporte()`",
+          pattern: "mostrar_reporte\\(\\s*\\)",
+          feedbackWhenMissing: "Termina llamando `mostrar_reporte()`."
+        }
+      ],
+      orderedPatternIds: [
+        "utilidades-comment",
+        "defines-save-note",
+        "defines-report",
+        "principal-comment",
+        "imports-support",
+        "asks-note",
+        "calls-save",
+        "calls-report"
+      ]
+    }
+  },
+  {
+    slug: "build-a-clear-main-file",
+    title: "Construye un archivo principal claro",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "simple-multi-file-programs",
+    lessonSlug: "keeping-a-clear-main-file",
+    order: 3,
+    duration: "16 min",
+    summary: "Escribe un `main()` simple que pida un dato, llame funciones de apoyo y cierre con un resumen corto para que el archivo principal se lea como un mapa del programa.",
+    prompt:
+      "Escribe un ejemplo donde primero representes `# utilidades.py` con `guardar_contacto(nombre)` y `mostrar_resumen()`. Después representa `# principal.py`, importa ambas funciones, define `main()`, pide un nombre con `input('Escribe un nombre: ')`, llama `guardar_contacto(nombre)`, luego `mostrar_resumen()` y finalmente ejecuta `main()`.",
+    responseLabel: "Tu archivo principal claro",
+    responsePlaceholder:
+      "# utilidades.py\n\ndef guardar_contacto(nombre):\n    print('Guardando:', nombre)\n\n\ndef mostrar_resumen():\n    print('Resumen listo')\n\n# principal.py\nfrom utilidades import guardar_contacto, mostrar_resumen\n\n\ndef main():\n    nombre = input('Escribe un nombre: ')\n    guardar_contacto(nombre)\n    mostrar_resumen()\n\n\nmain()",
+    instructions: [
+      "Muestra los dos archivos con comentarios.",
+      "Haz que `main()` cuente el recorrido principal del programa.",
+      "Evita meter detalles internos dentro del archivo principal."
+    ],
+    hints: [
+      "Piensa el `main()` como una receta corta.",
+      "Primero pide el dato, después llama apoyos, después cierra.",
+      "La meta es claridad, no cantidad de código."
+    ],
+    starterCode:
+      "# utilidades.py\n\ndef guardar_contacto(nombre):\n    print('Guardando:', nombre)\n\n\ndef mostrar_resumen():\n    print('Resumen listo')\n\n# principal.py\nfrom utilidades import guardar_contacto, mostrar_resumen\n\n\ndef main():\n    nombre = input('Escribe un nombre: ')\n    guardar_contacto(nombre)\n    mostrar_resumen()\n\n\nmain()",
+    successCriteria: [
+      "El archivo principal se lee fácil.",
+      "Usa `main()` como recorrido del programa.",
+      "Las funciones de apoyo quedan separadas."
+    ],
+    playground: {
+      title: "Prueba un `main()` corto y claro",
+      guidance: "Ejecuta el ejemplo para notar cómo el archivo principal se entiende rápido cuando coordina y no se llena de detalles.",
+      starterCode:
+        "def guardar_contacto(nombre):\n    print('Guardando:', nombre)\n\n\ndef mostrar_resumen():\n    print('Resumen listo')\n\n\ndef main():\n    nombre = input('Escribe un nombre: ')\n    guardar_contacto(nombre)\n    mostrar_resumen()\n\n\nmain()",
+      emptyOutputHint: "La salida debería dejarte ver un recorrido corto y claro: pedir, guardar y resumir."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 240,
+      passingScore: 7,
+      requiredPatterns: [
+        {
+          id: "utilidades-comment",
+          label: "Representa `# utilidades.py`",
+          pattern: "#\\s*utilidades\\.py",
+          feedbackWhenMissing: "Empieza mostrando el archivo `# utilidades.py`."
+        },
+        {
+          id: "principal-comment",
+          label: "Representa `# principal.py`",
+          pattern: "#\\s*principal\\.py",
+          feedbackWhenMissing: "Muestra también el archivo `# principal.py`."
+        },
+        {
+          id: "defines-save-contact",
+          label: "Define `guardar_contacto(nombre)`",
+          pattern: "def\\s+guardar_contacto\\(\\s*nombre\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define `guardar_contacto(nombre)` en el archivo de utilidades."
+        },
+        {
+          id: "defines-summary",
+          label: "Define `mostrar_resumen()`",
+          pattern: "def\\s+mostrar_resumen\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `mostrar_resumen()` en el archivo de utilidades."
+        },
+        {
+          id: "imports-main",
+          label: "Importa ambas funciones en principal",
+          pattern: "from\\s+utilidades\\s+import\\s+guardar_contacto\\s*,\\s*mostrar_resumen",
+          feedbackWhenMissing: "En `principal.py`, importa `guardar_contacto` y `mostrar_resumen`."
+        },
+        {
+          id: "defines-main",
+          label: "Define `main()`",
+          pattern: "def\\s+main\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función `main()` para el recorrido principal."
+        },
+        {
+          id: "asks-name",
+          label: "Pide un nombre con `input()`",
+          pattern: "nombre\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Dentro de `main()`, pide un nombre con `input()`."
+        },
+        {
+          id: "calls-save-contact",
+          label: "Llama `guardar_contacto(nombre)`",
+          pattern: "guardar_contacto\\(\\s*nombre\\s*\\)",
+          feedbackWhenMissing: "Dentro de `main()`, llama `guardar_contacto(nombre)`."
+        },
+        {
+          id: "calls-show-summary",
+          label: "Llama `mostrar_resumen()`",
+          pattern: "mostrar_resumen\\(\\s*\\)",
+          feedbackWhenMissing: "Dentro de `main()`, llama `mostrar_resumen()`."
+        },
+        {
+          id: "runs-main",
+          label: "Ejecuta `main()` al final",
+          pattern: "main\\(\\s*\\)",
+          feedbackWhenMissing: "Al final del ejemplo, ejecuta `main()`."
+        }
+      ],
+      orderedPatternIds: [
+        "utilidades-comment",
+        "defines-save-contact",
+        "defines-summary",
+        "principal-comment",
+        "imports-main",
+        "defines-main",
+        "asks-name",
+        "calls-save-contact",
+        "calls-show-summary",
+        "runs-main"
       ]
     }
   }

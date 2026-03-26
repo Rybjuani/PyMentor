@@ -373,9 +373,9 @@ export const courseLessons: LessonData[] = [
     order: 6,
     duration: "55 min",
     difficulty: "Beginner",
-    summary: "Cierra el primer módulo integrando entradas, validación, bucles y funciones en una mini app de consola con propósito claro.",
+    summary: "Cierra el primer módulo integrando entradas, validación, bucles y funciones en una mini app de consola con un flujo más completo.",
     warmup: "Cerrar un módulo no significa repetir todo. Significa combinar piezas para resolver una tarea reconocible.",
-    goal: "Construir una mini app que pregunte datos, organice un plan y entregue un cierre útil.",
+    goal: "Construir una mini app que pida varias tareas, calcule carga total y entregue una recomendación concreta.",
     keyIdeas: [
       {
         title: "Integrar es distinto a repetir",
@@ -401,12 +401,12 @@ export const courseLessons: LessonData[] = [
       }
     ],
     example:
-      "def classify_load(tasks):\n    if tasks >= 5:\n        return 'alta'\n    if tasks >= 3:\n        return 'media'\n    return 'baja'\n\nstudent = input('Nombre: ')\navailable_minutes = int(input('Minutos disponibles: '))\ntasks = int(input('Tareas pendientes: '))\nload = classify_load(tasks)\nprint(f'{student}: carga {load} con {available_minutes} min disponibles')",
-    practicePrompt: "Construye un planificador que pida nombre, minutos disponibles y cantidad de tareas, clasifique la carga y sugiera bloques de trabajo.",
+      "def classify_load(total_minutes):\n    if total_minutes >= 120:\n        return 'alta'\n    if total_minutes >= 70:\n        return 'media'\n    return 'baja'\n\nstudent = input('Nombre: ')\ntotal_minutes = 0\nfor task in range(3):\n    total_minutes += int(input(f'Minutos de la tarea {task + 1}: '))\n\nload = classify_load(total_minutes)\nprint(f'{student}: carga {load} con {total_minutes} min de trabajo')",
+    practicePrompt: "Construye un planificador que pida nombre, minutos disponibles y tres tareas con su duración, calcule la carga total y sugiera bloques de trabajo.",
     practiceChecklist: [
       "Usa al menos dos funciones.",
-      "Valida al menos un dato antes de seguir.",
-      "Entrega un resumen final con sugerencia concreta."
+      "Usa un bucle para registrar o resumir varias tareas.",
+      "Valida al menos un dato antes de seguir y entrega una recomendación concreta."
     ],
     commonMistakes: [
       "Resolver todo en el bloque principal y perder claridad.",
@@ -422,33 +422,33 @@ export const courseLessons: LessonData[] = [
     playground: {
       guidance: "Piensa como si estuvieras entregando una mini utilidad, no una prueba de sintaxis.",
       starterCode:
-        "def classify_load(tasks):\n    if tasks >= 5:\n        return 'alta'\n    if tasks >= 3:\n        return 'media'\n    return 'baja'\n\n# Crea otra función que sugiera bloques de 25 minutos.\n# Luego construye el flujo principal del planificador.",
+        "def classify_load(total_minutes):\n    if total_minutes >= 120:\n        return 'alta'\n    if total_minutes >= 70:\n        return 'media'\n    return 'baja'\n\n# Crea otra función que sugiera bloques de 25 minutos.\n# Luego pide nombre, minutos disponibles y registra tres tareas con un bucle.",
       emptyOutputHint: "Tu plan final debería recomendar una estrategia concreta."
     },
     exerciseSlug: "capstone-planificador-de-estudio"
   }),
   lesson({
     slug: "listas-y-tuplas-para-series-de-datos",
-    title: "Listas y tuplas para trabajar series de datos",
+    title: "Listas para resumir y filtrar datos",
     moduleSlug: "python-practico",
     order: 1,
     duration: "40 min",
     difficulty: "Beginner",
-    summary: "Deja atrás la lógica de una variable por dato y empieza a operar con colecciones completas.",
+    summary: "Da el salto a colecciones útiles: resumir, filtrar y detectar patrones en varios datos de una sola vez.",
     warmup: "Cuando aparecen varios valores del mismo tipo, insistir con variables sueltas deja de escalar enseguida.",
-    goal: "Usar listas y tuplas para agrupar, recorrer y resumir datos.",
+    goal: "Usar listas para resumir y filtrar datos, y dejar la tupla como apoyo secundario cuando tenga sentido.",
     keyIdeas: [
       {
         title: "Una lista modela una secuencia cambiante",
         description: "Puedes agregar, recorrer y resumir valores sin inventar una variable nueva para cada caso."
       },
       {
-        title: "Una tupla fija un conjunto corto",
-        description: "Sirve para pares o grupos pequeños que no deberían cambiar, como categorías o coordenadas simples."
-      },
-      {
         title: "El valor aparece al recorrer",
         description: "Una colección sirve de verdad cuando la usas para calcular o transformar algo, no solo para guardarla."
+      },
+      {
+        title: "Filtrar también es pensar con datos",
+        description: "Además de sumar o contar, una lista sirve para detectar cuáles elementos merecen atención o revisión."
       }
     ],
     explanation: [
@@ -457,17 +457,17 @@ export const courseLessons: LessonData[] = [
         body: "No la veas como un tema aislado. Piensa qué datos repites y qué operación quieres hacer con todos: sumar, filtrar, ordenar o contar."
       },
       {
-        title: "Tuplas con criterio",
-        body: "No necesitas usar tuplas todo el tiempo. Úsalas cuando el conjunto es corto y la forma del dato importa."
+        title: "Tupla como apoyo, no como protagonista",
+        body: "Una tupla puede servir para etiquetas o referencias cortas, pero aquí el foco real está en usar listas para sacar conclusiones."
       }
     ],
     example:
-      "expenses = [12.5, 8, 19.9, 5]\ncategories = ('comida', 'transporte', 'herramientas')\nprint(f'Total: {sum(expenses):.2f}')\nfor amount in expenses:\n    print(f'- ${amount:.2f}')",
-    practicePrompt: "Arma un resumen de tareas usando una lista de duraciones y una tupla con las etiquetas del reporte.",
+      "study_blocks = [20, 35, 15, 40, 55]\nlabels = ('total', 'promedio', 'bloques largos')\nlong_blocks = []\nfor minutes in study_blocks:\n    if minutes >= 30:\n        long_blocks.append(minutes)\n\nprint(f'{labels[0]}: {sum(study_blocks)}')\nprint(f'{labels[1]}: {sum(study_blocks) / len(study_blocks):.1f}')\nprint(f'{labels[2]}: {len(long_blocks)}')",
+    practicePrompt: "Arma un reporte de bloques de estudio que muestre total, promedio y cuántos bloques superan los 30 minutos.",
     practiceChecklist: [
-      "Usa una lista y recórrela.",
-      "Usa una tupla para etiquetar un resumen corto.",
-      "Muestra al menos una métrica agregada."
+      "Usa una lista y recórrela al menos una vez.",
+      "Detecta qué elementos cumplen una condición útil.",
+      "Muestra total, promedio y una métrica de filtro."
     ],
     commonMistakes: [
       "Crear listas pero seguir escribiendo lógica duplicada.",
@@ -475,15 +475,15 @@ export const courseLessons: LessonData[] = [
       "Usar una tupla donde hace falta modificar el contenido."
     ],
     bugChallenge: {
-      prompt: "Este script intenta sumar una lista, pero usa mal cada elemento.",
+      prompt: "Este script intenta detectar bloques largos, pero confunde la lista con el elemento actual.",
       brokenCode:
-        "expenses = [10, 12, 8]\ntotal = 0\nfor expenses in expenses:\n    total += expenses[0]\nprint(total)",
-      expectedLearning: "El nombre del elemento del bucle debe representar un dato, no pisar la colección completa."
+        "study_blocks = [20, 35, 15]\nlong_blocks = []\nfor study_blocks in study_blocks:\n    if study_blocks[0] >= 30:\n        long_blocks.append(study_blocks)\nprint(long_blocks)",
+      expectedLearning: "Cuando recorres una lista, el elemento actual debe tratarse como dato individual, no como colección completa."
     },
     playground: {
-      guidance: "Usa una colección para consolidar datos y sacar un resumen útil.",
+      guidance: "Usa una colección para consolidar datos y detectar qué parte del conjunto merece atención.",
       starterCode:
-        "durations = [20, 35, 15, 40]\nlabels = ('total', 'promedio', 'mayor bloque')\n\n# Recorre la lista y muestra un resumen con estas etiquetas",
+        "durations = [20, 35, 15, 40, 55]\nlabels = ('total', 'promedio', 'bloques largos')\n\n# Recorre la lista, detecta qué bloques superan 30 minutos\n# y muestra un reporte con estas etiquetas",
       emptyOutputHint: "Tu salida debería resumir varios datos, no imprimirlos sin contexto."
     },
     exerciseSlug: "resumir-datos-con-listas"
@@ -619,7 +619,7 @@ export const courseLessons: LessonData[] = [
     difficulty: "Beginner",
     summary: "Haz que el trabajo no desaparezca al terminar el script: guarda y lee datos de archivos de texto.",
     warmup: "La diferencia entre un script pasajero y una utilidad útil suele aparecer cuando empiezas a guardar resultados.",
-    goal: "Leer y escribir archivos simples para persistir registros y construir reportes básicos.",
+    goal: "Leer y escribir archivos simples para persistir registros y construir un resumen inicial con datos recuperados.",
     keyIdeas: [
       {
         title: "Persistencia básica",
@@ -646,11 +646,11 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "notes = ['Llamar proveedor', 'Revisar stock', 'Actualizar precios']\nwith open('notes.txt', 'w', encoding='utf-8') as file:\n    for note in notes:\n        file.write(note + '\\n')\n\nwith open('notes.txt', 'r', encoding='utf-8') as file:\n    saved_notes = [line.strip() for line in file]\nprint(saved_notes)",
-    practicePrompt: "Guarda una lista de movimientos en un archivo y luego léela para mostrar cuántos registros hay.",
+    practicePrompt: "Guarda movimientos en un archivo, vuelve a leerlos y muestra cuántos registros hay y cuánto suma el total recuperado.",
     practiceChecklist: [
       "Usa `with open(...)` para escribir.",
       "Vuelve a abrir el archivo y procesa sus líneas.",
-      "Entrega un resumen final del contenido guardado."
+      "Entrega un resumen final con cantidad y total recuperado."
     ],
     commonMistakes: [
       "Escribir sin saltos de línea y luego no poder separar registros.",
@@ -666,7 +666,7 @@ export const courseLessons: LessonData[] = [
     playground: {
       guidance: "Guarda datos, vuelve a leerlos y entrega un cierre breve.",
       starterCode:
-        "movements = ['venta,1200', 'compra,450', 'venta,980']\n\n# Escribe estos movimientos en un archivo.\n# Luego vuelve a leerlo y muestra cuántos registros recuperaste.",
+        "movements = ['venta,1200', 'compra,450', 'venta,980']\n\n# Escribe estos movimientos en un archivo.\n# Luego vuelve a leerlos, separa categoría y monto,\n# y muestra cuántos registros recuperaste y cuánto suman.",
       emptyOutputHint: "La salida debería confirmar que el archivo se escribió y se leyó."
     },
     exerciseSlug: "guardar-y-leer-movimientos"
@@ -706,12 +706,12 @@ export const courseLessons: LessonData[] = [
       }
     ],
     example:
-      "from statistics import mean\n\nscores = [8, 7, 9, 10]\n\ndef build_report(values):\n    return {\n        'count': len(values),\n        'average': round(mean(values), 2),\n        'highest': max(values)\n    }\n\nprint(build_report(scores))",
-    practicePrompt: "Usa `statistics.mean` y funciones propias para resumir una lista de montos y clasificar el resultado.",
+      "from statistics import mean, median\n\nscores = [8, 7, 9, 10, 6]\n\ndef build_report(values):\n    return {\n        'count': len(values),\n        'average': round(mean(values), 2),\n        'median': median(values),\n        'highest': max(values)\n    }\n\nprint(build_report(scores))",
+    practicePrompt: "Usa `statistics.mean` y `median` con funciones propias para resumir una lista de montos y clasificar el reporte.",
     practiceChecklist: [
       "Importa al menos una herramienta de la biblioteca estándar.",
       "Crea una función de transformación.",
-      "Muestra un reporte final que combine varias métricas."
+      "Muestra un reporte final que combine varias métricas y una clasificación."
     ],
     commonMistakes: [
       "Importar algo y luego no usarlo.",
@@ -727,7 +727,7 @@ export const courseLessons: LessonData[] = [
     playground: {
       guidance: "Aprovecha la biblioteca estándar para concentrarte en la lógica de negocio, no en reimplementar todo.",
       starterCode:
-        "from statistics import mean\n\namounts = [1200, 800, 950, 1300]\n\n# Crea una función que devuelva cantidad, promedio y máximo.\n# Luego agrega una clasificación simple del reporte.",
+        "from statistics import mean, median\n\namounts = [1200, 800, 950, 1300, 1700]\n\n# Crea una función que devuelva cantidad, promedio, mediana y máximo.\n# Luego agrega una clasificación simple del reporte.",
       emptyOutputHint: "Tu salida debería parecer un reporte corto, no una lista suelta."
     },
     exerciseSlug: "crear-reporte-con-statistics"
@@ -739,9 +739,9 @@ export const courseLessons: LessonData[] = [
     order: 6,
     duration: "65 min",
     difficulty: "Beginner",
-    summary: "Integra colecciones, strings, archivos y funciones para producir una utilidad que registra, limpia y resume datos.",
+    summary: "Integra colecciones, strings, archivos y funciones para producir una utilidad que registra, limpia, descarta líneas malas y resume datos.",
     warmup: "Este cierre ya no se siente como ejercicio escolar: trabaja con entradas, transformación de datos y persistencia.",
-    goal: "Construir una utilidad de consola que lea, guarde y resuma registros reales de forma simple.",
+    goal: "Construir una utilidad de consola que lea, guarde, limpie y resuma registros reales sin depender del caso perfecto.",
     keyIdeas: [
       {
         title: "Datos con flujo completo",
@@ -768,11 +768,11 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "def parse_line(line):\n    category, amount = line.strip().split(',')\n    return {'category': category.strip().lower(), 'amount': float(amount)}\n\nrecords = [parse_line('venta,1200'), parse_line('compra,450')]\nprint(records)",
-    practicePrompt: "Construye una utilidad que guarde movimientos simples, los vuelva a leer y muestre total de ventas, total de compras y balance.",
+    practicePrompt: "Construye una utilidad que guarde movimientos, descarte líneas inválidas y muestre total de ventas, total de compras, balance y cantidad descartada.",
     practiceChecklist: [
       "Usa al menos una función para parsear o limpiar líneas.",
       "Lee y escribe un archivo.",
-      "Entrega un reporte con varias métricas, no solo un total."
+      "Entrega un reporte con varias métricas y al menos un dato de calidad del input."
     ],
     commonMistakes: [
       "Mezclar el formato del archivo con la lógica del reporte en un solo bloque.",
@@ -788,7 +788,7 @@ export const courseLessons: LessonData[] = [
     playground: {
       guidance: "Piensa en una herramienta de trabajo simple: registrar, recuperar y resumir.",
       starterCode:
-        "def parse_line(line):\n    category, amount = line.strip().split(',')\n    return {'category': category.strip().lower(), 'amount': float(amount)}\n\nsample_lines = ['venta,1200', 'compra,450', 'venta,980']\n\n# Guarda estas líneas en un archivo, vuelve a leerlas y construye un balance.",
+        "def parse_line(line):\n    parts = line.strip().split(',')\n    if len(parts) != 2:\n        return None\n    category, amount = parts\n    category = category.strip().lower()\n    try:\n        amount = float(amount)\n    except ValueError:\n        return None\n    return {'category': category, 'amount': amount}\n\nsample_lines = ['venta,1200', 'compra,450', 'venta,980', 'error']\n\n# Guarda estas líneas en un archivo, vuelve a leerlas,\n# descarta las inválidas y construye un balance.",
       emptyOutputHint: "El resultado final debería mostrar ventas, compras y balance."
     },
     exerciseSlug: "capstone-utilidad-de-registros"
@@ -858,7 +858,7 @@ export const courseLessons: LessonData[] = [
     slug: "clases-cuando-aportan",
     title: "Clases cuando realmente aportan",
     moduleSlug: "python-estructurado",
-    order: 2,
+    order: 4,
     duration: "45 min",
     difficulty: "Beginner",
     summary: "Introduce POO solo donde mejora el modelo mental del problema, no como ornamento obligatorio.",
@@ -889,12 +889,12 @@ export const courseLessons: LessonData[] = [
       }
     ],
     example:
-      "class Expense:\n    def __init__(self, category, amount):\n        self.category = category\n        self.amount = amount\n\n    def is_large(self):\n        return self.amount >= 1000\n\nexpense = Expense('equipo', 1200)\nprint(expense.category)\nprint(expense.is_large())",
-    practicePrompt: "Modela un movimiento con clase: categoría, monto y un método que indique si requiere revisión.",
+      "class Movement:\n    def __init__(self, category, amount):\n        self.category = category\n        self.amount = amount\n\n    def requires_review(self):\n        return self.amount >= 1000\n\n    def signed_amount(self):\n        return self.amount if self.category == 'ingreso' else -self.amount\n\nmovement = Movement('egreso', 1200)\nprint(movement.requires_review())\nprint(movement.signed_amount())",
+    practicePrompt: "Modela un movimiento con clase: categoría, monto, un método para revisión y otro para entregar un valor firmado.",
     practiceChecklist: [
       "Define una clase simple con `__init__`.",
-      "Agrega al menos un método útil.",
-      "Usa instancias para producir una salida legible."
+      "Agrega al menos dos métodos útiles.",
+      "Usa instancias para producir una salida que ya sirva a un reporte."
     ],
     commonMistakes: [
       "Crear una clase sin comportamiento útil.",
@@ -910,7 +910,7 @@ export const courseLessons: LessonData[] = [
     playground: {
       guidance: "Usa una clase solo porque el dominio lo pide, no por obligación.",
       starterCode:
-        "class Movement:\n    def __init__(self, category, amount):\n        self.category = category\n        self.amount = amount\n\n    # Agrega un método requires_review()\n    # y otro método summary() si te resulta útil.",
+        "class Movement:\n    def __init__(self, category, amount):\n        self.category = category\n        self.amount = amount\n\n    # Agrega un método requires_review()\n    # y otro método signed_amount() o summary() para apoyar un reporte.",
       emptyOutputHint: "Crea una o dos instancias para probar tu clase."
     },
     exerciseSlug: "modelar-movimiento-con-clase"
@@ -980,7 +980,7 @@ export const courseLessons: LessonData[] = [
     slug: "parsing-validacion-y-excepciones",
     title: "Parsing, validación y excepciones básicas",
     moduleSlug: "python-estructurado",
-    order: 4,
+    order: 2,
     duration: "50 min",
     difficulty: "Beginner",
     summary: "Haz que el programa trate mejor datos imperfectos: parsea, valida y maneja fallos sin romper todo el flujo.",
@@ -1012,7 +1012,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "def parse_amount(raw_value):\n    try:\n        amount = float(raw_value)\n    except ValueError:\n        return None\n    return amount if amount >= 0 else None\n\nprint(parse_amount('120'))\nprint(parse_amount('abc'))",
-    practicePrompt: "Crea un parser de montos que devuelva `None` ante valores inválidos o negativos y úsalo para filtrar una lista de entradas.",
+    practicePrompt: "Crea un parser de montos que devuelva `None` ante valores inválidos o negativos y úsalo para construir una lista válida con conteo de descartes.",
     practiceChecklist: [
       "Usa `try/except` para la conversión.",
       "Valida el valor después de convertirlo.",
@@ -1032,7 +1032,7 @@ export const courseLessons: LessonData[] = [
     playground: {
       guidance: "Trata datos imperfectos sin romper todo el flujo.",
       starterCode:
-        "raw_values = ['1200', '450', 'error', '-25', '980']\n\n# Crea parse_amount() con try/except.\n# Después recorre raw_values y arma una lista solo con montos válidos.",
+        "raw_values = ['1200', '450', 'error', '-25', '980']\n\n# Crea parse_amount() con try/except.\n# Después recorre raw_values, arma una lista solo con montos válidos\n# y cuenta cuántos descartaste.",
       emptyOutputHint: "Tu salida debería mostrar montos válidos y un conteo de descartes."
     },
     exerciseSlug: "parsear-montos-con-validacion"
@@ -1073,11 +1073,11 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "# main.py\nfrom storage import load_records\nfrom reports import build_balance\n\nrecords = load_records('movements.json')\nprint(build_balance(records))\n\n# storage.py\nimport json\n\ndef load_records(path):\n    with open(path, 'r', encoding='utf-8') as file:\n        return json.load(file)\n\n# reports.py\ndef build_balance(records):\n    total = sum(item['amount'] for item in records)\n    return {'count': len(records), 'total': total}",
-    practicePrompt: "Propón cómo separarías una herramienta de gastos en `main.py`, `storage.py` y `reports.py` sin duplicar responsabilidades.",
+    practicePrompt: "Propón cómo separarías una herramienta de gastos en `main.py`, `storage.py`, `reports.py` y, si hace falta, `models.py`, indicando funciones concretas por archivo.",
     practiceChecklist: [
       "Explica qué hace cada archivo.",
       "Menciona qué módulo importa a cuál y por qué.",
-      "Separa flujo principal, persistencia y reportes."
+      "Nombra funciones concretas para flujo principal, persistencia y reportes."
     ],
     commonMistakes: [
       "Poner toda la lógica en `main.py` y dejar los demás archivos como wrappers vacíos.",
@@ -1093,7 +1093,7 @@ export const courseLessons: LessonData[] = [
     playground: {
       guidance: "Lee el ejemplo, piensa en responsabilidades y escribe un borrador de arquitectura.",
       starterCode:
-        "# Piensa en una herramienta de gastos.\n# No necesitas ejecutar una solución compleja aquí.\n# Usa este espacio para anotar cómo separarías responsabilidades si el proyecto creciera.",
+        "# Piensa en una herramienta de gastos.\n# Anota qué archivo tendría cada responsabilidad\n# y qué funciones concretas vivirían en cada uno si el proyecto creciera.",
       emptyOutputHint: "Este playground sirve como borrador para tu arquitectura."
     },
     exerciseSlug: "disenar-arquitectura-multiarchivo"
@@ -1105,9 +1105,9 @@ export const courseLessons: LessonData[] = [
     order: 6,
     duration: "75 min",
     difficulty: "Beginner",
-    summary: "Cierra la base construyendo una herramienta más seria: registros estructurados, JSON, parsing, reportes y diseño limpio.",
+    summary: "Cierra la base construyendo una herramienta más seria: registros estructurados, JSON, parsing, reportes y control de datos inválidos.",
     warmup: "Este cierre ya debería sentirse como proyecto pequeño: tiene flujo, datos, validación y una estructura que podrías explicar en portfolio.",
-    goal: "Construir una herramienta de análisis de movimientos que cargue datos, descarte entradas inválidas y produzca reportes útiles.",
+    goal: "Construir una herramienta de análisis de movimientos que cargue datos, descarte entradas inválidas y produzca reportes con métricas defendibles.",
     keyIdeas: [
       {
         title: "Proyecto, no consigna aislada",
@@ -1134,11 +1134,11 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "class Movement:\n    def __init__(self, category, amount):\n        self.category = category\n        self.amount = amount\n\n    def is_income(self):\n        return self.category == 'ingreso'\n\n\ndef parse_record(raw_record):\n    try:\n        amount = float(raw_record['amount'])\n    except (KeyError, ValueError, TypeError):\n        return None\n    category = str(raw_record.get('category', '')).strip().lower()\n    if category not in {'ingreso', 'egreso'}:\n        return None\n    return Movement(category, amount)\n\nprint(parse_record({'category': 'ingreso', 'amount': '1200'}))",
-    practicePrompt: "Construye un analizador que cargue movimientos desde JSON, convierta solo los válidos a objetos, calcule ingresos, egresos y balance, y entregue un resumen final.",
+    practicePrompt: "Construye un analizador que cargue movimientos desde JSON, convierta solo los válidos a objetos, calcule ingresos, egresos, balance, mayor egreso y cantidad descartada.",
     practiceChecklist: [
       "Usa una clase simple para representar un movimiento.",
       "Parsea datos y descarta registros inválidos.",
-      "Entrega un reporte final con varias métricas."
+      "Entrega un reporte final con varias métricas y control de descartes."
     ],
     commonMistakes: [
       "No separar carga, parsing y reporte.",
@@ -1154,7 +1154,7 @@ export const courseLessons: LessonData[] = [
     playground: {
       guidance: "Piensa este cierre como una herramienta que podrías mostrar y explicar.",
       starterCode:
-        "import json\n\nclass Movement:\n    def __init__(self, category, amount):\n        self.category = category\n        self.amount = amount\n\n    def is_income(self):\n        return self.category == 'ingreso'\n\nsample_records = [\n    {'category': 'ingreso', 'amount': '1500'},\n    {'category': 'egreso', 'amount': '430'},\n    {'category': 'egreso', 'amount': 'texto'},\n    {'category': 'ingreso', 'amount': '980'}\n]\n\n# Crea parse_record(), carga o guarda JSON si lo necesitas,\n# convierte solo registros válidos y arma un reporte final.",
+        "import json\n\nclass Movement:\n    def __init__(self, category, amount):\n        self.category = category\n        self.amount = amount\n\n    def is_income(self):\n        return self.category == 'ingreso'\n\nsample_records = [\n    {'category': 'ingreso', 'amount': '1500'},\n    {'category': 'egreso', 'amount': '430'},\n    {'category': 'egreso', 'amount': 'texto'},\n    {'category': 'ingreso', 'amount': '980'},\n    {'category': 'otro', 'amount': '50'}\n]\n\n# Crea parse_record(), guarda o carga JSON si lo necesitas,\n# convierte solo registros válidos y arma un reporte final con descartes y mayor egreso.",
       emptyOutputHint: "Tu salida debería mostrar ingresos, egresos, balance y cantidad de registros válidos."
     },
     exerciseSlug: "capstone-analizador-de-movimientos"
@@ -1560,22 +1560,22 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "capstone-inicial-planificador",
     order: 6,
     duration: "40 min",
-    summary: "Integra entradas, validación, decisiones y funciones en una mini app de consola útil.",
-    prompt: "Construye un planificador que pida nombre, minutos disponibles y tareas pendientes, clasifique la carga y sugiera bloques de trabajo.",
+    summary: "Integra entradas, validación, bucle y funciones en una mini app de consola más completa.",
+    prompt: "Construye un planificador que pida nombre, minutos disponibles y tres tareas con su duración, calcule la carga total y sugiera bloques de trabajo.",
     responseLabel: "Tu mini app",
     responsePlaceholder:
       "def classify_load(tasks):\n    ...\n\ndef suggest_blocks(minutes):\n    ...\n\nname = input('Nombre: ')\n...",
     instructions: [
       "Usa al menos dos funciones.",
-      "Pide datos con `input()` y valida al menos uno de ellos.",
-      "Entrega un resumen final con recomendación concreta."
+      "Pide datos con `input()` y registra tres tareas usando un bucle.",
+      "Valida al menos un dato y entrega un resumen final con recomendación concreta."
     ],
     hints: [
       "Puedes calcular bloques de 25 minutos con división entera.",
-      "Conviene separar la clasificación de carga de la recomendación final."
+      "Conviene separar la clasificación de carga, el registro de tareas y la recomendación final."
     ],
     starterCode:
-      "def classify_load(tasks):\n    if tasks >= 5:\n        return 'alta'\n    if tasks >= 3:\n        return 'media'\n    return 'baja'\n\n# crea una segunda función para sugerir bloques y arma el flujo principal",
+      "def classify_load(total_minutes):\n    if total_minutes >= 120:\n        return 'alta'\n    if total_minutes >= 70:\n        return 'media'\n    return 'baja'\n\n# crea una segunda función para sugerir bloques,\n# registra tres tareas con un bucle y arma el flujo principal",
     successCriteria: [
       "Integra varias ideas del módulo 1.",
       "Tiene validación mínima.",
@@ -1599,6 +1599,12 @@ export const courseExercises: ExerciseData[] = [
           feedbackWhenMissing: "La app debe recibir datos de la persona usuaria."
         },
         {
+          id: "uses-loop",
+          label: "Usa un bucle para registrar tareas",
+          pattern: "\\bfor\\b.+range\\(|\\bwhile\\b",
+          feedbackWhenMissing: "El capstone debe registrar varias tareas con un bucle, no con pasos sueltos."
+        },
+        {
           id: "uses-condition",
           label: "Usa condicionales",
           pattern: "\\bif\\b",
@@ -1617,10 +1623,10 @@ export const courseExercises: ExerciseData[] = [
           feedbackWhenMissing: "Incluye la variable de minutos para construir la sugerencia."
         },
         {
-          id: "stores-tasks",
-          label: "Trabaja con tareas pendientes",
-          pattern: "tasks|pending_tasks",
-          feedbackWhenMissing: "Incluye la cantidad de tareas pendientes para clasificar la carga."
+          id: "stores-task-time",
+          label: "Acumula tiempo de tareas",
+          pattern: "total_minutes\\s*\\+=|task_minutes|duration",
+          feedbackWhenMissing: "Acumula la duración de las tareas para clasificar la carga."
         }
       ]
     },
@@ -1643,22 +1649,22 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "listas-y-tuplas-para-series-de-datos",
     order: 1,
     duration: "25 min",
-    summary: "Convierte una lista de duraciones en un resumen con total, promedio y bloque mayor.",
-    prompt: "Recorre una lista de duraciones y muestra total, promedio y bloque más largo con etiquetas claras.",
+    summary: "Convierte una lista de duraciones en un resumen con total, promedio y cantidad de bloques largos.",
+    prompt: "Recorre una lista de duraciones y muestra total, promedio y cuántos bloques superan los 30 minutos.",
     responseLabel: "Tu reporte con listas",
     responsePlaceholder:
       "durations = [20, 35, 15, 40]\nlabels = ('total', 'promedio', 'mayor bloque')\n...",
     instructions: [
       "Recorre la lista de duraciones.",
       "Calcula total y promedio.",
-      "Usa la tupla `labels` para apoyar el formato del reporte."
+      "Cuenta cuántos bloques superan los 30 minutos y usa la tupla `labels` para apoyar el formato."
     ],
     hints: [
       "Puedes usar `sum()` y `len()` junto con un bucle si quieres enriquecer la salida.",
-      "El valor de la tupla puede ayudarte a rotular la consola."
+      "La métrica nueva no es el máximo: es cuántos bloques cumplen una condición."
     ],
     starterCode:
-      "durations = [20, 35, 15, 40]\nlabels = ('total', 'promedio', 'mayor bloque')\n\n# construye el reporte",
+      "durations = [20, 35, 15, 40, 55]\nlabels = ('total', 'promedio', 'bloques largos')\n\n# construye el reporte",
     successCriteria: [
       "Usa la lista como fuente de datos.",
       "Calcula métricas agregadas.",
@@ -1686,6 +1692,12 @@ export const courseExercises: ExerciseData[] = [
           label: "Calcula promedio",
           pattern: "len\\(|average|promedio",
           feedbackWhenMissing: "Calcula y muestra una métrica que dependa del tamaño de la lista."
+        },
+        {
+          id: "filters-long-blocks",
+          label: "Detecta bloques largos",
+          pattern: "\\bif\\b.+30|long_blocks|count_long",
+          feedbackWhenMissing: "Agrega una condición para contar o filtrar bloques de más de 30 minutos."
         },
         {
           id: "prints-report",
@@ -1856,22 +1868,22 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "archivos-y-registros-basicos",
     order: 4,
     duration: "30 min",
-    summary: "Escribe registros en un archivo de texto, vuelve a leerlos y cuenta cuántos recuperaste.",
-    prompt: "Guarda movimientos simples en un archivo y luego léelos para confirmar cuántos registros hay.",
+    summary: "Escribe registros en un archivo, vuelve a leerlos y calcula cantidad y total recuperado.",
+    prompt: "Guarda movimientos en un archivo, vuelve a leerlos, separa categoría y monto, y confirma cuántos registros y cuánto total recuperaste.",
     responseLabel: "Tu flujo con archivos",
     responsePlaceholder:
       "movements = ['venta,1200', 'compra,450', 'venta,980']\n...",
     instructions: [
       "Escribe cada movimiento en una línea del archivo.",
-      "Vuelve a abrir el archivo y recupera sus líneas limpias.",
-      "Muestra cuántos registros cargaste."
+      "Vuelve a abrir el archivo, recupera sus líneas limpias y separa categoría y monto.",
+      "Muestra cuántos registros cargaste y cuánto total recuperaste."
     ],
     hints: [
       "Usa `with open(..., 'w')` y luego `with open(..., 'r')`.",
-      "Recuerda limpiar `\\n` al leer."
+      "Después de limpiar la línea, separa categoría y monto para sumar."
     ],
     starterCode:
-      "movements = ['venta,1200', 'compra,450', 'venta,980']\n\n# escribe estas líneas en un archivo\n# luego vuelve a leerlo y muestra cuántos registros recuperaste",
+      "movements = ['venta,1200', 'compra,450', 'venta,980']\n\n# escribe estas líneas en un archivo\n# luego vuelve a leerlo, separa categoría y monto\n# y muestra cuántos registros recuperaste y cuánto suman",
     successCriteria: [
       "Escribe y vuelve a leer un archivo.",
       "Limpia las líneas al cargarlas.",
@@ -1907,10 +1919,22 @@ export const courseExercises: ExerciseData[] = [
           feedbackWhenMissing: "Limpia saltos de línea o espacios al recuperar el contenido."
         },
         {
+          id: "splits-line",
+          label: "Separa categoría y monto",
+          pattern: "split\\(",
+          feedbackWhenMissing: "Separa cada línea recuperada para poder operar con sus partes."
+        },
+        {
+          id: "updates-total",
+          label: "Suma el total recuperado",
+          pattern: "total\\s*\\+=|sum\\(",
+          feedbackWhenMissing: "Además de contar registros, suma los montos recuperados."
+        },
+        {
           id: "prints-count",
-          label: "Muestra cuántos registros recuperó",
+          label: "Muestra el resumen final",
           pattern: "len\\(|print\\(",
-          feedbackWhenMissing: "Entrega un cierre final con la cantidad de registros."
+          feedbackWhenMissing: "Entrega un cierre final con cantidad y total."
         }
       ]
     },
@@ -1933,22 +1957,22 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "funciones-utiles-y-modulos-estandar",
     order: 5,
     duration: "30 min",
-    summary: "Usa un módulo estándar y funciones propias para producir un reporte de montos.",
-    prompt: "Resume una lista de montos con cantidad, promedio, máximo y una clasificación final.",
+    summary: "Usa un módulo estándar y funciones propias para producir un reporte más serio de montos.",
+    prompt: "Resume una lista de montos con cantidad, promedio, mediana, máximo y una clasificación final.",
     responseLabel: "Tu reporte",
     responsePlaceholder:
       "from statistics import mean\n\namounts = [1200, 800, 950, 1300]\n...",
     instructions: [
-      "Importa `mean` desde `statistics`.",
-      "Crea una función que construya un reporte con cantidad, promedio y máximo.",
+      "Importa `mean` y `median` desde `statistics`.",
+      "Crea una función que construya un reporte con cantidad, promedio, mediana y máximo.",
       "Agrega una clasificación simple al resultado final."
     ],
     hints: [
-      "Una clasificación puede depender del promedio o del máximo.",
+      "Una clasificación puede depender del promedio o de la mediana.",
       "Piensa el reporte como un diccionario o un conjunto de variables claras."
     ],
     starterCode:
-      "from statistics import mean\n\namounts = [1200, 800, 950, 1300]\n\n# crea una función que construya el reporte\n# y agrega una clasificación final",
+      "from statistics import mean, median\n\namounts = [1200, 800, 950, 1300, 1700]\n\n# crea una función que construya el reporte\n# y agrega una clasificación final",
     successCriteria: [
       "Usa biblioteca estándar con criterio.",
       "Separa transformación y salida.",
@@ -1960,10 +1984,10 @@ export const courseExercises: ExerciseData[] = [
       passingScore: 5,
       requiredPatterns: [
         {
-          id: "imports-mean",
-          label: "Importa mean",
-          pattern: "from\\s+statistics\\s+import\\s+mean",
-          feedbackWhenMissing: "Importa `mean` desde `statistics`."
+          id: "imports-mean-median",
+          label: "Importa mean y median",
+          pattern: "from\\s+statistics\\s+import\\s+mean\\s*,\\s*median|from\\s+statistics\\s+import\\s+median\\s*,\\s*mean",
+          feedbackWhenMissing: "Importa `mean` y `median` desde `statistics`."
         },
         {
           id: "defines-report-function",
@@ -1976,6 +2000,12 @@ export const courseExercises: ExerciseData[] = [
           label: "Usa mean dentro del flujo",
           pattern: "mean\\(",
           feedbackWhenMissing: "Aprovecha `mean` para calcular el promedio."
+        },
+        {
+          id: "uses-median",
+          label: "Usa median dentro del flujo",
+          pattern: "median\\(",
+          feedbackWhenMissing: "Agrega también la mediana para que el reporte sea más sólido."
         },
         {
           id: "uses-max",
@@ -2010,22 +2040,22 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "capstone-intermedio-utilidad-de-registros",
     order: 6,
     duration: "45 min",
-    summary: "Construye una utilidad que persista movimientos, los procese y calcule balance.",
-    prompt: "Guarda movimientos en archivo, vuelve a leerlos, parsea cada línea y calcula ventas, compras y balance final.",
+    summary: "Construye una utilidad que persista movimientos, descarte líneas inválidas y calcule un balance más serio.",
+    prompt: "Guarda movimientos en archivo, vuelve a leerlos, parsea cada línea, descarta las inválidas y calcula ventas, compras, balance y cantidad descartada.",
     responseLabel: "Tu utilidad intermedia",
     responsePlaceholder:
       "def parse_line(line):\n    ...\n\nsample_lines = ['venta,1200', ...]\n...",
     instructions: [
       "Crea una función `parse_line()` o equivalente.",
       "Escribe y vuelve a leer un archivo.",
-      "Calcula total de ventas, total de compras y balance."
+      "Calcula total de ventas, total de compras, balance y cantidad descartada."
     ],
     hints: [
       "Normaliza la categoría antes de clasificar.",
-      "Puedes usar un diccionario para guardar el reporte final."
+      "Si una línea no tiene dos partes o el monto no es válido, descártala."
     ],
     starterCode:
-      "def parse_line(line):\n    category, amount = line.strip().split(',')\n    return {'category': category.strip().lower(), 'amount': float(amount)}\n\nsample_lines = ['venta,1200', 'compra,450', 'venta,980']\n\n# guarda, vuelve a leer y construye el balance",
+      "def parse_line(line):\n    parts = line.strip().split(',')\n    if len(parts) != 2:\n        return None\n    category, amount = parts\n    category = category.strip().lower()\n    try:\n        amount = float(amount)\n    except ValueError:\n        return None\n    return {'category': category, 'amount': amount}\n\nsample_lines = ['venta,1200', 'compra,450', 'venta,980', 'error']\n\n# guarda, vuelve a leer, descarta inválidas y construye el balance",
     successCriteria: [
       "Integra varias ideas del módulo 2.",
       "Tiene parseo y persistencia.",
@@ -2065,6 +2095,12 @@ export const courseExercises: ExerciseData[] = [
           label: "Clasifica compras",
           pattern: "compra",
           feedbackWhenMissing: "El balance necesita distinguir compras."
+        },
+        {
+          id: "handles-invalid",
+          label: "Controla líneas inválidas",
+          pattern: "return\\s+None|invalid_count|discarded",
+          feedbackWhenMissing: "El capstone debe contemplar líneas inválidas en vez de asumir entrada perfecta."
         },
         {
           id: "prints-balance",
@@ -2168,24 +2204,24 @@ export const courseExercises: ExerciseData[] = [
     exerciseType: "guided_code",
     moduleSlug: "python-estructurado",
     lessonSlug: "clases-cuando-aportan",
-    order: 2,
+    order: 4,
     duration: "30 min",
-    summary: "Modela un movimiento con atributos y un método que resuelva algo útil.",
-    prompt: "Completa una clase `Movement` con un método que indique si requiere revisión y úsala con una o dos instancias.",
+    summary: "Modela un movimiento con atributos y métodos que ya sirvan para un reporte.",
+    prompt: "Completa una clase `Movement` con un método que indique si requiere revisión y otro que devuelva un valor firmado o un resumen útil.",
     responseLabel: "Tu clase",
     responsePlaceholder:
       "class Movement:\n    def __init__(self, category, amount):\n        ...",
     instructions: [
       "Completa `__init__` con los atributos necesarios.",
-      "Agrega un método como `requires_review()` o `summary()`.",
+      "Agrega un método como `requires_review()` y otro como `signed_amount()` o `summary()`.",
       "Crea al menos una instancia y úsala."
     ],
     hints: [
       "Los atributos de instancia se guardan con `self.`.",
-      "El método puede usar un umbral simple para decidir si revisar."
+      "El segundo método debería apoyar una futura suma o reporte."
     ],
     starterCode:
-      "class Movement:\n    def __init__(self, category, amount):\n        # guarda category y amount en self\n        pass\n\n    # agrega un método útil aquí\n\n# crea una o dos instancias y pruébalas",
+      "class Movement:\n    def __init__(self, category, amount):\n        # guarda category y amount en self\n        pass\n\n    # agrega requires_review()\n    # y otro método como signed_amount() o summary()\n\n# crea una o dos instancias y pruébalas",
     successCriteria: [
       "Define clase con atributos claros.",
       "Incluye al menos un método útil.",
@@ -2215,10 +2251,16 @@ export const courseExercises: ExerciseData[] = [
           feedbackWhenMissing: "Guarda los datos del movimiento dentro de la instancia."
         },
         {
-          id: "adds-method",
-          label: "Agrega un método útil",
-          pattern: "def\\s+(requires_review|summary|is_large)\\(",
-          feedbackWhenMissing: "Agrega un método que resuelva algo útil sobre el movimiento."
+          id: "adds-review-method",
+          label: "Agrega un método de revisión",
+          pattern: "def\\s+(requires_review|is_large)\\(",
+          feedbackWhenMissing: "Agrega un método que indique si el movimiento merece revisión."
+        },
+        {
+          id: "adds-report-method",
+          label: "Agrega un método de apoyo al reporte",
+          pattern: "def\\s+(signed_amount|summary|to_record)\\(",
+          feedbackWhenMissing: "Agrega un segundo método que ya sirva para un reporte o una transformación."
         },
         {
           id: "creates-instance",
@@ -2322,24 +2364,24 @@ export const courseExercises: ExerciseData[] = [
     exerciseType: "guided_code",
     moduleSlug: "python-estructurado",
     lessonSlug: "parsing-validacion-y-excepciones",
-    order: 4,
+    order: 2,
     duration: "30 min",
-    summary: "Parsea montos inseguros con `try/except` y filtra solo los válidos.",
-    prompt: "Crea `parse_amount()` para convertir montos, descartar inválidos y usar el resultado en una lista final.",
+    summary: "Parsea montos inseguros con `try/except`, filtra válidos y deja trazado qué descartaste.",
+    prompt: "Crea `parse_amount()` para convertir montos, descartar inválidos y armar una lista final junto con un conteo de descartes.",
     responseLabel: "Tu parser",
     responsePlaceholder:
       "raw_values = ['1200', '450', 'error', '-25', '980']\n\ndef parse_amount(raw_value):\n    ...",
     instructions: [
       "Usa `try/except` para la conversión numérica.",
       "Descarta negativos devolviendo `None`.",
-      "Construye una lista final solo con montos válidos."
+      "Construye una lista final solo con montos válidos y un conteo de descartes."
     ],
     hints: [
       "Puedes recorrer `raw_values` y agregar al resultado solo cuando `parse_amount()` no devuelve `None`.",
-      "El objetivo es que el resto del flujo reciba datos consistentes."
+      "Cuenta también cuántos valores descartaste para que el flujo no oculte calidad de datos."
     ],
     starterCode:
-      "raw_values = ['1200', '450', 'error', '-25', '980']\n\n# crea parse_amount() y arma una lista solo con montos válidos",
+      "raw_values = ['1200', '450', 'error', '-25', '980']\n\n# crea parse_amount(), arma una lista solo con montos válidos\n# y cuenta cuántos descartaste",
     successCriteria: [
       "Usa `try/except` con criterio.",
       "Devuelve un resultado consistente.",
@@ -2379,6 +2421,12 @@ export const courseExercises: ExerciseData[] = [
           label: "Construye lista final válida",
           pattern: "append\\(|\\[.+for.+in.+if.+\\]",
           feedbackWhenMissing: "Arma una lista final solo con montos válidos."
+        },
+        {
+          id: "counts-invalid",
+          label: "Cuenta descartes",
+          pattern: "discarded|invalid_count|skipped",
+          feedbackWhenMissing: "Cuenta cuántos valores descartaste para que el flujo sea más útil."
         }
       ]
     },
@@ -2401,8 +2449,8 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "arquitectura-multiarchivo-con-criterio",
     order: 5,
     duration: "20 min",
-    summary: "Explica cómo separarías una herramienta de gastos en archivos con responsabilidades distintas.",
-    prompt: "Describe cómo repartirías una herramienta de gastos entre `main.py`, `storage.py` y `reports.py`, indicando qué hace cada archivo y cómo se conectan.",
+    summary: "Explica cómo separarías una herramienta de gastos en archivos con responsabilidades y funciones concretas.",
+    prompt: "Describe cómo repartirías una herramienta de gastos entre `main.py`, `storage.py`, `reports.py` y, si hace falta, `models.py`, indicando qué hace cada archivo, qué funciones tendría y cómo se conectan.",
     responseLabel: "Tu propuesta de arquitectura",
     responsePlaceholder:
       "main.py se encarga de...\nstorage.py se encarga de...\nreports.py se encarga de...\nLas importaciones quedarían así...",
@@ -2445,6 +2493,12 @@ export const courseExercises: ExerciseData[] = [
           feedbackWhenMissing: "Explica qué parte del análisis o reporte iría en `reports.py`."
         },
         {
+          id: "concrete-functions",
+          label: "Nombra funciones concretas",
+          keywords: ["load_", "save_", "build_", "parse_", "main("],
+          feedbackWhenMissing: "La propuesta gana mucho si nombras funciones concretas, no solo áreas generales."
+        },
+        {
           id: "imports",
           label: "Menciona la conexión entre archivos",
           keywords: ["import", "importaría", "from", "usar"],
@@ -2461,19 +2515,19 @@ export const courseExercises: ExerciseData[] = [
     lessonSlug: "capstone-final-analizador-de-movimientos",
     order: 6,
     duration: "55 min",
-    summary: "Construye una herramienta final con clase, JSON, parsing y reporte de balance.",
-    prompt: "Carga movimientos desde JSON, convierte solo los válidos a objetos, calcula ingresos, egresos y balance, y muestra un resumen final.",
+    summary: "Construye una herramienta final con clase, JSON, parsing y reporte más defendible.",
+    prompt: "Carga movimientos desde JSON, convierte solo los válidos a objetos, calcula ingresos, egresos, balance, mayor egreso y cantidad descartada, y muestra un resumen final.",
     responseLabel: "Tu proyecto final",
     responsePlaceholder:
       "import json\n\nclass Movement:\n    ...",
     instructions: [
       "Usa una clase `Movement` o equivalente.",
       "Crea una función de parsing que descarte registros inválidos.",
-      "Construye un reporte final con ingresos, egresos, balance y cantidad válida."
+      "Construye un reporte final con ingresos, egresos, balance, mayor egreso y cantidad descartada."
     ],
     hints: [
       "Puedes usar una lista de registros de ejemplo y guardarla como JSON dentro del mismo script.",
-      "Piensa el proyecto en etapas: cargar, parsear, convertir, reportar."
+      "Piensa el proyecto en etapas: cargar, parsear, convertir, reportar y controlar descartes."
     ],
     starterCode:
       "import json\n\nclass Movement:\n    def __init__(self, category, amount):\n        self.category = category\n        self.amount = amount\n\n    def is_income(self):\n        return self.category == 'ingreso'\n\nsample_records = [\n    {'category': 'ingreso', 'amount': '1500'},\n    {'category': 'egreso', 'amount': '430'},\n    {'category': 'egreso', 'amount': 'texto'},\n    {'category': 'ingreso', 'amount': '980'}\n]\n\n# crea parse_record(), convierte solo los registros válidos y arma el reporte final",
@@ -2526,8 +2580,14 @@ export const courseExercises: ExerciseData[] = [
         {
           id: "prints-report",
           label: "Muestra el reporte final",
-          pattern: "balance|print\\(",
+          pattern: "balance|largest_expense|max_expense|print\\(",
           feedbackWhenMissing: "El proyecto final debe cerrar con un reporte visible."
+        },
+        {
+          id: "tracks-invalid",
+          label: "Controla registros descartados",
+          pattern: "invalid_count|discarded|skipped",
+          feedbackWhenMissing: "El cierre debe mostrar también cuántos registros quedaron afuera."
         }
       ]
     },

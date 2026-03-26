@@ -50,6 +50,7 @@ La primera gran ruta de PyMentor ya está construida y localizada en español, y
 19. Consulta y actualización simple de datos
 20. Herramientas con entradas y cambios simples
 21. Proyectos prácticos de Ruta 2
+22. Cierre de Ruta 2
 
 ## Etapas del producto
 
@@ -60,7 +61,7 @@ Lleva a la persona desde cero absoluto hasta un cierre de fundamentos con capsto
 ### Ruta 2 · Python práctico 2
 
 Empieza justo después del cierre de fundamentos.
-Sus primeras aperturas son `Archivos básicos`, `Funciones y organización simple`, `Utilidades pequeñas y útiles`, `Utilidades organizadas con flujo completo`, `Consulta y actualización simple de datos`, `Herramientas con entradas y cambios simples` y `Proyectos prácticos de Ruta 2`, donde el foco pasa a programas que guardan información, la consultan, la ajustan, piden decisiones con `input()` y ya se sienten como herramientas pequeñas más completas e interactivas.
+Sus primeras aperturas son `Archivos básicos`, `Funciones y organización simple`, `Utilidades pequeñas y útiles`, `Utilidades organizadas con flujo completo`, `Consulta y actualización simple de datos`, `Herramientas con entradas y cambios simples`, `Proyectos prácticos de Ruta 2` y `Cierre de Ruta 2`, donde el foco pasa a programas que guardan información, la consultan, la ajustan, piden decisiones con `input()` y ya se sienten como herramientas pequeñas más completas e interactivas, hasta cerrar una segunda etapa práctica con capstones propios.
 
 ## Requisitos
 

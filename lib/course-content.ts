@@ -210,6 +210,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "110 min",
     xp: 430
+  },
+  {
+    slug: "route2-capstone",
+    title: "Cierre de Ruta 2",
+    description: "Cierra la etapa práctica construyendo utilidades pequeñas más completas, con persistencia, decisiones, cambios útiles y reportes finales claros.",
+    order: 22,
+    status: "locked",
+    lessonCount: 2,
+    estimatedTime: "120 min",
+    xp: 470
   }
 ];
 
@@ -4519,6 +4529,150 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar una acción útil y luego un reporte final corto y ordenado."
     },
     exerciseSlug: "build-route2-record-and-report-project"
+  },
+  {
+    slug: "route2-capstone-personal-manager",
+    module: "Cierre de Ruta 2",
+    moduleSlug: "route2-capstone",
+    order: 1,
+    title: "Capstone de Ruta 2: gestor personal simple",
+    duration: "28 min",
+    difficulty: "Beginner",
+    summary: "Construye una utilidad práctica que guarda datos, permite consultar o actualizar información y termina con un reporte claro del estado final.",
+    warmup: "Llegaste al punto donde tus herramientas ya no son solo ejercicios. Este proyecto busca mostrar que puedes coordinar varias piezas para resolver algo pequeño pero bastante real.",
+    goal: "Al final, deberías poder construir un gestor personal simple con archivo, funciones, decisiones con `input()` y un cierre ordenado que muestre el estado final.",
+    keyIdeas: [
+      {
+        title: "Un capstone práctico reúne lo esencial de Ruta 2",
+        description: "Persistencia, organización, consulta, actualización y reporte final deben convivir con claridad."
+      },
+      {
+        title: "La utilidad se siente real cuando responde y cambia",
+        description: "Ya no alcanza con mostrar datos fijos: la persona debe poder consultar o modificar algo útil."
+      },
+      {
+        title: "El cierre importa tanto como el flujo",
+        description: "Un reporte final claro hace que el proyecto se sienta completo y no como una demo a medio terminar."
+      }
+    ],
+    explanation: [
+      {
+        title: "Brief del proyecto",
+        body: "Vas a construir un gestor personal simple con pocos datos guardados, como nombre y estado de una pequeña lista de tareas o registros. La herramienta debe consultar o actualizar algo según una elección y luego cerrar con un reporte legible."
+      },
+      {
+        title: "Requisitos mínimos",
+        body: "Necesitas funciones separadas para guardar datos, consultar, actualizar y mostrar un reporte final. También necesitas una decisión con `input()` que cambie el recorrido del programa."
+      },
+      {
+        title: "Qué vuelve especial a este cierre",
+        body: "Que ya no practicas una sola habilidad. Aquí juntas varias partes de Ruta 2 para lograr una herramienta corta, organizada y útil."
+      },
+      {
+        title: "Cómo mantenerlo achievable",
+        body: "Trabaja con pocos registros y mensajes claros. No hace falta hacer un sistema grande para que el proyecto ya se sienta como una utilidad bastante real."
+      }
+    ],
+    example:
+      "def guardar_registros():\n    with open('gestor.txt', 'w') as archivo:\n        archivo.write('Ana: pendiente\\nLuis: hecho')\n\n\ndef consultar_registro(nombre):\n    with open('gestor.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('gestor.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('gestor.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('gestor.txt', 'r') as archivo:\n        print('=== REPORTE FINAL ===')\n        print(archivo.read())",
+    practicePrompt: "Piensa cómo quieres que se vea el reporte final. La clave es que el programa tenga una acción útil y un cierre claro, no que sea enorme.",
+    practiceChecklist: [
+      "Guarda datos base en un archivo.",
+      "Usa `input()` para decidir entre consultar o actualizar.",
+      "Mantén funciones separadas.",
+      "Cierra con un reporte final legible."
+    ],
+    commonMistakes: [
+      "Olvidar que el capstone necesita un cierre claro, no solo una acción intermedia.",
+      "Mezclar consulta, actualización y reporte en un solo bloque difícil de leer.",
+      "Agregar demasiadas opciones y perder claridad."
+    ],
+    bugChallenge: {
+      prompt: "Este gestor debería consultar o actualizar y luego mostrar un reporte final, pero una variable de decisión y un cierre ausente cortan la experiencia.",
+      brokenCode:
+        "guardar_registros()\naction = input('Escribe consultar o actualizar: ')\nif opcion == 'consultar':\n    consultar_registro('Ana')\nelse:\n    actualizar_registro('Ana', 'hecho')",
+      expectedLearning: "En un proyecto final, tan importante como la lógica es comprobar que el flujo entero se cumple de principio a fin."
+    },
+    playground: {
+      title: "Construye tu gestor personal simple",
+      guidance: "Ejecuta el proyecto, cambia la acción y ajusta el formato del cierre. La meta es sentir que estás terminando una herramienta real de Ruta 2.",
+      starterCode:
+        "def guardar_registros():\n    with open('gestor.txt', 'w') as archivo:\n        archivo.write('Ana: pendiente\\nLuis: hecho')\n\n\ndef consultar_registro(nombre):\n    with open('gestor.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('gestor.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('gestor.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('gestor.txt', 'r') as archivo:\n        print('=== REPORTE FINAL ===')\n        print(archivo.read())\n\n\nguardar_registros()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_registro('Ana')\nelse:\n    actualizar_registro('Ana', 'hecho')\nmostrar_reporte()",
+      emptyOutputHint: "La salida debería mostrar una acción útil y después un reporte final claro."
+    },
+    exerciseSlug: "build-route2-capstone-personal-manager"
+  },
+  {
+    slug: "route2-capstone-menu-report-tool",
+    module: "Cierre de Ruta 2",
+    moduleSlug: "route2-capstone",
+    order: 2,
+    title: "Capstone de Ruta 2: herramienta con menú y reporte final",
+    duration: "30 min",
+    difficulty: "Beginner",
+    summary: "Construye una pequeña utilidad con menú, varias acciones útiles y un reporte final que cierre la segunda ruta con una herramienta más completa.",
+    warmup: "Este es el cierre práctico de Ruta 2: una herramienta pequeña que coordina varias partes y demuestra que ya puedes construir algo útil y ordenado.",
+    goal: "Al final, deberías poder construir una herramienta con menú, consulta, actualización y reporte final dentro de un flujo claro y usable.",
+    keyIdeas: [
+      {
+        title: "El menú ordena una utilidad más completa",
+        description: "Da varios caminos posibles sin perder claridad para quien usa o revisa el programa."
+      },
+      {
+        title: "La organización permite crecer sin caos",
+        description: "Funciones con nombres claros sostienen mejor una herramienta que ya tiene varias piezas."
+      },
+      {
+        title: "El reporte final marca el cierre de la etapa",
+        description: "Resume el estado final y le da al proyecto sensación de herramienta terminada."
+      }
+    ],
+    explanation: [
+      {
+        title: "Brief del proyecto",
+        body: "Vas a crear una herramienta pequeña con un menú simple. La persona podrá consultar o actualizar un dato guardado y luego verá un reporte final ordenado."
+      },
+      {
+        title: "Requisitos mínimos",
+        body: "Debe haber un archivo base, funciones separadas para consulta y actualización, una elección con `input()` y un reporte final que muestre el estado de los datos guardados."
+      },
+      {
+        title: "Qué demuestra este capstone",
+        body: "Demuestra que ya no trabajas solo con scripts de prueba. Ahora puedes montar una utilidad chica, útil y bastante coherente de principio a fin."
+      },
+      {
+        title: "Qué no hace falta todavía",
+        body: "No hace falta un sistema enorme ni muchas opciones. Con un menú simple, dos caminos útiles y un cierre claro ya tienes un cierre sólido de Ruta 2."
+      }
+    ],
+    example:
+      "def mostrar_menu():\n    print('1. Consultar')\n    print('2. Actualizar')\n\n\ndef mostrar_reporte(lineas):\n    print('=== REPORTE FINAL ===')\n    for linea in lineas:\n        print(linea)\n    print('Total:', len(lineas))",
+    practicePrompt: "Piensa qué opción quieres que use el menú y cómo quieres que se lea el reporte final. Tu meta es mostrar una utilidad pequeña pero claramente terminada.",
+    practiceChecklist: [
+      "Prepara un archivo con varios registros.",
+      "Usa un menú o elección con `input()`.",
+      "Coordina consulta o actualización según la elección.",
+      "Cierra con un reporte final que muestre el estado del archivo."
+    ],
+    commonMistakes: [
+      "Mostrar el menú, pero no usar la opción para decidir el flujo real.",
+      "Actualizar los datos y olvidar el reporte final.",
+      "Hacer un reporte sin contexto ni encabezado visible."
+    ],
+    bugChallenge: {
+      prompt: "Esta herramienta debería cerrar Ruta 2 con consulta, actualización y reporte, pero una opción y un total mal ubicados debilitan el resultado final.",
+      brokenCode:
+        "def mostrar_reporte(lineas):\n    for linea in lineas:\n        print(linea)\n        print('Total:', len(lineas))\n\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    print('Consulta lista')",
+      expectedLearning: "Un proyecto de cierre necesita tanto una lógica correcta como una presentación final ordenada."
+    },
+    playground: {
+      title: "Prueba tu herramienta final de Ruta 2",
+      guidance: "Ejecuta el proyecto, cambia la acción y observa cómo la utilidad sigue cerrando con un reporte final claro.",
+      starterCode:
+        "def guardar_registro():\n    with open('ruta2-final.txt', 'w') as archivo:\n        archivo.write('Tarea: pendiente\\nNota: lista\\nResumen: en curso')\n\n\ndef consultar_registro(nombre):\n    with open('ruta2-final.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('ruta2-final.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('ruta2-final.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('ruta2-final.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('=== REPORTE FINAL ===')\n    for linea in lineas:\n        print(linea)\n    print('Total:', len(lineas))\n\n\nguardar_registro()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_registro('Nota')\nelse:\n    actualizar_registro('Tarea', 'hecho')\nmostrar_reporte()",
+      emptyOutputHint: "La salida debería terminar con un reporte final que se sienta como cierre de una herramienta completa."
+    },
+    exerciseSlug: "build-route2-capstone-menu-report-tool"
   }
 ];
 
@@ -9258,6 +9412,188 @@ export const courseExercises: ExerciseData[] = [
         "prints-report-header",
         "prints-total",
         "calls-report-at-end"
+      ]
+    }
+  },
+  {
+    slug: "build-route2-capstone-personal-manager",
+    title: "Construye el capstone de gestor personal simple",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "route2-capstone",
+    lessonSlug: "route2-capstone-personal-manager",
+    order: 1,
+    duration: "18 min",
+    summary: "Construye un gestor personal simple que consulta o actualiza datos guardados y termina con un reporte final claro.",
+    prompt:
+      "Escribe un programa que defina `guardar_registros()` para guardar `Ana: pendiente\\nLuis: hecho` en `gestor.txt`, `consultar_registro(nombre)` para imprimir `Consulta: ...`, `actualizar_registro(nombre, nuevo_estado)` para cambiar una línea y `mostrar_reporte()` para imprimir `=== REPORTE FINAL ===` junto con el contenido del archivo. Luego pide `action` con `input('Escribe consultar o actualizar: ')`. Si la acción es `consultar`, consulta `Ana`. En cualquier otro caso, actualiza `Ana` a `hecho`. Después muestra el reporte final.",
+    responseLabel: "Tu capstone de gestor personal",
+    responsePlaceholder:
+      "def guardar_registros():\n    with open('gestor.txt', 'w') as archivo:\n        archivo.write('Ana: pendiente\\nLuis: hecho')\n\n\ndef consultar_registro(nombre):\n    with open('gestor.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('gestor.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('gestor.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('gestor.txt', 'r') as archivo:\n        print('=== REPORTE FINAL ===')\n        print(archivo.read())\n\n\nguardar_registros()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_registro('Ana')\nelse:\n    actualizar_registro('Ana', 'hecho')\nmostrar_reporte()",
+    instructions: [
+      "Guarda datos base en un archivo.",
+      "Usa `input()` para decidir si consultas o actualizas.",
+      "Cierra con un reporte final legible."
+    ],
+    hints: [
+      "Puedes usar `startswith(nombre + ':')` para consultar o actualizar.",
+      "El reporte final puede leer el archivo y luego imprimirlo completo.",
+      "Aunque el flujo cambie, el cierre debería aparecer siempre."
+    ],
+    starterCode:
+      "def guardar_registros():\n    with open('gestor.txt', 'w') as archivo:\n        archivo.write('Ana: pendiente\\nLuis: hecho')\n\n\ndef consultar_registro(nombre):\n    with open('gestor.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('gestor.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('gestor.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('gestor.txt', 'r') as archivo:\n        print('=== REPORTE FINAL ===')\n        print(archivo.read())\n\n\nguardar_registros()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_registro('Ana')\nelse:\n    actualizar_registro('Ana', 'hecho')\nmostrar_reporte()",
+    successCriteria: [
+      "Coordina archivo, decisión, cambio y cierre.",
+      "Mantiene funciones separadas.",
+      "Termina con un reporte final claro."
+    ],
+    playground: {
+      title: "Ejecuta tu gestor personal final",
+      guidance: "Corre el proyecto, cambia la acción y revisa que siempre termine con un cierre claro y útil.",
+      starterCode:
+        "def guardar_registros():\n    with open('gestor.txt', 'w') as archivo:\n        archivo.write('Ana: pendiente\\nLuis: hecho')\n\n\ndef consultar_registro(nombre):\n    with open('gestor.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('gestor.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('gestor.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('gestor.txt', 'r') as archivo:\n        print('=== REPORTE FINAL ===')\n        print(archivo.read())\n\n\nguardar_registros()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_registro('Ana')\nelse:\n    actualizar_registro('Ana', 'hecho')\nmostrar_reporte()",
+      emptyOutputHint: "La salida debería mostrar una acción y después un reporte final del estado del archivo."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 430,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-save",
+          label: "Define `guardar_registros()`",
+          pattern: "def\\s+guardar_registros\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `guardar_registros()`."
+        },
+        {
+          id: "defines-report",
+          label: "Define `mostrar_reporte()`",
+          pattern: "def\\s+mostrar_reporte\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `mostrar_reporte()`."
+        },
+        {
+          id: "asks-action",
+          label: "Pide `action` con `input()`",
+          pattern: "action\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Pide la acción con `input()`."
+        },
+        {
+          id: "updates-ana",
+          label: "Actualiza a Ana con `hecho`",
+          pattern: "actualizar_registro\\(\\s*['\"]Ana['\"]\\s*,\\s*['\"]hecho['\"]\\s*\\)",
+          feedbackWhenMissing: "En el camino de actualización, cambia `Ana` a `hecho`."
+        },
+        {
+          id: "prints-final-header",
+          label: "Imprime `=== REPORTE FINAL ===`",
+          pattern: "print\\(\\s*['\"]=== REPORTE FINAL ===['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro del reporte, imprime `=== REPORTE FINAL ===`."
+        },
+        {
+          id: "calls-report-end",
+          label: "Llama `mostrar_reporte()` al final",
+          pattern: "mostrar_reporte\\(\\s*\\)",
+          feedbackWhenMissing: "Termina el capstone llamando `mostrar_reporte()`."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-save",
+        "defines-report",
+        "asks-action",
+        "updates-ana",
+        "prints-final-header",
+        "calls-report-end"
+      ]
+    }
+  },
+  {
+    slug: "build-route2-capstone-menu-report-tool",
+    title: "Construye el capstone de herramienta con menú y reporte",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "route2-capstone",
+    lessonSlug: "route2-capstone-menu-report-tool",
+    order: 2,
+    duration: "19 min",
+    summary: "Construye una utilidad final de Ruta 2 con menú, consulta o actualización y un reporte claro con total de registros.",
+    prompt:
+      "Escribe un programa que defina `guardar_registro()` para guardar `Tarea: pendiente\\nNota: lista\\nResumen: en curso` en `ruta2-final.txt`, `consultar_registro(nombre)` para imprimir `Consulta: ...`, `actualizar_registro(nombre, nuevo_estado)` para cambiar una línea y `mostrar_reporte()` para imprimir `=== REPORTE FINAL ===`, luego cada línea y finalmente `Total:` con la cantidad de registros. Después pide `action` con `input('Escribe consultar o actualizar: ')`. Si la acción es `consultar`, consulta `Nota`. En cualquier otro caso, actualiza `Tarea` a `hecho`. Después muestra el reporte final.",
+    responseLabel: "Tu capstone final de Ruta 2",
+    responsePlaceholder:
+      "def guardar_registro():\n    with open('ruta2-final.txt', 'w') as archivo:\n        archivo.write('Tarea: pendiente\\nNota: lista\\nResumen: en curso')\n\n\ndef consultar_registro(nombre):\n    with open('ruta2-final.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('ruta2-final.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('ruta2-final.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('ruta2-final.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('=== REPORTE FINAL ===')\n    for linea in lineas:\n        print(linea)\n    print('Total:', len(lineas))\n\n\nguardar_registro()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_registro('Nota')\nelse:\n    actualizar_registro('Tarea', 'hecho')\nmostrar_reporte()",
+    instructions: [
+      "Guarda varios registros en un archivo.",
+      "Usa `input()` para decidir el flujo.",
+      "Termina con un reporte que muestre encabezado, líneas y total."
+    ],
+    hints: [
+      "Puedes reutilizar el patrón de consulta y actualización que ya trabajaste en Ruta 2.",
+      "El reporte debería leer las líneas una sola vez y usarlas para imprimir el total.",
+      "Aunque el flujo cambie, el cierre debe mantenerse."
+    ],
+    starterCode:
+      "def guardar_registro():\n    with open('ruta2-final.txt', 'w') as archivo:\n        archivo.write('Tarea: pendiente\\nNota: lista\\nResumen: en curso')\n\n\ndef consultar_registro(nombre):\n    with open('ruta2-final.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('ruta2-final.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('ruta2-final.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('ruta2-final.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('=== REPORTE FINAL ===')\n    for linea in lineas:\n        print(linea)\n    print('Total:', len(lineas))\n\n\nguardar_registro()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_registro('Nota')\nelse:\n    actualizar_registro('Tarea', 'hecho')\nmostrar_reporte()",
+    successCriteria: [
+      "Coordina menú o decisión, consulta o actualización y reporte.",
+      "Mantiene una organización clara por funciones.",
+      "Se siente como una herramienta final corta pero completa."
+    ],
+    playground: {
+      title: "Prueba tu cierre final de Ruta 2",
+      guidance: "Ejecuta el proyecto, cambia la acción y verifica que el cierre siga mostrando un reporte ordenado y útil.",
+      starterCode:
+        "def guardar_registro():\n    with open('ruta2-final.txt', 'w') as archivo:\n        archivo.write('Tarea: pendiente\\nNota: lista\\nResumen: en curso')\n\n\ndef consultar_registro(nombre):\n    with open('ruta2-final.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('ruta2-final.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('ruta2-final.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('ruta2-final.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('=== REPORTE FINAL ===')\n    for linea in lineas:\n        print(linea)\n    print('Total:', len(lineas))\n\n\nguardar_registro()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_registro('Nota')\nelse:\n    actualizar_registro('Tarea', 'hecho')\nmostrar_reporte()",
+      emptyOutputHint: "La salida debería cerrar con un reporte final que resuma el estado del archivo."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 500,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-save-record",
+          label: "Define `guardar_registro()`",
+          pattern: "def\\s+guardar_registro\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `guardar_registro()`."
+        },
+        {
+          id: "defines-report",
+          label: "Define `mostrar_reporte()`",
+          pattern: "def\\s+mostrar_reporte\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `mostrar_reporte()`."
+        },
+        {
+          id: "asks-action",
+          label: "Pide `action` con `input()`",
+          pattern: "action\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Pide la acción con `input()`."
+        },
+        {
+          id: "prints-final-header",
+          label: "Imprime `=== REPORTE FINAL ===`",
+          pattern: "print\\(\\s*['\"]=== REPORTE FINAL ===['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro del reporte, imprime `=== REPORTE FINAL ===`."
+        },
+        {
+          id: "prints-total",
+          label: "Muestra `Total:` con `len(lineas)`",
+          pattern: "print\\(\\s*['\"]Total:['\"]\\s*,\\s*len\\(\\s*lineas\\s*\\)\\s*\\)",
+          feedbackWhenMissing: "Cierra el reporte mostrando `Total:` junto a `len(lineas)`."
+        },
+        {
+          id: "calls-report",
+          label: "Llama `mostrar_reporte()` al final",
+          pattern: "mostrar_reporte\\(\\s*\\)",
+          feedbackWhenMissing: "Termina el capstone llamando `mostrar_reporte()`."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-save-record",
+        "defines-report",
+        "asks-action",
+        "prints-final-header",
+        "prints-total",
+        "calls-report"
       ]
     }
   }

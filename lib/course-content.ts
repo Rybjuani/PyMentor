@@ -110,6 +110,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "82 min",
     xp: 290
+  },
+  {
+    slug: "semi-open-projects",
+    title: "Proyectos con más autonomía",
+    description: "Resuelve programas pequeños con más libertad de decisión, manteniendo pistas, límites claros y una meta concreta para seguir avanzando con seguridad.",
+    order: 12,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "90 min",
+    xp: 310
   }
 ];
 
@@ -2354,6 +2364,222 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar un estado por registro y luego un cierre final una sola vez."
     },
     exerciseSlug: "build-foundation-summary"
+  },
+  {
+    slug: "semi-open-project-profile-organizer",
+    module: "Proyectos con más autonomía",
+    moduleSlug: "semi-open-projects",
+    order: 1,
+    title: "Proyecto con más autonomía: organizador de perfil",
+    duration: "21 min",
+    difficulty: "Beginner",
+    summary: "Construye un pequeño organizador de datos personales donde tú decides cómo presentar parte de la información, manteniendo una meta clara y un conjunto de requisitos concretos.",
+    warmup: "Hasta ahora trabajaste con proyectos bastante guiados. En este bloque, la meta sigue siendo clara, pero tendrás un poco más de espacio para decidir cómo ordenar tu solución.",
+    goal: "Al final, deberías poder crear un pequeño organizador de perfil usando un diccionario, una función y una salida ordenada, tomando algunas decisiones de estructura por tu cuenta.",
+    keyIdeas: [
+      {
+        title: "La meta es clara, pero la forma puede variar",
+        description: "No hace falta que todas las soluciones se vean exactamente iguales para estar bien."
+      },
+      {
+        title: "Los requisitos te ayudan a no perderte",
+        description: "Una libertad pequeña funciona mejor cuando sabes qué elementos mínimos debe tener el programa."
+      },
+      {
+        title: "La salida ordenada sigue importando",
+        description: "Un programa pequeño se siente más completo cuando presenta los datos de forma clara."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué vas a construir",
+        body: "Este proyecto organiza datos de una persona dentro de un diccionario y los muestra con una pequeña función. Tú puedes decidir el estilo exacto del título o el orden de algunas líneas, siempre que cumplas la meta principal."
+      },
+      {
+        title: "Dónde está la autonomía",
+        body: "No te damos cada línea exacta. Sí te damos una meta, restricciones y pistas. Eso te permite empezar a tomar decisiones pequeñas sobre nombres, orden visual y mensajes."
+      },
+      {
+        title: "Qué debes cuidar",
+        body: "Aunque haya un poco más de libertad, la base sigue siendo la misma: claves claras, lectura por clave, una función para mostrar la información y una salida fácil de leer."
+      },
+      {
+        title: "Qué hace que este proyecto sea valioso",
+        body: "Te muestra que ya puedes sostener un problema pequeño sin depender de una receta exacta, pero sin perder el apoyo del marco guiado."
+      }
+    ],
+    example:
+      "perfil = {\n    'nombre': 'Ana',\n    'ciudad': 'Córdoba',\n    'meta': 'Practicar cada día'\n}\n\ndef mostrar_perfil(perfil):\n    print('=== PERFIL ===')\n    print('Nombre:', perfil['nombre'])\n    print('Ciudad:', perfil['ciudad'])\n    print('Meta:', perfil['meta'])\n\nmostrar_perfil(perfil)",
+    practicePrompt: "Prueba cambiar el título, el orden de las líneas o el texto de cierre. Lo importante es que sigas mostrando los datos principales con claridad.",
+    practiceChecklist: [
+      "Crea un diccionario de perfil con varias claves.",
+      "Usa una función para mostrar la información.",
+      "Muestra al menos nombre, ciudad y meta.",
+      "Mantén la salida clara y ordenada."
+    ],
+    commonMistakes: [
+      "Cambiar demasiado la estructura y olvidar alguno de los datos obligatorios.",
+      "Leer una clave que no existe en el diccionario.",
+      "Perder claridad visual por intentar adornar demasiado la salida."
+    ],
+    bugChallenge: {
+      prompt: "Este perfil debería mostrarse con una función, pero una clave y una llamada no están del todo bien conectadas.",
+      brokenCode:
+        "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba', 'meta': 'Practicar'}\n\ndef mostrar_perfil(perfil):\n    print('Nombre:', perfil['nombre'])\n    print('Ciudad:', perfil['cuidad'])\n\nmostrar_perfil",
+      expectedLearning: "En proyectos con más libertad, los errores siguen apareciendo en puntos básicos: claves exactas y llamadas correctas."
+    },
+    playground: {
+      title: "Explora tu organizador de perfil",
+      guidance: "Ejecuta el proyecto, modifica el orden o el encabezado y comprueba que la información principal siga apareciendo de forma clara.",
+      starterCode:
+        "perfil = {\n    'nombre': 'Ana',\n    'ciudad': 'Córdoba',\n    'meta': 'Practicar cada día'\n}\n\ndef mostrar_perfil(perfil):\n    print('=== PERFIL ===')\n    print('Nombre:', perfil['nombre'])\n    print('Ciudad:', perfil['ciudad'])\n    print('Meta:', perfil['meta'])\n\nmostrar_perfil(perfil)",
+      emptyOutputHint: "La salida debería mostrar una tarjeta de perfil corta y ordenada."
+    },
+    exerciseSlug: "build-semi-open-profile-organizer"
+  },
+  {
+    slug: "semi-open-project-menu-record-tool",
+    module: "Proyectos con más autonomía",
+    moduleSlug: "semi-open-projects",
+    order: 2,
+    title: "Proyecto con más autonomía: herramienta simple con menú",
+    duration: "22 min",
+    difficulty: "Beginner",
+    summary: "Construye una herramienta corta con menú donde decides parte de la estructura de respuesta, pero mantienes opciones mínimas y una lógica clara.",
+    warmup: "Un programa se siente más real cuando ofrece caminos distintos. Ahora te toca armar uno con algo más de iniciativa propia, pero con reglas fáciles de seguir.",
+    goal: "Al final, deberías poder crear una herramienta con menú que use funciones, comparación de texto y un pequeño flujo de decisiones.",
+    keyIdeas: [
+      {
+        title: "Un menú claro da soporte a la autonomía",
+        description: "Puedes tomar decisiones propias sin perder estructura si las opciones siguen visibles."
+      },
+      {
+        title: "Las funciones reducen el caos",
+        description: "Cada respuesta del menú puede vivir en su propia función para que todo siga legible."
+      },
+      {
+        title: "La validación no necesita una sola forma exacta",
+        description: "Hay varias maneras correctas de responder bien a una elección sencilla."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué vas a construir",
+        body: "Vas a crear una herramienta pequeña con dos opciones visibles y una respuesta distinta según la elección. Puedes decidir los textos exactos de parte de la salida, pero debes conservar la estructura principal del flujo."
+      },
+      {
+        title: "Qué cambia frente al bloque anterior",
+        body: "Aquí no te damos una receta tan exacta. En vez de eso, te damos restricciones, ideas sugeridas y criterios de éxito. Esa diferencia te obliga a pensar un poco más por tu cuenta."
+      },
+      {
+        title: "Cómo sostener el control",
+        body: "Empieza por el menú, luego define una función por opción y por último conecta la variable de elección con `if` o `elif`. Esa secuencia mantiene el problema bajo control."
+      },
+      {
+        title: "Qué significa hacerlo bien",
+        body: "No necesitas creatividad extrema. Solo necesitas una estructura clara, respuestas comprensibles y un pequeño flujo que se sienta coherente de principio a fin."
+      }
+    ],
+    example:
+      "def ver_resumen():\n    print('Resumen listo')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar un paso a la vez')\n\nprint('A. Resumen')\nprint('B. Recordatorio')\nopcion = 'B'\n\nif opcion == 'A':\n    ver_resumen()\nelif opcion == 'B':\n    ver_recordatorio()\nelse:\n    print('Opción no válida')",
+    practicePrompt: "Cambia las opciones, los mensajes o el estilo del menú, pero mantén dos caminos claros y una respuesta correcta para cada uno.",
+    practiceChecklist: [
+      "Define al menos dos funciones.",
+      "Muestra un menú con dos opciones visibles.",
+      "Guarda una elección en una variable.",
+      "Responde según la opción elegida."
+    ],
+    commonMistakes: [
+      "Hacer cambios libres pero olvidar que el programa necesita dos opciones claras.",
+      "Comparar con un texto distinto al que realmente guardaste.",
+      "Olvidar el caso de opción no válida."
+    ],
+    bugChallenge: {
+      prompt: "Esta herramienta debería responder a dos opciones, pero una comparación y una llamada dejaron el flujo incompleto.",
+      brokenCode:
+        "def ver_resumen():\n    print('Resumen listo')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar un paso a la vez')\n\nopcion = 'B'\nif opcion == 'A':\n    ver_resumen()\nelif opcion == 'b':\n    ver_recordatorio",
+      expectedLearning: "Cuando el proyecto gana libertad, sigue siendo clave revisar comparaciones exactas y llamadas de función."
+    },
+    playground: {
+      title: "Prueba una herramienta con menú",
+      guidance: "Ejecuta el proyecto, cambia la opción y luego prueba ajustar los textos. La estructura base debería seguir clara aunque cambies detalles.",
+      starterCode:
+        "def ver_resumen():\n    print('Resumen listo')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar un paso a la vez')\n\nprint('A. Resumen')\nprint('B. Recordatorio')\nopcion = 'B'\n\nif opcion == 'A':\n    ver_resumen()\nelif opcion == 'B':\n    ver_recordatorio()\nelse:\n    print('Opción no válida')",
+      emptyOutputHint: "La salida debería mostrar el menú y luego una respuesta según la opción elegida."
+    },
+    exerciseSlug: "build-semi-open-menu-tool"
+  },
+  {
+    slug: "semi-open-project-summary-generator",
+    module: "Proyectos con más autonomía",
+    moduleSlug: "semi-open-projects",
+    order: 3,
+    title: "Proyecto con más autonomía: generador de resumen",
+    duration: "23 min",
+    difficulty: "Beginner",
+    summary: "Crea un generador simple de resumen usando datos estructurados, condiciones y una salida final que tú organizas con mayor independencia.",
+    warmup: "Ya sabes recorrer datos y mostrar resultados. Ahora toca usar esa base para armar un resumen corto donde tú decidas parte de la presentación.",
+    goal: "Al final, deberías poder construir un pequeño generador de resumen que recorra datos, decida mensajes y cierre con una salida ordenada.",
+    keyIdeas: [
+      {
+        title: "La estructura de datos sostiene el proyecto",
+        description: "Una lista con diccionarios te deja trabajar con varios elementos de una manera clara."
+      },
+      {
+        title: "La lógica debe seguir siendo visible",
+        description: "Aunque tengas más libertad, la condición principal debe leerse con facilidad."
+      },
+      {
+        title: "La presentación puede variar sin perder calidad",
+        description: "Puedes elegir el orden o el título, siempre que el resumen final siga siendo claro."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué vas a construir",
+        body: "Este proyecto genera un pequeño resumen a partir de datos estructurados. Recorres una lista, decides qué texto mostrar y cierras con una línea final que marque el final del reporte."
+      },
+      {
+        title: "Qué tiene de más autónomo",
+        body: "No te exigimos una única forma exacta de salida. Sí te pedimos que aparezcan ciertos datos y que la lógica principal se mantenga. Ese equilibrio te deja decidir un poco más sin perder dirección."
+      },
+      {
+        title: "Cómo mantenerlo amable para principiantes",
+        body: "Trabaja con pocos registros y mensajes cortos. La clave no es hacer un sistema enorme, sino resolver un problema pequeño con más independencia que antes."
+      },
+      {
+        title: "Qué cierra este bloque",
+        body: "Si puedes sostener un proyecto así, ya estás dando un paso claro hacia problemas un poco más abiertos. Esa es la meta de este módulo."
+      }
+    ],
+    example:
+      "registros = [\n    {'nombre': 'Lectura', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nprint('--- RESUMEN ---')\nfor registro in registros:\n    if registro['estado'] == 'hecho':\n        print(registro['nombre'] + ': listo')\n    else:\n        print(registro['nombre'] + ': en curso')\nprint('Resumen generado')",
+    practicePrompt: "Cambia el encabezado, uno de los mensajes o el orden general de la salida. Asegúrate de que el resumen siga siendo claro y completo.",
+    practiceChecklist: [
+      "Crea una lista con al menos dos registros.",
+      "Usa un bucle para recorrerlos.",
+      "Compara el estado de cada registro.",
+      "Agrega un encabezado o cierre visible."
+    ],
+    commonMistakes: [
+      "Volver el proyecto demasiado libre y olvidar una condición clara.",
+      "Perder un registro por recorrer mal la lista.",
+      "Meter el cierre dentro del bucle y repetirlo varias veces."
+    ],
+    bugChallenge: {
+      prompt: "Este resumen debería mostrar el estado de dos registros y cerrar una sola vez, pero una clave y una indentación alteran el resultado.",
+      brokenCode:
+        "registros = [\n    {'nombre': 'Lectura', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nfor registro in registros:\n    if registro['estadoo'] == 'hecho':\n        print(registro['nombre'] + ': listo')\n    else:\n        print(registro['nombre'] + ': en curso')\n    print('Resumen generado')",
+      expectedLearning: "Más libertad no elimina los básicos: claves exactas, condiciones visibles y cierres fuera del bucle."
+    },
+    playground: {
+      title: "Explora tu generador de resumen",
+      guidance: "Ejecuta el proyecto, cambia algunos textos y verifica que el resumen siga cumpliendo su objetivo sin perder claridad.",
+      starterCode:
+        "registros = [\n    {'nombre': 'Lectura', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nprint('--- RESUMEN ---')\nfor registro in registros:\n    if registro['estado'] == 'hecho':\n        print(registro['nombre'] + ': listo')\n    else:\n        print(registro['nombre'] + ': en curso')\nprint('Resumen generado')",
+      emptyOutputHint: "La salida debería mostrar un encabezado, un resumen por registro y un cierre final."
+    },
+    exerciseSlug: "build-semi-open-summary-generator"
   }
 ];
 
@@ -4663,6 +4889,253 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["creates-record-list", "loops-records", "checks-record-status", "prints-ready-line", "prints-pending-line"]
+    }
+  },
+  {
+    slug: "build-semi-open-profile-organizer",
+    title: "Construye un organizador de perfil",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "semi-open-projects",
+    lessonSlug: "semi-open-project-profile-organizer",
+    order: 1,
+    duration: "11 min",
+    summary: "Construye un organizador de perfil con un poco más de libertad: debes incluir ciertos datos y una función, pero puedes decidir parte de la presentación.",
+    prompt:
+      "Crea un programa que use un diccionario `perfil` con las claves `nombre`, `ciudad` y `meta`, defina una función para mostrar esos datos y presente la información de forma ordenada. Puedes elegir el título o el orden exacto de las líneas, siempre que aparezcan los tres datos.",
+    responseLabel: "Tu organizador de perfil",
+    responsePlaceholder:
+      "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba', 'meta': 'Practicar cada día'}\n\ndef mostrar_perfil(perfil):\n    print('=== PERFIL ===')\n    print('Nombre:', perfil['nombre'])\n    print('Ciudad:', perfil['ciudad'])\n    print('Meta:', perfil['meta'])\n\nmostrar_perfil(perfil)",
+    instructions: [
+      "Crea el diccionario con tres claves.",
+      "Define una función que lea esos datos.",
+      "Muestra nombre, ciudad y meta.",
+      "Mantén una salida clara."
+    ],
+    hints: [
+      "No hace falta copiar el ejemplo exacto, pero sí incluir los tres datos.",
+      "Una función como `mostrar_perfil(perfil)` ayuda a ordenar el programa.",
+      "Puedes personalizar el encabezado si quieres."
+    ],
+    starterCode:
+      "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba', 'meta': 'Practicar cada día'}\n\ndef mostrar_perfil(perfil):\n    print('=== PERFIL ===')\n    print('Nombre:', perfil['nombre'])\n    print('Ciudad:', perfil['ciudad'])\n    print('Meta:', perfil['meta'])\n\nmostrar_perfil(perfil)",
+    successCriteria: [
+      "Crea el diccionario `perfil`.",
+      "Usa una función para mostrar los datos.",
+      "La salida incluye nombre, ciudad y meta."
+    ],
+    evaluator: {
+      type: "structure_check",
+      minLength: 140,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "creates-profile-dict",
+          label: "Crea `perfil` con tres claves",
+          pattern: "perfil\\s*=\\s*\\{[^\\}]*['\"]nombre['\"]\\s*:[^\\}]*['\"]ciudad['\"]\\s*:[^\\}]*['\"]meta['\"][^\\}]*\\}",
+          feedbackWhenMissing: "Crea un diccionario `perfil` con `nombre`, `ciudad` y `meta`."
+        },
+        {
+          id: "defines-profile-function",
+          label: "Define una función para mostrar el perfil",
+          pattern: "def\\s+[a-zA-Z_][a-zA-Z0-9_]*\\(perfil\\)\\s*:",
+          feedbackWhenMissing: "Define una función que reciba `perfil` para mostrar los datos."
+        },
+        {
+          id: "reads-name",
+          label: "Lee `perfil['nombre']`",
+          pattern: "perfil\\[['\"]nombre['\"]\\]",
+          feedbackWhenMissing: "Dentro del programa, usa la clave `nombre`."
+        },
+        {
+          id: "reads-city",
+          label: "Lee `perfil['ciudad']`",
+          pattern: "perfil\\[['\"]ciudad['\"]\\]",
+          feedbackWhenMissing: "Dentro del programa, usa la clave `ciudad`."
+        },
+        {
+          id: "reads-goal",
+          label: "Lee `perfil['meta']`",
+          pattern: "perfil\\[['\"]meta['\"]\\]",
+          feedbackWhenMissing: "Dentro del programa, usa la clave `meta`."
+        }
+      ],
+      orderedPatternIds: ["creates-profile-dict", "defines-profile-function", "reads-name", "reads-city", "reads-goal"]
+    }
+  },
+  {
+    slug: "build-semi-open-menu-tool",
+    title: "Construye una herramienta simple con menú",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "semi-open-projects",
+    lessonSlug: "semi-open-project-menu-record-tool",
+    order: 2,
+    duration: "12 min",
+    summary: "Crea una herramienta con menú donde decides parte de los mensajes, pero mantienes dos opciones claras y una respuesta válida para cada una.",
+    prompt:
+      "Escribe un programa con dos funciones distintas, un menú con dos opciones visibles, una variable `opcion` y una condición que ejecute una función para la primera opción y otra para la segunda. Puedes elegir los mensajes exactos, pero debe quedar claro qué responde el programa en cada caso.",
+    responseLabel: "Tu herramienta con menú",
+    responsePlaceholder:
+      "def ver_resumen():\n    print('Resumen listo')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar un paso a la vez')\n\nprint('A. Resumen')\nprint('B. Recordatorio')\nopcion = 'B'\n\nif opcion == 'A':\n    ver_resumen()\nelif opcion == 'B':\n    ver_recordatorio()\nelse:\n    print('Opción no válida')",
+    instructions: [
+      "Define dos funciones con respuestas distintas.",
+      "Muestra dos opciones visibles.",
+      "Guarda una elección en `opcion`.",
+      "Usa una condición para responder."
+    ],
+    hints: [
+      "No necesitas copiar los nombres del ejemplo, pero sí dos caminos distintos.",
+      "La comparación puede ser con letras o números, siempre que sea clara.",
+      "Agrega un caso no válido para que el flujo quede más completo."
+    ],
+    starterCode:
+      "def ver_resumen():\n    print('Resumen listo')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar un paso a la vez')\n\nprint('A. Resumen')\nprint('B. Recordatorio')\nopcion = 'B'\n\nif opcion == 'A':\n    ver_resumen()\nelif opcion == 'B':\n    ver_recordatorio()\nelse:\n    print('Opción no válida')",
+    successCriteria: [
+      "Define dos funciones.",
+      "Muestra dos opciones visibles.",
+      "Usa una variable y una condición para decidir."
+    ],
+    playground: {
+      title: "Ejecuta tu herramienta con menú",
+      guidance: "Corre el proyecto y prueba cambiar la opción. Lo importante es que cada camino siga siendo claro aunque cambies mensajes o nombres.",
+      starterCode:
+        "def ver_resumen():\n    print('Resumen listo')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar un paso a la vez')\n\nprint('A. Resumen')\nprint('B. Recordatorio')\nopcion = 'B'\n\nif opcion == 'A':\n    ver_resumen()\nelif opcion == 'B':\n    ver_recordatorio()\nelse:\n    print('Opción no válida')",
+      emptyOutputHint: "La salida debería mostrar el menú y una respuesta según la opción elegida."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["A. Resumen\nB. Recordatorio\nRecuerda avanzar un paso a la vez"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 180,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-first-function",
+          label: "Define una primera función",
+          pattern: "def\\s+[a-zA-Z_][a-zA-Z0-9_]*\\(\\)\\s*:",
+          feedbackWhenMissing: "Define al menos una función para responder a una opción."
+        },
+        {
+          id: "defines-second-function",
+          label: "Define una segunda función",
+          pattern: "def\\s+[a-zA-Z_][a-zA-Z0-9_]*\\(\\)\\s*:[\\s\\S]*def\\s+[a-zA-Z_][a-zA-Z0-9_]*\\(\\)\\s*:",
+          feedbackWhenMissing: "Define dos funciones distintas para responder al menú."
+        },
+        {
+          id: "prints-two-options",
+          label: "Muestra dos opciones del menú",
+          pattern: "print\\([\\s\\S]*\\)[\\s\\S]*print\\([\\s\\S]*\\)",
+          feedbackWhenMissing: "Muestra dos opciones visibles en pantalla."
+        },
+        {
+          id: "stores-choice",
+          label: "Guarda la elección en `opcion`",
+          pattern: "opcion\\s*=\\s*['\"][A-Za-z0-9]['\"]",
+          feedbackWhenMissing: "Guarda una elección en la variable `opcion`."
+        },
+        {
+          id: "uses-conditional-flow",
+          label: "Usa un flujo con `if` y `elif` o `else`",
+          pattern: "if\\s+opcion\\s*==[\\s\\S]*(elif|else)",
+          feedbackWhenMissing: "Usa una condición para responder según la opción elegida."
+        }
+      ],
+      orderedPatternIds: ["defines-first-function", "defines-second-function", "prints-two-options", "stores-choice", "uses-conditional-flow"]
+    }
+  },
+  {
+    slug: "build-semi-open-summary-generator",
+    title: "Construye un generador de resumen",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "semi-open-projects",
+    lessonSlug: "semi-open-project-summary-generator",
+    order: 3,
+    duration: "12 min",
+    summary: "Genera un resumen a partir de datos simples con cierta libertad en el estilo de salida, manteniendo una estructura mínima y un cierre claro.",
+    prompt:
+      "Crea un programa que use una lista `registros` con al menos dos diccionarios, recorra esos datos con un bucle, compare un estado y muestre un resumen final. Puedes decidir parte del encabezado y de los textos, pero el programa debe distinguir entre dos estados y cerrar con una línea final.",
+    responseLabel: "Tu generador de resumen",
+    responsePlaceholder:
+      "registros = [\n    {'nombre': 'Lectura', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nprint('--- RESUMEN ---')\nfor registro in registros:\n    if registro['estado'] == 'hecho':\n        print(registro['nombre'] + ': listo')\n    else:\n        print(registro['nombre'] + ': en curso')\nprint('Resumen generado')",
+    instructions: [
+      "Crea la lista con dos registros como mínimo.",
+      "Usa un bucle para recorrerla.",
+      "Compara un estado dentro del recorrido.",
+      "Agrega un encabezado o un cierre visible."
+    ],
+    hints: [
+      "Puedes usar claves como `nombre` y `estado` para mantenerlo simple.",
+      "No hace falta una salida idéntica al ejemplo, pero sí una estructura clara.",
+      "La línea final debería aparecer una sola vez."
+    ],
+    starterCode:
+      "registros = [\n    {'nombre': 'Lectura', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nprint('--- RESUMEN ---')\nfor registro in registros:\n    if registro['estado'] == 'hecho':\n        print(registro['nombre'] + ': listo')\n    else:\n        print(registro['nombre'] + ': en curso')\nprint('Resumen generado')",
+    successCriteria: [
+      "Usa una lista con datos estructurados.",
+      "Recorre los registros con un bucle.",
+      "Distingue entre dos estados.",
+      "Cierra con una línea final visible."
+    ],
+    playground: {
+      title: "Ejecuta tu generador de resumen",
+      guidance: "Corre el proyecto y prueba cambiar algunos textos. La meta es mantener una salida coherente aunque tomes pequeñas decisiones propias.",
+      starterCode:
+        "registros = [\n    {'nombre': 'Lectura', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nprint('--- RESUMEN ---')\nfor registro in registros:\n    if registro['estado'] == 'hecho':\n        print(registro['nombre'] + ': listo')\n    else:\n        print(registro['nombre'] + ': en curso')\nprint('Resumen generado')",
+      emptyOutputHint: "La salida debería mostrar un encabezado, un resumen por registro y un cierre final."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["--- RESUMEN ---\nLectura: listo\nPython: en curso\nResumen generado"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 200,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "creates-records",
+          label: "Crea una lista `registros`",
+          pattern: "registros\\s*=\\s*\\[[\\s\\S]*\\]",
+          feedbackWhenMissing: "Crea una lista `registros` con datos estructurados."
+        },
+        {
+          id: "loops-records",
+          label: "Recorre la lista con un bucle",
+          pattern: "for\\s+registro\\s+in\\s+registros\\s*:",
+          feedbackWhenMissing: "Usa `for registro in registros:` para recorrer los datos."
+        },
+        {
+          id: "checks-status",
+          label: "Compara un estado",
+          pattern: "if\\s+registro\\[['\"]estado['\"]\\]\\s*==\\s*['\"][^'\"]+['\"]\\s*:",
+          feedbackWhenMissing: "Compara una clave `estado` para distinguir entre dos casos."
+        },
+        {
+          id: "prints-name-based-line",
+          label: "Imprime líneas usando `registro['nombre']`",
+          pattern: "registro\\[['\"]nombre['\"]\\]",
+          feedbackWhenMissing: "Usa `registro['nombre']` al construir el resumen."
+        },
+        {
+          id: "prints-final-summary-line",
+          label: "Agrega una línea final de cierre",
+          pattern: "print\\(\\s*['\"][^'\"]+['\"]\\s*\\)\\s*$",
+          feedbackWhenMissing: "Termina el programa con una línea final visible."
+        }
+      ],
+      orderedPatternIds: ["creates-records", "loops-records", "checks-status", "prints-name-based-line", "prints-final-summary-line"]
     }
   }
 ];

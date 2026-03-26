@@ -282,9 +282,9 @@ export const courseLessons: LessonData[] = [
     title: "Qué es programar de verdad",
     duration: "10 min",
     difficulty: "Beginner",
-    summary: "Entiende programar como darle instrucciones claras a una computadora, un paso pequeño a la vez.",
-    warmup: "Una receta funciona porque sus pasos son claros. Con el código pasa lo mismo.",
-    goal: "Al final de esta lección, deberías entender qué es un programa y por qué las computadoras necesitan instrucciones muy claras.",
+    summary: "Entiende programar como diseñar instrucciones claras para obtener un resultado concreto.",
+    warmup: "Si un proceso no tiene pasos claros, falla. El código funciona igual.",
+    goal: "Al final de esta lección, deberías poder explicar qué es un programa y por qué la precisión importa desde la primera línea.",
     keyIdeas: [
       {
         title: "Los programas son instrucciones",
@@ -296,7 +296,7 @@ export const courseLessons: LessonData[] = [
       },
       {
         title: "Los pasos pequeños ayudan",
-        description: "Quien empieza aprende más rápido cuando divide una idea grande en acciones pequeñas."
+        description: "Dividir una tarea en pasos pequeños vuelve el código más entendible y más fácil de corregir."
       }
     ],
     explanation: [
@@ -314,15 +314,15 @@ export const courseLessons: LessonData[] = [
       },
       {
         title: "El progreso inicial debe sentirse simple",
-        body: "Tus primeras victorias no tienen que ser impresionantes. Tienen que ser entendibles. Ejecutar dos líneas claras de código ya es un primer paso real."
+        body: "Las primeras victorias no tienen que ser grandes. Tienen que ser entendibles y útiles para construir criterio."
       }
     ],
-    example: "print('Hola, principiante')\nprint('Acabas de ejecutar tus primeras instrucciones en Python.')",
-    practicePrompt: "Escribe dos líneas con `print()`. En la primera, di tu nombre. En la segunda, di una razón por la que quieres aprender Python.",
+    example: "print('Panel diario')\nprint('Hoy voy a practicar Python 20 minutos.')",
+    practicePrompt: "Escribe un mini mensaje de inicio para tu sesión de práctica: una línea de título y una línea con el objetivo de hoy.",
     practiceChecklist: [
       "Usa `print()` dos veces.",
-      "Pon tu texto entre comillas.",
-      "Ejecuta el código y confirma que aparezcan las dos líneas."
+      "Haz que las dos líneas formen un mensaje útil, no texto al azar.",
+      "Ejecuta el código y confirma que aparezcan ambas líneas."
     ],
     commonMistakes: [
       "Olvidar las comillas alrededor del texto.",
@@ -330,15 +330,15 @@ export const courseLessons: LessonData[] = [
       "Usar comillas curvas copiadas de otra app en lugar de comillas simples o dobles normales."
     ],
     bugChallenge: {
-      prompt: "Este código debería mostrar un mensaje de bienvenida, pero un detalle de sintaxis lo rompe.",
-      brokenCode: "print('Bienvenido a PyMentor)\nprint('Vamos a aprender Python')",
-      expectedLearning: "Los textos necesitan comillas que se abran y se cierren correctamente."
+      prompt: "Este código debería abrir una sesión de práctica, pero un detalle de sintaxis lo rompe.",
+      brokenCode: "print('Panel diario)\nprint('Hoy voy a practicar Python 20 minutos.')",
+      expectedLearning: "Un texto mal cerrado alcanza para romper todo el programa."
     },
     playground: {
-      title: "Tu primer espacio para probar Python",
-      guidance: "Edita las dos líneas con `print()` y ejecútalas. Este es tu espacio seguro para probar cambios pequeños en Python.",
-      starterCode: "print('Hola, principiante')\nprint('Estoy aprendiendo Python paso a paso.')",
-      emptyOutputHint: "Prueba agregar o cambiar una línea con `print()` y vuelve a ejecutar el código."
+      title: "Prueba un mensaje útil",
+      guidance: "Edita las dos líneas y ejecútalas. La idea es escribir una salida simple que sí tenga intención.",
+      starterCode: "print('Panel diario')\nprint('Hoy voy a practicar Python 20 minutos.')",
+      emptyOutputHint: "Prueba ajustar el mensaje y vuelve a ejecutar."
     },
     exerciseSlug: "welcome-message-fix"
   },
@@ -350,9 +350,9 @@ export const courseLessons: LessonData[] = [
     title: "Ejecutar Python paso a paso",
     duration: "12 min",
     difficulty: "Beginner",
-    summary: "Mira cómo Python lee el código de arriba hacia abajo y por qué el orden importa.",
-    warmup: "Si te cepillas los dientes antes de agarrar el cepillo, los pasos no tienen sentido. En el código, el orden también importa.",
-    goal: "Al final, deberías poder explicar que Python sigue instrucciones de arriba hacia abajo.",
+    summary: "Mira cómo Python sigue el orden de tus líneas y por qué eso cambia el resultado.",
+    warmup: "Un proceso fuera de orden produce un resultado distinto. En código pasa exactamente eso.",
+    goal: "Al final, deberías poder leer un script corto de arriba hacia abajo y predecir su salida.",
     keyIdeas: [
       {
         title: "El orden importa",
@@ -385,12 +385,12 @@ export const courseLessons: LessonData[] = [
         body: "Entender el orden de ejecución hace mucho más fácil aprender variables, condicionales y bucles."
       }
     ],
-    example: "print('Paso 1')\nprint('Paso 2')\nprint('Paso 3')",
-    practicePrompt: "Escribe tres líneas con `print()` que muestren una rutina simple de la mañana en el orden correcto.",
+    example: "print('Abrir archivo')\nprint('Leer datos')\nprint('Mostrar resumen')",
+    practicePrompt: "Escribe tres líneas que representen el flujo de una herramienta simple en el orden correcto.",
     practiceChecklist: [
       "Usa tres líneas.",
-      "Haz que el orden sea realista.",
-      "Lee la salida de arriba hacia abajo."
+      "Haz que el orden tenga sentido operativo.",
+      "Lee la salida final como si fuera el flujo de un programa."
     ],
     commonMistakes: [
       "Esperar que la última línea se ejecute primero.",
@@ -398,9 +398,9 @@ export const courseLessons: LessonData[] = [
       "Cambiar muchas cosas a la vez y perder de vista qué pasó."
     ],
     bugChallenge: {
-      prompt: "Este código debería mostrar los pasos en orden, pero una línea está mal escrita.",
-      brokenCode: "print('Despertar')\npritn('Lavarse los dientes')\nprint('Desayunar')",
-      expectedLearning: "Un error pequeño de escritura puede detener el programa aunque la idea general sea correcta."
+      prompt: "Este código debería mostrar un flujo de trabajo, pero una línea está mal escrita.",
+      brokenCode: "print('Abrir archivo')\npritn('Leer datos')\nprint('Mostrar resumen')",
+      expectedLearning: "Un error mínimo puede romper un flujo correcto de principio a fin."
     },
     exerciseSlug: "morning-routine-output"
   },
@@ -412,9 +412,9 @@ export const courseLessons: LessonData[] = [
     title: "Leer pequeños errores de Python con calma",
     duration: "12 min",
     difficulty: "Beginner",
-    summary: "Aprende a leer un mensaje de error simple de Python sin entrar en pánico y a arreglar un problema pequeño a la vez.",
-    warmup: "Cuando una receta sale mal, no dejas de cocinar para siempre. Buscas el primer paso que falló. Con los errores de código pasa lo mismo.",
-    goal: "Al final, deberías poder tratar un error de principiante como una pista y no como una prueba de que no sirves para programar.",
+    summary: "Aprende a tratar un error simple como una pista concreta para corregir el programa.",
+    warmup: "Cuando algo falla, lo útil no es dramatizarlo: es ubicar el primer punto roto.",
+    goal: "Al final, deberías poder leer un error simple y decidir qué revisar primero.",
     keyIdeas: [
       {
         title: "Los errores son pistas",
@@ -431,8 +431,8 @@ export const courseLessons: LessonData[] = [
     ],
     explanation: [
       {
-        title: "Un mensaje de error no es un juicio",
-        body: "Cuando Python se detiene y muestra un error, no te está diciendo que fracasaste. Te está mostrando el punto donde el programa dejó de tener sentido."
+        title: "Un mensaje de error es información",
+        body: "Cuando Python se detiene y muestra un error, te está señalando el punto donde el programa dejó de tener sentido."
       },
       {
         title: "Empieza por la primera línea que Python señala",
@@ -448,7 +448,7 @@ export const courseLessons: LessonData[] = [
       }
     ],
     example: "name = 'Maya'\nprint(name)\nprint('Lista para aprender')",
-    practicePrompt: "Toma un programa pequeño roto y busca primero un solo problema. Explica con palabras simples qué podría estar confundiendo a Python.",
+    practicePrompt: "Toma un programa pequeño roto, ubica el primer problema y explica qué está impidiendo que Python lo ejecute.",
     practiceChecklist: [
       "Lee la línea que Python señala.",
       "Revisa escritura y puntuación antes de cambiar la lógica.",
@@ -462,7 +462,7 @@ export const courseLessons: LessonData[] = [
     bugChallenge: {
       prompt: "Este código debería imprimir un nombre guardado, pero un error de escritura lo rompe.",
       brokenCode: "name = 'Maya'\nprnit(name)",
-      expectedLearning: "La idea general puede estar bien aunque un error pequeño de escritura detenga el programa."
+      expectedLearning: "Una idea puede estar bien aunque una sola línea mal escrita detenga todo."
     },
     exerciseSlug: "fix-the-name-print"
   },
@@ -474,9 +474,9 @@ export const courseLessons: LessonData[] = [
     title: "Las variables guardan valores",
     duration: "14 min",
     difficulty: "Beginner",
-    summary: "Aprende cómo las variables permiten que Python recuerde información como nombres, puntajes y edades.",
-    warmup: "Una caja con etiqueta te ayuda a recordar qué hay dentro. Una variable funciona como una etiqueta para un valor.",
-    goal: "Al final, deberías poder crear una variable y explicar qué valor está guardando.",
+    summary: "Aprende cómo las variables guardan datos que el programa necesita volver a usar.",
+    warmup: "Una variable no es decoración: es la forma de darle nombre a un dato que después vas a reutilizar.",
+    goal: "Al final, deberías poder crear variables con nombres claros y explicar qué dato guardan.",
     keyIdeas: [
       {
         title: "Una variable es una etiqueta",
@@ -510,10 +510,10 @@ export const courseLessons: LessonData[] = [
       }
     ],
     example: "name = 'Avery'\nscore = 10\n\nprint(name)\nprint(score)",
-    practicePrompt: "Crea una variable llamada `favorite_color` y otra llamada `age`. Imprime ambos valores.",
+    practicePrompt: "Crea variables para un nombre de proyecto y una meta de minutos de práctica. Imprime ambos valores.",
     practiceChecklist: [
       "Usa nombres de variables con sentido.",
-      "Pon el texto entre comillas.",
+      "Haz que los datos representen algo que sí usarías en un programa simple.",
       "Imprime cada variable después de crearla."
     ],
     commonMistakes: [
@@ -536,9 +536,9 @@ export const courseLessons: LessonData[] = [
     title: "Cambiar el valor de una variable",
     duration: "12 min",
     difficulty: "Beginner",
-    summary: "Mira cómo Python puede actualizar información guardada cuando una variable recibe un valor nuevo.",
-    warmup: "Un puntaje cambia durante un juego. Las variables también pueden cambiar.",
-    goal: "Al final, deberías entender que una variable puede actualizarse y quedarse con el valor más reciente.",
+    summary: "Mira cómo una variable cambia cuando el programa recibe o calcula un valor nuevo.",
+    warmup: "Si un dato cambia, el programa necesita reflejarlo. Para eso existe la reasignación.",
+    goal: "Al final, deberías poder seguir el valor de una variable mientras cambia línea a línea.",
     keyIdeas: [
       {
         title: "Las variables pueden cambiar",
@@ -572,7 +572,7 @@ export const courseLessons: LessonData[] = [
       }
     ],
     example: "score = 5\nprint(score)\n\nscore = 8\nprint(score)",
-    practicePrompt: "Crea una variable llamada `coins`, asígnale 3, luego cámbiala a 5 e imprímela después de cada paso.",
+    practicePrompt: "Crea una variable `tareas_pendientes`, imprímela, actualízala después de completar una tarea y vuelve a imprimirla.",
     practiceChecklist: [
       "Asigna el primer valor.",
       "Imprime la variable.",
@@ -591,7 +591,7 @@ export const courseLessons: LessonData[] = [
     playground: {
       title: "Mira cómo cambia una variable",
       guidance: "Ejecuta el código, luego cambia los números y vuelve a ejecutarlo. Observa cómo Python conserva el valor más nuevo de la variable.",
-      starterCode: "coins = 3\nprint(coins)\n\ncoins = 5\nprint(coins)",
+      starterCode: "tareas_pendientes = 4\nprint(tareas_pendientes)\n\ntareas_pendientes = 3\nprint(tareas_pendientes)",
       emptyOutputHint: "Este espacio muestra todo lo que tus líneas con `print()` envían a la pantalla."
     },
     exerciseSlug: "coins-after-update"
@@ -604,9 +604,9 @@ export const courseLessons: LessonData[] = [
     title: "Usar input para guardar texto",
     duration: "14 min",
     difficulty: "Beginner",
-    summary: "Recoge una respuesta simple de la persona usuaria y guárdala en una variable.",
-    warmup: "Un programa se vuelve más interesante cuando puede responder a una persona real en lugar de solo imprimir texto fijo.",
-    goal: "Al final, deberías poder usar `input()` para recibir texto, guardarlo en una variable e imprimir una respuesta simple.",
+    summary: "Recoge texto con `input()` y úsalo para producir una salida personalizada.",
+    warmup: "En cuanto un programa recibe datos de una persona, deja de ser una secuencia fija de prints.",
+    goal: "Al final, deberías poder pedir un dato con `input()`, guardarlo y reutilizarlo en la salida.",
     keyIdeas: [
       {
         title: "`input()` espera una respuesta",
@@ -5723,44 +5723,44 @@ export const courseLessons: LessonData[] = [
 export const courseExercises: ExerciseData[] = [
   {
     slug: "welcome-message-fix",
-    title: "Arregla el mensaje de bienvenida",
+    title: "Arregla un panel de inicio roto",
     exerciseType: "bug_fix",
     responseFormat: "code",
     moduleSlug: "introduction-to-programming",
     lessonSlug: "what-is-programming",
     order: 1,
     duration: "6 min",
-    summary: "Arregla un bug pequeño en `print()` y acostúmbrate a leer la sintaxis con cuidado.",
+    summary: "Corrige un bug simple en `print()` dentro de una salida con intención real.",
     prompt:
-      "El código de abajo debería imprimir dos líneas de bienvenida para alguien que recién empieza. Corrige la sintaxis rota sin cambiar el sentido del mensaje.",
+      "El código de abajo debería abrir una sesión de práctica con dos líneas claras. Corrige la sintaxis rota sin cambiar la idea del mensaje.",
     responseLabel: "Tu código corregido",
     responsePlaceholder: "# Corrige el código aquí\nprint('Bienvenido a PyMentor')\nprint('Vamos a aprender Python')",
     instructions: [
       "Lee el texto que debería imprimirse y revisa las comillas.",
       "Corrige solo lo necesario.",
-      "Mantén la salida como un mensaje de bienvenida amable."
+      "Mantén la salida como un mensaje breve de inicio."
     ],
     hints: [
       "A la primera línea con `print()` le falta una comilla.",
       "Las dos líneas deben seguir usando `print()`.",
-      "Puedes evitar complicaciones usando un texto simple en español."
+      "No hace falta inventar lógica nueva."
     ],
-    starterCode: "print('Bienvenido a PyMentor)\nprint('Vamos a aprender Python')",
+    starterCode: "print('Panel diario)\nprint('Hoy voy a practicar Python 20 minutos.')",
     successCriteria: [
       "Las dos líneas se pueden ejecutar.",
-      "El texto sigue siendo un mensaje de bienvenida.",
+      "El texto sigue siendo un mensaje breve y útil.",
       "Las comillas están correctamente emparejadas."
     ],
     playground: {
       title: "Prueba la corrección",
-      guidance: "Después de editar el código en tu respuesta, también puedes probar la misma idea aquí y ejecutarla directo en el navegador.",
-      starterCode: "print('Bienvenido a PyMentor')\nprint('Vamos a aprender Python')",
-      emptyOutputHint: "Una solución correcta debería imprimir dos líneas amables."
+      guidance: "Después de corregir la respuesta, prueba aquí la misma idea y ejecuta el resultado.",
+      starterCode: "print('Panel diario')\nprint('Hoy voy a practicar Python 20 minutos.')",
+      emptyOutputHint: "Una solución correcta debería imprimir dos líneas claras."
     },
     executionValidation: {
       requireRunBeforeCheck: true,
       requireRunBeforeComplete: true,
-      expectedOutput: ["Bienvenido a PyMentor\nVamos a aprender Python"],
+      expectedOutput: ["Panel diario\nHoy voy a practicar Python 20 minutos."],
       normalizeOutputWhitespace: true,
       ignoreOutputCase: false,
       requireNoRuntimeError: true
@@ -5782,21 +5782,21 @@ export const courseExercises: ExerciseData[] = [
           id: "welcome-text",
           label: "Mantiene el mensaje de bienvenida",
           type: "includes",
-          value: "Bienvenido a PyMentor",
-          feedbackWhenMissing: "La primera línea debería seguir dando la bienvenida."
+          value: "Panel diario",
+          feedbackWhenMissing: "La primera línea debería seguir funcionando como título corto."
         },
         {
-          id: "learn-python-text",
-          label: "Mantiene el segundo mensaje de aprendizaje",
+          id: "daily-goal-text",
+          label: "Mantiene el mensaje de práctica",
           type: "includes",
-          value: "aprender Python",
-          feedbackWhenMissing: "La segunda línea debería seguir mencionando aprender Python."
+          value: "practicar Python",
+          feedbackWhenMissing: "La segunda línea debería seguir mencionando la práctica."
         },
         {
           id: "fixed-first-line-quote",
           label: "No queda la primera línea rota",
           type: "excludes",
-          value: "print('Bienvenido a PyMentor)",
+          value: "print('Panel diario)",
           feedbackWhenMissing: "La primera línea con `print()` todavía parece tener una comilla sin cerrar."
         }
       ]
@@ -5804,18 +5804,18 @@ export const courseExercises: ExerciseData[] = [
   },
   {
     slug: "morning-routine-output",
-    title: "Lee la salida en orden",
+    title: "Predice la salida de un flujo simple",
     exerciseType: "output_check",
     responseFormat: "text",
     moduleSlug: "introduction-to-programming",
     lessonSlug: "running-python-step-by-step",
     order: 2,
     duration: "5 min",
-    summary: "Practica leer Python de arriba hacia abajo prediciendo la salida exacta.",
+    summary: "Practica leer Python de arriba hacia abajo prediciendo la salida exacta de un flujo útil.",
     prompt:
       "Mira el programa de abajo. Escribe la salida exactamente como aparecería, una línea por cada línea de salida.",
     responseLabel: "Salida esperada",
-    responsePlaceholder: "Despertar\nLavarse los dientes\nDesayunar",
+    responsePlaceholder: "Abrir archivo\nLeer datos\nMostrar resumen",
     instructions: [
       "Lee el código desde la primera línea hasta la última.",
       "Escribe solo la salida impresa, no el código con `print()`.",
@@ -5826,7 +5826,7 @@ export const courseExercises: ExerciseData[] = [
       "La respuesta debería tener tres líneas de salida.",
       "No agregues signos que el código no imprime."
     ],
-    starterCode: "print('Despertar')\nprint('Lavarse los dientes')\nprint('Desayunar')",
+    starterCode: "print('Abrir archivo')\nprint('Leer datos')\nprint('Mostrar resumen')",
     successCriteria: [
       "La salida está escrita en el orden correcto.",
       "Cada línea impresa aparece una vez.",
@@ -5838,28 +5838,28 @@ export const courseExercises: ExerciseData[] = [
       normalizeWhitespace: true,
       ignoreCase: true,
       acceptableAnswers: [
-        "Despertar\nLavarse los dientes\nDesayunar",
-        "Despertar\r\nLavarse los dientes\r\nDesayunar"
+        "Abrir archivo\nLeer datos\nMostrar resumen",
+        "Abrir archivo\r\nLeer datos\r\nMostrar resumen"
       ]
     }
   },
   {
     slug: "fix-the-name-print",
-    title: "Arregla el bug al imprimir el nombre",
+    title: "Arregla el bug y recupera la salida",
     exerciseType: "bug_fix",
     responseFormat: "code",
     moduleSlug: "introduction-to-programming",
     lessonSlug: "reading-python-errors-calmly",
     order: 3,
     duration: "6 min",
-    summary: "Practica arreglar un error pequeño concentrándote en la primera línea rota.",
+    summary: "Practica corregir un error pequeño sin tocar lo que ya estaba bien.",
     prompt:
       "Este código debería guardar un nombre e imprimirlo. Corrige el error sin cambiar la idea general del programa.",
     responseLabel: "Tu código corregido",
     responsePlaceholder: "name = 'Maya'\nprint(name)",
     instructions: [
       "Lee con atención la línea que está mal.",
-      "Mantén el nombre guardado exactamente como está.",
+      "Mantén la variable como está.",
       "Corrige el error de escritura y nada más."
     ],
     hints: [
@@ -5918,16 +5918,16 @@ export const courseExercises: ExerciseData[] = [
   },
   {
     slug: "variable-label-check",
-    title: "Explica qué está guardando una variable",
+    title: "Explica para qué sirve una variable",
     exerciseType: "concept_check",
     responseFormat: "text",
     moduleSlug: "variables",
     lessonSlug: "variables-hold-values",
     order: 1,
     duration: "7 min",
-    summary: "Explica la idea principal de una variable con lenguaje simple de principiante.",
+    summary: "Explica la idea principal de una variable con lenguaje claro y directo.",
     prompt:
-      "En 2 o 3 frases cortas, explica qué hace una variable en Python y qué significa `score = 10`.",
+      "En 2 o 3 frases cortas, explica qué hace una variable en Python y qué significa `score = 10` dentro de un programa.",
     responseLabel: "Tu explicación",
     responsePlaceholder:
       "Una variable es un nombre que guarda un valor. `score = 10` significa que la variable llamada score está guardando el número 10.",
@@ -5976,29 +5976,29 @@ export const courseExercises: ExerciseData[] = [
   },
   {
     slug: "coins-after-update",
-    title: "Predice el valor actualizado",
+    title: "Sigue un valor que cambia",
     exerciseType: "output_check",
     responseFormat: "text",
     moduleSlug: "variables",
     lessonSlug: "changing-variable-values",
     order: 2,
     duration: "6 min",
-    summary: "Practica seguir una variable mientras cambia de valor de una línea a la siguiente.",
+    summary: "Practica seguir una variable mientras el programa actualiza un dato.",
     prompt:
       "Lee el programa de abajo. ¿Qué salida exacta imprimirá después de que la variable cambie? Escribe una línea de salida por renglón.",
     responseLabel: "Salida esperada",
-    responsePlaceholder: "3\n5",
+    responsePlaceholder: "4\n3",
     instructions: [
       "Primero lee la asignación inicial y la primera impresión.",
       "Luego lee la actualización antes del segundo `print()`.",
       "Escribe solo los valores de salida."
     ],
     hints: [
-      "El primer `print()` ocurre antes de que cambie la variable.",
+      "El primer `print()` ocurre antes del cambio.",
       "El segundo `print()` usa el valor más nuevo.",
       "Deberías terminar con dos líneas de salida."
     ],
-    starterCode: "coins = 3\nprint(coins)\ncoins = 5\nprint(coins)",
+    starterCode: "tareas_pendientes = 4\nprint(tareas_pendientes)\ntareas_pendientes = 3\nprint(tareas_pendientes)",
     successCriteria: [
       "Muestra primero el valor anterior.",
       "Muestra después el valor actualizado.",
@@ -6007,7 +6007,7 @@ export const courseExercises: ExerciseData[] = [
     executionValidation: {
       requireRunBeforeCheck: true,
       requireRunBeforeComplete: true,
-      expectedOutput: ["3\n5"],
+      expectedOutput: ["4\n3"],
       normalizeOutputWhitespace: true,
       ignoreOutputCase: false,
       requireNoRuntimeError: true
@@ -6017,45 +6017,45 @@ export const courseExercises: ExerciseData[] = [
       minLength: 3,
       normalizeWhitespace: true,
       ignoreCase: true,
-      acceptableAnswers: ["3\n5", "3\r\n5"]
+      acceptableAnswers: ["4\n3", "4\r\n3"]
     }
   },
   {
     slug: "friendly-intro-input",
-    title: "Construye un saludo pequeño con input",
+    title: "Construye una ficha rápida con input",
     exerciseType: "guided_code",
     responseFormat: "code",
     moduleSlug: "variables",
     lessonSlug: "using-input-to-store-text",
     order: 3,
     duration: "8 min",
-    summary: "Une `input`, variables y salida en un programa interactivo pequeño.",
+    summary: "Une `input`, variables y salida en un programa corto que ya produce algo útil.",
     prompt:
-      "Escribe un programa corto que pida un nombre, guarde la respuesta en una variable e imprima un saludo amable usando esa variable.",
+      "Escribe un programa corto que pida un nombre de proyecto, lo guarde en una variable e imprima una línea de confirmación usando esa variable.",
     responseLabel: "Tu programa con input",
     responsePlaceholder:
-      "name = input('¿Cómo te llamas? ')\nprint('Hola, ' + name)",
+      "project_name = input('Nombre del proyecto: ')\nprint('Proyecto listo: ' + project_name)",
     instructions: [
       "Haz una pregunta simple con `input()`.",
-      "Guarda la respuesta en una variable como `name`.",
-      "Imprime una respuesta que incluya la variable guardada."
+      "Guarda la respuesta en una variable con nombre claro.",
+      "Imprime una respuesta que reutilice esa variable."
     ],
     hints: [
-      "Empieza con `name = input(...)`.",
+      "Empieza con una variable y `input(...)`.",
       "Usa `print()` en la línea siguiente.",
       "Mantén el programa en dos líneas cortas."
     ],
-    starterCode: "name = input('¿Cómo te llamas? ')\nprint('Hola, ' + name)",
+    starterCode: "project_name = input('Nombre del proyecto: ')\nprint('Proyecto listo: ' + project_name)",
     successCriteria: [
-      "Usa `input()` para pedir un nombre.",
+      "Usa `input()` para pedir un dato.",
       "Guarda la respuesta en una variable.",
-      "Imprime un saludo que use esa variable."
+      "Imprime una salida que use esa variable."
     ],
     playground: {
-      title: "Prueba la versión interactiva",
-      guidance: "Ejecuta este código y responde la ventana del navegador. Mantén el programa corto para que la interacción siga siendo clara.",
-      starterCode: "name = input('¿Cómo te llamas? ')\nprint('Hola, ' + name)",
-      emptyOutputHint: "Si todavía no ves salida, responde la pregunta y asegúrate de que el código imprima un saludo."
+      title: "Prueba una salida con input",
+      guidance: "Ejecuta este código, responde la ventana del navegador y comprueba que la salida usa el dato ingresado.",
+      starterCode: "project_name = input('Nombre del proyecto: ')\nprint('Proyecto listo: ' + project_name)",
+      emptyOutputHint: "Si todavía no ves salida, responde la pregunta y comprueba que el `print()` use la variable."
     },
     evaluator: {
       type: "structure_check",

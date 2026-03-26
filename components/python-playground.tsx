@@ -40,8 +40,6 @@ export function PythonPlayground({
   const restoredDraft = Boolean(restoredDraftUpdatedAt);
   const code = controlledCode ?? internalCode;
   const baselineCode = initialCode ?? config.starterCode;
-  const hasChangedCode = code !== baselineCode;
-  const hasResult = Boolean(output.trim() || error.trim() || runtimeError);
   const draftsEnabled = Boolean(draftScope && draftSlug);
   const { saveState, clearDraft } = useDraftPersistence({
     enabled: draftsEnabled,
@@ -116,93 +114,60 @@ export function PythonPlayground({
   }
 
   function resetCode() {
+    updateCode(config.starterCode);
     setOutput("");
     setError("");
     setLastRunAt(null);
     void clearDraft();
   }
 
+  const runtimeLabel = loadingRuntime ? "Preparando Python" : runtimeReady ? "Listo para ejecutar" : "Error de carga";
+  const statusLabel = running ? "Ejecutando" : error ? "Con error" : output.trim() ? "Con resultado" : "Sin ejecutar";
+
   return (
-    <Card className={`mission-grid rounded-[30px] border-brand-400/10 bg-[radial-gradient(circle_at_top_left,rgba(78,203,255,0.08),transparent_26%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] ${compact ? "p-4 sm:p-5" : "p-4 sm:p-6"}`}>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div>
+    <Card className={`rounded-[26px] border-slate-800 bg-[linear-gradient(180deg,rgba(12,22,34,0.98),rgba(8,16,26,0.98))] ${compact ? "p-4" : "p-5"}`}>
+      <div className="flex flex-col gap-3 border-b border-slate-800 pb-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="min-w-0">
           <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
             <TerminalSquare className="h-4 w-4 text-brand-300" />
-            {config.title ?? "Pruébalo en Python"}
+            {config.title ?? "Prueba en Python"}
           </div>
-          <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-400">{config.guidance}</p>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">{config.guidance}</p>
         </div>
-        <div className="flex flex-wrap gap-2">
-          <div className="w-fit rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-1 text-xs font-semibold text-brand-100">
-            Ejecución en navegador
-          </div>
-          <div className="w-fit rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-semibold text-slate-300">
-            {loadingRuntime ? "Preparando estación" : runtimeReady ? "Estación lista" : "Estación con problema"}
-          </div>
+        <div className="flex flex-wrap gap-2 text-xs font-semibold">
+          <span className="rounded-full border border-slate-800 bg-slate-950/80 px-3 py-1 text-slate-300">
+            {runtimeLabel}
+          </span>
+          <span className="rounded-full border border-slate-800 bg-slate-950/80 px-3 py-1 text-slate-300">
+            {statusLabel}
+          </span>
         </div>
       </div>
+
       {restoredDraft ? (
-        <div className="mt-4 rounded-[20px] border border-brand-400/15 bg-brand-500/10 px-4 py-3 text-sm text-brand-100 shadow-[0_0_18px_rgba(29,211,139,0.08)]">
-          <p className="font-semibold">Recuperamos tu borrador anterior</p>
-          <p className="mt-1 leading-6 text-brand-200">
-            Estás retomando el código que editaste por última vez {formatDraftTime(restoredDraftUpdatedAt)}.
-            Reiniciar borrará este borrador guardado y volverá al código inicial.
-          </p>
+        <div className="mt-4 rounded-[18px] border border-brand-400/15 bg-brand-500/10 px-4 py-3 text-sm text-brand-100">
+          Retomaste un borrador guardado {formatDraftTime(restoredDraftUpdatedAt)}.
         </div>
       ) : null}
+
       {draftsEnabled ? (
-        <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-slate-400">
+        <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-950/70 px-3 py-1.5 text-xs text-slate-400">
           <Save className="h-3.5 w-3.5 text-brand-300" />
           {saveState === "saving"
             ? "Guardando borrador..."
             : saveState === "saved"
               ? "Borrador guardado"
               : saveState === "error"
-                ? "No se pudo guardar el borrador en este momento"
-                : "Los borradores se guardan automáticamente"}
+                ? "No se pudo guardar el borrador"
+                : "Guardado automático activo"}
         </div>
       ) : null}
-      <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-        <div className="rounded-[20px] border border-white/10 bg-white/[0.03] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Estado del código</p>
-          <p className="mt-2 text-sm font-semibold text-slate-100">
-            {hasChangedCode ? "Borrador en curso" : "Código base listo"}
-          </p>
-        </div>
-        <div className="rounded-[20px] border border-white/10 bg-white/[0.03] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Ejecución</p>
-          <p className="mt-2 text-sm font-semibold text-slate-100">
-            {running
-              ? "Corriendo ahora"
-              : runtimeReady
-                ? hasResult
-                  ? "Resultado disponible"
-                  : "Listo para ejecutar"
-                : "Preparando estación"}
-          </p>
-        </div>
-        <div className="rounded-[20px] border border-white/10 bg-white/[0.03] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Último movimiento</p>
-          <p className="mt-2 text-sm font-semibold text-slate-100">
-            {lastRunAt ? formatDraftTime(lastRunAt) : restoredDraft ? `Retomado ${formatDraftTime(restoredDraftUpdatedAt)}` : "Sin ejecución todavía"}
-          </p>
-        </div>
-      </div>
 
-      <div className="mt-5 grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
-        <div className="min-w-0 rounded-[26px] border border-slate-800 bg-slate-950/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Editor</p>
-              <p className="mt-1 text-sm font-semibold text-slate-100">Zona de construcción</p>
-            </div>
-            <div className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
-              Python
-            </div>
-          </div>
+      <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="min-w-0">
           <textarea
-            rows={compact ? 9 : 11}
-            className="mt-4 w-full rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 font-mono text-[13px] leading-7 text-slate-100 outline-none focus:border-brand-400 sm:text-sm"
+            rows={compact ? 10 : 12}
+            className="w-full rounded-[22px] border border-slate-800 bg-slate-950/90 px-4 py-4 font-mono text-[13px] leading-7 text-slate-100 outline-none focus:border-brand-400 sm:text-sm"
             value={code}
             onChange={(event) => updateCode(event.target.value)}
           />
@@ -210,7 +175,7 @@ export function PythonPlayground({
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button className="w-full gap-2 sm:w-auto" onClick={() => void runCode()} disabled={!runtimeReady || running}>
               {running ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <PlayCircle className="h-4 w-4" />}
-              {running ? "Ejecutando..." : "Ejecutar código"}
+              {running ? "Ejecutando" : "Ejecutar"}
             </Button>
             <Button variant="secondary" className="w-full gap-2 sm:w-auto" onClick={resetCode}>
               <RotateCcw className="h-4 w-4" />
@@ -219,37 +184,34 @@ export function PythonPlayground({
           </div>
         </div>
 
-        <div className="min-w-0 rounded-[26px] border border-slate-800 bg-[linear-gradient(180deg,#050b14,#0b1620)] p-5 text-sm text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Consola</p>
-              <p className="mt-1 font-semibold text-white">Salida de ejecución</p>
-            </div>
-            <div className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
-              {error ? "Error detectado" : output.trim().length > 0 ? "Salida lista" : "Esperando ejecución"}
-            </div>
-          </div>
-          <div className="mt-4 min-h-[180px] overflow-x-auto whitespace-pre-wrap break-words rounded-[22px] border border-slate-800 bg-slate-950/70 px-4 py-4 font-mono text-[13px] leading-7 text-slate-200 sm:text-sm">
+        <div className="min-w-0 rounded-[22px] border border-slate-800 bg-slate-950/70 p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Salida</p>
+          <div className="mt-3 min-h-[220px] overflow-x-auto whitespace-pre-wrap break-words rounded-[18px] border border-slate-800 bg-[#050b14] px-4 py-4 font-mono text-[13px] leading-7 text-slate-200 sm:text-sm">
             {loadingRuntime
-              ? "Cargando el entorno de Python para tu navegador..."
+              ? "Cargando Python para tu navegador..."
               : runtimeError
                 ? runtimeError
                 : error
                   ? `Python se detuvo aquí:\n${error}`
                   : output.trim().length > 0
                     ? output
-                    : config.emptyOutputHint ?? "Tu código se ejecutó. Si todavía no aparece nada aquí, agrega una línea con `print()` para mostrar un resultado."}
+                    : config.emptyOutputHint ?? "Ejecuta el código para ver el resultado aquí."}
           </div>
+
           {(runtimeError || error) ? (
-            <div className="mt-4 flex items-start gap-3 rounded-[20px] border border-amber-400/20 bg-amber-500/10 px-4 py-4 text-sm text-amber-100">
+            <div className="mt-4 flex items-start gap-3 rounded-[18px] border border-amber-400/20 bg-amber-500/10 px-4 py-4 text-sm text-amber-100">
               <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
               <p>
                 {runtimeError
-                  ? "La estación de ejecución tuvo un problema al cargar. Puedes recargar la página y volver a intentarlo."
-                  : "Python marcó un error. Léelo con calma, corrige una cosa a la vez y vuelve a ejecutar."}
+                  ? "Hubo un problema al cargar el runtime."
+                  : "Revisa el error, cambia una sola cosa y vuelve a ejecutar."}
               </p>
             </div>
           ) : null}
+
+          <div className="mt-4 text-xs text-slate-500">
+            {lastRunAt ? `Última ejecución ${formatDraftTime(lastRunAt)}` : "Todavía no ejecutaste este código."}
+          </div>
         </div>
       </div>
     </Card>
@@ -258,7 +220,7 @@ export function PythonPlayground({
 
 function formatDraftTime(value: string | Date | null | undefined) {
   if (!value) {
-    return "antes";
+    return "recién";
   }
 
   const date = value instanceof Date ? value : new Date(value);

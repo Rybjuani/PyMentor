@@ -53,7 +53,7 @@ export function ProgressAction({
 
       if (!response.ok) {
         const payload = (await response.json().catch(() => null)) as { error?: string } | null;
-        onError?.(payload?.error ?? "Could not update progress.");
+        onError?.(payload?.error ?? "No se pudo actualizar el progreso.");
         return;
       }
 

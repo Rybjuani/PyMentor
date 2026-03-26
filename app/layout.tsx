@@ -16,7 +16,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "PyMentor",
   description:
-    "Una plataforma para aprender Python desde cero con un mentor IA integrado y pensado para principiantes.",
+    "Aprende Python con una base real: tres rutas, práctica útil, proyectos y mentor integrado.",
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CheckCircle2, CircleAlert, Crosshair, LoaderCircle, ShieldCheck, Sparkles, Swords } from "lucide-react";
+import { CheckCircle2, CircleAlert, LoaderCircle, ShieldCheck } from "lucide-react";
 import { ExerciseData, ExerciseEvaluationResult, ExerciseExecutionResult, ProgressStatus } from "@/types";
 import { Card } from "@/components/ui/card";
 import { CodePanel } from "@/components/code-panel";
@@ -11,17 +11,17 @@ import { Button } from "@/components/ui/button";
 
 const feedbackMeta = {
   incomplete: {
-    title: "Todavía estás armando la respuesta",
+    title: "Todavía no alcanza",
     tone: "border-amber-400/20 bg-amber-500/10 text-amber-100",
     icon: LoaderCircle
   },
   partial: {
-    title: "La idea principal está, pero todavía hay un detalle por ajustar",
+    title: "Vas bien, pero falta un ajuste",
     tone: "border-rose-400/20 bg-rose-500/10 text-rose-100",
     icon: CircleAlert
   },
   correct: {
-    title: "Esto ya parece listo para contar como completado",
+    title: "Respuesta lista",
     tone: "border-emerald-400/20 bg-emerald-500/10 text-emerald-100",
     icon: CheckCircle2
   }
@@ -33,7 +33,9 @@ export function ExerciseWorkspace({
   initialAnswer,
   restoredDraftUpdatedAt,
   lessonHref,
-  nextLessonHref
+  nextLessonHref,
+  isFoundationsCapstone = false,
+  isRoute3Capstone = false
 }: {
   exercise: ExerciseData;
   status: ProgressStatus;
@@ -41,6 +43,8 @@ export function ExerciseWorkspace({
   restoredDraftUpdatedAt?: string | Date | null;
   lessonHref: string;
   nextLessonHref?: string | null;
+  isFoundationsCapstone?: boolean;
+  isRoute3Capstone?: boolean;
 }) {
   const [answer, setAnswer] = useState(
     initialAnswer ??
@@ -61,9 +65,8 @@ export function ExerciseWorkspace({
     () =>
       evaluation ?? {
         state: "incomplete" as const,
-        summary: "Revisa tu respuesta para ver qué tan cerca está del objetivo de este ejercicio.",
-        coaching:
-          "El panel de feedback te va a mostrar qué partes ya están bien y cuál es el siguiente detalle a corregir.",
+        summary: "Revisa tu respuesta para ver qué tan cerca está del objetivo.",
+        coaching: "Primero confirma la idea principal. Después corrige el detalle que falta.",
         evaluatorType: exercise.evaluator.type,
         matchedRules: 0,
         totalRules:
@@ -81,22 +84,22 @@ export function ExerciseWorkspace({
       },
     [evaluation, exercise.evaluator]
   );
+
   const displayEvaluation =
     status === "completed"
       ? {
           ...latestEvaluation,
           state: "correct" as const,
           summary: "Este ejercicio ya figura como completado en tu ruta.",
-          coaching: "Igual puedes seguir practicando aquí, revisar la lección o continuar con el siguiente paso."
+          coaching: "Puedes seguir probando variantes, volver a la lección o pasar al siguiente paso."
         }
       : latestEvaluation;
+
   const feedbackState = displayEvaluation.state;
   const feedback = feedbackMeta[feedbackState];
   const Icon = feedback.icon;
   const hasCheckedAnswer = evaluation !== null;
   const canComplete = status === "completed" || (hasCheckedAnswer && evaluation.canComplete);
-  const isFoundationsCapstone = exercise.moduleSlug === "foundations-capstone";
-  const isRoute3Capstone = exercise.moduleSlug === "route3-capstone";
 
   async function checkAnswer() {
     setCheckingAnswer(true);
@@ -145,96 +148,58 @@ export function ExerciseWorkspace({
   }
 
   return (
-    <div className="space-y-5">
-      <Card id="desafio" className="mission-grid rounded-[30px] scroll-mt-24">
-        <div className="flex flex-wrap items-start justify-between gap-4">
+    <div className="space-y-6">
+      <Card className="rounded-[26px] p-5">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_280px]">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Ejercicio</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">Desafío</p>
             <h2 className="mt-2 text-2xl font-bold text-slate-50">{exercise.title}</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-400">{exercise.summary}</p>
+            <p className="mt-3 text-sm leading-7 text-slate-300">{exercise.prompt}</p>
           </div>
-          <div className="rounded-[24px] border border-brand-400/15 bg-brand-500/10 px-4 py-3 text-sm font-semibold text-brand-100">
-            {exercise.duration}
+          <div className="rounded-[20px] border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
+            <div className="flex items-center gap-2 font-semibold text-brand-50">
+              <ShieldCheck className="h-4 w-4" />
+              Para darlo por bueno
+            </div>
+            <p className="mt-3 leading-6">
+              La respuesta tiene que mostrar la idea principal y pasar las comprobaciones clave del ejercicio.
+            </p>
           </div>
         </div>
 
-        <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_0.9fr]">
-          <div className="rounded-[24px] border border-slate-800 bg-slate-950/70 p-5">
-            <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
-              <Crosshair className="h-4 w-4 text-brand-300" />
-              Tu tarea
+        <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
+          <div className="rounded-[20px] border border-slate-800 bg-slate-950/70 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Código base</p>
+            <div className="mt-3">
+              <CodePanel code={exercise.starterCode} />
             </div>
-            <p className="mt-3 text-sm leading-7 text-slate-400">{exercise.prompt}</p>
           </div>
-          <div className="rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-5 text-brand-100 shadow-[0_0_22px_rgba(29,211,139,0.08)]">
-            <div className="flex items-center gap-2 text-sm font-semibold text-brand-200">
-              <ShieldCheck className="h-4 w-4" />
-              Criterio de finalización
+
+          <div className="space-y-4">
+            <div className="rounded-[20px] border border-slate-800 bg-slate-950/70 p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Cómo encararlo</p>
+              <div className="mt-3 space-y-3">
+                {exercise.instructions.map((item) => (
+                  <div key={item} className="flex items-start gap-3 text-sm text-slate-300">
+                    <span className="mt-2 h-2 w-2 rounded-full bg-brand-300" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <p className="mt-3 text-sm leading-7">
-              Este paso solo cuenta como completado cuando la respuesta muestra las señales clave que enseña la lección.
-            </p>
-          </div>
-        </div>
-        <div className="mt-4 grid gap-3 md:grid-cols-3">
-          <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Formato</p>
-            <p className="mt-2 text-sm font-semibold text-slate-100">
-              {exercise.responseFormat === "code" ? "Código" : "Texto"}
-            </p>
-          </div>
-          <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Estado</p>
-            <p className="mt-2 text-sm font-semibold text-slate-100">
-              {status === "completed" ? "Checkpoint cerrado" : status === "in_progress" ? "Checkpoint activo" : "Listo para empezar"}
-            </p>
-          </div>
-          <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Meta</p>
-            <p className="mt-2 text-sm font-semibold text-slate-100">Resolver con claridad, no con prisa</p>
+            <div className="rounded-[20px] border border-slate-800 bg-slate-950/70 p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Pistas</p>
+              <div className="mt-3 space-y-3">
+                {exercise.hints.map((hint) => (
+                  <div key={hint} className="text-sm leading-6 text-slate-300">
+                    {hint}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </Card>
-
-      <div id="workspace" className="grid gap-5 xl:grid-cols-[1fr_0.9fr] scroll-mt-24">
-        <Card className="rounded-[30px]">
-          <div className="flex items-center justify-between gap-3">
-            <h2 className="text-xl font-bold text-slate-50">Código inicial</h2>
-            <span className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-slate-300 ring-1 ring-slate-700">
-              {exercise.exerciseType === "bug_fix" ? "Práctica de depuración" : "Paso de práctica"}
-            </span>
-          </div>
-          <div className="mt-4">
-            <CodePanel code={exercise.starterCode} />
-          </div>
-        </Card>
-
-        <Card className="mission-grid rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.08),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Cómo encararlo</p>
-          <div className="mt-4 space-y-3">
-            {exercise.instructions.map((item) => (
-              <div
-                key={item}
-                className="rounded-[20px] border border-slate-800 bg-slate-950/70 px-4 py-3 text-sm text-slate-300"
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-5 rounded-[24px] border border-slate-800 bg-slate-950 p-4 text-sm text-slate-200">
-            <p className="font-semibold text-white">Pistas útiles</p>
-            <div className="mt-3 space-y-2">
-              {exercise.hints.map((hint) => (
-                <div key={hint} className="flex items-start gap-3">
-                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-brand-400" />
-                  <span>{hint}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Card>
-      </div>
 
       {exercise.playground ? (
         <PythonPlayground
@@ -250,47 +215,48 @@ export function ExerciseWorkspace({
         />
       ) : null}
 
-      <Card className="rounded-[30px]">
-        <div className="flex flex-wrap items-center justify-between gap-3">
+      <Card className="rounded-[26px] p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <h2 className="text-xl font-bold text-slate-50">{exercise.responseLabel}</h2>
             <p className="mt-2 text-sm leading-6 text-slate-400">
               {exercise.responseFormat === "code"
                 ? exercise.executionValidation?.requireRunBeforeCheck
-                  ? "Edita el código, ejecútalo en el playground y luego revisa tu respuesta para que PyMentor vea la salida real."
-                  : "Edita el código con cuidado y luego revisa tu respuesta para recibir feedback específico del ejercicio."
-              : "Escribe una respuesta corta y luego revísala para ver qué todavía necesita atención."}
+                  ? "Edita, ejecuta y luego revisa. Este ejercicio también mira la salida real."
+                  : "Edita la solución y luego revisa la respuesta."
+                : "Escribe una respuesta corta y revísala contra los criterios del ejercicio."}
             </p>
-            {restoredDraftUpdatedAt ? (
-              <p className="mt-2 text-xs font-medium text-brand-300">
-                Recuperamos tu trabajo guardado para que puedas seguir desde donde lo dejaste.
-              </p>
-            ) : null}
           </div>
-          <div className="w-full rounded-full bg-slate-900 px-3 py-1 text-center text-xs font-semibold text-slate-300 ring-1 ring-slate-700 sm:w-auto sm:text-left">
+          <div className="rounded-full border border-slate-800 bg-slate-950/70 px-3 py-1 text-xs font-semibold text-slate-300">
             {hasCheckedAnswer
-              ? `${displayEvaluation.matchedRules} de ${displayEvaluation.totalRules} comprobaciones superadas`
-              : "Revisa tu respuesta para recibir feedback guiado"}
+              ? `${displayEvaluation.matchedRules} de ${displayEvaluation.totalRules} comprobaciones`
+              : "Sin revisar todavía"}
           </div>
         </div>
 
         <textarea
           rows={11}
-          className="mt-4 w-full rounded-[24px] border border-slate-800 bg-slate-950/80 px-4 py-4 font-mono text-sm leading-7 text-slate-100 outline-none focus:border-brand-400"
+          className="mt-4 w-full rounded-[22px] border border-slate-800 bg-slate-950/90 px-4 py-4 font-mono text-sm leading-7 text-slate-100 outline-none focus:border-brand-400"
           value={answer}
           placeholder={exercise.responsePlaceholder}
           onChange={(event) => handleAnswerChange(event.target.value)}
         />
 
+        {restoredDraftUpdatedAt ? (
+          <p className="mt-3 text-xs font-medium text-brand-300">
+            Recuperamos tu trabajo guardado para que sigas desde donde lo dejaste.
+          </p>
+        ) : null}
+
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           {status === "not_started" ? (
             <ProgressAction entityType="exercise" slug={exercise.slug} status="in_progress" variant="secondary">
-              Marcar ejercicio en progreso
+              Marcar en progreso
             </ProgressAction>
           ) : null}
           <Button variant="secondary" className="w-full gap-2 sm:w-auto" onClick={() => void checkAnswer()} disabled={checkingAnswer}>
             {checkingAnswer ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
-            Revisar mi respuesta
+            Revisar respuesta
           </Button>
           <ProgressAction
             entityType="exercise"
@@ -300,37 +266,38 @@ export function ExerciseWorkspace({
             requestBody={{ answer, execution }}
             onError={setRequestError}
           >
-            Marcar ejercicio como completado
+            Marcar como completado
           </ProgressAction>
           <a
             href={lessonHref}
             className="inline-flex w-full items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-100 ring-1 ring-slate-700 sm:w-auto"
           >
-            Revisar lección
+            Volver a la lección
           </a>
         </div>
 
         {!canComplete ? (
           <p className="mt-4 text-sm leading-6 text-slate-500">
             {exercise.executionValidation?.requireRunBeforeComplete
-              ? "Ejecuta el código y completa la revisión primero. Este ejercicio usa la salida del navegador como parte de la finalización."
-              : "Completa la revisión primero. El ejercicio solo se puede completar cuando una respuesta revisada muestra las comprobaciones clave de aprendizaje."}
+              ? "Ejecuta el código y revisa la respuesta antes de marcarla."
+              : "Revisa la respuesta antes de marcarla como completada."}
           </p>
         ) : null}
+
         {requestError ? (
-          <div className="mt-4 rounded-[20px] border border-rose-400/20 bg-rose-500/10 px-4 py-4 text-sm text-rose-100">
+          <div className="mt-4 rounded-[18px] border border-rose-400/20 bg-rose-500/10 px-4 py-4 text-sm text-rose-100">
             {requestError}
           </div>
         ) : null}
       </Card>
 
-      <Card id="feedback" className={`mission-grid rounded-[30px] border ${feedback.tone} scroll-mt-24`}>
+      <Card className={`rounded-[26px] border ${feedback.tone} p-5`}>
         <div className="flex items-start gap-4">
           <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-black/15 ring-1 ring-white/10">
             <Icon className={`h-5 w-5 ${feedbackState === "incomplete" ? "animate-spin" : ""}`} />
           </div>
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] opacity-70">Retroalimentación</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] opacity-70">Retroalimentación</p>
             <h3 className="mt-2 text-xl font-bold">{feedback.title}</h3>
             <p className="mt-3 max-w-2xl text-sm leading-7">{displayEvaluation.summary}</p>
             <p className="mt-2 max-w-2xl text-sm leading-7 opacity-90">{displayEvaluation.coaching}</p>
@@ -342,85 +309,50 @@ export function ExerciseWorkspace({
             {displayEvaluation.checks.map((check) => (
               <div
                 key={check.id}
-                className={`rounded-[22px] border px-4 py-4 text-sm ${
+                className={`rounded-[18px] border px-4 py-4 text-sm ${
                   check.passed
                     ? "border-emerald-400/20 bg-black/15 text-slate-200"
                     : "border-white/10 bg-black/10 text-slate-300"
                 }`}
               >
-                <div className="flex items-center gap-3">
-                  <span
-                    className={`h-2.5 w-2.5 rounded-full ${
-                      check.passed ? "bg-emerald-500" : "bg-slate-400"
-                    }`}
-                  />
-                  <p className="font-semibold text-slate-50">{check.label}</p>
-                </div>
+                <p className="font-semibold text-slate-50">{check.label}</p>
                 <p className="mt-2 leading-6">
-                  {check.passed ? "Esta parte se ve bien." : check.feedbackWhenMissing}
+                  {check.passed ? "Esta parte está bien." : check.feedbackWhenMissing}
                 </p>
               </div>
             ))}
           </div>
         ) : (
-          <div className="mt-5 rounded-[22px] bg-black/10 px-4 py-4 text-sm text-slate-300">
-            Ejecuta la revisión de la respuesta para ver feedback específico desde el servidor.
+          <div className="mt-5 rounded-[18px] bg-black/10 px-4 py-4 text-sm text-slate-300">
+            Ejecuta la revisión para ver comprobaciones concretas.
           </div>
         )}
 
-        <div id="siguiente-paso" className="mt-5 rounded-[24px] border border-white/10 bg-black/10 p-4 text-sm text-slate-300 scroll-mt-24">
-          <div className="flex items-center gap-2 font-semibold text-slate-50">
-            <Sparkles className="h-4 w-4 text-brand-300" />
-            Siguiente movimiento
-          </div>
+        <div className="mt-5 rounded-[20px] border border-white/10 bg-black/10 p-4 text-sm text-slate-300">
+          <p className="font-semibold text-slate-50">Siguiente paso</p>
           <p className="mt-2 leading-6">
             {status === "completed"
               ? isRoute3Capstone
-                ? "Este cierre ya quedó marcado. Desde aquí puedes volver al panel y ver la base actual de PyMentor como un recorrido completo en tu cuenta."
+                ? "Este cierre ya quedó marcado. Puedes volver al panel y revisar la base completa."
                 : isFoundationsCapstone
-                ? "Este paso final ya quedó marcado. Desde aquí puedes volver al panel o entrar a la nueva etapa con la base ya cerrada."
-                : "Este ejercicio ya está marcado como completado. Puedes volver a la lección o seguir cuando quieras."
+                  ? "Este cierre ya quedó marcado. Puedes volver al panel o abrir la ruta siguiente."
+                  : "Este ejercicio ya quedó resuelto. Puedes seguir con la siguiente lección."
               : canComplete
-                ? isRoute3Capstone
-                  ? "Tu respuesta ya sostiene este cierre de Ruta 3. Márcala como completada para cerrar la ruta y dejar visible el final del aprendizaje base actual."
-                  : isFoundationsCapstone
-                  ? "Tu respuesta ya sostiene este cierre de fundamentos. Márcala como completada para cerrar la etapa y abrir la siguiente con claridad."
-                  : "Tu respuesta ya se ve suficientemente sólida para este paso. Márcala como completada para actualizar tu ruta."
-                : isRoute3Capstone
-                  ? "Usa las comprobaciones que faltan como guía. Este capstone busca un cierre claro, estructurado y útil para toda la base actual."
-                : isFoundationsCapstone
-                  ? "Usa las comprobaciones que faltan como guía. Este capstone busca que cierres la etapa con una solución clara, no perfecta."
-              : "Usa las comprobaciones que faltan como guía y luego vuelve a revisar la respuesta."}
-            </p>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            <div className="rounded-[18px] border border-white/10 bg-white/[0.03] px-4 py-3">
-              <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
-                <Swords className="h-4 w-4 text-brand-300" />
-                Recompensa
-              </div>
-              <p className="mt-2 text-sm leading-6 text-slate-400">
-                Cuando este ejercicio se cierre, tu ruta mostrará un avance visible y más sólido.
-              </p>
-            </div>
-            <div className="rounded-[18px] border border-white/10 bg-white/[0.03] px-4 py-3">
-              <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
-                <ShieldCheck className="h-4 w-4 text-brand-300" />
-                Enfoque
-              </div>
-              <p className="mt-2 text-sm leading-6 text-slate-400">
-                Aquí importa sostener la idea principal y el resultado, no buscar una perfección rígida.
-              </p>
-            </div>
+                ? "La respuesta ya se sostiene. Márcala como completada para mover tu ruta."
+                : "Usa las comprobaciones que faltan como guía y vuelve a revisar."}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-4">
+            {nextLessonHref ? (
+              <a href={nextLessonHref} className="font-semibold text-brand-300">
+                Ir a la siguiente lección
+              </a>
+            ) : null}
+            {(isFoundationsCapstone || isRoute3Capstone) && !nextLessonHref ? (
+              <a href="/dashboard" className="font-semibold text-brand-300">
+                Volver al panel
+              </a>
+            ) : null}
           </div>
-          {nextLessonHref ? (
-            <a href={nextLessonHref} className="mt-4 inline-flex text-sm font-semibold text-brand-300">
-              Continuar a la siguiente lección
-            </a>
-          ) : isFoundationsCapstone || isRoute3Capstone ? (
-            <a href="/dashboard" className="mt-4 inline-flex text-sm font-semibold text-brand-300">
-              Volver al panel de cierre
-            </a>
-          ) : null}
         </div>
       </Card>
     </div>

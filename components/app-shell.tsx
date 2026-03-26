@@ -1,15 +1,5 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  Bot,
-  ChevronRight,
-  Flame,
-  LayoutDashboard,
-  Radar,
-  Route,
-  Sparkles,
-  Target
-} from "lucide-react";
+import { Bot, LayoutDashboard, Route, Sparkles } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { cn } from "@/lib/utils";
 
@@ -34,100 +24,59 @@ export function AppShell({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(29,211,139,0.12),transparent_18%),radial-gradient(circle_at_80%_0%,rgba(78,203,255,0.12),transparent_20%),linear-gradient(180deg,#03060d_0%,#08111a_36%,#0b1620_100%)] text-slate-100">
-      <div className="mx-auto grid min-h-screen max-w-7xl gap-6 px-3 py-3 sm:px-4 sm:py-4 lg:grid-cols-[280px_1fr] lg:px-6">
-        <aside className="order-2 app-surface mission-grid panel-glow rounded-[30px] px-4 py-5 sm:rounded-[36px] sm:px-5 sm:py-6 lg:order-1">
-          <Link href="/" className="mb-7 flex items-center gap-3 sm:mb-8 lg:mb-10">
-            <BrandMark compact />
-            <div className="min-w-0">
-              <div className="font-extrabold">PyMentor</div>
-              <div className="text-sm text-slate-400">Centro de misión para avanzar en Python</div>
-            </div>
-          </Link>
-
-          <nav className="no-scrollbar flex gap-2 overflow-x-auto pb-1 lg:block lg:space-y-2 lg:overflow-visible lg:pb-0">
-            {items.map(({ href, label, icon: Icon }) => (
-              <Link
-                key={href}
-                href={href}
-                className={cn(
-                  "flex min-w-[138px] items-center justify-between rounded-2xl border border-transparent bg-white/[0.02] px-4 py-3 text-sm font-medium text-slate-300 transition hover:border-brand-400/15 hover:bg-brand-500/10 hover:text-brand-100 sm:min-w-[150px] lg:min-w-0"
-                )}
-              >
-                <span className="flex items-center gap-3">
-                  <Icon className="h-4 w-4" />
-                  {label}
-                </span>
-                <ChevronRight className="h-4 w-4" />
-              </Link>
-            ))}
-          </nav>
-
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-            <div className="rounded-[28px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.18),transparent_35%),linear-gradient(135deg,#07111a_0%,#0c1d28_45%,#123244_100%)] p-5 text-white">
-              <div className="flex items-center gap-3">
-                <div className="status-orb flex h-10 w-10 items-center justify-center rounded-2xl bg-white/8 ring-1 ring-white/10">
-                  <Target className="h-4 w-4" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold">Misión actual</p>
-                  <p className="text-xs text-slate-300">Un checkpoint fuerte a la vez</p>
-                </div>
-              </div>
-              <p className="mt-4 text-sm leading-6 text-slate-200">
-                Avanza con un paso claro cada vez. Cuando cierres una etapa, PyMentor te lo va a hacer sentir de forma visible.
-              </p>
-              <div className="mt-4 flex items-center justify-between rounded-[20px] border border-white/10 bg-slate-950/30 px-4 py-3">
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-100">Ruta viva</p>
-                  <p className="mt-1 text-sm text-slate-200">Cada módulo desbloquea el siguiente tramo.</p>
-                </div>
-                <Radar className="h-4 w-4 text-brand-200" />
-              </div>
-              <Link
-                href="/lesson/what-is-programming"
-                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand-200"
-              >
-                Ir al inicio de la ruta <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            <div className="rounded-[28px] border border-slate-800 bg-[linear-gradient(180deg,rgba(10,18,29,0.96),rgba(8,15,25,0.96))] p-5">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-amber-500/12 text-amber-300">
-                  <Flame className="h-4 w-4" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-slate-100">Cadena de impulso</p>
-                  <p className="text-xs text-slate-400">Progreso con ritmo estable</p>
-                </div>
-              </div>
-              <p className="mt-3 text-sm leading-6 text-slate-400">
-                Incluso diez minutos enfocados cuentan. Este espacio premia el avance constante, no el desgaste.
-              </p>
-            </div>
-          </div>
-        </aside>
-
-        <main className="order-1 space-y-6 rounded-[30px] border border-slate-800/80 bg-[linear-gradient(180deg,rgba(7,13,20,0.76),rgba(7,13,20,0.92))] p-4 shadow-soft ring-1 ring-white/5 sm:rounded-[36px] sm:p-5 lg:order-2 lg:p-8">
-          <header className="mission-grid rounded-[26px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.18),transparent_28%),radial-gradient(circle_at_80%_10%,rgba(78,203,255,0.18),transparent_24%),linear-gradient(135deg,#07111a_0%,#0c1927_48%,#123346_100%)] px-5 py-6 text-white sm:rounded-[32px] sm:px-6 sm:py-8">
-            <div className="flex flex-wrap items-start justify-between gap-4">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(29,211,139,0.1),transparent_18%),radial-gradient(circle_at_88%_0%,rgba(78,203,255,0.08),transparent_16%),linear-gradient(180deg,#03060d_0%,#08111a_40%,#0b1620_100%)] text-slate-100">
+      <div className="mx-auto max-w-7xl px-3 py-3 sm:px-4 sm:py-4 lg:px-6">
+        <div className="grid gap-4 lg:grid-cols-[240px_minmax(0,1fr)]">
+          <aside className="rounded-[28px] border border-slate-800/80 bg-[linear-gradient(180deg,rgba(10,18,29,0.94),rgba(8,15,25,0.98))] p-4 shadow-[0_28px_80px_rgba(0,0,0,0.36)]">
+            <Link href="/" className="flex items-center gap-3">
+              <BrandMark compact />
               <div className="min-w-0">
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-200">
-                  {userName ? `Operador ${userName}` : "Sistema de progreso pensado para principiantes"}
-                </p>
-                <h1 className="mt-3 max-w-3xl text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">{title}</h1>
-                <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-300">{description}</p>
+                <div className="font-extrabold text-slate-50">PyMentor</div>
+                <div className="text-xs text-slate-400">Base completa de Python</div>
               </div>
-              <div className="hidden min-w-[180px] rounded-[24px] border border-white/10 bg-slate-950/20 px-4 py-4 text-right ring-1 ring-white/5 md:block">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-100">PyMentor Core</p>
-                <p className="mt-2 text-sm text-slate-200">Ruta guiada, progreso visible y práctica con intención.</p>
-              </div>
-              {actions ? <div className="w-full sm:w-auto">{actions}</div> : null}
+            </Link>
+
+            <nav className="mt-5 flex gap-2 overflow-x-auto pb-1 lg:block lg:space-y-2 lg:overflow-visible lg:pb-0">
+              {items.map(({ href, label, icon: Icon }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className={cn(
+                    "inline-flex min-w-[124px] items-center gap-2 rounded-2xl border border-slate-800 bg-slate-950/60 px-3 py-2.5 text-sm font-medium text-slate-300 transition hover:border-brand-400/20 hover:text-slate-50 lg:flex lg:min-w-0"
+                  )}
+                >
+                  <Icon className="h-4 w-4 text-slate-400" />
+                  {label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="mt-5 rounded-[22px] border border-brand-400/15 bg-brand-500/10 px-4 py-4 text-sm text-brand-100">
+              <p className="font-semibold text-brand-50">Un paso útil por vez</p>
+              <p className="mt-2 leading-6 text-brand-100/90">
+                Menos ruido, más progreso visible, práctica real y ayuda a mano cuando hace falta.
+              </p>
             </div>
-          </header>
-          {children}
-        </main>
+          </aside>
+
+          <main className="rounded-[28px] border border-slate-800/80 bg-[linear-gradient(180deg,rgba(7,13,20,0.78),rgba(7,13,20,0.94))] p-4 shadow-[0_28px_80px_rgba(0,0,0,0.34)] sm:p-5 lg:p-6">
+            <header className="border-b border-slate-800/80 pb-5">
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                    {userName ? userName : "PyMentor"}
+                  </p>
+                  <h1 className="mt-2 max-w-3xl text-2xl font-extrabold tracking-tight text-slate-50 sm:text-3xl">
+                    {title}
+                  </h1>
+                  <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-400">{description}</p>
+                </div>
+                {actions ? <div className="w-full sm:w-auto">{actions}</div> : null}
+              </div>
+            </header>
+            <div className="mt-6 space-y-6">{children}</div>
+          </main>
+        </div>
       </div>
     </div>
   );

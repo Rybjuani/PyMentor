@@ -39,17 +39,17 @@ export function OnboardingFlow({
           Bienvenido a PyMentor
         </h1>
         <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-400">
-          No necesitas saber nada todavía. PyMentor te va a guiar por una sola ruta de Python, paso a paso y con claridad.
+          No necesitas saber nada todavía. PyMentor te va a guiar por un recorrido base de Python, paso a paso, con claridad y con una meta visible al final.
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           <div className="rounded-[24px] border border-slate-800 bg-slate-900/70 p-5">
             <div className="flex items-center gap-2 font-semibold text-slate-100">
               <Compass className="h-4 w-4 text-brand-300" />
-              Una sola ruta
+              Camino claro
             </div>
             <p className="mt-2 text-sm leading-6 text-slate-400">
-              Empiezas desde el principio y siempre sabes qué sigue.
+              Empiezas desde el principio y siempre sabes qué sigue dentro del recorrido base.
             </p>
           </div>
           <div className="rounded-[24px] border border-slate-800 bg-slate-900/70 p-5">
@@ -73,7 +73,7 @@ export function OnboardingFlow({
         </div>
 
         <div className="mt-8 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-5 text-sm text-brand-100">
-          Tu primer paso es simple: abre la primera lección, consigue una primera victoria rápida y deja que esa inercia te lleve hasta un cierre real de fundamentos.
+          Tu primer paso es simple: abre la primera lección, consigue una primera victoria rápida y deja que esa inercia te lleve hacia una base real de Python, construida por etapas.
         </div>
 
         <div className="mt-8">
@@ -108,7 +108,7 @@ export function OnboardingFlow({
           <div className="rounded-[22px] border border-white/8 bg-white/5 p-4">
             <p className="font-semibold">4. Cerrar una primera etapa real</p>
             <p className="mt-2 text-sm leading-6 text-slate-300">
-              El recorrido termina en un cierre de fundamentos para que sepas, con claridad, que ya construiste una base real en Python.
+              El recorrido sigue creciendo por rutas, pero siempre con cierres visibles para que sepas, con claridad, lo que ya dominaste.
             </p>
           </div>
         </div>

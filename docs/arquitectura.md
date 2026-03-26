@@ -124,7 +124,7 @@ Características:
 
 ## Decisiones intencionales
 
-- una sola ruta en vez de múltiples caminos simultáneos
+- un recorrido base coherente antes de abrir caminos o tracks paralelos
 - apoyo fuerte al principio, más autonomía al final
 - progresión visible como parte del producto
 - browser runner con Pyodide en vez de runner server-side

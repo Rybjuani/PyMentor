@@ -7,7 +7,8 @@ El estado actual del proyecto cubre tres etapas completas y claramente diferenci
 ## Qué incluye hoy
 
 - Tres rutas completas con cierre formal: fundamentos, Python práctico 2 y Herramientas estructuradas.
-- Lecciones, ejercicios, proyectos guiados, proyectos con más autonomía, capstones de Ruta 1 y capstones de Ruta 2.
+- Un final oficial del aprendizaje base actual, visible en dashboard y roadmap.
+- Lecciones, ejercicios, proyectos guiados, proyectos con más autonomía y capstones de cierre para las tres rutas actuales.
 - Progreso persistido por usuario con autenticación real.
 - Mentor IA con Groq integrado server-side.
 - Playground de Python en el navegador con Pyodide.
@@ -79,6 +80,7 @@ Ruta 3 ya recorre `Programas multiarchivo simples`, `Utilidades multiarchivo con
 - Ruta 2 se lee como una etapa práctica distinta, con cierre formal en `Cierre de Ruta 2`.
 - Ruta 3 se lee como una tercera etapa formal, con cierre propio en `Cierre de Ruta 3`.
 - El producto actual ya funciona como una base completa de aprendizaje en tres rutas encadenadas y un final oficial del aprendizaje base actual.
+- El estado post-completado ya no queda vacío: el producto invita a repasar, revisar capstones y esperar una etapa futura sin fingir que ya existe una Ruta 4.
 
 ## Requisitos
 

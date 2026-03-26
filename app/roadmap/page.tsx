@@ -41,7 +41,7 @@ export default async function RoadmapPage() {
       title="Ruta de aprendizaje de Python"
       description={
         baseJourneyCompleted
-          ? "Aquí ya se leen tres etapas con intención clara y cierre formal: Fundamentos, Python práctico 2 y Herramientas estructuradas. El recorrido base actual ya aparece como una ruta completa, no como una suma de módulos."
+          ? "Aquí ya se leen tres etapas con intención clara y cierre formal: Fundamentos, Python práctico 2 y Herramientas estructuradas. El recorrido base actual ya aparece como una ruta completa, no como una suma de módulos, y tiene una meta actual claramente cerrada."
         : thirdTrackModules.length > 0
           ? "Aquí ya se leen tres etapas con intención clara: Fundamentos, Python práctico 2 y una nueva Ruta 3 que abre el siguiente nivel sin romper el cierre de las rutas anteriores."
         : foundationsCompleted
@@ -83,7 +83,7 @@ export default async function RoadmapPage() {
             </p>
             <p className="mt-2 leading-6">
               {baseJourneyCompleted
-                ? "La tercera etapa ya no aparece como apertura: ahora también tiene cierre propio y convierte el recorrido actual en una base completa, sólida y visible en la cuenta."
+                ? "La tercera etapa ya no aparece como apertura: ahora también tiene cierre propio y convierte el recorrido actual en una base completa, sólida, usable y visible en la cuenta."
                 : thirdTrackModules.length > 0
                 ? "La siguiente gran etapa ya no es una promesa vacía: Ruta 3 aparece como apertura real y deja claro que el recorrido sigue creciendo por fases, no por módulos sueltos."
                 : foundationsCompleted
@@ -224,13 +224,29 @@ export default async function RoadmapPage() {
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">
             {baseJourneyCompleted
-              ? "PyMentor ya se siente como un producto de tres rutas encadenadas y completas: una base fuerte, una etapa práctica cerrada y una tercera etapa estructurada también cerrada. La experiencia actual ya tiene una línea de llegada clara."
+              ? "PyMentor ya se siente como un producto de tres rutas encadenadas y completas: una base fuerte, una etapa práctica cerrada y una tercera etapa estructurada también cerrada. La experiencia actual ya tiene una línea de llegada clara y no necesita fingir contenido que todavía no existe."
             : thirdTrackModules.length > 0
               ? "PyMentor ya se siente como un producto de etapas encadenadas: una base fuerte, una ruta práctica cerrada y una tercera apertura que eleva la organización del código sin saltar todavía a complejidad dura."
               : foundationsCompleted
                 ? "El mapa ya no se lee como una acumulación de módulos. Se entiende una primera etapa cerrada y una segunda etapa práctica que toma el relevo con otra intención."
                 : "La primera etapa sigue empujando el recorrido. Cada cierre mueve la cuenta y desbloquea el siguiente tramo de forma visible."}
           </p>
+          {baseJourneyCompleted ? (
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              <div className="rounded-[22px] border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
+                <p className="font-semibold text-slate-100">Fundamentos cerrados</p>
+                <p className="mt-2 leading-6 text-slate-400">Variables, condicionales, bucles, funciones y primera confianza real con Python.</p>
+              </div>
+              <div className="rounded-[22px] border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
+                <p className="font-semibold text-slate-100">Práctica útil cerrada</p>
+                <p className="mt-2 leading-6 text-slate-400">Archivos, organización, consulta, actualización y herramientas pequeñas con más sentido práctico.</p>
+              </div>
+              <div className="rounded-[22px] border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
+                <p className="font-semibold text-slate-100">Estructura cerrada</p>
+                <p className="mt-2 leading-6 text-slate-400">Programas multiarchivo simples, coordinación más clara y utilidades más reales como cierre del recorrido base.</p>
+              </div>
+            </div>
+          ) : null}
         </Card>
       </section>
     </AppShell>

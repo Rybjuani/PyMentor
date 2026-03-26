@@ -22,7 +22,6 @@ import {
   isModuleInSecondTrack,
   isModuleInThirdTrack
 } from "@/lib/course";
-import { achievements } from "@/lib/mock-data";
 import { getProgressForUser } from "@/lib/user-progress";
 
 export default async function DashboardPage() {
@@ -41,7 +40,6 @@ export default async function DashboardPage() {
     : null;
   const recentActivity = await getRecentActivityForUser(user.id);
   const weeklyCompletedSteps = overall.completed === 0 ? 0 : Math.min(overall.completed, 2);
-  const earnedAchievements = achievements.filter((achievement) => achievement.state === "earned").length;
   const foundationsCompleted = hasCompletedFoundationsTrack(progress);
   const secondTrackCompleted = hasCompletedSecondTrack(progress);
   const baseJourneyCompleted = hasCompletedCurrentBaseJourney(progress);
@@ -53,6 +51,33 @@ export default async function DashboardPage() {
   const thirdTrackFocus = Boolean(currentFocus?.lesson?.moduleSlug && isModuleInThirdTrack(currentFocus.lesson.moduleSlug));
   const secondTrackFirstModule = secondTrackModules[0] ?? null;
   const thirdTrackFirstModule = thirdTrackModules[0] ?? null;
+  const achievementPreview = [
+    {
+      id: "first-lesson",
+      title: "Primera lección completada",
+      description: "Abriste el recorrido con una primera victoria real.",
+      state: overall.completed > 0 ? "earned" : "next"
+    },
+    {
+      id: "foundations-finish",
+      title: "Ruta 1 cerrada",
+      description: "Completaste la base de fundamentos y dejaste visible tu primer gran cierre.",
+      state: foundationsCompleted ? "earned" : overall.completed > 0 ? "next" : "locked"
+    },
+    {
+      id: "route2-finish",
+      title: "Ruta 2 cerrada",
+      description: "Convertiste esa base en herramientas más útiles, con archivos, input y flujo práctico.",
+      state: secondTrackCompleted ? "earned" : foundationsCompleted ? "next" : "locked"
+    },
+    {
+      id: "base-finish",
+      title: "Base actual completada",
+      description: "Cerraste las tres rutas actuales y completaste el aprendizaje base oficial de PyMentor.",
+      state: baseJourneyCompleted ? "earned" : secondTrackCompleted ? "next" : "locked"
+    }
+  ] as const;
+  const earnedAchievements = achievementPreview.filter((achievement) => achievement.state === "earned").length;
 
   const continueHref =
     baseJourneyCompleted
@@ -170,7 +195,9 @@ export default async function DashboardPage() {
                 Objetivo de esta semana
               </div>
               <p className="mt-2 text-sm leading-6 text-slate-400">
-                {overall.completed === 0
+                {baseJourneyCompleted
+                  ? "Repasa un capstone, vuelve a una utilidad clave o revisa una ruta completa con calma."
+                  : overall.completed === 0
                   ? "Completa tu primera lección y su ejercicio vinculado esta semana"
                   : "Completa 2 pasos de aprendizaje enfocados esta semana"}
               </p>
@@ -181,7 +208,7 @@ export default async function DashboardPage() {
                 Progreso semanal
               </div>
               <p className="mt-2 text-sm leading-6 text-slate-400">
-                {weeklyCompletedSteps} de 2 pasos completados
+                {baseJourneyCompleted ? "Base actual cerrada. Usa este espacio para repasar con intención." : `${weeklyCompletedSteps} de 2 pasos completados`}
               </p>
             </div>
           </div>
@@ -277,7 +304,7 @@ export default async function DashboardPage() {
                 : currentFocus?.lesson.summary ??
                   "Abre la ruta para elegir tu próxima lección."}
           </p>
-          {baseJourneyCompleted ? (
+            {baseJourneyCompleted ? (
             <div className="mt-5 rounded-[24px] border border-cyan-400/15 bg-cyan-500/10 p-4 text-sm text-cyan-100">
               Recorrido actual: 3 rutas completas, {completedModules} de {modules.length} módulos cerrados y una línea base de producto ya oficialmente terminada.
             </div>
@@ -313,9 +340,25 @@ export default async function DashboardPage() {
               href="/roadmap"
               className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-100 ring-1 ring-slate-700"
             >
-              Abrir ruta
+              {baseJourneyCompleted ? "Revisar mapa completo" : "Abrir ruta"}
             </Link>
           </div>
+          {baseJourneyCompleted ? (
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              <div className="rounded-[22px] border border-cyan-400/15 bg-cyan-500/10 px-4 py-4 text-sm text-cyan-100">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-cyan-200">Qué ya sabes hacer</p>
+                <p className="mt-2 leading-6">Resolver fundamentos, decisiones, bucles, funciones y estructuras de datos con más seguridad.</p>
+              </div>
+              <div className="rounded-[22px] border border-cyan-400/15 bg-cyan-500/10 px-4 py-4 text-sm text-cyan-100">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-cyan-200">Qué ya construyes</p>
+                <p className="mt-2 leading-6">Utilidades pequeñas con archivos, input, consulta, actualización y reportes más ordenados.</p>
+              </div>
+              <div className="rounded-[22px] border border-cyan-400/15 bg-cyan-500/10 px-4 py-4 text-sm text-cyan-100">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-cyan-200">Qué ya organizas</p>
+                <p className="mt-2 leading-6">Programas multiarchivo con un principal claro y funciones de apoyo mejor repartidas.</p>
+              </div>
+            </div>
+          ) : null}
         </Card>
 
         <Card className="rounded-[30px]">
@@ -445,7 +488,7 @@ export default async function DashboardPage() {
         <Card className="rounded-[30px]">
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Logros</p>
           <div className="mt-5 grid gap-3">
-            {achievements.map((achievement) => (
+            {achievementPreview.map((achievement) => (
               <AchievementChip key={achievement.id} achievement={achievement} />
             ))}
           </div>

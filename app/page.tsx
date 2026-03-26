@@ -43,10 +43,10 @@ const benefits = [
 ];
 
 const howItWorks = [
-  "Empieza con una sola ruta clara de Python pensada para principiantes absolutos.",
+  "Empieza con una base completa de Python organizada en tres rutas encadenadas para principiantes absolutos.",
   "Aprende con lecciones cortas, ejemplos, práctica y tareas realistas de arreglo de bugs.",
   "Usa el mentor para pedir explicaciones más simples, ayuda paso a paso y apoyo para depurar.",
-  "Construye confianza con progreso visible, pequeñas victorias y un acompañamiento suave."
+  "Construye confianza con progreso visible, pequeñas victorias y un cierre real del aprendizaje base actual."
 ];
 
 export default function HomePage() {
@@ -77,8 +77,8 @@ export default function HomePage() {
 
               <div className="mt-10 grid max-w-3xl gap-3 sm:grid-cols-3">
                 <div className="rounded-[24px] border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
-                  <p className="text-2xl font-extrabold text-white">Ruta única</p>
-                  <p className="mt-1 text-sm text-slate-300">Un lenguaje. Un mapa de avance. Sin perderte.</p>
+                  <p className="text-2xl font-extrabold text-white">3 rutas base</p>
+                  <p className="mt-1 text-sm text-slate-300">Un recorrido claro, progresivo y con cierre real.</p>
                 </div>
                 <div className="rounded-[24px] border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
                   <p className="text-2xl font-extrabold text-white">Mentor IA</p>
@@ -162,8 +162,8 @@ export default function HomePage() {
           <div className="app-surface rounded-[40px] px-6 py-10 shadow-soft lg:px-10">
             <SectionIntro
               eyebrow="Cómo funciona PyMentor"
-              title="Un camino enfocado y claro para empezar desde cero"
-              description="PyMentor no es una biblioteca gigante de cursos. Es una sola ruta de progreso deliberada donde el siguiente paso siempre es visible, alcanzable y vale la pena."
+              title="Un recorrido base claro para empezar desde cero y avanzar por etapas"
+              description="PyMentor no es una biblioteca gigante de cursos. Es un recorrido base deliberado, dividido en tres rutas encadenadas, donde el siguiente paso siempre es visible, alcanzable y vale la pena."
             />
 
             <div className="mt-10 grid gap-4 md:grid-cols-2">
@@ -203,7 +203,7 @@ export default function HomePage() {
               <SectionIntro
                 eyebrow="Vista previa de la ruta"
                 title="Un solo camino de Python con desbloqueos visibles"
-                description="En vez de abrumar con elecciones infinitas, PyMentor ofrece una ruta pensada con etapas bloqueadas, hitos visibles e impulso que se acumula."
+                description="En vez de abrumar con elecciones infinitas, PyMentor ofrece una base completa de tres rutas con etapas claras, hitos visibles e impulso que se acumula."
               />
               <Link
                 href="/roadmap"
@@ -280,9 +280,9 @@ export default function HomePage() {
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
               Empieza a aprender Python con un impulso que se siente claro, emocionante y real.
             </h2>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/90">
-              PyMentor les da a los principiantes absolutos una primera experiencia sólida: lecciones claras, práctica guiada, progreso visible, proyectos cada vez más reales y un cierre de fundamentos que marca una primera etapa completada.
-            </p>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/90">
+              PyMentor les da a los principiantes absolutos una base real y cerrable: lecciones claras, práctica guiada, progreso visible, proyectos cada vez más útiles y un recorrido de tres rutas que hoy ya tiene una línea de llegada oficial.
+              </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button href="/signup" variant="secondary" className="w-full sm:w-auto">
                 Empezar mi primera lección

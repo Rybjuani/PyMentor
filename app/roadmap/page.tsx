@@ -37,35 +37,35 @@ export default async function RoadmapPage() {
       userName={user.name}
       actions={<SignOutButton />}
     >
-      <Card className="rounded-[26px] border-brand-400/15 bg-[linear-gradient(180deg,rgba(12,23,35,0.98),rgba(8,16,26,0.98))] p-5">
+      <Card className="rounded-[22px] border-brand-400/12 bg-[linear-gradient(180deg,rgba(12,23,35,0.97),rgba(8,16,26,0.98))] p-4">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Progreso general</p>
-            <h2 className="mt-2 text-3xl font-bold text-slate-50">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">Progreso general</p>
+            <h2 className="mt-1.5 text-[1.7rem] font-bold text-slate-50">
               {overall.completed} de {overall.total} lecciones
             </h2>
           </div>
-          <div className="rounded-[18px] border border-slate-800 bg-slate-950/70 px-4 py-3 text-sm text-slate-300">
+          <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/60 px-3.5 py-2.5 text-sm text-slate-300">
             {completedModules} de {modules.length} módulos cerrados
           </div>
         </div>
         <ProgressBar value={overall.percent} className="mt-5" />
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
-          <div className="rounded-[18px] border border-slate-800 bg-slate-950/70 p-4 text-sm text-slate-300">
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/60 p-3.5 text-sm text-slate-300">
             <p className="font-semibold text-slate-100">Ruta 1</p>
             <p className="mt-2 text-slate-400">{foundationsModules.length} módulos de fundamentos y primer cierre formal.</p>
           </div>
-          <div className="rounded-[18px] border border-slate-800 bg-slate-950/70 p-4 text-sm text-slate-300">
+          <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/60 p-3.5 text-sm text-slate-300">
             <p className="font-semibold text-slate-100">Ruta 2</p>
             <p className="mt-2 text-slate-400">{secondTrackModules.length} módulos de utilidades, archivos e input.</p>
           </div>
-          <div className="rounded-[18px] border border-slate-800 bg-slate-950/70 p-4 text-sm text-slate-300">
+          <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/60 p-3.5 text-sm text-slate-300">
             <p className="font-semibold text-slate-100">Ruta 3</p>
             <p className="mt-2 text-slate-400">{thirdTrackModules.length} módulos de organización multiarchivo y cierre actual.</p>
           </div>
         </div>
         {baseJourneyCompleted ? (
-          <div className="mt-5 rounded-[18px] border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
+          <div className="mt-4 rounded-[16px] border border-brand-400/14 bg-brand-500/10 p-3.5 text-sm text-brand-100">
             La base actual ya quedó cerrada. La ruta ahora funciona como historial útil para repasar y revisar proyectos.
           </div>
         ) : null}
@@ -113,10 +113,10 @@ function RouteSection({
 }) {
   return (
     <section>
-      <div className="mb-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{title}</p>
-        <h2 className="mt-2 text-2xl font-bold text-slate-50">{subtitle}</h2>
-        <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-400">{description}</p>
+      <div className="mb-4">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">{title}</p>
+        <h2 className="mt-1.5 text-[1.45rem] font-bold text-slate-50">{subtitle}</h2>
+        <p className="mt-1.5 max-w-3xl text-sm leading-6 text-slate-400">{description}</p>
       </div>
       <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
         {modules.map((module) => {

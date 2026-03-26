@@ -42,8 +42,8 @@ export default async function ExercisePage({
       userName={user.name}
       actions={<SignOutButton />}
     >
-      <section className="space-y-4">
-        <div className="rounded-[20px] border border-slate-800 bg-slate-950/60 px-4 py-3 text-sm text-slate-400">
+      <section className="space-y-3">
+        <div className="rounded-[18px] border border-slate-800/70 bg-slate-950/55 px-4 py-2.5 text-sm text-slate-500">
           {lesson ? `${lesson.module} · ${lesson.title}` : "Ejercicio"} · {exercise.duration} · {status === "completed" ? "completado" : status === "in_progress" ? "en progreso" : "sin empezar"}
         </div>
 

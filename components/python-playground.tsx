@@ -120,11 +120,11 @@ export function PythonPlayground({
   }
 
   return (
-    <section className="rounded-[18px] border border-slate-800 bg-slate-950/60">
-      <div className="flex flex-col gap-3 border-b border-slate-800 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+    <section className="rounded-[16px] border border-slate-800/70 bg-slate-950/55">
+      <div className="flex flex-col gap-2.5 border-b border-slate-800/70 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
           <p className="text-sm font-semibold text-slate-100">{config.title ?? "Prueba en Python"}</p>
-          <p className="mt-1 text-sm leading-6 text-slate-400">{config.guidance}</p>
+          <p className="mt-1 text-sm leading-5 text-slate-400">{config.guidance}</p>
         </div>
         <div className="flex flex-wrap gap-2 text-xs font-semibold">
           <span className="rounded-full border border-slate-800 bg-slate-950/80 px-3 py-1 text-slate-300">
@@ -146,20 +146,20 @@ export function PythonPlayground({
       </div>
 
       {restoredDraft ? (
-        <div className="px-4 pt-4 text-xs text-brand-300">
+        <div className="px-4 pt-3 text-xs text-brand-300">
           Retomaste un borrador guardado {formatDraftTime(restoredDraftUpdatedAt)}.
         </div>
       ) : null}
 
       <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_280px]">
-        <div className="min-w-0 border-b border-slate-800 lg:border-b-0 lg:border-r">
+        <div className="min-w-0 border-b border-slate-800/70 lg:border-b-0 lg:border-r">
           <textarea
             rows={compact ? 7 : 9}
-            className="w-full rounded-none bg-transparent px-4 py-4 font-mono text-[13px] leading-6 text-slate-100 outline-none sm:text-sm"
+            className="w-full rounded-none bg-transparent px-4 py-3.5 font-mono text-[13px] leading-6 text-slate-100 outline-none sm:text-sm"
             value={code}
             onChange={(event) => updateCode(event.target.value)}
           />
-          <div className="flex flex-col gap-3 border-t border-slate-800 px-4 py-4 sm:flex-row sm:flex-wrap">
+          <div className="flex flex-col gap-2.5 border-t border-slate-800/70 px-4 py-3 sm:flex-row sm:flex-wrap">
             <Button className="w-full gap-2 sm:w-auto" onClick={() => void runCode()} disabled={!runtimeReady || running}>
               {running ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <PlayCircle className="h-4 w-4" />}
               {running ? "Ejecutando" : "Ejecutar"}
@@ -172,9 +172,9 @@ export function PythonPlayground({
         </div>
 
         <div className="min-w-0">
-          <div className="px-4 py-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Salida</p>
-            <div className="mt-3 min-h-[120px] overflow-x-auto whitespace-pre-wrap break-words rounded-[14px] bg-[#050b14] px-4 py-4 font-mono text-[13px] leading-6 text-slate-200 sm:min-h-[150px] sm:text-sm">
+          <div className="px-4 py-3.5">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">Salida</p>
+            <div className="mt-2.5 min-h-[112px] overflow-x-auto whitespace-pre-wrap break-words rounded-[12px] bg-[#050b14] px-4 py-3.5 font-mono text-[13px] leading-6 text-slate-200 sm:min-h-[140px] sm:text-sm">
               {loadingRuntime
                 ? "Cargando Python para tu navegador..."
                 : runtimeError
@@ -187,7 +187,7 @@ export function PythonPlayground({
             </div>
 
             {(runtimeError || error) ? (
-              <div className="mt-4 flex items-start gap-3 rounded-[14px] border border-amber-400/20 bg-amber-500/10 px-4 py-4 text-sm text-amber-100">
+              <div className="mt-3 flex items-start gap-3 rounded-[12px] border border-amber-400/20 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
                 <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
                 <p>
                   {runtimeError
@@ -197,7 +197,7 @@ export function PythonPlayground({
               </div>
             ) : null}
 
-            <div className="mt-4 text-xs text-slate-500">
+            <div className="mt-3 text-xs text-slate-500">
               {lastRunAt ? `Última ejecución ${formatDraftTime(lastRunAt)}` : "Todavía no ejecutaste este código."}
             </div>
           </div>

@@ -56,11 +56,11 @@ export default async function LessonPage({
       userName={user.name}
       actions={<SignOutButton />}
     >
-      <section className="space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-[20px] border border-slate-800 bg-slate-950/60 px-4 py-3 text-sm">
+      <section className="space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-[18px] border border-slate-800/70 bg-slate-950/55 px-4 py-2.5 text-sm">
           <div className="min-w-0">
-            <p className="font-semibold text-slate-100">{lesson.module}</p>
-            <p className="text-slate-500">
+            <p className="text-sm font-semibold text-slate-100">{lesson.module}</p>
+            <p className="text-xs text-slate-500">
               Lección {position.current} de {position.total} · {lesson.duration} · {moduleProgress.percent}% del módulo
             </p>
           </div>
@@ -76,20 +76,20 @@ export default async function LessonPage({
           </div>
         </div>
 
-        <article className="rounded-[22px] border border-slate-800 bg-[linear-gradient(180deg,rgba(11,20,31,0.96),rgba(8,15,24,0.98))] p-5">
-          <section className="space-y-4">
+        <article className="rounded-[20px] border border-slate-800/70 bg-[linear-gradient(180deg,rgba(11,20,31,0.95),rgba(8,15,24,0.98))] p-4">
+          <section className="space-y-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Qué estás aprendiendo</p>
-              <h2 className="mt-2 text-lg font-bold text-slate-50">{lesson.goal}</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-400">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">Qué estás aprendiendo</p>
+              <h2 className="mt-1.5 text-base font-bold text-slate-50">{lesson.goal}</h2>
+              <p className="mt-1.5 text-sm leading-5 text-slate-400">
                 Idea central: {lesson.keyIdeas[0]?.description}
               </p>
             </div>
 
-            <div className="rounded-[18px] border border-slate-800 bg-slate-950/55 p-4">
+            <div className="rounded-[16px] border border-slate-800/70 bg-slate-950/50 p-3.5">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
-                  <BookOpen className="h-4 w-4 text-brand-300" />
+                  <BookOpen className="h-[15px] w-[15px] text-brand-300" />
                   <h3 className="text-sm font-semibold text-slate-100">Ejemplo breve</h3>
                 </div>
                 <a href="#practica" className="text-sm font-semibold text-brand-300">
@@ -102,12 +102,12 @@ export default async function LessonPage({
             </div>
           </section>
 
-          <section id="practica" className="mt-8 border-t border-slate-800 pt-8">
+          <section id="practica" className="mt-6 border-t border-slate-800/70 pt-6">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Qué hacer ahora</p>
-                <h3 className="mt-2 text-lg font-bold text-slate-50">Práctica principal</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-300">{lesson.practicePrompt}</p>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">Qué hacer ahora</p>
+                <h3 className="mt-1.5 text-base font-bold text-slate-50">Práctica principal</h3>
+                <p className="mt-1.5 text-sm leading-5 text-slate-300">{lesson.practicePrompt}</p>
               </div>
               {exercise ? (
                 <Link href={`/exercise/${exercise.slug}`} className="hidden shrink-0 items-center gap-2 font-semibold text-brand-300 sm:inline-flex">
@@ -116,11 +116,11 @@ export default async function LessonPage({
               ) : null}
             </div>
 
-            <div className="mt-4 rounded-[18px] border border-slate-800 bg-slate-950/55 px-4 py-3 text-sm text-slate-300">
+            <div className="mt-3 rounded-[16px] border border-slate-800/70 bg-slate-950/50 px-4 py-2.5 text-sm text-slate-300">
               {lesson.practiceChecklist[0]}
             </div>
 
-            <div className="mt-4">
+            <div className="mt-3">
               {lesson.playground ? (
                 <PythonPlayground
                   config={lesson.playground}
@@ -133,8 +133,8 @@ export default async function LessonPage({
             </div>
           </section>
 
-          <section className="mt-8 space-y-4">
-            <details className="rounded-[16px] border border-slate-800 bg-slate-950/60 px-4 py-3">
+          <section className="mt-6 space-y-3">
+            <details className="rounded-[14px] border border-slate-800/70 bg-slate-950/55 px-4 py-3">
               <summary className="cursor-pointer text-sm font-semibold text-slate-200">
                 Ver explicación y puntos clave
               </summary>
@@ -189,7 +189,7 @@ export default async function LessonPage({
               </div>
             </details>
 
-            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-800 pt-5">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-800/70 pt-4">
               <div className="text-sm text-slate-400">
                 {isRoute3Capstone
                   ? "Al completar esta lección cierras Ruta 3 y la base actual."
@@ -213,7 +213,7 @@ export default async function LessonPage({
           </section>
         </article>
 
-        <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-slate-400">
+        <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-slate-500">
           {previousLesson ? (
             <Link href={`/lesson/${previousLesson.slug}`} className="font-semibold text-brand-300">
               Anterior: {previousLesson.title}

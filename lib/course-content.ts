@@ -230,6 +230,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "96 min",
     xp: 420
+  },
+  {
+    slug: "practical-multi-file-utilities",
+    title: "Utilidades multiarchivo con flujo claro",
+    description: "Aplica la idea multiarchivo en herramientas pequeñas donde `principal.py` coordina, `utilidades.py` guarda o consulta y todo el programa se siente más claro y más real.",
+    order: 24,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "102 min",
+    xp: 440
   }
 ];
 
@@ -4896,6 +4906,219 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería dejar claro que el programa pide un dato, hace algo útil y cierra con un pequeño resumen."
     },
     exerciseSlug: "build-a-clear-main-file"
+  },
+  {
+    slug: "coordinating-a-utility-from-main-py",
+    module: "Utilidades multiarchivo con flujo claro",
+    moduleSlug: "practical-multi-file-utilities",
+    order: 1,
+    title: "Coordinar una utilidad desde principal.py",
+    duration: "17 min",
+    difficulty: "Beginner",
+    summary: "Aprende a usar `principal.py` como centro de una utilidad simple: pide datos, decide el recorrido y llama apoyos sin llenarse de detalles.",
+    warmup: "La idea multiarchivo empieza a sentirse útil cuando `principal.py` ya no solo se ve ordenado, sino que realmente coordina una herramienta pequeña de punta a punta.",
+    goal: "Al final de esta lección, deberías poder plantear una utilidad simple donde el archivo principal coordina y un archivo de apoyo resuelve tareas concretas.",
+    keyIdeas: [
+      {
+        title: "principal.py coordina el recorrido",
+        description: "Pide datos, llama funciones y deja visible el orden de la herramienta."
+      },
+      {
+        title: "utilidades.py hace trabajo concreto",
+        description: "Guardar, consultar o resumir pueden vivir en el archivo de apoyo."
+      },
+      {
+        title: "La separación ayuda cuando la herramienta ya hace algo útil",
+        description: "No separas por estilo: separas para sostener mejor una utilidad real y fácil de leer."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué cambia frente al módulo anterior",
+        body: "Antes trabajaste la idea de separar un programa. Ahora vas a usar esa separación dentro de herramientas más útiles, donde un archivo principal realmente coordina algo concreto."
+      },
+      {
+        title: "Qué debería quedar en principal.py",
+        body: "Conviene dejar el pedido de datos, la decisión simple y las llamadas a funciones con nombres claros. Así, al abrir principal.py, entiendes rápido qué hace la utilidad."
+      },
+      {
+        title: "Qué puede ir en utilidades.py",
+        body: "Funciones como guardar una nota, consultar un registro o mostrar un resumen final pueden ir en utilidades.py para que el principal no se vuelva una pared de detalles."
+      },
+      {
+        title: "La meta de Ruta 3",
+        body: "Ruta 3 no busca complicarte con imports avanzados. Busca que tus herramientas pequeñas se sientan más estructuradas y más fáciles de hacer crecer."
+      }
+    ],
+    example:
+      "# utilidades.py\ndef guardar_nota(texto):\n    print('Guardando nota:', texto)\n\n\ndef mostrar_resumen():\n    print('Resumen listo')\n\n# principal.py\nfrom utilidades import guardar_nota, mostrar_resumen\n\n\ndef main():\n    nota = input('Escribe una nota: ')\n    guardar_nota(nota)\n    mostrar_resumen()\n\n\nmain()",
+    practicePrompt: "Piensa una utilidad de notas o registros donde `principal.py` solo coordine y `utilidades.py` guarde o muestre información. ¿Qué dejarías en cada archivo?",
+    practiceChecklist: [
+      "Haz que `principal.py` pida un dato o coordine una acción.",
+      "Mueve guardado o resumen a `utilidades.py`.",
+      "Mantén un recorrido principal corto y legible."
+    ],
+    commonMistakes: [
+      "Dejar demasiado trabajo dentro de `principal.py`.",
+      "Separar archivos, pero sin una responsabilidad clara para cada uno.",
+      "Crear una utilidad tan grande que la idea principal se pierda."
+    ],
+    bugChallenge: {
+      prompt: "Esta utilidad quiere tener un principal claro y un archivo de apoyo, pero `principal.py` sigue haciendo todo y la separación perdió sentido.",
+      brokenCode:
+        "# principal.py\nnota = input('Escribe una nota: ')\nprint('Guardando nota:', nota)\nprint('Resumen listo')",
+      expectedLearning: "La separación multiarchivo se vuelve útil cuando el principal coordina y los apoyos resuelven tareas concretas."
+    },
+    playground: {
+      title: "Prueba una utilidad coordinada desde principal.py",
+      guidance: "Ejecuta el ejemplo y piensa cómo se vería mejor repartido entre `principal.py` y `utilidades.py`, aunque aquí se muestre en un solo editor.",
+      starterCode:
+        "def guardar_nota(texto):\n    print('Guardando nota:', texto)\n\n\ndef mostrar_resumen():\n    print('Resumen listo')\n\n\ndef main():\n    nota = input('Escribe una nota: ')\n    guardar_nota(nota)\n    mostrar_resumen()\n\n\nmain()",
+      emptyOutputHint: "La salida debería mostrar un recorrido corto: pedir, guardar y cerrar con un resumen."
+    },
+    exerciseSlug: "organize-a-note-utility-across-files"
+  },
+  {
+    slug: "saving-and-consulting-from-a-support-file",
+    module: "Utilidades multiarchivo con flujo claro",
+    moduleSlug: "practical-multi-file-utilities",
+    order: 2,
+    title: "Guardar y consultar desde un archivo de apoyo",
+    duration: "19 min",
+    difficulty: "Beginner",
+    summary: "Usa `utilidades.py` para guardar y consultar información simple mientras el archivo principal decide qué hacer y cuándo mostrar el resultado.",
+    warmup: "Cuando una herramienta guarda y consulta datos, tener esas tareas fuera del archivo principal ayuda mucho a leer el flujo sin perder detalle importante.",
+    goal: "Al final, deberías poder separar funciones de guardado y consulta en un archivo de apoyo y dejar el recorrido general en el principal.",
+    keyIdeas: [
+      {
+        title: "Guardar y consultar son tareas de apoyo claras",
+        description: "Suelen vivir bien juntas en un archivo auxiliar porque cumplen una responsabilidad concreta."
+      },
+      {
+        title: "principal.py decide el momento",
+        description: "El principal puede pedir una acción, luego llamar guardar o consultar y finalmente mostrar el resultado."
+      },
+      {
+        title: "La utilidad se siente más real cuando las partes cooperan",
+        description: "La separación no es teórica: ayuda a que una libreta o agenda simple se lea mejor."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué parte conviene mover",
+        body: "Funciones como guardar una nota o buscar una línea concreta son buenas candidatas para utilidades.py porque resuelven tareas específicas y repetibles."
+      },
+      {
+        title: "Qué parte conviene dejar visible",
+        body: "En principal.py conviene dejar la elección o el flujo principal: qué pide la herramienta, cuándo consulta y cuándo muestra el cierre."
+      },
+      {
+        title: "Piensa en la lectura futura",
+        body: "Si dentro de unas semanas vuelves al programa, te va a ayudar encontrar primero el recorrido general y luego entrar al archivo de apoyo si necesitas detalle."
+      },
+      {
+        title: "Una utilidad pequeña ya gana mucho con esto",
+        body: "No hace falta una gran arquitectura. Con dos archivos y responsabilidades claras, una libreta simple ya se siente más madura."
+      }
+    ],
+    example:
+      "# utilidades.py\ndef guardar_contacto(nombre):\n    print('Guardando contacto:', nombre)\n\n\ndef consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n# principal.py\nfrom utilidades import guardar_contacto, consultar_contacto\n\naction = input('Escribe guardar o consultar: ')\nif action == 'guardar':\n    guardar_contacto('Ana')\nelse:\n    consultar_contacto('Ana')",
+    practicePrompt: "Imagina una agenda pequeña. ¿Qué funciones de guardar o consultar pondrías en `utilidades.py` y qué decisión dejarías en el principal?",
+    practiceChecklist: [
+      "Usa al menos una función para guardar.",
+      "Usa al menos una función para consultar.",
+      "Deja la decisión de qué hacer en `principal.py`."
+    ],
+    commonMistakes: [
+      "Poner la consulta y la decisión en el mismo bloque sin separación.",
+      "Dejar todo el ejemplo demasiado rígido y sin mostrar la idea de flujo.",
+      "Olvidar que el principal debería seguir contando la historia."
+    ],
+    bugChallenge: {
+      prompt: "Esta agenda pequeña quiere guardar o consultar desde un archivo de apoyo, pero la decisión y el trabajo siguen pegados en el principal.",
+      brokenCode:
+        "# principal.py\naction = input('Escribe guardar o consultar: ')\nif action == 'guardar':\n    print('Guardando contacto: Ana')\nelse:\n    print('Consulta: Ana')",
+      expectedLearning: "Cuando guardado y consulta viven en un archivo de apoyo, el principal gana claridad y la herramienta se siente más ordenada."
+    },
+    playground: {
+      title: "Prueba una agenda pequeña con guardar y consultar",
+      guidance: "Ejecuta el ejemplo y cambia la acción. Piensa luego cómo representarías esta misma idea entre `principal.py` y `utilidades.py`.",
+      starterCode:
+        "def guardar_contacto(nombre):\n    print('Guardando contacto:', nombre)\n\n\ndef consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n\naction = input('Escribe guardar o consultar: ')\nif action == 'guardar':\n    guardar_contacto('Ana')\nelse:\n    consultar_contacto('Ana')",
+      emptyOutputHint: "La salida debería mostrar una acción elegida y un resultado corto pero útil."
+    },
+    exerciseSlug: "split-save-and-query-into-support-file"
+  },
+  {
+    slug: "closing-with-a-summary-without-overloading-main",
+    module: "Utilidades multiarchivo con flujo claro",
+    moduleSlug: "practical-multi-file-utilities",
+    order: 3,
+    title: "Cerrar con un resumen claro sin cargar principal.py",
+    duration: "20 min",
+    difficulty: "Beginner",
+    summary: "Aprende a cerrar una utilidad multiarchivo con un resumen visible, manteniendo el archivo principal corto y dejando el detalle del cierre en apoyos claros.",
+    warmup: "Una herramienta se siente más completa cuando termina con un resumen útil. Ruta 3 busca que ese cierre exista sin volver a cargar demasiado el archivo principal.",
+    goal: "Al final, deberías poder construir una utilidad multiarchivo simple que coordina desde principal.py y cierra con un resumen claro apoyado por funciones auxiliares.",
+    keyIdeas: [
+      {
+        title: "El resumen también puede vivir en un archivo de apoyo",
+        description: "Mostrar un cierre o reporte claro no obliga a meter todos los detalles en el archivo principal."
+      },
+      {
+        title: "El principal coordina de principio a fin",
+        description: "Pide, decide, llama funciones y termina el recorrido sin perder claridad."
+      },
+      {
+        title: "Una herramienta simple ya puede sentirse completa",
+        description: "Cuando cada archivo tiene un rol claro y el cierre es visible, la utilidad se percibe más real."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué hace especial a este paso",
+        body: "Aquí ya no solo separas funciones: separas partes de una herramienta que pide datos, hace algo útil y cierra con un resumen más ordenado."
+      },
+      {
+        title: "Dónde conviene poner el resumen",
+        body: "Si el resumen implica formatear varias líneas o mostrar un cierre repetible, puede ir en utilidades.py. El principal puede limitarse a llamarlo en el momento correcto."
+      },
+      {
+        title: "Qué queda visible en principal.py",
+        body: "El principal debería seguir mostrando el recorrido general: pedir una acción, ejecutar una función de apoyo y luego llamar el cierre."
+      },
+      {
+        title: "Cómo se siente una utilidad más clara",
+        body: "Se siente como una herramienta pequeña pero bien pensada, no como un script que fue creciendo sin orden."
+      }
+    ],
+    example:
+      "# utilidades.py\ndef guardar_nota(texto):\n    print('Guardando:', texto)\n\n\ndef mostrar_resumen(texto):\n    print('=== RESUMEN ===')\n    print(texto)\n\n# principal.py\nfrom utilidades import guardar_nota, mostrar_resumen\n\n\ndef main():\n    nota = input('Escribe una nota: ')\n    guardar_nota(nota)\n    mostrar_resumen('Nota guardada con éxito')\n\n\nmain()",
+    practicePrompt: "Imagina una libreta simple que guarda una nota y luego muestra un cierre claro. ¿Qué pondrías en el principal y qué dejarías a cargo del archivo de utilidades?",
+    practiceChecklist: [
+      "Usa una función de apoyo para guardar o consultar.",
+      "Usa otra función de apoyo para mostrar un resumen.",
+      "Mantén el principal corto y fácil de seguir."
+    ],
+    commonMistakes: [
+      "Meter el resumen directamente en el principal aunque tenga varios pasos.",
+      "Separar funciones, pero dejar el recorrido confuso.",
+      "Cerrar sin un mensaje final que haga sentir completa la utilidad."
+    ],
+    bugChallenge: {
+      prompt: "Esta libreta simple guarda una nota y quiere mostrar un cierre claro, pero el principal terminó cargado con demasiado detalle.",
+      brokenCode:
+        "nota = input('Escribe una nota: ')\nprint('Guardando:', nota)\nprint('=== RESUMEN ===')\nprint('Nota guardada con éxito')",
+      expectedLearning: "Una utilidad multiarchivo se siente más clara cuando el principal coordina y deja los detalles de guardado o resumen en funciones de apoyo."
+    },
+    playground: {
+      title: "Prueba una utilidad con cierre claro",
+      guidance: "Ejecuta el ejemplo y cambia el texto del resumen. Observa cómo el cierre mejora la sensación de herramienta terminada.",
+      starterCode:
+        "def guardar_nota(texto):\n    print('Guardando:', texto)\n\n\ndef mostrar_resumen(texto):\n    print('=== RESUMEN ===')\n    print(texto)\n\n\ndef main():\n    nota = input('Escribe una nota: ')\n    guardar_nota(nota)\n    mostrar_resumen('Nota guardada con éxito')\n\n\nmain()",
+      emptyOutputHint: "La salida debería terminar con un cierre claro y fácil de leer."
+    },
+    exerciseSlug: "build-a-multi-file-utility-with-summary"
   }
 ];
 
@@ -10096,6 +10319,363 @@ export const courseExercises: ExerciseData[] = [
         "asks-name",
         "calls-save-contact",
         "calls-show-summary",
+        "runs-main"
+      ]
+    }
+  },
+  {
+    slug: "organize-a-note-utility-across-files",
+    title: "Organiza una utilidad de notas entre principal y utilidades",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "practical-multi-file-utilities",
+    lessonSlug: "coordinating-a-utility-from-main-py",
+    order: 1,
+    duration: "15 min",
+    summary: "Representa una utilidad de notas simple donde `principal.py` coordina y `utilidades.py` guarda o resume.",
+    prompt:
+      "Escribe un ejemplo dividido en dos partes usando comentarios para representar archivos. En `# utilidades.py`, define `guardar_nota(texto)` y `mostrar_resumen()`. En `# principal.py`, importa ambas funciones, define `main()`, pide una nota con `input('Escribe una nota: ')`, llama `guardar_nota(nota)`, luego `mostrar_resumen()` y finalmente ejecuta `main()`.",
+    responseLabel: "Tu utilidad multiarchivo de notas",
+    responsePlaceholder:
+      "# utilidades.py\n\ndef guardar_nota(texto):\n    print('Guardando nota:', texto)\n\n\ndef mostrar_resumen():\n    print('Resumen listo')\n\n# principal.py\nfrom utilidades import guardar_nota, mostrar_resumen\n\n\ndef main():\n    nota = input('Escribe una nota: ')\n    guardar_nota(nota)\n    mostrar_resumen()\n\n\nmain()",
+    instructions: [
+      "Usa comentarios para mostrar ambos archivos.",
+      "Deja el guardado y el resumen en `utilidades.py`.",
+      "Haz que `main()` se lea como el recorrido principal."
+    ],
+    hints: [
+      "Empieza por definir las funciones de apoyo.",
+      "Después muestra el principal con una importación simple.",
+      "La meta es claridad, no una lógica complicada."
+    ],
+    starterCode:
+      "# utilidades.py\n\ndef guardar_nota(texto):\n    print('Guardando nota:', texto)\n\n\ndef mostrar_resumen():\n    print('Resumen listo')\n\n# principal.py\nfrom utilidades import guardar_nota, mostrar_resumen\n\n\ndef main():\n    nota = input('Escribe una nota: ')\n    guardar_nota(nota)\n    mostrar_resumen()\n\n\nmain()",
+    successCriteria: [
+      "Representa bien `principal.py` y `utilidades.py`.",
+      "El principal coordina sin cargarse de detalles.",
+      "La utilidad se lee como un flujo corto y claro."
+    ],
+    playground: {
+      title: "Prueba una utilidad multiarchivo de notas",
+      guidance: "Corre la versión simple en un solo editor y luego asegúrate de que tu respuesta represente bien la separación entre archivos.",
+      starterCode:
+        "def guardar_nota(texto):\n    print('Guardando nota:', texto)\n\n\ndef mostrar_resumen():\n    print('Resumen listo')\n\n\ndef main():\n    nota = input('Escribe una nota: ')\n    guardar_nota(nota)\n    mostrar_resumen()\n\n\nmain()",
+      emptyOutputHint: "La salida debería mostrar una secuencia corta y clara de utilidad."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 250,
+      passingScore: 7,
+      requiredPatterns: [
+        {
+          id: "utilidades-comment",
+          label: "Representa `# utilidades.py`",
+          pattern: "#\\s*utilidades\\.py",
+          feedbackWhenMissing: "Empieza mostrando el archivo `# utilidades.py`."
+        },
+        {
+          id: "principal-comment",
+          label: "Representa `# principal.py`",
+          pattern: "#\\s*principal\\.py",
+          feedbackWhenMissing: "Muestra también el archivo `# principal.py`."
+        },
+        {
+          id: "defines-save-note",
+          label: "Define `guardar_nota(texto)`",
+          pattern: "def\\s+guardar_nota\\(\\s*texto\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define `guardar_nota(texto)` en `utilidades.py`."
+        },
+        {
+          id: "defines-summary",
+          label: "Define `mostrar_resumen()`",
+          pattern: "def\\s+mostrar_resumen\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `mostrar_resumen()` en `utilidades.py`."
+        },
+        {
+          id: "imports-functions",
+          label: "Importa las funciones en principal",
+          pattern: "from\\s+utilidades\\s+import\\s+guardar_nota\\s*,\\s*mostrar_resumen",
+          feedbackWhenMissing: "En `principal.py`, importa `guardar_nota` y `mostrar_resumen`."
+        },
+        {
+          id: "defines-main",
+          label: "Define `main()`",
+          pattern: "def\\s+main\\(\\)\\s*:",
+          feedbackWhenMissing: "Define un `main()` que coordine el flujo."
+        },
+        {
+          id: "asks-note",
+          label: "Pide la nota con `input()`",
+          pattern: "nota\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Dentro de `main()`, pide la nota con `input()`."
+        },
+        {
+          id: "calls-save",
+          label: "Llama `guardar_nota(nota)`",
+          pattern: "guardar_nota\\(\\s*nota\\s*\\)",
+          feedbackWhenMissing: "Después del input, llama `guardar_nota(nota)`."
+        },
+        {
+          id: "calls-summary",
+          label: "Llama `mostrar_resumen()`",
+          pattern: "mostrar_resumen\\(\\s*\\)",
+          feedbackWhenMissing: "Termina el flujo llamando `mostrar_resumen()`."
+        },
+        {
+          id: "runs-main",
+          label: "Ejecuta `main()` al final",
+          pattern: "main\\(\\s*\\)",
+          feedbackWhenMissing: "Al final del ejemplo, ejecuta `main()`."
+        }
+      ],
+      orderedPatternIds: [
+        "utilidades-comment",
+        "defines-save-note",
+        "defines-summary",
+        "principal-comment",
+        "imports-functions",
+        "defines-main",
+        "asks-note",
+        "calls-save",
+        "calls-summary",
+        "runs-main"
+      ]
+    }
+  },
+  {
+    slug: "split-save-and-query-into-support-file",
+    title: "Separa guardado y consulta en un archivo de apoyo",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "practical-multi-file-utilities",
+    lessonSlug: "saving-and-consulting-from-a-support-file",
+    order: 2,
+    duration: "16 min",
+    summary: "Representa una agenda simple donde `utilidades.py` guarda y consulta, mientras `principal.py` decide qué acción ejecutar.",
+    prompt:
+      "Escribe un ejemplo dividido en dos partes usando comentarios para representar archivos. En `# utilidades.py`, define `guardar_contacto(nombre)` y `consultar_contacto(nombre)`. En `# principal.py`, importa ambas funciones, pide `action` con `input('Escribe guardar o consultar: ')` y, si la acción es `guardar`, llama `guardar_contacto('Ana')`; en cualquier otro caso, llama `consultar_contacto('Ana')`.",
+    responseLabel: "Tu agenda multiarchivo simple",
+    responsePlaceholder:
+      "# utilidades.py\n\ndef guardar_contacto(nombre):\n    print('Guardando contacto:', nombre)\n\n\ndef consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n# principal.py\nfrom utilidades import guardar_contacto, consultar_contacto\n\naction = input('Escribe guardar o consultar: ')\nif action == 'guardar':\n    guardar_contacto('Ana')\nelse:\n    consultar_contacto('Ana')",
+    instructions: [
+      "Representa ambos archivos con comentarios.",
+      "Deja guardar y consultar en el archivo de apoyo.",
+      "Haz que el principal tome la decisión del flujo."
+    ],
+    hints: [
+      "Puedes usar un `if` simple en el principal.",
+      "No hace falta un `main()` si el flujo ya se entiende claro.",
+      "La separación importa más que una lógica extensa."
+    ],
+    starterCode:
+      "# utilidades.py\n\ndef guardar_contacto(nombre):\n    print('Guardando contacto:', nombre)\n\n\ndef consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n# principal.py\nfrom utilidades import guardar_contacto, consultar_contacto\n\naction = input('Escribe guardar o consultar: ')\nif action == 'guardar':\n    guardar_contacto('Ana')\nelse:\n    consultar_contacto('Ana')",
+    successCriteria: [
+      "La decisión queda en el principal.",
+      "Guardar y consultar viven en `utilidades.py`.",
+      "La agenda simple se entiende con facilidad."
+    ],
+    playground: {
+      title: "Prueba una agenda pequeña con dos caminos",
+      guidance: "Ejecuta la versión corta en el playground y luego revisa que tu respuesta represente bien la separación entre archivos.",
+      starterCode:
+        "def guardar_contacto(nombre):\n    print('Guardando contacto:', nombre)\n\n\ndef consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n\naction = input('Escribe guardar o consultar: ')\nif action == 'guardar':\n    guardar_contacto('Ana')\nelse:\n    consultar_contacto('Ana')",
+      emptyOutputHint: "La salida debería reflejar la acción elegida por la persona usuaria."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 240,
+      passingScore: 7,
+      requiredPatterns: [
+        {
+          id: "utilidades-comment",
+          label: "Representa `# utilidades.py`",
+          pattern: "#\\s*utilidades\\.py",
+          feedbackWhenMissing: "Empieza mostrando `# utilidades.py`."
+        },
+        {
+          id: "principal-comment",
+          label: "Representa `# principal.py`",
+          pattern: "#\\s*principal\\.py",
+          feedbackWhenMissing: "Muestra también `# principal.py`."
+        },
+        {
+          id: "defines-save-contact",
+          label: "Define `guardar_contacto(nombre)`",
+          pattern: "def\\s+guardar_contacto\\(\\s*nombre\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define `guardar_contacto(nombre)` en el archivo de apoyo."
+        },
+        {
+          id: "defines-query-contact",
+          label: "Define `consultar_contacto(nombre)`",
+          pattern: "def\\s+consultar_contacto\\(\\s*nombre\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define `consultar_contacto(nombre)` en el archivo de apoyo."
+        },
+        {
+          id: "imports-both",
+          label: "Importa ambas funciones",
+          pattern: "from\\s+utilidades\\s+import\\s+guardar_contacto\\s*,\\s*consultar_contacto",
+          feedbackWhenMissing: "En `principal.py`, importa `guardar_contacto` y `consultar_contacto`."
+        },
+        {
+          id: "asks-action",
+          label: "Pide `action` con `input()`",
+          pattern: "action\\s*=\\s*input\\(",
+          feedbackWhenMissing: "En el principal, pide `action` con `input()`."
+        },
+        {
+          id: "if-guardar",
+          label: "Usa `if action == 'guardar'`",
+          pattern: "if\\s+action\\s*==\\s*['\"]guardar['\"]\\s*:",
+          feedbackWhenMissing: "Usa un `if` para decidir la acción `guardar`."
+        },
+        {
+          id: "calls-save-contact",
+          label: "Llama `guardar_contacto('Ana')`",
+          pattern: "guardar_contacto\\(\\s*['\"]Ana['\"]\\s*\\)",
+          feedbackWhenMissing: "En el camino de guardado, llama `guardar_contacto('Ana')`."
+        },
+        {
+          id: "calls-query-contact",
+          label: "Llama `consultar_contacto('Ana')`",
+          pattern: "consultar_contacto\\(\\s*['\"]Ana['\"]\\s*\\)",
+          feedbackWhenMissing: "En el camino alternativo, llama `consultar_contacto('Ana')`."
+        }
+      ],
+      orderedPatternIds: [
+        "utilidades-comment",
+        "defines-save-contact",
+        "defines-query-contact",
+        "principal-comment",
+        "imports-both",
+        "asks-action",
+        "if-guardar",
+        "calls-save-contact",
+        "calls-query-contact"
+      ]
+    }
+  },
+  {
+    slug: "build-a-multi-file-utility-with-summary",
+    title: "Construye una utilidad multiarchivo con resumen final",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "practical-multi-file-utilities",
+    lessonSlug: "closing-with-a-summary-without-overloading-main",
+    order: 3,
+    duration: "18 min",
+    summary: "Construye una utilidad donde `principal.py` coordina, `utilidades.py` guarda y resume, y el cierre hace que la herramienta se sienta más completa.",
+    prompt:
+      "Escribe un ejemplo dividido en dos partes usando comentarios para representar archivos. En `# utilidades.py`, define `guardar_nota(texto)` y `mostrar_resumen(texto)`; esta última debe imprimir `=== RESUMEN ===` y luego el texto recibido. En `# principal.py`, importa ambas funciones, define `main()`, pide una nota con `input('Escribe una nota: ')`, llama `guardar_nota(nota)`, luego `mostrar_resumen('Nota guardada con éxito')` y finalmente ejecuta `main()`.",
+    responseLabel: "Tu utilidad multiarchivo con cierre",
+    responsePlaceholder:
+      "# utilidades.py\n\ndef guardar_nota(texto):\n    print('Guardando:', texto)\n\n\ndef mostrar_resumen(texto):\n    print('=== RESUMEN ===')\n    print(texto)\n\n# principal.py\nfrom utilidades import guardar_nota, mostrar_resumen\n\n\ndef main():\n    nota = input('Escribe una nota: ')\n    guardar_nota(nota)\n    mostrar_resumen('Nota guardada con éxito')\n\n\nmain()",
+    instructions: [
+      "Muestra ambos archivos con comentarios.",
+      "Usa una función de apoyo para guardar y otra para el cierre.",
+      "Haz que el principal coordine el flujo completo."
+    ],
+    hints: [
+      "El resumen debería imprimirse desde `utilidades.py`.",
+      "Piensa el principal como un recorrido corto y visible.",
+      "El cierre debería sentirse claro y fácil de leer."
+    ],
+    starterCode:
+      "# utilidades.py\n\ndef guardar_nota(texto):\n    print('Guardando:', texto)\n\n\ndef mostrar_resumen(texto):\n    print('=== RESUMEN ===')\n    print(texto)\n\n# principal.py\nfrom utilidades import guardar_nota, mostrar_resumen\n\n\ndef main():\n    nota = input('Escribe una nota: ')\n    guardar_nota(nota)\n    mostrar_resumen('Nota guardada con éxito')\n\n\nmain()",
+    successCriteria: [
+      "La utilidad reparte mejor responsabilidades.",
+      "El principal sigue siendo corto y claro.",
+      "El cierre hace que la herramienta se sienta completa."
+    ],
+    playground: {
+      title: "Prueba una utilidad con resumen final",
+      guidance: "Ejecuta la versión corta y observa cómo el resumen final mejora la sensación de herramienta terminada.",
+      starterCode:
+        "def guardar_nota(texto):\n    print('Guardando:', texto)\n\n\ndef mostrar_resumen(texto):\n    print('=== RESUMEN ===')\n    print(texto)\n\n\ndef main():\n    nota = input('Escribe una nota: ')\n    guardar_nota(nota)\n    mostrar_resumen('Nota guardada con éxito')\n\n\nmain()",
+      emptyOutputHint: "La salida debería cerrar con un resumen claro."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 280,
+      passingScore: 8,
+      requiredPatterns: [
+        {
+          id: "utilidades-comment",
+          label: "Representa `# utilidades.py`",
+          pattern: "#\\s*utilidades\\.py",
+          feedbackWhenMissing: "Empieza mostrando `# utilidades.py`."
+        },
+        {
+          id: "principal-comment",
+          label: "Representa `# principal.py`",
+          pattern: "#\\s*principal\\.py",
+          feedbackWhenMissing: "Muestra también `# principal.py`."
+        },
+        {
+          id: "defines-save-note",
+          label: "Define `guardar_nota(texto)`",
+          pattern: "def\\s+guardar_nota\\(\\s*texto\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define `guardar_nota(texto)` en el archivo de apoyo."
+        },
+        {
+          id: "defines-summary",
+          label: "Define `mostrar_resumen(texto)`",
+          pattern: "def\\s+mostrar_resumen\\(\\s*texto\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define `mostrar_resumen(texto)` en el archivo de apoyo."
+        },
+        {
+          id: "prints-summary-header",
+          label: "Imprime `=== RESUMEN ===`",
+          pattern: "print\\(\\s*['\"]=== RESUMEN ===['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro de `mostrar_resumen`, imprime `=== RESUMEN ===`."
+        },
+        {
+          id: "imports-functions",
+          label: "Importa ambas funciones",
+          pattern: "from\\s+utilidades\\s+import\\s+guardar_nota\\s*,\\s*mostrar_resumen",
+          feedbackWhenMissing: "En el principal, importa `guardar_nota` y `mostrar_resumen`."
+        },
+        {
+          id: "defines-main",
+          label: "Define `main()`",
+          pattern: "def\\s+main\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `main()` para coordinar el flujo."
+        },
+        {
+          id: "asks-note",
+          label: "Pide la nota con `input()`",
+          pattern: "nota\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Dentro de `main()`, pide la nota con `input()`."
+        },
+        {
+          id: "calls-save-note",
+          label: "Llama `guardar_nota(nota)`",
+          pattern: "guardar_nota\\(\\s*nota\\s*\\)",
+          feedbackWhenMissing: "Dentro de `main()`, llama `guardar_nota(nota)`."
+        },
+        {
+          id: "calls-summary-success",
+          label: "Llama `mostrar_resumen('Nota guardada con éxito')`",
+          pattern: "mostrar_resumen\\(\\s*['\"]Nota guardada con éxito['\"]\\s*\\)",
+          feedbackWhenMissing: "Cierra el flujo llamando `mostrar_resumen('Nota guardada con éxito')`."
+        },
+        {
+          id: "runs-main",
+          label: "Ejecuta `main()` al final",
+          pattern: "main\\(\\s*\\)",
+          feedbackWhenMissing: "Al final del ejemplo, ejecuta `main()`."
+        }
+      ],
+      orderedPatternIds: [
+        "utilidades-comment",
+        "defines-save-note",
+        "defines-summary",
+        "prints-summary-header",
+        "principal-comment",
+        "imports-functions",
+        "defines-main",
+        "asks-note",
+        "calls-save-note",
+        "calls-summary-success",
         "runs-main"
       ]
     }

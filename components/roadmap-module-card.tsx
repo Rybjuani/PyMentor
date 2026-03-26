@@ -38,6 +38,8 @@ export function RoadmapModuleCard({
         ? "Ruta 2 · Apertura"
         : module.slug === "simple-multi-file-programs"
           ? "Ruta 3 · Apertura"
+        : module.slug === "practical-multi-file-utilities"
+          ? "Ruta 3 · Utilidad real"
         : module.slug === "route2-practical-projects"
           ? "Ruta 2 · Proyectos"
           : module.slug === "route2-capstone"
@@ -110,6 +112,8 @@ export function RoadmapModuleCard({
                 ? "Abrir cierre de Ruta 2"
                 : module.slug === "simple-multi-file-programs"
                   ? "Abrir Ruta 3"
+                : module.slug === "practical-multi-file-utilities"
+                  ? "Abrir módulo práctico"
                 : progress.status === "completed"
                   ? "Revisar módulo"
                   : "Abrir módulo"}

@@ -200,6 +200,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "98 min",
     xp: 390
+  },
+  {
+    slug: "route2-practical-projects",
+    title: "Proyectos prácticos de Ruta 2",
+    description: "Convierte archivos, funciones, organización e input() en herramientas pequeñas más completas que ya se sienten como utilidades reales y ordenadas.",
+    order: 21,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "110 min",
+    xp: 430
   }
 ];
 
@@ -4293,6 +4303,222 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar una consulta o una actualización seguida de un resultado final visible."
     },
     exerciseSlug: "build-an-input-driven-search-and-update-tool"
+  },
+  {
+    slug: "route2-project-simple-agenda",
+    module: "Proyectos prácticos de Ruta 2",
+    moduleSlug: "route2-practical-projects",
+    order: 1,
+    title: "Proyecto práctico: agenda simple con consulta y actualización",
+    duration: "24 min",
+    difficulty: "Beginner",
+    summary: "Construye una agenda corta que guarda contactos simples, permite consultar uno y actualizar un dato con un flujo ordenado.",
+    warmup: "Ya sabes guardar, consultar y actualizar. Ahora toca juntar esas piezas en una herramienta pequeña que se sienta más cercana a un uso real.",
+    goal: "Al final, deberías poder construir una agenda simple que use archivo, funciones, consulta y actualización dentro de un programa más completo.",
+    keyIdeas: [
+      {
+        title: "Un proyecto práctico une varias piezas conocidas",
+        description: "Aquí no aparece una idea totalmente nueva. Lo importante es coordinar bien todo lo que ya sabes."
+      },
+      {
+        title: "Cada función necesita una responsabilidad clara",
+        description: "Una puede guardar contactos, otra consultarlos y otra actualizar un dato concreto."
+      },
+      {
+        title: "La utilidad mejora cuando el flujo se entiende",
+        description: "La persona debería poder seguir con claridad qué se guarda, qué se consulta y qué se cambia."
+      }
+    ],
+    explanation: [
+      {
+        title: "Brief del proyecto",
+        body: "Vas a construir una agenda muy pequeña con un par de contactos guardados en texto. La herramienta debe poder mostrar un contacto y actualizar un dato corto, por ejemplo ciudad o estado."
+      },
+      {
+        title: "Requisitos mínimos",
+        body: "Debe haber una función que prepare el archivo base, una función de consulta, una función de actualización y una salida final comprensible. El proyecto puede ser corto, pero debe sentirse ordenado."
+      },
+      {
+        title: "Qué vuelve útil a esta agenda",
+        body: "Que ya no solo guarda cosas: también deja revisar y modificar información sin rehacer todo el programa. Eso cambia mucho la sensación de utilidad."
+      },
+      {
+        title: "Cómo mantenerlo amable",
+        body: "Trabaja con pocos contactos y con datos de texto simples. La meta no es hacer una agenda completa, sino una versión pequeña, clara y funcional."
+      }
+    ],
+    example:
+      "def guardar_contactos():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana: Córdoba\\nLuis: Rosario')\n\n\ndef consultar_contacto(nombre):\n    with open('agenda.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Contacto:', linea)\n\n\ndef actualizar_contacto(nombre, nueva_ciudad):\n    with open('agenda.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nueva_ciudad)\n        else:\n            nuevas_lineas.append(linea)\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))",
+    practicePrompt: "Piensa qué dato quieres actualizar y cómo dejarías visible el resultado final. Lo importante es que el recorrido se sienta ordenado.",
+    practiceChecklist: [
+      "Prepara un archivo con al menos dos contactos.",
+      "Agrega una función para consultar.",
+      "Agrega una función para actualizar.",
+      "Muestra el resultado final después del cambio."
+    ],
+    commonMistakes: [
+      "Intentar resolver toda la agenda dentro de una sola función.",
+      "Actualizar un contacto pero no volver a mostrar el resultado final.",
+      "Cambiar el formato del archivo y luego dificultar la consulta."
+    ],
+    bugChallenge: {
+      prompt: "Esta agenda debería consultar y actualizar un contacto, pero una clave de búsqueda y una escritura final no dejan el flujo completo.",
+      brokenCode:
+        "def consultar_contacto(nombre):\n    with open('agenda.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith('nombre' + ':'):\n                print('Contacto:', linea)\n\n\ndef actualizar_contacto(nombre, nueva_ciudad):\n    with open('agenda.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nueva_ciudad)",
+      expectedLearning: "En proyectos un poco más completos, conviene revisar si realmente usas el dato pedido y si el flujo reescribe y muestra el resultado final."
+    },
+    playground: {
+      title: "Explora una agenda simple",
+      guidance: "Ejecuta el proyecto, cambia nombres o ciudades y comprueba que consulta y actualización sigan siendo claras.",
+      starterCode:
+        "def guardar_contactos():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana: Córdoba\\nLuis: Rosario')\n\n\ndef consultar_contacto(nombre):\n    with open('agenda.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Contacto:', linea)\n\n\ndef actualizar_contacto(nombre, nueva_ciudad):\n    with open('agenda.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nueva_ciudad)\n        else:\n            nuevas_lineas.append(linea)\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_contactos()\nconsultar_contacto('Ana')\nactualizar_contacto('Luis', 'Mendoza')\nconsultar_contacto('Luis')",
+      emptyOutputHint: "La salida debería mostrar una consulta inicial y otra después de la actualización."
+    },
+    exerciseSlug: "build-route2-simple-agenda-project"
+  },
+  {
+    slug: "route2-project-notebook-menu-and-summary",
+    module: "Proyectos prácticos de Ruta 2",
+    moduleSlug: "route2-practical-projects",
+    order: 2,
+    title: "Proyecto práctico: libreta con menú y resumen",
+    duration: "25 min",
+    difficulty: "Beginner",
+    summary: "Construye una libreta pequeña con menú simple, varias funciones y un resumen final que muestre el estado de los datos guardados.",
+    warmup: "Una herramienta empieza a sentirse mucho más completa cuando no solo hace una cosa, sino que deja elegir una acción y cierra con un pequeño reporte.",
+    goal: "Al final, deberías poder construir una libreta con menú que guarda, consulta, actualiza y resume información simple de forma ordenada.",
+    keyIdeas: [
+      {
+        title: "El menú organiza la experiencia",
+        description: "Muestra qué puede hacer la herramienta y da un punto de entrada claro."
+      },
+      {
+        title: "El resumen final muestra que el flujo está completo",
+        description: "No basta con cambiar algo: también conviene cerrar con una salida útil y legible."
+      },
+      {
+        title: "Coordinar varias funciones ya es una habilidad práctica",
+        description: "Guardar, consultar, actualizar y resumir son tareas distintas que deben trabajar juntas."
+      }
+    ],
+    explanation: [
+      {
+        title: "Brief del proyecto",
+        body: "Vas a crear una libreta pequeña de hábitos o notas. Debe mostrar un menú corto, dejar elegir una acción y terminar con un resumen visible del estado final de la información."
+      },
+      {
+        title: "Requisitos mínimos",
+        body: "Necesitas un archivo base, una función para consultar, otra para actualizar y una función que muestre un resumen final. El menú puede ser simple, pero debe quedar claro."
+      },
+      {
+        title: "Qué vuelve más real a esta herramienta",
+        body: "Que coordina varias partes: decisión, cambio y lectura final. Eso ya se parece mucho más a una utilidad pequeña que alguien podría querer usar."
+      },
+      {
+        title: "Cómo no volverlo pesado",
+        body: "Mantén pocas opciones y datos breves. Si el flujo es claro, el proyecto ya cumple su objetivo sin necesidad de crecer demasiado."
+      }
+    ],
+    example:
+      "def guardar_habitos():\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('Leer: pendiente\\nCaminar: hecho')\n\n\ndef mostrar_menu():\n    print('1. Consultar hábitos')\n    print('2. Actualizar hábito')\n\n\ndef mostrar_resumen():\n    with open('habitos.txt', 'r') as archivo:\n        print('Resumen final:')\n        print(archivo.read())",
+    practicePrompt: "Piensa qué acción te conviene mostrar en el menú y cómo quieres que se vea el cierre. La meta es que la libreta se sienta ordenada y útil.",
+    practiceChecklist: [
+      "Muestra un menú con dos acciones visibles.",
+      "Usa funciones separadas para cada parte importante.",
+      "Consulta o actualiza según una elección.",
+      "Cierra con un resumen final legible."
+    ],
+    commonMistakes: [
+      "Mostrar un menú, pero no conectar la opción con ninguna acción real.",
+      "Actualizar datos y olvidar el resumen final.",
+      "Meter toda la lógica del proyecto en el flujo principal."
+    ],
+    bugChallenge: {
+      prompt: "Esta libreta debería decidir entre consultar y actualizar, pero una opción mal comparada y un resumen ausente dejan la experiencia incompleta.",
+      brokenCode:
+        "def mostrar_menu():\n    print('1. Consultar hábitos')\n    print('2. Actualizar hábito')\n\naction = input('Elige una acción: ')\nif action == 'consultar':\n    print('Consulta lista')\nelse:\n    print('Actualización lista')",
+      expectedLearning: "Cuando una herramienta crece, ya no basta con una acción aislada: también importa cómo se conecta con el cierre y el estado final."
+    },
+    playground: {
+      title: "Prueba una libreta con menú",
+      guidance: "Ejecuta el proyecto, cambia la opción y ajusta el resumen final. La meta es sentir una herramienta pequeña pero más completa.",
+      starterCode:
+        "def guardar_habitos():\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('Leer: pendiente\\nCaminar: hecho')\n\n\ndef consultar_habito(nombre):\n    with open('habitos.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_habito(nombre, nuevo_estado):\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_resumen():\n    with open('habitos.txt', 'r') as archivo:\n        print('Resumen final:')\n        print(archivo.read())\n\n\nguardar_habitos()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_habito('Leer')\nelse:\n    actualizar_habito('Leer', 'hecho')\nmostrar_resumen()",
+      emptyOutputHint: "La salida debería mostrar una acción útil y luego un resumen final."
+    },
+    exerciseSlug: "build-route2-notebook-menu-project"
+  },
+  {
+    slug: "route2-project-record-and-report-tool",
+    module: "Proyectos prácticos de Ruta 2",
+    moduleSlug: "route2-practical-projects",
+    order: 3,
+    title: "Proyecto práctico: registro y reporte ordenado",
+    duration: "26 min",
+    difficulty: "Beginner",
+    summary: "Construye una herramienta de registro con datos guardados, cambios simples y un reporte final claro que resuma el estado del programa.",
+    warmup: "Un buen cierre hace que una herramienta pequeña se sienta completa. Este proyecto busca justamente eso: un flujo útil con un reporte final claro.",
+    goal: "Al final, deberías poder construir una herramienta pequeña que guarde datos, permita modificarlos y termine con un reporte simple y ordenado.",
+    keyIdeas: [
+      {
+        title: "El reporte final da sensación de herramienta completa",
+        description: "Reunir el estado final en una salida clara ayuda a que el proyecto se sienta cerrado y útil."
+      },
+      {
+        title: "Las listas y los archivos pueden trabajar juntos",
+        description: "Leer líneas, reorganizarlas y volver a mostrarlas es una forma beginner-safe de trabajar con datos guardados."
+      },
+      {
+        title: "Una utilidad práctica necesita coordinación",
+        description: "Guardar, consultar, cambiar y reportar son partes distintas que deben mantener un orden visible."
+      }
+    ],
+    explanation: [
+      {
+        title: "Brief del proyecto",
+        body: "Vas a crear una herramienta pequeña de registro y reporte. Debe guardar datos base, permitir un cambio simple y luego mostrar un reporte corto que deje claro cómo quedó la información."
+      },
+      {
+        title: "Requisitos mínimos",
+        body: "Necesitas un archivo con varios datos, funciones separadas para consultar o cambiar y una parte final que muestre el reporte. El resultado debe leerse fácil."
+      },
+      {
+        title: "Qué consolida este proyecto",
+        body: "Consolida lo más práctico de Ruta 2: persistencia simple, funciones con sentido, decisiones con input y una salida final más organizada."
+      },
+      {
+        title: "Cómo sostenerlo sin complicarlo",
+        body: "Usa pocos registros y una lógica sencilla. Si el reporte resume bien el resultado, la herramienta ya cumple una meta práctica clara."
+      }
+    ],
+    example:
+      "def guardar_registro():\n    with open('reporte.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente\\nMara: activo')\n\n\ndef mostrar_reporte():\n    with open('reporte.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('=== REPORTE ===')\n    for linea in lineas:\n        print(linea)\n    print('Total:', len(lineas))",
+    practicePrompt: "Piensa qué dato te gustaría consultar o modificar antes del reporte final. Lo importante es que el cierre se sienta claro y útil.",
+    practiceChecklist: [
+      "Guarda varios registros en un archivo.",
+      "Permite al menos una consulta o cambio simple.",
+      "Usa funciones para separar el flujo.",
+      "Muestra un reporte final con contexto."
+    ],
+    commonMistakes: [
+      "Mostrar un reporte sin haber coordinado antes la consulta o actualización.",
+      "Perder el orden del flujo principal.",
+      "Hacer el reporte demasiado ambiguo o sin contexto."
+    ],
+    bugChallenge: {
+      prompt: "Este proyecto debería mostrar un reporte final claro, pero una lectura suelta y un total mal ubicado rompen el cierre.",
+      brokenCode:
+        "def mostrar_reporte():\n    with open('reporte.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        print(linea)\n        print('Total:', len(lineas))",
+      expectedLearning: "Un proyecto más completo no solo necesita hacer algo útil; también necesita presentar el resultado de forma ordenada."
+    },
+    playground: {
+      title: "Prueba un registro con reporte final",
+      guidance: "Ejecuta el proyecto, cambia un estado o el formato del reporte y confirma que el cierre siga siendo claro.",
+      starterCode:
+        "def guardar_registro():\n    with open('reporte.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente\\nMara: activo')\n\n\ndef consultar_registro(nombre):\n    with open('reporte.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('reporte.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('reporte.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('reporte.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('=== REPORTE ===')\n    for linea in lineas:\n        print(linea)\n    print('Total:', len(lineas))\n\n\nguardar_registro()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_registro('Luis')\nelse:\n    actualizar_registro('Luis', 'activo')\nmostrar_reporte()",
+      emptyOutputHint: "La salida debería mostrar una acción útil y luego un reporte final corto y ordenado."
+    },
+    exerciseSlug: "build-route2-record-and-report-project"
   }
 ];
 
@@ -8751,6 +8977,287 @@ export const courseExercises: ExerciseData[] = [
         "uses-action-branch",
         "updates-luis-active",
         "consults-after-update"
+      ]
+    }
+  },
+  {
+    slug: "build-route2-simple-agenda-project",
+    title: "Construye una agenda simple con consulta y actualización",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "route2-practical-projects",
+    lessonSlug: "route2-project-simple-agenda",
+    order: 1,
+    duration: "16 min",
+    summary: "Construye una agenda pequeña que guarda contactos, consulta uno y actualiza otro antes de mostrar el resultado final.",
+    prompt:
+      "Escribe un programa que defina `guardar_contactos()` para guardar `Ana: Córdoba\\nLuis: Rosario` en `agenda.txt`, `consultar_contacto(nombre)` para imprimir `Contacto: ...`, y `actualizar_contacto(nombre, nueva_ciudad)` para cambiar la ciudad del contacto elegido. Luego guarda los datos, consulta `Ana`, actualiza `Luis` a `Mendoza` y vuelve a consultar `Luis`.",
+    responseLabel: "Tu agenda simple",
+    responsePlaceholder:
+      "def guardar_contactos():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana: Córdoba\\nLuis: Rosario')\n\n\ndef consultar_contacto(nombre):\n    with open('agenda.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Contacto:', linea)\n\n\ndef actualizar_contacto(nombre, nueva_ciudad):\n    with open('agenda.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nueva_ciudad)\n        else:\n            nuevas_lineas.append(linea)\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_contactos()\nconsultar_contacto('Ana')\nactualizar_contacto('Luis', 'Mendoza')\nconsultar_contacto('Luis')",
+    instructions: [
+      "Guarda dos contactos en un archivo.",
+      "Consulta un contacto antes del cambio.",
+      "Actualiza otro contacto y vuelve a mostrarlo."
+    ],
+    hints: [
+      "Usa `startswith(nombre + ':')` para encontrar cada contacto.",
+      "Puedes rearmar el archivo con `nuevas_lineas`.",
+      "Mostrar una consulta antes y otra después ayuda a que el flujo quede claro."
+    ],
+    starterCode:
+      "def guardar_contactos():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana: Córdoba\\nLuis: Rosario')\n\n\ndef consultar_contacto(nombre):\n    with open('agenda.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Contacto:', linea)\n\n\ndef actualizar_contacto(nombre, nueva_ciudad):\n    with open('agenda.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nueva_ciudad)\n        else:\n            nuevas_lineas.append(linea)\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_contactos()\nconsultar_contacto('Ana')\nactualizar_contacto('Luis', 'Mendoza')\nconsultar_contacto('Luis')",
+    successCriteria: [
+      "Coordina guardado, consulta y actualización.",
+      "Usa funciones separadas por responsabilidad.",
+      "Muestra con claridad el antes y el después."
+    ],
+    playground: {
+      title: "Construye y prueba tu agenda",
+      guidance: "Ejecuta el programa, cambia los contactos o la ciudad final y comprueba que la agenda siga mostrando un flujo claro.",
+      starterCode:
+        "def guardar_contactos():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana: Córdoba\\nLuis: Rosario')\n\n\ndef consultar_contacto(nombre):\n    with open('agenda.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Contacto:', linea)\n\n\ndef actualizar_contacto(nombre, nueva_ciudad):\n    with open('agenda.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nueva_ciudad)\n        else:\n            nuevas_lineas.append(linea)\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\nguardar_contactos()\nconsultar_contacto('Ana')\nactualizar_contacto('Luis', 'Mendoza')\nconsultar_contacto('Luis')",
+      emptyOutputHint: "La salida debería mostrar un contacto antes y otro después de la actualización."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Contacto: Ana: Córdoba\nContacto: Luis: Mendoza"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 340,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-save-contacts",
+          label: "Define `guardar_contactos()`",
+          pattern: "def\\s+guardar_contactos\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `guardar_contactos()`."
+        },
+        {
+          id: "defines-query-contact",
+          label: "Define `consultar_contacto(nombre)`",
+          pattern: "def\\s+consultar_contacto\\(\\s*nombre\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `consultar_contacto(nombre)`."
+        },
+        {
+          id: "defines-update-contact",
+          label: "Define `actualizar_contacto(nombre, nueva_ciudad)`",
+          pattern: "def\\s+actualizar_contacto\\(\\s*nombre\\s*,\\s*nueva_ciudad\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `actualizar_contacto(nombre, nueva_ciudad)`."
+        },
+        {
+          id: "queries-ana",
+          label: "Consulta a Ana antes del cambio",
+          pattern: "consultar_contacto\\(\\s*['\"]Ana['\"]\\s*\\)",
+          feedbackWhenMissing: "Consulta `Ana` antes de la actualización para mostrar el flujo completo."
+        },
+        {
+          id: "updates-luis",
+          label: "Actualiza a Luis con Mendoza",
+          pattern: "actualizar_contacto\\(\\s*['\"]Luis['\"]\\s*,\\s*['\"]Mendoza['\"]\\s*\\)",
+          feedbackWhenMissing: "Actualiza `Luis` con la ciudad `Mendoza`."
+        },
+        {
+          id: "queries-luis-after",
+          label: "Consulta a Luis después del cambio",
+          pattern: "consultar_contacto\\(\\s*['\"]Luis['\"]\\s*\\)",
+          feedbackWhenMissing: "Después de actualizar, vuelve a consultar `Luis`."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-save-contacts",
+        "defines-query-contact",
+        "defines-update-contact",
+        "queries-ana",
+        "updates-luis",
+        "queries-luis-after"
+      ]
+    }
+  },
+  {
+    slug: "build-route2-notebook-menu-project",
+    title: "Construye una libreta con menú y resumen",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "route2-practical-projects",
+    lessonSlug: "route2-project-notebook-menu-and-summary",
+    order: 2,
+    duration: "17 min",
+    summary: "Construye una libreta con menú simple que consulta o actualiza un hábito y después muestra un resumen final.",
+    prompt:
+      "Escribe un programa que defina `guardar_habitos()` para guardar `Leer: pendiente\\nCaminar: hecho` en `habitos.txt`, `consultar_habito(nombre)` para imprimir `Consulta: ...`, `actualizar_habito(nombre, nuevo_estado)` para cambiar una línea y `mostrar_resumen()` para mostrar `Resumen final:` junto con el contenido del archivo. Luego pide `action` con `input('Escribe consultar o actualizar: ')`. Si la acción es `consultar`, consulta `Leer`. En cualquier otro caso, actualiza `Leer` a `hecho`. En ambos casos, muestra el resumen final.",
+    responseLabel: "Tu libreta con menú",
+    responsePlaceholder:
+      "def guardar_habitos():\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('Leer: pendiente\\nCaminar: hecho')\n\n\ndef consultar_habito(nombre):\n    with open('habitos.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_habito(nombre, nuevo_estado):\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_resumen():\n    with open('habitos.txt', 'r') as archivo:\n        print('Resumen final:')\n        print(archivo.read())\n\n\nguardar_habitos()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_habito('Leer')\nelse:\n    actualizar_habito('Leer', 'hecho')\nmostrar_resumen()",
+    instructions: [
+      "Guarda hábitos base en un archivo.",
+      "Usa `input()` para decidir el flujo.",
+      "Muestra un resumen final en ambos caminos."
+    ],
+    hints: [
+      "El menú puede ser simple si la acción final queda clara.",
+      "El resumen final debería abrir el archivo otra vez.",
+      "Si actualizas, luego el resumen debería mostrar el cambio."
+    ],
+    starterCode:
+      "def guardar_habitos():\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('Leer: pendiente\\nCaminar: hecho')\n\n\ndef consultar_habito(nombre):\n    with open('habitos.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_habito(nombre, nuevo_estado):\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_resumen():\n    with open('habitos.txt', 'r') as archivo:\n        print('Resumen final:')\n        print(archivo.read())\n\n\nguardar_habitos()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_habito('Leer')\nelse:\n    actualizar_habito('Leer', 'hecho')\nmostrar_resumen()",
+    successCriteria: [
+      "Usa un flujo con menú o decisión clara.",
+      "Mantiene funciones separadas por responsabilidad.",
+      "Cierra con un resumen final visible."
+    ],
+    playground: {
+      title: "Prueba tu libreta con menú",
+      guidance: "Ejecuta el programa, cambia la acción y verifica que siempre termine con un resumen final legible.",
+      starterCode:
+        "def guardar_habitos():\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('Leer: pendiente\\nCaminar: hecho')\n\n\ndef consultar_habito(nombre):\n    with open('habitos.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_habito(nombre, nuevo_estado):\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_resumen():\n    with open('habitos.txt', 'r') as archivo:\n        print('Resumen final:')\n        print(archivo.read())\n\n\nguardar_habitos()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_habito('Leer')\nelse:\n    actualizar_habito('Leer', 'hecho')\nmostrar_resumen()",
+      emptyOutputHint: "La salida debería mostrar la acción elegida y luego un resumen final del archivo."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 420,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-save-habits",
+          label: "Define `guardar_habitos()`",
+          pattern: "def\\s+guardar_habitos\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `guardar_habitos()`."
+        },
+        {
+          id: "defines-summary",
+          label: "Define `mostrar_resumen()`",
+          pattern: "def\\s+mostrar_resumen\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `mostrar_resumen()`."
+        },
+        {
+          id: "asks-for-action",
+          label: "Pide `action` con `input()`",
+          pattern: "action\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Pide la acción con `input()`."
+        },
+        {
+          id: "uses-action-branch",
+          label: "Usa un `if` para consultar o actualizar",
+          pattern: "if\\s+action\\s*==\\s*['\"]consultar['\"]\\s*:",
+          feedbackWhenMissing: "Usa un `if` para decidir entre consultar o actualizar."
+        },
+        {
+          id: "updates-read-habit",
+          label: "Actualiza `Leer` a `hecho`",
+          pattern: "actualizar_habito\\(\\s*['\"]Leer['\"]\\s*,\\s*['\"]hecho['\"]\\s*\\)",
+          feedbackWhenMissing: "En el camino de actualización, cambia `Leer` a `hecho`."
+        },
+        {
+          id: "always-shows-summary",
+          label: "Muestra el resumen final",
+          pattern: "mostrar_resumen\\(\\s*\\)",
+          feedbackWhenMissing: "Cierra el proyecto llamando `mostrar_resumen()`."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-save-habits",
+        "defines-summary",
+        "asks-for-action",
+        "uses-action-branch",
+        "updates-read-habit",
+        "always-shows-summary"
+      ]
+    }
+  },
+  {
+    slug: "build-route2-record-and-report-project",
+    title: "Construye una herramienta de registro y reporte",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "route2-practical-projects",
+    lessonSlug: "route2-project-record-and-report-tool",
+    order: 3,
+    duration: "18 min",
+    summary: "Construye una utilidad que consulta o actualiza un registro y luego muestra un reporte final con contexto.",
+    prompt:
+      "Escribe un programa que defina `guardar_registro()` para guardar `Ana: activo\\nLuis: pendiente\\nMara: activo` en `reporte.txt`, `consultar_registro(nombre)` para imprimir `Consulta: ...`, `actualizar_registro(nombre, nuevo_estado)` para cambiar una línea y `mostrar_reporte()` para imprimir `=== REPORTE ===`, cada línea del archivo y `Total:` con la cantidad de registros. Luego pide `action` con `input('Escribe consultar o actualizar: ')`. Si la acción es `consultar`, consulta `Luis`. En cualquier otro caso, actualiza `Luis` a `activo`. Después muestra el reporte final.",
+    responseLabel: "Tu herramienta de registro y reporte",
+    responsePlaceholder:
+      "def guardar_registro():\n    with open('reporte.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente\\nMara: activo')\n\n\ndef consultar_registro(nombre):\n    with open('reporte.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('reporte.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('reporte.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('reporte.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('=== REPORTE ===')\n    for linea in lineas:\n        print(linea)\n    print('Total:', len(lineas))\n\n\nguardar_registro()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_registro('Luis')\nelse:\n    actualizar_registro('Luis', 'activo')\nmostrar_reporte()",
+    instructions: [
+      "Guarda varios registros en un archivo.",
+      "Usa `input()` para decidir si consultas o actualizas.",
+      "Cierra con un reporte final claro."
+    ],
+    hints: [
+      "El reporte puede leer el archivo una vez y luego recorrer las líneas.",
+      "El total puede salir de `len(lineas)`.",
+      "Aunque consultes o actualices, el proyecto debería terminar con el mismo cierre."
+    ],
+    starterCode:
+      "def guardar_registro():\n    with open('reporte.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente\\nMara: activo')\n\n\ndef consultar_registro(nombre):\n    with open('reporte.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('reporte.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('reporte.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('reporte.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('=== REPORTE ===')\n    for linea in lineas:\n        print(linea)\n    print('Total:', len(lineas))\n\n\nguardar_registro()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_registro('Luis')\nelse:\n    actualizar_registro('Luis', 'activo')\nmostrar_reporte()",
+    successCriteria: [
+      "Combina consulta o actualización con un reporte final.",
+      "Mantiene una organización clara por funciones.",
+      "Muestra un cierre útil y legible."
+    ],
+    playground: {
+      title: "Prueba tu herramienta de reporte",
+      guidance: "Ejecuta el proyecto, cambia la acción y luego ajusta el formato del reporte sin perder claridad.",
+      starterCode:
+        "def guardar_registro():\n    with open('reporte.txt', 'w') as archivo:\n        archivo.write('Ana: activo\\nLuis: pendiente\\nMara: activo')\n\n\ndef consultar_registro(nombre):\n    with open('reporte.txt', 'r') as archivo:\n        for linea in archivo.read().splitlines():\n            if linea.startswith(nombre + ':'):\n                print('Consulta:', linea)\n\n\ndef actualizar_registro(nombre, nuevo_estado):\n    with open('reporte.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    nuevas_lineas = []\n    for linea in lineas:\n        if linea.startswith(nombre + ':'):\n            nuevas_lineas.append(nombre + ': ' + nuevo_estado)\n        else:\n            nuevas_lineas.append(linea)\n    with open('reporte.txt', 'w') as archivo:\n        archivo.write('\\n'.join(nuevas_lineas))\n\n\ndef mostrar_reporte():\n    with open('reporte.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('=== REPORTE ===')\n    for linea in lineas:\n        print(linea)\n    print('Total:', len(lineas))\n\n\nguardar_registro()\naction = input('Escribe consultar o actualizar: ')\nif action == 'consultar':\n    consultar_registro('Luis')\nelse:\n    actualizar_registro('Luis', 'activo')\nmostrar_reporte()",
+      emptyOutputHint: "La salida debería terminar con un reporte claro que muestre los registros y el total."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 460,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-save-record",
+          label: "Define `guardar_registro()`",
+          pattern: "def\\s+guardar_registro\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `guardar_registro()`."
+        },
+        {
+          id: "defines-report",
+          label: "Define `mostrar_reporte()`",
+          pattern: "def\\s+mostrar_reporte\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `mostrar_reporte()`."
+        },
+        {
+          id: "asks-for-action",
+          label: "Pide `action` con `input()`",
+          pattern: "action\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Pide la acción con `input()`."
+        },
+        {
+          id: "prints-report-header",
+          label: "Imprime `=== REPORTE ===`",
+          pattern: "print\\(\\s*['\"]=== REPORTE ===['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro del reporte, imprime el encabezado `=== REPORTE ===`."
+        },
+        {
+          id: "prints-total",
+          label: "Muestra `Total:` con `len(lineas)`",
+          pattern: "print\\(\\s*['\"]Total:['\"]\\s*,\\s*len\\(\\s*lineas\\s*\\)\\s*\\)",
+          feedbackWhenMissing: "Cierra el reporte mostrando `Total:` junto a `len(lineas)`."
+        },
+        {
+          id: "calls-report-at-end",
+          label: "Llama `mostrar_reporte()` al final",
+          pattern: "mostrar_reporte\\(\\s*\\)",
+          feedbackWhenMissing: "Termina el proyecto llamando `mostrar_reporte()`."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-save-record",
+        "defines-report",
+        "asks-for-action",
+        "prints-report-header",
+        "prints-total",
+        "calls-report-at-end"
       ]
     }
   }

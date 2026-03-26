@@ -120,6 +120,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "90 min",
     xp: 310
+  },
+  {
+    slug: "early-freeform-projects",
+    title: "Proyectos iniciales más libres",
+    description: "Trabaja a partir de briefs y criterios de éxito claros para construir soluciones pequeñas con más independencia, sin perder apoyo ni enfoque.",
+    order: 13,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "95 min",
+    xp: 330
   }
 ];
 
@@ -2580,6 +2590,222 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar un encabezado, un resumen por registro y un cierre final."
     },
     exerciseSlug: "build-semi-open-summary-generator"
+  },
+  {
+    slug: "freeform-project-habit-register",
+    module: "Proyectos iniciales más libres",
+    moduleSlug: "early-freeform-projects",
+    order: 1,
+    title: "Proyecto inicial más libre: registro simple de hábitos",
+    duration: "22 min",
+    difficulty: "Beginner",
+    summary: "Construye un registro corto de hábitos a partir de un brief claro, decidiendo tú cómo organizar parte de la solución y de la salida.",
+    warmup: "Hasta aquí ya trabajaste con bastante apoyo. Ahora la idea es que puedas sostener un problema pequeño con más iniciativa, pero todavía con límites claros.",
+    goal: "Al final, deberías poder crear un pequeño registro de hábitos que use datos estructurados, recorra información y muestre un resumen comprensible.",
+    keyIdeas: [
+      {
+        title: "El brief reemplaza la receta",
+        description: "Ya no necesitas que te dicten cada paso, pero sí una meta clara con requisitos concretos."
+      },
+      {
+        title: "La estructura de datos sigue siendo tu aliada",
+        description: "Listas y diccionarios te ayudan a mantener orden aunque el proyecto sea un poco más libre."
+      },
+      {
+        title: "La claridad sigue valiendo más que adornar",
+        description: "Una solución sencilla y legible es mejor que una versión enredada con demasiados extras."
+      }
+    ],
+    explanation: [
+      {
+        title: "Cuál es el brief",
+        body: "Tu tarea es construir un pequeño registro de hábitos con al menos dos hábitos, mostrar su estado y cerrar con una línea final clara. No te damos cada línea exacta, pero sí sabemos qué debe poder hacer el programa."
+      },
+      {
+        title: "Qué decisiones puedes tomar",
+        body: "Puedes decidir el nombre de algunas variables, el título del resumen, el texto exacto de los mensajes y el orden de parte de la salida, siempre que se mantenga la lógica principal."
+      },
+      {
+        title: "Qué conviene no perder de vista",
+        body: "Este tipo de proyecto se sostiene mejor cuando primero resuelves la base: datos, bucle, condición y cierre. Después, si quieres, ajustas el estilo."
+      },
+      {
+        title: "Qué demuestra este proyecto",
+        body: "Demuestra que ya puedes tomar un problema pequeño, interpretarlo y convertirlo en una solución funcional sin depender de una receta completa."
+      }
+    ],
+    example:
+      "habitos = [\n    {'nombre': 'Leer', 'estado': 'hecho'},\n    {'nombre': 'Caminar', 'estado': 'pendiente'}\n]\n\nprint('=== REGISTRO ===')\nfor habito in habitos:\n    if habito['estado'] == 'hecho':\n        print(habito['nombre'] + ': listo')\n    else:\n        print(habito['nombre'] + ': por hacer')\nprint('Registro terminado')",
+    practicePrompt: "Cambia el título, uno de los mensajes o el orden visual de la salida. La idea es mantener el programa útil aunque tomes decisiones propias.",
+    practiceChecklist: [
+      "Usa una lista con hábitos.",
+      "Guarda cada hábito con información clara.",
+      "Recorre los datos con un bucle.",
+      "Muestra un cierre final visible."
+    ],
+    commonMistakes: [
+      "Intentar hacer una versión demasiado grande antes de cerrar la base.",
+      "Cambiar nombres o claves sin revisar que sigan coincidiendo en todo el programa.",
+      "Perder el cierre final dentro del bucle."
+    ],
+    bugChallenge: {
+      prompt: "Este registro debería mostrar el estado de cada hábito y cerrar una sola vez, pero una clave y una indentación cambian el resultado.",
+      brokenCode:
+        "habitos = [\n    {'nombre': 'Leer', 'estado': 'hecho'},\n    {'nombre': 'Caminar', 'estado': 'pendiente'}\n]\n\nfor habito in habitos:\n    if habito['estdo'] == 'hecho':\n        print(habito['nombre'] + ': listo')\n    else:\n        print(habito['nombre'] + ': por hacer')\n    print('Registro terminado')",
+      expectedLearning: "Aunque el proyecto sea más libre, los puntos críticos siguen siendo los mismos: claves correctas, condición clara y cierre fuera del bucle."
+    },
+    playground: {
+      title: "Explora tu registro de hábitos",
+      guidance: "Ejecuta el proyecto y luego modifica títulos o mensajes. Busca una solución propia que siga cumpliendo el brief sin volverse confusa.",
+      starterCode:
+        "habitos = [\n    {'nombre': 'Leer', 'estado': 'hecho'},\n    {'nombre': 'Caminar', 'estado': 'pendiente'}\n]\n\nprint('=== REGISTRO ===')\nfor habito in habitos:\n    if habito['estado'] == 'hecho':\n        print(habito['nombre'] + ': listo')\n    else:\n        print(habito['nombre'] + ': por hacer')\nprint('Registro terminado')",
+      emptyOutputHint: "La salida debería mostrar un pequeño resumen de hábitos y una línea final."
+    },
+    exerciseSlug: "build-freeform-habit-register"
+  },
+  {
+    slug: "freeform-project-menu-helper",
+    module: "Proyectos iniciales más libres",
+    moduleSlug: "early-freeform-projects",
+    order: 2,
+    title: "Proyecto inicial más libre: asistente con menú sencillo",
+    duration: "23 min",
+    difficulty: "Beginner",
+    summary: "Construye una herramienta pequeña con menú donde decides más del flujo y de los textos, manteniendo requisitos claros.",
+    warmup: "Un menú sencillo ya te obliga a pensar mejor el flujo del programa. Esa es una buena forma de ganar autonomía sin saltar a algo demasiado abierto.",
+    goal: "Al final, deberías poder crear una herramienta con varias opciones simples, funciones y respuestas distintas según la elección.",
+    keyIdeas: [
+      {
+        title: "El menú te obliga a pensar el flujo",
+        description: "No solo escribes líneas sueltas: decides cómo entra una opción y qué respuesta corresponde."
+      },
+      {
+        title: "Más libertad requiere más orden",
+        description: "Cuando el proyecto es menos receta, conviene separar cada acción en funciones claras."
+      },
+      {
+        title: "Los requisitos mantienen el proyecto en tierra",
+        description: "Tener dos o tres opciones mínimas ayuda a que la libertad no se vuelva caos."
+      }
+    ],
+    explanation: [
+      {
+        title: "Cuál es el brief",
+        body: "Tu tarea es construir una pequeña herramienta con menú y al menos dos opciones reales. Puedes decidir los mensajes, los nombres y parte del formato, pero el programa debe responder de forma distinta según la elección."
+      },
+      {
+        title: "Qué apoyo sigue presente",
+        body: "No estás solo. Tienes pistas, criterios de éxito, mentor y un ejemplo de referencia. Lo que cambia es que ya no te damos una receta tan cerrada."
+      },
+      {
+        title: "Cómo resolverlo con calma",
+        body: "Empieza por listar las opciones, luego define una función para cada una y por último une todo con la variable de elección. Esa secuencia reduce bastante la confusión."
+      },
+      {
+        title: "Qué hace que el proyecto se sienta propio",
+        body: "Que puedas elegir parte del tono, del orden o del contenido del menú hace que la solución se sienta más tuya, aunque el marco siga guiado."
+      }
+    ],
+    example:
+      "def ver_estado():\n    print('Tu estado actual es estable')\n\ndef ver_siguiente_paso():\n    print('Siguiente paso: repasar una lección')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar sin prisa')\n\nprint('1. Estado')\nprint('2. Siguiente paso')\nprint('3. Recordatorio')\nopcion = '2'\n\nif opcion == '1':\n    ver_estado()\nelif opcion == '2':\n    ver_siguiente_paso()\nelif opcion == '3':\n    ver_recordatorio()\nelse:\n    print('Opción no válida')",
+    practicePrompt: "Cambia los nombres, el estilo del menú o uno de los mensajes. La salida puede variar, pero el flujo debe seguir claro y coherente.",
+    practiceChecklist: [
+      "Muestra varias opciones visibles.",
+      "Usa al menos dos funciones distintas.",
+      "Guarda una elección y compárala.",
+      "Responde con un camino distinto según la opción."
+    ],
+    commonMistakes: [
+      "No alinear el valor de la opción con la comparación usada en el `if`.",
+      "Dejar una función definida pero nunca llamada.",
+      "Agregar muchas opciones y perder claridad."
+    ],
+    bugChallenge: {
+      prompt: "Este menú debería responder a tres caminos posibles, pero una comparación y una llamada incompleta rompen parte del flujo.",
+      brokenCode:
+        "def ver_estado():\n    print('Tu estado actual es estable')\n\ndef ver_siguiente_paso():\n    print('Siguiente paso: repasar una lección')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar sin prisa')\n\nopcion = '3'\nif opcion == '1':\n    ver_estado()\nelif opcion == '2':\n    ver_siguiente_paso()\nelif opcion == 'tres':\n    ver_recordatorio",
+      expectedLearning: "Cuando aumentan un poco los caminos del programa, sigue siendo fundamental revisar cada comparación y cada llamada."
+    },
+    playground: {
+      title: "Prueba tu asistente con menú",
+      guidance: "Ejecuta el proyecto y luego cambia la opción o los textos. Intenta mantener una solución clara aunque tomes decisiones propias.",
+      starterCode:
+        "def ver_estado():\n    print('Tu estado actual es estable')\n\ndef ver_siguiente_paso():\n    print('Siguiente paso: repasar una lección')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar sin prisa')\n\nprint('1. Estado')\nprint('2. Siguiente paso')\nprint('3. Recordatorio')\nopcion = '2'\n\nif opcion == '1':\n    ver_estado()\nelif opcion == '2':\n    ver_siguiente_paso()\nelif opcion == '3':\n    ver_recordatorio()\nelse:\n    print('Opción no válida')",
+      emptyOutputHint: "La salida debería mostrar el menú y luego una respuesta según la opción elegida."
+    },
+    exerciseSlug: "build-freeform-menu-helper"
+  },
+  {
+    slug: "freeform-project-report-generator",
+    module: "Proyectos iniciales más libres",
+    moduleSlug: "early-freeform-projects",
+    order: 3,
+    title: "Proyecto inicial más libre: generador básico de reporte",
+    duration: "24 min",
+    difficulty: "Beginner",
+    summary: "Crea un pequeño reporte a partir de datos estructurados, tomando más decisiones sobre la salida y el cierre del programa.",
+    warmup: "Generar un reporte simple es una muy buena forma de sentir que ya puedes construir algo pequeño con criterio propio y una estructura clara.",
+    goal: "Al final, deberías poder construir un reporte corto que recorra datos, clasifique estados y organice una salida útil.",
+    keyIdeas: [
+      {
+        title: "Un reporte necesita criterio",
+        description: "No solo muestra datos: decide cómo presentarlos y qué mensaje usar en cada caso."
+      },
+      {
+        title: "Más autonomía no significa desorden",
+        description: "Aunque haya varias soluciones válidas, las bases siguen siendo datos claros, bucle, decisión y cierre."
+      },
+      {
+        title: "Una salida útil puede seguir siendo simple",
+        description: "No hace falta un formato complejo para que el resultado se sienta como algo real."
+      }
+    ],
+    explanation: [
+      {
+        title: "Cuál es el brief",
+        body: "Debes crear un programa que tome varios registros simples y genere un reporte corto. La forma del encabezado y parte de los mensajes pueden variar, pero el programa tiene que recorrer los datos, distinguir estados y cerrar el reporte."
+      },
+      {
+        title: "Qué se espera de ti aquí",
+        body: "Se espera un poco más de criterio propio: decidir cómo nombrar el cierre, cómo organizar la presentación y qué mensaje usar en cada caso, siempre dentro de límites sencillos."
+      },
+      {
+        title: "Cómo mantenerlo en nivel principiante",
+        body: "Trabaja con pocos registros, textos cortos y una sola condición principal. Eso ya alcanza para que el problema se sienta más real sin volverse pesado."
+      },
+      {
+        title: "Qué marca este proyecto",
+        body: "Marca un momento importante: ya no solo sigues una guía, también empiezas a responder briefs con una solución razonable propia."
+      }
+    ],
+    example:
+      "registros = [\n    {'nombre': 'Lectura', 'estado': 'bien'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nprint('== REPORTE ==')\nfor registro in registros:\n    if registro['estado'] == 'bien':\n        print(registro['nombre'] + ': en buen camino')\n    else:\n        print(registro['nombre'] + ': necesita atención')\nprint('Reporte listo')",
+    practicePrompt: "Cambia el encabezado o el mensaje de uno de los estados. Lo importante es que el reporte siga recorriendo bien los datos y termine de forma clara.",
+    practiceChecklist: [
+      "Crea una lista con registros.",
+      "Usa un bucle para recorrerlos.",
+      "Compara una clave de estado.",
+      "Agrega un encabezado o cierre visible."
+    ],
+    commonMistakes: [
+      "Hacer demasiado libre la salida y olvidar uno de los requisitos básicos.",
+      "Usar una clave distinta en un punto del programa.",
+      "Poner el cierre dentro del bucle y repetirlo."
+    ],
+    bugChallenge: {
+      prompt: "Este reporte debería clasificar dos registros y cerrar una sola vez, pero una clave y una ubicación incorrecta del cierre cambian el resultado.",
+      brokenCode:
+        "registros = [\n    {'nombre': 'Lectura', 'estado': 'bien'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nfor registro in registros:\n    if registro['estdo'] == 'bien':\n        print(registro['nombre'] + ': en buen camino')\n    else:\n        print(registro['nombre'] + ': necesita atención')\n    print('Reporte listo')",
+      expectedLearning: "Incluso cuando la solución puede variar, los puntos más delicados siguen siendo claves, condiciones y cierre final."
+    },
+    playground: {
+      title: "Explora tu generador de reporte",
+      guidance: "Ejecuta el proyecto y luego cambia algunos textos. Busca una versión propia que siga cumpliendo el brief y se lea con claridad.",
+      starterCode:
+        "registros = [\n    {'nombre': 'Lectura', 'estado': 'bien'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nprint('== REPORTE ==')\nfor registro in registros:\n    if registro['estado'] == 'bien':\n        print(registro['nombre'] + ': en buen camino')\n    else:\n        print(registro['nombre'] + ': necesita atención')\nprint('Reporte listo')",
+      emptyOutputHint: "La salida debería mostrar un encabezado, una línea por registro y un cierre final."
+    },
+    exerciseSlug: "build-freeform-report-generator"
   }
 ];
 
@@ -5136,6 +5362,271 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["creates-records", "loops-records", "checks-status", "prints-name-based-line", "prints-final-summary-line"]
+    }
+  },
+  {
+    slug: "build-freeform-habit-register",
+    title: "Construye un registro simple de hábitos",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "early-freeform-projects",
+    lessonSlug: "freeform-project-habit-register",
+    order: 1,
+    duration: "12 min",
+    summary: "Resuelve un brief de registro de hábitos con más libertad de estructura, manteniendo requisitos y un resultado claro.",
+    prompt:
+      "Brief: crea un pequeño registro con al menos dos hábitos usando datos estructurados. Requisitos: debes recorrer los hábitos, distinguir entre un estado positivo y otro pendiente, y cerrar con una línea final visible. Puedes decidir el encabezado y parte de los textos.",
+    responseLabel: "Tu registro de hábitos",
+    responsePlaceholder:
+      "habitos = [\n    {'nombre': 'Leer', 'estado': 'hecho'},\n    {'nombre': 'Caminar', 'estado': 'pendiente'}\n]\n\nprint('=== REGISTRO ===')\nfor habito in habitos:\n    if habito['estado'] == 'hecho':\n        print(habito['nombre'] + ': listo')\n    else:\n        print(habito['nombre'] + ': por hacer')\nprint('Registro terminado')",
+    instructions: [
+      "Usa una lista con al menos dos hábitos.",
+      "Cada hábito debe guardar nombre y estado.",
+      "Recorre los hábitos con un bucle.",
+      "Muestra un cierre final."
+    ],
+    hints: [
+      "Una lista de diccionarios sigue siendo una buena estructura para este problema.",
+      "No necesitas una salida idéntica al ejemplo, pero sí distinguir entre dos estados.",
+      "La línea final debe aparecer una sola vez."
+    ],
+    starterCode:
+      "habitos = [\n    {'nombre': 'Leer', 'estado': 'hecho'},\n    {'nombre': 'Caminar', 'estado': 'pendiente'}\n]\n\nprint('=== REGISTRO ===')\nfor habito in habitos:\n    if habito['estado'] == 'hecho':\n        print(habito['nombre'] + ': listo')\n    else:\n        print(habito['nombre'] + ': por hacer')\nprint('Registro terminado')",
+    successCriteria: [
+      "Usa datos estructurados.",
+      "Recorre los hábitos y distingue dos estados.",
+      "Muestra un encabezado o cierre visible."
+    ],
+    playground: {
+      title: "Ejecuta tu registro de hábitos",
+      guidance: "Corre tu solución y prueba cambiar mensajes o estados. La clave es que el brief siga bien resuelto aunque el estilo varíe.",
+      starterCode:
+        "habitos = [\n    {'nombre': 'Leer', 'estado': 'hecho'},\n    {'nombre': 'Caminar', 'estado': 'pendiente'}\n]\n\nprint('=== REGISTRO ===')\nfor habito in habitos:\n    if habito['estado'] == 'hecho':\n        print(habito['nombre'] + ': listo')\n    else:\n        print(habito['nombre'] + ': por hacer')\nprint('Registro terminado')",
+      emptyOutputHint: "La salida debería mostrar el estado de los hábitos y una línea final."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["=== REGISTRO ===\nLeer: listo\nCaminar: por hacer\nRegistro terminado"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 190,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "creates-habit-data",
+          label: "Crea datos de hábitos estructurados",
+          pattern: "habitos\\s*=\\s*\\[[\\s\\S]*['\"]nombre['\"][\\s\\S]*['\"]estado['\"][\\s\\S]*\\]",
+          feedbackWhenMissing: "Crea una lista `habitos` con datos estructurados."
+        },
+        {
+          id: "loops-habit-data",
+          label: "Recorre los hábitos con un bucle",
+          pattern: "for\\s+habito\\s+in\\s+habitos\\s*:",
+          feedbackWhenMissing: "Usa un bucle para recorrer la lista `habitos`."
+        },
+        {
+          id: "checks-habit-state",
+          label: "Compara el estado de cada hábito",
+          pattern: "if\\s+habito\\[['\"]estado['\"]\\]\\s*==\\s*['\"][^'\"]+['\"]\\s*:",
+          feedbackWhenMissing: "Compara la clave `estado` para distinguir entre dos casos."
+        },
+        {
+          id: "uses-habit-name",
+          label: "Usa el nombre del hábito en la salida",
+          pattern: "habito\\[['\"]nombre['\"]\\]",
+          feedbackWhenMissing: "Construye la salida usando `habito['nombre']`."
+        },
+        {
+          id: "adds-final-line",
+          label: "Agrega una línea final visible",
+          pattern: "print\\(\\s*['\"][^'\"]+['\"]\\s*\\)",
+          feedbackWhenMissing: "Agrega un encabezado o una línea final visible para cerrar el registro."
+        }
+      ],
+      orderedPatternIds: ["creates-habit-data", "loops-habit-data", "checks-habit-state", "uses-habit-name", "adds-final-line"]
+    }
+  },
+  {
+    slug: "build-freeform-menu-helper",
+    title: "Construye una herramienta de menú más libre",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "early-freeform-projects",
+    lessonSlug: "freeform-project-menu-helper",
+    order: 2,
+    duration: "13 min",
+    summary: "Resuelve un brief de menú con varias opciones y respuestas distintas, tomando más decisiones sobre nombres y mensajes.",
+    prompt:
+      "Brief: crea una mini herramienta con menú. Requisitos: debe mostrar al menos dos opciones visibles, usar funciones para responder, guardar una elección en una variable y ejecutar una respuesta distinta según la opción. Puedes decidir nombres, textos y formato.",
+    responseLabel: "Tu herramienta con menú",
+    responsePlaceholder:
+      "def ver_estado():\n    print('Tu estado actual es estable')\n\ndef ver_siguiente_paso():\n    print('Siguiente paso: repasar una lección')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar sin prisa')\n\nprint('1. Estado')\nprint('2. Siguiente paso')\nprint('3. Recordatorio')\nopcion = '2'\n\nif opcion == '1':\n    ver_estado()\nelif opcion == '2':\n    ver_siguiente_paso()\nelif opcion == '3':\n    ver_recordatorio()\nelse:\n    print('Opción no válida')",
+    instructions: [
+      "Muestra varias opciones visibles.",
+      "Define funciones para las respuestas.",
+      "Guarda una elección.",
+      "Usa condiciones para decidir qué camino seguir."
+    ],
+    hints: [
+      "Puedes usar números o letras como opciones, pero deben coincidir con las comparaciones.",
+      "No hace falta una solución idéntica al ejemplo si el flujo está bien resuelto.",
+      "Agregar un caso no válido suele mejorar la claridad."
+    ],
+    starterCode:
+      "def ver_estado():\n    print('Tu estado actual es estable')\n\ndef ver_siguiente_paso():\n    print('Siguiente paso: repasar una lección')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar sin prisa')\n\nprint('1. Estado')\nprint('2. Siguiente paso')\nprint('3. Recordatorio')\nopcion = '2'\n\nif opcion == '1':\n    ver_estado()\nelif opcion == '2':\n    ver_siguiente_paso()\nelif opcion == '3':\n    ver_recordatorio()\nelse:\n    print('Opción no válida')",
+    successCriteria: [
+      "Muestra varias opciones.",
+      "Usa funciones para responder.",
+      "La elección del usuario cambia el resultado."
+    ],
+    playground: {
+      title: "Ejecuta tu herramienta de menú",
+      guidance: "Corre tu solución y cambia la opción. Lo importante es que cada camino del programa siga siendo claro aunque cambies nombres o mensajes.",
+      starterCode:
+        "def ver_estado():\n    print('Tu estado actual es estable')\n\ndef ver_siguiente_paso():\n    print('Siguiente paso: repasar una lección')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar sin prisa')\n\nprint('1. Estado')\nprint('2. Siguiente paso')\nprint('3. Recordatorio')\nopcion = '2'\n\nif opcion == '1':\n    ver_estado()\nelif opcion == '2':\n    ver_siguiente_paso()\nelif opcion == '3':\n    ver_recordatorio()\nelse:\n    print('Opción no válida')",
+      emptyOutputHint: "La salida debería mostrar el menú y luego la respuesta correspondiente a la opción elegida."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: [
+        "1. Estado\n2. Siguiente paso\n3. Recordatorio\nSiguiente paso: repasar una lección"
+      ],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 230,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-multiple-functions",
+          label: "Define varias funciones",
+          pattern: "def\\s+[a-zA-Z_][a-zA-Z0-9_]*\\(\\)\\s*:[\\s\\S]*def\\s+[a-zA-Z_][a-zA-Z0-9_]*\\(\\)\\s*:",
+          feedbackWhenMissing: "Define al menos dos funciones para responder al menú."
+        },
+        {
+          id: "prints-several-options",
+          label: "Muestra varias opciones visibles",
+          pattern: "print\\([\\s\\S]*\\)[\\s\\S]*print\\([\\s\\S]*\\)",
+          feedbackWhenMissing: "Muestra al menos dos opciones visibles en pantalla."
+        },
+        {
+          id: "stores-menu-choice",
+          label: "Guarda una elección en `opcion`",
+          pattern: "opcion\\s*=\\s*['\"][A-Za-z0-9]['\"]",
+          feedbackWhenMissing: "Guarda la elección en una variable llamada `opcion`."
+        },
+        {
+          id: "uses-conditional-branches",
+          label: "Usa un flujo condicional con varias ramas",
+          pattern: "if\\s+opcion\\s*==[\\s\\S]*(elif|else)",
+          feedbackWhenMissing: "Usa `if` y al menos otra rama para responder a la opción."
+        },
+        {
+          id: "calls-menu-function",
+          label: "Llama a una función en alguna rama",
+          pattern: "[a-zA-Z_][a-zA-Z0-9_]*\\(\\)",
+          feedbackWhenMissing: "Asegúrate de ejecutar funciones dentro del flujo del menú."
+        }
+      ],
+      orderedPatternIds: ["defines-multiple-functions", "prints-several-options", "stores-menu-choice", "uses-conditional-branches", "calls-menu-function"]
+    }
+  },
+  {
+    slug: "build-freeform-report-generator",
+    title: "Construye un generador de reporte más libre",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "early-freeform-projects",
+    lessonSlug: "freeform-project-report-generator",
+    order: 3,
+    duration: "13 min",
+    summary: "Resuelve un brief de reporte usando datos estructurados, una condición principal y un cierre visible, con más libertad sobre el estilo final.",
+    prompt:
+      "Brief: crea un pequeño reporte con al menos dos registros. Requisitos: debes recorrer los registros, distinguir entre dos estados, mostrar el nombre de cada elemento y cerrar con una línea final visible. Puedes decidir encabezado, mensajes y formato general.",
+    responseLabel: "Tu generador de reporte",
+    responsePlaceholder:
+      "registros = [\n    {'nombre': 'Lectura', 'estado': 'bien'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nprint('== REPORTE ==')\nfor registro in registros:\n    if registro['estado'] == 'bien':\n        print(registro['nombre'] + ': en buen camino')\n    else:\n        print(registro['nombre'] + ': necesita atención')\nprint('Reporte listo')",
+    instructions: [
+      "Usa una lista con al menos dos registros.",
+      "Cada registro debe tener nombre y estado.",
+      "Recorre la lista y clasifica cada caso.",
+      "Agrega una línea final de cierre."
+    ],
+    hints: [
+      "No hace falta copiar exactamente el ejemplo si cumples el brief.",
+      "Una sola condición principal alcanza para mantener el proyecto en nivel principiante.",
+      "El cierre final debe aparecer una sola vez."
+    ],
+    starterCode:
+      "registros = [\n    {'nombre': 'Lectura', 'estado': 'bien'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nprint('== REPORTE ==')\nfor registro in registros:\n    if registro['estado'] == 'bien':\n        print(registro['nombre'] + ': en buen camino')\n    else:\n        print(registro['nombre'] + ': necesita atención')\nprint('Reporte listo')",
+    successCriteria: [
+      "Usa datos estructurados.",
+      "Recorre y clasifica cada registro.",
+      "Muestra un cierre visible al final."
+    ],
+    playground: {
+      title: "Ejecuta tu generador de reporte",
+      guidance: "Corre tu solución y luego cambia algunos textos. La idea es mantener el brief resuelto aunque el estilo de salida sea un poco más propio.",
+      starterCode:
+        "registros = [\n    {'nombre': 'Lectura', 'estado': 'bien'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nprint('== REPORTE ==')\nfor registro in registros:\n    if registro['estado'] == 'bien':\n        print(registro['nombre'] + ': en buen camino')\n    else:\n        print(registro['nombre'] + ': necesita atención')\nprint('Reporte listo')",
+      emptyOutputHint: "La salida debería mostrar un encabezado, una línea por registro y un cierre final."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: [
+        "== REPORTE ==\nLectura: en buen camino\nPython: necesita atención\nReporte listo"
+      ],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 200,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "creates-report-records",
+          label: "Crea registros estructurados",
+          pattern: "registros\\s*=\\s*\\[[\\s\\S]*['\"]nombre['\"][\\s\\S]*['\"]estado['\"][\\s\\S]*\\]",
+          feedbackWhenMissing: "Crea una lista `registros` con datos estructurados."
+        },
+        {
+          id: "loops-report-records",
+          label: "Recorre los registros",
+          pattern: "for\\s+registro\\s+in\\s+registros\\s*:",
+          feedbackWhenMissing: "Usa un bucle para recorrer la lista `registros`."
+        },
+        {
+          id: "checks-report-state",
+          label: "Compara el estado del registro",
+          pattern: "if\\s+registro\\[['\"]estado['\"]\\]\\s*==\\s*['\"][^'\"]+['\"]\\s*:",
+          feedbackWhenMissing: "Compara una clave `estado` para distinguir entre dos casos."
+        },
+        {
+          id: "uses-report-name",
+          label: "Usa `registro['nombre']` en la salida",
+          pattern: "registro\\[['\"]nombre['\"]\\]",
+          feedbackWhenMissing: "Construye la salida usando el nombre de cada registro."
+        },
+        {
+          id: "adds-report-final-line",
+          label: "Agrega un cierre final",
+          pattern: "print\\(\\s*['\"][^'\"]+['\"]\\s*\\)",
+          feedbackWhenMissing: "Agrega un encabezado o una línea final visible para cerrar el reporte."
+        }
+      ],
+      orderedPatternIds: ["creates-report-records", "loops-report-records", "checks-report-state", "uses-report-name", "adds-report-final-line"]
     }
   }
 ];

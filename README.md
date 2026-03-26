@@ -46,6 +46,7 @@ La primera gran ruta de PyMentor ya está construida y localizada en español, y
 15. Archivos básicos
 16. Funciones y organización simple
 17. Utilidades pequeñas y útiles
+18. Utilidades organizadas con flujo completo
 
 ## Etapas del producto
 
@@ -56,7 +57,7 @@ Lleva a la persona desde cero absoluto hasta un cierre de fundamentos con capsto
 ### Ruta 2 · Python práctico 2
 
 Empieza justo después del cierre de fundamentos.
-Sus primeras aperturas son `Archivos básicos`, `Funciones y organización simple` y `Utilidades pequeñas y útiles`, donde el foco pasa a programas que guardan información, reutilizan mejor la lógica y ya se sienten como herramientas pequeñas con propósito claro.
+Sus primeras aperturas son `Archivos básicos`, `Funciones y organización simple`, `Utilidades pequeñas y útiles` y `Utilidades organizadas con flujo completo`, donde el foco pasa a programas que guardan información, coordinan mejor sus partes y ya se sienten como herramientas pequeñas con flujo más real.
 
 ## Requisitos
 

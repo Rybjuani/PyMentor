@@ -170,6 +170,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "88 min",
     xp: 340
+  },
+  {
+    slug: "fuller-organized-utilities",
+    title: "Utilidades organizadas con flujo completo",
+    description: "Da un paso más y arma herramientas pequeñas con varias partes coordinadas: guardan, consultan, resumen y se leen como programas más completos.",
+    order: 18,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "92 min",
+    xp: 360
   }
 ];
 
@@ -3622,6 +3632,219 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar cuántas líneas se guardaron y cuál es la primera."
     },
     exerciseSlug: "build-a-saved-data-summary"
+  },
+  {
+    slug: "designing-a-utility-with-clear-parts",
+    module: "Utilidades organizadas con flujo completo",
+    moduleSlug: "fuller-organized-utilities",
+    order: 1,
+    title: "Diseñar una utilidad con varias partes claras",
+    duration: "16 min",
+    difficulty: "Beginner",
+    summary: "Aprende a pensar una utilidad un poco más completa como varias partes coordinadas: guardar, consultar y resumir sin mezclarlo todo.",
+    warmup: "Cuando una herramienta empieza a hacer más de una cosa, su valor crece, pero también crece la necesidad de darle un flujo claro.",
+    goal: "Al final, deberías poder reconocer por qué una utilidad más completa necesita funciones con responsabilidades visibles y un recorrido fácil de seguir.",
+    keyIdeas: [
+      {
+        title: "Una herramienta puede tener varias tareas pequeñas",
+        description: "Guardar, consultar y resumir pueden convivir sin convertirse en un bloque confuso."
+      },
+      {
+        title: "El flujo principal debería contar la historia",
+        description: "Si el programa se lee de arriba hacia abajo con claridad, entenderlo y corregirlo es más fácil."
+      },
+      {
+        title: "Cada función gana una responsabilidad clara",
+        description: "Una parte puede guardar datos, otra leerlos y otra presentarlos mejor."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué cambia respecto del módulo anterior",
+        body: "Antes trabajaste utilidades pequeñas con un propósito bastante puntual. Ahora vamos a construir herramientas algo más completas, donde varias partes ya colaboran entre sí."
+      },
+      {
+        title: "Cómo pensar ese crecimiento",
+        body: "La clave no es meter más código por meter. La clave es que el programa haga más cosas útiles sin perder legibilidad. Por eso la organización importa todavía más."
+      },
+      {
+        title: "Qué se vuelve visible en el flujo",
+        body: "Empieza a aparecer un recorrido reconocible: guardar información, volver a leerla y mostrarla de forma mejor pensada. Ese flujo hace que el programa se sienta más real."
+      },
+      {
+        title: "Qué conviene seguir evitando",
+        body: "No hace falta usar técnicas avanzadas. Unas pocas funciones bien nombradas, un archivo de texto y una salida clara siguen siendo suficientes para esta etapa."
+      }
+    ],
+    example:
+      "def guardar_registro():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana - 1234\\nLuis - 4567')\n\n\ndef mostrar_agenda():\n    with open('agenda.txt', 'r') as archivo:\n        print('Agenda guardada:')\n        print(archivo.read())\n\n\ndef mostrar_total():\n    with open('agenda.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total de contactos:', len(lineas))\n\n\nguardar_registro()\nmostrar_agenda()\nmostrar_total()",
+    practicePrompt: "Lee el ejemplo y ubica qué función guarda, cuál consulta y cuál resume. La idea es sentir que una utilidad más completa sigue siendo legible.",
+    practiceChecklist: [
+      "Identifica una función para guardar.",
+      "Identifica otra para mostrar datos.",
+      "Ubica dónde aparece el resumen final."
+    ],
+    commonMistakes: [
+      "Pegar todas las tareas dentro de una sola función enorme.",
+      "Usar nombres vagos que no muestran qué hace cada parte.",
+      "Olvidar que el flujo principal también debe leerse con claridad."
+    ],
+    bugChallenge: {
+      prompt: "Este programa quiere guardar una agenda, mostrarla y contar contactos, pero mezcla una llamada y una variable en el resumen.",
+      brokenCode:
+        "def guardar_registro():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana - 1234\\nLuis - 4567')\n\n\ndef mostrar_agenda():\n    with open('agenda.txt', 'r') as archivo:\n        print(archivo.read())\n\n\ndef mostrar_total():\n    with open('agenda.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total de contactos:', len(contactos))\n\nguardar_registros()\nmostrar_agenda()\nmostrar_total()",
+      expectedLearning: "A medida que una utilidad suma partes, revisar nombres, llamadas y variables consistentes se vuelve una costumbre más importante."
+    },
+    playground: {
+      title: "Prueba una utilidad con varias partes",
+      guidance: "Ejecuta la utilidad completa y luego cambia los datos guardados o el encabezado. La meta es sentir que ya estás trabajando con una herramienta más completa, pero todavía clara.",
+      starterCode:
+        "def guardar_registro():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana - 1234\\nLuis - 4567')\n\n\ndef mostrar_agenda():\n    with open('agenda.txt', 'r') as archivo:\n        print('Agenda guardada:')\n        print(archivo.read())\n\n\ndef mostrar_total():\n    with open('agenda.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total de contactos:', len(lineas))\n\n\nguardar_registro()\nmostrar_agenda()\nmostrar_total()",
+      emptyOutputHint: "La salida debería mostrar la agenda guardada y luego un pequeño resumen final."
+    },
+    exerciseSlug: "explain-why-a-broader-utility-needs-coordination"
+  },
+  {
+    slug: "building-a-simple-agenda-utility",
+    module: "Utilidades organizadas con flujo completo",
+    moduleSlug: "fuller-organized-utilities",
+    order: 2,
+    title: "Construir una agenda simple que guarda y consulta datos",
+    duration: "18 min",
+    difficulty: "Beginner",
+    summary: "Arma una agenda pequeña que guarda contactos en un archivo y luego los muestra con una salida más útil y mejor organizada.",
+    warmup: "Guardar datos tiene más sentido cuando después puedes consultarlos como parte de una herramienta concreta.",
+    goal: "Al final, deberías poder crear una utilidad de agenda simple con funciones separadas para guardar y mostrar información.",
+    keyIdeas: [
+      {
+        title: "Guardar y consultar ya forman una herramienta",
+        description: "Cuando ambas partes conviven, el programa se siente menos efímero."
+      },
+      {
+        title: "Una agenda pequeña sigue siendo buen entrenamiento",
+        description: "No hace falta que sea compleja para practicar una estructura real."
+      },
+      {
+        title: "La salida también importa",
+        description: "Mostrar un título o separar el resultado vuelve la herramienta más usable."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué hace útil a una agenda pequeña",
+        body: "Hace útil el hecho de que puedes volver a leer algo que guardaste. Eso ya se parece más a una herramienta que a un ejercicio aislado."
+      },
+      {
+        title: "Cómo repartir el trabajo",
+        body: "Una función guarda contactos y otra los muestra. Ese reparto evita que el programa se convierta en un bloque largo difícil de revisar."
+      },
+      {
+        title: "Dónde aparecen strings y listas",
+        body: "Los contactos viven como texto dentro del archivo, y luego `splitlines()` ayuda a recorrer mejor lo que guardaste."
+      },
+      {
+        title: "Qué sigue siendo sencillo",
+        body: "Seguimos trabajando con texto plano y un archivo simple. El avance está en la utilidad y la organización, no en complicar la tecnología."
+      }
+    ],
+    example:
+      "def guardar_contactos():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana - 1234\\nLuis - 4567\\nMora - 7890')\n\n\ndef mostrar_contactos():\n    with open('agenda.txt', 'r') as archivo:\n        contactos = archivo.read().splitlines()\n    print('Agenda simple:')\n    for contacto in contactos:\n        print(contacto)\n\n\nguardar_contactos()\nmostrar_contactos()",
+    practicePrompt: "Corre el ejemplo y luego cambia un nombre o número. Observa cómo el archivo, la lista y el bucle trabajan juntos dentro de una herramienta concreta.",
+    practiceChecklist: [
+      "Guarda varios contactos en un archivo.",
+      "Lee el archivo con `splitlines()`.",
+      "Usa un bucle para mostrar cada línea."
+    ],
+    commonMistakes: [
+      "Olvidar convertir el texto en líneas antes del bucle.",
+      "Imprimir todo de una vez cuando el objetivo era recorrer contacto por contacto.",
+      "Guardar datos pero no mostrar un título o contexto claro."
+    ],
+    bugChallenge: {
+      prompt: "Este código quiere mostrar una agenda simple, pero el nombre de la lista y el bucle no coinciden.",
+      brokenCode:
+        "def guardar_contactos():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana - 1234\\nLuis - 4567\\nMora - 7890')\n\n\ndef mostrar_contactos():\n    with open('agenda.txt', 'r') as archivo:\n        contactos = archivo.read().splitlines()\n    print('Agenda simple:')\n    for contacto in agenda:\n        print(contacto)\n\nguardar_contactos()\nmostrar_contactos()",
+      expectedLearning: "Cuando una herramienta coordina varias partes, revisar qué variable prepara cada paso evita errores muy comunes."
+    },
+    playground: {
+      title: "Ejecuta la agenda simple",
+      guidance: "Corre la agenda y luego cambia un contacto o agrega otro. La meta es practicar una herramienta pequeña que ya guarda, lee y recorre información.",
+      starterCode:
+        "def guardar_contactos():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana - 1234\\nLuis - 4567\\nMora - 7890')\n\n\ndef mostrar_contactos():\n    with open('agenda.txt', 'r') as archivo:\n        contactos = archivo.read().splitlines()\n    print('Agenda simple:')\n    for contacto in contactos:\n        print(contacto)\n\n\nguardar_contactos()\nmostrar_contactos()",
+      emptyOutputHint: "La salida debería mostrar el título de la agenda y luego los contactos guardados."
+    },
+    exerciseSlug: "build-a-simple-agenda-tool"
+  },
+  {
+    slug: "coordinating-menu-file-and-summary",
+    module: "Utilidades organizadas con flujo completo",
+    moduleSlug: "fuller-organized-utilities",
+    order: 3,
+    title: "Coordinar menú, archivo y resumen en una herramienta pequeña",
+    duration: "19 min",
+    difficulty: "Beginner",
+    summary: "Aprende a coordinar varias funciones dentro de una herramienta más completa que guarda datos y luego muestra un resumen útil según una opción simple.",
+    warmup: "El siguiente paso natural es que el programa ya no solo haga una acción: empieza a decidir qué mostrar según una opción simple.",
+    goal: "Al final, deberías poder entender y construir una herramienta pequeña con una opción simple, lectura de archivo y un resumen final claro.",
+    keyIdeas: [
+      {
+        title: "Un menú simple ordena el flujo",
+        description: "Permite decidir qué parte del programa correr sin volverlo avanzado."
+      },
+      {
+        title: "Las funciones coordinan tareas distintas",
+        description: "Una prepara datos, otra los muestra y otra resume."
+      },
+      {
+        title: "El resultado final debería aportar claridad",
+        description: "Un resumen corto ayuda a que la herramienta se sienta más útil y terminada."
+      }
+    ],
+    explanation: [
+      {
+        title: "Por qué aparece un menú simple",
+        body: "Porque ahora el programa ya puede tener más de un camino pequeño. No hace falta un menú complejo; una opción simple ya sirve para practicar coordinación."
+      },
+      {
+        title: "Qué papel sigue teniendo el archivo",
+        body: "El archivo sigue guardando los datos. La diferencia es que ahora el programa puede decidir si mostrarlos completos o si enseñar primero un pequeño resumen."
+      },
+      {
+        title: "Cómo mantenerlo principiante",
+        body: "La opción puede estar en una variable o venir de una entrada simple. Lo importante es entender el flujo, no complicarlo."
+      },
+      {
+        title: "Qué sensación debería dejar",
+        body: "Debería sentirse como una herramienta pequeña pero más completa, donde varias partes trabajan juntas y el resultado final tiene más intención."
+      }
+    ],
+    example:
+      "def guardar_habitos():\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('Leer\\nAgua\\nPython')\n\n\ndef mostrar_habitos():\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Hábitos guardados:')\n    for linea in lineas:\n        print(linea)\n\n\ndef mostrar_resumen():\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total:', len(lineas))\n\n\nguardar_habitos()\nopcion = 'resumen'\nif opcion == 'ver':\n    mostrar_habitos()\nelse:\n    mostrar_resumen()",
+    practicePrompt: "Corre el programa y cambia la opción entre `ver` y `resumen`. Observa cómo el mismo archivo puede alimentar dos salidas distintas según el flujo.",
+    practiceChecklist: [
+      "Guarda datos en un archivo.",
+      "Usa una opción simple para decidir qué mostrar.",
+      "Mantén funciones separadas para mostrar y resumir."
+    ],
+    commonMistakes: [
+      "Mezclar las dos salidas dentro de una sola función.",
+      "Usar una opción que no coincide con la condición.",
+      "Olvidar que el resumen también necesita leer el archivo."
+    ],
+    bugChallenge: {
+      prompt: "Este programa quiere decidir entre mostrar una lista o un resumen, pero una opción y una llamada no coinciden.",
+      brokenCode:
+        "def guardar_habitos():\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('Leer\\nAgua\\nPython')\n\n\ndef mostrar_habitos():\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    for linea in lineas:\n        print(linea)\n\n\ndef mostrar_resumen():\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total:', len(lineas))\n\nguardar_habitos()\nopcion = 'resumen'\nif opcion == 'ver':\n    mostrar_habito()\nelse:\n    mostrar_resumen()",
+      expectedLearning: "Cuando varias funciones se coordinan, revisar el flujo y las llamadas exactas se vuelve tan importante como revisar la sintaxis."
+    },
+    playground: {
+      title: "Prueba una herramienta con flujo más completo",
+      guidance: "Ejecuta el programa, cambia la opción entre `ver` y `resumen` y luego modifica los hábitos guardados. La meta es notar cómo varias funciones coordinadas ya forman una herramienta más amplia.",
+      starterCode:
+        "def guardar_habitos():\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('Leer\\nAgua\\nPython')\n\n\ndef mostrar_habitos():\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Hábitos guardados:')\n    for linea in lineas:\n        print(linea)\n\n\ndef mostrar_resumen():\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total:', len(lineas))\n\n\nguardar_habitos()\nopcion = 'resumen'\nif opcion == 'ver':\n    mostrar_habitos()\nelse:\n    mostrar_resumen()",
+      emptyOutputHint: "La salida debería mostrar o la lista de hábitos o un resumen, según la opción elegida."
+    },
+    exerciseSlug: "build-a-menu-summary-tool"
   }
 ];
 
@@ -7332,6 +7555,256 @@ export const courseExercises: ExerciseData[] = [
         "writes-three-lines",
         "uses-splitlines",
         "prints-summary"
+      ]
+    }
+  },
+  {
+    slug: "explain-why-a-broader-utility-needs-coordination",
+    title: "Explica por qué una utilidad más completa necesita coordinación",
+    exerciseType: "concept_check",
+    responseFormat: "text",
+    moduleSlug: "fuller-organized-utilities",
+    lessonSlug: "designing-a-utility-with-clear-parts",
+    order: 1,
+    duration: "8 min",
+    summary: "Explica por qué una herramienta con guardar, consultar y resumir necesita partes claras que trabajen coordinadas.",
+    prompt:
+      "En 2 o 3 frases cortas, explica por qué una utilidad que guarda datos, luego los consulta y además los resume necesita funciones separadas y un flujo principal claro.",
+    responseLabel: "Tu explicación sobre la coordinación",
+    responsePlaceholder:
+      "Una utilidad más completa necesita funciones separadas porque cada parte cumple una tarea distinta. Eso hace que guardar, consultar y resumir se entiendan mejor dentro del flujo principal.",
+    instructions: [
+      "Menciona que varias tareas necesitan separación.",
+      "Relaciona esa separación con claridad del flujo.",
+      "Conecta la idea con guardar, consultar o resumir."
+    ],
+    hints: [
+      "Piensa en una utilidad con más de una acción.",
+      "No hace falta usar palabras técnicas.",
+      "La idea central es coordinación clara."
+    ],
+    starterCode:
+      "def guardar_registro():\n    pass\n\n\ndef mostrar_registro():\n    pass\n\n\ndef mostrar_resumen():\n    pass",
+    successCriteria: [
+      "Habla de varias tareas dentro de una utilidad.",
+      "Habla de claridad o coordinación.",
+      "Conecta la idea con archivo, consulta o resumen."
+    ],
+    evaluator: {
+      type: "ordered_concepts",
+      minLength: 55,
+      passingScore: 4,
+      requireOrder: false,
+      concepts: [
+        {
+          id: "multiple-parts",
+          label: "Habla de varias partes o tareas",
+          keywords: ["varias", "partes", "tareas", "guardar", "consultar", "resumir"],
+          feedbackWhenMissing: "Explica que la utilidad tiene varias tareas como guardar, consultar o resumir."
+        },
+        {
+          id: "clear-flow",
+          label: "Conecta con claridad del flujo",
+          keywords: ["flujo", "claro", "claridad", "orden", "leer", "entender"],
+          feedbackWhenMissing: "Agrega que esa separación hace más claro el flujo del programa."
+        },
+        {
+          id: "coordination",
+          label: "Menciona coordinación entre funciones",
+          keywords: ["coordinar", "coordinan", "funciones", "separadas", "responsabilidad"],
+          feedbackWhenMissing: "Conecta la idea con funciones separadas que trabajan coordinadas."
+        }
+      ]
+    }
+  },
+  {
+    slug: "build-a-simple-agenda-tool",
+    title: "Construye una agenda simple organizada",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "fuller-organized-utilities",
+    lessonSlug: "building-a-simple-agenda-utility",
+    order: 2,
+    duration: "13 min",
+    summary: "Construye una agenda pequeña que guarda varios contactos, los lee como lista y los muestra con un título claro.",
+    prompt:
+      "Escribe un programa que defina `guardar_contactos()` para guardar `Ana - 1234\\nLuis - 4567\\nMora - 7890` en `agenda.txt`, y `mostrar_contactos()` para leer ese archivo con `splitlines()`, imprimir `Agenda simple:` y luego mostrar cada contacto con un bucle `for`. Después llama ambas funciones.",
+    responseLabel: "Tu agenda organizada",
+    responsePlaceholder:
+      "def guardar_contactos():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana - 1234\\nLuis - 4567\\nMora - 7890')\n\n\ndef mostrar_contactos():\n    with open('agenda.txt', 'r') as archivo:\n        contactos = archivo.read().splitlines()\n    print('Agenda simple:')\n    for contacto in contactos:\n        print(contacto)\n\n\nguardar_contactos()\nmostrar_contactos()",
+    instructions: [
+      "Guarda tres contactos en un archivo.",
+      "Lee el archivo como lista con `splitlines()`.",
+      "Usa un bucle para imprimir cada contacto."
+    ],
+    hints: [
+      "Guarda el texto con `\\n` entre contactos.",
+      "La lista puede llamarse `contactos`.",
+      "El bucle debería recorrer cada línea de la agenda."
+    ],
+    starterCode:
+      "def guardar_contactos():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana - 1234\\nLuis - 4567\\nMora - 7890')\n\n\ndef mostrar_contactos():\n    with open('agenda.txt', 'r') as archivo:\n        contactos = archivo.read().splitlines()\n    print('Agenda simple:')\n    for contacto in contactos:\n        print(contacto)\n\n\nguardar_contactos()\nmostrar_contactos()",
+    successCriteria: [
+      "Guarda varios datos en un archivo.",
+      "Usa `splitlines()` y un bucle.",
+      "Muestra una salida clara y ordenada."
+    ],
+    playground: {
+      title: "Ejecuta la agenda organizada",
+      guidance: "Corre la agenda y luego cambia un contacto o agrega uno más. La meta es practicar una utilidad algo más completa que guarda, consulta y presenta datos.",
+      starterCode:
+        "def guardar_contactos():\n    with open('agenda.txt', 'w') as archivo:\n        archivo.write('Ana - 1234\\nLuis - 4567\\nMora - 7890')\n\n\ndef mostrar_contactos():\n    with open('agenda.txt', 'r') as archivo:\n        contactos = archivo.read().splitlines()\n    print('Agenda simple:')\n    for contacto in contactos:\n        print(contacto)\n\n\nguardar_contactos()\nmostrar_contactos()",
+      emptyOutputHint: "La salida debería mostrar el título y luego los tres contactos guardados."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Agenda simple:\nAna - 1234\nLuis - 4567\nMora - 7890"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 240,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "defines-save-contacts",
+          label: "Define `guardar_contactos()`",
+          pattern: "def\\s+guardar_contactos\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `guardar_contactos()`."
+        },
+        {
+          id: "writes-agenda-file",
+          label: "Escribe en `agenda.txt`",
+          pattern: "with\\s+open\\(\\s*['\"]agenda\\.txt['\"]\\s*,\\s*['\"]w['\"]\\s*\\)\\s+as\\s+archivo\\s*:",
+          feedbackWhenMissing: "Dentro de `guardar_contactos()`, abre `agenda.txt` en modo escritura."
+        },
+        {
+          id: "writes-contacts-content",
+          label: "Guarda los tres contactos pedidos",
+          pattern: "archivo\\.write\\(\\s*['\"]Ana - 1234\\\\nLuis - 4567\\\\nMora - 7890['\"]\\s*\\)",
+          feedbackWhenMissing: "Guarda exactamente los tres contactos pedidos dentro del archivo."
+        },
+        {
+          id: "uses-splitlines-contacts",
+          label: "Lee la agenda y usa `splitlines()`",
+          pattern: "contactos\\s*=\\s*archivo\\.read\\(\\s*\\)\\.splitlines\\(\\s*\\)",
+          feedbackWhenMissing: "Guarda el contenido leído en `contactos` usando `splitlines()`."
+        },
+        {
+          id: "loops-over-contacts",
+          label: "Recorre los contactos con un `for`",
+          pattern: "for\\s+contacto\\s+in\\s+contactos\\s*:\\s*[\\s\\S]*print\\(\\s*contacto\\s*\\)",
+          feedbackWhenMissing: "Usa un bucle `for` para imprimir cada contacto."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-save-contacts",
+        "writes-agenda-file",
+        "writes-contacts-content",
+        "uses-splitlines-contacts",
+        "loops-over-contacts"
+      ]
+    }
+  },
+  {
+    slug: "build-a-menu-summary-tool",
+    title: "Construye una herramienta con menú simple y resumen",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "fuller-organized-utilities",
+    lessonSlug: "coordinating-menu-file-and-summary",
+    order: 3,
+    duration: "14 min",
+    summary: "Construye una herramienta pequeña que guarda datos y luego decide entre mostrar un resumen o mostrar la lista completa según una opción simple.",
+    prompt:
+      "Escribe un programa que defina `guardar_habitos()` para guardar `Leer\\nAgua\\nPython` en `habitos.txt`, `mostrar_habitos()` para leer y mostrar la lista con el título `Hábitos guardados:`, y `mostrar_resumen()` para imprimir `Total: 3`. Luego define `opcion = 'resumen'` y usa un `if` para llamar `mostrar_habitos()` si la opción es `ver`, o `mostrar_resumen()` en cualquier otro caso.",
+    responseLabel: "Tu herramienta con menú simple",
+    responsePlaceholder:
+      "def guardar_habitos():\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('Leer\\nAgua\\nPython')\n\n\ndef mostrar_habitos():\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Hábitos guardados:')\n    for linea in lineas:\n        print(linea)\n\n\ndef mostrar_resumen():\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total:', len(lineas))\n\n\nguardar_habitos()\nopcion = 'resumen'\nif opcion == 'ver':\n    mostrar_habitos()\nelse:\n    mostrar_resumen()",
+    instructions: [
+      "Guarda los hábitos en un archivo.",
+      "Crea una función para mostrar la lista completa.",
+      "Crea otra función para el resumen y decide cuál usar con un `if`."
+    ],
+    hints: [
+      "Puedes usar la variable `opcion` para decidir el flujo.",
+      "El resumen puede contar líneas con `len(lineas)`.",
+      "El flujo debería llamar primero a `guardar_habitos()`."
+    ],
+    starterCode:
+      "def guardar_habitos():\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('Leer\\nAgua\\nPython')\n\n\ndef mostrar_habitos():\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Hábitos guardados:')\n    for linea in lineas:\n        print(linea)\n\n\ndef mostrar_resumen():\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total:', len(lineas))\n\n\nguardar_habitos()\nopcion = 'resumen'\nif opcion == 'ver':\n    mostrar_habitos()\nelse:\n    mostrar_resumen()",
+    successCriteria: [
+      "Coordina varias funciones dentro del mismo programa.",
+      "Usa archivo + lista + condición simple.",
+      "Muestra un resultado útil según la opción elegida."
+    ],
+    playground: {
+      title: "Ejecuta la herramienta con menú simple",
+      guidance: "Corre el programa y cambia la opción entre `ver` y `resumen`. La meta es ver cómo un archivo y varias funciones coordinadas ya forman una herramienta más completa.",
+      starterCode:
+        "def guardar_habitos():\n    with open('habitos.txt', 'w') as archivo:\n        archivo.write('Leer\\nAgua\\nPython')\n\n\ndef mostrar_habitos():\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Hábitos guardados:')\n    for linea in lineas:\n        print(linea)\n\n\ndef mostrar_resumen():\n    with open('habitos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total:', len(lineas))\n\n\nguardar_habitos()\nopcion = 'resumen'\nif opcion == 'ver':\n    mostrar_habitos()\nelse:\n    mostrar_resumen()",
+      emptyOutputHint: "La salida debería mostrar un resumen o la lista completa, según la opción que elijas."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Total: 3"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 300,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-save-habits",
+          label: "Define `guardar_habitos()`",
+          pattern: "def\\s+guardar_habitos\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `guardar_habitos()`."
+        },
+        {
+          id: "defines-show-habits",
+          label: "Define `mostrar_habitos()`",
+          pattern: "def\\s+mostrar_habitos\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `mostrar_habitos()`."
+        },
+        {
+          id: "defines-summary",
+          label: "Define `mostrar_resumen()`",
+          pattern: "def\\s+mostrar_resumen\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `mostrar_resumen()`."
+        },
+        {
+          id: "writes-habits-file",
+          label: "Guarda los hábitos en `habitos.txt`",
+          pattern: "archivo\\.write\\(\\s*['\"]Leer\\\\nAgua\\\\nPython['\"]\\s*\\)",
+          feedbackWhenMissing: "Guarda exactamente `Leer\\nAgua\\nPython` dentro de `habitos.txt`."
+        },
+        {
+          id: "uses-option-if",
+          label: "Usa `opcion` con un `if`",
+          pattern: "opcion\\s*=\\s*['\"]resumen['\"][\\s\\S]*if\\s+opcion\\s*==\\s*['\"]ver['\"]\\s*:",
+          feedbackWhenMissing: "Define `opcion = 'resumen'` y usa un `if` para decidir el flujo."
+        },
+        {
+          id: "calls-summary-else",
+          label: "Llama `mostrar_resumen()` en el `else`",
+          pattern: "else\\s*:\\s*[\\s\\S]*mostrar_resumen\\(\\)",
+          feedbackWhenMissing: "En el `else`, llama a `mostrar_resumen()`."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-save-habits",
+        "defines-show-habits",
+        "defines-summary",
+        "writes-habits-file",
+        "uses-option-if",
+        "calls-summary-else"
       ]
     }
   }

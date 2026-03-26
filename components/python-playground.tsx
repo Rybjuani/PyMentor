@@ -151,11 +151,11 @@ export function PythonPlayground({
         </div>
       ) : null}
 
-      <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_280px]">
         <div className="min-w-0 border-b border-slate-800 lg:border-b-0 lg:border-r">
           <textarea
-            rows={compact ? 10 : 12}
-            className="w-full rounded-none bg-transparent px-4 py-4 font-mono text-[13px] leading-7 text-slate-100 outline-none sm:text-sm"
+            rows={compact ? 7 : 9}
+            className="w-full rounded-none bg-transparent px-4 py-4 font-mono text-[13px] leading-6 text-slate-100 outline-none sm:text-sm"
             value={code}
             onChange={(event) => updateCode(event.target.value)}
           />
@@ -174,7 +174,7 @@ export function PythonPlayground({
         <div className="min-w-0">
           <div className="px-4 py-4">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Salida</p>
-            <div className="mt-3 min-h-[220px] overflow-x-auto whitespace-pre-wrap break-words rounded-[14px] bg-[#050b14] px-4 py-4 font-mono text-[13px] leading-7 text-slate-200 sm:text-sm">
+            <div className="mt-3 min-h-[120px] overflow-x-auto whitespace-pre-wrap break-words rounded-[14px] bg-[#050b14] px-4 py-4 font-mono text-[13px] leading-6 text-slate-200 sm:min-h-[150px] sm:text-sm">
               {loadingRuntime
                 ? "Cargando Python para tu navegador..."
                 : runtimeError

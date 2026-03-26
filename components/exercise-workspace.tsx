@@ -148,31 +148,12 @@ export function ExerciseWorkspace({
       <section>
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Qué tienes que hacer</p>
         <h2 className="mt-2 text-lg font-bold text-slate-50">{exercise.prompt}</h2>
-        <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_280px]">
-          <div className="min-w-0">
-            <CodePanel code={exercise.starterCode} />
-          </div>
-          <div className="min-w-0">
-            <div className="space-y-3 text-sm leading-6 text-slate-300">
-              {exercise.instructions.map((item) => (
-                <div key={item}>{item}</div>
-              ))}
-            </div>
-            <details className="mt-4 rounded-[16px] border border-slate-800 bg-slate-950/60 px-4 py-3">
-              <summary className="cursor-pointer text-sm font-semibold text-slate-200">
-                Ver pistas
-              </summary>
-              <div className="mt-3 space-y-3 text-sm leading-6 text-slate-400">
-                {exercise.hints.map((hint) => (
-                  <div key={hint}>{hint}</div>
-                ))}
-              </div>
-            </details>
-          </div>
+        <div className="mt-3 rounded-[18px] border border-slate-800 bg-slate-950/55 px-4 py-3 text-sm text-slate-300">
+          {exercise.instructions[0]}
         </div>
       </section>
 
-      <section className="mt-6 border-t border-slate-800 pt-6">
+      <section className="mt-8 border-t border-slate-800 pt-8">
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Práctica principal</p>
         <div className="mt-4">
           {exercise.playground ? (
@@ -190,7 +171,7 @@ export function ExerciseWorkspace({
           ) : null}
         </div>
 
-        <div className="mt-4">
+        <div className="mt-5">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
               <h3 className="text-base font-semibold text-slate-50">{exercise.responseLabel}</h3>
@@ -223,7 +204,7 @@ export function ExerciseWorkspace({
         </div>
       </section>
 
-      <section className="mt-6 border-t border-slate-800 pt-6">
+      <section className="mt-8 border-t border-slate-800 pt-8">
         <div className={`rounded-[18px] border px-4 py-4 text-sm ${feedback.tone}`}>
           <div className="flex items-start gap-3">
             <Icon className={`mt-0.5 h-4 w-4 shrink-0 ${feedbackState === "incomplete" ? "animate-spin" : ""}`} />
@@ -234,6 +215,29 @@ export function ExerciseWorkspace({
             </div>
           </div>
         </div>
+
+        <details className="mt-4 rounded-[16px] border border-slate-800 bg-slate-950/60 px-4 py-3">
+          <summary className="cursor-pointer text-sm font-semibold text-slate-200">
+            Ver código base, pasos y pistas
+          </summary>
+          <div className="mt-3 grid gap-4 lg:grid-cols-[minmax(0,1fr)_280px]">
+            <div className="min-w-0">
+              <CodePanel code={exercise.starterCode} />
+            </div>
+            <div className="space-y-4">
+              <div className="space-y-2 text-sm leading-6 text-slate-400">
+                {exercise.instructions.slice(1).map((item) => (
+                  <div key={item}>{item}</div>
+                ))}
+              </div>
+              <div className="space-y-2 text-sm leading-6 text-slate-400">
+                {exercise.hints.map((hint) => (
+                  <div key={hint}>{hint}</div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </details>
 
         {displayEvaluation.checks.length > 0 ? (
           <details className="mt-4 rounded-[16px] border border-slate-800 bg-slate-950/60 px-4 py-3">

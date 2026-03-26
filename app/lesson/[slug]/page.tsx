@@ -77,73 +77,32 @@ export default async function LessonPage({
         </div>
 
         <article className="rounded-[22px] border border-slate-800 bg-[linear-gradient(180deg,rgba(11,20,31,0.96),rgba(8,15,24,0.98))] p-5">
-          <section>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Qué estás aprendiendo</p>
-            <h2 className="mt-2 text-lg font-bold text-slate-50">{lesson.goal}</h2>
-            <div className="mt-4 grid gap-3 md:grid-cols-3">
-              {lesson.keyIdeas.map((idea) => (
-                <div key={idea.title} className="min-w-0">
-                  <p className="text-sm font-semibold text-slate-100">{idea.title}</p>
-                  <p className="mt-1 text-sm leading-6 text-slate-400">{idea.description}</p>
-                </div>
-              ))}
+          <section className="space-y-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Qué estás aprendiendo</p>
+              <h2 className="mt-2 text-lg font-bold text-slate-50">{lesson.goal}</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                Idea central: {lesson.keyIdeas[0]?.description}
+              </p>
             </div>
-          </section>
 
-          <section className="mt-6 border-t border-slate-800 pt-6">
-            <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-              <div className="min-w-0">
+            <div className="rounded-[18px] border border-slate-800 bg-slate-950/55 p-4">
+              <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
                   <BookOpen className="h-4 w-4 text-brand-300" />
-                  <h3 className="text-base font-semibold text-slate-50">Concepto breve</h3>
+                  <h3 className="text-sm font-semibold text-slate-100">Ejemplo breve</h3>
                 </div>
-                <div className="mt-3 space-y-4">
-                  {lesson.explanation.slice(0, 2).map((section) => (
-                    <div key={section.title}>
-                      <p className="text-sm font-semibold text-slate-100">{section.title}</p>
-                      <p className="mt-1 text-sm leading-6 text-slate-400">{section.body}</p>
-                    </div>
-                  ))}
-                </div>
-                {lesson.explanation.length > 2 ? (
-                  <details className="mt-4 rounded-[16px] border border-slate-800 bg-slate-950/60 px-4 py-3">
-                    <summary className="cursor-pointer text-sm font-semibold text-slate-200">
-                      Ver más explicación
-                    </summary>
-                    <div className="mt-3 space-y-4">
-                      {lesson.explanation.slice(2).map((section) => (
-                        <div key={section.title}>
-                          <p className="text-sm font-semibold text-slate-100">{section.title}</p>
-                          <p className="mt-1 text-sm leading-6 text-slate-400">{section.body}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </details>
-                ) : null}
+                <a href="#practica" className="text-sm font-semibold text-brand-300">
+                  Probar ahora
+                </a>
               </div>
-
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <Wrench className="h-4 w-4 text-brand-300" />
-                  <h3 className="text-base font-semibold text-slate-50">Ejemplo y bug breve</h3>
-                </div>
-                <div className="mt-3 space-y-4">
-                  <CodePanel code={lesson.example} />
-                  <div>
-                    <p className="text-sm text-slate-300">{lesson.bugChallenge.prompt}</p>
-                    <div className="mt-3">
-                      <CodePanel code={lesson.bugChallenge.brokenCode} />
-                    </div>
-                    <p className="mt-2 text-sm text-slate-400">
-                      {lesson.bugChallenge.expectedLearning}
-                    </p>
-                  </div>
-                </div>
+              <div className="mt-3">
+                <CodePanel code={lesson.example} />
               </div>
             </div>
           </section>
 
-          <section className="mt-6 border-t border-slate-800 pt-6">
+          <section id="practica" className="mt-8 border-t border-slate-800 pt-8">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Qué hacer ahora</p>
@@ -157,13 +116,8 @@ export default async function LessonPage({
               ) : null}
             </div>
 
-            <div className="mt-4 space-y-3">
-              {lesson.practiceChecklist.map((item) => (
-                <div key={item} className="flex items-start gap-3 text-sm text-slate-300">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-brand-300" />
-                  <span>{item}</span>
-                </div>
-              ))}
+            <div className="mt-4 rounded-[18px] border border-slate-800 bg-slate-950/55 px-4 py-3 text-sm text-slate-300">
+              {lesson.practiceChecklist[0]}
             </div>
 
             <div className="mt-4">
@@ -177,21 +131,65 @@ export default async function LessonPage({
                 />
               ) : null}
             </div>
+          </section>
 
-            <details className="mt-4 rounded-[16px] border border-slate-800 bg-slate-950/60 px-4 py-3">
+          <section className="mt-8 space-y-4">
+            <details className="rounded-[16px] border border-slate-800 bg-slate-950/60 px-4 py-3">
               <summary className="cursor-pointer text-sm font-semibold text-slate-200">
-                Errores frecuentes y ayudas
+                Ver explicación y puntos clave
               </summary>
-              <div className="mt-3 space-y-3">
-                {lesson.commonMistakes.map((mistake) => (
-                  <div key={mistake} className="text-sm leading-6 text-slate-400">
-                    {mistake}
+              <div className="mt-3 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+                <div className="space-y-4">
+                  {lesson.keyIdeas.slice(1).map((idea) => (
+                    <div key={idea.title}>
+                      <p className="text-sm font-semibold text-slate-100">{idea.title}</p>
+                      <p className="mt-1 text-sm leading-6 text-slate-400">{idea.description}</p>
+                    </div>
+                  ))}
+                  {lesson.explanation.map((section) => (
+                    <div key={section.title}>
+                      <p className="text-sm font-semibold text-slate-100">{section.title}</p>
+                      <p className="mt-1 text-sm leading-6 text-slate-400">{section.body}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Wrench className="h-4 w-4 text-brand-300" />
+                      <h3 className="text-sm font-semibold text-slate-100">Bug para revisar</h3>
+                    </div>
+                    <p className="mt-2 text-sm leading-6 text-slate-300">{lesson.bugChallenge.prompt}</p>
+                    <div className="mt-3">
+                      <CodePanel code={lesson.bugChallenge.brokenCode} />
+                    </div>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">{lesson.bugChallenge.expectedLearning}</p>
                   </div>
-                ))}
+                  <div>
+                    <p className="text-sm font-semibold text-slate-100">Errores frecuentes</p>
+                    <div className="mt-2 space-y-2">
+                      {lesson.commonMistakes.map((mistake) => (
+                        <div key={mistake} className="text-sm leading-6 text-slate-400">
+                          {mistake}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-slate-100">Checklist completa</p>
+                    <div className="mt-2 space-y-2">
+                      {lesson.practiceChecklist.slice(1).map((item) => (
+                        <div key={item} className="text-sm leading-6 text-slate-400">
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </details>
 
-            <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-slate-800 pt-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-800 pt-5">
               <div className="text-sm text-slate-400">
                 {isRoute3Capstone
                   ? "Al completar esta lección cierras Ruta 3 y la base actual."

@@ -70,6 +70,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "68 min",
     xp: 230
+  },
+  {
+    slug: "dictionaries",
+    title: "Diccionarios",
+    description: "Aprende a guardar datos relacionados usando claves y valores, leerlos con claridad y recorrerlos en programas un poco más útiles.",
+    order: 8,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "72 min",
+    xp: 240
   }
 ];
 
@@ -1476,6 +1486,210 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "Si el bucle está bien, deberías ver cada elemento de la lista en su propia línea."
     },
     exerciseSlug: "loop-through-a-list"
+  },
+  {
+    slug: "what-a-dictionary-is",
+    module: "Diccionarios",
+    moduleSlug: "dictionaries",
+    order: 1,
+    title: "Qué es un diccionario y por qué ayuda",
+    duration: "15 min",
+    difficulty: "Beginner",
+    summary: "Aprende qué es un diccionario con palabras simples y por qué sirve cuando quieres guardar datos relacionados con nombre y valor.",
+    warmup: "Si quieres guardar nombre, edad y ciudad de una persona, usar variables sueltas funciona un rato. Un diccionario te da una forma más clara de mantener esos datos juntos.",
+    goal: "Al final, deberías poder explicar que un diccionario guarda pares de clave y valor dentro de una sola estructura.",
+    keyIdeas: [
+      {
+        title: "Un diccionario une nombres con valores",
+        description: "Cada dato se guarda usando una clave que te ayuda a encontrarlo."
+      },
+      {
+        title: "Las llaves muestran la estructura",
+        description: "En Python, los diccionarios se escriben entre `{` y `}`."
+      },
+      {
+        title: "Sirve cuando cada valor tiene una etiqueta clara",
+        description: "Es útil para datos como nombre, edad, ciudad, puntaje o estado."
+      }
+    ],
+    explanation: [
+      {
+        title: "Cómo pensar un diccionario en lenguaje normal",
+        body: "Un diccionario guarda datos relacionados usando pequeñas etiquetas. En vez de recordar 'el primer valor es el nombre y el segundo es la edad', puedes escribir directamente `{'nombre': 'Ana', 'edad': 20}`."
+      },
+      {
+        title: "Por qué aparece después de listas",
+        body: "Las listas te ayudan cuando lo importante es el orden. Los diccionarios ayudan cuando lo importante es que cada dato tenga un nombre claro."
+      },
+      {
+        title: "Qué hace que se sienta práctico",
+        body: "Si un programa necesita guardar información de una persona, un juego o una tarea, un diccionario puede ser más claro que usar muchas variables separadas."
+      },
+      {
+        title: "Empieza con ejemplos pequeños",
+        body: "No necesitas estructuras grandes ni anidadas. Con dos o tres pares de clave y valor ya puedes entender la idea y usarla de forma real."
+      }
+    ],
+    example: "perfil = {'nombre': 'Ana', 'edad': 20, 'ciudad': 'Córdoba'}\nprint(perfil)",
+    practicePrompt: "Crea un diccionario llamado `mascota` con las claves `nombre`, `tipo` y `edad`, y luego imprímelo completo.",
+    practiceChecklist: [
+      "Usa llaves para crear el diccionario.",
+      "Pon las claves de texto entre comillas.",
+      "Separa cada par clave/valor con comas."
+    ],
+    commonMistakes: [
+      "Olvidar las llaves de apertura o cierre.",
+      "Olvidar los dos puntos entre la clave y el valor.",
+      "Confundir un diccionario con una lista."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería guardar un perfil simple, pero un detalle de sintaxis rompe el diccionario.",
+      brokenCode: "perfil = {'nombre': 'Ana', 'edad' 20}\nprint(perfil)",
+      expectedLearning: "En un diccionario, cada clave necesita un `:` antes del valor y cada par debe quedar bien separado."
+    },
+    playground: {
+      title: "Prueba tu primer diccionario",
+      guidance: "Ejecuta el diccionario, cambia un dato y vuelve a correr el código. La idea es ver cómo varias piezas de información pueden vivir juntas con nombres claros.",
+      starterCode: "perfil = {'nombre': 'Ana', 'edad': 20, 'ciudad': 'Córdoba'}\nprint(perfil)",
+      emptyOutputHint: "Un diccionario correcto debería mostrarse entre llaves cuando lo imprimes completo."
+    },
+    exerciseSlug: "explain-what-a-dictionary-stores"
+  },
+  {
+    slug: "reading-and-updating-dictionary-values",
+    module: "Diccionarios",
+    moduleSlug: "dictionaries",
+    order: 2,
+    title: "Leer y actualizar valores de un diccionario",
+    duration: "16 min",
+    difficulty: "Beginner",
+    summary: "Aprende a leer valores por clave y a actualizar un dato simple dentro de un diccionario.",
+    warmup: "Si un diccionario guarda datos con nombre, lo siguiente natural es pedir un dato por su clave y cambiarlo cuando haga falta.",
+    goal: "Al final, deberías poder leer un valor por clave y actualizar un dato simple dentro de un diccionario.",
+    keyIdeas: [
+      {
+        title: "La clave te lleva al valor",
+        description: "Usas la clave entre corchetes para leer el dato que necesitas."
+      },
+      {
+        title: "También puedes actualizar un dato",
+        description: "Si usas una clave existente con `=`, Python reemplaza el valor anterior."
+      },
+      {
+        title: "Las claves deben existir y estar bien escritas",
+        description: "Un error pequeño en la clave puede hacer que el programa falle o lea otro dato."
+      }
+    ],
+    explanation: [
+      {
+        title: "Cómo leer un valor por clave",
+        body: "Si escribes `perfil['nombre']`, le estás diciendo a Python: 'Muéstrame el valor que está guardado bajo la clave nombre'. Eso hace que el código sea más claro que recordar posiciones."
+      },
+      {
+        title: "Cómo actualizar un valor",
+        body: "Si después escribes `perfil['edad'] = 21`, Python reemplaza el valor anterior de esa clave. El diccionario sigue siendo el mismo, pero uno de sus datos cambia."
+      },
+      {
+        title: "Qué conviene revisar primero",
+        body: "Al empezar, los errores más comunes vienen de comillas faltantes, llaves mal cerradas o claves escritas distinto a como se definieron."
+      },
+      {
+        title: "Esto ya se parece a datos reales",
+        body: "Leer y actualizar claves te prepara para programas un poco más útiles, donde una misma estructura guarda información que puede mostrarse o cambiarse."
+      }
+    ],
+    example: "perfil = {'nombre': 'Ana', 'edad': 20}\nprint(perfil['nombre'])\nperfil['edad'] = 21\nprint(perfil['edad'])",
+    practicePrompt: "Crea un diccionario `juego` con las claves `nombre` y `vidas`. Imprime `nombre`, actualiza `vidas` y luego vuelve a imprimirla.",
+    practiceChecklist: [
+      "Lee un valor usando su clave entre corchetes.",
+      "Actualiza un valor usando la misma clave con `=`.",
+      "Imprime el resultado para confirmar el cambio."
+    ],
+    commonMistakes: [
+      "Olvidar las comillas alrededor de una clave de texto.",
+      "Escribir una clave distinta de la que existe en el diccionario.",
+      "Pensar que leer un valor y actualizarlo son exactamente la misma operación."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería leer el nombre y actualizar la edad, pero una clave está escrita de forma incorrecta.",
+      brokenCode: "perfil = {'nombre': 'Ana', 'edad': 20}\nprint(perfil[nombre])\nperfil['edad'] = 21",
+      expectedLearning: "Las claves de texto deben escribirse igual que en el diccionario y llevar comillas cuando las usas directamente."
+    },
+    playground: {
+      title: "Lee y actualiza claves",
+      guidance: "Ejecuta el código, luego cambia una clave o un valor y vuelve a correrlo. La meta es sentir que el diccionario guarda datos que puedes consultar y cambiar.",
+      starterCode: "perfil = {'nombre': 'Ana', 'edad': 20}\nprint(perfil['nombre'])\nperfil['edad'] = 21\nprint(perfil['edad'])",
+      emptyOutputHint: "La salida debería mostrar un valor leído del diccionario y luego el valor actualizado."
+    },
+    exerciseSlug: "read-and-update-dictionary-values"
+  },
+  {
+    slug: "looping-through-dictionary-data",
+    module: "Diccionarios",
+    moduleSlug: "dictionaries",
+    order: 3,
+    title: "Recorrer datos de un diccionario con calma",
+    duration: "17 min",
+    difficulty: "Beginner",
+    summary: "Aprende una forma simple de recorrer un diccionario para mostrar pares de clave y valor sin volverlo abstracto.",
+    warmup: "Si un diccionario guarda varios datos con nombre, recorrerlo te permite mostrarlos todos de una forma ordenada y útil.",
+    goal: "Al final, deberías poder recorrer un diccionario simple usando `items()` y leer la salida como pares de clave y valor.",
+    keyIdeas: [
+      {
+        title: "El bucle toma una clave y un valor",
+        description: "Con `items()`, cada vuelta te da ambas partes del diccionario."
+      },
+      {
+        title: "La salida ayuda a entender el patrón",
+        description: "Ver cada par impreso aclara qué está pasando en cada vuelta."
+      },
+      {
+        title: "No hace falta aprender métodos avanzados todavía",
+        description: "Con un recorrido simple ya puedes usar diccionarios en ejercicios y programas pequeños."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué hace `items()` en una primera aproximación",
+        body: "Por ahora puedes pensar `items()` como una forma de recorrer un diccionario y recibir dos cosas en cada vuelta: la clave y el valor correspondiente."
+      },
+      {
+        title: "Cómo leer el bucle con palabras normales",
+        body: "Si escribes `for clave, valor in perfil.items():`, puedes leerlo así: 'Para cada dato del diccionario, toma su clave y su valor y ejecuta este bloque'."
+      },
+      {
+        title: "Por qué es útil",
+        body: "Esto te sirve para mostrar información de una persona, un objeto o un pequeño estado del programa sin tener que imprimir cada dato por separado."
+      },
+      {
+        title: "Qué revisar si falla",
+        body: "Revisa el nombre del diccionario, la forma del `for`, los dos puntos al final y la indentación del `print()`. Después comprueba que estás usando `items()` correctamente."
+      }
+    ],
+    example: "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba'}\nfor clave, valor in perfil.items():\n    print(clave, valor)",
+    practicePrompt: "Crea un diccionario `juego` con dos claves y usa un bucle para imprimir cada par clave/valor en su propia línea.",
+    practiceChecklist: [
+      "Crea un diccionario pequeño con dos o tres datos.",
+      "Usa `for clave, valor in ...items():`.",
+      "Imprime la clave y el valor dentro del bucle."
+    ],
+    commonMistakes: [
+      "Olvidar `items()` y recorrer el diccionario de una forma distinta a la esperada.",
+      "No usar dos variables en el bucle cuando quieres clave y valor.",
+      "Olvidar la indentación del `print()`."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería imprimir clave y valor, pero el bucle no está armado de una forma que permita mostrar ambos.",
+      brokenCode: "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba'}\nfor clave in perfil:\n    print(clave, valor)",
+      expectedLearning: "Si quieres clave y valor a la vez, una forma simple para empezar es usar `items()` y dos variables en el bucle."
+    },
+    playground: {
+      title: "Recorre un diccionario con `items()`",
+      guidance: "Ejecuta el bucle y mira cómo aparecen la clave y el valor en cada línea. Después cambia un dato del diccionario y vuelve a correrlo.",
+      starterCode: "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba'}\nfor clave, valor in perfil.items():\n    print(clave, valor)",
+      emptyOutputHint: "La salida debería mostrar un par de clave y valor por línea."
+    },
+    exerciseSlug: "loop-through-dictionary-items"
   }
 ];
 
@@ -2847,6 +3061,214 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["creates-list", "uses-for", "prints-item"]
+    }
+  },
+  {
+    slug: "explain-what-a-dictionary-stores",
+    title: "Explica qué guarda un diccionario",
+    exerciseType: "concept_check",
+    responseFormat: "text",
+    moduleSlug: "dictionaries",
+    lessonSlug: "what-a-dictionary-is",
+    order: 1,
+    duration: "7 min",
+    summary: "Explica con palabras simples qué hace un diccionario y por qué sirve cuando cada dato tiene un nombre claro.",
+    prompt:
+      "En 2 o 3 frases cortas, explica qué es un diccionario en Python y por qué `{'nombre': 'Ana', 'edad': 20}` puede ser más útil que guardar esos datos en variables separadas.",
+    responseLabel: "Tu explicación",
+    responsePlaceholder:
+      "Un diccionario guarda datos usando claves y valores. Es útil porque cada dato tiene un nombre claro y no hace falta crear una variable aparte para cada cosa.",
+    instructions: [
+      "Explica que un diccionario usa claves y valores.",
+      "Menciona que los datos están relacionados.",
+      "Cuenta por qué puede ser más claro que usar muchas variables."
+    ],
+    hints: [
+      "Piensa en las claves como pequeñas etiquetas.",
+      "La idea importante es que cada dato tiene nombre propio.",
+      "No hace falta usar lenguaje técnico complicado."
+    ],
+    starterCode: "perfil = {'nombre': 'Ana', 'edad': 20}",
+    successCriteria: [
+      "Explica que un diccionario usa claves y valores.",
+      "Menciona que esos datos pertenecen al mismo grupo.",
+      "Cuenta por qué puede ser más práctico que varias variables."
+    ],
+    evaluator: {
+      type: "ordered_concepts",
+      minLength: 50,
+      passingScore: 4,
+      requireOrder: false,
+      concepts: [
+        {
+          id: "keys-values",
+          label: "Menciona claves y valores",
+          keywords: ["clave", "claves", "valor", "valores"],
+          feedbackWhenMissing: "Explica que un diccionario guarda datos como pares de clave y valor."
+        },
+        {
+          id: "related-data",
+          label: "Menciona que los datos están relacionados",
+          keywords: ["relacionados", "grupo", "juntos", "mismo"],
+          feedbackWhenMissing: "Agrega la idea de que el diccionario reúne datos que pertenecen al mismo grupo."
+        },
+        {
+          id: "clearer-than-variables",
+          label: "Explica por qué puede ser más claro que varias variables",
+          keywords: ["variables", "claro", "práctico", "cómodo", "fácil"],
+          feedbackWhenMissing: "Cuenta por qué un diccionario puede ser más claro o práctico que varias variables separadas."
+        }
+      ]
+    }
+  },
+  {
+    slug: "read-and-update-dictionary-values",
+    title: "Lee y actualiza valores de un diccionario",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "dictionaries",
+    lessonSlug: "reading-and-updating-dictionary-values",
+    order: 2,
+    duration: "9 min",
+    summary: "Practica leer una clave y actualizar un valor simple dentro de un diccionario pequeño.",
+    prompt:
+      "Escribe un programa que cree `perfil = {'nombre': 'Ana', 'edad': 20}`, imprima `perfil['nombre']`, actualice `perfil['edad']` a `21` y luego imprima la edad nueva.",
+    responseLabel: "Tu programa con diccionario",
+    responsePlaceholder:
+      "perfil = {'nombre': 'Ana', 'edad': 20}\nprint(perfil['nombre'])\nperfil['edad'] = 21\nprint(perfil['edad'])",
+    instructions: [
+      "Crea el diccionario con las claves `nombre` y `edad`.",
+      "Lee el valor de `nombre` usando la clave.",
+      "Actualiza la edad y luego imprímela."
+    ],
+    hints: [
+      "Para leer el nombre puedes usar `perfil['nombre']`.",
+      "Para cambiar la edad usa la misma clave con `=`.",
+      "La salida debería mostrar primero `Ana` y luego `21`."
+    ],
+    starterCode: "perfil = {'nombre': 'Ana', 'edad': 20}\nprint(perfil['nombre'])\nperfil['edad'] = 21\nprint(perfil['edad'])",
+    successCriteria: [
+      "Crea el diccionario pedido.",
+      "Lee un valor por clave.",
+      "Actualiza una clave existente y muestra el valor nuevo."
+    ],
+    playground: {
+      title: "Ejecuta lectura y actualización",
+      guidance: "Corre el programa y mira cómo primero aparece un dato leído del diccionario y luego el valor actualizado. Después cambia la edad para repetir la prueba.",
+      starterCode: "perfil = {'nombre': 'Ana', 'edad': 20}\nprint(perfil['nombre'])\nperfil['edad'] = 21\nprint(perfil['edad'])",
+      emptyOutputHint: "Una solución correcta debería mostrar el nombre y luego la edad actualizada."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Ana\n21"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 90,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "creates-profile-dict",
+          label: "Crea el diccionario `perfil`",
+          pattern: "perfil\\s*=\\s*\\{\\s*['\"]nombre['\"]\\s*:\\s*['\"]Ana['\"]\\s*,\\s*['\"]edad['\"]\\s*:\\s*20\\s*\\}",
+          feedbackWhenMissing: "Crea el diccionario `perfil` con las claves `nombre` y `edad`."
+        },
+        {
+          id: "reads-name",
+          label: "Lee `perfil['nombre']`",
+          pattern: "print\\(\\s*perfil\\[['\"]nombre['\"]\\]\\s*\\)",
+          feedbackWhenMissing: "Imprime el nombre usando la clave `nombre`."
+        },
+        {
+          id: "updates-age",
+          label: "Actualiza `perfil['edad']` a 21",
+          pattern: "perfil\\[['\"]edad['\"]\\]\\s*=\\s*21",
+          feedbackWhenMissing: "Actualiza la edad usando la misma clave `edad`."
+        },
+        {
+          id: "prints-new-age",
+          label: "Imprime la edad actualizada",
+          pattern: "print\\(\\s*perfil\\[['\"]edad['\"]\\]\\s*\\)",
+          feedbackWhenMissing: "Imprime la edad nueva después de actualizarla."
+        }
+      ],
+      orderedPatternIds: ["creates-profile-dict", "reads-name", "updates-age", "prints-new-age"]
+    }
+  },
+  {
+    slug: "loop-through-dictionary-items",
+    title: "Recorre clave y valor de un diccionario",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "dictionaries",
+    lessonSlug: "looping-through-dictionary-data",
+    order: 3,
+    duration: "9 min",
+    summary: "Usa un diccionario y un bucle simple para imprimir cada par de clave y valor.",
+    prompt:
+      "Escribe un programa que cree `perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba'}` y luego use `for clave, valor in perfil.items():` para imprimir ambos datos en cada vuelta.",
+    responseLabel: "Tu programa con diccionario y bucle",
+    responsePlaceholder:
+      "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba'}\nfor clave, valor in perfil.items():\n    print(clave, valor)",
+    instructions: [
+      "Crea el diccionario con las claves pedidas.",
+      "Usa `items()` para obtener clave y valor.",
+      "Imprime ambos dentro del bucle."
+    ],
+    hints: [
+      "La forma básica es `for clave, valor in perfil.items():`.",
+      "La línea con `print()` debe ir indentada.",
+      "La salida debería mostrar dos líneas, una por cada par."
+    ],
+    starterCode: "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba'}\nfor clave, valor in perfil.items():\n    print(clave, valor)",
+    successCriteria: [
+      "Crea el diccionario pedido.",
+      "Usa `items()` con dos variables en el bucle.",
+      "Imprime la clave y el valor en cada vuelta."
+    ],
+    playground: {
+      title: "Ejecuta el recorrido del diccionario",
+      guidance: "Corre el programa y observa cómo aparecen los pares de clave y valor. Luego cambia un dato del diccionario para ver cómo se actualiza la salida.",
+      starterCode: "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba'}\nfor clave, valor in perfil.items():\n    print(clave, valor)",
+      emptyOutputHint: "Una solución correcta debería mostrar un par de clave y valor en cada línea."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["nombre Ana\nciudad Córdoba"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 90,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "creates-dict",
+          label: "Crea el diccionario `perfil`",
+          pattern: "perfil\\s*=\\s*\\{\\s*['\"]nombre['\"]\\s*:\\s*['\"]Ana['\"]\\s*,\\s*['\"]ciudad['\"]\\s*:\\s*['\"]Córdoba['\"]\\s*\\}",
+          feedbackWhenMissing: "Crea el diccionario `perfil` con las claves `nombre` y `ciudad`."
+        },
+        {
+          id: "uses-items-loop",
+          label: "Usa `items()` en el bucle",
+          pattern: "for\\s+clave\\s*,\\s*valor\\s+in\\s+perfil\\.items\\(\\)\\s*:",
+          feedbackWhenMissing: "Usa `for clave, valor in perfil.items():` para recorrer el diccionario."
+        },
+        {
+          id: "prints-key-value",
+          label: "Imprime clave y valor",
+          pattern: "print\\(\\s*clave\\s*,\\s*valor\\s*\\)",
+          feedbackWhenMissing: "Dentro del bucle, imprime la clave y el valor en la misma línea."
+        }
+      ],
+      orderedPatternIds: ["creates-dict", "uses-items-loop", "prints-key-value"]
     }
   }
 ];

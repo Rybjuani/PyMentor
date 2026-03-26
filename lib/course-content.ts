@@ -130,6 +130,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "95 min",
     xp: 330
+  },
+  {
+    slug: "foundations-capstone",
+    title: "Cierre de fundamentos",
+    description: "Completa proyectos finales de nivel principiante que reúnen tu base en Python y marcan el cierre de una primera etapa importante dentro de PyMentor.",
+    order: 14,
+    status: "locked",
+    lessonCount: 2,
+    estimatedTime: "100 min",
+    xp: 360
   }
 ];
 
@@ -2806,6 +2816,150 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar un encabezado, una línea por registro y un cierre final."
     },
     exerciseSlug: "build-freeform-report-generator"
+  },
+  {
+    slug: "capstone-personal-organizer",
+    module: "Cierre de fundamentos",
+    moduleSlug: "foundations-capstone",
+    order: 1,
+    title: "Capstone: organizador personal simple",
+    duration: "26 min",
+    difficulty: "Beginner",
+    summary: "Construye un organizador personal pequeño pero completo que use entrada, datos estructurados, menú, decisiones y un resumen final claro.",
+    warmup: "Este proyecto no busca impresionarte con complejidad. Busca mostrarte que ya puedes reunir muchas piezas de Python para resolver algo pequeño pero real.",
+    goal: "Al final, deberías poder construir un organizador personal simple con varias funciones, datos estructurados y una salida final que se sienta terminada.",
+    keyIdeas: [
+      {
+        title: "Este proyecto cierra una etapa",
+        description: "Reúne gran parte de lo que ya aprendiste dentro de un solo programa principiante."
+      },
+      {
+        title: "Una base sólida se nota en cómo organizas el código",
+        description: "Funciones, datos claros y flujo legible importan tanto como que el programa corra."
+      },
+      {
+        title: "El resultado debe sentirse útil y completo",
+        description: "No es solo practicar piezas: es terminar una herramienta pequeña que ya se siente propia."
+      }
+    ],
+    explanation: [
+      {
+        title: "Cuál es la propuesta",
+        body: "Vas a crear un organizador personal muy simple. El programa debe guardar algunos datos de perfil o hábitos, ofrecer al menos una pequeña interacción y cerrar con un resumen legible."
+      },
+      {
+        title: "Qué herramientas se reúnen aquí",
+        body: "Este capstone combina `input()`, strings, condicionales, funciones, listas, diccionarios y salida organizada. No introduce temas nuevos: pone a prueba cómo conectas lo que ya sabes."
+      },
+      {
+        title: "Cómo abordarlo sin perderte",
+        body: "Primero piensa la estructura de datos, luego define funciones cortas para mostrar partes del programa y por último revisa el flujo general. Una buena versión básica vale mucho más que una versión ambiciosa a medio terminar."
+      },
+      {
+        title: "Por qué se siente especial",
+        body: "Este tipo de proyecto marca un cambio importante: ya no estás solo resolviendo ejercicios sueltos. Estás cerrando una base real con un programa que tiene identidad propia."
+      }
+    ],
+    example:
+      "perfil = {\n    'nombre': 'Ana',\n    'ciudad': 'Córdoba',\n    'meta': 'Practicar cada día'\n}\n\nhabitos = [\n    {'nombre': 'Leer', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\ndef mostrar_perfil(perfil):\n    print('=== PERFIL ===')\n    print('Nombre:', perfil['nombre'])\n    print('Ciudad:', perfil['ciudad'])\n    print('Meta:', perfil['meta'])\n\ndef mostrar_habitos(habitos):\n    print('=== HÁBITOS ===')\n    for habito in habitos:\n        if habito['estado'] == 'hecho':\n            print(habito['nombre'] + ': listo')\n        else:\n            print(habito['nombre'] + ': por hacer')\n\nmostrar_perfil(perfil)\nmostrar_habitos(habitos)\nprint('Base de Python cerrada por hoy')",
+    practicePrompt: "Piensa qué información quieres resaltar primero y cómo quieres cerrar el programa. El objetivo es que el resultado se sienta ordenado y completo.",
+    practiceChecklist: [
+      "Usa un diccionario para datos principales.",
+      "Usa una lista con más de un elemento.",
+      "Define al menos dos funciones.",
+      "Incluye una salida final de cierre."
+    ],
+    commonMistakes: [
+      "Intentar meter demasiadas funciones o caminos y perder claridad.",
+      "Mezclar nombres de claves o variables entre distintas partes del programa.",
+      "Olvidar que el cierre final debe quedar fuera de los bucles principales."
+    ],
+    bugChallenge: {
+      prompt: "Este organizador debería mostrar un perfil, revisar hábitos y cerrar una sola vez, pero una clave y una línea final mal ubicada cambian el resultado.",
+      brokenCode:
+        "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba', 'meta': 'Practicar'}\nhabitos = [\n    {'nombre': 'Leer', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nfor habito in habitos:\n    if habito['estdo'] == 'hecho':\n        print(habito['nombre'] + ': listo')\n    else:\n        print(habito['nombre'] + ': por hacer')\n    print('Base de Python cerrada por hoy')",
+      expectedLearning: "En un proyecto de cierre, los errores siguen estando en los básicos: claves exactas, flujo claro y líneas finales bien ubicadas."
+    },
+    playground: {
+      title: "Prueba tu organizador personal",
+      guidance: "Ejecuta el proyecto, cambia algunos textos o reordena la salida. Busca una versión que siga siendo simple, clara y lo bastante tuya como para sentirse como cierre de etapa.",
+      starterCode:
+        "perfil = {\n    'nombre': 'Ana',\n    'ciudad': 'Córdoba',\n    'meta': 'Practicar cada día'\n}\n\nhabitos = [\n    {'nombre': 'Leer', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\ndef mostrar_perfil(perfil):\n    print('=== PERFIL ===')\n    print('Nombre:', perfil['nombre'])\n    print('Ciudad:', perfil['ciudad'])\n    print('Meta:', perfil['meta'])\n\ndef mostrar_habitos(habitos):\n    print('=== HÁBITOS ===')\n    for habito in habitos:\n        if habito['estado'] == 'hecho':\n            print(habito['nombre'] + ': listo')\n        else:\n            print(habito['nombre'] + ': por hacer')\n\nmostrar_perfil(perfil)\nmostrar_habitos(habitos)\nprint('Base de Python cerrada por hoy')",
+      emptyOutputHint: "La salida debería mostrar varias secciones y un cierre final claro."
+    },
+    exerciseSlug: "build-capstone-personal-organizer"
+  },
+  {
+    slug: "capstone-menu-and-report-tool",
+    module: "Cierre de fundamentos",
+    moduleSlug: "foundations-capstone",
+    order: 2,
+    title: "Capstone: herramienta con menú y reporte final",
+    duration: "28 min",
+    difficulty: "Beginner",
+    summary: "Construye una herramienta pequeña con menú, varias funciones y un reporte final que combine interacción, decisiones y datos estructurados.",
+    warmup: "Un buen cierre de fundamentos no necesita ser enorme. Necesita mostrar que ya puedes pensar un flujo completo y sostenerlo con varias piezas de Python trabajando juntas.",
+    goal: "Al final, deberías poder construir una herramienta con menú y reporte que combine varias bases de Python dentro de un flujo entendible y funcional.",
+    keyIdeas: [
+      {
+        title: "El flujo completo es parte del aprendizaje",
+        description: "No solo importan los datos o las funciones por separado, sino cómo se conectan de principio a fin."
+      },
+      {
+        title: "Más piezas, misma calma",
+        description: "Aunque el proyecto tenga más partes, sigue siendo mejor resolverlo con una estructura simple y legible."
+      },
+      {
+        title: "Un capstone debe dejar sensación de logro",
+        description: "La meta es terminar un programa que marque de verdad el cierre de la base."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué vas a construir",
+        body: "Este proyecto propone una herramienta con menú que ofrece varias acciones simples y después presenta un resumen final. Es un programa más rico que los anteriores, pero sigue siendo totalmente abordable para principiantes."
+      },
+      {
+        title: "Qué une del recorrido",
+        body: "Aquí se juntan entrada, strings, funciones, condicionales, listas o diccionarios y una salida final organizada. Es una de las formas más claras de sentir que la base realmente quedó integrada."
+      },
+      {
+        title: "Qué conviene priorizar",
+        body: "Primero define las opciones del menú y las funciones que las sostienen. Luego asegúrate de que el reporte final use datos claros y aparezca una sola vez, al final del flujo."
+      },
+      {
+        title: "Por qué es un buen cierre",
+        body: "Porque se parece bastante a un programa real de nivel inicial: tiene estructura, decisiones, datos y una intención visible. Eso produce una sensación concreta de avance."
+      }
+    ],
+    example:
+      "registros = [\n    {'nombre': 'Lectura', 'estado': 'bien'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\ndef ver_menu():\n    print('1. Ver reporte')\n    print('2. Ver recordatorio')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar paso a paso')\n\ndef ver_reporte(registros):\n    print('=== REPORTE FINAL ===')\n    for registro in registros:\n        if registro['estado'] == 'bien':\n            print(registro['nombre'] + ': en buen camino')\n        else:\n            print(registro['nombre'] + ': necesita atención')\n\nver_menu()\nopcion = '1'\nif opcion == '1':\n    ver_reporte(registros)\nelse:\n    ver_recordatorio()\nprint('Fundamentos completados')",
+    practicePrompt: "Decide cómo quieres nombrar las opciones, el reporte y el cierre final. El flujo puede cambiar un poco, pero debe seguir siendo claro y cumplir el brief.",
+    practiceChecklist: [
+      "Muestra un menú con más de una opción.",
+      "Usa funciones para organizar la lógica.",
+      "Recorre datos estructurados en el reporte.",
+      "Cierra con una línea final que se sienta importante."
+    ],
+    commonMistakes: [
+      "Dejar el reporte mezclado con el menú sin separar funciones.",
+      "Agregar demasiadas opciones y perder claridad.",
+      "Repetir el cierre dentro de una rama o dentro del bucle."
+    ],
+    bugChallenge: {
+      prompt: "Esta herramienta debería mostrar un menú, responder a una opción y cerrar con un reporte claro, pero una comparación y una clave rompen el recorrido.",
+      brokenCode:
+        "registros = [\n    {'nombre': 'Lectura', 'estado': 'bien'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\ndef ver_reporte(registros):\n    for registro in registros:\n        if registro['estdo'] == 'bien':\n            print(registro['nombre'] + ': en buen camino')\n        else:\n            print(registro['nombre'] + ': necesita atención')\n\nopcion = '1'\nif opcion == 1:\n    ver_reporte(registros)\nprint('Fundamentos completados')",
+      expectedLearning: "Incluso en el cierre del recorrido, las revisiones clave siguen siendo las mismas: tipos de datos, comparaciones y nombres exactos."
+    },
+    playground: {
+      title: "Explora tu herramienta final",
+      guidance: "Ejecuta el proyecto, cambia textos del menú o del cierre y comprueba que la herramienta siga siendo coherente, clara y suficientemente completa para cerrar esta etapa.",
+      starterCode:
+        "registros = [\n    {'nombre': 'Lectura', 'estado': 'bien'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\ndef ver_menu():\n    print('1. Ver reporte')\n    print('2. Ver recordatorio')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar paso a paso')\n\ndef ver_reporte(registros):\n    print('=== REPORTE FINAL ===')\n    for registro in registros:\n        if registro['estado'] == 'bien':\n            print(registro['nombre'] + ': en buen camino')\n        else:\n            print(registro['nombre'] + ': necesita atención')\n\nver_menu()\nopcion = '1'\nif opcion == '1':\n    ver_reporte(registros)\nelse:\n    ver_recordatorio()\nprint('Fundamentos completados')",
+      emptyOutputHint: "La salida debería mostrar el menú, una respuesta principal y un cierre final de etapa."
+    },
+    exerciseSlug: "build-capstone-menu-report-tool"
   }
 ];
 
@@ -5627,6 +5781,209 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["creates-report-records", "loops-report-records", "checks-report-state", "uses-report-name", "adds-report-final-line"]
+    }
+  },
+  {
+    slug: "build-capstone-personal-organizer",
+    title: "Construye el capstone de organizador personal",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "foundations-capstone",
+    lessonSlug: "capstone-personal-organizer",
+    order: 1,
+    duration: "14 min",
+    summary: "Resuelve un proyecto final de fundamentos creando un organizador personal simple con datos estructurados, funciones y un cierre claro.",
+    prompt:
+      "Brief final: construye un organizador personal simple. Requisitos: usa un diccionario para datos principales, una lista con al menos dos elementos relacionados, al menos dos funciones, una condición para distinguir estados o casos, y una línea final que marque el cierre de la etapa. El estilo exacto de la salida puede variar, pero el programa debe sentirse completo y claro.",
+    responseLabel: "Tu capstone de organizador personal",
+    responsePlaceholder:
+      "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba', 'meta': 'Practicar cada día'}\nhabitos = [\n    {'nombre': 'Leer', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\ndef mostrar_perfil(perfil):\n    print('=== PERFIL ===')\n    print('Nombre:', perfil['nombre'])\n    print('Ciudad:', perfil['ciudad'])\n    print('Meta:', perfil['meta'])\n\ndef mostrar_habitos(habitos):\n    print('=== HÁBITOS ===')\n    for habito in habitos:\n        if habito['estado'] == 'hecho':\n            print(habito['nombre'] + ': listo')\n        else:\n            print(habito['nombre'] + ': por hacer')\n\nmostrar_perfil(perfil)\nmostrar_habitos(habitos)\nprint('Base de Python cerrada por hoy')",
+    instructions: [
+      "Usa un diccionario con datos personales o principales.",
+      "Usa una lista con varios elementos relacionados.",
+      "Define al menos dos funciones.",
+      "Incluye una condición y un cierre final claro."
+    ],
+    hints: [
+      "No necesitas copiar exactamente el ejemplo, pero sí cubrir todos los requisitos.",
+      "Separar perfil y hábitos en funciones distintas suele ayudar.",
+      "El cierre final debería aparecer una sola vez y sentirse importante."
+    ],
+    starterCode:
+      "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba', 'meta': 'Practicar cada día'}\nhabitos = [\n    {'nombre': 'Leer', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\ndef mostrar_perfil(perfil):\n    print('=== PERFIL ===')\n    print('Nombre:', perfil['nombre'])\n    print('Ciudad:', perfil['ciudad'])\n    print('Meta:', perfil['meta'])\n\ndef mostrar_habitos(habitos):\n    print('=== HÁBITOS ===')\n    for habito in habitos:\n        if habito['estado'] == 'hecho':\n            print(habito['nombre'] + ': listo')\n        else:\n            print(habito['nombre'] + ': por hacer')\n\nmostrar_perfil(perfil)\nmostrar_habitos(habitos)\nprint('Base de Python cerrada por hoy')",
+    successCriteria: [
+      "Usa varias bases de Python dentro de un solo programa.",
+      "Muestra una organización clara.",
+      "Se siente como un proyecto completo de cierre."
+    ],
+    playground: {
+      title: "Ejecuta tu capstone de organizador",
+      guidance: "Corre el proyecto y luego ajusta el orden o los mensajes. La meta es conservar un flujo claro y suficientemente completo para cerrar esta etapa.",
+      starterCode:
+        "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba', 'meta': 'Practicar cada día'}\nhabitos = [\n    {'nombre': 'Leer', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\ndef mostrar_perfil(perfil):\n    print('=== PERFIL ===')\n    print('Nombre:', perfil['nombre'])\n    print('Ciudad:', perfil['ciudad'])\n    print('Meta:', perfil['meta'])\n\ndef mostrar_habitos(habitos):\n    print('=== HÁBITOS ===')\n    for habito in habitos:\n        if habito['estado'] == 'hecho':\n            print(habito['nombre'] + ': listo')\n        else:\n            print(habito['nombre'] + ': por hacer')\n\nmostrar_perfil(perfil)\nmostrar_habitos(habitos)\nprint('Base de Python cerrada por hoy')",
+      emptyOutputHint: "La salida debería mostrar secciones claras y una línea final de cierre."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: [
+        "=== PERFIL ===\nNombre: Ana\nCiudad: Córdoba\nMeta: Practicar cada día\n=== HÁBITOS ===\nLeer: listo\nPython: por hacer\nBase de Python cerrada por hoy"
+      ],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 360,
+      passingScore: 7,
+      requiredPatterns: [
+        {
+          id: "creates-profile-data",
+          label: "Crea un diccionario principal",
+          pattern: "perfil\\s*=\\s*\\{[\\s\\S]*\\}",
+          feedbackWhenMissing: "Usa un diccionario principal para organizar datos importantes."
+        },
+        {
+          id: "creates-related-list",
+          label: "Crea una lista con varios elementos",
+          pattern: "habitos\\s*=\\s*\\[[\\s\\S]*\\]",
+          feedbackWhenMissing: "Usa una lista con varios elementos relacionados."
+        },
+        {
+          id: "defines-two-functions",
+          label: "Define al menos dos funciones",
+          pattern: "def\\s+[a-zA-Z_][a-zA-Z0-9_]*\\([^\\)]*\\)\\s*:[\\s\\S]*def\\s+[a-zA-Z_][a-zA-Z0-9_]*\\([^\\)]*\\)\\s*:",
+          feedbackWhenMissing: "Define al menos dos funciones para organizar el proyecto."
+        },
+        {
+          id: "uses-loop",
+          label: "Usa un bucle para recorrer la lista",
+          pattern: "for\\s+habito\\s+in\\s+habitos\\s*:",
+          feedbackWhenMissing: "Recorre la lista con un bucle."
+        },
+        {
+          id: "uses-condition",
+          label: "Usa una condición para distinguir estados",
+          pattern: "if\\s+habito\\[['\"]estado['\"]\\]\\s*==\\s*['\"][^'\"]+['\"]\\s*:",
+          feedbackWhenMissing: "Usa una condición para distinguir al menos dos estados."
+        },
+        {
+          id: "reads-profile-name",
+          label: "Lee datos del diccionario principal",
+          pattern: "perfil\\[['\"]nombre['\"]\\]",
+          feedbackWhenMissing: "Lee al menos una clave del diccionario principal dentro de la salida."
+        },
+        {
+          id: "adds-foundation-close",
+          label: "Agrega una línea final de cierre",
+          pattern: "print\\(\\s*['\"][^'\"]+['\"]\\s*\\)",
+          feedbackWhenMissing: "Agrega una línea final que marque el cierre del proyecto."
+        }
+      ],
+      orderedPatternIds: ["creates-profile-data", "creates-related-list", "defines-two-functions", "uses-loop", "uses-condition", "reads-profile-name", "adds-foundation-close"]
+    }
+  },
+  {
+    slug: "build-capstone-menu-report-tool",
+    title: "Construye el capstone de menú y reporte",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "foundations-capstone",
+    lessonSlug: "capstone-menu-and-report-tool",
+    order: 2,
+    duration: "15 min",
+    summary: "Resuelve un proyecto final que combina menú, funciones, datos estructurados, reporte y cierre de etapa.",
+    prompt:
+      "Brief final: crea una herramienta con menú y reporte. Requisitos: muestra un menú con más de una opción, usa funciones para organizar respuestas, guarda una elección en una variable, genera un reporte a partir de datos estructurados y cierra con una línea final visible. La implementación puede variar, pero el flujo debe ser claro y funcional.",
+    responseLabel: "Tu capstone de menú y reporte",
+    responsePlaceholder:
+      "registros = [\n    {'nombre': 'Lectura', 'estado': 'bien'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\ndef ver_menu():\n    print('1. Ver reporte')\n    print('2. Ver recordatorio')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar paso a paso')\n\ndef ver_reporte(registros):\n    print('=== REPORTE FINAL ===')\n    for registro in registros:\n        if registro['estado'] == 'bien':\n            print(registro['nombre'] + ': en buen camino')\n        else:\n            print(registro['nombre'] + ': necesita atención')\n\nver_menu()\nopcion = '1'\nif opcion == '1':\n    ver_reporte(registros)\nelse:\n    ver_recordatorio()\nprint('Fundamentos completados')",
+    instructions: [
+      "Muestra un menú con varias opciones.",
+      "Usa funciones para organizar el programa.",
+      "Guarda una elección y usa una condición.",
+      "Genera un reporte con datos estructurados.",
+      "Agrega una línea final de cierre."
+    ],
+    hints: [
+      "Puedes mantener el reporte corto; no necesitas muchos registros.",
+      "Separar menú, recordatorio y reporte en funciones distintas suele ayudar bastante.",
+      "La línea final debe aparecer una sola vez, después del flujo principal."
+    ],
+    starterCode:
+      "registros = [\n    {'nombre': 'Lectura', 'estado': 'bien'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\ndef ver_menu():\n    print('1. Ver reporte')\n    print('2. Ver recordatorio')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar paso a paso')\n\ndef ver_reporte(registros):\n    print('=== REPORTE FINAL ===')\n    for registro in registros:\n        if registro['estado'] == 'bien':\n            print(registro['nombre'] + ': en buen camino')\n        else:\n            print(registro['nombre'] + ': necesita atención')\n\nver_menu()\nopcion = '1'\nif opcion == '1':\n    ver_reporte(registros)\nelse:\n    ver_recordatorio()\nprint('Fundamentos completados')",
+    successCriteria: [
+      "Combina varias bases de Python en un flujo único.",
+      "El programa se siente más fuerte que un ejercicio normal.",
+      "El cierre transmite final de etapa."
+    ],
+    playground: {
+      title: "Ejecuta tu capstone de menú y reporte",
+      guidance: "Corre el proyecto, cambia textos del menú o del reporte y verifica que el flujo siga claro y suficientemente completo para cerrar esta primera gran etapa.",
+      starterCode:
+        "registros = [\n    {'nombre': 'Lectura', 'estado': 'bien'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\ndef ver_menu():\n    print('1. Ver reporte')\n    print('2. Ver recordatorio')\n\ndef ver_recordatorio():\n    print('Recuerda avanzar paso a paso')\n\ndef ver_reporte(registros):\n    print('=== REPORTE FINAL ===')\n    for registro in registros:\n        if registro['estado'] == 'bien':\n            print(registro['nombre'] + ': en buen camino')\n        else:\n            print(registro['nombre'] + ': necesita atención')\n\nver_menu()\nopcion = '1'\nif opcion == '1':\n    ver_reporte(registros)\nelse:\n    ver_recordatorio()\nprint('Fundamentos completados')",
+      emptyOutputHint: "La salida debería mostrar el menú, una acción principal y una línea final de cierre."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: [
+        "1. Ver reporte\n2. Ver recordatorio\n=== REPORTE FINAL ===\nLectura: en buen camino\nPython: necesita atención\nFundamentos completados"
+      ],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 320,
+      passingScore: 7,
+      requiredPatterns: [
+        {
+          id: "creates-report-data",
+          label: "Crea datos estructurados para el reporte",
+          pattern: "registros\\s*=\\s*\\[[\\s\\S]*\\]",
+          feedbackWhenMissing: "Crea una lista con datos estructurados para el reporte."
+        },
+        {
+          id: "defines-multiple-capstone-functions",
+          label: "Define varias funciones",
+          pattern: "def\\s+[a-zA-Z_][a-zA-Z0-9_]*\\([^\\)]*\\)\\s*:[\\s\\S]*def\\s+[a-zA-Z_][a-zA-Z0-9_]*\\([^\\)]*\\)\\s*:",
+          feedbackWhenMissing: "Define varias funciones para organizar el menú y el reporte."
+        },
+        {
+          id: "prints-menu",
+          label: "Muestra un menú con más de una opción",
+          pattern: "print\\(\\s*['\"][^'\"]+['\"]\\s*\\)[\\s\\S]*print\\(\\s*['\"][^'\"]+['\"]\\s*\\)",
+          feedbackWhenMissing: "Muestra al menos dos opciones visibles en el menú."
+        },
+        {
+          id: "stores-capstone-choice",
+          label: "Guarda una elección en `opcion`",
+          pattern: "opcion\\s*=\\s*['\"][A-Za-z0-9]['\"]",
+          feedbackWhenMissing: "Guarda una elección en la variable `opcion`."
+        },
+        {
+          id: "uses-capstone-conditional",
+          label: "Usa una condición para decidir el flujo",
+          pattern: "if\\s+opcion\\s*==[\\s\\S]*(else|elif)",
+          feedbackWhenMissing: "Usa una condición para decidir qué camino del menú ejecutar."
+        },
+        {
+          id: "loops-report-data",
+          label: "Recorre los datos del reporte",
+          pattern: "for\\s+registro\\s+in\\s+registros\\s*:",
+          feedbackWhenMissing: "Recorre los datos del reporte con un bucle."
+        },
+        {
+          id: "adds-capstone-close",
+          label: "Agrega una línea final de cierre",
+          pattern: "print\\(\\s*['\"][^'\"]+['\"]\\s*\\)",
+          feedbackWhenMissing: "Agrega una línea final visible para cerrar la etapa."
+        }
+      ],
+      orderedPatternIds: ["creates-report-data", "defines-multiple-capstone-functions", "prints-menu", "stores-capstone-choice", "uses-capstone-conditional", "loops-report-data", "adds-capstone-close"]
     }
   }
 ];

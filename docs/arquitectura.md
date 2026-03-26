@@ -117,6 +117,7 @@ Características:
 6. guarda borradores automáticamente en práctica de código
 7. cierra la primera gran etapa en el módulo `Cierre de fundamentos`
 8. abre la segunda etapa en el módulo `Archivos básicos`
+9. entra en un bloque más práctico con `Utilidades pequeñas y útiles`
 
 ## Decisiones intencionales
 

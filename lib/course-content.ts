@@ -160,6 +160,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "82 min",
     xp: 330
+  },
+  {
+    slug: "small-organized-utilities",
+    title: "Utilidades pequeñas y útiles",
+    description: "Construye herramientas simples que ya se sienten prácticas: guardan datos, los leen con claridad y reparten mejor cada tarea entre funciones.",
+    order: 17,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "88 min",
+    xp: 340
   }
 ];
 
@@ -3399,6 +3409,219 @@ export const courseLessons: LessonData[] = [
       expectedLearning: "En una separación simple entre archivos, revisar nombres exactos sigue siendo lo más importante."
     },
     exerciseSlug: "organize-a-small-program-with-helper-function"
+  },
+  {
+    slug: "small-utilities-with-clear-purpose",
+    module: "Utilidades pequeñas y útiles",
+    moduleSlug: "small-organized-utilities",
+    order: 1,
+    title: "Construir una utilidad pequeña con una responsabilidad clara",
+    duration: "16 min",
+    difficulty: "Beginner",
+    summary: "Da el paso desde scripts sueltos hacia una herramienta pequeña con propósito visible, usando funciones y un archivo para guardar datos útiles.",
+    warmup: "Un programa empieza a sentirse más útil cuando no solo muestra algo, sino que resuelve una tarea concreta y deja claro para qué sirve cada parte.",
+    goal: "Al final, deberías poder reconocer cómo una utilidad pequeña mejora cuando separa responsabilidades y usa un archivo para guardar algo simple.",
+    keyIdeas: [
+      {
+        title: "Una utilidad hace una tarea concreta",
+        description: "No intenta resolver todo. Hace una cosa útil y la hace de forma clara."
+      },
+      {
+        title: "Las funciones reparten responsabilidades",
+        description: "Una puede guardar información y otra puede mostrarla, sin mezclar todo en el mismo bloque."
+      },
+      {
+        title: "El archivo deja de ser un ejemplo aislado",
+        description: "Ahora guardar y leer texto forma parte de una herramienta completa, no de una práctica suelta."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué cambia en esta etapa",
+        body: "En `Archivos básicos` aprendiste a escribir y leer texto. En `Funciones y organización simple` viste cómo repartir mejor el trabajo del programa. Ahora vamos a juntar esas ideas dentro de utilidades pequeñas que ya se sienten más reales."
+      },
+      {
+        title: "Qué significa tener una responsabilidad clara",
+        body: "Significa que el programa se entiende rápido. Por ejemplo: guardar una nota, mostrar una lista o resumir un registro. Cuando la utilidad tiene un objetivo visible, también es más fácil decidir qué función hace cada parte."
+      },
+      {
+        title: "Qué conviene mantener simple",
+        body: "Todavía no hace falta construir sistemas complejos. Una o dos funciones, un archivo de texto y una salida ordenada alcanzan para sentir el salto hacia herramientas pequeñas pero útiles."
+      },
+      {
+        title: "Qué gana la persona que aprende",
+        body: "Gana confianza para pensar: 'puedo construir algo que sirve para una tarea concreta'. Ese cambio es importante porque marca el paso desde scripts de práctica hacia utilidades más intencionales."
+      }
+    ],
+    example:
+      "def guardar_nota(texto):\n    with open('notas.txt', 'w') as archivo:\n        archivo.write(texto)\n\n\ndef mostrar_nota():\n    with open('notas.txt', 'r') as archivo:\n        print('Nota guardada:')\n        print(archivo.read())\n\n\nguardar_nota('Practicar Python hoy')\nmostrar_nota()",
+    practicePrompt: "Lee el ejemplo y señala qué parte guarda la información y qué parte la presenta. La utilidad se siente más clara porque cada función tiene un papel visible.",
+    practiceChecklist: [
+      "Identifica una función que guarda datos.",
+      "Identifica otra que muestra el resultado.",
+      "Observa que el archivo ya forma parte de una herramienta con propósito."
+    ],
+    commonMistakes: [
+      "Poner la escritura y la lectura mezcladas dentro de un solo bloque difícil de seguir.",
+      "No dar nombres claros a las funciones.",
+      "Pensar que una utilidad pequeña necesita muchas partes para ser válida."
+    ],
+    bugChallenge: {
+      prompt: "Este programa quiere guardar una nota y luego mostrarla, pero mezcla un nombre y una llamada que rompen la idea de utilidad clara.",
+      brokenCode:
+        "def guardar_nota(texto):\n    with open('notas.txt', 'w') as archivo:\n        archivo.write(texto)\n\n\ndef mostrar_nota():\n    with open('notas.txt', 'r') as archivo:\n        print(archiv.read())\n\nguardar_notas('Practicar Python hoy')\nmostrar_nota()",
+      expectedLearning: "Cuando un programa tiene una responsabilidad concreta, revisar nombres y llamadas correctas vuelve mucho más fácil corregirlo."
+    },
+    playground: {
+      title: "Prueba una utilidad pequeña y clara",
+      guidance: "Ejecuta la utilidad y luego cambia la nota guardada. La meta es sentir que una herramienta simple ya puede tener un objetivo visible y una estructura fácil de seguir.",
+      starterCode:
+        "def guardar_nota(texto):\n    with open('notas.txt', 'w') as archivo:\n        archivo.write(texto)\n\n\ndef mostrar_nota():\n    with open('notas.txt', 'r') as archivo:\n        print('Nota guardada:')\n        print(archivo.read())\n\n\nguardar_nota('Practicar Python hoy')\nmostrar_nota()",
+      emptyOutputHint: "La salida debería mostrar un encabezado y luego la nota guardada."
+    },
+    exerciseSlug: "explain-why-a-small-utility-needs-clear-functions"
+  },
+  {
+    slug: "saving-and-checking-notes-with-functions",
+    module: "Utilidades pequeñas y útiles",
+    moduleSlug: "small-organized-utilities",
+    order: 2,
+    title: "Guardar y consultar notas con funciones de apoyo",
+    duration: "17 min",
+    difficulty: "Beginner",
+    summary: "Construye una pequeña libreta que guarda varias líneas en un archivo y luego las muestra con un encabezado claro.",
+    warmup: "Una utilidad se siente más real cuando guarda información que puedes volver a consultar sin repetir todo el trabajo.",
+    goal: "Al final, deberías poder construir una utilidad corta que escriba datos en un archivo, los recupere y use funciones para mantener un flujo legible.",
+    keyIdeas: [
+      {
+        title: "Guardar y consultar son tareas distintas",
+        description: "Separarlas en funciones ayuda a leer el programa con más calma."
+      },
+      {
+        title: "El archivo forma parte del flujo completo",
+        description: "No solo existe para practicar escritura o lectura por separado."
+      },
+      {
+        title: "Una salida clara mejora la utilidad",
+        description: "Un encabezado o resumen corto ayuda a que el resultado se sienta más útil."
+      }
+    ],
+    explanation: [
+      {
+        title: "Cómo se ve una libreta pequeña",
+        body: "Puede ser tan simple como guardar dos notas o tareas en un archivo y luego mostrarlas con una salida legible. No hace falta que sea compleja para que ya se sienta útil."
+      },
+      {
+        title: "Qué aporta separar en funciones",
+        body: "Una función puede encargarse de guardar y otra de mostrar. Así, si el programa crece, no tienes que descifrar un solo bloque enorme para entender qué hace cada paso."
+      },
+      {
+        title: "Qué parte conviene observar",
+        body: "Observa cómo el flujo principal solo dice 'guardar' y 'mostrar'. Esa lectura sencilla es una señal de que el programa está mejor organizado."
+      },
+      {
+        title: "Qué seguimos evitando",
+        body: "Seguimos evitando complejidad innecesaria. Aquí alcanza con pocas funciones, un archivo de texto y una salida clara."
+      }
+    ],
+    example:
+      "def guardar_notas():\n    with open('notas.txt', 'w') as archivo:\n        archivo.write('Comprar pan\\nPracticar Python')\n\n\ndef mostrar_notas():\n    with open('notas.txt', 'r') as archivo:\n        contenido = archivo.read()\n    print('Notas guardadas:')\n    print(contenido)\n\n\nguardar_notas()\nmostrar_notas()",
+    practicePrompt: "Ejecuta el ejemplo y luego cambia las líneas guardadas. Piensa cómo se leería el programa si todo esto estuviera mezclado sin funciones separadas.",
+    practiceChecklist: [
+      "Separa guardar y mostrar en funciones distintas.",
+      "Usa un archivo como parte de la utilidad completa.",
+      "Mantén una salida simple y clara."
+    ],
+    commonMistakes: [
+      "Abrir el archivo en el modo equivocado.",
+      "Leer el archivo pero olvidar mostrar el contenido.",
+      "Meter todo el flujo en una sola función sin una razón clara."
+    ],
+    bugChallenge: {
+      prompt: "Este programa quiere guardar y mostrar notas, pero el modo de apertura y una variable hacen que la utilidad no termine de funcionar.",
+      brokenCode:
+        "def guardar_notas():\n    with open('notas.txt', 'r') as archivo:\n        archivo.write('Comprar pan\\nPracticar Python')\n\n\ndef mostrar_notas():\n    with open('notas.txt', 'r') as archivo:\n        contenido = archivo.read()\n    print(texto)\n\nguardar_notas()\nmostrar_notas()",
+      expectedLearning: "En una utilidad más completa, revisar los modos de archivo y los nombres de variables es parte de mantener el programa confiable."
+    },
+    playground: {
+      title: "Guarda y consulta notas",
+      guidance: "Corre la utilidad y luego cambia las líneas guardadas o el encabezado. La meta es practicar una herramienta corta que ya tiene un flujo completo.",
+      starterCode:
+        "def guardar_notas():\n    with open('notas.txt', 'w') as archivo:\n        archivo.write('Comprar pan\\nPracticar Python')\n\n\ndef mostrar_notas():\n    with open('notas.txt', 'r') as archivo:\n        contenido = archivo.read()\n    print('Notas guardadas:')\n    print(contenido)\n\n\nguardar_notas()\nmostrar_notas()",
+      emptyOutputHint: "La salida debería mostrar un encabezado y luego las notas guardadas."
+    },
+    exerciseSlug: "build-a-simple-note-utility"
+  },
+  {
+    slug: "building-a-simple-data-summary",
+    module: "Utilidades pequeñas y útiles",
+    moduleSlug: "small-organized-utilities",
+    order: 3,
+    title: "Construir un resumen útil desde datos guardados",
+    duration: "18 min",
+    difficulty: "Beginner",
+    summary: "Da un paso más y crea una utilidad que lea varias líneas guardadas, las procese en una lista y muestre un pequeño resumen final.",
+    warmup: "Cuando un programa no solo guarda datos, sino que además los resume, empieza a sentirse más cercano a una herramienta de verdad.",
+    goal: "Al final, deberías poder leer un archivo, convertir su contenido en una lista simple y mostrar un resumen corto y ordenado.",
+    keyIdeas: [
+      {
+        title: "Un resumen convierte datos en información",
+        description: "Contar elementos o mostrar una primera línea ya aporta valor."
+      },
+      {
+        title: "Las listas aparecen de forma natural",
+        description: "Si divides varias líneas de texto, ya puedes recorrer o contar mejor la información."
+      },
+      {
+        title: "La organización sigue importando",
+        description: "Una función puede preparar los datos y otra puede mostrarlos de forma clara."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué cambia respecto de la libreta simple",
+        body: "Ahora no solo vas a guardar y mostrar texto. También vas a resumirlo: por ejemplo, contar cuántas líneas hay o mostrar la primera de forma destacada."
+      },
+      {
+        title: "Dónde entra la lista",
+        body: "Si usas `splitlines()`, el contenido del archivo puede convertirse en una lista de líneas. Eso hace más fácil contar elementos o recorrerlos con un bucle pequeño."
+      },
+      {
+        title: "Qué hace útil a este tipo de programa",
+        body: "Hace útil el hecho de transformar datos guardados en algo que puedes leer rápido. Un resumen claro te da una razón práctica para haber organizado el programa."
+      },
+      {
+        title: "Qué conviene mantener controlado",
+        body: "No hace falta crear reportes grandes ni estructuras complejas. Un resumen corto y legible ya alcanza para practicar esta etapa."
+      }
+    ],
+    example:
+      "def guardar_datos():\n    with open('datos.txt', 'w') as archivo:\n        archivo.write('Agua\\nLectura\\nPython')\n\n\ndef mostrar_resumen():\n    with open('datos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total guardado:', len(lineas))\n    print('Primera línea:', lineas[0])\n\n\nguardar_datos()\nmostrar_resumen()",
+    practicePrompt: "Corre el ejemplo y cambia las líneas guardadas. Observa cómo una lista simple ayuda a contar y mostrar mejor el contenido del archivo.",
+    practiceChecklist: [
+      "Guarda varias líneas en un archivo.",
+      "Convierte el contenido en una lista con `splitlines()`.",
+      "Muestra un resumen corto y útil."
+    ],
+    commonMistakes: [
+      "Olvidar convertir el contenido en líneas antes de contarlo.",
+      "Imprimir el contenido completo cuando el objetivo era resumirlo.",
+      "Mezclar guardado, lectura y resumen sin una estructura clara."
+    ],
+    bugChallenge: {
+      prompt: "Este código quiere mostrar un resumen del archivo, pero mezcla el nombre de la lista y la forma de contar.",
+      brokenCode:
+        "with open('datos.txt', 'w') as archivo:\n    archivo.write('Agua\\nLectura\\nPython')\n\nwith open('datos.txt', 'r') as archivo:\n    lineas = archivo.read().splitlines()\n\nprint('Total guardado:', len(linea))\nprint('Primera línea:', datos[0])",
+      expectedLearning: "Cuando una utilidad ya hace varias cosas, revisar nombres consistentes y cada paso del flujo evita errores muy comunes."
+    },
+    playground: {
+      title: "Crea un resumen desde un archivo",
+      guidance: "Ejecuta el programa y luego cambia los datos guardados. La meta es sentir que ya puedes convertir texto guardado en un resumen corto y útil.",
+      starterCode:
+        "def guardar_datos():\n    with open('datos.txt', 'w') as archivo:\n        archivo.write('Agua\\nLectura\\nPython')\n\n\ndef mostrar_resumen():\n    with open('datos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total guardado:', len(lineas))\n    print('Primera línea:', lineas[0])\n\n\nguardar_datos()\nmostrar_resumen()",
+      emptyOutputHint: "La salida debería mostrar cuántas líneas se guardaron y cuál es la primera."
+    },
+    exerciseSlug: "build-a-saved-data-summary"
   }
 ];
 
@@ -6867,6 +7090,249 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["defines-helper-function", "prints-welcome", "calls-helper-function", "prints-main-line"]
+    }
+  },
+  {
+    slug: "explain-why-a-small-utility-needs-clear-functions",
+    title: "Explica por qué una utilidad pequeña necesita funciones claras",
+    exerciseType: "concept_check",
+    responseFormat: "text",
+    moduleSlug: "small-organized-utilities",
+    lessonSlug: "small-utilities-with-clear-purpose",
+    order: 1,
+    duration: "8 min",
+    summary: "Explica por qué una herramienta simple se entiende mejor cuando separa guardar y mostrar en funciones distintas.",
+    prompt:
+      "En 2 o 3 frases cortas, explica por qué una utilidad pequeña mejora cuando una función guarda datos y otra función los muestra.",
+    responseLabel: "Tu explicación sobre la utilidad",
+    responsePlaceholder:
+      "Una utilidad pequeña se entiende mejor cuando cada función hace una tarea concreta. Así es más fácil leer el flujo y saber qué parte guarda datos y qué parte los muestra.",
+    instructions: [
+      "Menciona que las funciones separan tareas.",
+      "Relaciona esa separación con claridad o lectura.",
+      "Conecta la idea con una utilidad que guarda y muestra datos."
+    ],
+    hints: [
+      "Piensa en la diferencia entre guardar y mostrar.",
+      "No hace falta usar palabras técnicas.",
+      "La idea principal es que cada parte tenga un papel claro."
+    ],
+    starterCode:
+      "def guardar_nota(texto):\n    with open('notas.txt', 'w') as archivo:\n        archivo.write(texto)\n\n\ndef mostrar_nota():\n    with open('notas.txt', 'r') as archivo:\n        print(archivo.read())",
+    successCriteria: [
+      "Habla de separar tareas.",
+      "Habla de claridad o lectura.",
+      "Conecta con una utilidad que guarda o muestra datos."
+    ],
+    evaluator: {
+      type: "ordered_concepts",
+      minLength: 45,
+      passingScore: 4,
+      requireOrder: false,
+      concepts: [
+        {
+          id: "separates-tasks",
+          label: "Explica que las funciones separan tareas",
+          keywords: ["separar", "dividir", "tareas", "funciones", "parte"],
+          feedbackWhenMissing: "Explica que una función puede encargarse de una tarea y otra función de otra parte del programa."
+        },
+        {
+          id: "improves-clarity",
+          label: "Relaciona la idea con claridad o lectura",
+          keywords: ["claro", "claridad", "leer", "entender", "orden", "flujo"],
+          feedbackWhenMissing: "Agrega que esa separación hace el programa más claro o más fácil de leer."
+        },
+        {
+          id: "connects-to-utility",
+          label: "Lo conecta con guardar y mostrar datos",
+          keywords: ["guardar", "mostrar", "datos", "archivo", "utilidad", "nota"],
+          feedbackWhenMissing: "Conecta la explicación con una utilidad que guarda datos y luego los muestra."
+        }
+      ]
+    }
+  },
+  {
+    slug: "build-a-simple-note-utility",
+    title: "Construye una libreta de notas simple",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "small-organized-utilities",
+    lessonSlug: "saving-and-checking-notes-with-functions",
+    order: 2,
+    duration: "12 min",
+    summary: "Construye una pequeña utilidad que guarde dos notas en un archivo y luego las muestre con un encabezado claro.",
+    prompt:
+      "Escribe un programa que defina `guardar_notas()` para guardar `Comprar pan\\nPracticar Python` en `notas.txt`, y `mostrar_notas()` para leer ese archivo e imprimir primero `Notas guardadas:` y luego el contenido. Después llama ambas funciones en ese orden.",
+    responseLabel: "Tu libreta simple",
+    responsePlaceholder:
+      "def guardar_notas():\n    with open('notas.txt', 'w') as archivo:\n        archivo.write('Comprar pan\\nPracticar Python')\n\n\ndef mostrar_notas():\n    with open('notas.txt', 'r') as archivo:\n        contenido = archivo.read()\n    print('Notas guardadas:')\n    print(contenido)\n\n\nguardar_notas()\nmostrar_notas()",
+    instructions: [
+      "Define una función para guardar las notas.",
+      "Define otra función para leer y mostrar.",
+      "Llama primero a guardar y luego a mostrar."
+    ],
+    hints: [
+      "Usa `with open('notas.txt', 'w')` dentro de `guardar_notas()`.",
+      "Usa `with open('notas.txt', 'r')` dentro de `mostrar_notas()`.",
+      "Imprime el encabezado antes del contenido."
+    ],
+    starterCode:
+      "def guardar_notas():\n    with open('notas.txt', 'w') as archivo:\n        archivo.write('Comprar pan\\nPracticar Python')\n\n\ndef mostrar_notas():\n    with open('notas.txt', 'r') as archivo:\n        contenido = archivo.read()\n    print('Notas guardadas:')\n    print(contenido)\n\n\nguardar_notas()\nmostrar_notas()",
+    successCriteria: [
+      "Guarda texto en un archivo dentro de una función.",
+      "Lee el archivo dentro de otra función.",
+      "Muestra una salida clara con encabezado."
+    ],
+    playground: {
+      title: "Ejecuta la libreta simple",
+      guidance: "Corre el programa y luego cambia las notas o el encabezado. La meta es practicar una utilidad pequeña que guarda y consulta información de forma clara.",
+      starterCode:
+        "def guardar_notas():\n    with open('notas.txt', 'w') as archivo:\n        archivo.write('Comprar pan\\nPracticar Python')\n\n\ndef mostrar_notas():\n    with open('notas.txt', 'r') as archivo:\n        contenido = archivo.read()\n    print('Notas guardadas:')\n    print(contenido)\n\n\nguardar_notas()\nmostrar_notas()",
+      emptyOutputHint: "La salida debería mostrar el encabezado y luego las dos notas guardadas."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Notas guardadas:\nComprar pan\nPracticar Python"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 220,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "defines-save-function",
+          label: "Define `guardar_notas()`",
+          pattern: "def\\s+guardar_notas\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `guardar_notas()`."
+        },
+        {
+          id: "writes-notes-file",
+          label: "Escribe en `notas.txt`",
+          pattern: "with\\s+open\\(\\s*['\"]notas\\.txt['\"]\\s*,\\s*['\"]w['\"]\\s*\\)\\s+as\\s+archivo\\s*:",
+          feedbackWhenMissing: "Dentro de `guardar_notas()`, abre `notas.txt` en modo escritura."
+        },
+        {
+          id: "writes-note-content",
+          label: "Guarda las dos notas pedidas",
+          pattern: "archivo\\.write\\(\\s*['\"]Comprar pan\\\\nPracticar Python['\"]\\s*\\)",
+          feedbackWhenMissing: "Guarda exactamente `Comprar pan\\nPracticar Python` dentro del archivo."
+        },
+        {
+          id: "defines-show-function",
+          label: "Define `mostrar_notas()`",
+          pattern: "def\\s+mostrar_notas\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `mostrar_notas()`."
+        },
+        {
+          id: "reads-and-prints-notes",
+          label: "Lee el archivo y muestra el encabezado con el contenido",
+          pattern: "with\\s+open\\(\\s*['\"]notas\\.txt['\"]\\s*,\\s*['\"]r['\"]\\s*\\)\\s+as\\s+archivo\\s*:[\\s\\S]*contenido\\s*=\\s*archivo\\.read\\(\\s*\\)[\\s\\S]*print\\(\\s*['\"]Notas guardadas:['\"]\\s*\\)[\\s\\S]*print\\(\\s*contenido\\s*\\)",
+          feedbackWhenMissing: "En `mostrar_notas()`, lee el archivo y muestra `Notas guardadas:` seguido del contenido."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-save-function",
+        "writes-notes-file",
+        "writes-note-content",
+        "defines-show-function",
+        "reads-and-prints-notes"
+      ]
+    }
+  },
+  {
+    slug: "build-a-saved-data-summary",
+    title: "Construye una utilidad de resumen guardado",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "small-organized-utilities",
+    lessonSlug: "building-a-simple-data-summary",
+    order: 3,
+    duration: "13 min",
+    summary: "Construye una utilidad que guarde varias líneas en un archivo y muestre un resumen corto usando una lista creada con `splitlines()`.",
+    prompt:
+      "Escribe un programa que defina `guardar_datos()` para guardar `Agua\\nLectura\\nPython` en `datos.txt`, y `mostrar_resumen()` para leer ese archivo, convertir el contenido a una lista con `splitlines()`, imprimir `Total guardado: 3` y luego `Primera línea: Agua`. Después llama ambas funciones.",
+    responseLabel: "Tu utilidad de resumen",
+    responsePlaceholder:
+      "def guardar_datos():\n    with open('datos.txt', 'w') as archivo:\n        archivo.write('Agua\\nLectura\\nPython')\n\n\ndef mostrar_resumen():\n    with open('datos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total guardado:', len(lineas))\n    print('Primera línea:', lineas[0])\n\n\nguardar_datos()\nmostrar_resumen()",
+    instructions: [
+      "Guarda tres líneas en un archivo.",
+      "Lee el archivo y conviértelo en una lista de líneas.",
+      "Muestra un resumen con cantidad total y primera línea."
+    ],
+    hints: [
+      "Puedes usar `archivo.read().splitlines()` para obtener una lista.",
+      "La primera línea será `lineas[0]`.",
+      "La cantidad total sale de `len(lineas)`."
+    ],
+    starterCode:
+      "def guardar_datos():\n    with open('datos.txt', 'w') as archivo:\n        archivo.write('Agua\\nLectura\\nPython')\n\n\ndef mostrar_resumen():\n    with open('datos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total guardado:', len(lineas))\n    print('Primera línea:', lineas[0])\n\n\nguardar_datos()\nmostrar_resumen()",
+    successCriteria: [
+      "Guarda varias líneas en un archivo.",
+      "Usa `splitlines()` para obtener una lista.",
+      "Muestra un resumen corto y ordenado."
+    ],
+    playground: {
+      title: "Ejecuta la utilidad de resumen",
+      guidance: "Corre el programa y luego cambia las líneas guardadas. La meta es ver cómo un archivo, una lista y dos funciones pueden formar una herramienta pequeña pero útil.",
+      starterCode:
+        "def guardar_datos():\n    with open('datos.txt', 'w') as archivo:\n        archivo.write('Agua\\nLectura\\nPython')\n\n\ndef mostrar_resumen():\n    with open('datos.txt', 'r') as archivo:\n        lineas = archivo.read().splitlines()\n    print('Total guardado:', len(lineas))\n    print('Primera línea:', lineas[0])\n\n\nguardar_datos()\nmostrar_resumen()",
+      emptyOutputHint: "La salida debería mostrar el total guardado y luego la primera línea."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Total guardado: 3\nPrimera línea: Agua"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 210,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "defines-save-data",
+          label: "Define `guardar_datos()`",
+          pattern: "def\\s+guardar_datos\\(\\)\\s*:",
+          feedbackWhenMissing: "Define una función llamada `guardar_datos()`."
+        },
+        {
+          id: "writes-data-file",
+          label: "Escribe en `datos.txt`",
+          pattern: "with\\s+open\\(\\s*['\"]datos\\.txt['\"]\\s*,\\s*['\"]w['\"]\\s*\\)\\s+as\\s+archivo\\s*:",
+          feedbackWhenMissing: "Dentro de `guardar_datos()`, abre `datos.txt` en modo escritura."
+        },
+        {
+          id: "writes-three-lines",
+          label: "Guarda las tres líneas pedidas",
+          pattern: "archivo\\.write\\(\\s*['\"]Agua\\\\nLectura\\\\nPython['\"]\\s*\\)",
+          feedbackWhenMissing: "Guarda exactamente `Agua\\nLectura\\nPython` dentro del archivo."
+        },
+        {
+          id: "uses-splitlines",
+          label: "Lee el archivo y usa `splitlines()`",
+          pattern: "lineas\\s*=\\s*archivo\\.read\\(\\s*\\)\\.splitlines\\(\\s*\\)",
+          feedbackWhenMissing: "Guarda el contenido en `lineas` usando `archivo.read().splitlines()`."
+        },
+        {
+          id: "prints-summary",
+          label: "Imprime la cantidad total y la primera línea",
+          pattern: "print\\(\\s*['\"]Total guardado:['\"]\\s*,\\s*len\\(\\s*lineas\\s*\\)\\s*\\)[\\s\\S]*print\\(\\s*['\"]Primera línea:['\"]\\s*,\\s*lineas\\[0\\]\\s*\\)",
+          feedbackWhenMissing: "Muestra `Total guardado:` con `len(lineas)` y luego `Primera línea:` con `lineas[0]`."
+        }
+      ],
+      orderedPatternIds: [
+        "defines-save-data",
+        "writes-data-file",
+        "writes-three-lines",
+        "uses-splitlines",
+        "prints-summary"
+      ]
     }
   }
 ];

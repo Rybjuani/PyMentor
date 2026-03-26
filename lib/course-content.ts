@@ -97,7 +97,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "student = 'Luna'\nminutes = 45\nmode = 'repaso'\n\nprint(f'Sesión: {student}')\nprint(f'Minutos planificados: {minutes}')\nprint(f'Modo: {mode}')",
-    practicePrompt: "Arma un resumen de sesión con tres datos útiles: nombre, duración y foco principal.",
+    practicePrompt: "Arma un resumen de sesión que muestre nombre, duración y foco principal en tres líneas claras.",
     practiceChecklist: [
       "Guarda cada dato en una variable con nombre claro.",
       "Muestra la salida en varias líneas legibles.",
@@ -158,7 +158,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "project = input('Proyecto: ')\nhours = float(input('Horas trabajadas: '))\nrate = float(input('Tarifa por hora: '))\nsubtotal = hours * rate\nprint(f'{project}: ${subtotal:.2f}')",
-    practicePrompt: "Crea un cotizador simple que pida horas, tarifa y descuento porcentual, y luego muestre el total final.",
+    practicePrompt: "Crea un cotizador que pida horas, tarifa y descuento, y devuelva subtotal, descuento y total final.",
     practiceChecklist: [
       "Pide al menos tres datos con `input()`.",
       "Convierte a número antes de calcular.",
@@ -219,7 +219,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "score = int(input('Puntaje: '))\nif score < 0 or score > 100:\n    print('Puntaje inválido')\nelif score >= 70:\n    print('Aprobado')\nelse:\n    print('Necesita revisión')",
-    practicePrompt: "Construye un verificador de envíos: si el peso es inválido, avisa; si supera cierto umbral, aplica recargo; si no, confirma tarifa base.",
+    practicePrompt: "Construye un verificador de envíos que rechace pesos inválidos, aplique recargo arriba de 10 kg y confirme tarifa base en el resto.",
     practiceChecklist: [
       "Valida primero que el dato tenga sentido.",
       "Usa al menos dos ramas distintas con `elif` o `else`.",
@@ -280,7 +280,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "total = 0\ncompleted = 0\nfor day in range(3):\n    minutes = int(input('Minutos del día: '))\n    total += minutes\n    if minutes >= 30:\n        completed += 1\n\nprint(f'Total: {total}')\nprint(f'Días en objetivo: {completed}')",
-    practicePrompt: "Haz un registrador de ventas de 5 tickets: pide cada monto, suma el total y cuenta cuántos tickets superan un umbral.",
+    practicePrompt: "Haz un registrador de 5 tickets que sume el total y cuente cuántos superan 1000.",
     practiceChecklist: [
       "Usa un bucle claro y un contador separado del total.",
       "Muestra un resumen final con al menos dos métricas.",
@@ -341,7 +341,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "def calculate_total(hours, rate, discount_percent):\n    subtotal = hours * rate\n    discount = subtotal * (discount_percent / 100)\n    return subtotal - discount\n\nfinal_total = calculate_total(6, 18, 10)\nprint(f'Total final: ${final_total:.2f}')",
-    practicePrompt: "Divide un cotizador en funciones: una que calcule el total, otra que determine si aplica un mensaje de prioridad.",
+    practicePrompt: "Refactoriza un cotizador en dos funciones: una para el total y otra para la prioridad del trabajo.",
     practiceChecklist: [
       "Crea al menos dos funciones pequeñas.",
       "Usa `return` para reutilizar un cálculo.",
@@ -402,7 +402,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "def classify_load(total_minutes):\n    if total_minutes >= 120:\n        return 'alta'\n    if total_minutes >= 70:\n        return 'media'\n    return 'baja'\n\nstudent = input('Nombre: ')\ntotal_minutes = 0\nfor task in range(3):\n    total_minutes += int(input(f'Minutos de la tarea {task + 1}: '))\n\nload = classify_load(total_minutes)\nprint(f'{student}: carga {load} con {total_minutes} min de trabajo')",
-    practicePrompt: "Construye un planificador que pida nombre, minutos disponibles y tres tareas con su duración, calcule la carga total y sugiera bloques de trabajo.",
+    practicePrompt: "Construye un planificador que registre tres tareas, calcule la carga total y sugiera bloques de trabajo según el tiempo disponible.",
     practiceChecklist: [
       "Usa al menos dos funciones.",
       "Usa un bucle para registrar o resumir varias tareas.",
@@ -463,7 +463,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "study_blocks = [20, 35, 15, 40, 55]\nlabels = ('total', 'promedio', 'bloques largos')\nlong_blocks = []\nfor minutes in study_blocks:\n    if minutes >= 30:\n        long_blocks.append(minutes)\n\nprint(f'{labels[0]}: {sum(study_blocks)}')\nprint(f'{labels[1]}: {sum(study_blocks) / len(study_blocks):.1f}')\nprint(f'{labels[2]}: {len(long_blocks)}')",
-    practicePrompt: "Arma un reporte de bloques de estudio que muestre total, promedio y cuántos bloques superan los 30 minutos.",
+    practicePrompt: "Arma un reporte de bloques de estudio con total, promedio y cantidad de bloques mayores a 30 minutos.",
     practiceChecklist: [
       "Usa una lista y recórrela al menos una vez.",
       "Detecta qué elementos cumplen una condición útil.",
@@ -524,7 +524,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "product = {'name': 'teclado', 'price': 35, 'stock': 4}\nseen_tags = {'oferta', 'perifericos'}\nprint(f\"{product['name']} | ${product['price']} | stock {product['stock']}\")\nprint('oferta' in seen_tags)",
-    practicePrompt: "Construye un registro de producto con diccionario y detecta si una etiqueta ya fue usada con un set.",
+    practicePrompt: "Construye un registro de producto y valida con un set si su categoría ya existe.",
     practiceChecklist: [
       "Accede a valores del diccionario por clave.",
       "Usa un set para evitar duplicados.",
@@ -585,7 +585,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "raw_tags = '  Python, Datos,  Automatización '\nclean_tags = [tag.strip().lower() for tag in raw_tags.split(',')]\nprint(clean_tags)\nprint(' | '.join(clean_tags))",
-    practicePrompt: "Limpia una línea de categorías separadas por coma y muestra un resumen uniforme sin espacios extra.",
+    practicePrompt: "Limpia una línea de categorías y devuélvela en formato uniforme, sin espacios sobrantes.",
     practiceChecklist: [
       "Usa al menos dos métodos de string.",
       "Convierte una línea cruda en una lista limpia.",
@@ -646,7 +646,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "notes = ['Llamar proveedor', 'Revisar stock', 'Actualizar precios']\nwith open('notes.txt', 'w', encoding='utf-8') as file:\n    for note in notes:\n        file.write(note + '\\n')\n\nwith open('notes.txt', 'r', encoding='utf-8') as file:\n    saved_notes = [line.strip() for line in file]\nprint(saved_notes)",
-    practicePrompt: "Guarda movimientos en un archivo, vuelve a leerlos y muestra cuántos registros hay y cuánto suma el total recuperado.",
+    practicePrompt: "Guarda movimientos en un archivo, recupéralos y muestra cantidad de registros y total recuperado.",
     practiceChecklist: [
       "Usa `with open(...)` para escribir.",
       "Vuelve a abrir el archivo y procesa sus líneas.",
@@ -707,7 +707,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "from statistics import mean, median\n\nscores = [8, 7, 9, 10, 6]\n\ndef build_report(values):\n    return {\n        'count': len(values),\n        'average': round(mean(values), 2),\n        'median': median(values),\n        'highest': max(values)\n    }\n\nprint(build_report(scores))",
-    practicePrompt: "Usa `statistics.mean` y `median` con funciones propias para resumir una lista de montos y clasificar el reporte.",
+    practicePrompt: "Usa `statistics.mean` y `median` para construir un reporte de montos con clasificación final.",
     practiceChecklist: [
       "Importa al menos una herramienta de la biblioteca estándar.",
       "Crea una función de transformación.",
@@ -768,7 +768,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "def parse_line(line):\n    category, amount = line.strip().split(',')\n    return {'category': category.strip().lower(), 'amount': float(amount)}\n\nrecords = [parse_line('venta,1200'), parse_line('compra,450')]\nprint(records)",
-    practicePrompt: "Construye una utilidad que guarde movimientos, descarte líneas inválidas y muestre total de ventas, total de compras, balance y cantidad descartada.",
+    practicePrompt: "Construye una utilidad que guarde movimientos, descarte líneas inválidas y reporte ventas, compras, balance y descartes.",
     practiceChecklist: [
       "Usa al menos una función para parsear o limpiar líneas.",
       "Lee y escribe un archivo.",
@@ -829,7 +829,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "def parse_amount(raw_value):\n    return float(raw_value.strip())\n\n\ndef build_summary(amounts):\n    return {'count': len(amounts), 'total': sum(amounts)}\n\n\ndef main():\n    raw_values = ['1200', '800', '950']\n    amounts = [parse_amount(value) for value in raw_values]\n    print(build_summary(amounts))\n\n\nif __name__ == '__main__':\n    main()",
-    practicePrompt: "Refactoriza un script de reporte para dejar el flujo principal en `main()` y mover parsing y resumen a helpers.",
+    practicePrompt: "Refactoriza un script de reporte para dejar el flujo en `main()` y mover parsing y resumen a helpers.",
     practiceChecklist: [
       "Crea `main()` como punto de entrada.",
       "Extrae al menos dos helpers con nombres claros.",
@@ -890,7 +890,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "class Movement:\n    def __init__(self, category, amount):\n        self.category = category\n        self.amount = amount\n\n    def requires_review(self):\n        return self.amount >= 1000\n\n    def signed_amount(self):\n        return self.amount if self.category == 'ingreso' else -self.amount\n\nmovement = Movement('egreso', 1200)\nprint(movement.requires_review())\nprint(movement.signed_amount())",
-    practicePrompt: "Modela un movimiento con clase: categoría, monto, un método para revisión y otro para entregar un valor firmado.",
+    practicePrompt: "Modela un movimiento con clase, un método de revisión y otro que devuelva un valor útil para reportes.",
     practiceChecklist: [
       "Define una clase simple con `__init__`.",
       "Agrega al menos dos métodos útiles.",
@@ -951,7 +951,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "import json\n\nrecords = [\n    {'category': 'venta', 'amount': 1200},\n    {'category': 'compra', 'amount': 450}\n]\n\nwith open('movements.json', 'w', encoding='utf-8') as file:\n    json.dump(records, file, ensure_ascii=False, indent=2)\n\nwith open('movements.json', 'r', encoding='utf-8') as file:\n    loaded = json.load(file)\n\nprint(loaded)",
-    practicePrompt: "Guarda una lista de registros en JSON y vuelve a cargarla para mostrar cuántos elementos recuperaste.",
+    practicePrompt: "Guarda una lista de registros en JSON y vuelve a cargarla para confirmar cuántos recuperaste.",
     practiceChecklist: [
       "Importa `json`.",
       "Usa `json.dump()` y `json.load()`.",
@@ -1012,7 +1012,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "def parse_amount(raw_value):\n    try:\n        amount = float(raw_value)\n    except ValueError:\n        return None\n    return amount if amount >= 0 else None\n\nprint(parse_amount('120'))\nprint(parse_amount('abc'))",
-    practicePrompt: "Crea un parser de montos que devuelva `None` ante valores inválidos o negativos y úsalo para construir una lista válida con conteo de descartes.",
+    practicePrompt: "Crea un parser de montos que descarte inválidos y negativos, y úsalo para producir una lista válida con conteo de descartes.",
     practiceChecklist: [
       "Usa `try/except` para la conversión.",
       "Valida el valor después de convertirlo.",
@@ -1073,7 +1073,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "# main.py\nfrom storage import load_records\nfrom reports import build_balance\n\nrecords = load_records('movements.json')\nprint(build_balance(records))\n\n# storage.py\nimport json\n\ndef load_records(path):\n    with open(path, 'r', encoding='utf-8') as file:\n        return json.load(file)\n\n# reports.py\ndef build_balance(records):\n    total = sum(item['amount'] for item in records)\n    return {'count': len(records), 'total': total}",
-    practicePrompt: "Propón cómo separarías una herramienta de gastos en `main.py`, `storage.py`, `reports.py` y, si hace falta, `models.py`, indicando funciones concretas por archivo.",
+    practicePrompt: "Propón cómo separar una herramienta de gastos en archivos claros, con funciones concretas por archivo.",
     practiceChecklist: [
       "Explica qué hace cada archivo.",
       "Menciona qué módulo importa a cuál y por qué.",
@@ -1134,7 +1134,7 @@ export const courseLessons: LessonData[] = [
     ],
     example:
       "class Movement:\n    def __init__(self, category, amount):\n        self.category = category\n        self.amount = amount\n\n    def is_income(self):\n        return self.category == 'ingreso'\n\n\ndef parse_record(raw_record):\n    try:\n        amount = float(raw_record['amount'])\n    except (KeyError, ValueError, TypeError):\n        return None\n    category = str(raw_record.get('category', '')).strip().lower()\n    if category not in {'ingreso', 'egreso'}:\n        return None\n    return Movement(category, amount)\n\nprint(parse_record({'category': 'ingreso', 'amount': '1200'}))",
-    practicePrompt: "Construye un analizador que cargue movimientos desde JSON, convierta solo los válidos a objetos, calcule ingresos, egresos, balance, mayor egreso y cantidad descartada.",
+    practicePrompt: "Construye un analizador que cargue movimientos desde JSON, descarte inválidos y reporte ingresos, egresos, balance, mayor egreso y descartes.",
     practiceChecklist: [
       "Usa una clase simple para representar un movimiento.",
       "Parsea datos y descarta registros inválidos.",
@@ -1171,24 +1171,24 @@ export const courseExercises: ExerciseData[] = [
     order: 1,
     duration: "20 min",
     summary: "Convierte tres variables en una salida de consola legible y útil.",
-    prompt: "Completa un resumen de sesión con nombre, minutos y foco principal.",
+    prompt: "Escribe un script que muestre nombre, minutos y foco principal en una salida ordenada.",
     responseLabel: "Tu script",
     responsePlaceholder:
       "student = 'Luna'\nminutes = 45\nfocus = 'repaso de funciones'\n\nprint(...)\nprint(...)\nprint(...)",
     instructions: [
-      "Muestra tres líneas de salida: nombre, minutos y foco.",
-      "Usa las variables dadas y deja etiquetas claras en la consola.",
+      "Muestra tres líneas: nombre, minutos y foco.",
+      "Usa las variables dadas con etiquetas claras.",
       "No cambies los valores base; mejora la salida."
     ],
     hints: [
-      "Puedes usar `f-strings` para combinar texto y variables.",
-      "Piensa en un resumen que otra persona pueda leer rápido."
+      "Usa `f-strings` para combinar texto y variables.",
+      "La salida debería parecer parte de una herramienta, no una frase suelta."
     ],
     starterCode:
       "student = 'Luna'\nminutes = 45\nfocus = 'repaso de funciones'\n\n# Completa el resumen aquí",
     successCriteria: [
-      "La salida usa las tres variables.",
-      "Hay varias líneas legibles.",
+      "Usa las tres variables.",
+      "La salida queda en varias líneas legibles.",
       "El script corre sin errores."
     ],
     evaluator: {
@@ -1247,7 +1247,7 @@ export const courseExercises: ExerciseData[] = [
     order: 2,
     duration: "25 min",
     summary: "Pide datos, convierte tipos y calcula un total con descuento.",
-    prompt: "Construye un cotizador que pida horas, tarifa y descuento porcentual, y muestre subtotal, descuento y total final.",
+    prompt: "Construye un cotizador que pida horas, tarifa y descuento, y muestre subtotal, descuento y total final.",
     responseLabel: "Tu solución",
     responsePlaceholder:
       "project = input('Proyecto: ')\nhours = float(input('Horas trabajadas: '))\nrate = float(input('Tarifa por hora: '))\ndiscount = float(input('Descuento (%): '))\n\n# calcula y muestra el total",
@@ -1257,15 +1257,15 @@ export const courseExercises: ExerciseData[] = [
       "Muestra subtotal, descuento y total final."
     ],
     hints: [
-      "Puedes guardar el subtotal y el descuento en variables intermedias.",
-      "Usa formato `:.2f` si quieres mostrar moneda más limpia."
+      "Guarda subtotal, descuento y total en variables intermedias.",
+      "Si muestras moneda, usa un formato consistente."
     ],
     starterCode:
       "project = input('Proyecto: ')\nhours = float(input('Horas trabajadas: '))\nrate = float(input('Tarifa por hora: '))\ndiscount = float(input('Descuento (%): '))\n\n# calcula subtotal, descuento aplicado y total final",
     successCriteria: [
       "Usa `input()` y conversión numérica.",
-      "Hace las cuentas correctas en variables claras.",
-      "La salida final explica qué se está mostrando."
+      "Calcula subtotal, descuento y total en variables claras.",
+      "La salida final deja claro qué valor es cada uno."
     ],
     evaluator: {
       type: "structure_check",
@@ -1330,7 +1330,7 @@ export const courseExercises: ExerciseData[] = [
     order: 3,
     duration: "25 min",
     summary: "Usa condicionales para validar un dato y decidir la tarifa correcta.",
-    prompt: "Crea un verificador de envío que detecte peso inválido, aplique recargo si supera 10 kg y confirme tarifa base en el resto.",
+    prompt: "Crea un verificador de envío que rechace pesos inválidos, aplique recargo arriba de 10 kg y confirme tarifa base en el resto.",
     responseLabel: "Tu lógica de validación",
     responsePlaceholder:
       "weight = float(input('Peso del pedido: '))\nbase_price = 2500\n\nif ...:\n    print(...)",
@@ -1340,14 +1340,14 @@ export const courseExercises: ExerciseData[] = [
       "Si supera 10 kg, aplica un recargo del 15%. En otro caso, deja la tarifa base."
     ],
     hints: [
-      "Valida primero el dato antes de calcular la tarifa.",
-      "Puedes guardar la tarifa final en una variable antes de imprimir."
+      "Valida el peso antes de calcular la tarifa.",
+      "Guardar la tarifa final en una variable vuelve más claro el cierre."
     ],
     starterCode:
       "weight = float(input('Peso del pedido: '))\nbase_price = 2500\n\n# valida el peso y decide la tarifa final",
     successCriteria: [
-      "Valida el dato antes de calcular.",
-      "Tiene al menos dos ramas claras.",
+      "Valida el peso antes de calcular.",
+      "Tiene ramas distintas para inválido, recargo y caso base.",
       "La salida cambia según el caso."
     ],
     evaluator: {
@@ -1417,7 +1417,7 @@ export const courseExercises: ExerciseData[] = [
       "Cuenta en otra variable cuántos tickets superan 1000."
     ],
     hints: [
-      "El contador debe empezar en cero y solo cambiar cuando la condición se cumple.",
+      "El contador debe empezar en cero y cambiar solo cuando se cumple la condición.",
       "Imprime el resumen al final, fuera del bucle."
     ],
     starterCode:
@@ -1425,7 +1425,7 @@ export const courseExercises: ExerciseData[] = [
     successCriteria: [
       "Usa un bucle de varias iteraciones.",
       "Mantiene separado el total del contador.",
-      "Entrega un cierre final con ambas métricas."
+      "Entrega un cierre final con total y cantidad de tickets altos."
     ],
     evaluator: {
       type: "structure_check",
@@ -1484,7 +1484,7 @@ export const courseExercises: ExerciseData[] = [
     order: 5,
     duration: "30 min",
     summary: "Separa cálculo y decisión en funciones pequeñas y reutilizables.",
-    prompt: "Crea al menos dos funciones: una para calcular el total y otra para decidir si el trabajo entra en prioridad.",
+    prompt: "Crea dos funciones: una para calcular el total y otra para decidir si el trabajo entra en prioridad.",
     responseLabel: "Tus funciones",
     responsePlaceholder:
       "def calculate_total(...):\n    ...\n\ndef is_priority(...):\n    ...",
@@ -1494,7 +1494,7 @@ export const courseExercises: ExerciseData[] = [
       "Muestra el resultado final desde el flujo principal."
     ],
     hints: [
-      "No hace falta que una función pida datos por `input()` si puede recibir parámetros.",
+      "No hace falta que una función use `input()` si puede recibir parámetros.",
       "Mantén cada función enfocada en una sola tarea."
     ],
     starterCode:
@@ -1561,24 +1561,24 @@ export const courseExercises: ExerciseData[] = [
     order: 6,
     duration: "40 min",
     summary: "Integra entradas, validación, bucle y funciones en una mini app de consola más completa.",
-    prompt: "Construye un planificador que pida nombre, minutos disponibles y tres tareas con su duración, calcule la carga total y sugiera bloques de trabajo.",
+    prompt: "Construye un planificador que registre tres tareas, calcule la carga total y sugiera bloques de trabajo según el tiempo disponible.",
     responseLabel: "Tu mini app",
     responsePlaceholder:
-      "def classify_load(tasks):\n    ...\n\ndef suggest_blocks(minutes):\n    ...\n\nname = input('Nombre: ')\n...",
+      "def classify_load(total_minutes):\n    ...\n\ndef suggest_blocks(minutes):\n    ...\n\nname = input('Nombre: ')\n...",
     instructions: [
       "Usa al menos dos funciones.",
-      "Pide datos con `input()` y registra tres tareas usando un bucle.",
-      "Valida al menos un dato y entrega un resumen final con recomendación concreta."
+      "Pide datos con `input()` y registra tres tareas con un bucle.",
+      "Valida al menos un dato y cierra con una recomendación concreta."
     ],
     hints: [
       "Puedes calcular bloques de 25 minutos con división entera.",
-      "Conviene separar la clasificación de carga, el registro de tareas y la recomendación final."
+      "Separa clasificación de carga, registro de tareas y recomendación final."
     ],
     starterCode:
       "def classify_load(total_minutes):\n    if total_minutes >= 120:\n        return 'alta'\n    if total_minutes >= 70:\n        return 'media'\n    return 'baja'\n\n# crea una segunda función para sugerir bloques,\n# registra tres tareas con un bucle y arma el flujo principal",
     successCriteria: [
       "Integra varias ideas del módulo 1.",
-      "Tiene validación mínima.",
+      "Tiene validación mínima y un bucle real.",
       "Se siente como una mini herramienta de consola."
     ],
     evaluator: {
@@ -1633,7 +1633,7 @@ export const courseExercises: ExerciseData[] = [
     playground: {
       guidance: "Piensa en esto como una mini app que podrías mostrar para explicar tus fundamentos.",
       starterCode:
-        "def classify_load(tasks):\n    if tasks >= 5:\n        return 'alta'\n    if tasks >= 3:\n        return 'media'\n    return 'baja'\n\n# crea una segunda función para sugerir bloques y arma el flujo principal"
+        "def classify_load(total_minutes):\n    if total_minutes >= 120:\n        return 'alta'\n    if total_minutes >= 70:\n        return 'media'\n    return 'baja'\n\n# crea una segunda función para sugerir bloques\n# y arma el flujo principal registrando tres tareas"
     },
     executionValidation: {
       requireRunBeforeCheck: true,
@@ -1653,21 +1653,21 @@ export const courseExercises: ExerciseData[] = [
     prompt: "Recorre una lista de duraciones y muestra total, promedio y cuántos bloques superan los 30 minutos.",
     responseLabel: "Tu reporte con listas",
     responsePlaceholder:
-      "durations = [20, 35, 15, 40]\nlabels = ('total', 'promedio', 'mayor bloque')\n...",
+      "durations = [20, 35, 15, 40, 55]\nlabels = ('total', 'promedio', 'bloques largos')\n...",
     instructions: [
       "Recorre la lista de duraciones.",
       "Calcula total y promedio.",
-      "Cuenta cuántos bloques superan los 30 minutos y usa la tupla `labels` para apoyar el formato."
+      "Cuenta cuántos bloques superan los 30 minutos y usa `labels` para el reporte."
     ],
     hints: [
-      "Puedes usar `sum()` y `len()` junto con un bucle si quieres enriquecer la salida.",
-      "La métrica nueva no es el máximo: es cuántos bloques cumplen una condición."
+      "Puedes usar `sum()` y `len()` junto con un bucle.",
+      "La tercera métrica no es el máximo: es cuántos bloques cumplen una condición."
     ],
     starterCode:
       "durations = [20, 35, 15, 40, 55]\nlabels = ('total', 'promedio', 'bloques largos')\n\n# construye el reporte",
     successCriteria: [
       "Usa la lista como fuente de datos.",
-      "Calcula métricas agregadas.",
+      "Calcula métricas agregadas y una métrica de filtro.",
       "La salida final se entiende rápido."
     ],
     evaluator: {
@@ -1710,7 +1710,7 @@ export const courseExercises: ExerciseData[] = [
     playground: {
       guidance: "Convierte una serie de datos en un reporte corto y entendible.",
       starterCode:
-        "durations = [20, 35, 15, 40]\nlabels = ('total', 'promedio', 'mayor bloque')\n\n# construye el reporte"
+        "durations = [20, 35, 15, 40, 55]\nlabels = ('total', 'promedio', 'bloques largos')\n\n# construye el reporte"
     },
     executionValidation: {
       requireRunBeforeCheck: true,
@@ -1727,18 +1727,18 @@ export const courseExercises: ExerciseData[] = [
     order: 2,
     duration: "25 min",
     summary: "Modela un producto con diccionario y valida duplicados con un set.",
-    prompt: "Muestra un resumen de producto y valida si su categoría ya existía en un set de categorías.",
+    prompt: "Muestra un resumen de producto y valida si su categoría ya estaba en un set de categorías.",
     responseLabel: "Tu registro",
     responsePlaceholder:
       "product = {...}\nseen_categories = {...}\n...",
     instructions: [
-      "Usa el diccionario `product` para leer nombre, precio y stock.",
-      "Usa el set `seen_categories` para comprobar si la categoría ya existe.",
-      "Muestra un resumen claro con ambas ideas."
+      "Lee nombre, precio y stock desde `product`.",
+      "Usa `seen_categories` para comprobar si la categoría ya existe.",
+      "Cierra con un resumen claro del producto y la validación."
     ],
     hints: [
       "Los valores del diccionario se leen por clave, no por índice.",
-      "La operación `in` te ayuda con el set."
+      "La operación `in` resuelve la validación del set sin recorrer nada."
     ],
     starterCode:
       "product = {\n    'name': 'mouse',\n    'price': 18,\n    'stock': 7,\n    'category': 'perifericos'\n}\nseen_categories = {'audio', 'oficina'}\n\n# muestra el resumen y valida la categoría",
@@ -1798,7 +1798,7 @@ export const courseExercises: ExerciseData[] = [
     order: 3,
     duration: "25 min",
     summary: "Normaliza una línea de texto y convierte la entrada en categorías limpias y consistentes.",
-    prompt: "Limpia una línea separada por comas, convierte todo a minúsculas y muestra el resultado final sin espacios sobrantes.",
+    prompt: "Limpia una línea separada por comas, conviértela a minúsculas y muestra el resultado final sin espacios sobrantes.",
     responseLabel: "Tu limpieza de texto",
     responsePlaceholder:
       "raw_categories = '  Python, Datos, automatizacion , Scripts '\n...",
@@ -1809,7 +1809,7 @@ export const courseExercises: ExerciseData[] = [
     ],
     hints: [
       "Puedes combinar `strip()` y `lower()` en cada elemento.",
-      "Al final puedes usar `join()` para mostrar una línea uniforme."
+      "Usa `join()` si quieres cerrar con una sola línea uniforme."
     ],
     starterCode:
       "raw_categories = '  Python, Datos, automatizacion , Scripts '\n\n# limpia la línea y muestra el resultado final",
@@ -1869,25 +1869,25 @@ export const courseExercises: ExerciseData[] = [
     order: 4,
     duration: "30 min",
     summary: "Escribe registros en un archivo, vuelve a leerlos y calcula cantidad y total recuperado.",
-    prompt: "Guarda movimientos en un archivo, vuelve a leerlos, separa categoría y monto, y confirma cuántos registros y cuánto total recuperaste.",
+    prompt: "Guarda movimientos en un archivo, vuelve a leerlos, separa categoría y monto, y confirma cuántos registros y qué total recuperaste.",
     responseLabel: "Tu flujo con archivos",
     responsePlaceholder:
       "movements = ['venta,1200', 'compra,450', 'venta,980']\n...",
     instructions: [
       "Escribe cada movimiento en una línea del archivo.",
-      "Vuelve a abrir el archivo, recupera sus líneas limpias y separa categoría y monto.",
-      "Muestra cuántos registros cargaste y cuánto total recuperaste."
+      "Vuelve a abrir el archivo, limpia las líneas y separa categoría y monto.",
+      "Muestra cantidad de registros y total recuperado."
     ],
     hints: [
-      "Usa `with open(..., 'w')` y luego `with open(..., 'r')`.",
+      "Usa `with open(..., 'w')` y después `with open(..., 'r')`.",
       "Después de limpiar la línea, separa categoría y monto para sumar."
     ],
     starterCode:
       "movements = ['venta,1200', 'compra,450', 'venta,980']\n\n# escribe estas líneas en un archivo\n# luego vuelve a leerlo, separa categoría y monto\n# y muestra cuántos registros recuperaste y cuánto suman",
     successCriteria: [
       "Escribe y vuelve a leer un archivo.",
-      "Limpia las líneas al cargarlas.",
-      "Entrega un resumen de registros recuperados."
+      "Limpia las líneas y separa sus partes.",
+      "Entrega un resumen con cantidad y total recuperado."
     ],
     evaluator: {
       type: "structure_check",
@@ -1941,7 +1941,7 @@ export const courseExercises: ExerciseData[] = [
     playground: {
       guidance: "Haz que el script deje evidencia persistente y luego la recupere.",
       starterCode:
-        "movements = ['venta,1200', 'compra,450', 'venta,980']\n\n# escribe estas líneas en un archivo\n# luego vuelve a leerlo y muestra cuántos registros recuperaste"
+        "movements = ['venta,1200', 'compra,450', 'venta,980']\n\n# escribe estas líneas en un archivo\n# luego vuelve a leerlas, separa categoría y monto\n# y muestra cuántos registros recuperaste y cuánto suman"
     },
     executionValidation: {
       requireRunBeforeCheck: true,
@@ -1965,18 +1965,18 @@ export const courseExercises: ExerciseData[] = [
     instructions: [
       "Importa `mean` y `median` desde `statistics`.",
       "Crea una función que construya un reporte con cantidad, promedio, mediana y máximo.",
-      "Agrega una clasificación simple al resultado final."
+      "Agrega una clasificación final basada en esas métricas."
     ],
     hints: [
-      "Una clasificación puede depender del promedio o de la mediana.",
-      "Piensa el reporte como un diccionario o un conjunto de variables claras."
+      "La clasificación puede depender del promedio o de la mediana.",
+      "Piensa el reporte como un diccionario o un bloque corto de variables claras."
     ],
     starterCode:
       "from statistics import mean, median\n\namounts = [1200, 800, 950, 1300, 1700]\n\n# crea una función que construya el reporte\n# y agrega una clasificación final",
     successCriteria: [
       "Usa biblioteca estándar con criterio.",
       "Separa transformación y salida.",
-      "El reporte combina varias métricas."
+      "El reporte combina varias métricas y una clasificación."
     ],
     evaluator: {
       type: "structure_check",
@@ -2022,9 +2022,9 @@ export const courseExercises: ExerciseData[] = [
       ]
     },
     playground: {
-      guidance: "Combina biblioteca estándar y funciones propias para producir una utilidad más limpia.",
+      guidance: "Combina biblioteca estándar y funciones propias para producir un reporte breve y útil.",
       starterCode:
-        "from statistics import mean\n\namounts = [1200, 800, 950, 1300]\n\n# crea una función que construya el reporte\n# y agrega una clasificación final"
+        "from statistics import mean, median\n\namounts = [1200, 800, 950, 1300, 1700]\n\n# crea una función que construya el reporte\n# y agrega una clasificación final"
     },
     executionValidation: {
       requireRunBeforeCheck: true,
@@ -2041,14 +2041,14 @@ export const courseExercises: ExerciseData[] = [
     order: 6,
     duration: "45 min",
     summary: "Construye una utilidad que persista movimientos, descarte líneas inválidas y calcule un balance más serio.",
-    prompt: "Guarda movimientos en archivo, vuelve a leerlos, parsea cada línea, descarta las inválidas y calcula ventas, compras, balance y cantidad descartada.",
+    prompt: "Guarda movimientos en archivo, vuelve a leerlos, parsea cada línea, descarta las inválidas y calcula ventas, compras, balance y descartes.",
     responseLabel: "Tu utilidad intermedia",
     responsePlaceholder:
       "def parse_line(line):\n    ...\n\nsample_lines = ['venta,1200', ...]\n...",
     instructions: [
       "Crea una función `parse_line()` o equivalente.",
       "Escribe y vuelve a leer un archivo.",
-      "Calcula total de ventas, total de compras, balance y cantidad descartada."
+      "Calcula ventas, compras, balance y cantidad descartada."
     ],
     hints: [
       "Normaliza la categoría antes de clasificar.",
@@ -2058,8 +2058,8 @@ export const courseExercises: ExerciseData[] = [
       "def parse_line(line):\n    parts = line.strip().split(',')\n    if len(parts) != 2:\n        return None\n    category, amount = parts\n    category = category.strip().lower()\n    try:\n        amount = float(amount)\n    except ValueError:\n        return None\n    return {'category': category, 'amount': amount}\n\nsample_lines = ['venta,1200', 'compra,450', 'venta,980', 'error']\n\n# guarda, vuelve a leer, descarta inválidas y construye el balance",
     successCriteria: [
       "Integra varias ideas del módulo 2.",
-      "Tiene parseo y persistencia.",
-      "Entrega un reporte final útil."
+      "Tiene parseo, persistencia y descarte de inválidos.",
+      "Entrega un reporte final útil y observable."
     ],
     evaluator: {
       type: "structure_check",
@@ -2113,7 +2113,7 @@ export const courseExercises: ExerciseData[] = [
     playground: {
       guidance: "Este proyecto ya debería sentirse como una utilidad de datos pequeña.",
       starterCode:
-        "def parse_line(line):\n    category, amount = line.strip().split(',')\n    return {'category': category.strip().lower(), 'amount': float(amount)}\n\nsample_lines = ['venta,1200', 'compra,450', 'venta,980']\n\n# guarda, vuelve a leer y construye el balance"
+        "def parse_line(line):\n    parts = line.strip().split(',')\n    if len(parts) != 2:\n        return None\n    category, amount = parts\n    category = category.strip().lower()\n    try:\n        amount = float(amount)\n    except ValueError:\n        return None\n    return {'category': category, 'amount': amount}\n\nsample_lines = ['venta,1200', 'compra,450', 'venta,980', 'error']\n\n# guarda, vuelve a leer, descarta inválidas y construye el balance"
     },
     executionValidation: {
       requireRunBeforeCheck: true,
@@ -2130,14 +2130,14 @@ export const courseExercises: ExerciseData[] = [
     order: 1,
     duration: "30 min",
     summary: "Lleva un script corto a una estructura con punto de entrada y helpers.",
-    prompt: "Crea `build_summary()` y `main()`, y ejecuta el flujo desde el bloque `if __name__ == '__main__':`.",
+    prompt: "Crea `build_summary()` y `main()`, y ejecuta el flujo desde `if __name__ == '__main__':`.",
     responseLabel: "Tu script ordenado",
     responsePlaceholder:
       "def parse_amount(...):\n    ...\n\ndef build_summary(...):\n    ...",
     instructions: [
       "Mantén `parse_amount()` como helper.",
       "Agrega `build_summary()` y `main()`.",
-      "Usa el guard `if __name__ == '__main__':`."
+      "Ejecuta el flujo desde `if __name__ == '__main__':`."
     ],
     hints: [
       "El objetivo principal es dejar visible el flujo en `main()`.",
@@ -2207,24 +2207,24 @@ export const courseExercises: ExerciseData[] = [
     order: 4,
     duration: "30 min",
     summary: "Modela un movimiento con atributos y métodos que ya sirvan para un reporte.",
-    prompt: "Completa una clase `Movement` con un método que indique si requiere revisión y otro que devuelva un valor firmado o un resumen útil.",
+    prompt: "Completa una clase `Movement` con un método de revisión y otro que devuelva un valor útil para reportes.",
     responseLabel: "Tu clase",
     responsePlaceholder:
       "class Movement:\n    def __init__(self, category, amount):\n        ...",
     instructions: [
       "Completa `__init__` con los atributos necesarios.",
-      "Agrega un método como `requires_review()` y otro como `signed_amount()` o `summary()`.",
+      "Agrega `requires_review()` y otro método como `signed_amount()` o `summary()`.",
       "Crea al menos una instancia y úsala."
     ],
     hints: [
       "Los atributos de instancia se guardan con `self.`.",
-      "El segundo método debería apoyar una futura suma o reporte."
+      "El segundo método debería servir para una suma o un reporte."
     ],
     starterCode:
       "class Movement:\n    def __init__(self, category, amount):\n        # guarda category y amount en self\n        pass\n\n    # agrega requires_review()\n    # y otro método como signed_amount() o summary()\n\n# crea una o dos instancias y pruébalas",
     successCriteria: [
-      "Define clase con atributos claros.",
-      "Incluye al menos un método útil.",
+      "Define una clase con atributos claros.",
+      "Incluye un método de revisión y otro de apoyo al reporte.",
       "Usa instancias para producir una salida."
     ],
     evaluator: {
@@ -2273,7 +2273,7 @@ export const courseExercises: ExerciseData[] = [
     playground: {
       guidance: "Usa POO porque mejora el modelo del dato, no como adorno.",
       starterCode:
-        "class Movement:\n    def __init__(self, category, amount):\n        # guarda category y amount en self\n        pass\n\n    # agrega un método útil aquí\n\n# crea una o dos instancias y pruébalas"
+        "class Movement:\n    def __init__(self, category, amount):\n        # guarda category y amount en self\n        pass\n\n    # agrega requires_review()\n    # y otro método como signed_amount() o summary()\n\n# crea una o dos instancias y pruébalas"
     },
     executionValidation: {
       requireRunBeforeCheck: true,
@@ -2290,7 +2290,7 @@ export const courseExercises: ExerciseData[] = [
     order: 3,
     duration: "30 min",
     summary: "Guarda una lista de diccionarios en JSON y vuelve a cargarla.",
-    prompt: "Usa `json.dump()` para guardar registros y `json.load()` para recuperarlos y contar cuántos hay.",
+    prompt: "Usa `json.dump()` para guardar registros y `json.load()` para recuperarlos y confirmar cuántos hay.",
     responseLabel: "Tu flujo JSON",
     responsePlaceholder:
       "import json\n\nrecords = [...]\n...",
@@ -2367,25 +2367,25 @@ export const courseExercises: ExerciseData[] = [
     order: 2,
     duration: "30 min",
     summary: "Parsea montos inseguros con `try/except`, filtra válidos y deja trazado qué descartaste.",
-    prompt: "Crea `parse_amount()` para convertir montos, descartar inválidos y armar una lista final junto con un conteo de descartes.",
+    prompt: "Crea `parse_amount()` para convertir montos, descartar inválidos y construir una lista final con conteo de descartes.",
     responseLabel: "Tu parser",
     responsePlaceholder:
       "raw_values = ['1200', '450', 'error', '-25', '980']\n\ndef parse_amount(raw_value):\n    ...",
     instructions: [
       "Usa `try/except` para la conversión numérica.",
       "Descarta negativos devolviendo `None`.",
-      "Construye una lista final solo con montos válidos y un conteo de descartes."
+      "Construye una lista final solo con montos válidos y cuenta los descartes."
     ],
     hints: [
-      "Puedes recorrer `raw_values` y agregar al resultado solo cuando `parse_amount()` no devuelve `None`.",
-      "Cuenta también cuántos valores descartaste para que el flujo no oculte calidad de datos."
+      "Recorre `raw_values` y agrega al resultado solo cuando `parse_amount()` no devuelve `None`.",
+      "Cuenta también cuántos valores descartaste para no ocultar calidad de datos."
     ],
     starterCode:
       "raw_values = ['1200', '450', 'error', '-25', '980']\n\n# crea parse_amount(), arma una lista solo con montos válidos\n# y cuenta cuántos descartaste",
     successCriteria: [
       "Usa `try/except` con criterio.",
       "Devuelve un resultado consistente.",
-      "El flujo final filtra valores inválidos."
+      "El flujo final filtra inválidos y cuenta descartes."
     ],
     evaluator: {
       type: "structure_check",
@@ -2433,7 +2433,7 @@ export const courseExercises: ExerciseData[] = [
     playground: {
       guidance: "Diseña el parser pensando en que el resto del programa necesita resultados coherentes.",
       starterCode:
-        "raw_values = ['1200', '450', 'error', '-25', '980']\n\n# crea parse_amount() y arma una lista solo con montos válidos"
+        "raw_values = ['1200', '450', 'error', '-25', '980']\n\n# crea parse_amount(), arma una lista solo con montos válidos\n# y cuenta cuántos descartaste"
     },
     executionValidation: {
       requireRunBeforeCheck: true,
@@ -2461,7 +2461,7 @@ export const courseExercises: ExerciseData[] = [
     ],
     hints: [
       "Piensa en flujo principal, persistencia y reportes como responsabilidades distintas.",
-      "No hace falta escribir código completo; sí hace falta justificar la separación."
+      "No hace falta escribir código completo; sí nombrar funciones y justificar la separación."
     ],
     successCriteria: [
       "La propuesta separa flujo, almacenamiento y reportes.",
@@ -2516,18 +2516,18 @@ export const courseExercises: ExerciseData[] = [
     order: 6,
     duration: "55 min",
     summary: "Construye una herramienta final con clase, JSON, parsing y reporte más defendible.",
-    prompt: "Carga movimientos desde JSON, convierte solo los válidos a objetos, calcula ingresos, egresos, balance, mayor egreso y cantidad descartada, y muestra un resumen final.",
+    prompt: "Carga movimientos desde JSON, convierte solo los válidos a objetos, calcula ingresos, egresos, balance, mayor egreso y descartes, y muestra un resumen final.",
     responseLabel: "Tu proyecto final",
     responsePlaceholder:
       "import json\n\nclass Movement:\n    ...",
     instructions: [
       "Usa una clase `Movement` o equivalente.",
       "Crea una función de parsing que descarte registros inválidos.",
-      "Construye un reporte final con ingresos, egresos, balance, mayor egreso y cantidad descartada."
+      "Construye un reporte final con ingresos, egresos, balance, mayor egreso y descartes."
     ],
     hints: [
       "Puedes usar una lista de registros de ejemplo y guardarla como JSON dentro del mismo script.",
-      "Piensa el proyecto en etapas: cargar, parsear, convertir, reportar y controlar descartes."
+      "Piensa el proyecto en etapas: cargar, parsear, convertir, reportar y contar descartes."
     ],
     starterCode:
       "import json\n\nclass Movement:\n    def __init__(self, category, amount):\n        self.category = category\n        self.amount = amount\n\n    def is_income(self):\n        return self.category == 'ingreso'\n\nsample_records = [\n    {'category': 'ingreso', 'amount': '1500'},\n    {'category': 'egreso', 'amount': '430'},\n    {'category': 'egreso', 'amount': 'texto'},\n    {'category': 'ingreso', 'amount': '980'}\n]\n\n# crea parse_record(), convierte solo los registros válidos y arma el reporte final",

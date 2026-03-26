@@ -90,6 +90,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "70 min",
     xp: 235
+  },
+  {
+    slug: "guided-projects",
+    title: "Proyectos guiados",
+    description: "Combina texto, decisiones, bucles, funciones, listas y diccionarios para construir programas pequeños que ya se sienten útiles de verdad.",
+    order: 10,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "85 min",
+    xp: 280
   }
 ];
 
@@ -1904,6 +1914,221 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar el texto limpio en minúsculas y otro string convertido a mayúsculas."
     },
     exerciseSlug: "clean-and-compare-text"
+  },
+  {
+    slug: "guided-project-profile-card",
+    module: "Proyectos guiados",
+    moduleSlug: "guided-projects",
+    order: 1,
+    title: "Proyecto guiado: tarjeta de perfil personal",
+    duration: "20 min",
+    difficulty: "Beginner",
+    summary: "Construye un programa que reúna datos simples de una persona y los muestre como una tarjeta de perfil clara y ordenada.",
+    warmup: "Ya aprendiste a guardar texto, usar `input()`, listas y diccionarios. Este proyecto junta esas piezas para mostrar información de una forma más real.",
+    goal: "Al final, deberías poder crear una tarjeta de perfil sencilla que use `input()`, strings y un diccionario para organizar datos.",
+    keyIdeas: [
+      {
+        title: "Un diccionario ayuda a ordenar datos del mismo perfil",
+        description: "Nombre, ciudad y meta pueden vivir juntos con claves claras."
+      },
+      {
+        title: "Los strings hacen visible el resultado",
+        description: "El valor del proyecto está en mostrar texto claro y agradable para la persona que lo usa."
+      },
+      {
+        title: "Un proyecto guiado sigue siendo paso a paso",
+        description: "No necesitas resolver todo de golpe. Primero guardas datos, luego los muestras."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué vas a construir",
+        body: "Este proyecto pide algunos datos simples, los guarda en un diccionario y luego imprime una pequeña tarjeta de perfil. No es complicado, pero ya se siente más cercano a una herramienta real."
+      },
+      {
+        title: "Cómo dividir el proyecto",
+        body: "Primero pide el nombre, la ciudad y una meta corta con `input()`. Después guarda esos datos dentro de un diccionario. Por último, imprime una salida clara usando esas claves."
+      },
+      {
+        title: "Por qué vale la pena usar un diccionario aquí",
+        body: "Podrías usar variables sueltas, pero un diccionario hace más fácil entender que todos esos datos pertenecen a la misma persona."
+      },
+      {
+        title: "Qué hace que se sienta terminado",
+        body: "Cuando el programa pide datos y devuelve una tarjeta ordenada, ya no se siente como un ejercicio aislado. Se siente como algo pequeño pero completo."
+      }
+    ],
+    example:
+      "perfil = {\n    'nombre': input('Nombre: '),\n    'ciudad': input('Ciudad: '),\n    'meta': input('Meta: ')\n}\n\nprint('--- PERFIL ---')\nprint('Nombre:', perfil['nombre'])\nprint('Ciudad:', perfil['ciudad'])\nprint('Meta:', perfil['meta'])",
+    practicePrompt: "Prueba cambiar el título de la tarjeta o agregar una línea final que anime a la persona. Lo importante es que el programa siga pidiendo datos y mostrándolos con claridad.",
+    practiceChecklist: [
+      "Pide al menos tres datos con `input()`.",
+      "Guárdalos en un diccionario.",
+      "Imprime una tarjeta clara usando las claves del diccionario."
+    ],
+    commonMistakes: [
+      "Pedir los datos pero no guardarlos en la estructura final.",
+      "Usar una clave distinta al momento de imprimir.",
+      "Intentar hacer demasiadas cosas extra antes de cerrar la versión básica."
+    ],
+    bugChallenge: {
+      prompt: "Este proyecto debería mostrar una tarjeta de perfil, pero una clave escrita de forma distinta rompe la salida.",
+      brokenCode:
+        "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba', 'meta': 'Aprender Python'}\nprint('--- PERFIL ---')\nprint('Nombre:', perfil['nombre'])\nprint('Ciudad:', perfil['cuidad'])",
+      expectedLearning: "Cuando usas diccionarios, una clave mal escrita basta para romper una salida que por lo demás estaba bien armada."
+    },
+    playground: {
+      title: "Construye tu tarjeta de perfil",
+      guidance: "Ejecuta el proyecto, completa los datos y revisa cómo el diccionario te ayuda a mostrar la información como un bloque ordenado.",
+      starterCode:
+        "perfil = {\n    'nombre': input('Nombre: '),\n    'ciudad': input('Ciudad: '),\n    'meta': input('Meta: ')\n}\n\nprint('--- PERFIL ---')\nprint('Nombre:', perfil['nombre'])\nprint('Ciudad:', perfil['ciudad'])\nprint('Meta:', perfil['meta'])",
+      emptyOutputHint: "Primero responde las preguntas del navegador y luego mira cómo aparece la tarjeta completa."
+    },
+    exerciseSlug: "build-profile-card-project"
+  },
+  {
+    slug: "guided-project-menu-helper",
+    module: "Proyectos guiados",
+    moduleSlug: "guided-projects",
+    order: 2,
+    title: "Proyecto guiado: asistente simple con menú",
+    duration: "21 min",
+    difficulty: "Beginner",
+    summary: "Construye un pequeño asistente que muestre opciones, reciba una respuesta y actúe según esa elección.",
+    warmup: "Los programas se sienten más útiles cuando ofrecen opciones. Un menú corto te deja combinar texto, decisiones y funciones sin perder claridad.",
+    goal: "Al final, deberías poder crear un menú básico que use `input()`, condicionales y funciones para responder a una elección.",
+    keyIdeas: [
+      {
+        title: "Un menú da estructura al programa",
+        description: "Las opciones visibles ayudan a que la persona entienda qué puede hacer."
+      },
+      {
+        title: "Las funciones ordenan respuestas distintas",
+        description: "Cada acción pequeña puede vivir en su propia función."
+      },
+      {
+        title: "Comparar texto guía el flujo",
+        description: "La elección escrita por la persona se puede usar para decidir qué mensaje mostrar."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué hace este proyecto",
+        body: "Vas a construir un asistente simple que muestre un pequeño menú y responda según la opción elegida. No es un sistema complejo, pero ya se parece a la base de muchas herramientas interactivas."
+      },
+      {
+        title: "Cómo organizarlo",
+        body: "Primero define funciones cortas como `mostrar_saludo()` o `mostrar_consejo()`. Después imprime un menú, guarda la respuesta con `input()` y usa `if` o `elif` para llamar la función correcta."
+      },
+      {
+        title: "Por qué este proyecto importa",
+        body: "Aquí estás uniendo entrada de usuario, strings, decisiones y funciones dentro de un mismo recorrido. Esa mezcla te da mucha más sensación de programa real."
+      },
+      {
+        title: "Qué conviene mantener simple",
+        body: "Con dos o tres opciones claras alcanza. El objetivo es terminar un flujo legible, no inventar un menú gigante."
+      }
+    ],
+    example:
+      "def mostrar_saludo():\n    print('Hola, seguimos practicando')\n\ndef mostrar_consejo():\n    print('Consejo: avanza un paso a la vez')\n\nprint('1. Saludo')\nprint('2. Consejo')\nopcion = input('Elige una opción: ').strip()\n\nif opcion == '1':\n    mostrar_saludo()\nelif opcion == '2':\n    mostrar_consejo()\nelse:\n    print('Opción no válida')",
+    practicePrompt: "Prueba cambiar los textos del menú o el mensaje de una función. La idea central es que el programa lea una opción y responda de forma distinta.",
+    practiceChecklist: [
+      "Define al menos dos funciones cortas.",
+      "Muestra un menú con opciones visibles.",
+      "Usa `input()` para leer la elección.",
+      "Llama a la función correcta según la respuesta."
+    ],
+    commonMistakes: [
+      "Comparar con el texto equivocado en el `if`.",
+      "Olvidar llamar a la función y dejar solo su nombre.",
+      "No limpiar la respuesta y confundir espacios alrededor de la opción."
+    ],
+    bugChallenge: {
+      prompt: "Este menú debería responder a una opción, pero la llamada a la función quedó sin paréntesis y el flujo no hace lo esperado.",
+      brokenCode:
+        "def mostrar_saludo():\n    print('Hola')\n\nprint('1. Saludo')\nopcion = '1'\nif opcion == '1':\n    mostrar_saludo",
+      expectedLearning: "En proyectos interactivos pequeños, una función sin paréntesis no se ejecuta aunque la lógica general parezca correcta."
+    },
+    playground: {
+      title: "Prueba un menú guiado",
+      guidance: "Ejecuta el proyecto, elige una opción y luego cambia los mensajes o agrega una tercera alternativa simple si quieres explorar un poco más.",
+      starterCode:
+        "def mostrar_saludo():\n    print('Hola, seguimos practicando')\n\ndef mostrar_consejo():\n    print('Consejo: avanza un paso a la vez')\n\nprint('1. Saludo')\nprint('2. Consejo')\nopcion = input('Elige una opción: ').strip()\n\nif opcion == '1':\n    mostrar_saludo()\nelif opcion == '2':\n    mostrar_consejo()\nelse:\n    print('Opción no válida')",
+      emptyOutputHint: "Después de elegir una opción, la salida debería mostrar una respuesta clara del asistente."
+    },
+    exerciseSlug: "build-menu-helper-project"
+  },
+  {
+    slug: "guided-project-habit-tracker",
+    module: "Proyectos guiados",
+    moduleSlug: "guided-projects",
+    order: 3,
+    title: "Proyecto guiado: rastreador simple de hábitos",
+    duration: "22 min",
+    difficulty: "Beginner",
+    summary: "Construye un programa pequeño que recorra una lista de hábitos, muestre su estado y cierre con un mensaje final.",
+    warmup: "Una lista y un diccionario se sienten mucho más útiles cuando representan algo cotidiano, como hábitos o tareas que quieres revisar.",
+    goal: "Al final, deberías poder crear un rastreador simple que combine listas, diccionarios, bucles y decisiones para mostrar un resumen útil.",
+    keyIdeas: [
+      {
+        title: "Las listas ayudan a recorrer varios elementos",
+        description: "Te permiten revisar varios hábitos sin repetir el mismo bloque muchas veces."
+      },
+      {
+        title: "Los diccionarios guardan detalles claros",
+        description: "Cada hábito puede tener nombre y estado dentro de la misma estructura."
+      },
+      {
+        title: "El proyecto gana fuerza cuando muestra un resumen final",
+        description: "Un buen cierre hace que el programa se sienta más completo."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué vas a construir",
+        body: "Este proyecto recorre una lista de hábitos guardados como diccionarios. Cada vuelta muestra el nombre del hábito y su estado, y al final imprime un cierre simple."
+      },
+      {
+        title: "Cómo pensarlo sin abrumarte",
+        body: "No hace falta inventar datos dinámicos todavía. Empieza con una lista fija de dos o tres hábitos. Después recórrela con un `for` y usa una condición para decidir qué imprimir."
+      },
+      {
+        title: "Qué estás conectando aquí",
+        body: "Este proyecto une casi todo el camino reciente: strings, listas, diccionarios, bucles y condicionales. Eso lo convierte en un buen punto de consolidación."
+      },
+      {
+        title: "Qué hace que se sienta útil",
+        body: "Aunque sea pequeño, ya se parece a un resumen real de progreso. Eso cambia la sensación del aprendizaje: ya no solo practicas piezas, empiezas a armar herramientas."
+      }
+    ],
+    example:
+      "habitos = [\n    {'nombre': 'Leer', 'hecho': 'si'},\n    {'nombre': 'Practicar Python', 'hecho': 'no'}\n]\n\nfor habito in habitos:\n    if habito['hecho'] == 'si':\n        print(habito['nombre'] + ': completo')\n    else:\n        print(habito['nombre'] + ': pendiente')\n\nprint('Revisión terminada')",
+    practicePrompt: "Prueba cambiar los hábitos o el estado de uno de ellos. La meta es ver cómo el programa adapta la salida sin reescribir toda la estructura.",
+    practiceChecklist: [
+      "Crea una lista con diccionarios simples.",
+      "Usa un bucle para recorrerla.",
+      "Compara el estado de cada hábito.",
+      "Imprime un mensaje final fuera del bucle."
+    ],
+    commonMistakes: [
+      "Olvidar que cada vuelta del bucle trabaja con un diccionario distinto.",
+      "Escribir mal la clave `hecho` o `nombre`.",
+      "Poner el mensaje final dentro del bucle por accidente."
+    ],
+    bugChallenge: {
+      prompt: "Este rastreador debería revisar cada hábito y cerrar al final, pero una línea quedó dentro del bucle y hace que el cierre se repita.",
+      brokenCode:
+        "habitos = [\n    {'nombre': 'Leer', 'hecho': 'si'},\n    {'nombre': 'Practicar Python', 'hecho': 'no'}\n]\n\nfor habito in habitos:\n    print(habito['nombre'])\n    print('Revisión terminada')",
+      expectedLearning: "Cuando una línea pertenece al cierre general del programa, no debe quedar indentada dentro del bucle."
+    },
+    playground: {
+      title: "Prueba el rastreador de hábitos",
+      guidance: "Ejecuta el proyecto y revisa la salida completa. Luego cambia un estado o agrega un hábito más para ver cómo el bucle mantiene el patrón.",
+      starterCode:
+        "habitos = [\n    {'nombre': 'Leer', 'hecho': 'si'},\n    {'nombre': 'Practicar Python', 'hecho': 'no'}\n]\n\nfor habito in habitos:\n    if habito['hecho'] == 'si':\n        print(habito['nombre'] + ': completo')\n    else:\n        print(habito['nombre'] + ': pendiente')\n\nprint('Revisión terminada')",
+      emptyOutputHint: "La salida debería mostrar el estado de cada hábito y luego una sola línea final."
+    },
+    exerciseSlug: "build-habit-tracker-project"
   }
 ];
 
@@ -3709,6 +3934,258 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["stores-raw-response", "creates-clean-text", "prints-clean-text", "compares-clean-text", "prints-valid-message"]
+    }
+  },
+  {
+    slug: "build-profile-card-project",
+    title: "Construye una tarjeta de perfil",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "guided-projects",
+    lessonSlug: "guided-project-profile-card",
+    order: 1,
+    duration: "10 min",
+    summary: "Crea un programa que guarde datos de perfil en un diccionario y los muestre como una tarjeta simple.",
+    prompt:
+      "Escribe un programa que cree un diccionario `perfil` con las claves `nombre`, `ciudad` y `meta`, y luego imprima una tarjeta con tres líneas: `Nombre: ...`, `Ciudad: ...` y `Meta: ...`.",
+    responseLabel: "Tu proyecto de tarjeta de perfil",
+    responsePlaceholder:
+      "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba', 'meta': 'Aprender Python'}\nprint('Nombre:', perfil['nombre'])\nprint('Ciudad:', perfil['ciudad'])\nprint('Meta:', perfil['meta'])",
+    instructions: [
+      "Crea el diccionario con las tres claves pedidas.",
+      "Imprime cada dato en su propia línea.",
+      "Usa las claves del diccionario para construir la salida."
+    ],
+    hints: [
+      "Puedes empezar con valores fijos dentro del diccionario.",
+      "Cada línea puede usar `print('Nombre:', perfil['nombre'])`.",
+      "La salida debería mostrar tres líneas con etiquetas claras."
+    ],
+    starterCode:
+      "perfil = {'nombre': 'Ana', 'ciudad': 'Córdoba', 'meta': 'Aprender Python'}\nprint('Nombre:', perfil['nombre'])\nprint('Ciudad:', perfil['ciudad'])\nprint('Meta:', perfil['meta'])",
+    successCriteria: [
+      "Crea el diccionario `perfil`.",
+      "Lee cada dato por su clave.",
+      "Muestra una tarjeta clara con tres líneas."
+    ],
+    evaluator: {
+      type: "structure_check",
+      minLength: 120,
+      passingScore: 4,
+      requiredPatterns: [
+        {
+          id: "creates-profile",
+          label: "Crea el diccionario `perfil`",
+          pattern: "perfil\\s*=\\s*\\{[^\\}]*['\"]nombre['\"]\\s*:[^\\}]*['\"]ciudad['\"]\\s*:[^\\}]*['\"]meta['\"][^\\}]*\\}",
+          feedbackWhenMissing: "Crea un diccionario `perfil` con las claves `nombre`, `ciudad` y `meta`."
+        },
+        {
+          id: "prints-name",
+          label: "Imprime el nombre desde el diccionario",
+          pattern: "print\\(\\s*['\"]Nombre:\\s*['\"]\\s*,\\s*perfil\\[['\"]nombre['\"]\\]\\s*\\)",
+          feedbackWhenMissing: "Imprime la línea de nombre usando `perfil['nombre']`."
+        },
+        {
+          id: "prints-city",
+          label: "Imprime la ciudad desde el diccionario",
+          pattern: "print\\(\\s*['\"]Ciudad:\\s*['\"]\\s*,\\s*perfil\\[['\"]ciudad['\"]\\]\\s*\\)",
+          feedbackWhenMissing: "Imprime la línea de ciudad usando `perfil['ciudad']`."
+        },
+        {
+          id: "prints-goal",
+          label: "Imprime la meta desde el diccionario",
+          pattern: "print\\(\\s*['\"]Meta:\\s*['\"]\\s*,\\s*perfil\\[['\"]meta['\"]\\]\\s*\\)",
+          feedbackWhenMissing: "Imprime la línea de meta usando `perfil['meta']`."
+        }
+      ],
+      orderedPatternIds: ["creates-profile", "prints-name", "prints-city", "prints-goal"]
+    }
+  },
+  {
+    slug: "build-menu-helper-project",
+    title: "Construye un asistente simple con menú",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "guided-projects",
+    lessonSlug: "guided-project-menu-helper",
+    order: 2,
+    duration: "11 min",
+    summary: "Crea un asistente corto que ofrezca opciones y responda según la elección escrita por la persona.",
+    prompt:
+      "Escribe un programa que defina `mostrar_saludo()` y `mostrar_consejo()`, muestre las opciones `1. Saludo` y `2. Consejo`, guarde `opcion = '2'` y use `if`/`elif` para ejecutar la función correcta.",
+    responseLabel: "Tu asistente con menú",
+    responsePlaceholder:
+      "def mostrar_saludo():\n    print('Hola, seguimos practicando')\n\ndef mostrar_consejo():\n    print('Consejo: avanza un paso a la vez')\n\nprint('1. Saludo')\nprint('2. Consejo')\nopcion = '2'\n\nif opcion == '1':\n    mostrar_saludo()\nelif opcion == '2':\n    mostrar_consejo()",
+    instructions: [
+      "Define dos funciones cortas.",
+      "Muestra el menú en pantalla.",
+      "Guarda la opción en una variable y compárala.",
+      "Llama a la función correcta."
+    ],
+    hints: [
+      "Recuerda llamar a la función con paréntesis.",
+      "La opción se compara como texto, por ejemplo `'1'` o `'2'`.",
+      "Con `opcion = '2'`, la salida final debería mostrar el consejo."
+    ],
+    starterCode:
+      "def mostrar_saludo():\n    print('Hola, seguimos practicando')\n\ndef mostrar_consejo():\n    print('Consejo: avanza un paso a la vez')\n\nprint('1. Saludo')\nprint('2. Consejo')\nopcion = '2'\n\nif opcion == '1':\n    mostrar_saludo()\nelif opcion == '2':\n    mostrar_consejo()",
+    successCriteria: [
+      "Define dos funciones.",
+      "Muestra el menú con dos opciones.",
+      "Usa una condición para ejecutar la función correcta."
+    ],
+    playground: {
+      title: "Ejecuta el asistente con menú",
+      guidance: "Corre el proyecto y mira cómo una opción cambia la salida. Luego cambia la variable `opcion` para comprobar el otro camino.",
+      starterCode:
+        "def mostrar_saludo():\n    print('Hola, seguimos practicando')\n\ndef mostrar_consejo():\n    print('Consejo: avanza un paso a la vez')\n\nprint('1. Saludo')\nprint('2. Consejo')\nopcion = '2'\n\nif opcion == '1':\n    mostrar_saludo()\nelif opcion == '2':\n    mostrar_consejo()",
+      emptyOutputHint: "La salida debería mostrar el menú y luego el mensaje de la opción elegida."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["1. Saludo\n2. Consejo\nConsejo: avanza un paso a la vez"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 180,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "defines-greeting",
+          label: "Define `mostrar_saludo()`",
+          pattern: "def\\s+mostrar_saludo\\(\\)\\s*:",
+          feedbackWhenMissing: "Define la función `mostrar_saludo()`."
+        },
+        {
+          id: "defines-tip",
+          label: "Define `mostrar_consejo()`",
+          pattern: "def\\s+mostrar_consejo\\(\\)\\s*:",
+          feedbackWhenMissing: "Define la función `mostrar_consejo()`."
+        },
+        {
+          id: "prints-menu-options",
+          label: "Muestra las dos opciones del menú",
+          pattern: "print\\(\\s*['\"]1\\. Saludo['\"]\\s*\\)[\\s\\S]*print\\(\\s*['\"]2\\. Consejo['\"]\\s*\\)",
+          feedbackWhenMissing: "Muestra las opciones `1. Saludo` y `2. Consejo`."
+        },
+        {
+          id: "stores-option",
+          label: "Guarda `opcion = '2'`",
+          pattern: "opcion\\s*=\\s*['\"]2['\"]",
+          feedbackWhenMissing: "Guarda la opción elegida en la variable `opcion`."
+        },
+        {
+          id: "checks-second-option",
+          label: "Compara la opción con `if` o `elif`",
+          pattern: "(if|elif)\\s+opcion\\s*==\\s*['\"]2['\"]\\s*:",
+          feedbackWhenMissing: "Usa una condición para comparar la opción con `'2'`."
+        },
+        {
+          id: "calls-tip-function",
+          label: "Llama a `mostrar_consejo()`",
+          pattern: "mostrar_consejo\\(\\)",
+          feedbackWhenMissing: "Cuando la opción corresponde, llama a `mostrar_consejo()`."
+        }
+      ],
+      orderedPatternIds: ["defines-greeting", "defines-tip", "prints-menu-options", "stores-option", "checks-second-option", "calls-tip-function"]
+    }
+  },
+  {
+    slug: "build-habit-tracker-project",
+    title: "Construye un rastreador simple de hábitos",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "guided-projects",
+    lessonSlug: "guided-project-habit-tracker",
+    order: 3,
+    duration: "12 min",
+    summary: "Crea un programa que recorra hábitos guardados en diccionarios y muestre si cada uno está completo o pendiente.",
+    prompt:
+      "Escribe un programa que cree una lista `habitos` con dos diccionarios: `{'nombre': 'Leer', 'hecho': 'si'}` y `{'nombre': 'Practicar Python', 'hecho': 'no'}`. Después, usa un bucle para imprimir `nombre + ': completo'` si `hecho` es `si`, o `nombre + ': pendiente'` en caso contrario, y termina con `Revisión terminada`.",
+    responseLabel: "Tu rastreador de hábitos",
+    responsePlaceholder:
+      "habitos = [\n    {'nombre': 'Leer', 'hecho': 'si'},\n    {'nombre': 'Practicar Python', 'hecho': 'no'}\n]\n\nfor habito in habitos:\n    if habito['hecho'] == 'si':\n        print(habito['nombre'] + ': completo')\n    else:\n        print(habito['nombre'] + ': pendiente')\n\nprint('Revisión terminada')",
+    instructions: [
+      "Crea la lista con dos diccionarios.",
+      "Usa un bucle para recorrer los hábitos.",
+      "Compara la clave `hecho`.",
+      "Imprime un cierre final fuera del bucle."
+    ],
+    hints: [
+      "Cada vuelta del bucle trabaja con un diccionario llamado `habito`.",
+      "Puedes acceder a los datos con `habito['nombre']` y `habito['hecho']`.",
+      "La salida correcta debería mostrar dos líneas de estado y una línea final."
+    ],
+    starterCode:
+      "habitos = [\n    {'nombre': 'Leer', 'hecho': 'si'},\n    {'nombre': 'Practicar Python', 'hecho': 'no'}\n]\n\nfor habito in habitos:\n    if habito['hecho'] == 'si':\n        print(habito['nombre'] + ': completo')\n    else:\n        print(habito['nombre'] + ': pendiente')\n\nprint('Revisión terminada')",
+    successCriteria: [
+      "Crea la lista con diccionarios.",
+      "Recorre la lista con un bucle.",
+      "Muestra el estado correcto de cada hábito.",
+      "Imprime un cierre final una sola vez."
+    ],
+    playground: {
+      title: "Ejecuta el rastreador de hábitos",
+      guidance: "Corre el programa y observa el patrón completo. Luego cambia un estado o un nombre para ver cómo el recorrido se adapta sin rehacer toda la lógica.",
+      starterCode:
+        "habitos = [\n    {'nombre': 'Leer', 'hecho': 'si'},\n    {'nombre': 'Practicar Python', 'hecho': 'no'}\n]\n\nfor habito in habitos:\n    if habito['hecho'] == 'si':\n        print(habito['nombre'] + ': completo')\n    else:\n        print(habito['nombre'] + ': pendiente')\n\nprint('Revisión terminada')",
+      emptyOutputHint: "La salida debería mostrar el estado de cada hábito y luego cerrar con `Revisión terminada`."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Leer: completo\nPracticar Python: pendiente\nRevisión terminada"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 220,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "creates-habit-list",
+          label: "Crea la lista `habitos` con dos diccionarios",
+          pattern: "habitos\\s*=\\s*\\[[\\s\\S]*['\"]nombre['\"]\\s*:\\s*['\"]Leer['\"][\\s\\S]*['\"]hecho['\"]\\s*:\\s*['\"]si['\"][\\s\\S]*['\"]nombre['\"]\\s*:\\s*['\"]Practicar Python['\"][\\s\\S]*['\"]hecho['\"]\\s*:\\s*['\"]no['\"][\\s\\S]*\\]",
+          feedbackWhenMissing: "Crea la lista `habitos` con los dos diccionarios pedidos."
+        },
+        {
+          id: "loops-habits",
+          label: "Usa un bucle para recorrer `habitos`",
+          pattern: "for\\s+habito\\s+in\\s+habitos\\s*:",
+          feedbackWhenMissing: "Usa `for habito in habitos:` para recorrer la lista."
+        },
+        {
+          id: "checks-status",
+          label: "Compara `habito['hecho']` con `si`",
+          pattern: "if\\s+habito\\[['\"]hecho['\"]\\]\\s*==\\s*['\"]si['\"]\\s*:",
+          feedbackWhenMissing: "Compara la clave `hecho` para decidir qué mensaje mostrar."
+        },
+        {
+          id: "prints-complete",
+          label: "Imprime el estado completo",
+          pattern: "print\\(\\s*habito\\[['\"]nombre['\"]\\]\\s*\\+\\s*['\"]: completo['\"]\\s*\\)",
+          feedbackWhenMissing: "Cuando el hábito esté hecho, imprime `nombre + ': completo'`."
+        },
+        {
+          id: "prints-pending",
+          label: "Imprime el estado pendiente",
+          pattern: "print\\(\\s*habito\\[['\"]nombre['\"]\\]\\s*\\+\\s*['\"]: pendiente['\"]\\s*\\)",
+          feedbackWhenMissing: "En el otro caso, imprime `nombre + ': pendiente'`."
+        },
+        {
+          id: "prints-final-line",
+          label: "Cierra con `Revisión terminada`",
+          pattern: "print\\(\\s*['\"]Revisión terminada['\"]\\s*\\)",
+          feedbackWhenMissing: "Agrega una línea final con `Revisión terminada` fuera del bucle."
+        }
+      ],
+      orderedPatternIds: ["creates-habit-list", "loops-habits", "checks-status", "prints-complete", "prints-pending", "prints-final-line"]
     }
   }
 ];

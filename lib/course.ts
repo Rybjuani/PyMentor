@@ -1,8 +1,21 @@
 import { courseExercises, courseLessons, courseModules } from "@/lib/course-content";
 import { CourseProgress, ExerciseData, LessonData, ModuleProgressSummary, ProgressStatus } from "@/types";
 
+export const FOUNDATIONS_CAPSTONE_MODULE_SLUG = "foundations-capstone";
+export const SECOND_TRACK_START_MODULE_SLUG = "basic-files";
+
 export function getAllModules() {
   return [...courseModules].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+}
+
+export function getFoundationsModules() {
+  const capstoneOrder = getModuleBySlug(FOUNDATIONS_CAPSTONE_MODULE_SLUG)?.order ?? Number.MAX_SAFE_INTEGER;
+  return getAllModules().filter((module) => (module.order ?? 0) <= capstoneOrder);
+}
+
+export function getSecondTrackModules() {
+  const capstoneOrder = getModuleBySlug(FOUNDATIONS_CAPSTONE_MODULE_SLUG)?.order ?? Number.MAX_SAFE_INTEGER;
+  return getAllModules().filter((module) => (module.order ?? 0) > capstoneOrder);
 }
 
 export function getAllLessons() {
@@ -19,6 +32,12 @@ export function getAllLessons() {
 
 export function getModuleBySlug(slug: string) {
   return courseModules.find((module) => module.slug === slug);
+}
+
+export function isModuleInSecondTrack(moduleSlug: string) {
+  const module = getModuleBySlug(moduleSlug);
+  const capstoneOrder = getModuleBySlug(FOUNDATIONS_CAPSTONE_MODULE_SLUG)?.order ?? Number.MAX_SAFE_INTEGER;
+  return Boolean(module && (module.order ?? 0) > capstoneOrder);
 }
 
 export function getLessonsByModuleSlug(moduleSlug: string) {
@@ -123,6 +142,10 @@ export function getOverallLessonProgress(progress: CourseProgress) {
     total: lessons.length,
     percent: lessons.length === 0 ? 0 : Math.round((completed / lessons.length) * 100)
   };
+}
+
+export function hasCompletedFoundationsTrack(progress: CourseProgress) {
+  return getModuleProgress(progress, FOUNDATIONS_CAPSTONE_MODULE_SLUG).status === "completed";
 }
 
 export function getCurrentLearningFocus(progress: CourseProgress) {

@@ -2,7 +2,7 @@
 
 ## Visión general
 
-PyMentor es una plataforma full-stack construida con Next.js para acompañar a principiantes absolutos en una primera gran ruta de Python. La arquitectura busca mantener tres cosas al mismo tiempo:
+PyMentor es una plataforma full-stack construida con Next.js para acompañar a principiantes absolutos en una primera gran ruta de Python y abrir después una segunda etapa más práctica sin romper la continuidad del producto. La arquitectura busca mantener tres cosas al mismo tiempo:
 
 - claridad de producto
 - bajo nivel de complejidad operativa
@@ -116,6 +116,7 @@ Características:
 5. completa lecciones y ejercicios
 6. guarda borradores automáticamente en práctica de código
 7. cierra la primera gran etapa en el módulo `Cierre de fundamentos`
+8. abre la segunda etapa en el módulo `Archivos básicos`
 
 ## Decisiones intencionales
 
@@ -127,7 +128,7 @@ Características:
 
 ## Puntos todavía débiles
 
-- no existe todavía un segundo gran track después del capstone
+- la segunda gran ruta recién está abierta y todavía tiene poco volumen
 - logros y metas semanales siguen siendo livianos
 - el mentor no guarda memoria persistente por usuario
 - los evaluadores todavía no hacen análisis profundo de código

@@ -348,14 +348,14 @@ export function ExerciseWorkspace({
             <Sparkles className="h-4 w-4 text-brand-300" />
             Siguiente movimiento
           </div>
-            <p className="mt-2 leading-6">
-              {status === "completed"
+          <p className="mt-2 leading-6">
+            {status === "completed"
               ? isFoundationsCapstone
-                ? "Este paso final ya quedó marcado. Si quieres, vuelve al panel para ver el cierre completo de esta primera gran etapa."
+                ? "Este paso final ya quedó marcado. Desde aquí puedes volver al panel o entrar a la nueva etapa con la base ya cerrada."
                 : "Este ejercicio ya está marcado como completado. Puedes volver a la lección o seguir cuando quieras."
               : canComplete
                 ? isFoundationsCapstone
-                  ? "Tu respuesta ya sostiene este cierre de fundamentos. Márcala como completada para dejar visible el final de la etapa en tu ruta."
+                  ? "Tu respuesta ya sostiene este cierre de fundamentos. Márcala como completada para cerrar la etapa y abrir la siguiente con claridad."
                   : "Tu respuesta ya se ve suficientemente sólida para este paso. Márcala como completada para actualizar tu ruta."
                 : isFoundationsCapstone
                   ? "Usa las comprobaciones que faltan como guía. Este capstone busca que cierres la etapa con una solución clara, no perfecta."

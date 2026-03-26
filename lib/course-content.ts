@@ -140,6 +140,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 2,
     estimatedTime: "100 min",
     xp: 360
+  },
+  {
+    slug: "basic-files",
+    title: "Archivos básicos",
+    description: "Empieza la segunda ruta aprendiendo a guardar y recuperar texto desde archivos, para que tus programas se sientan más útiles y menos efímeros.",
+    order: 15,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "78 min",
+    xp: 320
   }
 ];
 
@@ -2960,6 +2970,219 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar el menú, una respuesta principal y un cierre final de etapa."
     },
     exerciseSlug: "build-capstone-menu-report-tool"
+  },
+  {
+    slug: "what-a-file-is",
+    module: "Archivos básicos",
+    moduleSlug: "basic-files",
+    order: 1,
+    title: "Qué es un archivo y por qué cambia tus programas",
+    duration: "15 min",
+    difficulty: "Beginner",
+    summary: "Aprende por qué guardar información en un archivo hace que tus programas se sientan más útiles y más cercanos a algo real.",
+    warmup: "Hasta ahora la mayoría de tus programas viven solo mientras se ejecutan. Un archivo cambia eso: permite que cierta información quede guardada para volver a usarla.",
+    goal: "Al final, deberías poder explicar qué es un archivo de texto en Python y por qué marca el comienzo de una etapa más práctica.",
+    keyIdeas: [
+      {
+        title: "Un archivo guarda información fuera del programa",
+        description: "Permite que el texto no desaparezca cuando termina la ejecución."
+      },
+      {
+        title: "Un archivo de texto sigue siendo algo simple",
+        description: "No hace falta pensar en sistemas complejos: empieza como un lugar para guardar texto."
+      },
+      {
+        title: "Esto abre una nueva etapa",
+        description: "Los programas empiezan a parecerse más a herramientas útiles cuando pueden guardar y recuperar información."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué cambia con los archivos",
+        body: "Antes, casi todo lo que hacías terminaba al cerrar o volver a ejecutar el programa. Con un archivo, cierta información puede quedar guardada y volver a leerse más adelante."
+      },
+      {
+        title: "Qué es un archivo de texto en este nivel",
+        body: "Por ahora, piensa un archivo como un cuaderno simple donde tu programa puede escribir líneas de texto y luego volver a leerlas. No hace falta ir más lejos para empezar a usarlo bien."
+      },
+      {
+        title: "Por qué esta es la primera parada del nivel siguiente",
+        body: "Guardar información es una frontera muy clara entre ejercicios de base y programas más prácticos. Por eso este módulo funciona bien como apertura de la segunda gran ruta."
+      },
+      {
+        title: "Qué conviene mantener simple",
+        body: "No necesitas muchos archivos ni rutas complicadas. Un archivo de texto corto ya alcanza para entender la idea y usarla en programas reales de nivel principiante."
+      }
+    ],
+    example:
+      "with open('nota.txt', 'w') as archivo:\n    archivo.write('Practicar Python hoy')\n\nprint('Archivo guardado')",
+    practicePrompt: "Lee el ejemplo y piensa qué parte crea el archivo y qué parte deja un mensaje dentro. La idea no es memorizar todavía, sino entender el cambio de mentalidad.",
+    practiceChecklist: [
+      "Reconoce que `open(..., 'w')` abre un archivo para guardar.",
+      "Identifica la línea que escribe el texto.",
+      "Observa que el programa termina con un mensaje simple de confirmación."
+    ],
+    commonMistakes: [
+      "Pensar que un archivo es algo demasiado avanzado para empezar a usarlo.",
+      "Mirar toda la sintaxis de golpe en vez de separar abrir, escribir y confirmar.",
+      "Perder de vista que aquí seguimos trabajando con texto simple."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería guardar una nota en un archivo, pero un detalle de modo de apertura está mal escrito.",
+      brokenCode: "with open('nota.txt', 'write') as archivo:\n    archivo.write('Practicar hoy')",
+      expectedLearning: "Al empezar con archivos, conviene revisar primero lo más básico: nombre del archivo, modo de apertura y línea que escribe el texto."
+    },
+    playground: {
+      title: "Prueba tu primer archivo de texto",
+      guidance: "Ejecuta el código y luego cambia el mensaje guardado. Lo importante es sentir que el programa ya puede dejar información escrita fuera de sí mismo.",
+      starterCode:
+        "with open('nota.txt', 'w') as archivo:\n    archivo.write('Practicar Python hoy')\n\nprint('Archivo guardado')",
+      emptyOutputHint: "Una primera prueba con archivos debería confirmar que el texto se guardó correctamente."
+    },
+    exerciseSlug: "explain-what-a-text-file-does"
+  },
+  {
+    slug: "writing-text-files",
+    module: "Archivos básicos",
+    moduleSlug: "basic-files",
+    order: 2,
+    title: "Guardar texto en un archivo con calma",
+    duration: "16 min",
+    difficulty: "Beginner",
+    summary: "Practica cómo escribir texto en un archivo usando una forma clara y segura para principiantes.",
+    warmup: "Guardar una nota pequeña ya cambia la sensación del programa. Deja de ser solo una salida momentánea y empieza a producir algo que queda.",
+    goal: "Al final, deberías poder escribir texto en un archivo y confirmar con claridad que la operación salió bien.",
+    keyIdeas: [
+      {
+        title: "El modo `w` sirve para guardar",
+        description: "Es la forma más simple de empezar a escribir en un archivo."
+      },
+      {
+        title: "Escribir y confirmar son dos pasos distintos",
+        description: "Primero guardas, después muestras un mensaje que ayude a leer el resultado."
+      },
+      {
+        title: "La simplicidad sigue ganando",
+        description: "Con una sola línea de texto ya puedes practicar lo importante."
+      }
+    ],
+    explanation: [
+      {
+        title: "Cómo leer `with open(...)` al empezar",
+        body: "Puedes pensar esta línea así: 'abre este archivo para trabajar con él de forma ordenada'. Después, dentro del bloque, haces la acción importante, que aquí es escribir texto."
+      },
+      {
+        title: "Por qué sirve confirmar la escritura",
+        body: "Cuando el programa imprime algo como `Archivo guardado`, te ayuda a distinguir entre la acción de guardar y la acción de mostrar un mensaje a la persona usuaria."
+      },
+      {
+        title: "Qué hace que este patrón sea útil",
+        body: "Con este patrón ya puedes guardar una nota, una respuesta o un pequeño registro. Es un salto práctico muy visible respecto a los fundamentos."
+      },
+      {
+        title: "Qué revisar si no funciona",
+        body: "Al principio, revisa el nombre del archivo, el modo `w`, la indentación y si usaste `write()` donde corresponde."
+      }
+    ],
+    example:
+      "mensaje = 'Hoy avancé un paso más'\nwith open('avance.txt', 'w') as archivo:\n    archivo.write(mensaje)\n\nprint('Guardado listo')",
+    practicePrompt: "Cambia el texto que se guarda o el nombre del archivo. Lo importante es conservar la estructura general y el mensaje final de confirmación.",
+    practiceChecklist: [
+      "Guarda un texto en una variable o escríbelo directo.",
+      "Usa `with open(..., 'w')`.",
+      "Llama a `archivo.write(...)`.",
+      "Muestra una confirmación final."
+    ],
+    commonMistakes: [
+      "Olvidar el modo `w` al abrir el archivo.",
+      "Poner la línea `write()` fuera del bloque indentado.",
+      "Confundir el nombre de la variable del archivo."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería guardar una nota, pero una línea quedó fuera del bloque y rompe la estructura.",
+      brokenCode: "with open('avance.txt', 'w') as archivo:\narchivo.write('Hoy avancé')\nprint('Guardado listo')",
+      expectedLearning: "Cuando trabajas con archivos, la indentación del bloque sigue siendo tan importante como en funciones, bucles y condiciones."
+    },
+    playground: {
+      title: "Guarda una nota en un archivo",
+      guidance: "Ejecuta el código, cambia el texto y vuelve a correrlo. Este patrón es la base para programas que dejan un rastro útil fuera de la pantalla.",
+      starterCode:
+        "mensaje = 'Hoy avancé un paso más'\nwith open('avance.txt', 'w') as archivo:\n    archivo.write(mensaje)\n\nprint('Guardado listo')",
+      emptyOutputHint: "La salida debería confirmar que el texto ya quedó guardado."
+    },
+    exerciseSlug: "save-a-note-to-file"
+  },
+  {
+    slug: "reading-files-and-organizing-output",
+    module: "Archivos básicos",
+    moduleSlug: "basic-files",
+    order: 3,
+    title: "Leer un archivo y mostrar un resumen claro",
+    duration: "17 min",
+    difficulty: "Beginner",
+    summary: "Aprende a leer texto guardado en un archivo y a convertirlo en una salida simple y ordenada.",
+    warmup: "Guardar ya se siente útil, pero leer lo guardado hace que el programa empiece a parecerse mucho más a una herramienta real.",
+    goal: "Al final, deberías poder escribir un texto en un archivo, leerlo y mostrar un pequeño resumen de forma clara.",
+    keyIdeas: [
+      {
+        title: "El modo `r` sirve para leer",
+        description: "Permite abrir un archivo para recuperar lo que ya estaba guardado."
+      },
+      {
+        title: "Guardar y leer pueden vivir en el mismo programa",
+        description: "Eso hace visible un flujo completo de trabajo con datos simples."
+      },
+      {
+        title: "Un resumen ordenado vuelve útil la salida",
+        description: "No alcanza con leer; también conviene presentar lo leído de forma clara."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué cambia al leer",
+        body: "Cuando usas `open(..., 'r')`, el programa ya no solo deja información. También puede recuperarla. Ese ida y vuelta es lo que hace que la segunda ruta se sienta más práctica."
+      },
+      {
+        title: "Cómo construir un flujo simple",
+        body: "Puedes guardar primero una o dos líneas en un archivo y después abrirlo para leerlo. Esa versión básica ya te enseña muchísimo sin necesidad de complejidad extra."
+      },
+      {
+        title: "Por qué conviene resumir la salida",
+        body: "En lugar de mostrar texto suelto sin contexto, una pequeña etiqueta o encabezado ayuda a que el resultado se lea como un mini reporte."
+      },
+      {
+        title: "Qué revisar si algo sale raro",
+        body: "Comprueba si el archivo se escribió antes, si abriste con el modo correcto y si la variable donde guardas el contenido se usa después en el `print()` esperado."
+      }
+    ],
+    example:
+      "with open('registro.txt', 'w') as archivo:\n    archivo.write('Leer\\nPracticar Python')\n\nwith open('registro.txt', 'r') as archivo:\n    contenido = archivo.read()\n\nprint('Resumen guardado:')\nprint(contenido)",
+    practicePrompt: "Prueba cambiar el contenido o el título del resumen. La idea es que el programa escriba, lea y luego muestre lo recuperado con claridad.",
+    practiceChecklist: [
+      "Escribe algo en un archivo.",
+      "Vuelve a abrirlo con `r`.",
+      "Guarda lo leído en una variable.",
+      "Muestra un resumen final claro."
+    ],
+    commonMistakes: [
+      "Intentar leer sin haber escrito antes en el mismo flujo.",
+      "Usar el modo de apertura equivocado.",
+      "Leer el contenido pero no imprimirlo después."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería guardar y leer un archivo, pero una variable no coincide al mostrar el resultado.",
+      brokenCode:
+        "with open('registro.txt', 'w') as archivo:\n    archivo.write('Leer\\nPracticar Python')\n\nwith open('registro.txt', 'r') as archivo:\n    contenido = archivo.read()\n\nprint(resumen)",
+      expectedLearning: "Cuando un programa empieza a crecer, los fallos de nombres entre una parte y otra se vuelven más importantes de revisar."
+    },
+    playground: {
+      title: "Guarda y lee un archivo simple",
+      guidance: "Ejecuta el programa completo y luego cambia el contenido guardado. Lo importante es ver el ciclo completo: escribir, leer y mostrar.",
+      starterCode:
+        "with open('registro.txt', 'w') as archivo:\n    archivo.write('Leer\\nPracticar Python')\n\nwith open('registro.txt', 'r') as archivo:\n    contenido = archivo.read()\n\nprint('Resumen guardado:')\nprint(contenido)",
+      emptyOutputHint: "La salida debería mostrar un encabezado y luego el texto leído desde el archivo."
+    },
+    exerciseSlug: "read-a-file-and-show-summary"
   }
 ];
 
@@ -5984,6 +6207,232 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["creates-report-data", "defines-multiple-capstone-functions", "prints-menu", "stores-capstone-choice", "uses-capstone-conditional", "loops-report-data", "adds-capstone-close"]
+    }
+  },
+  {
+    slug: "explain-what-a-text-file-does",
+    title: "Explica para qué sirve un archivo de texto",
+    exerciseType: "concept_check",
+    responseFormat: "text",
+    moduleSlug: "basic-files",
+    lessonSlug: "what-a-file-is",
+    order: 1,
+    duration: "8 min",
+    summary: "Explica con palabras simples qué aporta un archivo de texto a un programa principiante.",
+    prompt:
+      "En 2 o 3 frases cortas, explica qué es un archivo de texto en Python y por qué hace que un programa se sienta más útil que uno que solo imprime cosas en pantalla.",
+    responseLabel: "Tu explicación sobre archivos",
+    responsePlaceholder:
+      "Un archivo de texto sirve para guardar información fuera del programa. Eso ayuda a recuperar datos después y hace que el programa se sienta más útil.",
+    instructions: [
+      "Explica que el archivo guarda información.",
+      "Aclara que esa información queda fuera del programa.",
+      "Relaciona la idea con algo más útil o más real."
+    ],
+    hints: [
+      "Piensa en una nota que no desaparece cuando el programa termina.",
+      "No hace falta explicar internamente cómo funciona el sistema de archivos.",
+      "Lo importante es la utilidad práctica."
+    ],
+    starterCode: "with open('nota.txt', 'w') as archivo:\n    archivo.write('Practicar hoy')",
+    successCriteria: [
+      "Explica que un archivo guarda información.",
+      "Menciona que esa información queda fuera del programa.",
+      "Conecta la idea con utilidad práctica."
+    ],
+    evaluator: {
+      type: "ordered_concepts",
+      minLength: 55,
+      passingScore: 4,
+      requireOrder: false,
+      concepts: [
+        {
+          id: "stores-info",
+          label: "Menciona que el archivo guarda información",
+          keywords: ["guardar", "guarda", "guardar datos", "guardar texto", "información"],
+          feedbackWhenMissing: "Explica primero que un archivo sirve para guardar información o texto."
+        },
+        {
+          id: "outside-program",
+          label: "Aclara que queda fuera del programa",
+          keywords: ["fuera", "después", "termina", "cerrar", "recuperar", "volver"],
+          feedbackWhenMissing: "Aclara que la información puede seguir estando aunque el programa termine."
+        },
+        {
+          id: "practical-value",
+          label: "Conecta la idea con utilidad práctica",
+          keywords: ["útil", "real", "nota", "registro", "programa", "herramienta"],
+          feedbackWhenMissing: "Agrega por qué eso hace que el programa se sienta más útil o más real."
+        }
+      ]
+    }
+  },
+  {
+    slug: "save-a-note-to-file",
+    title: "Guarda una nota en un archivo",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "basic-files",
+    lessonSlug: "writing-text-files",
+    order: 2,
+    duration: "10 min",
+    summary: "Escribe un programa pequeño que guarde una nota en un archivo y confirme que la operación salió bien.",
+    prompt:
+      "Escribe un programa que guarde `mensaje = 'Hoy avancé un paso más'`, abra `avance.txt` en modo escritura, guarde ese texto con `write()` y muestre `Guardado listo` al final.",
+    responseLabel: "Tu programa para guardar una nota",
+    responsePlaceholder:
+      "mensaje = 'Hoy avancé un paso más'\nwith open('avance.txt', 'w') as archivo:\n    archivo.write(mensaje)\n\nprint('Guardado listo')",
+    instructions: [
+      "Guarda el texto en una variable.",
+      "Abre el archivo en modo `w`.",
+      "Escribe el texto dentro del bloque.",
+      "Muestra una confirmación final."
+    ],
+    hints: [
+      "La forma básica es `with open('avance.txt', 'w') as archivo:`.",
+      "Después usa `archivo.write(mensaje)`.",
+      "La salida final debería confirmar que el guardado salió bien."
+    ],
+    starterCode:
+      "mensaje = 'Hoy avancé un paso más'\nwith open('avance.txt', 'w') as archivo:\n    archivo.write(mensaje)\n\nprint('Guardado listo')",
+    successCriteria: [
+      "Usa un archivo en modo escritura.",
+      "Guarda el texto correctamente.",
+      "Muestra un mensaje final claro."
+    ],
+    playground: {
+      title: "Ejecuta el guardado del archivo",
+      guidance: "Corre el programa y cambia el texto de la nota. La meta es sentir que ya puedes dejar información guardada de forma explícita.",
+      starterCode:
+        "mensaje = 'Hoy avancé un paso más'\nwith open('avance.txt', 'w') as archivo:\n    archivo.write(mensaje)\n\nprint('Guardado listo')",
+      emptyOutputHint: "La salida debería mostrar una confirmación de guardado."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Guardado listo"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 120,
+      passingScore: 4,
+      requiredPatterns: [
+        {
+          id: "stores-message",
+          label: "Guarda el mensaje en una variable",
+          pattern: "mensaje\\s*=\\s*['\"]Hoy avancé un paso más['\"]",
+          feedbackWhenMissing: "Guarda el texto en una variable llamada `mensaje`."
+        },
+        {
+          id: "opens-file-write",
+          label: "Abre `avance.txt` en modo `w`",
+          pattern: "with\\s+open\\(\\s*['\"]avance\\.txt['\"]\\s*,\\s*['\"]w['\"]\\s*\\)\\s+as\\s+archivo\\s*:",
+          feedbackWhenMissing: "Abre `avance.txt` usando `with open(..., 'w') as archivo:`."
+        },
+        {
+          id: "writes-message",
+          label: "Escribe el mensaje en el archivo",
+          pattern: "archivo\\.write\\(\\s*mensaje\\s*\\)",
+          feedbackWhenMissing: "Usa `archivo.write(mensaje)` dentro del bloque."
+        },
+        {
+          id: "prints-save-message",
+          label: "Imprime la confirmación final",
+          pattern: "print\\(\\s*['\"]Guardado listo['\"]\\s*\\)",
+          feedbackWhenMissing: "Termina con `print('Guardado listo')`."
+        }
+      ],
+      orderedPatternIds: ["stores-message", "opens-file-write", "writes-message", "prints-save-message"]
+    }
+  },
+  {
+    slug: "read-a-file-and-show-summary",
+    title: "Lee un archivo y muestra un resumen",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "basic-files",
+    lessonSlug: "reading-files-and-organizing-output",
+    order: 3,
+    duration: "11 min",
+    summary: "Escribe y luego lee un archivo dentro del mismo programa para mostrar un resumen simple y legible.",
+    prompt:
+      "Escribe un programa que cree `registro.txt`, guarde `Leer\\nPracticar Python`, vuelva a abrir ese archivo en modo lectura, guarde el contenido en `contenido` y luego imprima `Resumen guardado:` seguido del texto leído.",
+    responseLabel: "Tu programa de lectura de archivo",
+    responsePlaceholder:
+      "with open('registro.txt', 'w') as archivo:\n    archivo.write('Leer\\nPracticar Python')\n\nwith open('registro.txt', 'r') as archivo:\n    contenido = archivo.read()\n\nprint('Resumen guardado:')\nprint(contenido)",
+    instructions: [
+      "Escribe primero el texto en un archivo.",
+      "Vuelve a abrir el mismo archivo en modo `r`.",
+      "Guarda el resultado en `contenido`.",
+      "Muestra un encabezado y luego el texto leído."
+    ],
+    hints: [
+      "Primero abre con `w`, después con `r`.",
+      "La lectura simple puede hacerse con `archivo.read()`.",
+      "La salida final debería mostrar el título y luego dos líneas de texto."
+    ],
+    starterCode:
+      "with open('registro.txt', 'w') as archivo:\n    archivo.write('Leer\\nPracticar Python')\n\nwith open('registro.txt', 'r') as archivo:\n    contenido = archivo.read()\n\nprint('Resumen guardado:')\nprint(contenido)",
+    successCriteria: [
+      "Escribe y lee dentro del mismo flujo.",
+      "Usa una variable para guardar el contenido leído.",
+      "Presenta el resultado con claridad."
+    ],
+    playground: {
+      title: "Ejecuta la lectura del archivo",
+      guidance: "Corre el programa completo y luego cambia el contenido guardado. La idea es ver el ciclo entero: escribir, leer y mostrar un pequeño resumen.",
+      starterCode:
+        "with open('registro.txt', 'w') as archivo:\n    archivo.write('Leer\\nPracticar Python')\n\nwith open('registro.txt', 'r') as archivo:\n    contenido = archivo.read()\n\nprint('Resumen guardado:')\nprint(contenido)",
+      emptyOutputHint: "La salida debería mostrar el encabezado y luego el contenido leído desde el archivo."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Resumen guardado:\nLeer\nPracticar Python"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 180,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "writes-file-first",
+          label: "Escribe primero en `registro.txt`",
+          pattern: "with\\s+open\\(\\s*['\"]registro\\.txt['\"]\\s*,\\s*['\"]w['\"]\\s*\\)\\s+as\\s+archivo\\s*:",
+          feedbackWhenMissing: "Primero abre `registro.txt` en modo escritura."
+        },
+        {
+          id: "writes-two-lines",
+          label: "Guarda el texto pedido",
+          pattern: "archivo\\.write\\(\\s*['\"]Leer\\\\nPracticar Python['\"]\\s*\\)",
+          feedbackWhenMissing: "Guarda el texto `Leer\\nPracticar Python` con `write()`."
+        },
+        {
+          id: "reads-file",
+          label: "Vuelve a abrir el archivo en modo lectura",
+          pattern: "with\\s+open\\(\\s*['\"]registro\\.txt['\"]\\s*,\\s*['\"]r['\"]\\s*\\)\\s+as\\s+archivo\\s*:",
+          feedbackWhenMissing: "Después vuelve a abrir `registro.txt` con el modo `r`."
+        },
+        {
+          id: "stores-content",
+          label: "Guarda el contenido en `contenido`",
+          pattern: "contenido\\s*=\\s*archivo\\.read\\(\\s*\\)",
+          feedbackWhenMissing: "Guarda lo leído en una variable `contenido`."
+        },
+        {
+          id: "prints-summary",
+          label: "Muestra el resumen final",
+          pattern: "print\\(\\s*['\"]Resumen guardado:['\"]\\s*\\)[\\s\\S]*print\\(\\s*contenido\\s*\\)",
+          feedbackWhenMissing: "Imprime `Resumen guardado:` y luego la variable `contenido`."
+        }
+      ],
+      orderedPatternIds: ["writes-file-first", "writes-two-lines", "reads-file", "stores-content", "prints-summary"]
     }
   }
 ];

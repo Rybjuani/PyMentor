@@ -46,7 +46,11 @@ export function RoadmapModuleCard({
         </div>
         <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
           <Zap className="h-3.5 w-3.5 text-brand-300" />
-          {module.slug === "foundations-capstone" ? "Hito final" : `Etapa ${module.order}`}
+          {module.slug === "foundations-capstone"
+            ? "Hito final"
+            : module.slug === "basic-files"
+              ? "Ruta 2 · Apertura"
+              : `Etapa ${module.order}`}
         </div>
         <h3 className="mt-3 text-xl font-bold text-slate-50">{module.title}</h3>
         <p className="mt-3 text-sm leading-7 text-slate-400">{module.description}</p>

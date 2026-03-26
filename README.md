@@ -2,12 +2,12 @@
 
 PyMentor es una plataforma de aprendizaje de Python pensada para principiantes absolutos. El producto combina una ruta única de progreso, práctica guiada, ejercicios con feedback, proyectos graduales, un mentor IA en español y un playground de Python en el navegador con Pyodide.
 
-El estado actual del proyecto cubre una primera gran etapa de fundamentos de Python, desde la introducción hasta un cierre de fundamentos con proyectos capstone.
+El estado actual del proyecto cubre una primera gran etapa de fundamentos de Python, desde la introducción hasta un cierre de fundamentos con proyectos capstone, y además ya abre una segunda etapa con foco más práctico.
 
 ## Qué incluye hoy
 
-- Ruta completa de aprendizaje para principiantes en español.
-- Lecciones, ejercicios, proyectos guiados, proyectos con más autonomía y capstone final.
+- Ruta completa de fundamentos y apertura de una segunda etapa más práctica.
+- Lecciones, ejercicios, proyectos guiados, proyectos con más autonomía, capstone final y primer módulo de nivel siguiente.
 - Progreso persistido por usuario con autenticación real.
 - Mentor IA con Groq integrado server-side.
 - Playground de Python en el navegador con Pyodide.
@@ -27,7 +27,7 @@ El estado actual del proyecto cubre una primera gran etapa de fundamentos de Pyt
 
 ## Estado del producto
 
-La primera gran ruta de PyMentor ya está construida y localizada en español:
+La primera gran ruta de PyMentor ya está construida y localizada en español, y la segunda ya quedó abierta:
 
 1. Introducción
 2. Variables
@@ -43,6 +43,18 @@ La primera gran ruta de PyMentor ya está construida y localizada en español:
 12. Proyectos con más autonomía
 13. Proyectos iniciales más libres
 14. Cierre de fundamentos
+15. Archivos básicos
+
+## Etapas del producto
+
+### Ruta 1 · Fundamentos de Python
+
+Lleva a la persona desde cero absoluto hasta un cierre de fundamentos con capstone.
+
+### Ruta 2 · Python práctico 2
+
+Empieza justo después del cierre de fundamentos.
+Su primera apertura es `Archivos básicos`, donde el foco pasa a programas que guardan información y se sienten menos efímeros.
 
 ## Requisitos
 
@@ -184,7 +196,7 @@ npm run start:railway
 - No hay streaming en el mentor todavía.
 - No hay ejecución server-side de Python.
 - No hay code runner completo ni evaluación semántica profunda.
-- No existe todavía una segunda gran ruta después del cierre de fundamentos.
+- La segunda gran ruta recién está abierta y por ahora solo tiene su primer módulo.
 - Los logros siguen siendo una capa de producto liviana, no un sistema completo de gamificación persistida.
 
 ## Documentación adicional
@@ -194,4 +206,4 @@ npm run start:railway
 
 ## Próximo paso lógico del producto
 
-Después de esta primera gran etapa, el siguiente paso natural es abrir un track de nivel siguiente todavía guiado, con proyectos un poco más amplios y nuevos temas prácticos, sin saltar todavía a complejidad intermedia dura.
+El siguiente paso natural es ampliar la segunda ruta `Python práctico 2` con módulos como organización de programas un poco más amplios, reutilización más clara de funciones y proyectos prácticos de mayor utilidad, todavía sin saltar a complejidad intermedia dura.

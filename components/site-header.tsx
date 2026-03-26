@@ -15,17 +15,17 @@ export async function SiteHeader() {
 
   return (
     <header className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-10">
-      <Link href="/" className="flex items-center gap-3 text-white">
+      <Link href="/" className="brandmark-anchor flex items-center gap-3 text-white">
         <BrandMark compact />
         <span className="min-w-0">
           <span className="block text-lg font-extrabold tracking-tight">PyMentor</span>
-          <span className="block text-xs text-slate-400">Python con base real</span>
+          <span className="block text-xs uppercase tracking-[0.14em] text-cyan-200/60">Python con base real</span>
         </span>
       </Link>
 
       <nav className="flex items-center gap-4 text-sm text-slate-300">
         {navItems.map((item) => (
-          <Link key={item.href} href={item.href} className="transition hover:text-brand-200">
+          <Link key={item.href} href={item.href} className="transition duration-200 hover:text-brand-200">
             {item.label}
           </Link>
         ))}

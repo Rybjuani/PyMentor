@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: "PyMentor",
   description:
     "Aprende Python con una base real: tres rutas, práctica útil, proyectos y mentor integrado.",
+  themeColor: "#08131B",
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" }

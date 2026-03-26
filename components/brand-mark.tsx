@@ -7,23 +7,69 @@ export function BrandMark({
   className?: string;
   compact?: boolean;
 }) {
+  const sizeClass = compact ? "h-11 w-11" : "h-12 w-12";
+
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-[1.35rem] border border-brand-300/20 bg-[linear-gradient(135deg,rgba(12,185,113,0.24),rgba(78,203,255,0.18)_48%,rgba(255,214,107,0.16))] shadow-[0_0_42px_rgba(29,211,139,0.18)] ring-1 ring-white/10",
-        compact ? "h-11 w-11" : "h-12 w-12",
+        "brandmark-shell relative isolate overflow-hidden rounded-[1.05rem] border border-brand-400/20 bg-[linear-gradient(145deg,rgba(16,255,163,0.16),rgba(38,208,255,0.12)_58%,rgba(120,255,220,0.08))] ring-1 ring-white/6",
+        sizeClass,
         className
       )}
     >
-      <div className="absolute inset-[1px] rounded-[1.2rem] bg-[radial-gradient(circle_at_30%_22%,rgba(255,255,255,0.18),transparent_28%),linear-gradient(160deg,rgba(5,12,19,0.94),rgba(11,27,40,0.94)_55%,rgba(15,53,72,0.88))]" />
-      <div className="absolute inset-0 opacity-60">
-        <div className="absolute left-[22%] top-[18%] h-[58%] w-[2px] rounded-full bg-brand-300/80 shadow-[0_0_16px_rgba(29,211,139,0.55)]" />
-        <div className="absolute left-[22%] top-[18%] h-[2px] w-[45%] rounded-full bg-brand-300/70 shadow-[0_0_14px_rgba(29,211,139,0.45)]" />
-        <div className="absolute bottom-[20%] left-[22%] h-[2px] w-[52%] rounded-full bg-sky-300/80 shadow-[0_0_14px_rgba(78,203,255,0.45)]" />
-        <div className="absolute right-[20%] top-[22%] h-[56%] w-[2px] rounded-full bg-sky-300/80 shadow-[0_0_16px_rgba(78,203,255,0.42)]" />
-      </div>
-      <div className="absolute bottom-[22%] left-[22%] right-[20%] top-[22%] rounded-[0.8rem] border border-white/10" />
-      <div className="absolute right-[19%] top-[16%] h-2 w-2 rounded-full bg-gold/90 shadow-[0_0_16px_rgba(255,214,107,0.55)]" />
+      <div className="absolute inset-[1px] rounded-[0.98rem] bg-[linear-gradient(180deg,#071018,#09141e_48%,#0a1722)]" />
+      <div className="brandmark-grid absolute inset-[1px] rounded-[0.98rem] opacity-90" />
+      <div className="brandmark-scan absolute inset-x-1 top-1 h-8 rounded-full bg-[radial-gradient(circle,rgba(38,208,255,0.22),transparent_68%)] blur-md" />
+
+      <svg
+        viewBox="0 0 64 64"
+        aria-hidden="true"
+        className="absolute inset-[8px] h-auto w-auto"
+      >
+        <defs>
+          <linearGradient id="pymentor-frame" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#10FFA3" stopOpacity="0.95" />
+            <stop offset="0.55" stopColor="#27D4FF" stopOpacity="0.9" />
+            <stop offset="1" stopColor="#82FFE1" stopOpacity="0.72" />
+          </linearGradient>
+          <linearGradient id="pymentor-glyph" x1="14" y1="14" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#DFFFF5" />
+            <stop offset="0.5" stopColor="#85FFD4" />
+            <stop offset="1" stopColor="#39D8FF" />
+          </linearGradient>
+          <radialGradient id="pymentor-orb" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(46 18) rotate(90) scale(8)">
+            <stop stopColor="#7CFFE0" />
+            <stop offset="1" stopColor="#7CFFE0" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
+        <path
+          d="M16 14H38L48 24V48H16V14Z"
+          fill="none"
+          stroke="url(#pymentor-frame)"
+          strokeWidth="2.4"
+          strokeLinejoin="round"
+        />
+        <path d="M38 14V24H48" fill="none" stroke="url(#pymentor-frame)" strokeWidth="2.4" strokeLinejoin="round" />
+
+        <path
+          d="M23 41V21H33.5C39.2 21 42 23.8 42 28.1C42 32.5 39.2 35.2 33.5 35.2H28.8"
+          fill="none"
+          stroke="url(#pymentor-glyph)"
+          strokeWidth="4.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M30.4 41L39.8 31.6"
+          fill="none"
+          stroke="url(#pymentor-glyph)"
+          strokeWidth="3.2"
+          strokeLinecap="round"
+        />
+        <circle cx="45.6" cy="18.4" r="3.2" fill="#7CFFE0" />
+        <circle cx="45.6" cy="18.4" r="7.5" fill="url(#pymentor-orb)" />
+      </svg>
     </div>
   );
 }

@@ -13,9 +13,10 @@ html {
 body {
   @apply bg-slate-950 text-slate-100 antialiased;
   background-image:
-    radial-gradient(circle at 12% 0%, rgba(29, 211, 139, 0.14), transparent 24%),
-    radial-gradient(circle at 82% 8%, rgba(26, 115, 232, 0.12), transparent 20%),
-    linear-gradient(180deg, #02060d 0%, #07111a 28%, #0b1620 100%);
+    radial-gradient(circle at 14% 0%, rgba(16, 255, 163, 0.18), transparent 22%),
+    radial-gradient(circle at 84% 6%, rgba(39, 212, 255, 0.14), transparent 18%),
+    radial-gradient(circle at 50% 100%, rgba(130, 255, 225, 0.08), transparent 22%),
+    linear-gradient(180deg, #03060d 0%, #071018 28%, #0b1620 100%);
   min-height: 100vh;
 }
 
@@ -30,7 +31,7 @@ body::before {
 }
 
 ::selection {
-  background: rgba(29, 211, 139, 0.28);
+  background: rgba(16, 255, 163, 0.26);
 }
 
 .app-surface {
@@ -66,7 +67,8 @@ body::before {
     transform 180ms ease,
     border-color 180ms ease,
     box-shadow 180ms ease,
-    background-color 180ms ease;
+    background-color 180ms ease,
+    filter 180ms ease;
 }
 
 .interactive-panel::after {
@@ -75,16 +77,17 @@ body::before {
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  border: 1px solid rgba(94, 234, 212, 0.08);
+  border: 1px solid rgba(39, 212, 255, 0.08);
   opacity: 0;
   transition: opacity 180ms ease;
 }
 
 .interactive-panel:hover {
   transform: translateY(-2px);
+  filter: saturate(1.04);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 0 0 1px rgba(94, 234, 212, 0.08),
+    0 0 0 1px rgba(39, 212, 255, 0.1),
     0 14px 32px rgba(0, 0, 0, 0.22);
 }
 
@@ -94,9 +97,42 @@ body::before {
 
 .mission-grid {
   background-image:
-    radial-gradient(circle at top left, rgba(29, 211, 139, 0.12), transparent 22%),
-    radial-gradient(circle at 80% 0%, rgba(78, 203, 255, 0.1), transparent 18%);
+    radial-gradient(circle at top left, rgba(16, 255, 163, 0.12), transparent 22%),
+    radial-gradient(circle at 80% 0%, rgba(39, 212, 255, 0.12), transparent 18%);
   background-size: auto, auto;
+}
+
+.brandmark-shell {
+  box-shadow:
+    0 0 0 1px rgba(16, 255, 163, 0.08),
+    0 12px 28px rgba(0, 0, 0, 0.22);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.brandmark-shell:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(39, 212, 255, 0.18),
+    0 16px 32px rgba(0, 0, 0, 0.26);
+}
+
+.brandmark-grid {
+  background-image:
+    linear-gradient(rgba(39, 212, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 255, 163, 0.05) 1px, transparent 1px);
+  background-size: 10px 10px, 10px 10px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.85), rgba(0,0,0,0.15));
+}
+
+.brandmark-scan {
+  animation: brandmark-float 5.6s ease-in-out infinite;
+}
+
+.brandmark-anchor:hover .brandmark-shell {
+  border-color: rgba(39, 212, 255, 0.22);
 }
 
 .signal-line {
@@ -157,6 +193,17 @@ body::before {
   }
 }
 
+@keyframes brandmark-float {
+  0%, 100% {
+    transform: translateY(0px);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 0.9;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -167,6 +214,12 @@ body::before {
   .signal-line,
   .status-orb::after,
   .shine-text {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .brandmark-shell,
+  .brandmark-scan {
     animation: none !important;
     transition: none !important;
   }

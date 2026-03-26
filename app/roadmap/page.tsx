@@ -39,7 +39,7 @@ export default async function RoadmapPage() {
       userName={user.name}
       actions={<SignOutButton />}
     >
-      <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.12),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
+      <Card className="mission-grid rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.12),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-300">Progreso general</p>
@@ -72,11 +72,28 @@ export default async function RoadmapPage() {
             </p>
           </div>
         </div>
+        <div className="mt-5 grid gap-3 lg:grid-cols-3">
+          <div className="rounded-[22px] border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Ruta 1</p>
+            <p className="mt-2 text-lg font-bold text-slate-50">{foundationsModules.length} módulos</p>
+            <p className="mt-2 leading-6 text-slate-400">Base cerrada y visible desde cero hasta capstone.</p>
+          </div>
+          <div className="rounded-[22px] border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Ruta 2</p>
+            <p className="mt-2 text-lg font-bold text-slate-50">{secondTrackModules.length} módulos</p>
+            <p className="mt-2 leading-6 text-slate-400">Tramo práctico para programas más útiles y más ordenados.</p>
+          </div>
+          <div className="rounded-[22px] border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Estado de cuenta</p>
+            <p className="mt-2 text-lg font-bold text-slate-50">{foundationsCompleted ? "Segundo nivel abierto" : "Primer nivel en curso"}</p>
+            <p className="mt-2 leading-6 text-slate-400">Tu mapa ya muestra con claridad en qué tramo estás entrando.</p>
+          </div>
+        </div>
       </Card>
 
       <section className="space-y-10">
         <div>
-          <div className="mb-5 rounded-[26px] border border-slate-800 bg-slate-950/70 p-5">
+          <div className="mission-grid mb-5 rounded-[26px] border border-slate-800 bg-slate-950/70 p-5">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Ruta 1</p>
             <h2 className="mt-2 text-2xl font-bold text-slate-50">Fundamentos de Python</h2>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">
@@ -102,7 +119,7 @@ export default async function RoadmapPage() {
         </div>
 
         <div>
-          <div className="mb-5 rounded-[26px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(78,203,255,0.08),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] p-5">
+          <div className="mission-grid mb-5 rounded-[26px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(78,203,255,0.08),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))] p-5">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">Ruta 2</p>
             <h2 className="mt-2 text-2xl font-bold text-slate-50">Python práctico 2</h2>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">
@@ -110,6 +127,9 @@ export default async function RoadmapPage() {
                 ? "Esta nueva etapa arranca sobre una base ya cerrada. El foco ahora pasa a programas más útiles, mejor organizados y con contacto más claro con tareas del mundo real."
                 : "Esta segunda gran etapa se desbloquea cuando cierres la primera ruta completa. Va a abrir una versión más práctica y un poco más autónoma del aprendizaje."}
             </p>
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-100">
+              Ruta de utilidad real
+            </div>
           </div>
           <div className="grid gap-5 md:grid-cols-2 2xl:grid-cols-3">
             {secondTrackModules.map((module) => {

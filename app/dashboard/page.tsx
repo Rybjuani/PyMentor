@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CalendarCheck2, Flame, Sparkles, Target, Trophy, Zap } from "lucide-react";
+import { ArrowRight, CalendarCheck2, Flame, Radar, Sparkles, Swords, Target, Trophy, Zap } from "lucide-react";
 import { getRecentActivityForUser } from "@/lib/activity";
 import { requireAppUser } from "@/lib/auth";
 import { AppShell } from "@/components/app-shell";
@@ -76,10 +76,15 @@ export default async function DashboardPage() {
       actions={<SignOutButton />}
     >
       <section className="grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
-        <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.14),transparent_30%),radial-gradient(circle_at_82%_18%,rgba(78,203,255,0.12),transparent_22%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-300">
-            Señal de progreso
-          </p>
+        <Card className="mission-grid rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.14),transparent_30%),radial-gradient(circle_at_82%_18%,rgba(78,203,255,0.12),transparent_22%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
+          <div className="flex items-center justify-between gap-4">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-300">
+              Señal de progreso
+            </p>
+            <div className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">
+              Núcleo activo
+            </div>
+          </div>
           <div className="mt-4 flex items-end justify-between gap-4">
             <div>
               <div className="text-4xl font-extrabold text-slate-50">{overall.percent}%</div>
@@ -87,11 +92,31 @@ export default async function DashboardPage() {
                 {overall.completed} de {overall.total} lecciones completadas
               </div>
             </div>
-            <div className="rounded-[24px] border border-brand-400/15 bg-brand-500/10 px-4 py-3 text-sm font-semibold text-brand-100">
+            <div className="rounded-[24px] border border-brand-400/15 bg-brand-500/10 px-4 py-3 text-sm font-semibold text-brand-100 shadow-[0_0_28px_rgba(29,211,139,0.1)]">
               {overall.completed * 40} XP
             </div>
           </div>
           <ProgressBar value={overall.percent} className="mt-5" />
+          <div className="mt-5 grid gap-3 md:grid-cols-3">
+            <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Ruta activa</p>
+              <p className="mt-2 text-lg font-bold text-slate-50">
+                {secondTrackFocus ? "Python práctico 2" : foundationsCompleted ? "Ruta 1 cerrada" : "Fundamentos de Python"}
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Checkpoint actual</p>
+              <p className="mt-2 text-lg font-bold text-slate-50">
+                {currentModule?.title ?? (foundationsCompleted ? "Ruta completada" : "Inicio")}
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Estado</p>
+              <p className="mt-2 text-lg font-bold text-slate-50">
+                {overall.completed === 0 ? "Despegue" : foundationsCompleted && secondTrackFocus ? "Nuevo nivel" : "En avance"}
+              </p>
+            </div>
+          </div>
           <div className="mt-5 grid gap-3 md:grid-cols-2">
             <div className="rounded-[22px] border border-slate-800 bg-slate-950/70 px-4 py-4">
               <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
@@ -157,10 +182,16 @@ export default async function DashboardPage() {
       </section>
 
       <section className="grid gap-5 xl:grid-cols-[1fr_0.9fr]">
-        <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(78,203,255,0.08),transparent_24%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">
-            Seguir aprendiendo
-          </p>
+        <Card className="mission-grid rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(78,203,255,0.08),transparent_24%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
+          <div className="flex items-center justify-between gap-4">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">
+              Seguir aprendiendo
+            </p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-brand-400/15 bg-brand-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-100">
+              <Radar className="h-3.5 w-3.5" />
+              Misión en curso
+            </div>
+          </div>
           <h2 className="mt-3 text-2xl font-bold text-slate-50">
             {foundationsCompleted && secondTrackFocus
               ? `Nueva etapa desbloqueada: ${secondTrackFirstModule?.title ?? "Python práctico 2"}`
@@ -197,7 +228,7 @@ export default async function DashboardPage() {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href={continueHref}
-              className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#0CB971,#2de6a4)] px-5 py-3 text-sm font-semibold text-slate-950 shadow-glow"
+              className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#0CB971,#2de6a4)] px-5 py-3 text-sm font-semibold text-slate-950 shadow-glow transition hover:-translate-y-0.5 hover:brightness-110"
             >
               {continueLabel} <ArrowRight className="h-4 w-4" />
             </Link>
@@ -238,7 +269,7 @@ export default async function DashboardPage() {
       </section>
 
       <section className="grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
-        <Card className="rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.12),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
+        <Card className="mission-grid rounded-[30px] border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.12),transparent_28%),linear-gradient(180deg,rgba(14,24,35,0.98),rgba(9,18,28,0.98))]">
           <div className="flex items-center gap-3">
             <Sparkles className="h-5 w-5 text-brand-300" />
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-300">
@@ -277,6 +308,26 @@ export default async function DashboardPage() {
                 ? "Lo importante ahora es reconocer el cierre: ya no estás empezando desde cero. Tienes una primera base terminada y visible."
                 : "PyMentor está diseñado para que el siguiente movimiento siempre sea claro, lo bastante pequeño como para empezar y satisfactorio al terminar."}
             </p>
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
+                <Swords className="h-4 w-4 text-brand-300" />
+                Sensación de avance
+              </div>
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                {foundationsCompleted ? "La primera etapa ya quedó cerrada y visible en tu cuenta." : "Cada cierre de lección mueve la ruta de forma real y visible."}
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
+                <Zap className="h-4 w-4 text-brand-300" />
+                Momento actual
+              </div>
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                {secondTrackFocus ? "Estás entrando a una fase más práctica y más útil de Python." : "Tu enfoque sigue siendo avanzar sin perder claridad ni ritmo."}
+              </p>
+            </div>
           </div>
         </Card>
 

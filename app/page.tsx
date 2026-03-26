@@ -11,6 +11,7 @@ import {
   Sparkles,
   Zap
 } from "lucide-react";
+import { BrandMark } from "@/components/brand-mark";
 import { SectionIntro } from "@/components/section-intro";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
@@ -59,13 +60,13 @@ export default function HomePage() {
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-brand-400/15 bg-brand-500/10 px-4 py-2 text-sm text-brand-200 ring-1 ring-white/5">
                 <Sparkles className="h-4 w-4" />
-                Progreso en Python para principiantes con mentoría IA integrada
+                Ruta inmersiva de Python con mentoría IA integrada
               </div>
               <h1 className="mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-                Aprende Python desde cero en un flujo de progreso enfocado que te invita a seguir avanzando.
+                Aprende Python en una ruta que se siente viva, guiada y cada vez más tuya.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-                PyMentor le da a quien empieza desde cero un entorno premium de aprendizaje: lecciones claras, práctica guiada, desbloqueos visibles, proyectos cada vez más autónomos y un mentor IA que ayuda sin invadir.
+                PyMentor convierte el aprendizaje de Python en una travesía visible: lecciones claras, práctica real, desbloqueos con intención, proyectos cada vez más capaces y un mentor IA que acompaña sin abrumar.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button href="/signup" className="w-full sm:w-auto">Empezar mi ruta de Python</Button>
@@ -76,8 +77,8 @@ export default function HomePage() {
 
               <div className="mt-10 grid max-w-3xl gap-3 sm:grid-cols-3">
                 <div className="rounded-[24px] border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
-                  <p className="text-2xl font-extrabold text-white">Solo Python</p>
-                  <p className="mt-1 text-sm text-slate-300">Un lenguaje. Una sola ruta de progreso.</p>
+                  <p className="text-2xl font-extrabold text-white">Ruta única</p>
+                  <p className="mt-1 text-sm text-slate-300">Un lenguaje. Un mapa de avance. Sin perderte.</p>
                 </div>
                 <div className="rounded-[24px] border border-white/10 bg-white/5 px-4 py-4 backdrop-blur">
                   <p className="text-2xl font-extrabold text-white">Mentor IA</p>
@@ -92,10 +93,16 @@ export default function HomePage() {
 
             <div className="cyan-grid overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.03] p-3 shadow-soft sm:p-4">
               <div className="app-surface rounded-[34px] p-4 sm:p-5">
-                <div className="rounded-[30px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.22),transparent_34%),linear-gradient(135deg,#08111a_0%,#102132_45%,#103445_100%)] p-6 text-white">
+                <div className="mission-grid rounded-[30px] border border-brand-400/15 bg-[radial-gradient(circle_at_top_left,rgba(29,211,139,0.22),transparent_34%),linear-gradient(135deg,#08111a_0%,#102132_45%,#103445_100%)] p-6 text-white">
                   <div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
                     <div>
-                      <p className="text-sm uppercase tracking-[0.22em] text-brand-100">Misión de hoy</p>
+                      <div className="flex items-center gap-3">
+                        <BrandMark className="h-10 w-10 rounded-[1rem]" compact />
+                        <div>
+                          <p className="text-sm uppercase tracking-[0.22em] text-brand-100">Misión de hoy</p>
+                          <p className="text-xs text-slate-300">Señal activa de progreso</p>
+                        </div>
+                      </div>
                       <h2 className="mt-2 text-2xl font-bold">Avanza con condicionales</h2>
                     </div>
                     <div className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/10">

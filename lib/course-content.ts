@@ -100,6 +100,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "85 min",
     xp: 280
+  },
+  {
+    slug: "practice-consolidation",
+    title: "Consolidación práctica",
+    description: "Refuerza lo que ya aprendiste combinando ideas clave en ejercicios guiados que se sienten como un cierre sólido de tu base en Python.",
+    order: 11,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "82 min",
+    xp: 290
   }
 ];
 
@@ -2129,6 +2139,221 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar el estado de cada hábito y luego una sola línea final."
     },
     exerciseSlug: "build-habit-tracker-project"
+  },
+  {
+    slug: "consolidation-read-and-fix-flow",
+    module: "Consolidación práctica",
+    moduleSlug: "practice-consolidation",
+    order: 1,
+    title: "Consolidación: leer, detectar y corregir con calma",
+    duration: "18 min",
+    difficulty: "Beginner",
+    summary: "Practica una habilidad clave: leer un programa corto, detectar un error pequeño y corregirlo sin perder de vista la idea general.",
+    warmup: "Saber programar no es solo escribir código. También es leerlo con calma cuando algo no sale como esperabas.",
+    goal: "Al final, deberías poder revisar un programa pequeño, encontrar un error simple de forma y corregirlo sin entrar en pánico.",
+    keyIdeas: [
+      {
+        title: "Los errores pequeños siguen siendo normales",
+        description: "Una clave mal escrita, una indentación corrida o un paréntesis faltante no significan que hayas retrocedido."
+      },
+      {
+        title: "Primero mira la forma general",
+        description: "Antes de cambiar todo, revisa estructura, indentación, nombres y comparaciones."
+      },
+      {
+        title: "Corregir también consolida",
+        description: "Arreglar código te obliga a conectar ideas que ya conoces."
+      }
+    ],
+    explanation: [
+      {
+        title: "Por qué esta práctica importa ahora",
+        body: "Después de varios módulos, ya no solo importa escribir desde cero. También importa entender un programa corto, detectar qué parte se torció y devolverlo a una versión clara."
+      },
+      {
+        title: "Qué tipo de fallos vas a revisar",
+        body: "Aquí aparecen errores muy reales para principiantes: una comparación mal escrita, una línea fuera de lugar o una clave de diccionario que no coincide. Son errores comunes y totalmente arreglables."
+      },
+      {
+        title: "Cómo revisar sin abrumarte",
+        body: "Empieza por leer la intención del programa. Después recorre la forma general: funciones, bucles, condiciones y líneas finales. Eso suele revelar el primer problema con bastante rapidez."
+      },
+      {
+        title: "Corregir te da más seguridad",
+        body: "Cuando arreglas un programa corto y vuelve a funcionar, no solo resuelves un bug. También refuerzas que ya entiendes bastante más de lo que parecía al principio."
+      }
+    ],
+    example:
+      "def mostrar_estado(tareas):\n    for tarea in tareas:\n        if tarea['hecha'] == 'si':\n            print(tarea['nombre'] + ': lista')\n        else:\n            print(tarea['nombre'] + ': pendiente')\n    print('Revisión completa')",
+    practicePrompt: "Lee el ejemplo y piensa qué revisarías primero si una tarea no mostrara el estado correcto. No se trata de adivinar rápido, sino de seguir una secuencia clara de revisión.",
+    practiceChecklist: [
+      "Lee la intención general del programa.",
+      "Revisa las claves del diccionario y las comparaciones.",
+      "Confirma que la línea final quede fuera del bucle."
+    ],
+    commonMistakes: [
+      "Cambiar muchas cosas de golpe y perder la pista del error original.",
+      "No revisar primero los nombres exactos de claves o variables.",
+      "Ignorar la indentación cuando el comportamiento se ve raro."
+    ],
+    bugChallenge: {
+      prompt: "Este programa debería mostrar el estado de dos tareas y cerrar con una línea final, pero una clave mal escrita y una estructura descuidada rompen la salida.",
+      brokenCode:
+        "tareas = [\n    {'nombre': 'Leer', 'hecha': 'si'},\n    {'nombre': 'Practicar Python', 'hecha': 'no'}\n]\n\ndef mostrar_estado(tareas):\n    for tarea in tareas:\n        if tarea['hecho'] == 'si':\n            print(tarea['nombre'] + ': lista')\n        else:\n            print(tarea['nombre'] + ': pendiente')\n    print('Revisión completa')\n\nmostrar_estado(tareas)",
+      expectedLearning: "Cuando datos y condiciones trabajan juntos, una sola clave mal escrita puede romper una idea que por lo demás estaba bien organizada."
+    },
+    playground: {
+      title: "Prueba a corregir el flujo",
+      guidance: "Ejecuta el ejemplo y luego cambia un detalle a la vez. La meta es practicar una revisión tranquila y ordenada.",
+      starterCode:
+        "tareas = [\n    {'nombre': 'Leer', 'hecha': 'si'},\n    {'nombre': 'Practicar Python', 'hecha': 'no'}\n]\n\ndef mostrar_estado(tareas):\n    for tarea in tareas:\n        if tarea['hecha'] == 'si':\n            print(tarea['nombre'] + ': lista')\n        else:\n            print(tarea['nombre'] + ': pendiente')\n    print('Revisión completa')\n\nmostrar_estado(tareas)",
+      emptyOutputHint: "La salida debería mostrar el estado de cada tarea y luego un cierre final."
+    },
+    exerciseSlug: "fix-consolidation-task-review"
+  },
+  {
+    slug: "consolidation-build-from-pieces",
+    module: "Consolidación práctica",
+    moduleSlug: "practice-consolidation",
+    order: 2,
+    title: "Consolidación: construir desde piezas conocidas",
+    duration: "19 min",
+    difficulty: "Beginner",
+    summary: "Arma un programa pequeño reuniendo piezas que ya conoces: función, input, lista y salida ordenada.",
+    warmup: "Cuando varias ideas ya te suenan familiares, el siguiente paso no es aprender algo nuevo. Es combinarlas con más confianza.",
+    goal: "Al final, deberías poder reunir varias herramientas básicas en un solo programa corto sin sentir que estás improvisando.",
+    keyIdeas: [
+      {
+        title: "Combinar ideas también es una habilidad",
+        description: "No basta con conocer piezas sueltas. Necesitas practicar cómo se sostienen juntas."
+      },
+      {
+        title: "Un programa claro se arma por capas",
+        description: "Primero juntas datos, luego organizas la lógica y al final revisas la salida."
+      },
+      {
+        title: "Una función ayuda a cerrar el bloque",
+        description: "Agrupar la salida dentro de una función hace que el programa sea más fácil de leer."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué vas a consolidar aquí",
+        body: "Vas a usar `input()` para obtener texto, una lista para guardar varios valores y una función para mostrar el resultado. Son herramientas conocidas, pero juntas ya forman una pieza más sólida."
+      },
+      {
+        title: "Cómo evitar sentirlo caótico",
+        body: "No intentes escribir todo de memoria de una vez. Piensa en pasos: pedir datos, guardarlos en una lista, definir una función, recorrer la lista y mostrar el cierre."
+      },
+      {
+        title: "Qué estás reforzando de fondo",
+        body: "Estás practicando organización. Esa sensación de 'sé por dónde empezar' es una parte muy importante del progreso real."
+      },
+      {
+        title: "Menos creatividad, más claridad",
+        body: "En consolidación, no hace falta inventar mucho. Hace falta repetir patrones útiles hasta que se sientan naturales."
+      }
+    ],
+    example:
+      "items = [input('Primer paso: '), input('Segundo paso: ')]\n\ndef mostrar_lista(items):\n    print('Tu plan:')\n    for item in items:\n        print('- ' + item)\n\nmostrar_lista(items)",
+    practicePrompt: "Ejecuta el ejemplo y luego cambia el título o agrega un tercer paso. Lo importante es conservar la estructura clara.",
+    practiceChecklist: [
+      "Pide datos con `input()`.",
+      "Guarda los datos en una lista.",
+      "Usa una función para mostrar la lista.",
+      "Recorre los valores con un bucle."
+    ],
+    commonMistakes: [
+      "Pedir los datos pero no incluirlos en la lista final.",
+      "Definir la función y olvidar llamarla.",
+      "Recorrer el nombre equivocado de la lista dentro del bucle."
+    ],
+    bugChallenge: {
+      prompt: "Este programa debería mostrar una pequeña lista de pasos, pero una variable no coincide y rompe la función.",
+      brokenCode:
+        "items = ['Leer', 'Practicar']\n\ndef mostrar_lista(lista):\n    for item in items:\n        print('- ' + paso)\n\nmostrar_lista(items)",
+      expectedLearning: "Cuando combinas varias piezas, los errores de nombres suelen aparecer en los puntos donde datos y funciones se conectan."
+    },
+    playground: {
+      title: "Combina piezas conocidas",
+      guidance: "Ejecuta el programa, responde las preguntas y luego ajusta el título o los pasos. Busca sentir que la estructura ya te resulta familiar.",
+      starterCode:
+        "items = [input('Primer paso: '), input('Segundo paso: ')]\n\ndef mostrar_lista(items):\n    print('Tu plan:')\n    for item in items:\n        print('- ' + item)\n\nmostrar_lista(items)",
+      emptyOutputHint: "Después de responder, la salida debería mostrar un pequeño plan con cada paso en su propia línea."
+    },
+    exerciseSlug: "build-plan-from-pieces"
+  },
+  {
+    slug: "consolidation-combine-data-and-decisions",
+    module: "Consolidación práctica",
+    moduleSlug: "practice-consolidation",
+    order: 3,
+    title: "Consolidación: combinar datos, decisiones y cierre",
+    duration: "20 min",
+    difficulty: "Beginner",
+    summary: "Construye un resumen corto que use listas, diccionarios, condiciones y una salida final organizada.",
+    warmup: "Al final de una base sólida, conviene practicar programas que no introducen ideas nuevas, pero sí te exigen coordinar varias al mismo tiempo.",
+    goal: "Al final, deberías poder recorrer datos simples, tomar decisiones y producir una salida clara de principio a fin.",
+    keyIdeas: [
+      {
+        title: "Los datos necesitan una estructura clara",
+        description: "Una lista de diccionarios te deja trabajar con varios elementos sin perder contexto."
+      },
+      {
+        title: "Las decisiones deben responder a una regla visible",
+        description: "La condición debería ser fácil de leer para que la salida tenga sentido."
+      },
+      {
+        title: "El cierre del programa también importa",
+        description: "Una línea final bien colocada hace que el resultado se sienta más completo."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué vas a practicar",
+        body: "Este cierre de consolidación toma varios hábitos o tareas, revisa su estado y organiza la salida. No hay conceptos nuevos, pero sí más coordinación entre piezas conocidas."
+      },
+      {
+        title: "Cómo leer el programa",
+        body: "Primero mira los datos, luego el bucle, después la condición y por último el cierre. Leerlo en ese orden vuelve el flujo mucho más claro."
+      },
+      {
+        title: "Qué consolida de verdad",
+        body: "Consolida la capacidad de pasar de datos a decisiones y de decisiones a una salida útil. Esa conexión es una base muy importante para proyectos más abiertos."
+      },
+      {
+        title: "Qué se siente cuando sale bien",
+        body: "Cuando un programa corto con varias piezas imprime exactamente el resumen que esperabas, aparece una sensación real de control. Esa es la meta de este bloque."
+      }
+    ],
+    example:
+      "registros = [\n    {'nombre': 'Lectura', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nfor registro in registros:\n    if registro['estado'] == 'hecho':\n        print(registro['nombre'] + ': listo')\n    else:\n        print(registro['nombre'] + ': por hacer')\n\nprint('Base completada')",
+    practicePrompt: "Prueba cambiar uno de los estados o un nombre. La estructura debería seguir funcionando aunque cambien los datos.",
+    practiceChecklist: [
+      "Crea una lista con diccionarios.",
+      "Usa un bucle para recorrerla.",
+      "Compara una clave de estado.",
+      "Imprime una línea final fuera del bucle."
+    ],
+    commonMistakes: [
+      "Escribir mal la clave del estado dentro del `if`.",
+      "Dejar la línea final dentro del bucle.",
+      "Confundir el nombre del diccionario actual con el nombre de la lista completa."
+    ],
+    bugChallenge: {
+      prompt: "Este programa debería mostrar un resumen y cerrar una sola vez, pero una comparación y una indentación alteran el resultado.",
+      brokenCode:
+        "registros = [\n    {'nombre': 'Lectura', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nfor registro in registros:\n    if registro['estdo'] == 'hecho':\n        print(registro['nombre'] + ': listo')\n    else:\n        print(registro['nombre'] + ': por hacer')\n    print('Base completada')",
+      expectedLearning: "En programas que combinan varias piezas, un error de clave o de indentación cambia toda la lectura de la salida."
+    },
+    playground: {
+      title: "Cierra la consolidación con un resumen",
+      guidance: "Ejecuta el programa y luego cambia los estados para comprobar cómo responde. La meta es sentir que ya puedes sostener un flujo completo con varias ideas juntas.",
+      starterCode:
+        "registros = [\n    {'nombre': 'Lectura', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nfor registro in registros:\n    if registro['estado'] == 'hecho':\n        print(registro['nombre'] + ': listo')\n    else:\n        print(registro['nombre'] + ': por hacer')\n\nprint('Base completada')",
+      emptyOutputHint: "La salida debería mostrar un estado por registro y luego un cierre final una sola vez."
+    },
+    exerciseSlug: "build-foundation-summary"
   }
 ];
 
@@ -4186,6 +4411,258 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["creates-habit-list", "loops-habits", "checks-status", "prints-complete", "prints-pending", "prints-final-line"]
+    }
+  },
+  {
+    slug: "fix-consolidation-task-review",
+    title: "Corrige una revisión de tareas",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "practice-consolidation",
+    lessonSlug: "consolidation-read-and-fix-flow",
+    order: 1,
+    duration: "10 min",
+    summary: "Corrige un programa corto que revisa tareas para que vuelva a mostrar el estado correcto de cada una.",
+    prompt:
+      "Escribe un programa que cree la lista `tareas` con dos diccionarios, defina `mostrar_estado(tareas)`, use `if tarea['hecha'] == 'si'` para imprimir `lista` o `pendiente`, y termine con `Revisión completa` fuera del bucle.",
+    responseLabel: "Tu corrección del programa",
+    responsePlaceholder:
+      "tareas = [\n    {'nombre': 'Leer', 'hecha': 'si'},\n    {'nombre': 'Practicar Python', 'hecha': 'no'}\n]\n\ndef mostrar_estado(tareas):\n    for tarea in tareas:\n        if tarea['hecha'] == 'si':\n            print(tarea['nombre'] + ': lista')\n        else:\n            print(tarea['nombre'] + ': pendiente')\n    print('Revisión completa')\n\nmostrar_estado(tareas)",
+    instructions: [
+      "Crea la lista `tareas` con dos diccionarios.",
+      "Usa la clave `hecha` dentro del `if`.",
+      "Imprime el cierre final fuera del bucle.",
+      "Llama a la función al final."
+    ],
+    hints: [
+      "La comparación correcta es `tarea['hecha'] == 'si'`.",
+      "La línea `print('Revisión completa')` debe ir después del bucle, no dentro.",
+      "La función debe ejecutarse con `mostrar_estado(tareas)`."
+    ],
+    starterCode:
+      "tareas = [\n    {'nombre': 'Leer', 'hecha': 'si'},\n    {'nombre': 'Practicar Python', 'hecha': 'no'}\n]\n\ndef mostrar_estado(tareas):\n    for tarea in tareas:\n        if tarea['hecha'] == 'si':\n            print(tarea['nombre'] + ': lista')\n        else:\n            print(tarea['nombre'] + ': pendiente')\n    print('Revisión completa')\n\nmostrar_estado(tareas)",
+    successCriteria: [
+      "Usa correctamente la clave `hecha`.",
+      "Muestra el estado de ambas tareas.",
+      "Imprime un único cierre final."
+    ],
+    playground: {
+      title: "Ejecuta la revisión corregida",
+      guidance: "Corre el programa y verifica que cada tarea tenga su estado y que el cierre aparezca una sola vez al final.",
+      starterCode:
+        "tareas = [\n    {'nombre': 'Leer', 'hecha': 'si'},\n    {'nombre': 'Practicar Python', 'hecha': 'no'}\n]\n\ndef mostrar_estado(tareas):\n    for tarea in tareas:\n        if tarea['hecha'] == 'si':\n            print(tarea['nombre'] + ': lista')\n        else:\n            print(tarea['nombre'] + ': pendiente')\n    print('Revisión completa')\n\nmostrar_estado(tareas)",
+      emptyOutputHint: "La salida correcta debería mostrar dos estados y una sola línea final."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Leer: lista\nPracticar Python: pendiente\nRevisión completa"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 220,
+      passingScore: 6,
+      requiredPatterns: [
+        {
+          id: "creates-task-list",
+          label: "Crea la lista `tareas`",
+          pattern: "tareas\\s*=\\s*\\[[\\s\\S]*['\"]nombre['\"]\\s*:\\s*['\"]Leer['\"][\\s\\S]*['\"]hecha['\"]\\s*:\\s*['\"]si['\"][\\s\\S]*['\"]nombre['\"]\\s*:\\s*['\"]Practicar Python['\"][\\s\\S]*['\"]hecha['\"]\\s*:\\s*['\"]no['\"][\\s\\S]*\\]",
+          feedbackWhenMissing: "Crea la lista `tareas` con los dos diccionarios pedidos."
+        },
+        {
+          id: "defines-review-function",
+          label: "Define `mostrar_estado(tareas)`",
+          pattern: "def\\s+mostrar_estado\\(tareas\\)\\s*:",
+          feedbackWhenMissing: "Define la función `mostrar_estado(tareas)`."
+        },
+        {
+          id: "loops-tasks",
+          label: "Recorre las tareas con un bucle",
+          pattern: "for\\s+tarea\\s+in\\s+tareas\\s*:",
+          feedbackWhenMissing: "Usa `for tarea in tareas:` para recorrer la lista."
+        },
+        {
+          id: "checks-hecha",
+          label: "Compara la clave `hecha`",
+          pattern: "if\\s+tarea\\[['\"]hecha['\"]\\]\\s*==\\s*['\"]si['\"]\\s*:",
+          feedbackWhenMissing: "Compara `tarea['hecha']` con `si`."
+        },
+        {
+          id: "prints-final-review",
+          label: "Imprime `Revisión completa`",
+          pattern: "print\\(\\s*['\"]Revisión completa['\"]\\s*\\)",
+          feedbackWhenMissing: "Agrega una línea final con `Revisión completa`."
+        },
+        {
+          id: "calls-review-function",
+          label: "Llama a la función al final",
+          pattern: "mostrar_estado\\(tareas\\)",
+          feedbackWhenMissing: "No olvides llamar a `mostrar_estado(tareas)`."
+        }
+      ],
+      orderedPatternIds: ["creates-task-list", "defines-review-function", "loops-tasks", "checks-hecha", "prints-final-review", "calls-review-function"]
+    }
+  },
+  {
+    slug: "build-plan-from-pieces",
+    title: "Construye un plan desde piezas conocidas",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "practice-consolidation",
+    lessonSlug: "consolidation-build-from-pieces",
+    order: 2,
+    duration: "10 min",
+    summary: "Combina `input()`, una lista, una función y un bucle para mostrar un plan corto de dos pasos.",
+    prompt:
+      "Escribe un programa que cree `items` con dos valores obtenidos por `input()`, defina `mostrar_lista(items)`, imprima `Tu plan:` y luego muestre cada elemento precedido por `- `.",
+    responseLabel: "Tu programa armado desde piezas",
+    responsePlaceholder:
+      "items = [input('Primer paso: '), input('Segundo paso: ')]\n\ndef mostrar_lista(items):\n    print('Tu plan:')\n    for item in items:\n        print('- ' + item)\n\nmostrar_lista(items)",
+    instructions: [
+      "Usa dos llamadas a `input()` dentro de la lista.",
+      "Define una función para mostrar los pasos.",
+      "Recorre la lista con un bucle.",
+      "Llama a la función al final."
+    ],
+    hints: [
+      "La lista puede empezar como `items = [input(...), input(...)]`.",
+      "Dentro del bucle, imprime `- ` más el valor actual.",
+      "La función debe ejecutarse después de ser definida."
+    ],
+    starterCode:
+      "items = [input('Primer paso: '), input('Segundo paso: ')]\n\ndef mostrar_lista(items):\n    print('Tu plan:')\n    for item in items:\n        print('- ' + item)\n\nmostrar_lista(items)",
+    successCriteria: [
+      "Pide dos valores con `input()`.",
+      "Los guarda en una lista.",
+      "Los muestra desde una función con un bucle."
+    ],
+    evaluator: {
+      type: "structure_check",
+      minLength: 150,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "creates-input-list",
+          label: "Crea `items` con dos `input()`",
+          pattern: "items\\s*=\\s*\\[\\s*input\\([^\\)]*\\)\\s*,\\s*input\\([^\\)]*\\)\\s*\\]",
+          feedbackWhenMissing: "Crea la lista `items` usando dos llamadas a `input()`."
+        },
+        {
+          id: "defines-list-function",
+          label: "Define `mostrar_lista(items)`",
+          pattern: "def\\s+mostrar_lista\\(items\\)\\s*:",
+          feedbackWhenMissing: "Define la función `mostrar_lista(items)`."
+        },
+        {
+          id: "prints-plan-title",
+          label: "Imprime `Tu plan:`",
+          pattern: "print\\(\\s*['\"]Tu plan:['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro de la función, imprime el título `Tu plan:`."
+        },
+        {
+          id: "loops-items",
+          label: "Recorre `items` con un bucle",
+          pattern: "for\\s+item\\s+in\\s+items\\s*:",
+          feedbackWhenMissing: "Usa `for item in items:` para recorrer los pasos."
+        },
+        {
+          id: "prints-bullets",
+          label: "Imprime cada paso con `- `",
+          pattern: "print\\(\\s*['\"]- ['\"]\\s*\\+\\s*item\\s*\\)",
+          feedbackWhenMissing: "Imprime cada paso precedido por `- `."
+        }
+      ],
+      orderedPatternIds: ["creates-input-list", "defines-list-function", "prints-plan-title", "loops-items", "prints-bullets"]
+    }
+  },
+  {
+    slug: "build-foundation-summary",
+    title: "Construye un resumen de base completada",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "practice-consolidation",
+    lessonSlug: "consolidation-combine-data-and-decisions",
+    order: 3,
+    duration: "11 min",
+    summary: "Recorre registros simples, decide qué mensaje mostrar y cierra con una línea que marque el final de la base.",
+    prompt:
+      "Escribe un programa que cree `registros` con dos diccionarios (`Lectura/hecho` y `Python/pendiente`), recorra la lista, imprima `: listo` o `: por hacer` según el estado, y termine con `Base completada`.",
+    responseLabel: "Tu resumen final",
+    responsePlaceholder:
+      "registros = [\n    {'nombre': 'Lectura', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nfor registro in registros:\n    if registro['estado'] == 'hecho':\n        print(registro['nombre'] + ': listo')\n    else:\n        print(registro['nombre'] + ': por hacer')\n\nprint('Base completada')",
+    instructions: [
+      "Crea la lista `registros` con dos diccionarios.",
+      "Usa un bucle para recorrerla.",
+      "Compara la clave `estado`.",
+      "Imprime la línea final fuera del bucle."
+    ],
+    hints: [
+      "Cada registro tiene `nombre` y `estado`.",
+      "La comparación principal es `registro['estado'] == 'hecho'`.",
+      "La línea `Base completada` debe aparecer una sola vez al final."
+    ],
+    starterCode:
+      "registros = [\n    {'nombre': 'Lectura', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nfor registro in registros:\n    if registro['estado'] == 'hecho':\n        print(registro['nombre'] + ': listo')\n    else:\n        print(registro['nombre'] + ': por hacer')\n\nprint('Base completada')",
+    successCriteria: [
+      "Crea los registros pedidos.",
+      "Muestra el estado correcto de cada uno.",
+      "Cierra con `Base completada`."
+    ],
+    playground: {
+      title: "Ejecuta el resumen final",
+      guidance: "Corre el programa y revisa la salida de principio a fin. Luego cambia un estado para ver cómo la condición cambia solo la parte necesaria.",
+      starterCode:
+        "registros = [\n    {'nombre': 'Lectura', 'estado': 'hecho'},\n    {'nombre': 'Python', 'estado': 'pendiente'}\n]\n\nfor registro in registros:\n    if registro['estado'] == 'hecho':\n        print(registro['nombre'] + ': listo')\n    else:\n        print(registro['nombre'] + ': por hacer')\n\nprint('Base completada')",
+      emptyOutputHint: "La salida debería mostrar un resumen por registro y luego la línea `Base completada`."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["Lectura: listo\nPython: por hacer\nBase completada"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 210,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "creates-record-list",
+          label: "Crea la lista `registros`",
+          pattern: "registros\\s*=\\s*\\[[\\s\\S]*['\"]nombre['\"]\\s*:\\s*['\"]Lectura['\"][\\s\\S]*['\"]estado['\"]\\s*:\\s*['\"]hecho['\"][\\s\\S]*['\"]nombre['\"]\\s*:\\s*['\"]Python['\"][\\s\\S]*['\"]estado['\"]\\s*:\\s*['\"]pendiente['\"][\\s\\S]*\\]",
+          feedbackWhenMissing: "Crea la lista `registros` con los dos diccionarios pedidos."
+        },
+        {
+          id: "loops-records",
+          label: "Recorre los registros",
+          pattern: "for\\s+registro\\s+in\\s+registros\\s*:",
+          feedbackWhenMissing: "Usa `for registro in registros:` para recorrer la lista."
+        },
+        {
+          id: "checks-record-status",
+          label: "Compara `registro['estado']`",
+          pattern: "if\\s+registro\\[['\"]estado['\"]\\]\\s*==\\s*['\"]hecho['\"]\\s*:",
+          feedbackWhenMissing: "Compara la clave `estado` con `hecho`."
+        },
+        {
+          id: "prints-ready-line",
+          label: "Imprime `: listo`",
+          pattern: "print\\(\\s*registro\\[['\"]nombre['\"]\\]\\s*\\+\\s*['\"]: listo['\"]\\s*\\)",
+          feedbackWhenMissing: "Cuando el estado sea `hecho`, imprime `nombre + ': listo'`."
+        },
+        {
+          id: "prints-pending-line",
+          label: "Imprime `: por hacer`",
+          pattern: "print\\(\\s*registro\\[['\"]nombre['\"]\\]\\s*\\+\\s*['\"]: por hacer['\"]\\s*\\)",
+          feedbackWhenMissing: "En el otro caso, imprime `nombre + ': por hacer'`."
+        }
+      ],
+      orderedPatternIds: ["creates-record-list", "loops-records", "checks-record-status", "prints-ready-line", "prints-pending-line"]
     }
   }
 ];

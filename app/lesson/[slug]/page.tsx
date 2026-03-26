@@ -42,6 +42,7 @@ export default async function LessonPage({
   const nextLesson = getNextLesson(lesson.slug);
   const exercise = getExerciseByLessonSlug(lesson.slug);
   const isFoundationsCapstone = lesson.moduleSlug === "foundations-capstone";
+  const isRoute3Capstone = lesson.moduleSlug === "route3-capstone";
   const lessonSections = [
     { href: "#objetivo", label: "Objetivo" },
     { href: "#ideas-clave", label: "Ideas clave" },
@@ -275,7 +276,9 @@ export default async function LessonPage({
               </span>
             </div>
             <p className="mt-3 text-sm leading-7 text-slate-400">
-              {isFoundationsCapstone
+              {isRoute3Capstone
+                ? "Completar esta lección deja visible que cerraste Ruta 3 y también el aprendizaje base actual de PyMentor, tal como existe hoy en el producto."
+                : isFoundationsCapstone
                 ? "Completar esta lección deja visible que cerraste la primera gran etapa de PyMentor y abre, con claridad, la siguiente ruta del producto."
                 : "Marcar una lección como completada actualiza tu ruta, tu panel y el flujo para seguir aprendiendo en esta cuenta."}
             </p>
@@ -319,7 +322,7 @@ export default async function LessonPage({
                 >
                   {isFoundationsCapstone ? "Abrir la nueva etapa" : "Siguiente lección"}
                 </Link>
-              ) : isFoundationsCapstone ? (
+              ) : isFoundationsCapstone || isRoute3Capstone ? (
                 <Link
                   href="/dashboard"
                   className="inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-slate-100 ring-1 ring-slate-700"
@@ -342,6 +345,8 @@ export default async function LessonPage({
               <Link href={`/lesson/${nextLesson.slug}`} className="font-semibold text-brand-300">
                 {isFoundationsCapstone ? `Nueva etapa: ${nextLesson.title}` : `Siguiente: ${nextLesson.title}`}
               </Link>
+            ) : isRoute3Capstone ? (
+              <span>Fin del aprendizaje base actual</span>
             ) : isFoundationsCapstone ? (
               <span>Fin de la primera gran ruta de Python</span>
             ) : (

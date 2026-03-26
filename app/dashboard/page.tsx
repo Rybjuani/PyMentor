@@ -16,6 +16,7 @@ import {
   getOverallLessonProgress,
   getSecondTrackModules,
   getThirdTrackModules,
+  hasCompletedCurrentBaseJourney,
   hasCompletedFoundationsTrack,
   hasCompletedSecondTrack,
   isModuleInSecondTrack,
@@ -43,6 +44,7 @@ export default async function DashboardPage() {
   const earnedAchievements = achievements.filter((achievement) => achievement.state === "earned").length;
   const foundationsCompleted = hasCompletedFoundationsTrack(progress);
   const secondTrackCompleted = hasCompletedSecondTrack(progress);
+  const baseJourneyCompleted = hasCompletedCurrentBaseJourney(progress);
   const completedModules = modules.filter(
     (module) => getModuleProgress(progress, module.slug).status === "completed"
   ).length;
@@ -53,14 +55,18 @@ export default async function DashboardPage() {
   const thirdTrackFirstModule = thirdTrackModules[0] ?? null;
 
   const continueHref =
-    currentFocus?.type === "exercise"
+    baseJourneyCompleted
+      ? "/roadmap"
+      : currentFocus?.type === "exercise"
       ? `/exercise/${currentFocus.exercise.slug}`
       : currentFocus?.lesson
         ? `/lesson/${currentFocus.lesson.slug}`
         : "/roadmap";
 
   const continueLabel =
-    secondTrackCompleted && thirdTrackFocus
+    baseJourneyCompleted
+      ? "Ver recorrido completo"
+      : secondTrackCompleted && thirdTrackFocus
       ? "Entrar a Ruta 3"
       : foundationsCompleted && secondTrackFocus
       ? "Entrar a la nueva etapa"
@@ -74,7 +80,9 @@ export default async function DashboardPage() {
     <AppShell
       title={`Qué bueno verte, ${user.name ?? "estudiante"}`}
       description={
-        secondTrackCompleted && thirdTrackFocus
+        baseJourneyCompleted
+          ? "Ya cerraste Fundamentos de Python, Python práctico 2 y Herramientas estructuradas. Tu cuenta ahora muestra el aprendizaje base actual de PyMentor como un recorrido completo, sólido y oficialmente cerrado."
+        : secondTrackCompleted && thirdTrackFocus
           ? "Ya cerraste Fundamentos de Python y Python práctico 2. Ahora tu cuenta también abre una tercera etapa enfocada en herramientas más estructuradas y programas repartidos con más intención."
         : foundationsCompleted && secondTrackFocus
           ? "Terminaste la primera gran etapa y ya tienes desbloqueada la siguiente: una ruta más práctica, todavía guiada y pensada para programas un poco más útiles."
@@ -113,7 +121,9 @@ export default async function DashboardPage() {
             <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Ruta activa</p>
               <p className="mt-2 text-lg font-bold text-slate-50">
-                {thirdTrackFocus
+                {baseJourneyCompleted
+                  ? "Base actual completada"
+                  : thirdTrackFocus
                   ? "Ruta 3 · Herramientas estructuradas"
                   : secondTrackCompleted
                     ? "Dos rutas cerradas"
@@ -127,7 +137,9 @@ export default async function DashboardPage() {
             <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Checkpoint actual</p>
               <p className="mt-2 text-lg font-bold text-slate-50">
-                {thirdTrackFocus
+                {baseJourneyCompleted
+                  ? "Aprendizaje base cerrado"
+                  : thirdTrackFocus
                   ? currentModule?.title ?? (thirdTrackFirstModule?.title ?? "Ruta 3 abierta")
                   : secondTrackCompleted
                     ? "Preparado para la próxima etapa"
@@ -137,7 +149,9 @@ export default async function DashboardPage() {
             <div className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Estado</p>
               <p className="mt-2 text-lg font-bold text-slate-50">
-                {thirdTrackFocus
+                {baseJourneyCompleted
+                  ? "Ruta 3 cerrada"
+                  : thirdTrackFocus
                   ? "Ruta 3 abierta"
                   : secondTrackCompleted
                     ? "Ruta 2 cerrada"
@@ -201,7 +215,9 @@ export default async function DashboardPage() {
                 <p className="text-sm text-slate-400">Logros desbloqueados</p>
                 <p className="text-2xl font-extrabold text-slate-50">{earnedAchievements}</p>
                 <p className="mt-1 text-sm text-slate-400">
-                  {thirdTrackFocus
+                  {baseJourneyCompleted
+                    ? "Tu cuenta ya refleja tres cierres grandes y el final oficial del aprendizaje base actual"
+                    : thirdTrackFocus
                     ? "Tu cuenta ya refleja dos cierres grandes y la apertura de una nueva etapa más estructurada"
                     : secondTrackCompleted
                     ? "Tu cuenta ya refleja dos cierres importantes dentro del recorrido"
@@ -229,7 +245,9 @@ export default async function DashboardPage() {
             </div>
           </div>
           <h2 className="mt-3 text-2xl font-bold text-slate-50">
-            {thirdTrackFocus
+            {baseJourneyCompleted
+              ? "Completaste el aprendizaje base actual"
+              : thirdTrackFocus
               ? `Nueva etapa desbloqueada: ${thirdTrackFirstModule?.title ?? "Ruta 3"}`
               : secondTrackCompleted
               ? "Cerraste Python práctico 2"
@@ -242,7 +260,9 @@ export default async function DashboardPage() {
               : currentFocus?.lesson.title ?? "Tu ruta ya está lista"}
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-400">
-            {thirdTrackFocus
+            {baseJourneyCompleted
+              ? "Tu cuenta ya muestra las tres rutas actuales como un recorrido completo: fundamentos, práctica útil y herramientas estructuradas. Este es un buen momento para repasar capstones, volver a tus utilidades y reconocer que la base actual quedó cerrada de verdad."
+            : thirdTrackFocus
               ? "La nueva etapa cambia el tipo de reto: ya no solo buscas utilidades prácticas, sino herramientas un poco más estructuradas, con partes mejor repartidas y un archivo principal más claro."
               : secondTrackCompleted
                 ? "Ya completaste las dos primeras etapas de PyMentor. Ese cierre sigue valiendo, pero ahora también aparece una tercera fase que toma esa base y la lleva hacia programas más estructurados."
@@ -257,7 +277,11 @@ export default async function DashboardPage() {
                 : currentFocus?.lesson.summary ??
                   "Abre la ruta para elegir tu próxima lección."}
           </p>
-          {currentModule && currentModuleProgress && !thirdTrackFocus && !secondTrackCompleted ? (
+          {baseJourneyCompleted ? (
+            <div className="mt-5 rounded-[24px] border border-cyan-400/15 bg-cyan-500/10 p-4 text-sm text-cyan-100">
+              Recorrido actual: 3 rutas completas, {completedModules} de {modules.length} módulos cerrados y una línea base de producto ya oficialmente terminada.
+            </div>
+          ) : currentModule && currentModuleProgress && !thirdTrackFocus && !secondTrackCompleted ? (
             <div className="mt-5 rounded-[24px] border border-brand-400/15 bg-brand-500/10 p-4 text-sm text-brand-100">
               Módulo actual: {currentModule.title} · {currentModuleProgress.completedLessons} de{" "}
               {currentModuleProgress.totalLessons} lecciones completas
@@ -330,7 +354,9 @@ export default async function DashboardPage() {
             </p>
           </div>
           <h2 className="mt-4 text-2xl font-bold text-slate-50">
-            {thirdTrackFocus
+            {baseJourneyCompleted
+              ? "Tres rutas cerradas, base actual completada"
+              : thirdTrackFocus
               ? "Ruta 3 abierta: ordena mejor tus herramientas"
               : secondTrackCompleted
               ? "Dos etapas cerradas, próximo salto a la vista"
@@ -345,7 +371,9 @@ export default async function DashboardPage() {
                 : "Completa la siguiente lección de tu ruta"}
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-400">
-            {thirdTrackFocus
+            {baseJourneyCompleted
+              ? "Este ya no es un punto de apertura, sino un cierre visible. Puedes repasar con intención, volver a tus capstones y usar esta base como plataforma para la próxima gran etapa cuando exista."
+            : thirdTrackFocus
               ? "Ahora tu reto ya no es solo construir utilidades útiles, sino repartir mejor sus partes. Ruta 3 empieza con una idea simple pero potente: un archivo principal más claro y apoyos fuera del centro del recorrido."
               : secondTrackCompleted
               ? "La siguiente etapa ya existe y toma lo mejor de Ruta 2 para llevarlo hacia programas más estructurados. Este punto sigue siendo un cierre importante, pero ya también es una apertura visible."
@@ -363,7 +391,9 @@ export default async function DashboardPage() {
               Energía para un paso más
             </div>
               <p className="mt-2 leading-6">
-              {thirdTrackFocus
+              {baseJourneyCompleted
+                ? "Cerrar la base actual no te devuelve al punto de partida: te deja con tres rutas completas, varios capstones reales y suficiente criterio para leer, repartir y construir herramientas pequeñas con mucha más intención."
+              : thirdTrackFocus
                 ? "La nueva etapa no empieza desde cero: se apoya en dos rutas ya cerradas. Eso te deja en una posición distinta, con más criterio para organizar programas que empiezan a parecer herramientas reales."
                 : secondTrackCompleted
                 ? "PyMentor ya te deja en una posición distinta a la del comienzo: ahora puedes repasar con intención, volver a tus capstones y prepararte para una etapa siguiente con más criterio."
@@ -381,7 +411,9 @@ export default async function DashboardPage() {
                 Sensación de avance
               </div>
               <p className="mt-2 text-sm leading-6 text-slate-400">
-                {thirdTrackFocus
+                {baseJourneyCompleted
+                  ? "Ya cerraste tres etapas completas y el producto ahora te reconoce una base actual terminada, no solo una colección de módulos sueltos."
+                  : thirdTrackFocus
                   ? "Ya cerraste dos etapas completas y ahora avanzas desde un punto nuevo: herramientas más claras, más repartidas y más cercanas a programas reales."
                   : secondTrackCompleted
                     ? "Ya cerraste dos etapas completas y eso cambia el punto desde donde sigues creciendo."
@@ -396,7 +428,9 @@ export default async function DashboardPage() {
                 Momento actual
               </div>
               <p className="mt-2 text-sm leading-6 text-slate-400">
-                {thirdTrackFocus
+                {baseJourneyCompleted
+                  ? "Estás en el cierre oficial del aprendizaje base actual. El siguiente gran movimiento ya no es otro módulo: será una nueva etapa cuando el producto la abra."
+                  : thirdTrackFocus
                   ? "Estás entrando a una fase más estructurada: menos scripts sueltos y más programas repartidos con intención."
                   : secondTrackCompleted
                     ? "Tu siguiente fase ya empieza a mostrarse, y tu posición es la de alguien que terminó dos recorridos completos."

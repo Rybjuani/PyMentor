@@ -44,6 +44,8 @@ export function RoadmapModuleCard({
           ? "Ruta 3 · Coordinación"
         : module.slug === "route3-practical-projects"
           ? "Ruta 3 · Proyectos"
+        : module.slug === "route3-capstone"
+          ? "Ruta 3 · Cierre"
         : module.slug === "route2-practical-projects"
           ? "Ruta 2 · Proyectos"
           : module.slug === "route2-capstone"
@@ -122,6 +124,8 @@ export function RoadmapModuleCard({
                   ? "Abrir módulo coordinado"
                 : module.slug === "route3-practical-projects"
                   ? "Abrir proyectos"
+                : module.slug === "route3-capstone"
+                  ? "Abrir cierre de Ruta 3"
                 : progress.status === "completed"
                   ? "Revisar módulo"
                   : "Abrir módulo"}

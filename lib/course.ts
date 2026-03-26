@@ -5,6 +5,7 @@ export const FOUNDATIONS_CAPSTONE_MODULE_SLUG = "foundations-capstone";
 export const SECOND_TRACK_START_MODULE_SLUG = "basic-files";
 export const SECOND_TRACK_CAPSTONE_MODULE_SLUG = "route2-capstone";
 export const THIRD_TRACK_START_MODULE_SLUG = "simple-multi-file-programs";
+export const THIRD_TRACK_CAPSTONE_MODULE_SLUG = "route3-capstone";
 
 export function getAllModules() {
   return [...courseModules].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
@@ -171,6 +172,14 @@ export function hasCompletedFoundationsTrack(progress: CourseProgress) {
 
 export function hasCompletedSecondTrack(progress: CourseProgress) {
   return getModuleProgress(progress, SECOND_TRACK_CAPSTONE_MODULE_SLUG).status === "completed";
+}
+
+export function hasCompletedThirdTrack(progress: CourseProgress) {
+  return getModuleProgress(progress, THIRD_TRACK_CAPSTONE_MODULE_SLUG).status === "completed";
+}
+
+export function hasCompletedCurrentBaseJourney(progress: CourseProgress) {
+  return hasCompletedFoundationsTrack(progress) && hasCompletedSecondTrack(progress) && hasCompletedThirdTrack(progress);
 }
 
 export function getCurrentLearningFocus(progress: CourseProgress) {

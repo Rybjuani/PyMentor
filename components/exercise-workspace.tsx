@@ -96,6 +96,7 @@ export function ExerciseWorkspace({
   const hasCheckedAnswer = evaluation !== null;
   const canComplete = status === "completed" || (hasCheckedAnswer && evaluation.canComplete);
   const isFoundationsCapstone = exercise.moduleSlug === "foundations-capstone";
+  const isRoute3Capstone = exercise.moduleSlug === "route3-capstone";
 
   async function checkAnswer() {
     setCheckingAnswer(true);
@@ -374,13 +375,19 @@ export function ExerciseWorkspace({
           </div>
           <p className="mt-2 leading-6">
             {status === "completed"
-              ? isFoundationsCapstone
+              ? isRoute3Capstone
+                ? "Este cierre ya quedó marcado. Desde aquí puedes volver al panel y ver la base actual de PyMentor como un recorrido completo en tu cuenta."
+                : isFoundationsCapstone
                 ? "Este paso final ya quedó marcado. Desde aquí puedes volver al panel o entrar a la nueva etapa con la base ya cerrada."
                 : "Este ejercicio ya está marcado como completado. Puedes volver a la lección o seguir cuando quieras."
               : canComplete
-                ? isFoundationsCapstone
+                ? isRoute3Capstone
+                  ? "Tu respuesta ya sostiene este cierre de Ruta 3. Márcala como completada para cerrar la ruta y dejar visible el final del aprendizaje base actual."
+                  : isFoundationsCapstone
                   ? "Tu respuesta ya sostiene este cierre de fundamentos. Márcala como completada para cerrar la etapa y abrir la siguiente con claridad."
                   : "Tu respuesta ya se ve suficientemente sólida para este paso. Márcala como completada para actualizar tu ruta."
+                : isRoute3Capstone
+                  ? "Usa las comprobaciones que faltan como guía. Este capstone busca un cierre claro, estructurado y útil para toda la base actual."
                 : isFoundationsCapstone
                   ? "Usa las comprobaciones que faltan como guía. Este capstone busca que cierres la etapa con una solución clara, no perfecta."
               : "Usa las comprobaciones que faltan como guía y luego vuelve a revisar la respuesta."}
@@ -409,7 +416,7 @@ export function ExerciseWorkspace({
             <a href={nextLessonHref} className="mt-4 inline-flex text-sm font-semibold text-brand-300">
               Continuar a la siguiente lección
             </a>
-          ) : isFoundationsCapstone ? (
+          ) : isFoundationsCapstone || isRoute3Capstone ? (
             <a href="/dashboard" className="mt-4 inline-flex text-sm font-semibold text-brand-300">
               Volver al panel de cierre
             </a>

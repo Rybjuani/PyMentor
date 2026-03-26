@@ -260,6 +260,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "118 min",
     xp: 490
+  },
+  {
+    slug: "route3-capstone",
+    title: "Cierre de Ruta 3",
+    description: "Cierra Herramientas estructuradas con proyectos multiarchivo más fuertes que consolidan el aprendizaje base actual de PyMentor en una meta clara y útil.",
+    order: 27,
+    status: "locked",
+    lessonCount: 2,
+    estimatedTime: "126 min",
+    xp: 540
   }
 ];
 
@@ -5565,6 +5575,148 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería terminar con un reporte final claro."
     },
     exerciseSlug: "build-route3-multi-file-report-project"
+  },
+  {
+    slug: "route3-capstone-structured-agenda",
+    module: "Cierre de Ruta 3",
+    moduleSlug: "route3-capstone",
+    order: 1,
+    title: "Capstone de Ruta 3: agenda estructurada con cierre final",
+    duration: "28 min",
+    difficulty: "Beginner",
+    summary: "Construye una agenda multiarchivo pequeña pero más seria, con menú, consulta o actualización y un cierre final que marque el fin de la ruta y del aprendizaje base actual.",
+    warmup: "Llegaste al punto donde la estructura ya no es una idea teórica. Este capstone busca que cierres Ruta 3 construyendo una herramienta multiarchivo que realmente se sienta ordenada y útil.",
+    goal: "Al final, deberías poder construir una agenda multiarchivo con principal claro, apoyos separados, varias acciones útiles y un cierre final que deje visible una herramienta completa.",
+    keyIdeas: [
+      {
+        title: "El principal ya coordina una herramienta completa",
+        description: "Menú, decisión, llamadas a apoyos y cierre final aparecen como un flujo claro y legible."
+      },
+      {
+        title: "Los apoyos ya cargan trabajo útil real",
+        description: "Consultar, actualizar y resumir viven fuera del principal para sostener claridad y reparto de responsabilidades."
+      },
+      {
+        title: "Este capstone también marca el cierre del aprendizaje base actual",
+        description: "No solo cierras Ruta 3: cierras la etapa base de PyMentor tal como existe hoy."
+      }
+    ],
+    explanation: [
+      {
+        title: "Brief del proyecto",
+        body: "Vas a construir una agenda estructurada pequeña. `principal.py` mostrará un menú simple y decidirá si consulta o actualiza. `utilidades.py` tendrá funciones separadas para esas tareas y una función de cierre que muestre un resumen final."
+      },
+      {
+        title: "Requisitos mínimos",
+        body: "Necesitas dos archivos claramente representados, varias funciones de apoyo con nombres claros, un menú simple, al menos dos caminos útiles y un resumen final que cierre el proyecto con orden."
+      },
+      {
+        title: "Qué consolida este capstone",
+        body: "Consolida todo lo importante de Ruta 3: principal claro, apoyos bien repartidos, varias acciones coordinadas y sensación real de herramienta pequeña pero bastante completa."
+      },
+      {
+        title: "Qué hace especial este cierre",
+        body: "Este bloque ya no cierra solo una ruta. Cierra la base actual de PyMentor: tres etapas que fueron de fundamentos a programas más estructurados sin saltar todavía a complejidad intermedia."
+      }
+    ],
+    example:
+      "# utilidades.py\ndef consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n\ndef actualizar_contacto(nombre, nuevo_estado):\n    print('Actualizando', nombre, 'a', nuevo_estado)\n\n\ndef mostrar_cierre():\n    print('=== CIERRE FINAL ===')\n    print('Base actual de PyMentor completada')\n\n# principal.py\nfrom utilidades import consultar_contacto, actualizar_contacto, mostrar_cierre\n\n\ndef main():\n    print('1. Consultar')\n    print('2. Actualizar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        consultar_contacto('Ana')\n    else:\n        actualizar_contacto('Ana', 'activo')\n    mostrar_cierre()\n\n\nmain()",
+    practicePrompt: "Piensa qué debería ver primero alguien que abre `principal.py` y qué funciones tendrían que vivir en `utilidades.py` para que la agenda realmente se sienta ordenada.",
+    practiceChecklist: [
+      "Deja menú, decisión y recorrido general en el principal.",
+      "Separa consulta, actualización y cierre en funciones de apoyo.",
+      "Haz que el cierre final se sienta especial y claro."
+    ],
+    commonMistakes: [
+      "Volver a meter la consulta y la actualización dentro del principal.",
+      "Olvidar que el cierre final debería marcar un verdadero fin de etapa.",
+      "Intentar hacer demasiadas opciones y perder claridad."
+    ],
+    bugChallenge: {
+      prompt: "Esta agenda quiere cerrar Ruta 3 con una estructura ordenada, pero el principal absorbió demasiado y el cierre final perdió fuerza.",
+      brokenCode:
+        "print('1. Consultar')\nprint('2. Actualizar')\naction = input('Elige una opción: ')\nif action == '1':\n    print('Consulta: Ana')\nelse:\n    print('Actualizando Ana a activo')\nprint('=== CIERRE FINAL ===')\nprint('Base actual de PyMentor completada')",
+      expectedLearning: "Un capstone de herramientas estructuradas necesita que el principal coordine con claridad y que los apoyos carguen el trabajo útil y el cierre."
+    },
+    playground: {
+      title: "Prueba tu agenda estructurada final",
+      guidance: "Ejecuta la versión simple y luego confirma que tu respuesta represente bien la separación entre coordinación, acciones y cierre final.",
+      starterCode:
+        "def consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n\ndef actualizar_contacto(nombre, nuevo_estado):\n    print('Actualizando', nombre, 'a', nuevo_estado)\n\n\ndef mostrar_cierre():\n    print('=== CIERRE FINAL ===')\n    print('Base actual de PyMentor completada')\n\n\ndef main():\n    print('1. Consultar')\n    print('2. Actualizar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        consultar_contacto('Ana')\n    else:\n        actualizar_contacto('Ana', 'activo')\n    mostrar_cierre()\n\n\nmain()",
+      emptyOutputHint: "La salida debería terminar con un cierre claro que se sienta como final de etapa."
+    },
+    exerciseSlug: "build-route3-capstone-structured-agenda"
+  },
+  {
+    slug: "route3-capstone-structured-records-tool",
+    module: "Cierre de Ruta 3",
+    moduleSlug: "route3-capstone",
+    order: 2,
+    title: "Capstone de Ruta 3: herramienta de registros con reporte final",
+    duration: "30 min",
+    difficulty: "Beginner",
+    summary: "Construye una herramienta multiarchivo con menú, acciones útiles y un reporte final que cierre Ruta 3 y deje la sensación de una base práctica completa.",
+    warmup: "Este es el último gran checkpoint del aprendizaje base actual. La meta no es impresionar con complejidad, sino mostrar que ya puedes sostener una herramienta estructurada con varias partes claras.",
+    goal: "Al final, deberías poder construir una herramienta multiarchivo de registros con principal claro, varias acciones útiles y un reporte final ordenado que marque el cierre del recorrido base actual.",
+    keyIdeas: [
+      {
+        title: "La coordinación ya parece la de una utilidad real",
+        description: "El principal ya funciona como centro del flujo, no como un lugar donde todo se mezcla."
+      },
+      {
+        title: "Los archivos de apoyo ya muestran responsabilidades maduras",
+        description: "Guardar, consultar y reportar aparecen como funciones separadas y legibles."
+      },
+      {
+        title: "El reporte final marca el cierre del recorrido actual",
+        description: "Hace visible que no estás terminando un módulo más, sino la base práctica que hoy ofrece PyMentor."
+      }
+    ],
+    explanation: [
+      {
+        title: "Brief del proyecto",
+        body: "Vas a construir una herramienta de registros con menú simple. `principal.py` coordinará las opciones y el cierre. `utilidades.py` guardará, consultará y mostrará un reporte final corto pero claro."
+      },
+      {
+        title: "Requisitos mínimos",
+        body: "Necesitas dos archivos representados con claridad, varias funciones de apoyo, una función `main()` con un flujo visible, al menos dos caminos útiles y un reporte final bien presentado."
+      },
+      {
+        title: "Qué demuestra este capstone",
+        body: "Demuestra que ya puedes repartir un programa en varias partes con criterio, sin perder el hilo del recorrido ni el sentido práctico de la herramienta."
+      },
+      {
+        title: "Qué deja listo para el producto",
+        body: "Deja a PyMentor en un punto donde las tres rutas actuales forman una base completa: fundamentos, práctica útil y herramientas estructuradas."
+      }
+    ],
+    example:
+      "# utilidades.py\ndef guardar_registro():\n    print('Registro guardado')\n\n\ndef consultar_registro():\n    print('Consulta lista')\n\n\ndef mostrar_reporte():\n    print('=== REPORTE FINAL ===')\n    print('Aprendizaje base actual completado')\n\n# principal.py\nfrom utilidades import guardar_registro, consultar_registro, mostrar_reporte\n\n\ndef main():\n    print('1. Guardar')\n    print('2. Consultar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        guardar_registro()\n    else:\n        consultar_registro()\n    mostrar_reporte()\n\n\nmain()",
+    practicePrompt: "Piensa qué tendría que leer una persona en `principal.py` para entender rápido la herramienta, y qué tendría que quedar en `utilidades.py` para que el reporte final no cargue el flujo principal.",
+    practiceChecklist: [
+      "Usa `main()` como centro del recorrido.",
+      "Separa guardar, consultar y reportar en apoyos claros.",
+      "Haz que el reporte final se sienta como un cierre real."
+    ],
+    commonMistakes: [
+      "Dejar el reporte final como texto suelto dentro del principal.",
+      "Mezclar acciones útiles y coordinación en el mismo bloque.",
+      "Olvidar que este proyecto debe sentirse como cierre, no como otro ejemplo más."
+    ],
+    bugChallenge: {
+      prompt: "Esta herramienta quiere cerrar Ruta 3 con un reporte final claro, pero el principal todavía parece un bloque mezclado y el cierre no se siente especial.",
+      brokenCode:
+        "print('1. Guardar')\nprint('2. Consultar')\naction = input('Elige una opción: ')\nif action == '1':\n    print('Registro guardado')\nelse:\n    print('Consulta lista')\nprint('=== REPORTE FINAL ===')\nprint('Aprendizaje base actual completado')",
+      expectedLearning: "Un cierre de Ruta 3 se siente fuerte cuando el principal coordina, los apoyos hacen el trabajo útil y el reporte final aparece como cierre natural del flujo."
+    },
+    playground: {
+      title: "Prueba tu herramienta final de registros",
+      guidance: "Ejecuta la versión simple y luego revisa que tu respuesta mantenga clara la separación entre principal, apoyos y reporte final.",
+      starterCode:
+        "def guardar_registro():\n    print('Registro guardado')\n\n\ndef consultar_registro():\n    print('Consulta lista')\n\n\ndef mostrar_reporte():\n    print('=== REPORTE FINAL ===')\n    print('Aprendizaje base actual completado')\n\n\ndef main():\n    print('1. Guardar')\n    print('2. Consultar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        guardar_registro()\n    else:\n        consultar_registro()\n    mostrar_reporte()\n\n\nmain()",
+      emptyOutputHint: "La salida debería terminar con un reporte final que se sienta como cierre del recorrido actual."
+    },
+    exerciseSlug: "build-route3-capstone-records-tool"
   }
 ];
 
@@ -11993,6 +12145,342 @@ export const courseExercises: ExerciseData[] = [
           label: "Llama `mostrar_reporte()`",
           pattern: "mostrar_reporte\\(\\s*\\)",
           feedbackWhenMissing: "Cierra el proyecto llamando `mostrar_reporte()`."
+        },
+        {
+          id: "runs-main",
+          label: "Ejecuta `main()` al final",
+          pattern: "main\\(\\s*\\)",
+          feedbackWhenMissing: "Al final del ejemplo, ejecuta `main()`."
+        }
+      ],
+      orderedPatternIds: [
+        "utilidades-comment",
+        "defines-save-record",
+        "defines-query-record",
+        "defines-report",
+        "prints-report-header",
+        "prints-report-body",
+        "principal-comment",
+        "imports-three",
+        "defines-main",
+        "prints-option-one",
+        "prints-option-two",
+        "asks-action",
+        "if-option-one",
+        "calls-save-record",
+        "calls-query-record",
+        "calls-report",
+        "runs-main"
+      ]
+    }
+  },
+  {
+    slug: "build-route3-capstone-structured-agenda",
+    title: "Construye el capstone de agenda estructurada",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "route3-capstone",
+    lessonSlug: "route3-capstone-structured-agenda",
+    order: 1,
+    duration: "20 min",
+    summary: "Construye una agenda multiarchivo pequeña pero fuerte, con menú, consulta o actualización y un cierre final que marque el fin de Ruta 3.",
+    prompt:
+      "Escribe un ejemplo dividido en dos partes usando comentarios para representar archivos. En `# utilidades.py`, define `consultar_contacto(nombre)`, `actualizar_contacto(nombre, nuevo_estado)` y `mostrar_cierre()`. Esta última debe imprimir `=== CIERRE FINAL ===` y luego `Base actual de PyMentor completada`. En `# principal.py`, importa las tres funciones, define `main()`, imprime `1. Consultar` y `2. Actualizar`, pide `action` con `input('Elige una opción: ')`, si la acción es `1` llama `consultar_contacto('Ana')`, en cualquier otro caso llama `actualizar_contacto('Ana', 'activo')`, luego llama `mostrar_cierre()` y finalmente ejecuta `main()`.",
+    responseLabel: "Tu capstone de agenda estructurada",
+    responsePlaceholder:
+      "# utilidades.py\n\ndef consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n\ndef actualizar_contacto(nombre, nuevo_estado):\n    print('Actualizando', nombre, 'a', nuevo_estado)\n\n\ndef mostrar_cierre():\n    print('=== CIERRE FINAL ===')\n    print('Base actual de PyMentor completada')\n\n# principal.py\nfrom utilidades import consultar_contacto, actualizar_contacto, mostrar_cierre\n\n\ndef main():\n    print('1. Consultar')\n    print('2. Actualizar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        consultar_contacto('Ana')\n    else:\n        actualizar_contacto('Ana', 'activo')\n    mostrar_cierre()\n\n\nmain()",
+    instructions: [
+      "Representa ambos archivos con comentarios.",
+      "Mantén el menú y la decisión dentro de `main()`.",
+      "Deja consulta, actualización y cierre en el archivo de apoyo."
+    ],
+    hints: [
+      "Piensa el principal como el mapa claro del proyecto.",
+      "El cierre debería aparecer siempre al final.",
+      "La agenda puede ser pequeña; lo importante es el reparto de responsabilidades."
+    ],
+    starterCode:
+      "# utilidades.py\n\ndef consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n\ndef actualizar_contacto(nombre, nuevo_estado):\n    print('Actualizando', nombre, 'a', nuevo_estado)\n\n\ndef mostrar_cierre():\n    print('=== CIERRE FINAL ===')\n    print('Base actual de PyMentor completada')\n\n# principal.py\nfrom utilidades import consultar_contacto, actualizar_contacto, mostrar_cierre\n\n\ndef main():\n    print('1. Consultar')\n    print('2. Actualizar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        consultar_contacto('Ana')\n    else:\n        actualizar_contacto('Ana', 'activo')\n    mostrar_cierre()\n\n\nmain()",
+    successCriteria: [
+      "La agenda reparte bien coordinación y apoyos.",
+      "El principal sigue siendo claro incluso con varias partes.",
+      "El cierre final marca el fin de Ruta 3 y del aprendizaje base actual."
+    ],
+    playground: {
+      title: "Prueba tu agenda estructurada final",
+      guidance: "Ejecuta la versión simple y luego confirma que tu respuesta refleje bien la separación entre principal, acciones y cierre.",
+      starterCode:
+        "def consultar_contacto(nombre):\n    print('Consulta:', nombre)\n\n\ndef actualizar_contacto(nombre, nuevo_estado):\n    print('Actualizando', nombre, 'a', nuevo_estado)\n\n\ndef mostrar_cierre():\n    print('=== CIERRE FINAL ===')\n    print('Base actual de PyMentor completada')\n\n\ndef main():\n    print('1. Consultar')\n    print('2. Actualizar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        consultar_contacto('Ana')\n    else:\n        actualizar_contacto('Ana', 'activo')\n    mostrar_cierre()\n\n\nmain()",
+      emptyOutputHint: "La salida debería terminar con un cierre que se sienta como final de etapa."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 460,
+      passingScore: 12,
+      requiredPatterns: [
+        {
+          id: "utilidades-comment",
+          label: "Representa `# utilidades.py`",
+          pattern: "#\\s*utilidades\\.py",
+          feedbackWhenMissing: "Empieza mostrando `# utilidades.py`."
+        },
+        {
+          id: "principal-comment",
+          label: "Representa `# principal.py`",
+          pattern: "#\\s*principal\\.py",
+          feedbackWhenMissing: "Muestra también `# principal.py`."
+        },
+        {
+          id: "defines-query-contact",
+          label: "Define `consultar_contacto(nombre)`",
+          pattern: "def\\s+consultar_contacto\\(\\s*nombre\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define `consultar_contacto(nombre)` en el archivo de apoyo."
+        },
+        {
+          id: "defines-update-contact",
+          label: "Define `actualizar_contacto(nombre, nuevo_estado)`",
+          pattern: "def\\s+actualizar_contacto\\(\\s*nombre\\s*,\\s*nuevo_estado\\s*\\)\\s*:",
+          feedbackWhenMissing: "Define `actualizar_contacto(nombre, nuevo_estado)` en el archivo de apoyo."
+        },
+        {
+          id: "defines-close",
+          label: "Define `mostrar_cierre()`",
+          pattern: "def\\s+mostrar_cierre\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `mostrar_cierre()` en el archivo de apoyo."
+        },
+        {
+          id: "prints-close-header",
+          label: "Imprime `=== CIERRE FINAL ===`",
+          pattern: "print\\(\\s*['\"]=== CIERRE FINAL ===['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro del cierre, imprime `=== CIERRE FINAL ===`."
+        },
+        {
+          id: "prints-close-body",
+          label: "Imprime `Base actual de PyMentor completada`",
+          pattern: "print\\(\\s*['\"]Base actual de PyMentor completada['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro del cierre, imprime `Base actual de PyMentor completada`."
+        },
+        {
+          id: "imports-three",
+          label: "Importa las tres funciones",
+          pattern: "from\\s+utilidades\\s+import\\s+consultar_contacto\\s*,\\s*actualizar_contacto\\s*,\\s*mostrar_cierre",
+          feedbackWhenMissing: "En `principal.py`, importa `consultar_contacto`, `actualizar_contacto` y `mostrar_cierre`."
+        },
+        {
+          id: "defines-main",
+          label: "Define `main()`",
+          pattern: "def\\s+main\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `main()` en el principal."
+        },
+        {
+          id: "prints-option-one",
+          label: "Imprime `1. Consultar`",
+          pattern: "print\\(\\s*['\"]1\\. Consultar['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro de `main()`, imprime `1. Consultar`."
+        },
+        {
+          id: "prints-option-two",
+          label: "Imprime `2. Actualizar`",
+          pattern: "print\\(\\s*['\"]2\\. Actualizar['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro de `main()`, imprime `2. Actualizar`."
+        },
+        {
+          id: "asks-action",
+          label: "Pide `action` con `input()`",
+          pattern: "action\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Dentro de `main()`, pide `action` con `input()`."
+        },
+        {
+          id: "if-option-one",
+          label: "Usa `if action == '1'`",
+          pattern: "if\\s+action\\s*==\\s*['\"]1['\"]\\s*:",
+          feedbackWhenMissing: "Usa un `if` para la opción `1`."
+        },
+        {
+          id: "calls-query-contact",
+          label: "Llama `consultar_contacto('Ana')`",
+          pattern: "consultar_contacto\\(\\s*['\"]Ana['\"]\\s*\\)",
+          feedbackWhenMissing: "En el primer camino, llama `consultar_contacto('Ana')`."
+        },
+        {
+          id: "calls-update-contact",
+          label: "Llama `actualizar_contacto('Ana', 'activo')`",
+          pattern: "actualizar_contacto\\(\\s*['\"]Ana['\"]\\s*,\\s*['\"]activo['\"]\\s*\\)",
+          feedbackWhenMissing: "En el camino alternativo, llama `actualizar_contacto('Ana', 'activo')`."
+        },
+        {
+          id: "calls-close",
+          label: "Llama `mostrar_cierre()`",
+          pattern: "mostrar_cierre\\(\\s*\\)",
+          feedbackWhenMissing: "Cierra el capstone llamando `mostrar_cierre()`."
+        },
+        {
+          id: "runs-main",
+          label: "Ejecuta `main()` al final",
+          pattern: "main\\(\\s*\\)",
+          feedbackWhenMissing: "Al final del ejemplo, ejecuta `main()`."
+        }
+      ],
+      orderedPatternIds: [
+        "utilidades-comment",
+        "defines-query-contact",
+        "defines-update-contact",
+        "defines-close",
+        "prints-close-header",
+        "prints-close-body",
+        "principal-comment",
+        "imports-three",
+        "defines-main",
+        "prints-option-one",
+        "prints-option-two",
+        "asks-action",
+        "if-option-one",
+        "calls-query-contact",
+        "calls-update-contact",
+        "calls-close",
+        "runs-main"
+      ]
+    }
+  },
+  {
+    slug: "build-route3-capstone-records-tool",
+    title: "Construye el capstone de herramienta de registros",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "route3-capstone",
+    lessonSlug: "route3-capstone-structured-records-tool",
+    order: 2,
+    duration: "21 min",
+    summary: "Construye una herramienta multiarchivo con menú, acciones útiles y un reporte final que cierre Ruta 3 y el aprendizaje base actual.",
+    prompt:
+      "Escribe un ejemplo dividido en dos partes usando comentarios para representar archivos. En `# utilidades.py`, define `guardar_registro()`, `consultar_registro()` y `mostrar_reporte()`. Esta última debe imprimir `=== REPORTE FINAL ===` y luego `Aprendizaje base actual completado`. En `# principal.py`, importa las tres funciones, define `main()`, imprime `1. Guardar` y `2. Consultar`, pide `action` con `input('Elige una opción: ')`, si la acción es `1` llama `guardar_registro()`, en cualquier otro caso llama `consultar_registro()`, luego llama `mostrar_reporte()` y finalmente ejecuta `main()`.",
+    responseLabel: "Tu capstone de registros multiarchivo",
+    responsePlaceholder:
+      "# utilidades.py\n\ndef guardar_registro():\n    print('Registro guardado')\n\n\ndef consultar_registro():\n    print('Consulta lista')\n\n\ndef mostrar_reporte():\n    print('=== REPORTE FINAL ===')\n    print('Aprendizaje base actual completado')\n\n# principal.py\nfrom utilidades import guardar_registro, consultar_registro, mostrar_reporte\n\n\ndef main():\n    print('1. Guardar')\n    print('2. Consultar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        guardar_registro()\n    else:\n        consultar_registro()\n    mostrar_reporte()\n\n\nmain()",
+    instructions: [
+      "Representa ambos archivos con comentarios.",
+      "Mantén el flujo principal dentro de `main()`.",
+      "Deja el reporte final como función de apoyo."
+    ],
+    hints: [
+      "El principal debería seguir viéndose como un mapa corto del programa.",
+      "El reporte final debería aparecer siempre después de la acción elegida.",
+      "No hace falta añadir más caminos: con dos acciones útiles basta."
+    ],
+    starterCode:
+      "# utilidades.py\n\ndef guardar_registro():\n    print('Registro guardado')\n\n\ndef consultar_registro():\n    print('Consulta lista')\n\n\ndef mostrar_reporte():\n    print('=== REPORTE FINAL ===')\n    print('Aprendizaje base actual completado')\n\n# principal.py\nfrom utilidades import guardar_registro, consultar_registro, mostrar_reporte\n\n\ndef main():\n    print('1. Guardar')\n    print('2. Consultar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        guardar_registro()\n    else:\n        consultar_registro()\n    mostrar_reporte()\n\n\nmain()",
+    successCriteria: [
+      "La herramienta coordina varias partes con claridad.",
+      "Los apoyos sostienen el trabajo útil y el cierre.",
+      "El reporte final deja una sensación real de cierre del aprendizaje base actual."
+    ],
+    playground: {
+      title: "Prueba tu herramienta final de registros",
+      guidance: "Ejecuta la versión simple y luego confirma que tu respuesta mantiene bien separadas coordinación, acciones y reporte final.",
+      starterCode:
+        "def guardar_registro():\n    print('Registro guardado')\n\n\ndef consultar_registro():\n    print('Consulta lista')\n\n\ndef mostrar_reporte():\n    print('=== REPORTE FINAL ===')\n    print('Aprendizaje base actual completado')\n\n\ndef main():\n    print('1. Guardar')\n    print('2. Consultar')\n    action = input('Elige una opción: ')\n    if action == '1':\n        guardar_registro()\n    else:\n        consultar_registro()\n    mostrar_reporte()\n\n\nmain()",
+      emptyOutputHint: "La salida debería terminar con un reporte final que se sienta como cierre del recorrido actual."
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 460,
+      passingScore: 12,
+      requiredPatterns: [
+        {
+          id: "utilidades-comment",
+          label: "Representa `# utilidades.py`",
+          pattern: "#\\s*utilidades\\.py",
+          feedbackWhenMissing: "Empieza mostrando `# utilidades.py`."
+        },
+        {
+          id: "principal-comment",
+          label: "Representa `# principal.py`",
+          pattern: "#\\s*principal\\.py",
+          feedbackWhenMissing: "Muestra también `# principal.py`."
+        },
+        {
+          id: "defines-save-record",
+          label: "Define `guardar_registro()`",
+          pattern: "def\\s+guardar_registro\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `guardar_registro()` en el archivo de apoyo."
+        },
+        {
+          id: "defines-query-record",
+          label: "Define `consultar_registro()`",
+          pattern: "def\\s+consultar_registro\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `consultar_registro()` en el archivo de apoyo."
+        },
+        {
+          id: "defines-report",
+          label: "Define `mostrar_reporte()`",
+          pattern: "def\\s+mostrar_reporte\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `mostrar_reporte()` en el archivo de apoyo."
+        },
+        {
+          id: "prints-report-header",
+          label: "Imprime `=== REPORTE FINAL ===`",
+          pattern: "print\\(\\s*['\"]=== REPORTE FINAL ===['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro del reporte, imprime `=== REPORTE FINAL ===`."
+        },
+        {
+          id: "prints-report-body",
+          label: "Imprime `Aprendizaje base actual completado`",
+          pattern: "print\\(\\s*['\"]Aprendizaje base actual completado['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro del reporte, imprime `Aprendizaje base actual completado`."
+        },
+        {
+          id: "imports-three",
+          label: "Importa las tres funciones",
+          pattern: "from\\s+utilidades\\s+import\\s+guardar_registro\\s*,\\s*consultar_registro\\s*,\\s*mostrar_reporte",
+          feedbackWhenMissing: "En `principal.py`, importa `guardar_registro`, `consultar_registro` y `mostrar_reporte`."
+        },
+        {
+          id: "defines-main",
+          label: "Define `main()`",
+          pattern: "def\\s+main\\(\\)\\s*:",
+          feedbackWhenMissing: "Define `main()` en el principal."
+        },
+        {
+          id: "prints-option-one",
+          label: "Imprime `1. Guardar`",
+          pattern: "print\\(\\s*['\"]1\\. Guardar['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro de `main()`, imprime `1. Guardar`."
+        },
+        {
+          id: "prints-option-two",
+          label: "Imprime `2. Consultar`",
+          pattern: "print\\(\\s*['\"]2\\. Consultar['\"]\\s*\\)",
+          feedbackWhenMissing: "Dentro de `main()`, imprime `2. Consultar`."
+        },
+        {
+          id: "asks-action",
+          label: "Pide `action` con `input()`",
+          pattern: "action\\s*=\\s*input\\(",
+          feedbackWhenMissing: "Dentro de `main()`, pide `action` con `input()`."
+        },
+        {
+          id: "if-option-one",
+          label: "Usa `if action == '1'`",
+          pattern: "if\\s+action\\s*==\\s*['\"]1['\"]\\s*:",
+          feedbackWhenMissing: "Usa un `if` para la opción `1`."
+        },
+        {
+          id: "calls-save-record",
+          label: "Llama `guardar_registro()`",
+          pattern: "guardar_registro\\(\\s*\\)",
+          feedbackWhenMissing: "En el primer camino, llama `guardar_registro()`."
+        },
+        {
+          id: "calls-query-record",
+          label: "Llama `consultar_registro()`",
+          pattern: "consultar_registro\\(\\s*\\)",
+          feedbackWhenMissing: "En el camino alternativo, llama `consultar_registro()`."
+        },
+        {
+          id: "calls-report",
+          label: "Llama `mostrar_reporte()`",
+          pattern: "mostrar_reporte\\(\\s*\\)",
+          feedbackWhenMissing: "Cierra el capstone llamando `mostrar_reporte()`."
         },
         {
           id: "runs-main",

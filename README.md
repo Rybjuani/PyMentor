@@ -2,12 +2,11 @@
 
 PyMentor es una plataforma de aprendizaje de Python pensada para principiantes absolutos. El producto combina una progresión por etapas, práctica guiada, ejercicios con feedback, proyectos graduales, un mentor IA en español y un playground de Python en el navegador con Pyodide.
 
-El estado actual del proyecto cubre dos etapas completas y claramente diferenciadas, y además ya abrió una tercera etapa práctica inicial centrada en herramientas más estructuradas.
+El estado actual del proyecto cubre tres etapas completas y claramente diferenciadas, y hoy ya funciona como un aprendizaje base completo dentro de PyMentor.
 
 ## Qué incluye hoy
 
-- Dos rutas completas con cierre formal: fundamentos y Python práctico 2.
-- Una Ruta 3 ya abierta para empezar a trabajar con programas multiarchivo simples.
+- Tres rutas completas con cierre formal: fundamentos, Python práctico 2 y Herramientas estructuradas.
 - Lecciones, ejercicios, proyectos guiados, proyectos con más autonomía, capstones de Ruta 1 y capstones de Ruta 2.
 - Progreso persistido por usuario con autenticación real.
 - Mentor IA con Groq integrado server-side.
@@ -28,7 +27,7 @@ El estado actual del proyecto cubre dos etapas completas y claramente diferencia
 
 ## Estado del producto
 
-PyMentor ya tiene dos rutas completas y una tercera etapa recién abierta, todo localizado en español:
+PyMentor ya tiene tres rutas completas, todo localizado en español:
 
 1. Introducción
 2. Variables
@@ -56,6 +55,7 @@ PyMentor ya tiene dos rutas completas y una tercera etapa recién abierta, todo 
 24. Utilidades multiarchivo con flujo claro
 25. Utilidades multiarchivo con más coordinación
 26. Proyectos multiarchivo más completos
+27. Cierre de Ruta 3
 
 ## Etapas del producto
 
@@ -71,13 +71,14 @@ Sus primeras aperturas son `Archivos básicos`, `Funciones y organización simpl
 ### Ruta 3 · Herramientas estructuradas
 
 Empieza justo después del cierre de Ruta 2.
-Sus primeros bloques son `Programas multiarchivo simples`, `Utilidades multiarchivo con flujo claro`, `Utilidades multiarchivo con más coordinación` y `Proyectos multiarchivo más completos`, donde el foco ya no está solo en construir utilidades prácticas, sino en repartir mejor un programa entre un archivo principal y archivos de apoyo para que siga siendo legible, ordenado y más cercano a una herramienta real.
+Ruta 3 ya recorre `Programas multiarchivo simples`, `Utilidades multiarchivo con flujo claro`, `Utilidades multiarchivo con más coordinación`, `Proyectos multiarchivo más completos` y `Cierre de Ruta 3`, donde el foco ya no está solo en construir utilidades prácticas, sino en repartir mejor un programa entre un archivo principal y archivos de apoyo para que siga siendo legible, ordenado y más cercano a una herramienta real.
 
 ## Estado de progresión actual
 
 - Ruta 1 se lee como una etapa completa de fundamentos, con cierre formal en `Cierre de fundamentos`.
 - Ruta 2 se lee como una etapa práctica distinta, con cierre formal en `Cierre de Ruta 2`.
-- Ruta 3 ya aparece como la siguiente gran etapa del producto, abierta con su primer módulo y presentada como un cambio real de nivel dentro del recorrido.
+- Ruta 3 se lee como una tercera etapa formal, con cierre propio en `Cierre de Ruta 3`.
+- El producto actual ya funciona como una base completa de aprendizaje en tres rutas encadenadas y un final oficial del aprendizaje base actual.
 
 ## Requisitos
 
@@ -219,7 +220,7 @@ npm run start:railway
 - No hay streaming en el mentor todavía.
 - No hay ejecución server-side de Python.
 - No hay code runner completo ni evaluación semántica profunda.
-- Ruta 3 recién empieza y todavía tiene poco volumen de contenido frente a las dos primeras rutas.
+- El recorrido base actual ya tiene un cierre claro, pero todavía no existe una Ruta 4 abierta.
 - Los logros siguen siendo una capa de producto liviana, no un sistema completo de gamificación persistida.
 
 ## Documentación adicional
@@ -229,4 +230,4 @@ npm run start:railway
 
 ## Próximo paso lógico del producto
 
-El siguiente paso natural es expandir Ruta 3 con más módulos centrados en herramientas algo más amplias y programas mejor repartidos, sin salir todavía del nivel temprano-práctico.
+El siguiente paso natural es decidir y abrir una siguiente gran etapa del producto sobre esta base ya cerrada, en lugar de seguir agregando módulos dentro del recorrido actual.

@@ -26,6 +26,7 @@ export default async function ExercisePage({
   const lesson = getLessonBySlug(exercise.lessonSlug);
   const nextLesson = lesson ? getNextLesson(lesson.slug) : null;
   const isFoundationsCapstone = exercise.moduleSlug === "foundations-capstone";
+  const isRoute3Capstone = exercise.moduleSlug === "route3-capstone";
   const exerciseSections = [
     { href: "#desafio", label: "Desafío" },
     { href: "#workspace", label: "Workspace" },
@@ -46,7 +47,9 @@ export default async function ExercisePage({
     <AppShell
       title={`Ejercicio: ${exercise.title}`}
       description={
-        isFoundationsCapstone
+        isRoute3Capstone
+          ? "Este ejercicio forma parte del cierre de Ruta 3. Cuando lo completas, la tercera etapa y el aprendizaje base actual quedan cerrados de forma visible en tu cuenta."
+        : isFoundationsCapstone
           ? "Este ejercicio forma parte del cierre de fundamentos. Cuando lo completas, la etapa final de tu primera gran ruta de Python queda visible en tu cuenta."
           : "Los ejercicios ya forman parte del flujo real de progreso del producto y su finalización queda vinculada a tu cuenta."
       }

@@ -60,6 +60,16 @@ export const courseModules: RoadmapModule[] = [
     lessonCount: 3,
     estimatedTime: "70 min",
     xp: 240
+  },
+  {
+    slug: "lists",
+    title: "Listas",
+    description: "Aprende a guardar varios valores relacionados en un solo lugar, leerlos con calma y recorrerlos en programas pequeños.",
+    order: 7,
+    status: "locked",
+    lessonCount: 3,
+    estimatedTime: "68 min",
+    xp: 230
   }
 ];
 
@@ -1262,6 +1272,210 @@ export const courseLessons: LessonData[] = [
       emptyOutputHint: "La salida debería mostrar varios pasos y una sola línea final al terminar."
     },
     exerciseSlug: "build-practice-counter-project"
+  },
+  {
+    slug: "what-a-list-is",
+    module: "Listas",
+    moduleSlug: "lists",
+    order: 1,
+    title: "Qué es una lista y por qué ayuda",
+    duration: "14 min",
+    difficulty: "Beginner",
+    summary: "Aprende qué es una lista con palabras simples y por qué sirve cuando tienes varios valores relacionados.",
+    warmup: "Si anotas tres meriendas favoritas, no necesitas tres variables separadas para entender la idea. Una lista te deja guardar ese grupo junto.",
+    goal: "Al final, deberías poder explicar que una lista guarda varios valores relacionados dentro de una sola estructura.",
+    keyIdeas: [
+      {
+        title: "Una lista agrupa valores",
+        description: "Sirve para guardar varios datos relacionados en un mismo lugar."
+      },
+      {
+        title: "Los corchetes muestran la lista",
+        description: "En Python, las listas se escriben entre `[` y `]`."
+      },
+      {
+        title: "No reemplaza todo lo anterior",
+        description: "Las listas se suman a variables, bucles y funciones para hacer programas más útiles."
+      }
+    ],
+    explanation: [
+      {
+        title: "Por qué aparece esta herramienta ahora",
+        body: "Después de variables, condicionales, bucles, funciones y mini proyectos, ya conoces muchas piezas. Ahora necesitas una forma simple de guardar varios valores que pertenecen al mismo grupo."
+      },
+      {
+        title: "Cómo pensar una lista en lenguaje normal",
+        body: "Una lista es como una pequeña colección ordenada. En vez de guardar `fruta1`, `fruta2` y `fruta3`, puedes guardar `['manzana', 'pera', 'uva']` en un solo lugar."
+      },
+      {
+        title: "Qué hace que sea útil",
+        body: "Las listas son útiles porque te permiten mirar, recorrer y usar varios valores sin inventar una variable nueva para cada uno. Eso hace que los programas sean más claros."
+      },
+      {
+        title: "Empieza con listas cortas",
+        body: "No necesitas listas largas ni casos raros. Con dos o tres elementos ya puedes entender la idea principal y usarla en ejercicios reales."
+      }
+    ],
+    example: "snacks = ['galletas', 'fruta', 'yogur']\nprint(snacks)",
+    practicePrompt: "Crea una lista llamada `colores` con tres colores y luego imprímela completa.",
+    practiceChecklist: [
+      "Usa corchetes para crear la lista.",
+      "Separa los elementos con comas.",
+      "Imprime la variable que guarda la lista."
+    ],
+    commonMistakes: [
+      "Olvidar un corchete de apertura o de cierre.",
+      "Olvidar las comas entre elementos.",
+      "Confundir una lista con una sola cadena larga de texto."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería guardar tres comidas en una lista, pero un detalle de sintaxis rompe la estructura.",
+      brokenCode: "comidas = ['pizza', 'ensalada' 'sopa']\nprint(comidas)",
+      expectedLearning: "En una lista, los elementos se separan con comas y los corchetes tienen que quedar completos."
+    },
+    playground: {
+      title: "Prueba tu primera lista",
+      guidance: "Ejecuta la lista, cambia los elementos y vuelve a correr el código. La idea es ver que varios valores pueden vivir juntos dentro de una sola variable.",
+      starterCode: "snacks = ['galletas', 'fruta', 'yogur']\nprint(snacks)",
+      emptyOutputHint: "Una lista correcta debería mostrarse entre corchetes cuando la imprimes completa."
+    },
+    exerciseSlug: "explain-what-a-list-holds"
+  },
+  {
+    slug: "reading-values-from-a-list",
+    module: "Listas",
+    moduleSlug: "lists",
+    order: 2,
+    title: "Leer valores dentro de una lista",
+    duration: "15 min",
+    difficulty: "Beginner",
+    summary: "Aprende a mirar un valor dentro de una lista usando un índice simple, sin convertirlo en algo abstracto.",
+    warmup: "Si una lista es una colección ordenada, entonces cada elemento ocupa una posición. Leer una posición es el siguiente paso natural.",
+    goal: "Al final, deberías poder leer un valor de una lista con un índice simple y entender por qué el primer índice es 0.",
+    keyIdeas: [
+      {
+        title: "Cada elemento tiene una posición",
+        description: "Python usa índices para señalar qué valor quieres leer."
+      },
+      {
+        title: "El primer índice es 0",
+        description: "Eso puede sorprender al principio, pero es una regla normal en Python."
+      },
+      {
+        title: "Leer un valor no cambia la lista",
+        description: "Solo estás mirando un elemento de la colección."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué significa usar un índice",
+        body: "Si escribes `frutas[0]`, le estás diciendo a Python: 'Muéstrame el primer valor de esta lista'. El número dentro de los corchetes indica qué posición quieres mirar."
+      },
+      {
+        title: "Por qué empieza en 0",
+        body: "En Python, la primera posición de muchas colecciones se cuenta desde 0. No necesitas pelearte con eso: al principio solo recuerda que `0` significa primer elemento, `1` segundo y `2` tercero."
+      },
+      {
+        title: "Leer con calma evita confusiones",
+        body: "Cuando una lista tiene pocos elementos, una buena práctica es leerla despacio: primero mira la lista completa y después revisa qué valor corresponde a cada índice."
+      },
+      {
+        title: "Esto ayuda a programas más útiles",
+        body: "Poder leer un valor concreto de una lista te prepara para mostrar mensajes, elegir datos y construir programas un poco más prácticos."
+      }
+    ],
+    example: "frutas = ['manzana', 'pera', 'uva']\nprint(frutas[0])\nprint(frutas[2])",
+    practicePrompt: "Crea una lista llamada `tareas` con tres tareas y luego imprime la primera y la tercera.",
+    practiceChecklist: [
+      "Crea una lista con tres elementos.",
+      "Usa `0` para leer el primer valor.",
+      "Usa `2` para leer el tercer valor."
+    ],
+    commonMistakes: [
+      "Esperar que el primer índice sea 1.",
+      "Usar paréntesis en lugar de corchetes.",
+      "Pedir un índice que no existe en la lista."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería imprimir la primera fruta, pero el índice apunta al lugar equivocado.",
+      brokenCode: "frutas = ['manzana', 'pera', 'uva']\nprint(frutas[1])",
+      expectedLearning: "En Python, el primer elemento de una lista está en el índice 0."
+    },
+    playground: {
+      title: "Lee posiciones de una lista",
+      guidance: "Ejecuta el código, luego cambia los índices y mira cómo cambia el valor que aparece. Esa comparación ayuda mucho a fijar la idea.",
+      starterCode: "frutas = ['manzana', 'pera', 'uva']\nprint(frutas[0])\nprint(frutas[2])",
+      emptyOutputHint: "Prueba distintos índices y observa qué elemento de la lista aparece en la salida."
+    },
+    exerciseSlug: "pick-values-from-a-list"
+  },
+  {
+    slug: "looping-through-a-list",
+    module: "Listas",
+    moduleSlug: "lists",
+    order: 3,
+    title: "Recorrer una lista con un bucle",
+    duration: "16 min",
+    difficulty: "Beginner",
+    summary: "Aprende a recorrer una lista con un bucle `for` para mostrar cada valor sin escribir varias líneas separadas.",
+    warmup: "Si ya sabes repetir con bucles, lo siguiente natural es repetir sobre una colección real. Ahí es donde las listas empiezan a sentirse útiles de verdad.",
+    goal: "Al final, deberías poder recorrer una lista con un bucle `for` y leer la salida como una secuencia clara.",
+    keyIdeas: [
+      {
+        title: "El bucle toma un elemento por vez",
+        description: "En cada vuelta, la variable del bucle guarda un valor de la lista."
+      },
+      {
+        title: "La lista se puede leer completa con repetición",
+        description: "No necesitas escribir un `print()` separado para cada elemento."
+      },
+      {
+        title: "La salida muestra el patrón",
+        description: "Si el bucle está bien armado, verás aparecer los valores uno después del otro."
+      }
+    ],
+    explanation: [
+      {
+        title: "Qué cambia cuando unes listas y bucles",
+        body: "Hasta ahora usaste bucles para contar. Ahora el bucle puede ir pasando por cada valor de una lista. Eso abre la puerta a programas que trabajan con varios datos reales."
+      },
+      {
+        title: "Cómo leer el patrón",
+        body: "Si escribes `for fruta in frutas:`, puedes leerlo así: 'Para cada fruta dentro de la lista frutas, ejecuta este bloque'. Esa traducción simple evita que el código se sienta raro."
+      },
+      {
+        title: "Por qué es útil",
+        body: "Recorrer una lista permite mostrar opciones, imprimir recordatorios o procesar varios valores sin copiar el mismo código muchas veces."
+      },
+      {
+        title: "Qué conviene revisar primero cuando falla",
+        body: "Si el bucle no funciona, revisa la forma del `for`, los dos puntos al final y la indentación de la línea que se repite. Después mira si el nombre de la lista coincide."
+      }
+    ],
+    example: "frutas = ['manzana', 'pera', 'uva']\nfor fruta in frutas:\n    print(fruta)",
+    practicePrompt: "Crea una lista llamada `recordatorios` con tres mensajes y usa un bucle para imprimirlos uno por línea.",
+    practiceChecklist: [
+      "Crea una lista con varios valores.",
+      "Usa `for` para recorrerla.",
+      "Imprime la variable del bucle dentro del bloque."
+    ],
+    commonMistakes: [
+      "Olvidar los dos puntos al final de la línea `for`.",
+      "No indentar la línea con `print()`.",
+      "Imprimir siempre la lista completa en lugar del valor actual del bucle."
+    ],
+    bugChallenge: {
+      prompt: "Este código debería imprimir cada fruta por separado, pero una línea hace que el patrón no salga como esperas.",
+      brokenCode: "frutas = ['manzana', 'pera', 'uva']\nfor fruta in frutas:\nprint(frutas)",
+      expectedLearning: "Dentro del bucle debes imprimir el valor actual y mantener la indentación correcta."
+    },
+    playground: {
+      title: "Recorre una lista con `for`",
+      guidance: "Ejecuta el bucle y observa cómo aparece cada valor en una línea distinta. Luego cambia la lista para ver cómo el patrón se adapta.",
+      starterCode: "frutas = ['manzana', 'pera', 'uva']\nfor fruta in frutas:\n    print(fruta)",
+      emptyOutputHint: "Si el bucle está bien, deberías ver cada elemento de la lista en su propia línea."
+    },
+    exerciseSlug: "loop-through-a-list"
   }
 ];
 
@@ -2465,6 +2679,174 @@ export const courseExercises: ExerciseData[] = [
         }
       ],
       orderedPatternIds: ["defines-progress-function", "uses-step-loop", "prints-step", "prints-session-ready", "calls-progress-function"]
+    }
+  },
+  {
+    slug: "explain-what-a-list-holds",
+    title: "Explica qué guarda una lista",
+    exerciseType: "concept_check",
+    responseFormat: "text",
+    moduleSlug: "lists",
+    lessonSlug: "what-a-list-is",
+    order: 1,
+    duration: "7 min",
+    summary: "Explica con palabras simples qué hace una lista y por qué sirve cuando tienes varios valores relacionados.",
+    prompt:
+      "En 2 o 3 frases cortas, explica qué es una lista en Python y por qué `['galletas', 'fruta', 'yogur']` es más útil que guardar cada valor por separado.",
+    responseLabel: "Tu explicación",
+    responsePlaceholder:
+      "Una lista guarda varios valores relacionados en un solo lugar. Esa lista es útil porque no hace falta crear una variable distinta para cada snack.",
+    instructions: [
+      "Explica que una lista agrupa varios valores.",
+      "Menciona que esos valores están relacionados.",
+      "Cuenta por qué eso puede ser más cómodo que usar muchas variables."
+    ],
+    hints: [
+      "Piensa en una lista como una colección pequeña y ordenada.",
+      "La idea importante es 'varios valores en un solo lugar'.",
+      "No hace falta usar palabras técnicas complicadas."
+    ],
+    starterCode: "snacks = ['galletas', 'fruta', 'yogur']",
+    successCriteria: [
+      "Explica que una lista guarda varios valores.",
+      "Menciona que esos valores pertenecen al mismo grupo.",
+      "Explica por qué eso ayuda más que usar muchas variables."
+    ],
+    evaluator: {
+      type: "ordered_concepts",
+      minLength: 45,
+      passingScore: 4,
+      requireOrder: false,
+      concepts: [
+        {
+          id: "many-values",
+          label: "Menciona que una lista guarda varios valores",
+          keywords: ["varios", "muchos", "valores", "elementos"],
+          feedbackWhenMissing: "Explica que una lista sirve para guardar varios valores o elementos."
+        },
+        {
+          id: "same-group",
+          label: "Menciona que los valores están relacionados",
+          keywords: ["relacionados", "grupo", "juntos", "misma idea"],
+          feedbackWhenMissing: "Agrega la idea de que la lista reúne valores que pertenecen al mismo grupo."
+        },
+        {
+          id: "more-useful",
+          label: "Explica por qué es más práctico que muchas variables",
+          keywords: ["variable", "variables", "cómodo", "práctico", "fácil"],
+          feedbackWhenMissing: "Cuenta por qué una lista puede ser más práctica que crear muchas variables separadas."
+        }
+      ]
+    }
+  },
+  {
+    slug: "pick-values-from-a-list",
+    title: "Lee valores de una lista con índices",
+    exerciseType: "output_check",
+    responseFormat: "text",
+    moduleSlug: "lists",
+    lessonSlug: "reading-values-from-a-list",
+    order: 2,
+    duration: "7 min",
+    summary: "Practica leer posiciones de una lista y predecir la salida exacta sin confundirte con los índices.",
+    prompt:
+      "Mira el programa de abajo. Escribe la salida exacta que imprimirá, una línea por renglón.",
+    responseLabel: "Salida esperada",
+    responsePlaceholder: "azul\nverde",
+    instructions: [
+      "Lee primero la lista completa.",
+      "Revisa qué valor corresponde al índice 0 y al índice 2.",
+      "Escribe solo la salida, no el código."
+    ],
+    hints: [
+      "El primer elemento de una lista está en el índice 0.",
+      "El índice 2 apunta al tercer elemento.",
+      "La respuesta debería tener dos líneas."
+    ],
+    starterCode: "colores = ['azul', 'rojo', 'verde']\nprint(colores[0])\nprint(colores[2])",
+    successCriteria: [
+      "La respuesta tiene dos líneas.",
+      "Muestra el primer y el tercer valor de la lista.",
+      "Solo incluye la salida impresa."
+    ],
+    evaluator: {
+      type: "exact_answer",
+      minLength: 8,
+      normalizeWhitespace: true,
+      ignoreCase: true,
+      acceptableAnswers: ["azul\nverde", "azul\r\nverde"]
+    }
+  },
+  {
+    slug: "loop-through-a-list",
+    title: "Recorre una lista con un bucle",
+    exerciseType: "guided_code",
+    responseFormat: "code",
+    moduleSlug: "lists",
+    lessonSlug: "looping-through-a-list",
+    order: 3,
+    duration: "9 min",
+    summary: "Usa una lista y un bucle `for` para imprimir cada valor en una línea distinta.",
+    prompt:
+      "Escribe un programa que cree la lista `['leer', 'practicar', 'descansar']` y luego use un bucle `for` para imprimir cada elemento por separado.",
+    responseLabel: "Tu programa con lista y bucle",
+    responsePlaceholder:
+      "tareas = ['leer', 'practicar', 'descansar']\nfor tarea in tareas:\n    print(tarea)",
+    instructions: [
+      "Crea la lista con tres tareas.",
+      "Usa un bucle `for` para recorrerla.",
+      "Imprime la variable del bucle dentro del bloque."
+    ],
+    hints: [
+      "La forma básica es `for tarea in tareas:`.",
+      "La línea con `print()` debe ir indentada.",
+      "La salida debería mostrar tres líneas distintas."
+    ],
+    starterCode: "tareas = ['leer', 'practicar', 'descansar']\nfor tarea in tareas:\n    print(tarea)",
+    successCriteria: [
+      "Crea una lista con tres elementos.",
+      "Usa `for` para recorrer la lista.",
+      "La salida imprime un elemento por línea."
+    ],
+    playground: {
+      title: "Ejecuta el bucle sobre la lista",
+      guidance: "Corre el programa y mira cómo cada tarea aparece en su propia línea. Luego cambia la lista para ver cómo el bucle sigue funcionando.",
+      starterCode: "tareas = ['leer', 'practicar', 'descansar']\nfor tarea in tareas:\n    print(tarea)",
+      emptyOutputHint: "Una solución correcta debería mostrar los tres elementos de la lista en líneas separadas."
+    },
+    executionValidation: {
+      requireRunBeforeCheck: true,
+      requireRunBeforeComplete: true,
+      expectedOutput: ["leer\npracticar\ndescansar"],
+      normalizeOutputWhitespace: true,
+      ignoreOutputCase: false,
+      requireNoRuntimeError: true
+    },
+    evaluator: {
+      type: "structure_check",
+      minLength: 70,
+      passingScore: 5,
+      requiredPatterns: [
+        {
+          id: "creates-list",
+          label: "Crea la lista `tareas`",
+          pattern: "tareas\\s*=\\s*\\[\\s*['\"]leer['\"]\\s*,\\s*['\"]practicar['\"]\\s*,\\s*['\"]descansar['\"]\\s*\\]",
+          feedbackWhenMissing: "Crea la lista `tareas` con los tres valores pedidos."
+        },
+        {
+          id: "uses-for",
+          label: "Usa un bucle `for` para recorrerla",
+          pattern: "for\\s+tarea\\s+in\\s+tareas\\s*:",
+          feedbackWhenMissing: "Usa un bucle `for tarea in tareas:` para recorrer la lista."
+        },
+        {
+          id: "prints-item",
+          label: "Imprime cada valor del bucle",
+          pattern: "print\\(\\s*tarea\\s*\\)",
+          feedbackWhenMissing: "Dentro del bucle, imprime la variable `tarea`."
+        }
+      ],
+      orderedPatternIds: ["creates-list", "uses-for", "prints-item"]
     }
   }
 ];
